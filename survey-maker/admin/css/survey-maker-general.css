@@ -2588,6 +2588,11 @@ textarea.ays-survey-question-input-textarea {
     font-style: italic;
 }
 
+.ays_each_results_table .nav-tab-wrapper a.nav-tab{
+    padding: 8px 25px;
+    font-size: 15px;
+}
+
 /* Our products Media Queries*/
 /* max-width */
 @media screen and (max-width: 1160px) {
