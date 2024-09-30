@@ -65,6 +65,7 @@
         'survey_question_image_height'                      => '',
         'survey_question_image_sizing'                      => 'cover',
         'survey_question_padding'                           => 24,
+        'survey_question_padding_mobile'                    => 24,
         'survey_question_caption_text_color'                => '#333',
         'survey_question_caption_text_alignment'            => 'center',
         'survey_question_caption_text_alignment_on_mobile'  => 'center',
@@ -83,6 +84,7 @@
         'survey_answers_view_alignment' => 'space-around',
         'survey_answers_object_fit' => 'cover',
         'survey_answers_padding' => 8,
+        'survey_answers_padding_mobile' => 8,
         'survey_answers_gap' => 0,
         'survey_answers_image_size' => 195,
 
@@ -652,6 +654,10 @@
             // Question padding
             $survey_question_padding = (isset($options[ $name_prefix . 'question_padding' ]) && $options[ $name_prefix . 'question_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding' ] ) ) : 24;
             
+            // Question padding mobile
+            $options[ $name_prefix . 'question_padding_mobile' ] = isset($options[ $name_prefix . 'question_padding_mobile' ]) ? $options[ $name_prefix . 'question_padding_mobile' ] : $survey_question_padding;
+            $survey_question_padding_mobile = (isset($options[ $name_prefix . 'question_padding_mobile' ]) && $options[ $name_prefix . 'question_padding_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding_mobile' ] ) ) : 24;
+            
             // Question caption text color
             $options[ $name_prefix . 'question_caption_text_color' ] = (isset($options[ $name_prefix . 'question_caption_text_color' ]) && $options[ $name_prefix . 'question_caption_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_color' ] ) ) : $survey_text_color;
             $survey_question_caption_text_color = $options[ $name_prefix . 'question_caption_text_color' ];
@@ -711,6 +717,10 @@
 
             // Answer padding
             $survey_answers_padding = (isset($options[ $name_prefix . 'answers_padding' ]) && $options[ $name_prefix . 'answers_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_padding' ] ) ) : 8;
+
+            // Answer padding mobile
+            $options[ $name_prefix . 'answers_padding_mobile' ] = isset($options[ $name_prefix . 'answers_padding_mobile' ]) ? $options[ $name_prefix . 'answers_padding_mobile' ] : $survey_answers_padding;
+            $survey_answers_padding_mobile = (isset($options[ $name_prefix . 'answers_padding_mobile' ]) && $options[ $name_prefix . 'answers_padding_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_padding_mobile' ] ) ) : 8;
 
             // Answer Gap
             $survey_answers_gap = (isset($options[ $name_prefix . 'answers_gap' ]) && $options[ $name_prefix . 'answers_gap' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_gap' ] ) ) : 0;

@@ -380,8 +380,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_hide_popup_on_pc">
-                                    <span><?php echo __("Hide popup on PC", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Tick this option to hide the survey popup on PC.", "survey-maker"); ?>">
+                                    <span><?php echo __("Hide popup on desktop", "survey-maker"); ?></span>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Tick this option to hide the survey popup on desktop.", "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>

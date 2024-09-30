@@ -2928,6 +2928,9 @@ class Survey_Maker_Public {
 
     public function get_css_mobile_part($mobile_max_width, $mobile_width, $pagination_number_height) {
         $content = '';
+
+        // Question padding mobile
+        $question_padding = $this->options[ $this->name_prefix . 'question_padding_mobile' ];
         $question_caption_text_display = !$this->options[ $this->name_prefix . 'question_caption_hide_on_mobile' ] ? 'block' : 'none';
         $content .= '
         @media screen and (max-width: 640px){
@@ -2958,6 +2961,10 @@ class Survey_Maker_Public {
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-required-icon,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-title {
                 font-size: ' . $this->options[ $this->name_prefix . 'question_font_size_mobile' ] . 'px;
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {
+                ' . ( $this->options[ $this->name_prefix . 'logo' ] != '' ? 'padding: '.$question_padding.'px '.$question_padding.'px 0 '.$question_padding.'px;' : 'padding: '.$question_padding.'px;' ) . '
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons .' . $this->html_class_prefix . 'section-button-container .' . $this->html_class_prefix . 'section-button-content .' . $this->html_class_prefix . 'section-button{
@@ -2992,6 +2999,11 @@ class Survey_Maker_Public {
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' textarea.' . $this->html_class_prefix . 'question-input {
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'answer_letter_spacing_mobile' ] . 'px;
+            }
+
+            
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer {
+                padding: ' . $this->options[ $this->name_prefix . 'answers_padding_mobile' ] . 'px ' . $this->options[ $this->name_prefix . 'answers_padding_mobile' ] . 'px ' . $this->options[ $this->name_prefix . 'answers_padding_mobile' ] . 'px 0;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label-content > span {

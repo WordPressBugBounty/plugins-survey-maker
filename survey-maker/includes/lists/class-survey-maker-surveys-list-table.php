@@ -504,6 +504,9 @@ class Surveys_List_Table extends WP_List_Table {
             // Question padding
             $survey_question_padding = (isset( $_POST[ $name_prefix . 'survey_question_padding' ] ) && $_POST[ $name_prefix . 'survey_question_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_padding' ] ) ) : 24;
             
+            // Question padding mobile
+            $survey_question_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_padding_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) ) : 24;
+            
             // Question caption text color
             $survey_question_caption_text_color = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) ) : $survey_text_color;
             
@@ -560,6 +563,9 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Answer padding
             $survey_answers_padding = (isset( $_POST[ $name_prefix . 'survey_answers_padding' ] ) && $_POST[ $name_prefix . 'survey_answers_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_padding' ] ) ) : 8;
+
+            // Answer padding mobile
+            $survey_answers_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] ) ) : 8;
 
             // Answer Gap
             $survey_answers_gap = (isset( $_POST[ $name_prefix . 'survey_answers_gap' ] ) && $_POST[ $name_prefix . 'survey_answers_gap' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_gap' ] ) ) : 0;
@@ -934,6 +940,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_question_image_height'      => $survey_question_image_height,
                 'survey_question_image_sizing'      => $survey_question_image_sizing,
                 'survey_question_padding'           => $survey_question_padding,
+                'survey_question_padding_mobile'    => $survey_question_padding_mobile,
                 'survey_question_caption_text_color' => $survey_question_caption_text_color,
                 'survey_question_caption_text_alignment' => $survey_question_caption_text_alignment,
                 'survey_question_caption_text_alignment_on_mobile' => $survey_question_caption_text_alignment_on_mobile,
@@ -952,6 +959,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_answers_view_alignment'     => $survey_answers_view_alignment,
                 'survey_answers_object_fit'         => $survey_answers_object_fit,
                 'survey_answers_padding'            => $survey_answers_padding,
+                'survey_answers_padding_mobile'     => $survey_answers_padding_mobile,
                 'survey_answers_gap'                => $survey_answers_gap,
                 'survey_answers_image_size'         => $survey_answers_image_size,
 

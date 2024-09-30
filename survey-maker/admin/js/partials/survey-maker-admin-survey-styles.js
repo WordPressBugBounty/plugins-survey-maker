@@ -392,6 +392,8 @@
                 $(document).find("#ays_survey_question_image_sizing,#ays_survey_answers_object_fit").aysDropdown('set selected', 'cover');
                 // Question font size
                 $(document).find("#ays_survey_question_padding").val(24);
+                // Question font size mobile
+                $(document).find("#ays_survey_question_padding_mobile").val(24);
                 // Question caption text alignment
                 $(document).find("#ays_survey_question_caption_text_alignment").aysDropdown('set selected', 'center');
                 // Question caption text alignment on mobile
@@ -409,6 +411,8 @@
                 $(document).find("#ays_survey_answers_view").aysDropdown('set selected', 'list');
                 // Answer padding
                 $(document).find("#ays_survey_answers_padding").val(8);
+                // Answer padding mobile
+                $(document).find("#ays_survey_answers_padding_mobile").val(8);
                 // Answer gap
                 $(document).find("#ays_survey_answers_gap").val(0);
                 // Answer image size

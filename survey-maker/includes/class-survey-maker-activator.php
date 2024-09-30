@@ -347,6 +347,7 @@ class Survey_Maker_Activator {
                     'survey_question_image_height' => '',
                     'survey_question_image_sizing' => 'cover',
                     'survey_question_padding' => 24,
+                    'survey_question_padding_mobile' => 24,
                     'survey_question_caption_text_color' => '#333',
                     'survey_question_caption_text_alignment' => 'center',
                     'survey_question_caption_text_alignment_on_mobile' => 'center',
@@ -365,6 +366,7 @@ class Survey_Maker_Activator {
                     'survey_answers_view_alignment' => 'flex-start',
                     'survey_answers_object_fit' => 'cover',
                     'survey_answers_padding' => 8,
+                    'survey_answers_padding_mobile' => 8,
                     'survey_answers_gap' => 0,
             
                     'survey_buttons_size' => 'medium',

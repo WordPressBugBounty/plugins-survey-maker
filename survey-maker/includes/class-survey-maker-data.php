@@ -207,6 +207,10 @@ class Survey_Maker_Data {
         // Question padding
         $settings[ $name_prefix . 'question_padding' ] = (isset($options[ $name_prefix . 'question_padding' ]) && $options[ $name_prefix . 'question_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding' ] ) ) : 24;
         
+        // Question padding mobile
+        $options[ $name_prefix . 'question_padding_mobile' ] = isset($options[ $name_prefix . 'question_padding_mobile' ]) ? $options[ $name_prefix . 'question_padding_mobile' ] : $settings[ $name_prefix . 'question_padding' ];
+        $settings[ $name_prefix . 'question_padding_mobile' ] = (isset($options[ $name_prefix . 'question_padding_mobile' ]) && $options[ $name_prefix . 'question_padding_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding_mobile' ] ) ) : 24;
+        
         // Question caption text color
         $settings[ $name_prefix . 'question_caption_text_color' ] = (isset($options[ $name_prefix . 'question_caption_text_color' ]) && $options[ $name_prefix . 'question_caption_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_color' ] ) ) : $settings[ $name_prefix . 'text_color' ];
         
@@ -266,6 +270,10 @@ class Survey_Maker_Data {
 
         // Answer padding
         $settings[ $name_prefix . 'answers_padding' ] = (isset($options[ $name_prefix . 'answers_padding' ]) && $options[ $name_prefix . 'answers_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_padding' ] ) ) : 8;
+
+        // Answer padding mobile
+        $options[ $name_prefix . 'answers_padding_mobile' ] = isset($options[ $name_prefix . 'answers_padding_mobile' ]) ? $options[ $name_prefix . 'answers_padding_mobile' ] : $settings[ $name_prefix . 'answers_padding' ];
+        $settings[ $name_prefix . 'answers_padding_mobile' ] = (isset($options[ $name_prefix . 'answers_padding_mobile' ]) && $options[ $name_prefix . 'answers_padding_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_padding_mobile' ] ) ) : 8;
 
         // Answer Gap
         $settings[ $name_prefix . 'answers_gap' ] = (isset($options[ $name_prefix . 'answers_gap' ]) && $options[ $name_prefix . 'answers_gap' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_gap' ] ) ) : 0;
@@ -2093,7 +2101,7 @@ class Survey_Maker_Data {
         return $sanitized_content;
     }
     
-    // Sanitize data my admin level
+    // Sanitize data by admin level
     public static function admin_level_sanitize($data) {
         
         if (is_multisite() && is_super_admin()) {

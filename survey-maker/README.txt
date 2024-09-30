@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.6.1
-Stable tag: 4.9.7
+Stable tag: 5.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,15 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.0.0 =
+* Added: Question padding on mobile option
+
+= 4.9.9 =
+* Fixed: Some text typos in the options on the surveys page
+
+= 4.9.8 =
+* Added: Answer padding option for mobile devices
 
 = 4.9.7 =
 * Improved: Styles on the Submissions page

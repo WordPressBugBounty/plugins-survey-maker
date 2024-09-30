@@ -254,8 +254,8 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <label for='<?php echo esc_attr($html_name_prefix); ?>survey_title_letter_spacing'>
-                                        <?php echo __('On PC', "survey-maker"); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the progress bar text in pixels PC devices.',"survey-maker")?>">
+                                        <?php echo __('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the progress bar text in pixels desktop devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -273,7 +273,7 @@
                             <div class="row">
                                 <div class="col-sm-4">
                                     <label for='<?php echo esc_attr($html_name_prefix); ?>survey_progress_bar_text_letter_spacing_mobile'>
-                                        <?php echo __('On Mobile', "survey-maker"); ?>
+                                        <?php echo __('On mobile', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the progress bar text in pixels for mobile devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
