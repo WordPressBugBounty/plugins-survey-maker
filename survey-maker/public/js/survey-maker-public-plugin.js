@@ -204,9 +204,95 @@
             $(this).parents('.' + _this.htmlClassPrefix + 'question-answers').find('input[type="radio"][name^="' + _this.htmlClassPrefix + 'answers"]').prop('checked', false);
             clearContainer.removeClass('in');
             clearContainer.addClass('out');
+
+            if( $(this).parents('.' + _this.htmlClassPrefix + 'question-answers').find('.' + _this.htmlClassPrefix + 'answer-star').length > 0 ){
+                $(this).parents('.' + _this.htmlClassPrefix + 'question-answers').find('.' + _this.htmlClassPrefix + 'answer-star .' + _this.htmlClassPrefix + 'answer-label').each(function() {
+                    $(this).find('i').removeClass('fa-star').addClass('fa-star-o').removeAttr('style');
+                    $(this).removeClass('active-answer');
+                });
+            }
+
             setTimeout(function(){
                 clearContainer.addClass(_this.htmlClassPrefix + 'visibility-none');
             }, 200);
+        });
+
+        var active = false;
+        _this.$el.on('mouseout', '.' + _this.htmlClassPrefix + 'answer-star',function(){
+            var surveyColor = _this.dbOptions[ _this.dbOptionsPrefix + 'text_color' ];
+            var surveyActiveColor = _this.dbOptions[ _this.dbOptionsPrefix + 'color' ];
+            var allRateLabels = $(this).find('label');
+            
+            if($(this).find(".fa-star").length !== 0) {
+                active = true;
+            }
+
+            if (active) {   
+                var index = -1;
+                allRateLabels.each(function() {
+                    if ($(this).hasClass('active-answer')) {
+                        index = allRateLabels.index(this);
+                    }   
+                });
+                for (var i = 0; i < allRateLabels.length; i++) {
+                    if( _this.dbOptions[ _this.dbOptionsPrefix+'is_business'] ){
+                        if (i > index) {
+                            allRateLabels.eq(i).find('i').css('color','#ffffff');
+                        } else {
+                            allRateLabels.eq(i).find('i').css('color','#fc0');
+                        }
+                    }else{
+                        if (i > index) {
+                            allRateLabels.eq(i).find('i').removeClass('fa-star').addClass('fa-star-o');
+                        } else {
+                            allRateLabels.eq(i).find('i').removeClass('fa-star-o').addClass('fa-star');
+                        }
+                    }
+                }
+            }else{
+                allRateLabels.each(function() {
+                    if( _this.dbOptions[ _this.dbOptionsPrefix+'is_business'] ){
+                        $(this).find('i').css('color','#ffffff');
+                    }
+                    else{
+                        $(this).find('i').removeClass('fa-star').addClass('fa-star-o');
+                    }
+                });
+            }
+        });
+
+        _this.$el.on('click', '.' + _this.htmlClassPrefix + 'answer-star .'+ _this.htmlClassPrefix +'answer-label',function(){
+            $(this).parents('.' + _this.htmlClassPrefix + 'question').removeClass('ays-has-error');
+            $(this).parents('.' + _this.htmlClassPrefix + 'question').find('.' + _this.htmlClassPrefix + 'question-validation-error').html('');
+
+            $(this).parent().find('label').each(function() {
+                $(this).removeClass('active-answer');
+            });
+            $(this).addClass('active-answer');
+            active = true;
+        });
+
+        _this.$el.on('mouseover', '.'+ _this.htmlClassPrefix + 'answer-star .'+ _this.htmlClassPrefix +'answer-label',function(){
+            var surveyColor = _this.dbOptions[ _this.dbOptionsPrefix + 'color' ];
+            var allRateLabels = $(this).parent().find('label');
+            var index = allRateLabels.index(this);
+            allRateLabels.each(function() {
+                if( _this.dbOptions[ _this.dbOptionsPrefix+'is_business'] ){
+                    $(this).find('i').css('color','#ffffff');
+                }
+                else{
+                    $(this).find('i').removeClass('fa-star').addClass('fa-star-o');
+                }
+
+            });
+            for (var i = 0; i <= index; i++) {
+                if( _this.dbOptions[ _this.dbOptionsPrefix+'is_business'] ){
+                    allRateLabels.eq(i).find('i').css('color','#fc0');
+                }
+                else{                    
+                    allRateLabels.eq(i).find('i').removeClass('fa-star-o').addClass('fa-star');
+                }
+            }
         });
 
         if( _this.dbOptions[ _this.dbOptionsPrefix + 'enable_leave_page' ] ){
@@ -1009,14 +1095,16 @@
 
                 var errorFlag = false;
                 var checker = false;
-                if ( item.data('type') == 'radio' || item.data('type') == 'checkbox' ) {
+                if ( item.data('type') == 'radio' || item.data('type') == 'checkbox' || item.data('type') == 'star' ) {
+                    var questionType = item.data('type') === 'star' ? 'radio' : item.data('type') || '';
+                    
                     if(typeof checkMinVotes != 'undefined' && checkMinVotes){
                         checker = _this.checkMinVotes(item);
                         if(!checker){
                             return false;
                         }
                     }
-                    if( item.find('input[type="'+ item.data('type') +'"]:checked').length == 0 ){
+                    if( item.find('input[type="'+ questionType +'"]:checked').length == 0 ){
                         errorFlag = true;
                     }
 

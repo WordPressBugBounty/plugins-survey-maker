@@ -585,6 +585,7 @@ class Survey_Maker_Public {
                     $user_answer = '';
                     break;
                 case "text":
+                case "star":
                     $user_answer = $question_answer;
                     $answer_id = 0;
                     break;
@@ -1438,6 +1439,7 @@ class Survey_Maker_Public {
             "radio",
             "checkbox",
             "select",
+            "star",
             "text",
             "short_text",
             "number",
@@ -1803,6 +1805,59 @@ class Survey_Maker_Public {
             $content[] = '</div>';
 
         $content[] = '</div>';
+
+        $content = implode( '', $content );
+
+        return $content;
+    }
+
+    
+    public function ays_survey_question_type_STAR_html( $question ){
+        $content = array();
+    
+        //checked Input
+        $enable_url_parameter =  isset($question['options']['enable_url_parameter']) && $question['options']['enable_url_parameter'] == true ? true : false;
+        $url_parameter = $enable_url_parameter && isset($question['options']['url_parameter']) && $question['options']['url_parameter'] != "" ? $question['options']['url_parameter'] : ''; 
+        $selected_input = isset($_GET[$url_parameter]) && $_GET[$url_parameter] ? $_GET[$url_parameter] : '';
+
+        $star_label_1 = (isset($question['options']['star_1']) && $question['options']['star_1'] != '') ? $question['options']['star_1'] : '';
+        $star_label_2 = (isset($question['options']['star_2']) && $question['options']['star_2'] != '') ? $question['options']['star_2'] : '';
+        $star_scale_length = (isset($question['options']['star_scale_length']) && $question['options']['star_scale_length'] != '') ? absint( $question['options']['star_scale_length'] ) : 5;
+
+            $content[] = '<div class="' . $this->html_class_prefix . 'answer-star">';
+            
+                $content[] = '<label class="' . $this->html_class_prefix . 'answer-star-label">';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'answer-star-radio-label" dir="auto"></div>';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'answer-star-radio">';
+                    $content[] = $star_label_1;
+                    $content[] = '</div>';
+                $content[] = '</label>';
+
+                for ($i=1; $i <= $star_scale_length; $i++) { 
+                    $is_selected = $i == $selected_input ? "checked" : "";
+                    $active_answer = $i == $selected_input ? "active-answer" : "";
+                    $selected_stars = ($i <= $selected_input) && ($selected_input <= $star_scale_length) ? "fa-star" : "fa-star-o";
+
+                    $content[] = '<label class="' . $this->html_class_prefix . 'answer-label ' . $active_answer . '">';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-star-radio-label" dir="auto"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-star-radio" tabindex="0">';
+                        
+                            $content[] = '<input type="radio" value="'.$i.'" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]"' . $is_selected . '>';
+                          
+                            $content[] = '<i class="fa ' . $selected_stars . ' ' . $this->html_class_prefix . 'star-icon"></i>';
+                            
+                        $content[] = '</div>';
+                    $content[] = '</label>';
+                }
+                
+                $content[] = '<label class="' . $this->html_class_prefix . 'answer-star-label">';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'answer-star-radio-label" dir="auto"></div>';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'answer-star-radio">';
+                    $content[] = $star_label_2;
+                    $content[] = '</div>';
+                $content[] = '</label>';
+
+            $content[] = '</div>';
 
         $content = implode( '', $content );
 
@@ -2456,10 +2511,21 @@ class Survey_Maker_Public {
                 font-weight: normal;
             }
 
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-star .' . $this->html_class_prefix . 'answer-star-radio,
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-star .' . $this->html_class_prefix . 'answer-star-radio-label,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-select.dropdown div.item {
                 font-size: ' . $this->options[ $this->name_prefix . 'answer_font_size' ] . 'px !important;
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'answer_letter_spacing' ] . 'px;
                 color: ' . $this->options[ $this->name_prefix . 'text_color' ] . ';
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' label.' . $this->html_class_prefix . 'individual-submission-conatiner-star-label-stars div:nth-child(2) > i.fa.fa_star_o::before{
+                content: "\f006";
+            }
+
+            
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label .' . $this->html_class_prefix . 'answer-star-radio input {
+                display: none ;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .lds-ripple[data-role="loader"] div{

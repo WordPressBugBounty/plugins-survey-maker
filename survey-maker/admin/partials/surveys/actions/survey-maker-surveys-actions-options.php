@@ -368,6 +368,7 @@
         "radio"         => __("Radio", "survey-maker"),
         "checkbox"      => __("Checkbox (Multi)", "survey-maker"),
         "select"        => __("Dropdown", "survey-maker"),
+        "star"          => __("Star Rating", "survey-maker"),
         "text"          => __("Paragraph", "survey-maker"),
         "short_text"    => __("Short Text", "survey-maker"),
         "number"        => __("Number", "survey-maker"),
@@ -381,6 +382,7 @@
         "radio"         => '',
         "checkbox"      => '',
         "select"        => '',
+        "star" => '',
         "yesorno"       => '',
         "text"          => __("Your answer", "survey-maker"),
         "short_text"    => __("Your answer", "survey-maker"),
@@ -409,6 +411,13 @@
         "space-around",
         "space-between",
     );
+
+    $other_question_types = array(
+        "star",
+    );
+
+    $survey_star_1 = '';
+    $survey_star_2 = '';
 
     foreach ($sections as $section_key => $section) {
         $sections[$section_key]['title'] = (isset($section['title']) && $section['title'] != '') ? stripslashes( htmlentities( $section['title'] ) ) : '';
@@ -444,7 +453,17 @@
             $opts['enable_number_error_message'] = (isset($opts['enable_number_error_message']) && $opts['enable_number_error_message'] == 'on') ? true : false;
             $opts['number_limit_length']         = (isset($opts['number_limit_length']) && $opts['number_limit_length'] != '') ? stripslashes( esc_attr($opts['number_limit_length'])) : '';
             $opts['enable_number_limit_counter'] = (isset($opts['enable_number_limit_counter']) && $opts['enable_number_limit_counter'] == 'on') ? true : false;
+        
             
+            // Star list options
+            $opts['star_list_stars_length'] = (isset( $opts['star_list_stars_length'] )) ? $opts['star_list_stars_length'] : '';            
+
+            $opts['star_1'] = (isset($opts['star_1']) && $opts['star_1'] != '') ? $opts['star_1'] : '';
+            $opts['star_2'] = (isset($opts['star_2']) && $opts['star_2'] != '') ? $opts['star_2'] : '';
+
+            $survey_star_1 = (isset($opts['star_1']) && $opts['star_1'] != '') ? $opts['star_1'] : '';
+            $survey_star_2 = (isset($opts['star_2']) && $opts['star_2'] != '') ? $opts['star_2'] : '';
+
             // Input types placeholders
             $opts['placeholder'] = (isset($opts['survey_input_type_placeholder'])) ? stripslashes(esc_attr($opts['survey_input_type_placeholder'])) : $question_types_placeholders[$question['type']];
 

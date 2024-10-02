@@ -16,6 +16,9 @@
                 case "checkbox":
                     forCheckboxType( this );
                 break;
+                case 'star':
+                    forStarTypeCustom( this );
+                    break;
                 case "select":
                     forRadioType( this );
                 break;
@@ -131,6 +134,60 @@
                 chart.draw(view, options);
                 resizeChart(chart, view, options);
             }
+        }
+        
+        function forStarTypeCustom( item ){
+            var _this = this;
+            var questionId = item.question_id;
+            var starsLengthMax = "";
+            var starsLength = 5;
+            var dataValues = {};
+            var sumOfAnswers = 0;
+
+            if (typeof item.labels != "undefined") {
+                starsLengthMax  =  typeof item.labels.length != "undefined" && item.labels.length != "" ? item.labels.length : "";
+            }
+            if (starsLengthMax !== "") {
+                starsLength = parseInt(starsLengthMax);
+            }
+
+            for (var i=1; i <= starsLength; i++) {
+                dataValues[i] = 0;
+            }
+
+            for (var key in item.answers[questionId]) {
+                dataValues[ item.answers[questionId][key] ]++;
+            }
+
+            for (var key in dataValues) {
+                sumOfAnswers += key * dataValues[key];
+            }
+
+            var avgOfAnswers = ( sumOfAnswers > 0 && (item.sum_of_answers_count && item.sum_of_answers_count > 0) ) ? sumOfAnswers / item.sum_of_answers_count : 0;
+            avgOfAnswers = avgOfAnswers.toFixed(2);
+            
+            var content = '<div>';
+                    content += '<div class="ays-survey-answer-star-list-main ays-survey-answer-star-list-main-chart">';
+                        content += '<div class="ays-survey-answer-star-list-container">';
+                            content += '<div class="ays-survey-answer-star-list-row ays-survey-answer-star-list-row-chart-columns">';
+                                content += '<div class="ays-survey-answer-star-list-column" title="">' + SurveyMakerAdmin.rating + '</div>';
+                                content += '<div class="ays-survey-answer-star-list-column" title="">' + SurveyMakerAdmin.stars_count + '</div>';
+                            content += '</div>';
+                            content += '<div class="ays-survey-answer-star-list-row ays-survey-answer-star-list-row-chart">';
+                                content += '<div class="ays-survey-answer-star-list-row-content">';
+                                    content += '<div class="ays-survey-answer-star-list-column ays-survey-answer-star-list-column-chart" style="box-shadow:inset 0px 0px 7px 0 #e9e4e4;font-weight: 600; font-size: 17px;">' + avgOfAnswers + '</div>';
+                                    content += '<div class="ays-survey-answer-star-list-column ays-survey-answer-star-list-column-chart" style="box-shadow:inset 0px 0px 7px 0 #e9e4e4;position:relative;width:15%;text-align:initial;padding: 0 18px;">';
+                                        var starsAverageSum = (avgOfAnswers * 100) / starsLength;
+                                        content += getStars(starsLength, starsAverageSum);
+                                    content += '</div>';
+                                content += '</div>';
+                            content += '</div>';
+                            content += '<div class="ays-survey-answer-star-list-row-spacer"></div>';
+                        content += '</div>';
+                    content += '</div>';
+                content += '</div>';
+
+            $(document).find('#survey_answer_chart_' + questionId).html(content);
         }
 
         // AV Google charts
@@ -354,6 +411,27 @@
                 chart.draw(data, options);
             });
             
+        }
+
+        function getStars(lenght,averagePercent){
+
+            var content = "";
+            content += '<div class="ays-survey-star-list-chart-star-box">';
+            content += '<div class="ays-survey-star-list-chart-star-box-wrap">';
+            content += '<span class="ays-survey-star-list-chart-stars-active" style="width:'+averagePercent+'%">';
+            for (var i = 1; i <= lenght; i++) {
+                content += '<i class="fa fa_star" aria-hidden="true"></i>';
+            }
+            content += '</span>';
+
+            content += '<span class="ays-survey-star-list-chart-stars-inactive">';
+            for (var i = 1; i <= lenght; i++) {
+                content += '<i class="fa fa_star_o"></i>';
+            }
+            content += '</span>';
+            content += '</div>';
+            content += '</div>';
+            return content;
         }
     });
 })(jQuery);

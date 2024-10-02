@@ -439,6 +439,44 @@ $types_with_changeable_charts = array(
                                         </div>';
                                     }
 
+                                    if( $question['type'] == 'star' ){
+
+                                        $star_label_1 = isset( $question['options']['star_1'] ) && $question['options']['star_1'] != '' ? $question['options']['star_1'] : '';
+                                        $star_label_2 = isset( $question['options']['star_2'] ) && $question['options']['star_2'] != '' ? $question['options']['star_2'] : '';
+                                        $star_scale_length = isset( $question['options']['star_scale_length'] ) && $question['options']['star_scale_length'] != '' ? absint( $question['options']['star_scale_length'] ) : 5;
+
+                                        $question_type_content .= '<div class="ays_each_question_answer">';
+                                                                            $question_type_content .= '<div class="ays-survey-answer-star">
+                                                                            <label class="ays-survey-answer-star-label">
+                                                                                <div class="ays-survey-answer-star-radio-label" dir="auto"></div>
+                                                                                <div class="ays-survey-answer-star-radio">' . stripslashes( $star_label_1 ) . '</div>
+                                                                            </label>';
+
+                                                                            for ($i=1; $i <= $star_scale_length; $i++) {
+                                                                                $checked = '';
+                                                                                $icon_class = 'fa_star_o';
+                                                                                if( intval( $user_answer ) >= $i ){
+                                                                                    $checked = 'checked';
+                                                                                    $icon_class = 'fa_star';
+                                                                                }
+
+                                                                                $question_type_content .= '<label class="ays-survey-answer-label">
+                                                                                    <div class="ays-survey-answer-star-radio-label" dir="auto">' . $i . '</div>
+                                                                                    <div class="ays-survey-answer-star-radio">
+                                                                                        <input type="radio" name="ays-survey-question-star-' . $question['id'] . '" disabled ' . $checked . ' value="'.$i.'" data-id="' . $i . '" >
+                                                                                        <i class="fa ' . $icon_class . ' ays-survey-star-icon"></i>
+                                                                                    </div>
+                                                                                </label>';
+                                                                            }
+
+                                                                            $question_type_content .= '<label class="ays-survey-answer-star-label">
+                                                                                <div class="ays-survey-answer-star-radio-label" dir="auto"></div>
+                                                                                <div class="ays-survey-answer-star-radio">' . stripslashes( $star_label_2 ) . '</div>
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>';
+                                    }
+
                                     foreach ($question['answers'] as $key => $answer) {
                                         $checked = '';
                                         $selected = '';

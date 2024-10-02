@@ -1445,6 +1445,7 @@ class Survey_Maker_Data {
             'short_text',
             'number',
             'phone',
+            'star',
             'name',
             'email',
             'linear_scale',
@@ -1487,6 +1488,18 @@ class Survey_Maker_Data {
             $question_results[$question_id]['otherAnswers'] = isset( $other_answers[$question->id] ) ? $other_answers[$question->id] : array();
 
             if( in_array( $question->type, $text_types ) ){
+                $question_ls_options = json_decode($question->options, true);
+
+                if($question->type == 'star'){
+                    $scale_from     = isset($question_ls_options['star_1']) && $question_ls_options['star_1'] != "" ? stripslashes($question_ls_options['star_1']) : "";
+                    $scale_to       = isset($question_ls_options['star_2']) && $question_ls_options['star_2'] != "" ? stripslashes($question_ls_options['star_2']) : "";
+                    $scale_length   = isset($question_ls_options['star_scale_length']) && $question_ls_options['star_scale_length'] != "" ? $question_ls_options['star_scale_length'] : "";
+                    $question_results[$question_id]['labels'] = array(
+                        'from'      => $scale_from,
+                        'to'        => $scale_to,
+                        'length'    => $scale_length
+                    );
+                }
                 $question_results[$question_id]['answers'] = isset( $text_answer[$question->type] ) ? $text_answer[$question->type] : '';
                 $question_results[$question_id]['answerTitles'] = isset( $text_answer[$question->type] ) ? $text_answer[$question->type] : '';
                 $question_results[$question_id]['sum_of_answers_count'] = isset( $text_answer[$question->type][$question->id] ) ? count( $text_answer[$question->type][$question->id] ) : 0;
@@ -1582,6 +1595,7 @@ class Survey_Maker_Data {
             'short_text',
             'number',
             'phone',
+            'star',
             'name',
             'email',
             'linear_scale',

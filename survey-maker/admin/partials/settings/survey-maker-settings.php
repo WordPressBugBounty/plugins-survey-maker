@@ -38,6 +38,10 @@
             "type_name" => __("Dropdown", "survey-maker") , 
             "type_version" => "free"
         ),
+        "star" => array(
+            "type_name" => __("Star Rating", "survey-maker") , 
+            "type_version" => "free"
+        ),
         "text" => array(
             "type_name" => __("Paragraph", "survey-maker") , 
             "type_version" => "free"
@@ -98,11 +102,7 @@
         "linear_scale" => array(
             "type_name" => __("Linear Scale (Pro)", "survey-maker") , 
             "type_version" => "pro"
-        ),  
-        "star"         => array(
-            "type_name" => __("Star Rating (Pro)", "survey-maker") , 
-            "type_version" => "pro"
-        ),  
+        ),
         "slider"       => array(
             "type_name" => __("Slider (Pro)", "survey-maker") , 
             "type_version" => "pro"

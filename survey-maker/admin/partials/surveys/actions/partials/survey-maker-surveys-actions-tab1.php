@@ -268,7 +268,6 @@
                                                         <option value="star_list" disabled>Star List (Pro)</option>
                                                         <option value="slider_list" disabled>Slider List (Pro)</option>
                                                         <option value="linear_scale" disabled>Linear Scale (Pro)</option>
-                                                        <option value="star" disabled>Star Rating (Pro)</option>
                                                         <option value="slider" disabled>Slider (Pro)</option>
                                                         <option value="date" disabled>Date (Pro)</option>
                                                         <option value="date" disabled>Time (Pro)</option>
@@ -553,9 +552,47 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <?php else :?>
+                                            <?php elseif($survey_default_type == 'star'): ?>
+                                                <div class="ays-survey-question-types_star">
+                                                    <div class="ays-survey-answer-row" data-id="1">
+                                                        <div class="ays-survey-question-types-conteiner">
+                                                            <div class="ays-survey-question-types-box<?php echo $survey_default_type; ?>">
+                                                            <div class="ays-survey-question-types-box-body ays-survey-body-for-select-lenght">
+                                                                <div class="ays-survey-question-types_star_span">
+                                                                    <span style="font-size: 25px;" class="ays-survey_star_span">1 to</span>
+                                                                </div>
+                                                                <div class="ays-survey-question-types-for-select-lenght">
+                                                                    <select class="ays-survey-choose-for-start-select-lenght" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_scale_length]">
+                                                                        <?php
+                                                                            $star_scale_options = "" ;
+                                                                            for($s_i = 3; $s_i <= 10; $s_i++){
+                                                                                $star_scale_option_selected = (5 == $s_i) ? "selected" : "";
+                                                                                $star_scale_options .= "<option value=".$s_i." ".$star_scale_option_selected.">".$s_i."</option>";
+                                                                            }
+                                                                            echo $star_scale_options;
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="ays-survey-answer-box ays-survey-not-adding-enter-box" style="margin: 20px 0px;">
+                                                                <span class="ays_survey_star_span">1</span>
+                                                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" value="" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_1]">
+                                                                <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
+                                                                <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
+                                                            </div>
+                                                            <div class="ays-survey-answer-box ays-survey-not-adding-enter-box">
+                                                                <span class="ays_survey_star_span">5</span>
+                                                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_2]" value="">
+                                                                <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
+                                                                <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php else :?>k
                                             <div class="ays-survey-question-types">
-                                                <div class="ays-survey-answer-row" data-id="1">
+                                                <div class="ays-survey-answer-row" data-id="1" <?php echo $survey_default_type == 'star' ? 'style="display:none;"' : '' ;?>>
                                                     <div class="ays-survey-question-types-conteiner">
                                                         <div class="ays-survey-question-types-box isDisabled <?php echo esc_attr($survey_default_type); ?>">
                                                             <div class="ays-survey-question-types-box-body">
@@ -571,7 +608,7 @@
                                             </div>
                                             <?php endif;?>
                                         </div>
-                                        <div class="ays-survey-other-answer-and-actions-row">
+                                        <div class="ays-survey-other-answer-and-actions-row" <?php echo $survey_default_type == 'star' ? 'style="display:none;"' : '' ;?>>
                                             <?php if( !in_array( $survey_default_type, $text_question_types )): ?>
                                             <div class="ays-survey-answer-row ays-survey-other-answer-row" style="display: none;">
                                                 <div class="ays-survey-answer-wrap">
@@ -1153,7 +1190,6 @@
                                                                     <option value="star_list" disabled>Star List (Pro)</option>
                                                                     <option value="slider_list" disabled>Slider List (Pro)</option>
                                                                     <option value="linear_scale" disabled>Linear Scale (Pro)</option>
-                                                                    <option value="star" disabled>Star Rating (Pro)</option>
                                                                     <option value="slider" disabled>Slider (Pro)</option>
                                                                     <option value="date" disabled>Date (Pro)</option>
                                                                     <option value="date" disabled>Time (Pro)</option>
@@ -1230,7 +1266,7 @@
                                                     }else{
                                                         $question_type_Radio_Checkbox_Select = true;
                                                     }
-
+                                                    $selected_anser_i_class = '';
                                                     if ($question_type_Radio_Checkbox_Select):
 
                                                         $selected_anser_i_class = '';
@@ -1252,7 +1288,7 @@
                                                     foreach ($question['answers'] as $answer_key => $answer):
                                                     ?>
                                                     <!-- Answers start -->
-                                                    <div class="ays-survey-answer-row" data-id="<?php echo esc_attr($answer['id']); ?>">
+                                                    <div class="ays-survey-answer-row" data-id="<?php echo esc_attr($answer['id']); ?>" <?php echo $selected_question_type == 'star' ? 'style="display:none;"' : '' ?>>
                                                         <div class="ays-survey-answer-wrap">
                                                             <div class="ays-survey-answer-dlg-dragHandle">
                                                                 <div class="ays-survey-icons ays-survey-icons-hidden">
@@ -1375,6 +1411,50 @@
                                                 endif;
                                                 ?>
                                                 </div>
+                                                <?php if ($question['type'] == 'star'): ?>
+                                                    <div class="ays-survey-question-types_star">
+                                                        <div class="ays-survey-answer-row" data-id="1">
+                                                            <div class="ays-survey-question-types-conteiner">
+                                                                <div class="ays-survey-question-types-box<?php echo $survey_default_type; ?>">
+                                                                    <div class="ays-survey-question-types-box-body ays-survey-body-for-select-lenght">
+                                                                        <div class="ays-survey-question-types_star_span">
+                                                                            <span style="font-size: 25px;" class="ays-survey_star_span">1 to</span>
+                                                                        </div>
+                                                                        <div class="ays-survey-question-types-for-select-lenght">
+                                                                            <select class="ays-survey-choose-for-start-select-lenght" name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][star_scale_length]">
+                                                                                <?php
+                                                                                    $scale_options = "" ;
+                                                                                    $star_scale_length  = isset($question['options']['star_scale_length']) && $question['options']['star_scale_length'] != "" ? $question['options']['star_scale_length'] : "5";
+                                                                                    for($s_i = 3; $s_i <= 10; $s_i++){
+                                                                                        $scale_option_selected = "";
+                                                                                        $scale_option_selected = ($star_scale_length == $s_i) ? "selected" : "";
+                                                                                        $scale_options .= "<option value=".$s_i." ".$scale_option_selected.">".$s_i."</option>";
+                                                                                    }
+                                                                                    echo $scale_options;
+                                                                                ?>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="ays-survey-answer-box ays-survey-not-adding-enter-box" style="margin: 20px 0px;">
+                                                                        <span class="ays_survey_star_span">1</span>
+                                                                        <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", SURVEY_MAKER_NAME ); ?>" style="font-size: 14px;" name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][star_1]" value="<?php echo $question['options']['star_1']; ?>">
+                                                                        <div class="ays-survey-question-types-input-underline-linear-scale">
+                                                                        </div> 
+                                                                        <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
+                                                                    </div>
+                                                                    <div class="ays-survey-answer-box ays-survey-not-adding-enter-box">
+                                                                        <span class="ays_survey_star_span ays_survey_linear_scale_span_changeable"><?php echo $star_scale_length;?></span>
+                                                                        <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", SURVEY_MAKER_NAME ); ?>" style="font-size: 14px;" name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][star_2]" value="<?php echo $question['options']['star_2']; ?>">
+                                                                        <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
+                                                                        <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?php
+                                                    endif;
+                                                    ?>
                                                 <div class="ays-survey-other-answer-and-actions-row">
                                                 <?php
                                                     if($question_type_Radio_Checkbox_Select):
@@ -1422,9 +1502,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="ays-survey-answer-row">
+                                                    <div class="ays-survey-answer-row" <?php echo $question['type'] == 'star' ? 'style="display:none;"' : '' ;?> >
                                                         <div class="ays-survey-answer-wrap">
-                                                            <div class="ays-survey-answer-dlg-dragHandle">
+                                                            <div class="ays-survey-answer-dlg-dragHandle" >
                                                                 <div class="ays-survey-icons invisible">
                                                                     <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/dragndrop-vertical.svg">
                                                                 </div>
@@ -1995,7 +2075,6 @@
                                             <option value="star_list" disabled>Star List (Pro)</option>
                                             <option value="slider_list" disabled>Slider List (Pro)</option>
                                             <option value="linear_scale" disabled>Linear Scale (Pro)</option>
-                                            <option value="star" disabled>Star Rating (Pro)</option>
                                             <option value="slider" disabled>Slider (Pro)</option>
                                             <option value="date" disabled>Date (Pro)</option>
                                             <option value="date" disabled>Time (Pro)</option>
@@ -2602,6 +2681,46 @@
                     </div>
                 </div>
                 <!-- Question Type Text/Short Text clone End -->
+
+                <!-- Question type star start  -->
+                <div class="ays-survey-question-types_star">
+                    <div class="ays-survey-answer-row" data-id="1">
+                        <div class="ays-survey-question-types-conteiner">
+                            <div class="ays-survey-question-types-box">
+                            <div class="ays-survey-question-types-box-body ays-survey-body-for-select-lenght">
+                                <div class="ays-survey-question-types_star_span">
+                                    <span style="font-size: 25px;" class="ays-survey_star_span">1 to</span>
+                                </div>
+                                <div class="ays-survey-question-types-for-select-lenght">
+                                    <select class="ays-survey-choose-for-start-select-lenght">
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5" selected>5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="ays-survey-answer-box ays-survey-not-adding-enter-box" style="margin: 20px 0px;">
+                                <span class="ays_survey_star_span">1</span>
+                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" value="">
+                                <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
+                                <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
+                            </div>
+                            <div class="ays-survey-answer-box ays-survey-not-adding-enter-box">
+                                <span class="ays_survey_star_span ays_survey_linear_scale_span_changeable">5</span>
+                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" value="">
+                                <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
+                                <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question type star end  -->
 
                 <!-- Question Type Yes or No clone Start -->
                 <div class="ays-survey-question-type-yes-or-no">

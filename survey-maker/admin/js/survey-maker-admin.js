@@ -887,6 +887,13 @@
             newElement.find('.ays-survey-question-number-limitations input.ays-survey-number-number-limit-length').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'enable_number_limit_counter'));
             // Number limitation options end
 
+            // Star start
+            newElement.find('select.ays-survey-choose-for-select-lenght').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'scale_length'));
+            newElement.find('input.ays-survey-input-star-1').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_1'));
+            newElement.find('input.ays-survey-input-star-2').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_2'));
+            newElement.find('select.ays-survey-choose-for-start-select-lenght').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_scale_length'));
+            // Star end            
+
             // Input types placeholders
             newElement.find('.ays-survey-remove-default-border.ays-survey-question-types-input.ays-survey-question-types-input-with-placeholder').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'placeholder'));
             
@@ -1337,6 +1344,9 @@
                 break;
                 case 'select':
                     aysSurveyQuestionType_Radio_Checkbox_Select_Html( sectionId , questionId , questionDataName, questionType, questionTypeBeforeChange, false , parent );
+                break;
+                case 'star':
+                    aysSurveyQuestionType_Star_Html( sectionId , questionId , questionDataName, questionType, questionTypeBeforeChange, false , parent );
                 break;
                 case 'text':
                     aysSurveyQuestionType_Text_ShortText_Number_Html( sectionId , questionId , questionDataName, questionType, false , parent );
@@ -1864,6 +1874,15 @@
             element.attr('data-name', 'questions_add');
             var question_type = element.find('.ays-survey-check-type-before-change').val();
             
+            var starScaleOldLength = "";
+            if(question_type == 'star'){
+                starScaleOldLength = element.find(".ays-survey-choose-for-start-select-lenght").val();
+                element.find('select.ays-survey-choose-for-start-select-lenght').val(starScaleOldLength);
+                element.find('input.ays-survey-input-star-1').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'star_1'));
+                element.find('input.ays-survey-input-star-2').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'star_2'));
+                element.find('select.ays-survey-choose-for-start-select-lenght').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'star_scale_length'));
+            }
+            
             element.find('textarea.ays-survey-input').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'title'));
             element.find('.ays-survey-question-type select').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'type'));
             element.find('.ays-survey-question-img-src').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'image'));
@@ -2016,6 +2035,7 @@
                 if (removeHtml) {
                     clonedElement = $( clonedElement.html() );
                     section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"][data-name="'+questionDataName+'"] .ays-survey-answers-conteiner').html(clonedElement);
+                    section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"] .ays-survey-question-types_star').html('');
                 }else{
                     var answer_icon_tags = section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"][data-name="'+questionDataName+'"] .ays-survey-answer-icon-box.ays-survey-answer-icon-just img');
                     switch( questionType ){
@@ -2042,6 +2062,39 @@
                         addAnswerRow.html(clonedElement_2.html());
                     }
                 }
+            }
+        }
+
+        function aysSurveyQuestionType_Star_Html(sectionId, questionId, questionDataName, questionType, questionTypeBeforeChange, returnElem = false, sectionElem = null){
+            
+            var section = $(document).find('.ays-survey-sections-conteiner .ays-survey-section-box[data-id="'+sectionId+'"]');
+            var question = section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"][data-name="'+questionDataName+'"]');
+            var cloningElement = $(document).find('.ays-question-to-clone .ays-survey-question-types_star');
+            var clonedElement = cloningElement.clone( true, false );
+            
+            var sectionName = section.attr('data-name');
+            if( sectionElem !== null ){
+                sectionName = sectionElem.attr('data-name');
+            }
+            
+            section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"] .ays-survey-answer-elem-box').css('display','block');
+            section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"] .ays-survey-description-box').css('display','flex');
+
+            question.find('.ays-survey-question-word-limitations').addClass('display_none');
+            question.find('.ays-survey-question-number-limitations').addClass('display_none');
+            question.find('.ays-survey-question-action[data-action="enable-user-explanation"]').show();
+            clonedElement.find('.ays-survey-choose-for-select-lenght').attr('name', updateQuestionAttrName( sectionName, sectionId, questionDataName, questionId, 'options', 'scale_length'));
+            clonedElement.find('.ays-survey-input-star-1').attr('name', updateQuestionAttrName( sectionName, sectionId, questionDataName, questionId, 'options', 'star_1'));
+            clonedElement.find('.ays-survey-input-star-2').attr('name', updateQuestionAttrName( sectionName, sectionId, questionDataName, questionId, 'options', 'star_2'));
+            clonedElement.find('.ays-survey-choose-for-start-select-lenght').attr('name', updateQuestionAttrName( sectionName, sectionId, questionDataName, questionId, 'options', 'star_scale_length'));
+            
+            question.find('.ays-survey-question-more-option-wrap').addClass('display_none');
+            if(returnElem){
+                return clonedElement;
+            }else{
+                section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"] .ays-survey-answers-conteiner').html(clonedElement);
+                section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"] .ays-survey-other-answer-and-actions-row').html('');
+                
             }
         }
 
@@ -2132,6 +2185,8 @@
             }else{
                 section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"][data-name="'+questionDataName+'"] .ays-survey-answers-conteiner').html(clonedElement);
                 section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"][data-name="'+questionDataName+'"] .ays-survey-other-answer-and-actions-row').html('');
+                section.find('.ays-survey-question-answer-conteiner[data-id="'+questionId+'"] .ays-survey-question-types_star').html('');
+
             }
         }
 
@@ -2253,6 +2308,13 @@
                 $(this).find('.ays-survey-answer-img-src').attr('name', updateAnswerAttrName( sectionName, sectionId, questionName, questionId, answerName, answerId, 'image'));
                 $(this).find('.ays-survey-answer-ordering').attr('name', updateAnswerAttrName( sectionName, sectionId, questionName, questionId, answerName, answerId, 'ordering'));
             });
+
+            // Star start
+            element.find('.ays-survey-choose-for-select-lenght').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'scale_length'));
+            element.find('.ays-survey-input-star-1').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'star_1'));
+            element.find('.ays-survey-input-star-2').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'star_2'));
+            element.find('.ays-survey-choose-for-start-select-lenght').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'star_scale_length'));
+            // Star end            
 
             setTimeout(function(){
                 element.goToTop();
@@ -2554,6 +2616,20 @@
                                             question.find('.ays_each_question_answer .ays-survey-submission-select').aysDropdown('set value', surveyAnswer);
                                         }
                                         break;
+                                    case 'star':                                        
+                                        surveyAnswer = questionsData[qId];
+                                        question.find('.ays_each_question_answer input[type="radio"]').removeAttr('checked');
+                                        question.find('.ays-survey-star-icon').removeClass('fa_star').addClass('fa_star_o');
+                                        question.find('.ays-survey-star-icon').css('color', 'rgb(51, 51, 51)');
+                                        question.find('.ays_each_question_answer input[type="radio"]').each(function(){
+                                            
+                                            if( parseInt( surveyAnswer ) >= $(this).data('id') ){
+                                                $(this).prop('checked', true);
+                                                $(this).parents('.ays-survey-answer-star-radio').find('.ays-survey-star-icon').removeClass('fa_star_o').addClass('fa_star');
+                                                $(this).parents('.ays-survey-answer-star-radio').find('.ays-survey-star-icon').css('color', 'rgb(255, 87, 34)');
+                                            }
+                                        });
+                                        break;
                                     case 'text':
                                         if( typeof surveyAnswer !== 'string' ){
                                             surveyAnswer = '';
@@ -2582,6 +2658,11 @@
                                     case 'select':
                                         question.find('.ays_each_question_answer .ays-survey-submission-select').aysDropdown('clear');
                                         question.find('.ays_each_question_answer .ays-survey-submission-select').aysDropdown('set value', '');
+                                        break;
+                                    case 'star':
+                                        question.find('.ays_each_question_answer input[type="radio"]').removeAttr('checked');
+                                        question.find('.ays-survey-star-icon').removeClass('fa_star').addClass('fa_star_o');
+                                        question.find('.ays-survey-star-icon').css('color', 'rgb(51, 51, 51)');
                                         break;
                                     case 'text':
                                     case 'short_text':

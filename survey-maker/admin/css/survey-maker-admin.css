@@ -1346,6 +1346,30 @@ input.ays_number_of_result {
     align-items: center;
 }
 
+/* Star question type start */
+div.ays-survey-body-for-select-lenght {
+    display: flex;
+}
+
+div.ays-survey-body-for-select-lenght .ays-survey-question-types-for-select-lenght {
+    margin-left: 5px;
+}
+
+div.ays-survey-body-for-select-lenght .ays-survey-choose-for-start-select-lenght,
+div.ays-survey-body-for-select-lenght .ays-survey-choose-for-select-lenght,
+div.ays-survey-body-for-select-lenght .ays-survey-choose-for-select-lenght-star-list {
+    font-size: 25px;
+    line-height: 26px;
+    height: 36px;
+}
+
+div.ays-survey-body-for-select-lenght .ays-survey-choose-for-start-select-lenght option,
+div.ays-survey-body-for-select-lenght .ays-survey-choose-for-select-lenght option,
+div.ays-survey-body-for-select-lenght .ays-survey-choose-for-select-lenght-star-list option {
+    font-size: 16px;
+}
+/* Star question type end */
+
 .ays_survey_previous_next_conteiner {
     display: flex;
 /*    margin-top: 13px;*/

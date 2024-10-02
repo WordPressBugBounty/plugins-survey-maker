@@ -1437,3 +1437,130 @@ button.ays-survey-links-by-category-link-button:disabled{
    color: #fff;
 }
 /* POPUP SURVEY END */
+
+
+.ays-survey-container .ays-survey-answer-label i.ays-survey-star-icon {
+   cursor: pointer;
+   font-size: 25px;
+   color: #fc0;
+   font-family: FontAwesome !important;
+   transform-origin: bottom;
+   transform: scale(1);
+   transition: .1s ease-in-out;
+}
+
+.ays-survey-container .ays-survey-answer-label i.ays-survey-star-icon.fa-star {
+   transform: scale(1.05);
+}
+
+.ays-survey-container[dir=rtl] .ays-survey-answer-star-list-main .ays-survey-answer-star-list-container .ays-survey-answer-star-list-row .ays-survey-answer-star-list-column.ays-survey-answer-star-list-column-row-header {
+   text-align: right;
+}
+
+/* Linear scale */ /* Star question type */
+.ays-survey-container .ays-survey-answer-star,
+.ays-survey-container .ays-survey-answer-linear-scale {
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   width: 100%;
+   overflow-x: auto;
+}
+
+.ays-survey-container .ays-survey-answer-star-radios,
+.ays-survey-container .ays-survey-answer-linear-scale-radios {
+   display: flex;
+   /* width: 80%; */
+   justify-content: center;
+}
+
+.ays-survey-container .ays-survey-answer-star-label,
+.ays-survey-container .ays-survey-answer-linear-scale-label {
+   -webkit-box-align: stretch;
+   box-align: stretch;
+   -webkit-align-items: stretch;
+   align-items: stretch;
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-box-flex: 1;
+   box-flex: 1;
+   -webkit-flex-grow: 1;
+   flex-grow: 1;
+   -webkit-flex-direction: column;
+   flex-direction: column;
+   text-align: center;
+   /* max-width: 35%; */
+}
+
+.ays-survey-container .ays-survey-answer-star-radio-label,
+.ays-survey-container .ays-survey-answer-linear-scale-radio-label {
+   -webkit-box-align: center;
+   box-align: center;
+   -webkit-align-items: center;
+   align-items: center;
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   box-pack: center;
+   -webkit-box-pack: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   min-height: 3em;
+
+   font-family: Roboto,Arial,sans-serif;
+   font-size: 14px;
+   font-weight: 400;
+   letter-spacing: .2px;
+   line-height: 20px;
+   color: #202124;
+   padding: 0 5px;
+}
+
+.ays-survey-container .ays-survey-answer-star-radio-label {
+   min-height: 0;
+}
+
+.ays-survey-container .ays-survey-answer-star-radio,
+.ays-survey-container .ays-survey-answer-linear-scale-radio {
+   -webkit-box-align: center;
+   box-align: center;
+   -webkit-align-items: center;
+   align-items: center;
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   box-pack: center;
+   -webkit-box-pack: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+   min-height: 3em;
+   word-wrap: break-word;
+}
+
+.ays-survey-container .ays-survey-answer-star label.ays-survey-answer-label,
+.ays-survey-container .ays-survey-answer-linear-scale label.ays-survey-answer-label {
+   width: auto;
+   -webkit-flex-grow: initial;
+   flex-grow: initial;
+   -webkit-box-align: stretch;
+   box-align: stretch;
+   -webkit-align-items: stretch;
+   align-items: stretch;
+   display: -webkit-box;
+   display: -webkit-flex;
+   display: flex;
+   -webkit-box-flex: 1;
+   box-flex: 1;
+   -webkit-flex-grow: 1;
+   flex-grow: 1;
+   -webkit-flex-direction: column;
+   flex-direction: column;
+   text-align: center;
+   box-pack: justify;
+   -webkit-box-pack: justify;
+   -webkit-justify-content: initial;
+   justify-content: initial;
+}
+
+/* Linear scale */ /* Star question type */

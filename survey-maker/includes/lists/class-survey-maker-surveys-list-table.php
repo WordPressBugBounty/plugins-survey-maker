@@ -1216,6 +1216,11 @@ class Surveys_List_Table extends WP_List_Table {
 
                             // Question collapsed
                             $question_collapsed = ( isset($question['options']['collapsed']) && $question['options']['collapsed'] != '' ) ? $question['options']['collapsed'] : 'expanded';
+                            
+                            // Star options
+                            $star_1 = (isset( $question['options']['star_1'] ) && $question['options']['star_1'] != '') ? $question['options']['star_1'] : '';
+                            $star_2 = (isset( $question['options']['star_2'] ) && $question['options']['star_2'] != '') ? $question['options']['star_2'] : '';
+                            $star_scale_length = (isset( $question['options']['star_scale_length'] ) && $question['options']['star_scale_length'] != '') ? $question['options']['star_scale_length'] : '5';
 
                             // Enable selection count
                             $enable_max_selection_count = isset($question['options']['enable_max_selection_count']) ? $question['options']['enable_max_selection_count'] : 'off';
@@ -1263,6 +1268,9 @@ class Surveys_List_Table extends WP_List_Table {
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
+                                'star_1' => $star_1,
+                                'star_2' => $star_2,
+                                'star_scale_length' => $star_scale_length,
                                 'enable_max_selection_count' => $enable_max_selection_count,
                                 'max_selection_count' => $max_selection_count,
                                 'min_selection_count' => $min_selection_count,
@@ -1419,6 +1427,11 @@ class Surveys_List_Table extends WP_List_Table {
                             // Question collapsed
                             $question_collapsed = ( isset($question['options']['collapsed']) && $question['options']['collapsed'] != '' ) ? $question['options']['collapsed'] : 'expanded';
 
+                            // Star options
+                            $star_1 = (isset( $question['options']['star_1'] ) && $question['options']['star_1'] != '') ? $question['options']['star_1'] : '';
+                            $star_2 = (isset( $question['options']['star_2'] ) && $question['options']['star_2'] != '') ? $question['options']['star_2'] : '';
+                            $star_scale_length = (isset( $question['options']['star_scale_length'] ) && $question['options']['star_scale_length'] != '') ? $question['options']['star_scale_length'] : '5';
+                            
                             // Enable selection count
                             $enable_max_selection_count = isset($question['options']['enable_max_selection_count']) ? $question['options']['enable_max_selection_count'] : 'off';
                             // Maximum selection count
@@ -1464,6 +1477,9 @@ class Surveys_List_Table extends WP_List_Table {
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
+                                'star_1' => $star_1,
+                                'star_2' => $star_2,
+                                'star_scale_length' => $star_scale_length,
                                 'enable_max_selection_count' => $enable_max_selection_count,
                                 'max_selection_count' => $max_selection_count,
                                 'min_selection_count' => $min_selection_count,
@@ -1634,6 +1650,11 @@ class Surveys_List_Table extends WP_List_Table {
                             // Question collapsed
                             $question_collapsed = ( isset($question['options']['collapsed']) && $question['options']['collapsed'] != '' ) ? $question['options']['collapsed'] : 'expanded';
 
+                            // Star options
+                            $star_1 = (isset( $question['options']['star_1'] ) && $question['options']['star_1'] != '') ? $question['options']['star_1'] : '';
+                            $star_2 = (isset( $question['options']['star_2'] ) && $question['options']['star_2'] != '') ? $question['options']['star_2'] : '';
+                            $star_scale_length = (isset( $question['options']['star_scale_length'] ) && $question['options']['star_scale_length'] != '') ? $question['options']['star_scale_length'] : '5';
+
                             // Enable selection count
                             $enable_max_selection_count = isset($question['options']['enable_max_selection_count']) ? $question['options']['enable_max_selection_count'] : 'off';
                             // Maximum selection count
@@ -1679,6 +1700,9 @@ class Surveys_List_Table extends WP_List_Table {
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
+                                'star_1' => $star_1,
+                                'star_2' => $star_2,
+                                'star_scale_length' => $star_scale_length,
                                 'enable_max_selection_count' => $enable_max_selection_count,
                                 'max_selection_count' => $max_selection_count,
                                 'min_selection_count' => $min_selection_count,
@@ -1833,6 +1857,9 @@ class Surveys_List_Table extends WP_List_Table {
 
                             // Question collapsed
                             $question_collapsed = ( isset($question['options']['collapsed']) && $question['options']['collapsed'] != '' ) ? $question['options']['collapsed'] : 'expanded';
+                            $star_1 = (isset( $question['options']['star_1'] ) && $question['options']['star_1'] != '') ? $question['options']['star_1'] : '';
+                            $star_2 = (isset( $question['options']['star_2'] ) && $question['options']['star_2'] != '') ? $question['options']['star_2'] : '';
+                            $star_scale_length = (isset( $question['options']['star_scale_length'] ) && $question['options']['star_scale_length'] != '') ? $question['options']['star_scale_length'] : '5';
 
                             // Enable selection count
                             $enable_max_selection_count = isset($question['options']['enable_max_selection_count']) ? $question['options']['enable_max_selection_count'] : 'off';
@@ -1879,6 +1906,9 @@ class Surveys_List_Table extends WP_List_Table {
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
+                                'star_1' => $star_1,
+                                'star_2' => $star_2,
+                                'star_scale_length' => $star_scale_length,
                                 'enable_max_selection_count' => $enable_max_selection_count,
                                 'max_selection_count' => $max_selection_count,
                                 'min_selection_count' => $min_selection_count,

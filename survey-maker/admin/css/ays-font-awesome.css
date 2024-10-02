@@ -20,6 +20,7 @@
 .ays_fa_question::before {
     content: "\f128";
 }
+
 .ays_fa_th_list::before {
     content: "\f00b";
 }
@@ -38,6 +39,12 @@
 .ays_fa_check_square_o::before {
     content: "\f046";
 }
+.fa_star::before {
+    content: "\f005";
+ }
+.fa_star_o::before {
+    content: "\f006";
+ }
 .ays_fa_address_book_o::before {
     content: "\f2ba";
 }
