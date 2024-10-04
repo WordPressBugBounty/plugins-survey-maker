@@ -368,6 +368,7 @@ class Survey_Maker_Activator {
                     'survey_answers_padding' => 8,
                     'survey_answers_padding_mobile' => 8,
                     'survey_answers_gap' => 0,
+                    'survey_answers_gap_mobile' => 0,
             
                     'survey_buttons_size' => 'medium',
                     'survey_buttons_font_size' => 14,

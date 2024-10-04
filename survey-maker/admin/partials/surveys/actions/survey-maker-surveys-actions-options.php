@@ -86,6 +86,7 @@
         'survey_answers_padding' => 8,
         'survey_answers_padding_mobile' => 8,
         'survey_answers_gap' => 0,
+        'survey_answers_gap_mobile' => 0,
         'survey_answers_image_size' => 195,
 
         'survey_buttons_size' => 'medium',
@@ -743,6 +744,10 @@
 
             // Answer Gap
             $survey_answers_gap = (isset($options[ $name_prefix . 'answers_gap' ]) && $options[ $name_prefix . 'answers_gap' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_gap' ] ) ) : 0;
+
+            // Answer Gap mobile
+            $options[ $name_prefix . 'answers_gap_mobile' ] = isset($options[ $name_prefix . 'answers_gap_mobile' ]) ? $options[ $name_prefix . 'answers_gap_mobile' ] : $survey_answers_gap;
+            $survey_answers_gap_mobile = (isset($options[ $name_prefix . 'answers_gap_mobile' ]) && $options[ $name_prefix . 'answers_gap_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_gap_mobile' ] ) ) : 0;
 
             // Answer image size
             $survey_answers_image_size = (isset($options[ $name_prefix . 'answers_image_size' ]) && $options[ $name_prefix . 'answers_image_size' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_image_size' ] ) ) : 195;

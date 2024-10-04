@@ -2092,7 +2092,7 @@ class Survey_Maker_Public {
             $limit_by .= "s ";
         }
 
-        $limit_by .= __("left", $this->plugin_name);
+        $limit_by .= __("left", "survey-maker");
         if(intval($limit_length) <= 0){
             $limit_by = '';
         }
@@ -2105,9 +2105,9 @@ class Survey_Maker_Public {
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
                     $content[] = '<input class="'.$number_limit_class.' ' . $this->html_class_prefix . 'answer-text-inputs ' . $this->html_class_prefix . 'answer-text-inputs-default" type="text" tabindex="0" step="any" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, $this->plugin_name ) .'"
+                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]"
-                                    value="' . __( $survey_input_type_value, $this->plugin_name ) . '">';
+                                    value="' . __( $survey_input_type_value, "survey-maker" ) . '">';
 
                         $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
                         $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
@@ -3070,6 +3070,7 @@ class Survey_Maker_Public {
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer {
                 padding: ' . $this->options[ $this->name_prefix . 'answers_padding_mobile' ] . 'px ' . $this->options[ $this->name_prefix . 'answers_padding_mobile' ] . 'px ' . $this->options[ $this->name_prefix . 'answers_padding_mobile' ] . 'px 0;
+                margin: ' . $this->options[ $this->name_prefix . 'answers_gap_mobile' ] . 'px ' . $this->options[ $this->name_prefix . 'answers_gap_mobile' ] . 'px ' . $this->options[ $this->name_prefix . 'answers_gap_mobile' ] . 'px 0;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label-content > span {

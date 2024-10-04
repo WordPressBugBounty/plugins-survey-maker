@@ -39,7 +39,7 @@
                 <div class="ays-survey-themes-main-div">
                     <input type="radio" id="ays-survey-modern" name="ays_survey_theme" value="modern" <?php echo ($survey_theme == 'modern') ? 'checked' : '' ?>>
                     <label for="ays-survey-modern" class="ays-survey-theme-item">
-                        <span><?php echo __('Modern', $this->plugin_name); ?></span>
+                        <span><?php echo __('Modern', "survey-maker"); ?></span>
                         <img src="<?php echo SURVEY_MAKER_ADMIN_URL . '/images/themes/modern.webp' ?>" alt="Modern">
                     </label>
                 </div>
@@ -176,7 +176,7 @@
                     <div class="form-group row">
                         <div class="col-sm-5">
                             <label for='ays_survey_loader_color'>
-                                <?php echo __('Loader color', $this->plugin_name); ?>
+                                <?php echo __('Loader color', "survey-maker"); ?>
                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Identify the loader color of your survey.',"survey-maker"); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
@@ -1550,12 +1550,43 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-7 ays_divider_left ays_survey_display_flex_width">
-                            <div>
-                                <input type="number" class="ays-text-input" id='ays_survey_answers_gap' name='ays_survey_answers_gap' value="<?php echo esc_attr($survey_answers_gap); ?>"/>
+                        <div class="col-sm-7 ays_divider_left">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_gap'>
+                                        <?php echo __('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the gap size between answers in pixels desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input" id='ays_survey_answers_gap' name='ays_survey_answers_gap' value="<?php echo esc_attr($survey_answers_gap); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ays_dropdown_max_width">
-                                <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_gap_mobile'>
+                                        <?php echo __('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the gap size between answers in pixels for mobile devices.', "survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input" id='ays_survey_answers_gap_mobile' name='ays_survey_answers_gap_mobile' value="<?php echo esc_attr($survey_answers_gap_mobile); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div> <!-- Answers gap -->

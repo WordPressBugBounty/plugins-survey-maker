@@ -570,6 +570,9 @@ class Surveys_List_Table extends WP_List_Table {
             // Answer Gap
             $survey_answers_gap = (isset( $_POST[ $name_prefix . 'survey_answers_gap' ] ) && $_POST[ $name_prefix . 'survey_answers_gap' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_gap' ] ) ) : 0;
 
+            // Answer Gap mobile
+            $survey_answers_gap_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] ) ) : 0;
+
             // Answer image size
             $survey_answers_image_size = (isset( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size' ] != 0) ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) ) : 195;
 
@@ -961,6 +964,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_answers_padding'            => $survey_answers_padding,
                 'survey_answers_padding_mobile'     => $survey_answers_padding_mobile,
                 'survey_answers_gap'                => $survey_answers_gap,
+                'survey_answers_gap_mobile'         => $survey_answers_gap_mobile,
                 'survey_answers_image_size'         => $survey_answers_image_size,
 
                 'survey_buttons_bg_color'              => $survey_buttons_bg_color,

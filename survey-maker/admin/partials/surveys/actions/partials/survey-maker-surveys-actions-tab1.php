@@ -545,7 +545,7 @@
                                                         <?php if($survey_default_type == "phone"): ?>
                                                             <div class="ays-survey-question-types-box-phone-type-note">
                                                                 <?php
-                                                                    echo "<span>" . __( "Note: Phone question type can contain only numbers and the following signs + ( ) -", $this->plugin_name ) . "</span>";
+                                                                    echo "<span>" . __( "Note: Phone question type can contain only numbers and the following signs + ( ) -", "survey-maker" ) . "</span>";
                                                                 ?>
                                                             </div>
                                                         <?php endif; ?>
@@ -576,13 +576,13 @@
                                                             </div>
                                                             <div class="ays-survey-answer-box ays-survey-not-adding-enter-box" style="margin: 20px 0px;">
                                                                 <span class="ays_survey_star_span">1</span>
-                                                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" value="" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_1]">
+                                                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", "survey-maker" ); ?>" style="font-size: 14px;" value="" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_1]">
                                                                 <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
                                                                 <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
                                                             </div>
                                                             <div class="ays-survey-answer-box ays-survey-not-adding-enter-box">
                                                                 <span class="ays_survey_star_span">5</span>
-                                                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_2]" value="">
+                                                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", "survey-maker" ); ?>" style="font-size: 14px;" name="<?php echo $html_name_prefix; ?>section_add[1][questions_add][1][options][star_2]" value="">
                                                                 <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
                                                                 <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
                                                             </div>
@@ -2674,7 +2674,7 @@
                             <div class="ays-survey-question-text-types-note-text"><span>* <?php echo __('You can insert your custom placeholder for input. Note your custom text will not be translated', "survey-maker"); ?></span></div>
                             <div class="ays-survey-question-types-box-phone-type-note display_none">
                                 <?php
-                                    echo "<span>" . __( "Note: Phone question type can contain only numbers and the following signs + ( ) -", $this->plugin_name ) . "</span>";
+                                    echo "<span>" . __( "Note: Phone question type can contain only numbers and the following signs + ( ) -", "survey-maker" ) . "</span>";
                                 ?>
                             </div>
                         </div>
@@ -2706,13 +2706,13 @@
                             </div>
                             <div class="ays-survey-answer-box ays-survey-not-adding-enter-box" style="margin: 20px 0px;">
                                 <span class="ays_survey_star_span">1</span>
-                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" value="">
+                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-1 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", "survey-maker" ); ?>" style="font-size: 14px;" value="">
                                 <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
                                 <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
                             </div>
                             <div class="ays-survey-answer-box ays-survey-not-adding-enter-box">
                                 <span class="ays_survey_star_span ays_survey_linear_scale_span_changeable">5</span>
-                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", $this->plugin_name ); ?>" style="font-size: 14px;" value="">
+                                <input type="text" autocomplete="off" class="ays-survey-input ays-survey-input-star-2 notAdding ays-survey-without-enter" autocomplete="off" tabindex="0" placeholder="<?php echo __( "Label (Optional)", "survey-maker" ); ?>" style="font-size: 14px;" value="">
                                 <div class="ays-survey-question-types-input-underline-linear-scale"></div> 
                                 <div class="ays-survey-input-underline-animation ays-survey-input-underline-animation-linear-scale"></div>
                             </div>

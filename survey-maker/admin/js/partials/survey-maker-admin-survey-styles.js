@@ -415,6 +415,8 @@
                 $(document).find("#ays_survey_answers_padding_mobile").val(8);
                 // Answer gap
                 $(document).find("#ays_survey_answers_gap").val(0);
+                // Answer gap mobile
+                $(document).find("#ays_survey_answers_gap_mobile").val(0);
                 // Answer image size
                 $(document).find("#ays_survey_answers_image_size").val(195);
             // == ==

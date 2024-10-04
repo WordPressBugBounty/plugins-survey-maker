@@ -328,8 +328,8 @@ class Survey_Maker_Admin {
             'closeQuestionImageCaption'         => __( 'Close caption', "survey-maker"),
             'deleteElementFromListTable'        => __( 'Are you sure you want to delete?', "survey-maker"),
             'maxInputVarsWarningMessage'        => __( 'Note: The survey has reached the limit of %t inputs out of a maximum of %f. To save changes, please contact your hosting provider to increase the max_input_vars limit.', "survey-maker"),
-            'rating'                            => __( 'Rating', $this->plugin_name),
-            'stars_count'                       => __( 'Stars count', $this->plugin_name),
+            'rating'                            => __( 'Rating', "survey-maker"),
+            'stars_count'                       => __( 'Stars count', "survey-maker"),
         ) );
         wp_localize_script($this->plugin_name . '-ajax', 'survey_maker_ajax', array(
             "emptyEmailError"   => __( 'Email field is empty', "survey-maker"),
