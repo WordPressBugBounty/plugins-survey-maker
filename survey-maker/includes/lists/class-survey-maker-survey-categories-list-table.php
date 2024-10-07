@@ -656,6 +656,9 @@ class Survey_Categories_List_Table extends WP_List_Table {
         return $html;
     }
 
+    function column_description( $item ){
+        return (isset($item['description']) && $item['description']) ? esc_attr($item['description']) : '';
+    }
 
     /**
      *  Associative array of columns
