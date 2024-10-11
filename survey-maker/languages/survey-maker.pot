@@ -333,7 +333,7 @@ msgstr ""
 #: ../admin/class-survey-maker-admin.php:785
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:22
 #: ../admin/partials/survey-maker-admin-display.php:39
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:674
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:673
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:50
 msgid "Surveys"
 msgstr ""
@@ -932,86 +932,96 @@ msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:489
 #: ../admin/partials/features/survey-maker-features-display.php:492
-msgid "Summary emails"
+msgid "Conditional Mailing"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:500
 #: ../admin/partials/features/survey-maker-features-display.php:503
-msgid "PayPal integration"
+msgid "Multilingual Surveys"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:511
 #: ../admin/partials/features/survey-maker-features-display.php:514
-msgid "Stripe integration"
+msgid "Point System"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:522
 #: ../admin/partials/features/survey-maker-features-display.php:525
-msgid "Klaviyo Integration"
+msgid "Calculation"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:533
 #: ../admin/partials/features/survey-maker-features-display.php:536
-msgid "MyCred Integration"
+msgid "Ranking Question Type"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:544
 #: ../admin/partials/features/survey-maker-features-display.php:547
-msgid "Aweber Integration"
+msgid "Net Promoter Score (NPS)"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:555
 #: ../admin/partials/features/survey-maker-features-display.php:558
-msgid "MailPoet Integration"
+msgid "Likert Scale"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:566
 #: ../admin/partials/features/survey-maker-features-display.php:569
-msgid "Multilingual Surveys"
+msgid "Summary emails"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:577
 #: ../admin/partials/features/survey-maker-features-display.php:580
-msgid "Text To Speech"
+msgid "PayPal integration"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:588
 #: ../admin/partials/features/survey-maker-features-display.php:591
-msgid "ChatGPT Integration"
+msgid "Stripe integration"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:599
 #: ../admin/partials/features/survey-maker-features-display.php:602
-msgid "Calculation"
+msgid "Klaviyo Integration"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:610
 #: ../admin/partials/features/survey-maker-features-display.php:613
-msgid "WooCommerce Integration"
+msgid "MyCred Integration"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:621
 #: ../admin/partials/features/survey-maker-features-display.php:624
-msgid "Ranking Question Type"
+msgid "Aweber Integration"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:632
 #: ../admin/partials/features/survey-maker-features-display.php:635
-msgid "Net Promoter Score (NPS)"
+msgid "MailPoet Integration"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:643
 #: ../admin/partials/features/survey-maker-features-display.php:646
-msgid "Likert Scale"
+msgid "Text To Speech"
 msgstr ""
 
+#: ../admin/partials/features/survey-maker-features-display.php:654
 #: ../admin/partials/features/survey-maker-features-display.php:657
+msgid "ChatGPT Integration"
+msgstr ""
+
+#: ../admin/partials/features/survey-maker-features-display.php:665
+#: ../admin/partials/features/survey-maker-features-display.php:668
+msgid "WooCommerce Integration"
+msgstr ""
+
+#: ../admin/partials/features/survey-maker-features-display.php:679
 msgid "Download"
 msgstr ""
 
-#: ../admin/partials/features/survey-maker-features-display.php:658
-#: ../admin/partials/features/survey-maker-features-display.php:659
-#: ../admin/partials/features/survey-maker-features-display.php:660
+#: ../admin/partials/features/survey-maker-features-display.php:680
+#: ../admin/partials/features/survey-maker-features-display.php:681
+#: ../admin/partials/features/survey-maker-features-display.php:682
 msgid "Buy now"
 msgstr ""
 
@@ -1147,7 +1157,7 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:5
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:85
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:707
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:672
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:671
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2780
 msgid "Title"
 msgstr ""
@@ -2971,7 +2981,7 @@ msgid "Set the survey category title."
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:19
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:673
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:672
 msgid "Description"
 msgstr ""
 
@@ -6447,7 +6457,7 @@ msgstr ""
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:71
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:716
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:473
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:676
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:675
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2794
 msgid "ID"
 msgstr ""
@@ -6493,7 +6503,7 @@ msgstr ""
 
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:69
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:715
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:675
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:674
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2793
 msgid "Status"
 msgstr ""
@@ -6527,7 +6537,7 @@ msgstr ""
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:639
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:753
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:612
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:713
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:712
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2656
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2845
 msgid "Restore"
@@ -6536,7 +6546,7 @@ msgstr ""
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:640
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:754
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:620
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:714
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:713
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2657
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2846
 msgid "Delete Permanently"
@@ -6545,7 +6555,7 @@ msgstr ""
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:652
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:748
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:623
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:708
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:707
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2673
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2840
 msgid "Move to trash"
@@ -6676,19 +6686,19 @@ msgstr ""
 msgid "Copy"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:914
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:913
 msgid "Survey category created."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:916
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:915
 msgid "Survey category saved."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:918
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:917
 msgid "Survey category deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:920
+#: ../includes/lists/class-survey-maker-survey-categories-list-table.php:919
 msgid "Survey category duplicated."
 msgstr ""
 
