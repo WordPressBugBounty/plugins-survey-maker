@@ -50,6 +50,7 @@
         'survey_title_text_shadow_z_offset'                 => 10,
         'section_title_font_size'                           => 32,
         'survey_section_title_alignment'                    => 'left',
+        'survey_section_title_alignment_mobile'             => 'left',
         'survey_section_title_letter_spacing'               => 0,
         'survey_section_title_letter_spacing_mobile'        => 0,
         'survey_section_description_alignment'              => 'left',
@@ -627,6 +628,10 @@
 
         // Survey section title alignment
         $survey_section_title_alignment = (isset( $options[ $name_prefix . 'section_title_alignment' ] ) && $options[ $name_prefix . 'section_title_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'section_title_alignment' ] ) : 'left';
+
+        // Survey section title alignment mobile
+        $options[ $name_prefix . 'section_title_alignment_mobile' ] = isset($options[ $name_prefix . 'section_title_alignment_mobile' ]) ? $options[ $name_prefix . 'section_title_alignment_mobile' ] : $survey_section_title_alignment;
+        $survey_section_title_alignment_mobile = (isset( $options[ $name_prefix . 'section_title_alignment_mobile' ] ) && $options[ $name_prefix . 'section_title_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'section_title_alignment_mobile' ] ) : 'left';
         
         // Survey section title letter spacing
         $survey_section_title_letter_spacing = (isset( $options[ $name_prefix . 'section_title_letter_spacing' ] ) && $options[ $name_prefix . 'section_title_letter_spacing' ] != '' && $options[ $name_prefix . 'section_title_letter_spacing' ] != '0') ? esc_attr( $options[ $name_prefix . 'section_title_letter_spacing' ] ) : 0;

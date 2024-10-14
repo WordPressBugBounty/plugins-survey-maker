@@ -459,6 +459,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Survey section title alignment
             $survey_section_title_alignment = (isset( $_POST[ $name_prefix . 'survey_section_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_section_title_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_alignment' ] ) : 'left';
+            // Survey section title alignment mobile
+            $survey_section_title_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] ) : 'left';
 
             // Survey title letter spacing
             $survey_section_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] ))) : '0';
@@ -992,6 +994,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_section_title_font_size'       => $survey_section_title_font_size,
                 'survey_section_title_font_size_mobile' => $survey_section_title_font_size_mobile,
                 'survey_section_title_alignment'       => $survey_section_title_alignment,
+                'survey_section_title_alignment_mobile' => $survey_section_title_alignment_mobile,
                 'survey_section_title_letter_spacing'  => $survey_section_title_letter_spacing,
                 'survey_section_title_letter_spacing_mobile'  => $survey_section_title_letter_spacing_mobile,
                 'survey_section_description_alignment' => $survey_section_description_alignment,

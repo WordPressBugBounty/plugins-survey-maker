@@ -162,6 +162,10 @@ class Survey_Maker_Data {
         // Survey section title alignment
         $settings[ $name_prefix . 'section_title_alignment' ] = (isset( $options[ $name_prefix . 'section_title_alignment' ] ) && $options[ $name_prefix . 'section_title_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'section_title_alignment' ] ) : 'left';
 
+        // Survey section title alignment mobile
+        $options[ $name_prefix . 'section_title_alignment_mobile' ] = isset($options[ $name_prefix . 'section_title_alignment_mobile' ]) ? $options[ $name_prefix . 'section_title_alignment_mobile' ] : $settings[ $name_prefix . 'section_title_alignment' ];
+        $settings[ $name_prefix . 'section_title_alignment_mobile' ] = (isset( $options[ $name_prefix . 'section_title_alignment_mobile' ] ) && $options[ $name_prefix . 'section_title_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'section_title_alignment_mobile' ] ) : 'left';
+
         // Survey section title letter spacing
         $settings[ $name_prefix . 'section_title_letter_spacing' ] = (isset( $options[ $name_prefix . 'section_title_letter_spacing' ] ) && $options[ $name_prefix . 'section_title_letter_spacing' ] != '' && $options[ $name_prefix . 'section_title_letter_spacing' ] != '0' ) ? esc_attr( $options[ $name_prefix . 'section_title_letter_spacing' ] ) : 0;
 

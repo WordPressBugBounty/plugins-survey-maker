@@ -3048,6 +3048,7 @@ class Survey_Maker_Public {
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'sections .' . $this->html_class_prefix . 'section-title-row-main{
+                text-align: ' . $this->options[ $this->name_prefix . 'section_title_alignment_mobile' ] . ';
                 font-size: ' . $this->options[ $this->name_prefix . 'section_title_font_size_mobile' ] . 'px;
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'section_title_letter_spacing_mobile' ] . 'px;
             }
