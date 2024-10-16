@@ -54,6 +54,7 @@
         'survey_section_title_letter_spacing'               => 0,
         'survey_section_title_letter_spacing_mobile'        => 0,
         'survey_section_description_alignment'              => 'left',
+        'survey_section_description_alignment_mobile'       => 'left',
         'survey_section_description_font_size'              => 14,
         'survey_section_description_font_size_mobile'       => 14,
         'survey_section_description_letter_spacing'         => 0,
@@ -642,6 +643,9 @@
 
         // Survey section description alignment
         $survey_section_description_alignment = (isset( $options[ $name_prefix . 'section_description_alignment' ] ) && $options[ $name_prefix . 'section_description_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'section_description_alignment' ] ) : 'left';
+        // Survey section description alignment mobile
+        $options[ $name_prefix . 'section_description_alignment_mobile' ] = isset($options[ $name_prefix . 'section_description_alignment_mobile' ]) ? $options[ $name_prefix . 'section_description_alignment_mobile' ] : $survey_section_description_alignment;
+        $survey_section_description_alignment_mobile = (isset( $options[ $name_prefix . 'section_description_alignment_mobile' ] ) && $options[ $name_prefix . 'section_description_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'section_description_alignment_mobile' ] ) : 'left';
 
         // Survey description font size
         $survey_section_description_font_size = (isset( $options[ $name_prefix . 'section_description_font_size' ] ) && $options[ $name_prefix . 'section_description_font_size' ] != '' && $options[ $name_prefix . 'section_description_font_size' ] != '0') ? esc_attr( $options[ $name_prefix . 'section_description_font_size' ] ) : 14;

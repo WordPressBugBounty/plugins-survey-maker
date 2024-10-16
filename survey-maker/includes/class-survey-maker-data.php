@@ -174,6 +174,9 @@ class Survey_Maker_Data {
 
         // Survey section description alignment
         $settings[ $name_prefix . 'section_description_alignment' ] = (isset( $options[ $name_prefix . 'section_description_alignment' ] ) && $options[ $name_prefix . 'section_description_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'section_description_alignment' ] ) : 'left';
+        // Survey section description alignment mobile
+        $options[ $name_prefix . 'section_description_alignment_mobile' ] = isset($options[ $name_prefix . 'section_description_alignment_mobile' ]) ? $options[ $name_prefix . 'section_description_alignment_mobile' ] : $settings[ $name_prefix . 'section_description_alignment' ];
+        $settings[ $name_prefix . 'section_description_alignment_mobile' ] = (isset( $options[ $name_prefix . 'section_description_alignment_mobile' ] ) && $options[ $name_prefix . 'section_description_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'section_description_alignment_mobile' ] ) : 'left';
 
         // Survey section description font size
         $settings[ $name_prefix . 'section_description_font_size' ] = (isset( $options[ $name_prefix . 'section_description_font_size' ] ) && $options[ $name_prefix . 'section_description_font_size' ] != '' && $options[ $name_prefix . 'section_description_font_size' ] != '0' ) ? esc_attr( $options[ $name_prefix . 'section_description_font_size' ] ) : 14;
