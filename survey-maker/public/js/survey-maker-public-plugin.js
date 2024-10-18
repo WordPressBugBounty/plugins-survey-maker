@@ -354,7 +354,7 @@
         });
 
         // Number limit character/word
-        _this.$el.find('input.ays-survey-check-number-limit').on('change', function(e) {
+        _this.$el.find('input.ays-survey-check-number-limit').on('keyup', function(e) {
             var currentQuestion = $(this).parents(".ays-survey-question");
             var currentquestionId = currentQuestion.find('.' + _this.htmlClassPrefix + 'question-id').val();
             var questionTextLimitOptions = _this.dbOptions[ _this.dbOptionsPrefix + 'number_limit_options' ][currentquestionId];
@@ -1088,7 +1088,9 @@
                                 empty_inputs++;
                             }
                         }else{
-                            continue;
+                            if( item.data('type') != 'number' ){
+                                continue;
+                            }
                         }
                     }
                 }
@@ -1144,17 +1146,26 @@
                         continue;
                     }
                 }
-            }
-            // if (!(/^\d+$/.test(button.parents('.step').find('input[name="ays_user_phone"]').val()))) {
-            //     if (button.parents('.step').find('input[name="ays_user_phone"]').attr('type') !== 'hidden') {
-            //         button.parents('.step').find('input[name="ays_user_phone"]').addClass('ays_red_border');
-            //         // button.parents('.step').find('input[name="ays_user_phone"]').addClass('animated');
-            //         // button.parents('.step').find('input[name="ays_user_phone"]').addClass('shake');
-            //         empty_inputs++;
-            //     }
 
-            // }
-            // var errorQuestions = section.find('.ays-has-error');
+                if( item.data('type') == 'number' ){
+                    var numberInput = item.find('input.ays-survey-check-number-limit');
+                    var currentQuestion = item;
+                    var currentquestionId = currentQuestion.find('.' + _this.htmlClassPrefix + 'question-id').val();
+                    var questionTextLimitOptions = _this.dbOptions[ _this.dbOptionsPrefix + 'number_limit_options' ][currentquestionId];
+                    _this.aysSurveyCheckNumberLimit(currentQuestion,questionTextLimitOptions,numberInput,$(numberInput));
+
+                    if( item.hasClass('ays-has-error') ){
+                        _this.goToTop( item );
+                        item.find( '.' + _this.htmlClassPrefix + 'input' ).focus();
+                        empty_inputs++;
+                        break;
+                    }else{
+                        continue;
+                    }
+                }
+
+            }
+            
             for (var i = 0; i < errorQuestions.length; i++) {
                 var item = errorQuestions.eq(i);
                 if( item.data('type') == 'email' ){
@@ -1866,39 +1877,7 @@
         }
         currentFS.prev().css('display', 'flex');
         _this.aysAnimateStep(_this.$el.data('questEffect'), currentFS, currentFS.prev());
-        // currentFS.animate({opacity: 0}, {
-        //     step: function(now, mx) {
-        //         options.scale = 1 - (1 - now) * 0.2;
-        //         options.left = (now * 50)+"%";
-        //         options.opacity = 1 - now;
-        //         currentFS.css({
-        //             'transform': 'scale('+options.scale+')',
-        //             'position': '',
-        //             'pointer-events': 'none'
-        //         });
-        //         currentFS.prev().css({
-        //             'left': options.left,
-        //             'opacity': options.opacity,
-        //             'pointer-events': 'none'
-        //         });
-        //     },
-        //     duration: 800,
-        //     complete: function(){
-        //         currentFS.hide();
-        //         currentFS.css({
-        //             'opacity': '1',
-        //             'pointer-events': 'auto',
-        //         });
-        //         currentFS.prev().css({
-        //             'transform': 'scale(1)',
-        //             'position': 'relative',
-        //             'opacity': '1',
-        //             'pointer-events': 'auto'
-        //         });
-        //         options.animating = false;
-        //     },
-        //     easing: 'easeInOutBack'
-        // });
+        
         if(_this.dbOptions.enable_correction == 'on'){
             if(currentFS.prev().find('input:checked').length > 0){
                 currentFS.prev().find('.ays-field input').attr('disabled', 'disabled');
@@ -1935,7 +1914,6 @@
     AysSurveyPlugin.prototype.doSurveyResult = function( response ){
         var _this = this;
         if( response.status ){
-            // var formResultsContainer = _this.$el.find('.' + _this.htmlClassPrefix + 'results-content');
             var formResults = _this.$el.find('.' + _this.htmlClassPrefix + 'thank-you-page');
             if (_this.$el.hasClass('enable_questions_result')) {
 
