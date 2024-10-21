@@ -609,6 +609,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Buttons alignment
             $survey_buttons_alignment = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) : 'left';
+            // Buttons alignment mobile
+            $survey_buttons_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] ) : 'left';
 
             // Buttons top distance
             $survey_buttons_top_distance = (isset( $_POST[ $name_prefix . 'survey_buttons_top_distance' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_distance' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_top_distance' ] ) ) : 10;
@@ -979,6 +981,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_buttons_top_bottom_padding'    => $survey_buttons_top_bottom_padding,
                 'survey_buttons_border_radius'         => $survey_buttons_border_radius,
                 'survey_buttons_alignment'             => $survey_buttons_alignment,
+                'survey_buttons_alignment_mobile'      => $survey_buttons_alignment_mobile,
                 'survey_buttons_top_distance'          => $survey_buttons_top_distance,
                 'survey_buttons_text_letter_spacing'   => $survey_buttons_text_letter_spacing,
                 'survey_buttons_text_letter_spacing_mobile' => $survey_buttons_text_letter_spacing_mobile,

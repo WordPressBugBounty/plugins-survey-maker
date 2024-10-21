@@ -3033,6 +3033,10 @@ class Survey_Maker_Public {
                 ' . ( $this->options[ $this->name_prefix . 'logo' ] != '' ? 'padding: '.$question_padding.'px '.$question_padding.'px 0 '.$question_padding.'px;' : 'padding: '.$question_padding.'px;' ) . '
             }
 
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons {
+                text-align: ' . $this->options[ $this->name_prefix . 'buttons_alignment_mobile' ] . ';
+            }
+
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons .' . $this->html_class_prefix . 'section-button-container .' . $this->html_class_prefix . 'section-button-content .' . $this->html_class_prefix . 'section-button{
                 font-size: ' . $this->options[ $this->name_prefix . 'buttons_mobile_font_size' ] . 'px;
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'buttons_text_letter_spacing_mobile' ] . 'px;

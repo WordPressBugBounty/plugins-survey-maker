@@ -1825,17 +1825,53 @@
                         </label>
                     </div>
                     <div class="col-sm-7 ays_divider_left">
-                        <select class="ays-text-input ays-text-input-short" id="ays_survey_buttons_alignment" name="ays_survey_buttons_alignment">
-                            <option value="left" <?php echo ($survey_buttons_alignment == 'left' ) ? 'selected' : ''; ?>>
-                                <?php echo __('Left',"survey-maker"); ?>
-                            </option>
-                            <option value="center" <?php echo ( $survey_buttons_alignment == 'center' ) ? 'selected' : ''; ?>>
-                                <?php echo __('Center',"survey-maker"); ?>
-                            </option>
-                            <option value="right" <?php echo ($survey_buttons_alignment == 'right') ? 'selected' : ''; ?>>
-                                <?php echo __('Right',"survey-maker"); ?>
-                            </option>
-                        </select>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_gap'>
+                                    <?php echo __('On desktop', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons for desktop devices.',"survey-maker")?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-7">
+                                <select class="ays-text-input ays-text-input-short" id="ays_survey_buttons_alignment" name="ays_survey_buttons_alignment">
+                                    <option value="left" <?php echo ($survey_buttons_alignment == 'left' ) ? 'selected' : ''; ?>>
+                                        <?php echo __('Left',"survey-maker"); ?>
+                                    </option>
+                                    <option value="center" <?php echo ( $survey_buttons_alignment == 'center' ) ? 'selected' : ''; ?>>
+                                        <?php echo __('Center',"survey-maker"); ?>
+                                    </option>
+                                    <option value="right" <?php echo ($survey_buttons_alignment == 'right') ? 'selected' : ''; ?>>
+                                        <?php echo __('Right',"survey-maker"); ?>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_buttons_alignment_mobile'>
+                                    <?php echo __('On mobile', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons for for mobile devices.', "survey-maker")?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-7">
+                                <select class="ays-text-input ays-text-input-short" id="ays_survey_buttons_alignment_mobile" name="ays_survey_buttons_alignment_mobile">
+                                    <option value="left" <?php echo ($survey_buttons_alignment_mobile == 'left' ) ? 'selected' : ''; ?>>
+                                        <?php echo __('Left',"survey-maker"); ?>
+                                    </option>
+                                    <option value="center" <?php echo ( $survey_buttons_alignment_mobile == 'center' ) ? 'selected' : ''; ?>>
+                                        <?php echo __('Center',"survey-maker"); ?>
+                                    </option>
+                                    <option value="right" <?php echo ($survey_buttons_alignment_mobile == 'right') ? 'selected' : ''; ?>>
+                                        <?php echo __('Right',"survey-maker"); ?>
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div> <!-- Buttons alignment -->
                 <hr>

@@ -97,6 +97,7 @@
         'survey_buttons_top_bottom_padding' => 0,
         'survey_buttons_border_radius' => 3,
         'survey_buttons_alignment' => 'left',
+        'survey_buttons_alignment_mobile' => 'left',
         'survey_buttons_top_distance' => 10,
         'survey_buttons_text_letter_spacing' => 0,
         'survey_buttons_text_letter_spacing_mobile' => 0,
@@ -789,6 +790,9 @@
 
             // Buttons alignment
             $survey_buttons_alignment = (isset($options[ $name_prefix . 'buttons_alignment' ]) && $options[ $name_prefix . 'buttons_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment' ] ) : 'left';
+            // Buttons alignment on mobile
+            $options[ $name_prefix . 'buttons_alignment_mobile' ] = isset($options[ $name_prefix . 'buttons_alignment_mobile' ]) ? $options[ $name_prefix . 'buttons_alignment_mobile' ] : $survey_buttons_alignment;
+            $survey_buttons_alignment_mobile = (isset($options[ $name_prefix . 'buttons_alignment_mobile' ]) && $options[ $name_prefix . 'buttons_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment_mobile' ] ) : 'left';
             
             // Buttons top distance
             $survey_buttons_top_distance = (isset($options[ $name_prefix . 'buttons_top_distance' ]) && $options[ $name_prefix . 'buttons_top_distance' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_top_distance' ] ) ) : 10;

@@ -320,7 +320,10 @@ class Survey_Maker_Data {
         $settings[ $name_prefix . 'buttons_border_radius' ] = (isset($options[ $name_prefix . 'buttons_border_radius' ]) && $options[ $name_prefix . 'buttons_border_radius' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_border_radius' ] ) ) : 4;
         
         // Buttons alignment
-        $settings[ $name_prefix . 'buttons_alignment' ] = (isset($options[ $name_prefix . 'buttons_alignment' ]) && $options[ $name_prefix . 'buttons_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment' ] )  : 'left';        
+        $settings[ $name_prefix . 'buttons_alignment' ] = (isset($options[ $name_prefix . 'buttons_alignment' ]) && $options[ $name_prefix . 'buttons_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment' ] )  : 'left';
+        // Buttons alignment mobile
+        $options[ $name_prefix . 'buttons_alignment_mobile' ] = isset($options[ $name_prefix . 'buttons_alignment_mobile' ]) ? $options[ $name_prefix . 'buttons_alignment_mobile' ] : $settings[ $name_prefix . 'buttons_alignment' ];
+        $settings[ $name_prefix . 'buttons_alignment_mobile' ] = (isset($options[ $name_prefix . 'buttons_alignment_mobile' ]) && $options[ $name_prefix . 'buttons_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment_mobile' ] )  : 'left';
 
         // Buttons top distance
         $settings[ $name_prefix . 'buttons_top_distance' ] = (isset($options[ $name_prefix . 'buttons_top_distance' ]) && $options[ $name_prefix . 'buttons_top_distance' ] != '') ?  absint ( intval( $options[ $name_prefix . 'buttons_top_distance' ] ) ) : 10;        

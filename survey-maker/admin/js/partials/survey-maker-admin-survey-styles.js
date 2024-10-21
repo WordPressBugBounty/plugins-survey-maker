@@ -247,7 +247,7 @@
             }
         });
 
-        $(document).find('#ays_survey_buttons_alignment').aysDropdown();
+        $(document).find('#ays_survey_buttons_alignment,#ays_survey_buttons_alignment_mobile').aysDropdown();
 
         // var SurveyButtonsSize = $(document).find('#ays_survey_buttons_size').aysDropdown('get value');
         // buttonsSizeChange( SurveyButtonsSize, false );
@@ -364,7 +364,7 @@
             // Set all images to defalut (no image)
             $(document).find("#tab2 .removeImage,#tab2 .removeCoverImage").trigger('click');
             // Set dropdowns where value is left (for all options)
-            $(document).find("#ays_survey_title_alignment,#ays_survey_title_alignment_mobile,#ays_survey_section_title_alignment,#ays_survey_section_title_alignment_mobile,#ays_survey_section_description_alignment,#ays_survey_section_description_alignment_mobile,#ays_survey_question_title_alignment,#ays_survey_answers_view_alignment,#ays_survey_buttons_alignment").aysDropdown('set selected', 'left');
+            $(document).find("#ays_survey_title_alignment,#ays_survey_title_alignment_mobile,#ays_survey_section_title_alignment,#ays_survey_section_title_alignment_mobile,#ays_survey_section_description_alignment,#ays_survey_section_description_alignment_mobile,#ays_survey_question_title_alignment,#ays_survey_answers_view_alignment,#ays_survey_buttons_alignment,#ays_survey_buttons_alignment_mobile").aysDropdown('set selected', 'left');
             // Title font size
             $(document).find("#ays_survey_title_font_size,#ays_survey_title_font_size_for_mobile").val(30);
             // Survey title letter spacing

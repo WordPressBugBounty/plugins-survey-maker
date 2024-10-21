@@ -376,6 +376,7 @@ class Survey_Maker_Activator {
                     'survey_buttons_top_bottom_padding' => 0,
                     'survey_buttons_border_radius' => 3,                    
                     'survey_buttons_alignment' => 'left',
+                    'survey_buttons_alignment_mobile' => 'left',
                     'survey_buttons_top_distance' => 10,
                     'survey_buttons_text_letter_spacing' => 0,
                     'survey_buttons_text_letter_spacing_mobile' => 0,
