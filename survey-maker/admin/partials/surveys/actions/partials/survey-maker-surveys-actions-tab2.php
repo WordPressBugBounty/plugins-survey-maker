@@ -1884,14 +1884,46 @@
                             </a>
                         </label>
                     </div>
-                    <div class="col-sm-7 ays_divider_left ays_survey_display_flex_width">
-                        <div>
-                            <input type="number" class="ays-text-input" id='ays_survey_buttons_top_distance' name='ays_survey_buttons_top_distance' value="<?php echo esc_attr($survey_buttons_top_distance); ?>"/>
+                    <div class="col-sm-7 ays_divider_left">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for='<?php echo esc_attr($html_name_prefix); ?>survey_buttons_top_distance'>
+                                    <?php echo __('On desktop', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the button's distance from the top in pixels for desktop devices.","survey-maker")?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-7 ays_survey_display_flex_width">
+                                <div>
+                                    <input type="number" class="ays-text-input" id='ays_survey_buttons_top_distance' name='ays_survey_buttons_top_distance' value="<?php echo esc_attr($survey_buttons_top_distance); ?>"/>
+                                </div>
+                                <div class="ays_dropdown_max_width">
+                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ays_dropdown_max_width">
-                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for='<?php echo esc_attr($html_name_prefix); ?>survey_buttons_alignment_mobile'>
+                                    <?php echo __('On mobile', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the button's distance from the top in pixels for mobile devices.", "survey-maker")?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-7 ays_survey_display_flex_width">
+                                <div>
+                                    <input type="number" class="ays-text-input" id='ays_survey_buttons_top_distance_mobile' name='ays_survey_buttons_top_distance_mobile' value="<?php echo esc_attr($survey_buttons_top_distance_mobile); ?>"/>
+                                </div>
+                                <div class="ays_dropdown_max_width">
+                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                </div>
+                            </div>
                         </div>
-                    </div> 
+                    </div>
+                   
                 </div> <!-- Buttons top distance -->
                 <hr>
                 <div class="form-group row">

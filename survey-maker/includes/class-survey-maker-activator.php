@@ -378,6 +378,7 @@ class Survey_Maker_Activator {
                     'survey_buttons_alignment' => 'left',
                     'survey_buttons_alignment_mobile' => 'left',
                     'survey_buttons_top_distance' => 10,
+                    'survey_buttons_top_distance_mobile' => 10,
                     'survey_buttons_text_letter_spacing' => 0,
                     'survey_buttons_text_letter_spacing_mobile' => 0,
                     // Settings Tab

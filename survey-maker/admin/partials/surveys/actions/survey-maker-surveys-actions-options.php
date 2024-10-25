@@ -99,6 +99,7 @@
         'survey_buttons_alignment' => 'left',
         'survey_buttons_alignment_mobile' => 'left',
         'survey_buttons_top_distance' => 10,
+        'survey_buttons_top_distance_mobile' => 10,
         'survey_buttons_text_letter_spacing' => 0,
         'survey_buttons_text_letter_spacing_mobile' => 0,
 
@@ -795,7 +796,10 @@
             $survey_buttons_alignment_mobile = (isset($options[ $name_prefix . 'buttons_alignment_mobile' ]) && $options[ $name_prefix . 'buttons_alignment_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment_mobile' ] ) : 'left';
             
             // Buttons top distance
-            $survey_buttons_top_distance = (isset($options[ $name_prefix . 'buttons_top_distance' ]) && $options[ $name_prefix . 'buttons_top_distance' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_top_distance' ] ) ) : 10;
+            $survey_buttons_top_distance = (isset($options[ $name_prefix . 'buttons_top_distance' ]) && $options[ $name_prefix . 'buttons_top_distance' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_top_distance' ] ) ) : 10;            
+            // Buttons top distance mobile
+            $options[ $name_prefix . 'buttons_top_distance_mobile' ] = isset( $options[ $name_prefix . 'buttons_top_distance_mobile' ] ) ? $options[ $name_prefix . 'buttons_top_distance_mobile' ] : $survey_buttons_top_distance;
+            $survey_buttons_top_distance_mobile = (isset($options[ $name_prefix . 'buttons_top_distance_mobile' ]) && $options[ $name_prefix . 'buttons_top_distance_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_top_distance_mobile' ] ) ) : 10;
             
             // Buttons text letter spacing
             $survey_buttons_text_letter_spacing = (isset( $options[ $name_prefix . 'buttons_text_letter_spacing' ] ) && $options[ $name_prefix . 'buttons_text_letter_spacing' ] != '' && $options[ $name_prefix . 'buttons_text_letter_spacing' ] != '0') ? esc_attr( $options[ $name_prefix . 'buttons_text_letter_spacing' ] ) : 0;

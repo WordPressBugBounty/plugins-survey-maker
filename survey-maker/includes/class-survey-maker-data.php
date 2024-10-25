@@ -327,6 +327,9 @@ class Survey_Maker_Data {
 
         // Buttons top distance
         $settings[ $name_prefix . 'buttons_top_distance' ] = (isset($options[ $name_prefix . 'buttons_top_distance' ]) && $options[ $name_prefix . 'buttons_top_distance' ] != '') ?  absint ( intval( $options[ $name_prefix . 'buttons_top_distance' ] ) ) : 10;        
+        // Buttons top distance mobile
+        $options[ $name_prefix . 'buttons_top_distance_mobile' ] = isset($options[ $name_prefix . 'buttons_top_distance_mobile' ]) ? $options[ $name_prefix . 'buttons_top_distance_mobile' ] : $settings[ $name_prefix . 'buttons_top_distance' ];
+        $settings[ $name_prefix . 'buttons_top_distance_mobile' ] = (isset($options[ $name_prefix . 'buttons_top_distance_mobile' ]) && $options[ $name_prefix . 'buttons_top_distance_mobile' ] != '') ?  absint ( intval( $options[ $name_prefix . 'buttons_top_distance_mobile' ] ) ) : 10;        
 
         // Buttons text letter spacing
         $settings[ $name_prefix . 'buttons_text_letter_spacing' ] = (isset( $options[ $name_prefix . 'buttons_text_letter_spacing' ] ) && $options[ $name_prefix . 'buttons_text_letter_spacing' ] != '' && $options[ $name_prefix . 'buttons_text_letter_spacing' ] != '0' ) ? esc_attr( $options[ $name_prefix . 'buttons_text_letter_spacing' ] ) : 0;

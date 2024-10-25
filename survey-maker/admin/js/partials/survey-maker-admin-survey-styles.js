@@ -429,7 +429,7 @@
                 // Button border-radius
                 $(document).find("#ays_survey_buttons_border_radius").val(3);
                 // Button top distance
-                $(document).find("#ays_survey_buttons_top_distance").val(10);
+                $(document).find("#ays_survey_buttons_top_distance,#ays_survey_buttons_top_distance_mobile").val(10);
                 // Button text letter spacing
                 $(document).find("#ays_survey_buttons_text_letter_spacing").val(0);
             // == ==

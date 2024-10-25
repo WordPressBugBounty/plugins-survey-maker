@@ -3034,6 +3034,7 @@ class Survey_Maker_Public {
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons {
+                margin-top: ' . $this->options[ $this->name_prefix . 'buttons_top_distance_mobile' ] . 'px;
                 text-align: ' . $this->options[ $this->name_prefix . 'buttons_alignment_mobile' ] . ';
             }
 
