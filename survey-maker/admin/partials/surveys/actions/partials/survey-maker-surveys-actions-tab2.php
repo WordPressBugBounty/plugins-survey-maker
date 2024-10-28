@@ -1238,34 +1238,46 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-7 ays_divider_left ays_survey_display_flex_width">
-                            <div>
-                                <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_question_caption_font_size' name='ays_survey_question_caption_font_size' value="<?php echo esc_attr($survey_question_caption_font_size); ?>"/>
+                        <div class="col-sm-7 ays_divider_left">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_gap'>
+                                        <?php echo __('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size of the question caption texts for desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_question_caption_font_size' name='ays_survey_question_caption_font_size' value="<?php echo esc_attr($survey_question_caption_font_size); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ays_dropdown_max_width">
-                                <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_buttons_alignment_mobile'>
+                                        <?php echo __('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size of the question caption texts for mobile devices.', "survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input" id='ays_survey_question_caption_font_size_on_mobile' name='ays_survey_question_caption_font_size_on_mobile' value="<?php echo esc_attr($survey_question_caption_font_size_on_mobile); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div> <!-- Question caption font size -->
-                    <hr/>
-                    <div class="form-group row">
-                        <div class="col-sm-5">
-                            <label for='ays_survey_question_caption_font_size_on_mobile'>
-                                <?php echo __('Question caption font size on mobile', "survey-maker"); ?>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size of the question caption texts.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-7 ays_divider_left ays_survey_display_flex_width">
-                            <div>
-                                <input type="number" class="ays-text-input" id='ays_survey_question_caption_font_size_on_mobile' name='ays_survey_question_caption_font_size_on_mobile' value="<?php echo esc_attr($survey_question_caption_font_size_on_mobile); ?>"/>
-                            </div>
-                            <div class="ays_dropdown_max_width">
-                                <input type="text" value="px" class='ays-form-hint-for-size' disabled>
-                            </div>
-                        </div>
-                    </div> <!-- Question caption font size on mobile -->
                     <hr/>
                     <div class="form-group row">
                         <div class="col-sm-5">
@@ -1741,39 +1753,51 @@
                     <div class="col-sm-5">
                         <label for='ays_survey_buttons_font_size'>
                             <?php echo __('Button font-size', "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text font size inside the buttons in pixels. Note that the button size will change simultaneously with the button text size.',"survey-maker"); ?>">
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons.',"survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
                     </div>
-                    <div class="col-sm-7 ays_divider_left ays_survey_display_flex_width">
-                        <div>
-                            <input type="number" class="ays-text-input" id='ays_survey_buttons_font_size' name='ays_survey_buttons_font_size' value="<?php echo esc_attr($survey_buttons_font_size); ?>"/>
+                    <div class="col-sm-7 ays_divider_left">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_gap'>
+                                    <?php echo __('On desktop', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons for desktop devices.',"survey-maker")?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-7 ays_survey_display_flex_width">
+                                <div>
+                                    <input type="number" class="ays-text-input" id='ays_survey_buttons_font_size' name='ays_survey_buttons_font_size' value="<?php echo esc_attr($survey_buttons_font_size); ?>"/>
+                                </div>
+                                <div class="ays_dropdown_max_width">
+                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                </div>
+                            </div>
                         </div>
-                        <div class="ays_dropdown_max_width">
-                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_buttons_alignment_mobile'>
+                                    <?php echo __('On mobile', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons for mobile devices.', "survey-maker")?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-7 ays_survey_display_flex_width">
+                                <div>
+                                    <input type="number" class="ays-text-input" id='ays_survey_buttons_mobile_font_size' name='ays_survey_buttons_mobile_font_size' value="<?php echo esc_attr($survey_buttons_mobile_font_size); ?>"/>
+                                </div>
+                                <div class="ays_dropdown_max_width">
+                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div> <!-- Buttons font size -->
-                <hr>
-                <div class="form-group row">
-                    <div class="col-sm-5">
-                        <label for='ays_survey_buttons_mobile_font_size'>
-                            <?php echo __('Buttons mobile font size', "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text font size inside the survey in pixels for mobile devices.',"survey-maker"); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </label>
-                    </div>
-                    <div class="col-sm-7 ays_divider_left ays_survey_display_flex_width">
-                        <div>
-                            <input type="number" class="ays-text-input" id='ays_survey_buttons_mobile_font_size' name='ays_survey_buttons_mobile_font_size' value="<?php echo esc_attr($survey_buttons_mobile_font_size); ?>"/>
-                        </div>
-                        <div class="ays_dropdown_max_width">
-                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
-                        </div>
-                    </div>
-                </div> <!-- Buttons mobile font size -->
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-5">
@@ -1853,7 +1877,7 @@
                             <div class="col-sm-5">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_buttons_alignment_mobile'>
                                     <?php echo __('On mobile', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons for for mobile devices.', "survey-maker")?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the alignment of the buttons for mobile devices.', "survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
