@@ -74,6 +74,7 @@
         'survey_question_caption_font_size'                 => 16,
         'survey_question_caption_font_size_on_mobile'       => 16,
         'survey_question_caption_text_transform'            => 'none',
+        'survey_question_caption_text_transform_mobile'     => 'none',
         'survey_question_caption_letter_spacing'            => 0,
         'survey_question_caption_letter_spacing_mobile'     => 0,
         'survey_question_caption_hide_on_mobile'            => 'off',
@@ -709,6 +710,9 @@
 
             // Question caption text transform
             $survey_question_caption_text_transform = (isset($options[ $name_prefix . 'question_caption_text_transform' ]) && $options[ $name_prefix . 'question_caption_text_transform' ] != '') ? esc_attr ( $options[ $name_prefix . 'question_caption_text_transform' ] ) : 'none';
+            // Question caption text transform mobile
+            $options[ $name_prefix . 'question_caption_text_transform_mobile' ] = isset($options[ $name_prefix . 'question_caption_text_transform_mobile' ]) ? $options[ $name_prefix . 'question_caption_text_transform_mobile' ] : $survey_question_caption_text_transform;
+            $survey_question_caption_text_transform_mobile = (isset($options[ $name_prefix . 'question_caption_text_transform_mobile' ]) && $options[ $name_prefix . 'question_caption_text_transform_mobile' ] != '') ? esc_attr ( $options[ $name_prefix . 'question_caption_text_transform_mobile' ] ) : 'none';
             
             // Question caption letter spacing
             $survey_question_caption_letter_spacing = (isset( $options[ $name_prefix . 'question_caption_letter_spacing' ] ) && $options[ $name_prefix . 'question_caption_letter_spacing' ] != '' && $options[ $name_prefix . 'question_caption_letter_spacing' ] != '0') ? esc_attr( $options[ $name_prefix . 'question_caption_letter_spacing' ] ) : 0;

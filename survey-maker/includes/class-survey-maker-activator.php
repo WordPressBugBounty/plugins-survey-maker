@@ -354,6 +354,7 @@ class Survey_Maker_Activator {
                     'survey_question_caption_font_size' => 16,
                     'survey_question_caption_font_size_on_mobile' => 16,
                     'survey_question_caption_text_transform' => 'none',
+                    'survey_question_caption_text_transform_mobile' => 'none',
                     'survey_question_caption_letter_spacing' => 0,
                     'survey_question_caption_letter_spacing_mobile' => 0,
                     'survey_question_caption_hide_on_mobile' => 'off',

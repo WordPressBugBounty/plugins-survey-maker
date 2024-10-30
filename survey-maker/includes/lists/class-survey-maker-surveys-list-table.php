@@ -528,6 +528,8 @@ class Surveys_List_Table extends WP_List_Table {
                         
             // Question caption text transform
             $survey_question_caption_text_transform = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] ) : 'none';
+            // Question caption text transform mobile
+            $survey_question_caption_text_transform_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] ) : 'none';
 
             // Question caption letter spacing
             $survey_question_caption_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] ))) : '0';
@@ -958,6 +960,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_question_caption_font_size' => $survey_question_caption_font_size,
                 'survey_question_caption_font_size_on_mobile' => $survey_question_caption_font_size_on_mobile,
                 'survey_question_caption_text_transform' => $survey_question_caption_text_transform,
+                'survey_question_caption_text_transform_mobile' => $survey_question_caption_text_transform_mobile,
                 'survey_question_caption_letter_spacing' => $survey_question_caption_letter_spacing,
                 'survey_question_caption_letter_spacing_mobile' => $survey_question_caption_letter_spacing_mobile,
                 'survey_question_caption_hide_on_mobile' => $survey_question_caption_hide_on_mobile,

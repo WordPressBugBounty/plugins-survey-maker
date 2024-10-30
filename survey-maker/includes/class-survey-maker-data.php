@@ -237,6 +237,9 @@ class Survey_Maker_Data {
         
         // Question caption text transform
         $settings[ $name_prefix . 'question_caption_text_transform' ] = (isset($options[ $name_prefix . 'question_caption_text_transform' ]) && $options[ $name_prefix . 'question_caption_text_transform' ] != '') ? esc_attr ( $options[ $name_prefix . 'question_caption_text_transform' ] )  : 'none';
+        // Question caption text transform mobile
+        $options[ $name_prefix . 'question_caption_text_transform_mobile' ] = isset($options[ $name_prefix . 'question_caption_text_transform_mobile' ]) ? $options[ $name_prefix . 'question_caption_text_transform_mobile' ] : $settings[ $name_prefix . 'question_caption_text_transform' ];
+        $settings[ $name_prefix . 'question_caption_text_transform_mobile' ] = (isset($options[ $name_prefix . 'question_caption_text_transform_mobile' ]) && $options[ $name_prefix . 'question_caption_text_transform_mobile' ] != '') ? esc_attr ( $options[ $name_prefix . 'question_caption_text_transform_mobile' ] )  : 'none';
         
         // Question caption letter spacing        
         $settings[ $name_prefix . 'question_caption_letter_spacing' ] = (isset($options[ $name_prefix . 'question_caption_letter_spacing' ]) && $options[ $name_prefix . 'question_caption_letter_spacing' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_caption_letter_spacing' ] ) ) : 0;
