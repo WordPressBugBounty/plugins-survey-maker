@@ -2842,7 +2842,8 @@
             var parentElement = element.parents("#ays-survey-form");
             var surveyColor = parentElement.find("#ays_survey_color").val();
             var isModern = $(document).find('input[name="ays_survey_theme"]:checked').val() == 'modern' ? true : false;
-            if( isModern ){
+            var isMinimal = $(document).find('input[name="ays_survey_theme"]:checked').val() == 'minimal' ? true : false;
+            if( isMinimal || isModern ){
                 if( parentElement.find("#ays_survey_color").val() == 'rgba(0,0,0,0)' ){
                     surveyColor = '#333333';
                 }

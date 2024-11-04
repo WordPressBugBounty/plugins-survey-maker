@@ -25,6 +25,14 @@
                 fullScreenButtonColor: "#fff",
                 questionCaptionTextColor: "#fff",
             },
+            minimal: {
+                surveyColor: "rgba(0,0,0,0)",
+                bgColor: "#ffffff", //"rgba(0,0,0,0)",
+                textColor: "#0a0a0a",
+                loaderColor: "#333",
+                buttonsTextColor: "#0a0a0a",
+                questionCaptionTextColor: "#0a0a0a",
+            },
             modern: {
                 surveyColor: "rgba(0,0,0,0)",
                 bgColor: "#ffffff", //"rgba(0,0,0,0)",
@@ -43,6 +51,8 @@
         };
         
         $(document).find('input[name="ays_survey_theme"]').on("change", function(e){
+            console.log($(this).val());
+            
             surveyThemeChange( $(this).val() );
         });
 
@@ -50,7 +60,16 @@
         surveyThemeSetup( SurveyTheme );
 
         function surveyThemeChange( SurveyTheme ){
-            var defaultTextColor, defaultLoaderColor, defaultBgColor, defaultSurveyColor, defaultButtonsTextColor, defaultButtonsBgColor, defaultTitleTShColor, defaultPaginationTextColor, defaultFullScreenButtonColor, defaultQestionCaptionTextColor;
+            var defaultTextColor,
+                defaultLoaderColor,
+                defaultBgColor, 
+                defaultSurveyColor, 
+                defaultButtonsTextColor, 
+                defaultButtonsBgColor, 
+                defaultTitleTShColor, 
+                defaultPaginationTextColor, 
+                defaultFullScreenButtonColor, 
+                defaultQestionCaptionTextColor;
 
             switch ( SurveyTheme ) {
                 case 'classic_dark':
@@ -77,6 +96,15 @@
                     defaultFullScreenButtonColor = defaultColors.classicLight.fullScreenButtonColor;
                     defaultQestionCaptionTextColor = defaultColors.classicLight.questionCaptionTextColor;
                     break;
+                case 'minimal':
+                    //Colors
+                    defaultSurveyColor = defaultColors.minimal.surveyColor;
+                    defaultBgColor = defaultColors.minimal.bgColor;
+                    defaultTextColor = defaultColors.minimal.textColor;
+                    defaultLoaderColor = defaultColors.minimal.loaderColor;
+                    defaultButtonsTextColor = defaultColors.minimal.buttonsTextColor;
+                    defaultQestionCaptionTextColor = defaultColors.minimal.questionCaptionTextColor;
+                    break;
                 case 'modern':
                     //Colors
                     defaultSurveyColor = defaultColors.modern.surveyColor;
@@ -100,6 +128,7 @@
                     defaultQestionCaptionTextColor = defaultColors.classicLight.questionCaptionTextColor;
                     break;
             }
+            console.log(defaultSurveyColor)
                 
             $(document).find('#ays_survey_color').wpColorPicker('color', defaultSurveyColor);
             $(document).find('#ays_survey_background_color').wpColorPicker('color', defaultBgColor);
@@ -114,7 +143,7 @@
         }
 
         function surveyThemeSetup( SurveyTheme ){
-            var defaultTextColor, defaultLoaderColor, defaultBgColor, defaultSurveyColor, defaultButtonsTextColor, defaultButtonsBgColor, defaultTitleTShColor, defaultPaginationTextColor, defaultFullScreenButtonColor, defaultQestionCaptionTextColor;
+            var defaultTextColor, defaultLoaderColor, defaultBgColor, defaultSurveyColor,defaultButtonsTextColor, defaultButtonsBgColor, defaultTitleTShColor, defaultPaginationTextColor, defaultFullScreenButtonColor, defaultQestionCaptionTextColor;
 
             switch ( SurveyTheme ) {
                 case 'classic_dark':
@@ -140,6 +169,15 @@
                     defaultPaginationTextColor = defaultColors.classicLight.paginationTextColor;
                     defaultFullScreenButtonColor = defaultColors.classicLight.fullScreenButtonColor;                    
                     defaultQestionCaptionTextColor = defaultColors.classicLight.questionCaptionTextColor;
+                    break;
+                case 'minimal':
+                    //Color
+                    defaultSurveyColor = defaultColors.minimal.surveyColor;
+                    defaultBgColor = defaultColors.minimal.bgColor;
+                    defaultTextColor = defaultColors.minimal.textColor;
+                    defaultLoaderColor = defaultColors.minimal.loaderColor;
+                    defaultButtonsTextColor = defaultColors.minimal.buttonsTextColor;
+                    defaultQestionCaptionTextColor = defaultColors.minimal.questionCaptionTextColor;
                     break;
                 case 'modern':
                     //Color

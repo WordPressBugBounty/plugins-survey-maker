@@ -506,6 +506,7 @@
 
         // Survey Theme
         $survey_theme = (isset($options[ $name_prefix . 'theme' ]) && $options[ $name_prefix . 'theme' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'theme' ] ) ) : 'classic_light';
+        $is_minimal = $survey_theme == 'minimal' ? true : false;
         $is_modern = $survey_theme == 'modern' ? true : false;
 
         // Survey Color

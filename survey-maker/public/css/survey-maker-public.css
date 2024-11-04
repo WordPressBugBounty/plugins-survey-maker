@@ -8,8 +8,18 @@ div[id*='ays-survey-container'].ays-survey-container *{
    box-sizing: border-box;
 }
 
+div[id*='ays-survey-container'][data-theme='minimal'].ays-survey-container .ays-survey-question:not(.ays-has-error),
 div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-survey-question:not(.ays-has-error) {
    border-right: unset !important;
+}
+
+.ays-survey-container[id^="ays-survey-container"] .ays-survey-minimal-theme-question .ays-survey-answer-label input[type="checkbox"],
+.ays-survey-container[id^="ays-survey-container"] .ays-survey-minimal-theme-question .ays-survey-answer-label input[type="radio"] {
+   display: initial !important;
+}
+.ays-survey-container[id^="ays-survey-container"] .ays-survey-minimal-theme-question .ays-survey-answer-label .ays-survey-answer-star-radio input[type="checkbox"],
+.ays-survey-container[id^="ays-survey-container"] .ays-survey-minimal-theme-question .ays-survey-answer-label .ays-survey-answer-star-radio input[type="radio"] {
+   display: none !important;
 }
 
 .ays-survey-container {

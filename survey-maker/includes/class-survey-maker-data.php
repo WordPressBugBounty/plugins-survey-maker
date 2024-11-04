@@ -55,6 +55,7 @@ class Survey_Maker_Data {
 
         // Survey Theme
         $settings[ $name_prefix . 'theme' ] = (isset($options[ $name_prefix . 'theme' ]) && $options[ $name_prefix . 'theme' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'theme' ] ) ) : 'classic_light';
+        $settings[ $name_prefix . 'is_minimal' ] = $settings[ $name_prefix . 'theme' ] == 'minimal' ? true : false;
         $settings[ $name_prefix . 'is_modern' ] = $settings[ $name_prefix . 'theme' ] == 'modern' ? true : false;
 
         // Survey Color

@@ -1153,10 +1153,11 @@ class Survey_Maker_Public {
     		$content[] = $this->create_section( $section, $last, $first , $sections_count , $section_numbering);
         }
 
+        $minimal_theme_header  = $this->options[ $this->name_prefix . 'is_minimal' ] ? 'ays-survey-minimal-theme-header' : "";
         $modern_theme_header   = $this->options[ $this->name_prefix . 'is_modern' ] ? 'ays-survey-modern-theme-header' : "";
         
         $content[] = '<div class="' . $this->html_class_prefix . 'section ' . $this->html_class_prefix . 'results-content">';
-            $content[] = '<div class="' . $this->html_class_prefix . 'section-header ' . $modern_theme_header . '">';
+            $content[] = '<div class="' . $this->html_class_prefix . 'section-header ' . $minimal_theme_header . ' ' . $modern_theme_header . '">';
             
                 $content[] = '<div class="' . $this->html_class_prefix . 'results">';
                     $content[] = '<input type="hidden" value="'.esc_attr($additional_data).'" name="' . $this->name_prefix . 'additional_wp_data'  . '">';
@@ -1254,6 +1255,7 @@ class Survey_Maker_Public {
         $show_question_numbering = $this->options[ $this->name_prefix . 'auto_numbering_questions' ];
         $this->options[ $this->name_prefix . 'question_numbering_array' ] = Survey_Maker_Data::ays_survey_numbering_all( $show_question_numbering );
     	$content[] = '<div class="' . $this->html_class_prefix . 'section" data-page-number="'.$section_numbering.'">';
+        $minimal_theme_header = $this->options[ $this->name_prefix . 'is_minimal' ] ? 'ays-survey-minimal-theme-header' : "";
         $modern_theme_header = $this->options[ $this->name_prefix . 'is_modern' ] ? 'ays-survey-modern-theme-header' : "";
         
             if( $this->options[ $this->name_prefix . 'show_section_header' ] ){
@@ -1265,7 +1267,7 @@ class Survey_Maker_Public {
                     $show_section_header = true;
                 }
                 if( $show_section_header ){
-                    $content[] = '<div class="' . $this->html_class_prefix . 'section-header '.$modern_theme_header.'">';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'section-header ' . $minimal_theme_header . ' '.$modern_theme_header.'">';
 
                     $content[] = '<div class="' . $this->html_class_prefix . 'section-title-row">';
                             $content[] = '<div class="' . $this->html_class_prefix . 'section-title-row-main">';
@@ -1426,6 +1428,7 @@ class Survey_Maker_Public {
         $show_answers_numbering = $this->options[ $this->name_prefix . 'auto_numbering' ];
         $this->options[ $this->name_prefix . 'numbering_array' ] = Survey_Maker_Data::ays_survey_numbering_all( $show_answers_numbering );
         
+        $minimal_theme_question = $this->options[ $this->name_prefix . 'is_minimal' ] ? 'ays-survey-minimal-theme-question' : "";
         $modern_theme_question = $this->options[ $this->name_prefix . 'is_modern' ] ? 'ays-survey-modern-theme-question' : "";
 
         $has_answer_image = false;
@@ -1499,7 +1502,7 @@ class Survey_Maker_Public {
         }
         
 		$content = array();
-    	$content[] = '<div class="' . $this->html_class_prefix . 'question '.$modern_theme_question . '" data-required="' . $data_required . '" data-type="' . $question_type . '" data-is-min="'.$is_minimum.'">';
+    	$content[] = '<div class="' . $this->html_class_prefix . 'question ' . $minimal_theme_question . ' '.$modern_theme_question . '" data-required="' . $data_required . '" data-type="' . $question_type . '" data-is-min="'.$is_minimum.'">';
 
 	    	$content[] = '<div class="' . $this->html_class_prefix . 'question-header">';
 
@@ -1609,12 +1612,28 @@ class Survey_Maker_Public {
             $content[] = '<div class="' . $this->html_class_prefix . 'answer ' . $answer_grid . ' '.$other_answer_box_width.'">';
             
                 $content[] = '<label class="' . $this->html_class_prefix . 'answer-label ' . $answer_label_grid . ' ' . $answer_label_other . '" tabindex="0">';
-                    $content[] = '<input class="" type="radio" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer]" value="' . $answer['id'] . '" autocomplete="off">';
 
-                    if( isset( $answer['image'] ) && $answer['image'] != "" ){
-                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-image-container">';
-                            $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" src="' . $answer['image'] . '" alt="' . stripslashes( $answer['answer'] ) . '" '. $is_lazy_loading .' />';
-                        $content[] = '</div>';
+                    if( $this->options[$this->name_prefix . 'is_minimal'] ){
+                        if( isset( $answer['image'] ) && $answer['image'] != "" ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'answer-image-container">';
+                                $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" '. $is_lazy_loading .' src="' . $answer['image'] . '" alt="' . stripslashes( $answer['answer'] ) . '" />';
+                            $content[] = '</div>';
+                        }
+                        if (!$is_other) {
+                            $content[] = '<input class="" type="radio" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer]" value="' . $answer['id'] . '">';
+                        } else {
+                            $content[] = '<input class="" type="radio" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer]" data-logicjump="' . $answer['question_id'] . '" value="' . $answer['id'] . '">';
+                        }
+                    }
+                    else{
+
+                        $content[] = '<input class="" type="radio" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer]" value="' . $answer['id'] . '" autocomplete="off">';
+
+                        if( isset( $answer['image'] ) && $answer['image'] != "" ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'answer-image-container">';
+                                $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" src="' . $answer['image'] . '" alt="' . stripslashes( $answer['answer'] ) . '" '. $is_lazy_loading .' />';
+                            $content[] = '</div>';
+                        }
                     }
 
                     $content[] = '<div class="' . $this->html_class_prefix . 'answer-label-content">';
@@ -1703,12 +1722,23 @@ class Survey_Maker_Public {
             
                 $content[] = '<label class="' . $this->html_class_prefix . 'answer-label ' . $answer_label_grid . ' ' . $answer_label_other . '" tabindex="0">';
                 
-                    $content[] = '<input class="" type="checkbox" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer][]" value="' . $answer['id'] . '" autocomplete="off">';
-                    
-                    if( isset( $answer['image'] ) && $answer['image'] != "" ){
-                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-image-container">';
-                            $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" src="' . $answer['image'] . '" '. $is_lazy_loading .' alt="' . stripslashes( $answer['answer'] ) . '" />';
-                        $content[] = '</div>';
+                    if( $this->options[$this->name_prefix . 'is_minimal'] ){
+                        if( isset( $answer['image'] ) && $answer['image'] != "" ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'answer-image-container">';
+                                $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" '. $is_lazy_loading .' src="' . $answer['image'] . '" alt="' . stripslashes( $answer['answer'] ) . '" />';
+                            $content[] = '</div>';
+                        }
+
+                        $content[] = '<input class="" type="checkbox" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer][]" value="' . $answer['id'] . '">';
+                    }
+                    else{                    
+                        $content[] = '<input class="" type="checkbox" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $answer['question_id'] . '][answer][]" value="' . $answer['id'] . '" autocomplete="off">';
+                        
+                        if( isset( $answer['image'] ) && $answer['image'] != "" ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'answer-image-container">';
+                                $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" src="' . $answer['image'] . '" '. $is_lazy_loading .' alt="' . stripslashes( $answer['answer'] ) . '" />';
+                            $content[] = '</div>';
+                        }
                     }
 
                     $content[] = '<div class="' . $this->html_class_prefix . 'answer-label-content">';
@@ -1766,45 +1796,70 @@ class Survey_Maker_Public {
         $is_first_question = $question['answers']['is_first_question'];
         $is_lazy_loading = ($is_first_question > 1) ? $this->lazy_loading : "";
         unset($question['answers']['is_first_question']);
-        $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+        $select_class = $this->html_class_prefix . 'question-select-conteiner-minimal';
+        if( $this->options[$this->name_prefix . 'is_minimal']){
+            $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+                $content[] = '<div class="' . $this->html_class_prefix . 'question-type-select-box">';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-select-conteiner">';
+                        $content[] = '<select class="' . $select_class  . '"
+                        name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . ']">';
+                        foreach ( $question['answers'] as $key => $answer ) {
 
-            $content[] = '<div class="' . $this->html_class_prefix . 'question-type-select-box">';
-                $content[] = '<div class="' . $this->html_class_prefix . 'question-select-conteiner">';
-
-                    $content[] = '<div class="' . $this->html_class_prefix . 'question-select ui selection icon dropdown">';
-                        
-                        $content[] = '<input type="hidden" class="' . $this->html_name_prefix . 'detect-selected-question-dropdown" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . ']">';
-
-                        $content[] = '<i class="dropdown icon"></i>';
-                        $content[] = '<div class="default text">'.__('Choose', "survey-maker").'</div>';
-
-                        $content[] = '<div class="menu">';
-                        
-                            foreach ( $question['answers'] as $key => $answer ) {
-                                $content[] = '<div class="item" data-value="'. $answer['id'] .'">';
-
-                                    if( isset( $answer['image'] ) && $answer['image'] != "" ){
-                                        $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" src="' . $answer['image'] . '" alt="' . stripslashes( $answer['answer'] ) . '" '. $is_lazy_loading .' />';
-                                    }
-
+                                $content[] = "<option value='" . $answer['id'] . "' >";
                                     if( ! empty( $this->options[ $this->name_prefix . 'numbering_array' ] ) ){
                                         $numebering_answer = $this->options[ $this->name_prefix . 'numbering_array' ][$key] . ' ';
                                     }else{
                                         $numebering_answer = '';
                                     }
-
                                     $content[] = $numebering_answer . stripslashes( $answer['answer'] );
-
-                                $content[] = '</div>';
+                                $content[] = '</option>';
                             }
-
-                        $content[] = '</div>';
+                        $content[] = '</select>';
                     $content[] = '</div>';
-
-                $content[] = '</div>';
+                $content[] = '</div>';    
             $content[] = '</div>';
+        }
+        else{
+            $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
-        $content[] = '</div>';
+                $content[] = '<div class="' . $this->html_class_prefix . 'question-type-select-box">';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-select-conteiner">';
+
+                        $content[] = '<div class="' . $this->html_class_prefix . 'question-select ui selection icon dropdown">';
+                            
+                            $content[] = '<input type="hidden" class="' . $this->html_name_prefix . 'detect-selected-question-dropdown" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . ']">';
+
+                            $content[] = '<i class="dropdown icon"></i>';
+                            $content[] = '<div class="default text">'.__('Choose', "survey-maker").'</div>';
+
+                            $content[] = '<div class="menu">';
+                            
+                                foreach ( $question['answers'] as $key => $answer ) {
+                                    $content[] = '<div class="item" data-value="'. $answer['id'] .'">';
+
+                                        if( isset( $answer['image'] ) && $answer['image'] != "" ){
+                                            $content[] = '<img class="' . $this->html_class_prefix . 'answer-image" src="' . $answer['image'] . '" alt="' . stripslashes( $answer['answer'] ) . '" '. $is_lazy_loading .' />';
+                                        }
+
+                                        if( ! empty( $this->options[ $this->name_prefix . 'numbering_array' ] ) ){
+                                            $numebering_answer = $this->options[ $this->name_prefix . 'numbering_array' ][$key] . ' ';
+                                        }else{
+                                            $numebering_answer = '';
+                                        }
+
+                                        $content[] = $numebering_answer . stripslashes( $answer['answer'] );
+
+                                    $content[] = '</div>';
+                                }
+
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+
+                    $content[] = '</div>';
+                $content[] = '</div>';
+
+            $content[] = '</div>';
+        }
 
         $content = implode( '', $content );
 
@@ -1892,12 +1947,21 @@ class Survey_Maker_Public {
             $limit_by = '';
         }
 
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-input-textarea ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
+        }
+
+
         $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-type-text-box">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
-                    $content[] = '<textarea class="' . 
+                    $content[] = '<textarea class="
+                                    ' . $minimal_class . '
+                                    ' . 
                                     $this->html_class_prefix . 'remove-default-border ' . 
                                     $this->html_class_prefix . 'question-input-textarea ' . 
                                     $survey_question_limit_length_class . 
@@ -1908,8 +1972,10 @@ class Survey_Maker_Public {
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
                     $content[] = '</textarea>';
 
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    if( ! $minimal_theme ){
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    }
 
                 $content[] = '</div>';
                 if($limit_checker){
@@ -1955,12 +2021,21 @@ class Survey_Maker_Public {
         if(intval($limit_length) <= 0){
             $limit_by = '';
         }
+
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' .$this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
+        }
+
         $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-box">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
-                    $content[] = '<input class="' . 
+                    $content[] = '<input class="
+                                    ' . $minimal_class . '
+                                    ' . 
                                     $this->html_class_prefix . 'remove-default-border ' . 
                                     $this->html_class_prefix . 'question-input ' . 
                                     $survey_question_limit_length_class . 
@@ -1969,8 +2044,10 @@ class Survey_Maker_Public {
                                     placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
 
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    if( ! $minimal_theme ){
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    }
 
                 $content[] = '</div>';
                 if($limit_checker){
@@ -2021,21 +2098,30 @@ class Survey_Maker_Public {
             $limit_by = '';
         }
 
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
+        }
+
         $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-box">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
-                    $content[] = '<input class="' . 
+                    $content[] = '<input class="
+                                    ' . $minimal_class . '
+                                    ' . 
                                     $this->html_class_prefix . 'remove-default-border ' . 
                                     $this->html_class_prefix . 'question-input ' . 
                                     $number_limit_class  . 
                                     $this->html_class_prefix . 'input" type="number" step="any" style="min-height: 24px;"
                                     placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
-
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    if( ! $minimal_theme ){
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    }
 
                 $content[] = '</div>';
                 if($enable_number_limit_message){
@@ -2097,20 +2183,26 @@ class Survey_Maker_Public {
             $limit_by = '';
         }
 
-
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
+        }
 
         $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-box-text-types-short">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
-                    $content[] = '<input class="'.$number_limit_class.' ' . $this->html_class_prefix . 'answer-text-inputs ' . $this->html_class_prefix . 'answer-text-inputs-default" type="text" tabindex="0" step="any" style="min-height: 24px;"
+                    $content[] = '<input class="' . $minimal_class . ' '.$number_limit_class.' ' . $this->html_class_prefix . 'answer-text-inputs ' . $this->html_class_prefix . 'answer-text-inputs-default" type="text" tabindex="0" step="any" style="min-height: 24px;"
                                     placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]"
                                     value="' . __( $survey_input_type_value, "survey-maker" ) . '">';
 
-                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
-                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                        if( ! $minimal_theme ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                        }
 
                     if($enable_number_limit_message){
                         $content[] = '<div class="' . $this->html_class_prefix . 'number-limit-message-box ' . $this->html_class_prefix . 'question-text-error-message" style="display: none;">';
@@ -2143,12 +2235,20 @@ class Survey_Maker_Public {
         // Input types placeholders
         $survey_input_type_placeholder = isset($question['options']['placeholder']) && $question['options']['placeholder'] != "" ? $question['options']['placeholder'] : '';
 
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-email-input ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input " . $this->html_class_prefix . "question-email-input";
+        }
+        
         $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-box">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
-                    $content[] = '<input class="' . 
+                    $content[] = '<input class="
+                                    ' . $minimal_class . '
+                                    ' . 
                                     $this->html_class_prefix . 'remove-default-border ' . 
                                     $this->html_class_prefix . 'question-email-input ' . 
                                     $this->html_class_prefix . 'question-input ' . 
@@ -2159,8 +2259,10 @@ class Survey_Maker_Public {
                         $content[] = '<input type="hidden" name="' . $this->html_name_prefix . 'user-email-' . $this->unique_id . '" value="' . $question['id'] . '" >';
                     }
 
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    if( ! $minimal_theme ){
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    }
 
                 $content[] = '</div>';
             $content[] = '</div>';
@@ -2177,12 +2279,20 @@ class Survey_Maker_Public {
         // Input types placeholders
         $survey_input_type_placeholder = isset($question['options']['placeholder']) && $question['options']['placeholder'] != "" ? $question['options']['placeholder'] : '';
 
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
+        }
+
         $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-box">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
-                    $content[] = '<input class="' . 
+                    $content[] = '<input class="
+                                    ' . $minimal_class . '
+                                    ' . 
                                     $this->html_class_prefix . 'remove-default-border ' . 
                                     $this->html_class_prefix . 'question-input ' . 
                                     $this->html_class_prefix . 'input
@@ -2194,8 +2304,10 @@ class Survey_Maker_Public {
                         $content[] = '<input type="hidden" name="' . $this->html_name_prefix . 'user-name-' . $this->unique_id . '" value="' . $question['id'] . '" >';
                     }
 
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
-                    $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    if( ! $minimal_theme ){
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    }
 
                 $content[] = '</div>';
             $content[] = '</div>';
@@ -2692,6 +2804,77 @@ class Survey_Maker_Public {
                 }';
             }
 
+            if( $this->options[ $this->name_prefix . 'is_minimal' ] ){
+                $content[] = 
+                '#' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'minimal-theme-header {
+                    box-shadow: unset;
+                    border: 0;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question.' . $this->html_class_prefix . 'minimal-theme-question {
+                    border: 0;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label-content .' . $this->html_class_prefix . 'answer-icon-content {
+                    display: none;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label input {
+                    display: block ;
+                    cursor: pointer;
+                    outline: none;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label {
+                    justify-content: initial;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-label .' . $this->html_class_prefix . 'answer-star-radio input {
+                    display: none ;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-matrix-scale-main .' . $this->html_class_prefix . 'answer-matrix-scale-container .' . $this->html_class_prefix . 'answer-matrix-scale-row .' . $this->html_class_prefix . 'answer-matrix-scale-column-content,
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-slider-list-main .' . $this->html_class_prefix . 'answer-slider-list-container .' . $this->html_class_prefix . 'answer-slider-list-row .' . $this->html_class_prefix . 'answer-slider-list-column-content,
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-star-list-main .' . $this->html_class_prefix . 'answer-star-list-container .' . $this->html_class_prefix . 'answer-star-list-row .' . $this->html_class_prefix . 'answer-matrix-scale-column-content {
+                    width: initial;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' input[type=range].' . $this->html_class_prefix . 'range-type-input {
+                    -webkit-appearance: auto;
+                    appearance: auto;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' input[type=range].' . $this->html_class_prefix . 'range-type-input {
+                    -moz-appearance: auto;
+                    appearance: auto;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .'.$this->html_class_prefix.'minimal-theme-textarea-input {
+                    border: 1px solid !important;
+                    transition: 0;
+                    width: 100%;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-select-conteiner-minimal {
+                    width: 230px;
+                    padding: 5px !important;
+                    outline: none;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .'.$this->html_class_prefix.'question-date-input-box {
+                    width: 230px;
+                    height: 40px;
+                }
+
+                #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .'.$this->html_class_prefix.'question-date-input-box input {
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    font-size: 15px;
+                    padding: 10px;
+                }';
+            }
+
             if( $this->options[ $this->name_prefix . 'is_modern' ] ){
                 $content[] = 
                 '#' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-questions > .' . $this->html_class_prefix . 'question.' . $this->html_class_prefix . 'modern-theme-question{
@@ -2762,12 +2945,12 @@ class Survey_Maker_Public {
                 }
     
                 #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-wrap {
-                    background-color: ' . $this->options[ $this->name_prefix . 'buttons_bg_color' ]. ';
-                    border-color: ' . $this->options[ $this->name_prefix . 'buttons_bg_color' ] . ';
+                    background-color: ' . (  $this->options[ $this->name_prefix . 'is_minimal' ] ? $this->options[ $this->name_prefix . 'text_color' ] : $this->options[ $this->name_prefix . 'buttons_bg_color' ] ) . ';
+                    border-color: ' . (  $this->options[ $this->name_prefix . 'is_minimal' ] ? $this->options[ $this->name_prefix . 'text_color' ] : $this->options[ $this->name_prefix . 'buttons_bg_color' ] ) . ';
                 }
     
                 #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-fill {
-                    background-color: ' . $this->options[ $this->name_prefix . 'buttons_text_color' ] . ';
+                    background-color: ' . (  $this->options[ $this->name_prefix . 'is_minimal' ] ? $this->options[ $this->name_prefix . 'text_color' ]  : $this->options[ $this->name_prefix . 'buttons_text_color' ] ) . ';
                 }
     
                 #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-questions > .' . $this->html_class_prefix . 'question.' . $this->html_class_prefix . 'modern-theme-question .' . $this->html_class_prefix .'question-input{

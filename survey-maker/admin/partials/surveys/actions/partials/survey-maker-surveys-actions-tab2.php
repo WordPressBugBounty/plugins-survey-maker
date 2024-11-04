@@ -9,7 +9,10 @@
                         echo htmlspecialchars( sprintf(
                             __('Choose the theme for your survey between these two nice themes.',"survey-maker") . '<ul class="ays_help_ul"><li>' .
                             __('%sClassic Light:%s Light background, dark text.',"survey-maker") . '</li><li>' .
-                            __('%sClassic Dark:%s Dark background, light text.',"survey-maker") . '</li></ul>',
+                            __('%sClassic Dark:%s Dark background, light text.',"survey-maker") . '</li></ul>'. 
+                            __('%sMinimal:%s Transparent background, dark text.',"survey-maker") . '</li></ul>',
+                            '<em>',
+                            '</em>',
                             '<em>',
                             '</em>',
                             '<em>',
@@ -43,34 +46,12 @@
                         <img src="<?php echo SURVEY_MAKER_ADMIN_URL . '/images/themes/modern.webp' ?>" alt="Modern">
                     </label>
                 </div>
-                <div class="ays-survey-themes-main-div ays-survey-themes-main-div-only-pro">
-                    <div class="form-group row" style="margin:0px;">
-                        <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small">
-                            <div class="ays-pro-features-v2-small-buttons-box">
-                                <div>
-                                    <a href="https://ays-demo.com/product-evaluation-survey/" target="_blank" class="ays-pro-features-v2-view-demo-button">
-                                        <div class="ays-pro-features-v2-view-demo-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/view-demo.svg');"></div>
-                                        <div class="ays-pro-features-v2-view-demo-text">
-                                            <?php echo __("View demo" , "survey-maker"); ?>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="ays-pro-features-v2-video-button"></div>
-                                <div>
-                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                        <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                        <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <label for="ays-survey-minimal" class="ays-survey-theme-item">
-                                <span><?php echo __('Minimal', "survey-maker"); ?></span>
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/minimal.webp' ?>" alt="Minimal">
-                            </label>
-                        </div>
-                    </div>
+                <div class="ays-survey-themes-main-div">
+                    <input type="radio" id="ays-survey-minimal" name="ays_survey_theme" value="minimal" <?php echo ($survey_theme == 'minimal') ? 'checked' : '' ?>>
+                    <label for="ays-survey-minimal" class="ays-survey-theme-item">
+                        <span><?php echo __('Minimal', "survey-maker"); ?></span>
+                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/minimal.webp' ?>" alt="Minimal">
+                    </label>
                 </div>
                 <div class="ays-survey-themes-main-div ays-survey-themes-main-div-only-pro">
                     <div class="form-group row" style="margin:0px;">
