@@ -203,6 +203,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
 
             // Popup title transform
             $survey_popup_title_transform = (isset( $_POST[$name_prefix . 'survey_popup_title_transform'] ) &&  $_POST[$name_prefix . 'survey_popup_title_transform'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_transform' ] ) : 'none';
+            // Popup title transform
+            $survey_popup_title_transform_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_transform_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_transform_mobile'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_transform_mobile' ] ) : 'none';
            
             // Popup title letter spacing
             $survey_popup_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] ))) : '0';
@@ -289,6 +291,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "popup_title_alignment" => $survey_popup_title_alignment,
                 "popup_title_alignment_on_mobile" => $survey_popup_title_alignment_on_mobile,
                 "popup_title_transform" => $survey_popup_title_transform,
+                "popup_title_transform_mobile" => $survey_popup_title_transform_mobile,
                 "popup_title_letter_spacing" => $survey_popup_title_letter_spacing,
                 "popup_title_letter_spacing_on_mobile" => $survey_popup_title_letter_spacing_on_mobile,
                 "popup_hide_title_on_mobile" => $survey_popup_hide_title_on_mobile,

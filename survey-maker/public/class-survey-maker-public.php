@@ -3416,6 +3416,9 @@ class Survey_Maker_Public {
 
             // Popup title transform
             $survey_popup_title_transform = (isset($options["popup_title_transform"]) && $options["popup_title_transform"] != "") ? esc_attr ( $options["popup_title_transform"] ) : "none";
+            // Popup title transform mobile
+            $options["popup_title_transform_mobile"] = isset($options["popup_title_transform_mobile"]) ? $options["popup_title_transform_mobile"] : $survey_popup_title_transform;
+            $survey_popup_title_transform_mobile = (isset($options["popup_title_transform_mobile"]) && $options["popup_title_transform_mobile"] != "") ? esc_attr ( $options["popup_title_transform_mobile"] ) : "none";
                 
             // Popup title letter spacing
             $survey_popup_title_letter_spacing = (isset( $options[ "popup_title_letter_spacing" ] ) && $options["popup_title_letter_spacing"] != '' && $options["popup_title_letter_spacing"] != '0') ? esc_attr( $options["popup_title_letter_spacing"] ) : 0;
@@ -3696,6 +3699,7 @@ class Survey_Maker_Public {
                                     '.$hide_popup_on_mobile_class.';
                                     letter-spacing: '.$survey_popup_title_letter_spacing_on_mobile.'px;
                                     text-align: '.$survey_popup_title_alignment_on_mobile.';
+                                    text-transform: '.$survey_popup_title_transform_mobile.';
                                 }
                             }
                             

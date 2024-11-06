@@ -51,8 +51,6 @@
         };
         
         $(document).find('input[name="ays_survey_theme"]').on("change", function(e){
-            console.log($(this).val());
-            
             surveyThemeChange( $(this).val() );
         });
 
@@ -128,8 +126,6 @@
                     defaultQestionCaptionTextColor = defaultColors.classicLight.questionCaptionTextColor;
                     break;
             }
-            console.log(defaultSurveyColor)
-                
             $(document).find('#ays_survey_color').wpColorPicker('color', defaultSurveyColor);
             $(document).find('#ays_survey_background_color').wpColorPicker('color', defaultBgColor);
             $(document).find('#ays_survey_text_color').wpColorPicker('color', defaultTextColor);

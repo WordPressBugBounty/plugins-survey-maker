@@ -192,13 +192,44 @@
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-9">
-                            <select id="ays-survey-popup-title-transform" name="ays_survey_popup_title_transform">
-                                <option value="none" <?php echo ($survey_popup_title_transform == 'none') ? 'selected' : ''; ?>><?php echo __('Default',"survey-maker"); ?></option>
-                                <option value="capitalize" <?php echo ($survey_popup_title_transform == 'capitalize') ? 'selected' : ''; ?>><?php echo __('Capitalize',"survey-maker"); ?></option>
-                                <option value="uppercase" <?php echo ($survey_popup_title_transform == 'uppercase') ? 'selected' : ''; ?>><?php echo __('Uppercase',"survey-maker"); ?></option>
-                                <option value="lowercase" <?php echo ($survey_popup_title_transform == 'lowercase') ? 'selected' : ''; ?>><?php echo __('Lowercase',"survey-maker"); ?></option>
-                            </select>
+                            <div class="col-sm-9 ays_divider_left">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
+                                            <?php echo __('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text transformation of popup title for desktop devices.',"survey-maker")?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <select id="ays-survey-popup-title-transform" name="ays_survey_popup_title_transform">
+                                            <option value="none" <?php echo ($survey_popup_title_transform == 'none') ? 'selected' : ''; ?>><?php echo __('Default',"survey-maker"); ?></option>
+                                            <option value="capitalize" <?php echo ($survey_popup_title_transform == 'capitalize') ? 'selected' : ''; ?>><?php echo __('Capitalize',"survey-maker"); ?></option>
+                                            <option value="uppercase" <?php echo ($survey_popup_title_transform == 'uppercase') ? 'selected' : ''; ?>><?php echo __('Uppercase',"survey-maker"); ?></option>
+                                            <option value="lowercase" <?php echo ($survey_popup_title_transform == 'lowercase') ? 'selected' : ''; ?>><?php echo __('Lowercase',"survey-maker"); ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
+                                            <?php echo __('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text transformation of popup title for mobile devices.',"survey-maker")?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <select id="ays-survey-popup-title-transform-mobile" name="ays_survey_popup_title_transform_mobile">
+                                            <option value="none" <?php echo ($survey_popup_title_transform_mobile == 'none') ? 'selected' : ''; ?>><?php echo __('Default',"survey-maker"); ?></option>
+                                            <option value="capitalize" <?php echo ($survey_popup_title_transform_mobile == 'capitalize') ? 'selected' : ''; ?>><?php echo __('Capitalize',"survey-maker"); ?></option>
+                                            <option value="uppercase" <?php echo ($survey_popup_title_transform_mobile == 'uppercase') ? 'selected' : ''; ?>><?php echo __('Uppercase',"survey-maker"); ?></option>
+                                            <option value="lowercase" <?php echo ($survey_popup_title_transform_mobile == 'lowercase') ? 'selected' : ''; ?>><?php echo __('Lowercase',"survey-maker"); ?></option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div><!-- Popup title text transform -->
                         <hr/>
