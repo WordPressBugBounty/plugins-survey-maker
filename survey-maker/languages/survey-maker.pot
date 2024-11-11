@@ -29,9 +29,11 @@ msgid "Clear color"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:229
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:173
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:207
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:226
 #: ../admin/partials/settings/survey-maker-settings.php:836
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1281
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1296
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1315
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:357
 msgid "Default"
 msgstr ""
@@ -49,9 +51,9 @@ msgid "Color value"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:278
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:391
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:392
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:393
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:394
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:395
 #: ../public/class-survey-maker-public.php:912
 #: ../public/class-survey-maker-public.php:913
 #: ../public/class-survey-maker-public.php:914
@@ -59,13 +61,13 @@ msgid "Your answer"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:281
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:395
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:397
 #: ../public/class-survey-maker-public.php:915
 msgid "Your email"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:282
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:396
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:398
 #: ../public/class-survey-maker-public.php:916
 msgid "Your name"
 msgstr ""
@@ -76,8 +78,8 @@ msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:284
 #: ../admin/partials/settings/survey-maker-settings.php:58
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:379
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:394
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:381
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:396
 msgid "Phone"
 msgstr ""
 
@@ -94,7 +96,7 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1749
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2438
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:622
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2681
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2687
 msgid "Duplicate"
 msgstr ""
 
@@ -121,14 +123,14 @@ msgid "Delete"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:289
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:547
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:570
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:550
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:573
 msgid "Add Image"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:290
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:550
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:573
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:553
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:576
 msgid "Edit Image"
 msgstr ""
 
@@ -357,7 +359,7 @@ msgstr ""
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:188
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:11
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:12
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2801
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2807
 msgid "Submissions"
 msgstr ""
 
@@ -419,11 +421,11 @@ msgstr ""
 #: ../admin/class-survey-maker-admin.php:665
 #: ../admin/partials/export-import/survey-maker-export-import-display.php:36
 #: ../admin/partials/export-import/survey-maker-export-import-display.php:79
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:376
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:403
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:430
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:457
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:638
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:443
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:470
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:497
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:524
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:705
 #: ../admin/partials/requests/survey-maker-requests-display.php:27
 #: ../admin/partials/requests/survey-maker-requests-display.php:36
 #: ../admin/partials/settings/survey-maker-settings.php:617
@@ -452,9 +454,8 @@ msgstr ""
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:378
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:54
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:63
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:63
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:83
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:110
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:64
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:91
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:676
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:703
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:730
@@ -521,7 +522,7 @@ msgid "Upgrade"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:833
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2800
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2806
 msgid "Questions"
 msgstr ""
 
@@ -551,7 +552,7 @@ msgid "If you love our plugin, please do big favor and rate us on"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1182
-#: ../includes/class-survey-maker-data.php:1533
+#: ../includes/class-survey-maker-data.php:1540
 msgid "\"Other\" answer(s)"
 msgstr ""
 
@@ -563,7 +564,7 @@ msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1259
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:71
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2748
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2754
 msgid "Deleted User"
 msgstr ""
 
@@ -701,7 +702,7 @@ msgid "Personal"
 msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:29
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:88
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:69
 msgid "Business"
 msgstr ""
 
@@ -1123,19 +1124,19 @@ msgstr ""
 msgid "See All Plugins"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:49
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:50
 msgid "Add new popup"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:52
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:53
 msgid "Edit popup"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:155
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:159
 msgid "On load"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:156
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:160
 msgid "On Click"
 msgstr ""
 
@@ -1156,9 +1157,9 @@ msgstr ""
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:36
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:5
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:85
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:707
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:710
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:671
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2789
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2795
 msgid "Title"
 msgstr ""
 
@@ -1182,352 +1183,418 @@ msgstr ""
 msgid "Specify the font size of the popup title."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:82
-msgid "Font size on mobile"
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:73
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:151
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:199
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:249
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:480
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:528
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:579
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:670
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:720
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:768
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:818
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:866
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:916
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:974
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1126
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1190
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1238
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1288
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1338
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1417
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1467
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1615
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1665
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1801
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1891
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1951
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2002
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:257
+msgid "On desktop"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:83
-msgid "Specify the font size of the popup title on mobile devices."
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:74
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:152
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:250
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1339
+msgid "Define the space between the letters of the suquestion caption in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:101
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:151
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:92
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:169
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:218
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:268
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:498
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:547
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:598
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:689
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:738
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:787
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:836
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:885
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:935
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:993
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1145
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1208
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1257
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1307
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1357
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1436
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1486
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1634
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1684
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1820
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1915
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1970
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2021
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:276
+msgid "On mobile"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:93
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:170
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:269
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1358
+msgid "Define the space between the letters of the question caption in pixels for mobile devices."
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:113
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:132
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:91
 msgid "Background color"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:102
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:114
 msgid "Specify the background color of the popup title."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:115
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:165
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:127
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:146
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:105
 msgid "Text color"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:116
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:128
 msgid "Specify the text color of the popup title."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:129
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:141
 msgid "Text alignment"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:130
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:142
 msgid "Specify the text alignment of the popup title."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:137
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:155
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:342
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:507
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:525
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:747
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:765
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:845
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:863
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1029
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1205
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1223
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1508
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1840
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1864
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:159
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:177
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:323
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:488
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:506
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:728
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:746
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:826
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:844
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1022
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1198
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1216
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1556
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1900
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1924
 msgid "Left"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:138
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:156
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:343
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:508
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:526
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:748
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:766
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:846
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:864
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1030
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1206
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1224
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1510
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1843
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1867
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:160
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:178
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:324
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:489
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:507
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:729
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:747
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:827
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:845
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1023
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1199
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1217
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1558
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1903
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1927
 msgid "Center"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:139
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:157
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:344
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:509
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:527
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:749
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:767
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:847
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:865
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1031
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1207
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1225
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1509
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1846
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1870
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:161
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:179
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:325
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:490
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:508
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:730
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:748
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:828
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:846
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1024
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1200
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1218
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1557
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1906
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1930
 msgid "Right"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:147
-msgid "Text alignment on mobile"
-msgstr ""
-
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:148
-msgid "Specify the text alignment of the popup title on mobile devices."
-msgstr ""
-
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:165
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:189
 msgid "Text transform"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:166
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:190
 msgid "Specify the text transformation of popup title, such as converting to uppercase or lowercase."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:174
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1282
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:200
+msgid "Specify the text transformation of popup title for desktop devices."
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:208
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:227
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1297
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1316
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:358
 msgid "Capitalize"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:175
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1283
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:209
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:228
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1298
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1317
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:359
 msgid "Uppercase"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:176
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1284
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:210
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:229
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1299
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1318
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:360
 msgid "Lowercase"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:184
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:219
+msgid "Specify the text transformation of popup title for mobile devices."
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:239
 msgid "Letter spacing"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:185
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:240
 msgid "Define the space between the letters of the survey popup title in pixels."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:203
-msgid "Letter spacing on mobile"
-msgstr ""
-
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:204
-msgid "Define the space between the letters of the survey popup title in pixels for mobile devices."
-msgstr ""
-
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:222
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:289
 msgid "Hide on mobile"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:223
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:290
 msgid "Tick this option to hide the popup title on mobile devices."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:236
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:303
 msgid "Border radius"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:237
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:304
 msgid "Specify the radius of the title border."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:257
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:324
 msgid "Select Survey"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:260
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:327
 msgid "Choose the survey which you want to display within the popup from your already created list."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:292
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:359
 msgid "Popup width"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:293
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:360
 msgid "Specify the width of your popup in pixels."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:311
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:378
 msgid "Popup height"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:312
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:379
 msgid "Specify the height of your popup in pixels."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:330
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:397
 msgid "Popup background color"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:331
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:398
 msgid "Specify the background color of your popup."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:344
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:411
 msgid "Hide popup after one submission"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:345
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:412
 msgid "By enabling the option, the popup will not be shown as soon as a visitor submits the survey."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:358
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:425
 msgid "Hide popup after close"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:359
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:426
 msgid "By enabling the option, the popup will not be shown as soon as a visitor clicks the close button."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:383
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:450
 msgid "Hide popup on desktop"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:384
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:451
 msgid "Tick this option to hide the survey popup on desktop."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:410
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:477
 msgid "Hide popup on mobile"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:411
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:478
 msgid "Tick this option to hide the survey popup on mobile."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:437
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:504
 msgid "Hide popup on tablets"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:438
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:505
 msgid "Tick this option to hide the survey popup on tablets."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:464
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:531
 msgid "Show on "
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:465
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:532
 msgid "Select on which pages of your website you need the popup to be loaded. For the Except and Selected options, you can choose specific posts and post types."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:473
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:540
 msgid "All pages"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:477
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:544
 msgid "Except"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:481
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:548
 msgid "Selected"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:493
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:560
 msgid "Popup position"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:494
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:561
 msgid "Specify the position of the popup on the screen."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:524
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:591
 msgid "Popup margin"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:525
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:592
 msgid "Specify the popup margin in pixels. It accepts only numerical values."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:541
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:608
 msgid "Popup trigger"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:544
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:611
 msgid "Choose when to show the popup on the website."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:546
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:613
 msgid "On page load - popup will be shown as soon as the page is loaded."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:547
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:614
 msgid "On click - popup will be shown when the user clicks on the assigned CSS element(s). Select CSS element with the help of CSS selector(s) option."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:548
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:615
 msgid "On Exit - the popup will show up as soon as the user wants to leave the page."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:569
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:636
 msgid "On Exit (Pro)"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:579
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:646
 msgid "CSS selector(s) for trigger click"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:580
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:647
 msgid "Add your preferred CSS selector(s) if you have given “On click” or “Both” value to the “Popup trigger” option. For example #mybutton or .mybutton."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:595
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:662
 msgid "Enable close popup after finish"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:596
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:663
 msgid "Tick this option to close the popup after finish."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:613
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:680
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab9.php:696
 msgid "Delay"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:614
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:681
 msgid "Specify the delay for closing the popup after finish."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:645
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:712
 msgid "Close by clicking outside the box"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:646
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:713
 msgid "If the option is enabled, the user can close the popup by clicking outside the box."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:661
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:728
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:543
 msgid "Enable full-screen mode"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:662
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:729
 msgid "Allow the popup to enter full-screen mode by pressing the icon located in the top-right corner of the popup container."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:680
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:747
 msgid "Close by pressing the ESC"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:681
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:748
 msgid "Tick this option to allow close the popup by pressing the ESC button from the keyboard."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:704
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:771
 #: ../admin/partials/surveys/actions/survey-maker-survey-categories-actions.php:30
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:25
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:180
 msgid "Save and close"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:711
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:778
 #: ../admin/partials/surveys/actions/survey-maker-survey-categories-actions.php:41
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:34
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:189
@@ -1539,9 +1606,9 @@ msgstr ""
 #: ../admin/partials/survey-maker-admin-display.php:39
 #: ../admin/partials/surveys/survey-maker-survey-categories-display.php:28
 #: ../admin/partials/surveys/survey-maker-survey-categories-display.php:51
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:29
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:74
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:85
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:33
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:78
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:89
 msgid "Add New"
 msgstr ""
 
@@ -1562,52 +1629,52 @@ msgid "Duration old data is successfully updated."
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:30
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:372
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:374
 msgid "Radio"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:34
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:373
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:375
 msgid "Checkbox (Multi)"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:38
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:374
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:376
 msgid "Dropdown"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:42
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:375
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:377
 msgid "Star Rating"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:46
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:376
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:378
 msgid "Paragraph"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:50
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:377
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:379
 msgid "Short Text"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:54
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:378
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:380
 msgid "Number"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:62
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:380
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:382
 msgid "Yes or No"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:66
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:381
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:383
 msgid "Email"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:70
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:382
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:384
 msgid "Name"
 msgstr ""
 
@@ -2128,7 +2195,7 @@ msgstr ""
 #: ../admin/partials/settings/survey-maker-settings.php:1789
 #: ../admin/partials/settings/survey-maker-settings.php:1822
 #: ../admin/partials/settings/survey-maker-settings.php:1858
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2797
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2803
 msgid "Shortcode"
 msgstr ""
 
@@ -2472,8 +2539,7 @@ msgid "Display question summary"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:1708
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:54
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:102
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:83
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:811
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:489
 msgid "View demo"
@@ -2714,13 +2780,13 @@ msgstr ""
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:433
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:300
 #: ../public/class-survey-maker-public.php:145
-#: ../public/class-survey-maker-public.php:1779
+#: ../public/class-survey-maker-public.php:1833
 msgid "Choose"
 msgstr ""
 
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:572
-#: ../public/class-survey-maker-public.php:1632
-#: ../public/class-survey-maker-public.php:1726
+#: ../public/class-survey-maker-public.php:1651
+#: ../public/class-survey-maker-public.php:1756
 msgid "Other"
 msgstr ""
 
@@ -2781,7 +2847,7 @@ msgstr ""
 
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:35
 #: ../admin/partials/surveys/survey-maker-survey-categories-display.php:41
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:61
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:65
 msgid "Search"
 msgstr ""
 
@@ -3017,10 +3083,10 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:49
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:28
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:78
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:644
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:647
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:141
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:184
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2670
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2676
 msgid "Draft"
 msgstr ""
 
@@ -3151,10 +3217,10 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:218
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1141
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2032
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1216
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1426
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1649
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1857
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1222
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1432
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1655
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1863
 msgid "Question"
 msgstr ""
 
@@ -3198,9 +3264,9 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:307
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1229
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2114
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:648
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:651
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:615
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2674
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2680
 msgid "Edit"
 msgstr ""
 
@@ -3474,907 +3540,875 @@ msgstr ""
 msgid "%sClassic Dark:%s Dark background, light text."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:28
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:13
+#, php-format
+msgid "%sMinimal:%s Transparent background, dark text."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:31
 msgid "Classic Light"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:35
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:38
 msgid "Classic Dark"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:42
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:45
 msgid "Modern"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:69
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:52
 msgid "Minimal"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:115
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:96
 msgid "Elegant"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:130
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:111
 msgid "Survey styles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:137
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:118
 msgid "Survey color"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:138
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:119
 msgid "Specify the main color of the survey. The borders of your survey will get the color that you set."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:152
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:133
 msgid "Specify the background color of your survey."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:166
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:147
 msgid "Identify the text color of your survey, including the questions, the answers, and the thank you message."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:179
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:160
 msgid "Loader color"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:180
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:161
 msgid "Identify the loader color of your survey."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:193
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:174
 msgid "Survey width"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:194
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:175
 msgid "Specify the width of your survey in pixels or percentage."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:202
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:225
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:250
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1062
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:183
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:206
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:231
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1055
 #, php-format
 msgid "For 100% leave blank"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:216
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:197
 msgid "Survey mobile width"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:217
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:198
 msgid "Specify the width of your survey in pixels or percentage for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:239
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:220
 msgid "Survey max-width for mobile"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:240
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:221
 msgid "Survey container max-width for mobile in percentage. This option will work for the screens with less than 640 pixels width."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:261
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:242
 msgid "Survey logo"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:262
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:243
 msgid "Add logo image for survey."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:285
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:266
 msgid "Logo URL"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:288
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:269
 msgid "Add a URL link to the survey's logo image."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:312
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:293
 msgid "Open in a new tab"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:315
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:296
 msgid "Activate this option, if you want to open the URL in a new tab."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:332
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:313
 msgid "Logo position"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:335
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:316
 msgid "Specify the position of the Logo image."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:352
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:333
 msgid "Logo title"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:355
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:336
 msgid "Specify the title of the Logo image."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:370
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:351
 msgid "Survey cover photo"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:371
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:352
 msgid "Add cover photo for survey."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:397
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:378
 msgid "Height"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:398
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:379
 msgid "Specify the height of the survey cover image."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:411
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:392
 msgid "Height on mobile"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:412
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:393
 msgid "Specify the height of the survey cover image for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:425
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:406
 msgid "Image Position"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:426
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:407
 msgid "Specify the position of the survey cover image."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:433
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:414
 msgid "Left Top"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:434
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:415
 msgid "Left Center"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:435
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:416
 msgid "Left Bottom"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:436
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:417
 msgid "Center Top"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:437
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:418
 msgid "Center Center"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:438
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:419
 msgid "Center Bottom"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:439
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:420
 msgid "Right Top"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:440
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:421
 msgid "Right Center"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:441
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:422
 msgid "Right Bottom"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:449
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:430
 msgid "Image object-fit"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:450
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:431
 msgid "Specify how a survey cover image should be resized to fit its container."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:457
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1110
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1545
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:438
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1103
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1593
 msgid "Cover"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:458
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1111
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1547
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:439
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1104
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1595
 msgid "Contain"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:459
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1112
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1549
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:440
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1105
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1597
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:202
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:406
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:476
 msgid "None"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:467
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:448
 msgid "Show only in the first section"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:468
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:449
 msgid "Tick this option to show the cover photo only for the first section."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:489
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:470
 msgid "Survey title alignment"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:490
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:471
 msgid "Specify the alignment of the survey title."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:499
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:547
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:598
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:689
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:739
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:787
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:837
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:885
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:935
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1133
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1197
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1302
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1419
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1567
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1617
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1831
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1910
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:257
-msgid "On desktop"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:500
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:481
 msgid "Specify the alignment of the survey title for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:517
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:566
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:617
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:708
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:757
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:806
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:855
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:904
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:954
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1152
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1215
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1321
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1438
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1586
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1636
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1855
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1929
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:276
-msgid "On mobile"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:518
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:499
 msgid "Specify the survey title alignment for Mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:537
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:518
 msgid "Survey title font size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:538
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:519
 msgid "Specify the font size of the survey title."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:548
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:529
 msgid "Specify the font size of the survey title for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:567
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:548
 msgid "Specify the font size of the survey title for moblie devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:588
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:569
 msgid "Survey title letter spacing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:589
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:730
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:570
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:711
 msgid "Define the space between the letters of the survey title in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:599
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:740
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:788
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:580
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:721
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:769
 msgid "Define the space between the letters of the survey title in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:618
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:758
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:807
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:599
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:739
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:788
 msgid "Define the space between the letters of the survey title in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:638
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:619
 msgid "Survey title box shadow"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:639
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:620
 msgid "Specify the text shadow of the survey title."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:660
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:641
 msgid "X"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:664
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:645
 msgid "Y"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:668
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:649
 msgid "Z"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:679
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:660
 msgid "Survey section title font size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:680
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:661
 msgid "Specify the font size of the section title."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:690
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:671
 msgid "Specify the font size of the survey section title for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:709
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:690
 msgid "Specify the font size of the survey section title for moblie devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:729
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:710
 msgid "Survey section title alignment"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:777
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:758
 msgid "Survey section title letter spacing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:778
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:759
 msgid "Define the space between the letters of the survey section title in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:827
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:808
 msgid "Survey section description alignment"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:828
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:809
 msgid "Specify the alignment of the section description."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:838
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:819
 msgid "Specify the alignment of the section description desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:856
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:837
 msgid "Specify the alignment of the section description for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:875
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:856
 msgid "Survey section description font size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:876
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:857
 msgid "Specify the font size of the section description."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:886
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:867
 msgid "Specify the font size of the section description for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:905
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:886
 msgid "Specify the font size of the section description for moblie devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:925
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:906
 msgid "Survey section description letter spacing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:926
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:907
 msgid "Define the space between the letters of the survey section description in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:936
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:917
 msgid "Define the space between the letters of the survey section description in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:955
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:936
 msgid "Define the space between the letters of the survey section description in pixels for moblie devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:976
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:957
 msgid "Question styles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:983
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:964
 msgid "Question font size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:984
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:965
 msgid "Define the font size of the survey questions in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1002
-msgid "Question font size on mobile"
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:975
+msgid "Define the font size of the survey questions in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1003
-msgid "Define the font size of the survey questions in pixels on mobile devices."
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:994
+msgid "Define the font size of the survey questions in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1021
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1014
 msgid "Question alignment"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1022
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1015
 msgid "Specify the alignment of the question title."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1040
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1033
 msgid "Configure the sizing of your question image."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1049
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1042
 msgid "Image width"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1050
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1043
 msgid "Set the question image width in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1069
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1062
 msgid "Image height"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1070
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1063
 msgid "Set the question height in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1088
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1081
 msgid "Image sizing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1091
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1084
 msgid "Configure the scales of the question images."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1092
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1085
 #, php-format
 msgid "%sCover:%s Resize the image so that it fills the whole container. The image may be trimmed to fit."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1093
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1524
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1086
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1572
 #, php-format
 msgid "%sContain:%s Resize the image to be displayed fully."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1094
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1087
 #, php-format
 msgid "%sNone:%s The image is not resized at all."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1095
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1088
 #, php-format
 msgid "%sUnset:%s The variable does not exist."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1113
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1106
 msgid "Unset"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1123
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1116
 msgid "Question padding"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1124
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1117
 msgid "Define the padding of the survey questions box in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1134
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1127
 msgid "Define the padding of the survey questions box in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1153
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1146
 msgid "Define the padding of the survey questions box in pixels for moblie devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1173
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1166
 msgid "Question caption text color"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1174
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1167
 msgid "Define the color of the question caption texts."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1187
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1180
 msgid "Question caption text alignment"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1188
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1181
 msgid "Define the alignment of the question caption texts."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1198
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1191
 msgid "Define the alignment of the question caption texts for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1216
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1209
 msgid "Define the alignment of the question caption texts for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1235
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1228
 msgid "Question caption font size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1236
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1255
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1229
 msgid "Define the font size of the question caption texts."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1254
-msgid "Question caption font size on mobile"
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1239
+msgid "Define the font size of the question caption texts for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1273
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1258
+msgid "Define the font size of the question caption texts for mobile devices."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1278
 msgid "Question caption text transform"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1274
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1279
 msgid "Specify the text transformation of question captions, such as converting to uppercase or lowercase."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1292
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1289
+msgid "Specify the text transformation of question captions, such as converting to uppercase or lowercase for desktop devices."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1308
+msgid "Specify the text transformation of question captions, such as converting to uppercase or lowercase for mobile devices."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1328
 msgid "Question caption letter spacing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1293
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1329
 msgid "Define the space between the letters of the question caption in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1303
-msgid "Define the space between the letters of the suquestion caption in pixels desktop devices."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1322
-msgid "Define the space between the letters of the question caption in pixels for mobile devices."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1342
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1378
 msgid "Question caption hide on mobile"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1343
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1379
 msgid "Tick this option to hide the caption text on mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1364
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1400
 msgid "Answer styles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1371
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1407
 msgid "Answer font size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1372
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1408
 msgid "Specify the font size of the answers in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1390
-msgid "Answer font size on mobile"
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1418
+msgid "Specify the font size of the answers in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1391
-msgid "Specify the font size of the answers in pixels on mobile devices."
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1437
+msgid "Specify the font size of the answers in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1409
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1457
 msgid "Answer letter spacing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1410
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1458
 msgid "Define the space between the letters of the answer in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1420
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1468
 msgid "Define the space between the letters of the answer in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1439
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1487
 msgid "Define the space between the letters of the answer in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1459
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1507
 msgid "Answer view"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1460
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1508
 msgid "Arrange the answers by the following layouts. Note that if at least one of the answers has an image, the answers will be shown in a grid layout. In this case, it won’t matter if you have chosen the list layout."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1467
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1515
 msgid "List"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1468
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1516
 msgid "Grid"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1476
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1524
 msgid "Answer view alignment"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1478
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1526
 msgid "Specify the alignment of the answers"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1480
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1528
 #, php-format
 msgid "%s Space around %s - Displays the answers with space before, between, and after the lines (Only for grid view)."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1481
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1529
 #, php-format
 msgid "%s Space between %s - Displays the answers with space between the lines (Only for grid view)."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1482
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1530
 #, php-format
 msgid "%s Left %s - Displays the answers at the beginning of the container."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1483
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1531
 #, php-format
 msgid "%s Right %s - Displays the answers at the end of the container."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1484
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1532
 #, php-format
 msgid "%s Center %s - Displays the answers at the center of the container."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1505
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1553
 msgid "Space around"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1506
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1554
 msgid "Space between"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1518
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1566
 msgid "Answer image sizing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1521
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1569
 msgid "Define the size of the images added to the answers. Choose from the following properties:"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1522
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1570
 #, php-format
 msgid "%sCover:%s Resize the image to cover the whole container. The image may be trimmed to fit."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1523
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1571
 #, php-format
 msgid "%sFill:%s Resize the image to cover the whole container. The image may be stretched to fit."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1525
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1573
 #, php-format
 msgid "%sUnset:%s Rescale the image to be smaller than contain or none."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1526
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1574
 #, php-format
 msgid "%sNone:%s The image is not resized."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1546
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1594
 msgid "Fill"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1548
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1596
 msgid "Scale-down"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1557
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1605
 msgid "Answer padding"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1558
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1606
 msgid "Define the distance between the text and the border of the answer box in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1568
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1616
 msgid "Define the distance between the text and the border of the answer box in pixels for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1587
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1635
 msgid "Define the distance between the text and the border of the answer box in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1607
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1655
 msgid "Answer gap"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1608
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1656
 msgid "Specify the gap size between answers in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1618
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1666
 msgid "Specify the gap size between answers in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1637
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1685
 msgid "Specify the gap size between answers in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1657
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1705
 msgid "Answer image size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1658
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1706
 msgid "Specify the size of answers image in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1682
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1730
 msgid "Button  styles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1691
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1739
 msgid "Button background color"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1692
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1740
 msgid "Specify the color of the survey buttons."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1705
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1753
 msgid "Button text color"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1706
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1754
 msgid "Define the color of the button texts."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1719
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1767
 msgid "Button size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1720
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1768
 msgid "Specify the size of the buttons in your survey."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1728
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1776
 msgid "Small"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1731
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1779
 msgid "Medium"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1734
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1782
 msgid "Large"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1743
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1791
 msgid "Button font-size"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1744
-msgid "Specify the text font size inside the buttons in pixels. Note that the button size will change simultaneously with the button text size."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1762
-msgid "Buttons mobile font size"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1763
-msgid "Specify the text font size inside the survey in pixels for mobile devices."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1781
-msgid "Button padding"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1782
-msgid "Define the distance between the text and the border of the buttons in pixels."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1789
-msgid "Left / Right"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1793
-msgid "Top / Bottom"
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1792
+msgid "Specify the alignment of the buttons."
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1802
-msgid "Button border-radius"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1803
-msgid "Make the corners of the buttons rounder by setting a pixel value."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1821
-msgid "Button alignment"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1822
-msgid "Specify the alignment of the buttons in your survey."
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1832
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1892
 msgid "Specify the alignment of the buttons for desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1856
-msgid "Specify the alignment of the buttons for for mobile devices."
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1821
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1916
+msgid "Specify the alignment of the buttons for mobile devices."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1841
+msgid "Button padding"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1842
+msgid "Define the distance between the text and the border of the buttons in pixels."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1849
+msgid "Left / Right"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1853
+msgid "Top / Bottom"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1862
+msgid "Button border-radius"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1863
+msgid "Make the corners of the buttons rounder by setting a pixel value."
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1881
-msgid "Buttons top distance"
+msgid "Button alignment"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1882
+msgid "Specify the alignment of the buttons in your survey."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1941
+msgid "Buttons top distance"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1942
 msgid "Specify the button's distance from the top in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1900
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1952
+msgid "Specify the button's distance from the top in pixels for desktop devices."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1971
+msgid "Specify the button's distance from the top in pixels for mobile devices."
+msgstr ""
+
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1992
 msgid "Buttons text letter spacing"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1901
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1993
 msgid "Define the space between the letters of the survey buttons texts in pixels."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1911
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2003
 msgid "Define the space between the letters of the survey buttons texts in pixels desktop devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1930
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2022
 msgid "Define the space between the letters of the survey buttons texts in pixels for mobile devices."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1950
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2042
 msgid "Custom class for survey container"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1951
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2043
 msgid "Use your custom HTML class for adding your custom styles to the survey container."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1966
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2058
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:134
 msgid "Start"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1977
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2069
 msgid "Custom CSS"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1978
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2070
 msgid "Enter your own CSS code."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1991
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2083
 msgid "Reset styles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1992
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2084
 msgid "Reset styles to default values"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1998
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2090
 msgid "Reset"
 msgstr ""
 
@@ -4817,10 +4851,10 @@ msgid "Write a message that will inform the survey takers about the activation o
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:988
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:123
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:923
-#: ../includes/class-survey-maker-activator.php:401
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:697
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:125
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:932
+#: ../includes/class-survey-maker-activator.php:403
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:701
 msgid "The survey will be available soon!"
 msgstr ""
 
@@ -4833,10 +4867,10 @@ msgid "Set down a message that will inform the survey takers that they cannot ta
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:1010
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:124
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:926
-#: ../includes/class-survey-maker-activator.php:402
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:700
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:126
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:935
+#: ../includes/class-survey-maker-activator.php:404
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:704
 #: ../public/class-survey-maker-public.php:836
 msgid "This survey has expired!"
 msgstr ""
@@ -5507,159 +5541,160 @@ msgstr ""
 msgid "Save and new"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:198
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:200
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:420
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:67
 msgid "User Name"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:199
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:201
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:421
 msgid "User Email"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:200
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:230
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:202
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:232
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:66
 #: ../pb_templates/survey-maker-elementor.php:36
 #: ../public/partials/class-survey-maker-survey-links-by-category.php:49
 msgid "Survey Title"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:201
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:231
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:203
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:233
 msgid "Survey ID"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:202
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:232
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:204
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:234
 msgid "Questions Count"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:203
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:205
 msgid "Current Date"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:204
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:233
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:206
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:235
 msgid "Current Time"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:205
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:207
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:423
 msgid "Unique Code"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:206
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:234
-msgid "Sections Count"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:207
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:235
-msgid "Users Count"
-msgstr ""
-
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:208
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:236
-msgid "Users First Name"
+msgid "Sections Count"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:209
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:237
-msgid "Users Last Name"
+msgid "Users Count"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:210
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:238
-msgid "Users Nick Name"
+msgid "Users First Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:211
-msgid "Users Wordpress Roles"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:239
+msgid "Users Last Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:212
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:240
-msgid "Users Display Name"
+msgid "Users Nick Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:213
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:241
-msgid "Users IP Address"
+msgid "Users Wordpress Roles"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:214
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:242
-msgid "Creation Date"
+msgid "Users Display Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:215
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:243
-msgid "Modified Date"
+msgid "Users IP Address"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:216
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:244
-msgid "Survey Author"
+msgid "Creation Date"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:217
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:245
-msgid "Survey Author Email"
+msgid "Modified Date"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:218
-msgid "Survey Page Link"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:246
+msgid "Survey Author"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:219
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:246
-msgid "Admin Email"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:247
+msgid "Survey Author Email"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:220
-msgid "Submission count"
+msgid "Survey Page Link"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:221
-msgid "Post id"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:248
+msgid "Admin Email"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:222
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:247
-msgid "Home page URL"
+msgid "Submission count"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:223
-msgid "Post Author Email"
+msgid "Post id"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:224
-msgid "Post Title"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:249
+msgid "Home page URL"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:225
-msgid "Post Author Nickname"
+msgid "Post Author Email"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:226
+msgid "Post Title"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:227
+msgid "Post Author Nickname"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:228
 msgid "Site title"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:239
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:241
 msgid "Users WordPress Roles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:254
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:256
 msgid "Add new survey"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:261
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:263
 msgid "Edit survey"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:11
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:18
 msgid "60 min Video Guide"
 msgstr ""
 
@@ -5806,75 +5841,75 @@ msgstr ""
 msgid "Understand your users better. Ask simple questions to know what they like."
 msgstr ""
 
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:37
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:41
 msgid "If you haven't created questions yet, you need to create the questions at first."
 msgstr ""
 
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:42
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:46
 msgid "For creating a question go"
 msgstr ""
 
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:44
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:48
 msgid "here"
 msgstr ""
 
-#: ../admin/partials/surveys/survey-maker-surveys-display.php:79
+#: ../admin/partials/surveys/survey-maker-surveys-display.php:83
 msgid "Create Your First Survey in Under One Minute"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:944
+#: ../includes/class-survey-maker-data.php:951
 msgid "days"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:950
+#: ../includes/class-survey-maker-data.php:957
 msgid "hours"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:956
+#: ../includes/class-survey-maker-data.php:963
 msgid "minutes"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:962
+#: ../includes/class-survey-maker-data.php:969
 msgid "seconds"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1239
+#: ../includes/class-survey-maker-data.php:1246
 msgid "Wrong shortcode initialized"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1243
+#: ../includes/class-survey-maker-data.php:1250
 msgid "Must be a valid email address"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1276
+#: ../includes/class-survey-maker-data.php:1283
 msgid "Next"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1277
+#: ../includes/class-survey-maker-data.php:1284
 msgid "Prev"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1278
+#: ../includes/class-survey-maker-data.php:1285
 msgid "Clear selection"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1279
+#: ../includes/class-survey-maker-data.php:1286
 msgid "Finish"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1280
+#: ../includes/class-survey-maker-data.php:1287
 msgid "Restart"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1281
+#: ../includes/class-survey-maker-data.php:1288
 msgid "Exit"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1282
+#: ../includes/class-survey-maker-data.php:1289
 msgid "Log In"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1966
+#: ../includes/class-survey-maker-data.php:1973
 msgid "There are no surveys yet."
 msgstr ""
 
@@ -6485,10 +6520,10 @@ msgstr ""
 
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:424
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:71
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:716
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:719
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:473
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:675
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2803
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2809
 msgid "ID"
 msgstr ""
 
@@ -6532,9 +6567,9 @@ msgid "Request Date"
 msgstr ""
 
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:69
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:715
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:718
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:674
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2802
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2808
 msgid "Status"
 msgstr ""
 
@@ -6556,101 +6591,101 @@ msgstr ""
 msgid "Trash"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:617
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:620
 msgid "Unpublish"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:620
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:623
 msgid "Publish"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:639
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:753
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:642
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:756
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:612
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:712
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2665
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2854
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2671
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2860
 msgid "Restore"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:640
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:754
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:643
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:757
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:620
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:713
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2666
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2855
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2672
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2861
 msgid "Delete Permanently"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:652
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:748
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:655
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:751
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:623
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:707
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2682
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2849
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2688
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2855
 msgid "Move to trash"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:711
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2793
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:714
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2799
 msgid "Author"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:714
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:717
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:466
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:49
 msgid "Survey"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:999
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1002
 msgid "Popup created."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1002
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1005
 msgid "Popup saved."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1005
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1008
 msgid "Popup duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1008
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1011
 msgid "Popup deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1011
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1014
 msgid "Popup moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1014
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1017
 msgid "Popup restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1017
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1020
 msgid "Popups are duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1020
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1023
 msgid "Popups are deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1023
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1026
 msgid "Popups are moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1026
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1029
 msgid "Popups are restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1029
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1032
 msgid "Popups are published."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1032
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1035
 msgid "Popups are unpublished."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1036
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1039
 msgid "Error: Popup title can not be empty."
 msgstr ""
 
@@ -6676,7 +6711,7 @@ msgid "Unread results"
 msgstr ""
 
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:471
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2796
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2802
 msgid "Categories"
 msgstr ""
 
@@ -6736,72 +6771,72 @@ msgstr ""
 msgid "Select Author"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1355
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1389
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1563
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1787
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1822
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1994
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1361
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1395
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1569
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1793
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1828
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2000
 msgid "Option"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2676
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2682
 msgid "View submissions"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2678
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2684
 msgid "Preview"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2798
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2804
 msgid "Code include"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2799
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2805
 msgid "Sections"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3107
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3113
 msgid "Survey created."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3110
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3116
 msgid "Survey saved."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3113
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3119
 msgid "Survey duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3116
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3122
 msgid "Survey deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3119
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3125
 msgid "Survey moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3122
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3128
 msgid "Survey restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3125
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3131
 msgid "Surveys are duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3128
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3134
 msgid "Surveys are deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3131
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3137
 msgid "Surveys are moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3134
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3140
 msgid "Surveys are restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3138
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3144
 msgid "Error: Survey title can not be empty."
 msgstr ""
 
@@ -6900,19 +6935,19 @@ msgstr ""
 msgid "Full screen"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:1363
+#: ../public/class-survey-maker-public.php:1365
 #, php-format
 msgid "%s %s of %s"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:1890
-#: ../public/class-survey-maker-public.php:1954
-#: ../public/class-survey-maker-public.php:2019
-#: ../public/class-survey-maker-public.php:2095
+#: ../public/class-survey-maker-public.php:1945
+#: ../public/class-survey-maker-public.php:2020
+#: ../public/class-survey-maker-public.php:2096
+#: ../public/class-survey-maker-public.php:2181
 msgid "left"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:2928
+#: ../public/class-survey-maker-public.php:3111
 msgid "You already passed this survey."
 msgstr ""
 

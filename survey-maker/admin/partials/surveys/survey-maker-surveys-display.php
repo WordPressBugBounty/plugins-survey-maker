@@ -13,6 +13,10 @@
 <div class="wrap ays_surveys_list_table">
     <div class="ays-survey-heading-box">
         <div class="ays-survey-wordpress-user-manual-box">
+            <a href="https://www.youtube.com/watch?v=dxYz-gNrrrY" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <span><img src='<?php echo SURVEY_MAKER_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
+                <span style="margin-left: 3px; text-decoration: underline;"><?php echo __('60 min Video Guide', "survey-maker"); ?></span>
+            </a>
             <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
                 <i class="ays_fa ays_fa_file_text" ></i> 
                 <span style="margin-left: 3px;text-decoration: underline;">View Documentation</span>
