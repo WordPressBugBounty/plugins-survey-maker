@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 5.1.0.8
+Stable tag: 5.1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,9 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.0.9 =
+* Fixed: Survey style issue on Elementor block
 
 = 5.1.0.8 =
 * Fixed: Styling problem on the Surveys list table page

@@ -48,6 +48,10 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
     display: none;
 }
 
+.elementor-editor-active .elementor-element .elementor-shortcode .ays-survey-container .ays-survey-section:first-of-type {
+    display: block;
+}
+
 .ays-survey-container .ays-survey-section.active-section {
     display: block;
 }

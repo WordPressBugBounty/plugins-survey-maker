@@ -1452,82 +1452,82 @@ class Survey_Maker_Admin {
         return $submission_count;
     }
 
-    public function ays_survey_sale_baner(){
-        /*   OLD INFO OPEN AFTER HALLOWEN START  */
-        // if(isset($_POST['ays_survey_sale_btn'])){
-        //     update_option('ays_survey_sale_btn', 1);
-        //     update_option('ays_survey_maker_sale_date', current_time( 'mysql' ));
-        // }
+        public function ays_survey_sale_baner(){
+            /*   OLD INFO OPEN AFTER HALLOWEN START  */
+            // if(isset($_POST['ays_survey_sale_btn'])){
+            //     update_option('ays_survey_sale_btn', 1);
+            //     update_option('ays_survey_maker_sale_date', current_time( 'mysql' ));
+            // }
 
-        // if(isset($_POST['ays_survey_sale_btn_for_two_months'])){
-        //     update_option('ays_survey_sale_btn_for_two_months', 1);
-        //     update_option('ays_survey_maker_sale_date', current_time( 'mysql' ));
-        // }
-    
-        // $ays_survey_maker_sale_date = get_option('ays_survey_maker_sale_date');
-        // $ays_survey_maker_sale_two_months = get_option('ays_survey_sale_btn_for_two_months');
-
-        // $val = 60*60*24*5;
-        // if($ays_survey_maker_sale_two_months == 1){
-        //     $val = 60*60*24*61;
-        // }
-
-        // $current_date = current_time( 'mysql' );
-        // $date_diff = strtotime($current_date) - intval(strtotime($ays_survey_maker_sale_date)) ;
+            // if(isset($_POST['ays_survey_sale_btn_for_two_months'])){
+            //     update_option('ays_survey_sale_btn_for_two_months', 1);
+            //     update_option('ays_survey_maker_sale_date', current_time( 'mysql' ));
+            // }
         
-        // $days_diff = $date_diff / $val;
-    
-        // if(intval($days_diff) > 0 ){
-        //     update_option('ays_survey_sale_btn', 0);
-        //     update_option('ays_survey_sale_btn_for_two_months', 0);
-        // }
-    
-        // $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
-        // $ays_survey_maker_flag += intval(get_option('ays_survey_sale_btn_for_two_months'));
-        // if( $ays_survey_maker_flag == 0 ){
-        //     if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
-        //         if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
-        //             // $this->ays_survey_sale_message($ays_survey_maker_flag);
-        //             // $this->ays_survey_spring_bundle_small_message($ays_survey_maker_flag);
-        //             $this->ays_survey_maker_helloween_message($ays_survey_maker_flag);
-        //         }
-        //     }
-        // }
-        /*   OLD INFO OPEN AFTER HALLOWEN END  */
+            // $ays_survey_maker_sale_date = get_option('ays_survey_maker_sale_date');
+            // $ays_survey_maker_sale_two_months = get_option('ays_survey_sale_btn_for_two_months');
 
-        // ONLY FOR Black Friday
-            if(isset($_POST['ays_survey_sale_btn']) && 
-              (isset( $_POST[$this->plugin_name . '-sale-banner'] ) && wp_verify_nonce( $_POST[$this->plugin_name . '-sale-banner'], $this->plugin_name . '-sale-banner' )) &&
-              current_user_can( 'manage_options' )){
-    
-                update_option('ays_survey_sale_btn', 1);
-                update_option('ays_survey_sale_date', current_time( 'mysql' ));
-            }
-        
-            $ays_survey_sale_date = get_option('ays_survey_sale_date');
+            // $val = 60*60*24*5;
+            // if($ays_survey_maker_sale_two_months == 1){
+            //     $val = 60*60*24*61;
+            // }
 
-            $val = 60*60*24*5;
-
-            $current_date = current_time( 'mysql' );
-            $date_diff = strtotime($current_date) - intval(strtotime($ays_survey_sale_date)) ;
+            // $current_date = current_time( 'mysql' );
+            // $date_diff = strtotime($current_date) - intval(strtotime($ays_survey_maker_sale_date)) ;
             
-            $days_diff = $date_diff / $val;
+            // $days_diff = $date_diff / $val;
         
-            if(intval($days_diff) > 0 ){
-                update_option('ays_survey_sale_btn', 0);
-            }
+            // if(intval($days_diff) > 0 ){
+            //     update_option('ays_survey_sale_btn', 0);
+            //     update_option('ays_survey_sale_btn_for_two_months', 0);
+            // }
         
+            // $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
+            // $ays_survey_maker_flag += intval(get_option('ays_survey_sale_btn_for_two_months'));
+            // if( $ays_survey_maker_flag == 0 ){
+            //     if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
+            //         if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
+            //             // $this->ays_survey_sale_message($ays_survey_maker_flag);
+            //             // $this->ays_survey_spring_bundle_small_message($ays_survey_maker_flag);
+            //             $this->ays_survey_maker_helloween_message($ays_survey_maker_flag);
+            //         }
+            //     }
+            // }
+            /*   OLD INFO OPEN AFTER HALLOWEN END  */
+
+            // ONLY FOR Black Friday
+                if(isset($_POST['ays_survey_sale_btn']) && 
+                (isset( $_POST[$this->plugin_name . '-sale-banner'] ) && wp_verify_nonce( $_POST[$this->plugin_name . '-sale-banner'], $this->plugin_name . '-sale-banner' )) &&
+                current_user_can( 'manage_options' )){
         
-            $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
-            if( $ays_survey_maker_flag == 0 ){
-                if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
-                    if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
-                        $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
+                    update_option('ays_survey_sale_btn', 1);
+                    update_option('ays_survey_sale_date', current_time( 'mysql' ));
+                }
+            
+                $ays_survey_sale_date = get_option('ays_survey_sale_date');
+
+                $val = 60*60*24*5;
+
+                $current_date = current_time( 'mysql' );
+                $date_diff = strtotime($current_date) - intval(strtotime($ays_survey_sale_date)) ;
+                
+                $days_diff = $date_diff / $val;
+            
+                if(intval($days_diff) > 0 ){
+                    update_option('ays_survey_sale_btn', 0);
+                }
+            
+            
+                $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
+                if( $ays_survey_maker_flag == 0 ){
+                    if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
+                        if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
+                            $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
+                        }
                     }
                 }
-            }
-        
-    }
+            
+        }
 
     public function ays_survey_sale_message($ishmar){
         if($ishmar == 0 ){

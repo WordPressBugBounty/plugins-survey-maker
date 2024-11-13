@@ -5,12 +5,15 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
     public function get_name() {
         return 'survey-maker';
     }
+
     public function get_title() {
         return __( 'Survey Maker', 'survey-maker' );
     }
+    
     public function get_icon() {
         return 'survey-elementor-widget-logo';
     }
+
 	public function get_categories() {
 		return array( 'wordpress' );
 	}
@@ -65,23 +68,24 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
 
         $this->end_controls_section();
     }
+
     protected function render( $instance = array() ) {
 
         if ( ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'elementor' ) || ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'elementor_ajax' ) ) {
             echo '<style>
-                .ays-survey-container .ays-survey-section:first-of-type {
-                    display: block!important;
-                }
+                    .ays-survey-container .ays-survey-section:first-of-type {
+                        display: block!important;
+                    }
 
-                .ays-survey-container .ays-survey-section-footer,
-                .ays-survey-container .ays-survey-answer,
-                .ays-survey-container textarea.ays-survey-question-input-textarea,
-                .ays-survey-container select,
-                .ays-survey-container input {
-                    pointer-events: none!important;
-                    overflow: hidden!important;
-                }
-            </style>';
+                    .ays-survey-container .ays-survey-section-footer,
+                    .ays-survey-container .ays-survey-answer,
+                    .ays-survey-container textarea.ays-survey-question-input-textarea,
+                    .ays-survey-container select,
+                    .ays-survey-container input {
+                        pointer-events: none!important;
+                        overflow: hidden!important;
+                    }
+                </style>';
         }
 
         $settings = $this->get_settings_for_display();
@@ -124,5 +128,6 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
     }
 
     protected function content_template() {}
+
     public function render_plain_content( $instance = array() ) {}
 }
