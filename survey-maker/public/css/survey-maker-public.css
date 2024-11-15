@@ -56,6 +56,13 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
     display: block;
 }
 
+.ays-survey-container .ays-survey-section .ays-survey-section-buttons .ays-survey-section-button-container .ays-survey-section-button-content a.ays-survey-section-button,
+.ays-survey-container .ays-survey-section .ays-survey-section-buttons .ays-survey-section-button-container .ays-survey-section-button-content button.ays-survey-section-button,
+.ays-survey-container .ays-survey-section .ays-survey-section-buttons .ays-survey-section-button-container .ays-survey-section-button-content input.ays-survey-section-button,
+.ays-survey-container .ays-survey-section .ays-survey-simple-button-container .ays-survey-button-content .ays-survey-button {
+    width: auto;
+}
+
 .ays-survey-container .ays-survey-section .ays-survey-section-header {
     margin-top: 12px;
     background-color: #fff;

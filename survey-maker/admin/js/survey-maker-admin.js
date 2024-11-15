@@ -242,6 +242,51 @@
                 }
             }
         }
+
+        // Check if save button closed for unsaved changes confirmation box
+        var subButtons = '#ays_apply_top.button, #ays_apply.button, #ays_submit_top.button, #ays_submit.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-apply-top.button, #ays-button-apply.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-save.button, #ays-button-save-top.button, #ays-button.button';
+        $(document).on('click', subButtons ,function () {
+            var $this = $(this);
+            if(!$this.hasClass('ays-save-button-clicked')){
+                $this.addClass('ays-save-button-clicked');
+            }
+        });
+
+        setTimeout(function() {
+            var aysUnsavedChanges = false;
+
+            var selectorsArr = [
+                '#ays-survey-form .ays-survey-tab-content input',
+                '#ays-survey-form .ays-survey-tab-content select',
+                '#ays-survey-form .ays-survey-tab-content textarea',
+                '#ays-survey-category-form .ays-survey-tab-content input',
+                '#ays-survey-category-form .ays-survey-tab-content select',
+                '#ays-survey-category-form .ays-survey-tab-content textarea',
+                '#ays-survey-popup-surveys-form .ays-survey-tab-content input',
+                '#ays-survey-popup-surveys-form .ays-survey-tab-content select',
+                '#ays-survey-popup-surveys-form .ays-survey-tab-content textarea',
+                '#ays-survey-settings-form input',
+                '#ays-survey-settings-form select',
+                '#ays-survey-settings-form textarea',
+            ];
+
+            var formInputs = selectorsArr.join(',');
+
+            $(document).on('change input', formInputs, function() {
+                aysUnsavedChanges = true;
+            });
+
+            $(window).on('beforeunload', function(event) {
+                var saveButtons = $(document).find('#ays_apply_top.button, #ays_apply.button, #ays_submit_top.button, #ays_submit.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-apply-top.button, #ays-button-apply.button, #ays-button-save-new-top.button, #ays-button-save-new.button, #ays-button-save.button, #ays-button-save-top.button, #ays-button.button');
+                var savingButtonsClicked = saveButtons.filter('.ays-save-button-clicked').length > 0;
+
+                if (aysUnsavedChanges && !savingButtonsClicked) {
+                    event.preventDefault();
+                    event.returnValue = true;
+                }
+            });
+        }, 1000);
+
         
         // $('[data-toggle="popover"]').popover();
         
