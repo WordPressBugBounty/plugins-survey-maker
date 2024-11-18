@@ -3435,6 +3435,9 @@ class Survey_Maker_Public {
 
             // Width
             $popup_survey_width = (isset($options['width']) && $options['width'] != '') ? absint ( intval( $options['width'] ) ) : 800;
+            // Mobile width
+            $options['width_mobile'] = isset($options['width_mobile']) ? $options['width_mobile'] : $popup_survey_width;
+            $popup_survey_width_mobile = (isset($options['width_mobile']) && $options['width_mobile'] != '') ? absint ( intval( $options['width_mobile'] ) ) : 800;
             
             // Height
             $popup_survey_height = (isset($options['height']) && $options['height'] != '') ? absint ( intval( $options['height'] ) ) : 450;
@@ -3694,6 +3697,9 @@ class Survey_Maker_Public {
                             }
 
                             @media screen and (max-width: 640px){
+                                .ays-survey-popup-modal-' . $popup['id'] . ' {
+                                    width: ' . $popup_survey_width_mobile . 'px;
+                                }
                                 .ays-survey-popup-modal-' . $popup['id'] . ' .ays-survey-popup-title-content{
                                     font-size: '.$survey_popup_title_mobile_font_size.'px;
                                     '.$hide_popup_on_mobile_class.';

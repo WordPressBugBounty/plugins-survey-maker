@@ -144,6 +144,9 @@
 
     // Width
     $popup_survey_width = (isset($options["width"]) && $options["width"] != "") ? absint ( intval( $options["width"] ) ) : 800;
+    // Mobile Width
+    $options["width_mobile"] = isset($options["width_mobile"]) ? $options["width_mobile"] : $popup_survey_width;
+    $popup_survey_width_mobile = (isset($options["width_mobile"]) && $options["width_mobile"] != "") ? absint ( intval( $options["width_mobile"] ) ) : 800;
    
     // Height
     $popup_survey_height = (isset($options["height"]) && $options["height"] != "") ? absint ( intval( $options["height"] ) ) : 450;
