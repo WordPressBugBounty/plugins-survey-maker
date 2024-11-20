@@ -252,6 +252,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
             
             // Height
             $survey_heigth = (isset( $_POST[ $name_prefix . 'popup_survey_height' ] ) && $_POST[ $name_prefix . 'popup_survey_height' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) : 450;
+            // Height mobile
+            $survey_heigth_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) && $_POST[ $name_prefix . 'popup_survey_height_mobile' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) ) : 450;
             
             // popup_position
             $popup_position = (isset( $_POST[$name_prefix . 'survey_popup_position'] ) && $_POST[$name_prefix . 'survey_popup_position'] != 'center-center') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_position' ] ) : 'center-center';
@@ -301,6 +303,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "width"         	 => $survey_width,
                 "width_mobile"       => $survey_width_mobile,
                 "height"        	 => $survey_heigth,
+                "height_mobile"    	 => $survey_heigth_mobile,
                 "popup_position"     => $popup_position,
                 "popup_margin"       => $popup_margin,
                 "popup_trigger"      => $popup_trigger,

@@ -150,6 +150,9 @@
    
     // Height
     $popup_survey_height = (isset($options["height"]) && $options["height"] != "") ? absint ( intval( $options["height"] ) ) : 450;
+    // Height mobile
+    $options["height_mobile"] = isset($options["height_mobile"]) ? $options["height_mobile"] : $popup_survey_height;
+    $popup_survey_height_mobile = (isset($options["height_mobile"]) && $options["height_mobile"] != "") ? absint ( intval( $options["height_mobile"] ) ) : 450;
 
     // Popup Position
     $popup_position = (isset($options["popup_position"]) && $options["popup_position"] != "center-center") ? $options["popup_position"] : "center-center";
