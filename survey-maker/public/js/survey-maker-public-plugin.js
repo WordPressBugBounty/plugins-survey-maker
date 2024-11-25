@@ -377,6 +377,14 @@
         _this.$el.find('.ays-survey-section .ays-survey-answer-label input[type="radio"],.ays-survey-detect-selected-question-dropdown').on('change' , function(){
             _this.aysAutoNext($(this));
         });
+        
+        _this.$el.on('change', 'input[type="date"][name^="' + _this.htmlClassPrefix + 'answers"]', function(){
+            
+            $(this).parents('.' + _this.htmlClassPrefix + 'question').removeClass('ays-has-error');
+            $(this).parents('.' + _this.htmlClassPrefix + 'question').find('.' + _this.htmlClassPrefix + 'question-validation-error').html('');
+
+            _this.confirmBeforeUnload = true;
+        });
 
         _this.aysSurveyonTabPress();
         
@@ -1065,7 +1073,7 @@
             for (var i = 0; i < requiredQuestions.length; i++) {
                 var item = requiredQuestions.eq(i);
                 var checkMinVotes = requiredQuestions.eq(i).data('isMin');
-                if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' ){
+                if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' || item.data('type') == 'date'){
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
                     if( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() == '' ){
                         errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';

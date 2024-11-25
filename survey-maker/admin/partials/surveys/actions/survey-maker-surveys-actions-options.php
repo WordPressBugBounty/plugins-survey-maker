@@ -379,6 +379,7 @@
         "short_text"    => __("Short Text", "survey-maker"),
         "number"        => __("Number", "survey-maker"),
         "phone"         => __("Phone", "survey-maker"),
+        "date"          => __("Date", "survey-maker"),
         "yesorno"       => __("Yes or No", "survey-maker"),
         "email"         => __("Email", "survey-maker"),
         "name"          => __("Name", "survey-maker"),
@@ -389,6 +390,7 @@
         "checkbox"      => '',
         "select"        => '',
         "star" => '',
+        "date" => '',
         "yesorno"       => '',
         "text"          => __("Your answer", "survey-maker"),
         "short_text"    => __("Your answer", "survey-maker"),
@@ -420,6 +422,7 @@
 
     $other_question_types = array(
         "star",
+        "date"
     );
 
     $survey_star_1 = '';

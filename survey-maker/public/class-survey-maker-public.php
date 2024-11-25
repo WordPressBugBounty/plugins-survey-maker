@@ -595,6 +595,7 @@ class Survey_Maker_Public {
                     break;
                 case "number":
                 case "phone":
+                case "date":
                     $user_answer = $question_answer;
                     $answer_id = 0;
                     break;
@@ -1443,6 +1444,7 @@ class Survey_Maker_Public {
             "checkbox",
             "select",
             "star",
+            "date",
             "text",
             "short_text",
             "number",
@@ -2219,6 +2221,32 @@ class Survey_Maker_Public {
                             $content[] .= '</div>';
                         $content[] .= '</div>';
                     }
+
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+        $content[] = '</div>';
+
+        $content = implode( '', $content );
+
+        return $content;
+    }
+    
+    public function ays_survey_question_type_DATE_html( $question ){
+        $content = array();
+
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-date-input ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input " . $this->html_class_prefix."minimal-theme-input-date";
+        }
+
+        $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+
+            $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-date-box">';
+                $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box ' . $this->html_class_prefix . 'question-date-input-box">';
+
+                    $content[] = '<input type="date" class="' . $minimal_class . ' ' . $this->html_class_prefix . 'input" type="text" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]"  tabindex="0">';
 
                 $content[] = '</div>';
             $content[] = '</div>';

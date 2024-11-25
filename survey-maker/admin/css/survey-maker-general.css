@@ -2189,6 +2189,137 @@ textarea.ays-survey-question-input-textarea {
 .ays-survey-question-more-option-wrap .ays-survey-answer-box .ays-survey-input {
     width: 100%;
 }
+
+
+/* Date question type */ /* Time question type START */
+.ays-survey-question-date-summary-wrapper,
+.ays-survey-question-date-time-summary-wrapper,
+.ays-survey-question-time-summary-wrapper{
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.ays-survey-question-date-summary-wrap,
+.ays-survey-question-date-time-summary-wrap,
+.ays-survey-question-time-summary-wrap {
+    display: table;
+}
+
+.ays-survey-question-date-summary-row,
+.ays-survey-question-date-time-summary-row,
+.ays-survey-question-time-summary-row {
+    display: table-row;
+}
+
+.ays-survey-question-date-summary-year-month,
+.ays-survey-question-time-summary-hour {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    border-right: 1px solid #000;
+    min-width: 95px;
+    padding: 10px 16px;
+    text-align: right;
+}
+
+.ays-survey-question-date-time-summary-year-month-day {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    font: 500 14px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    border-right: 1px solid #000;
+    min-width: 95px;
+    padding: 10px 16px;
+    text-align: right;
+}
+
+
+.ays-survey-question-date-summary-days,
+.ays-survey-question-time-summary-hours {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    font: 400 13px Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    padding-left: 16px;
+}
+
+.ays-survey-question-date-summary-days-row,
+.ays-survey-question-date-time-summary-year-month-day-row,
+.ays-survey-question-time-summary-hours-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.ays-survey-question-date-summary-days-row-day,
+.ays-survey-question-time-summary-hours-row-hour {
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    margin: 2px;
+    padding: 6px 10px;
+    background-color: rgb(255, 230, 222)
+}
+
+.ays-survey-question-date-summary-days-row-day-with-count,
+.ays-survey-question-time-summary-hours-row-hour-with-count {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 3px;
+    background-color: rgb(255, 87, 34);
+    color: rgb(255, 255, 255);
+}
+
+.ays-survey-question-date-summary-days-row-day-count,
+.ays-survey-question-time-summary-hours-row-hour-count {
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    margin-left: 8px;
+    padding: 3px 7px;
+    color: rgb(68, 68, 68);
+    background-color: rgba(255,255,255,0.75);
+}
+
+.ays-survey-question-time-summary-hour .ays-survey-question-time-summary-hour-all{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.ays-survey-question-date-time-summary-hour-all{
+    font-size: 15px;
+    padding: 3px 8px;
+    border: 1px solid rgb(255, 87, 34);
+    background-color: rgb(255, 230, 222);
+    border-radius: 4px;
+    margin-right: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+.ays-survey-question-date-time-summary-hour-all-count {
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    margin-left: 8px;
+    padding: 3px 7px;
+    color: rgb(255 241 241);
+    background-color: #777;
+    font-size: 12px;
+}
+
+/* Date question type */ /* Time question type END */
+
 /* Text Limitation start */
 .ays-survey-question-more-option-wrap-limitations {
     padding: 0 50px;

@@ -1111,6 +1111,7 @@ class Survey_Maker_Admin {
             'text',
             'short_text',
             'number',
+            'date',
             'star',
             'phone',
             'name',
@@ -1279,6 +1280,7 @@ class Survey_Maker_Admin {
             'text',
             'short_text',
             'phone',
+            'date',
             'star',
             'number',
             'name',
@@ -1293,7 +1295,18 @@ class Survey_Maker_Admin {
                 $question_answer_id[ $individual_questions_result['question_id'] ]['otherAnswer'] = isset($individual_questions_result['user_variant']) && $individual_questions_result['user_variant'] != '' ? stripslashes(htmlentities($individual_questions_result['user_variant'])) : '';
             }elseif( in_array( $individual_questions_result['type'], $text_types ) ){
 
-                $question_answer_id[ $individual_questions_result['question_id'] ] = stripslashes(htmlentities($individual_questions_result['user_answer']));
+                if( $individual_questions_result['type'] == 'date' ){
+                    $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = stripslashes(htmlentities($individual_questions_result['user_answer']));
+
+                    if( $individual_questions_result['user_answer'] != '' ){
+                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = date( 'd . m . Y', strtotime(nl2br(htmlentities($individual_questions_result['user_answer']))) );
+                    }else{
+                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
+                    }
+                }
+                else{
+                    $question_answer_id[ $individual_questions_result['question_id'] ] = stripslashes(htmlentities($individual_questions_result['user_answer']));
+                }
             }elseif($individual_questions_result['type'] == 'radio'){
 
                 $other_answer = isset($individual_questions_result['user_variant']) && $individual_questions_result['user_variant'] != '' ? stripslashes(htmlentities($individual_questions_result['user_variant'])) : '';

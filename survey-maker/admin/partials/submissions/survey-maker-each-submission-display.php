@@ -75,6 +75,7 @@ $text_types = array(
     'phone',
     'name',
     'email',
+    'date',
 );
 
 $submission_count_and_ids = $this->get_submission_count_and_ids();
@@ -722,7 +723,7 @@ $types_with_changeable_charts = array(
                                 
                                 <div class="ays-survey-submission-summary-question-content">
                                     <?php
-                                        if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) ):
+                                        if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) && $question_results[ $question['id'] ]['question_type'] != 'date'):
                                     ?>
                                     <div class="ays-survey-submission-text-answers-div">
                                         <?php
@@ -741,6 +742,78 @@ $types_with_changeable_charts = array(
                                                 endif;
                                             endif;
                                         ?>
+                                    </div>
+                                    <?php
+                                    elseif( $question_results[ $question['id'] ]['question_type'] == 'date' ):
+                                    ?>
+                                    <div class="ays-survey-question-date-summary-wrapper">
+                                        <div class="ays-survey-question-date-summary-wrap">
+                                            <?php
+                                            if( isset( $question_results[ $question['id'] ]['answers'] ) && !empty( $question_results[ $question['id'] ]['answers'] ) ){
+
+                                                if( isset( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) && !empty( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) ){
+                                                    $dates_array = array();
+                                                    foreach( $question_results[ $question['id'] ]['answers'][ $question['id'] ] as $aid => $answer ){
+                                                        $year_month = explode( '-', $answer );
+                                                        $day = $year_month[2];
+                                                        if( isset( $dates_array[ $year_month[0] ] ) ){
+                                                            if( isset( $dates_array[ $year_month[0] ][ $year_month[1] ] ) ){
+                                                                if( isset( $dates_array[ $year_month[0] ][ $year_month[1] ][ $year_month[2] ] ) ){
+                                                                    $dates_array[ $year_month[0] ][ $year_month[1] ][ $year_month[2] ] += 1;
+                                                                }else{
+                                                                    $dates_array[ $year_month[0] ][ $year_month[1] ][ $year_month[2] ] = 1;
+                                                                }
+                                                            }else{
+                                                                $dates_array[ $year_month[0] ][ $year_month[1] ][ $year_month[2] ] = 1;
+                                                            }
+                                                        }else{
+                                                            $dates_array[ $year_month[0] ][ $year_month[1] ][ $year_month[2] ] = 1;
+                                                        }
+                                                    }
+
+                                                    ksort( $dates_array, SORT_NATURAL );
+                                                    foreach( $dates_array as $year => $months ){
+                                                        ksort( $months, SORT_NATURAL );
+                                                        foreach( $months as $month => $days ){
+                                                            ksort( $days, SORT_NATURAL );
+                                                        }
+                                                    }
+
+                                                    foreach( $dates_array as $year => $months ){
+                                                        foreach( $months as $month => $days ){
+                                                            ?>
+                                                            <div class="ays-survey-question-date-summary-row">
+                                                                <div class="ays-survey-question-date-summary-year-month"><?php echo date_i18n( 'F Y', strtotime( $year ."-". $month ) ); ?></div>
+                                                                <div class="ays-survey-question-date-summary-days">
+                                                                    <div class="ays-survey-question-date-summary-days-row">
+                                                                        <?php
+                                                                        foreach( $days as $day => $count ){
+                                                                            if( $count == 1 ){
+                                                                                ?>
+                                                                                <div class="ays-survey-question-date-summary-days-row-day">
+                                                                                    <span><?php echo esc_html( $day ); ?></span>
+                                                                                </div>
+                                                                                <?php
+                                                                            }else{
+                                                                                ?>
+                                                                                <div class="ays-survey-question-date-summary-days-row-day ays-survey-question-date-summary-days-row-day-with-count">
+                                                                                    <span><?php echo esc_html( $day ); ?></span>
+                                                                                    <div class="ays-survey-question-date-summary-days-row-day-count"><?php echo esc_html( $count ); ?></div>
+                                                                                </div>
+                                                                                <?php
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </div>
                                     </div>
                                     <?php
                                         else:
