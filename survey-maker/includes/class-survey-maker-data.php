@@ -295,6 +295,8 @@ class Survey_Maker_Data {
 
         // Answer image size
         $settings[ $name_prefix . 'answers_image_size' ] = (isset($options[ $name_prefix . 'answers_image_size' ]) && $options[ $name_prefix . 'answers_image_size' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_image_size' ] ) ) : 195;
+        // Answer image size mobile
+        $settings[ $name_prefix . 'answers_image_size_mobile' ] = (isset($options[ $name_prefix . 'answers_image_size_mobile' ]) && $options[ $name_prefix . 'answers_image_size_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_image_size_mobile' ] ) ) : 195;
 
 
         // =========== Answers Styles End   ===========

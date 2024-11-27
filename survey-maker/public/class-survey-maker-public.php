@@ -3337,7 +3337,7 @@ class Survey_Maker_Public {
         $content .= '
         @media screen and (max-width: 580px) {
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . '.' . $this->html_class_prefix . 'container .' . $this->html_class_prefix . 'section .' . $this->html_class_prefix . 'answer-label .' . $this->html_class_prefix . 'answer-image-container{
-                height: 195px;
+                height: ' . $this->options[ $this->name_prefix . 'answers_image_size_mobile' ] . 'px;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-main{

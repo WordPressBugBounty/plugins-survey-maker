@@ -453,6 +453,8 @@
                 $(document).find("#ays_survey_answers_gap_mobile").val(0);
                 // Answer image size
                 $(document).find("#ays_survey_answers_image_size").val(195);
+                // Answer image size mobile
+                $(document).find("#ays_survey_answers_image_size_mobile").val(195);
             // == ==
 
             // == Button styles ==

@@ -91,6 +91,7 @@
         'survey_answers_gap' => 0,
         'survey_answers_gap_mobile' => 0,
         'survey_answers_image_size' => 195,
+        'survey_answers_image_size_mobile' => 195,
 
         'survey_buttons_size' => 'medium',
         'survey_buttons_font_size' => 14,
@@ -770,6 +771,8 @@
 
             // Answer image size
             $survey_answers_image_size = (isset($options[ $name_prefix . 'answers_image_size' ]) && $options[ $name_prefix . 'answers_image_size' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_image_size' ] ) ) : 195;
+            // Answer image size mobile
+            $survey_answers_image_size_mobile = (isset($options[ $name_prefix . 'answers_image_size_mobile' ]) && $options[ $name_prefix . 'answers_image_size_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_image_size_mobile' ] ) ) : 195;
 
         // =========== Answers Styles End   ===========
 

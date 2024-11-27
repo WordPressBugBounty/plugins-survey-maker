@@ -581,6 +581,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Answer image size
             $survey_answers_image_size = (isset( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size' ] != 0) ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) ) : 195;
+            // Answer image size mobile
+            $survey_answers_image_size_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] != 0) ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] ) ) : 195;
 
             // =========== Answers Styles End   ===========
 
@@ -977,6 +979,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_answers_gap'                => $survey_answers_gap,
                 'survey_answers_gap_mobile'         => $survey_answers_gap_mobile,
                 'survey_answers_image_size'         => $survey_answers_image_size,
+                'survey_answers_image_size_mobile'  => $survey_answers_image_size_mobile,
 
                 'survey_buttons_bg_color'              => $survey_buttons_bg_color,
                 'survey_buttons_size'                  => $survey_buttons_size,
