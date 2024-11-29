@@ -205,6 +205,9 @@ class Survey_Maker_Data {
 
         // Question Image Width
         $settings[ $name_prefix . 'question_image_width' ] = (isset($options[ $name_prefix . 'question_image_width' ]) && $options[ $name_prefix . 'question_image_width' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_image_width' ] ) ) : '';
+        // Question Image Width mobile
+        $options[ $name_prefix . 'question_image_width_mobile' ] = isset($options[ $name_prefix . 'question_image_width_mobile' ]) ? $options[ $name_prefix . 'question_image_width_mobile' ] : $settings[ $name_prefix . 'question_image_width' ];
+        $settings[ $name_prefix . 'question_image_width_mobile' ] = (isset($options[ $name_prefix . 'question_image_width_mobile' ]) && $options[ $name_prefix . 'question_image_width_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_image_width_mobile' ] ) ) : '';
 
         // Question Image Height
         $settings[ $name_prefix . 'question_image_height' ] = (isset($options[ $name_prefix . 'question_image_height' ]) && $options[ $name_prefix . 'question_image_height' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_image_height' ] ) ) : '';

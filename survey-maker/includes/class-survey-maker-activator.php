@@ -343,6 +343,7 @@ class Survey_Maker_Activator {
             
                     'survey_question_font_size' => 16,
                     'survey_question_image_width' => '',
+                    'survey_question_image_width_mobile' => '',
                     'survey_question_title_alignment' => 'left',
                     'survey_question_image_height' => '',
                     'survey_question_image_sizing' => 'cover',

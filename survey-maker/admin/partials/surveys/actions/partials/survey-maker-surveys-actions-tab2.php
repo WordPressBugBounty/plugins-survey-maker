@@ -1056,6 +1056,27 @@
                                 </div>
                             </div>
                             <hr/>
+
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label for="ays_survey_question_image_width_mobile">
+                                        <?php echo __('Image width on mobile',"survey-maker")?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the question image width in pixels for mobile devices.',"survey-maker"); ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                    <div class="ays_survey_display_flex_width">
+                                        <div>
+                                            <input type="number" class="ays-text-input" id="ays_survey_question_image_width_mobile" name="ays_survey_question_image_width_mobile" value="<?php echo esc_attr($survey_question_image_width_mobile); ?>"/>
+                                        </div>
+                                        <div class="ays_dropdown_max_width">
+                                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                        </div>
+                                    </div>
+                                    <span class="ays_survey_small_hint_text"><?php echo __("For 100% leave blank", "survey-maker"); ?></span>
+                                </div>
+                            </div>
+                            <hr/>
                             <div class="form-group row">
                                 <div class="col-sm-12">
                                     <label for="ays_survey_question_image_height">

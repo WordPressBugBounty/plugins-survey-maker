@@ -64,6 +64,7 @@
         'survey_question_font_size_mobile'                  => 16,
         'survey_question_title_alignment'                   => 'left',
         'survey_question_image_width'                       => '',
+        'survey_question_image_width_mobile'                => '',
         'survey_question_image_height'                      => '',
         'survey_question_image_sizing'                      => 'cover',
         'survey_question_padding'                           => 24,
@@ -681,6 +682,9 @@
 
             // Question Image Width
             $survey_question_image_width = (isset($options[ $name_prefix . 'question_image_width' ]) && $options[ $name_prefix . 'question_image_width' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_image_width' ] ) ) : '';
+            // Question Image Width mobile
+            $options[ $name_prefix . 'question_image_width_mobile' ] = isset($options[ $name_prefix . 'question_image_width_mobile' ]) ? $options[ $name_prefix . 'question_image_width_mobile' ] : $survey_question_image_width;
+            $survey_question_image_width_mobile = (isset($options[ $name_prefix . 'question_image_width_mobile' ]) && $options[ $name_prefix . 'question_image_width_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_image_width_mobile' ] ) ) : '';
 
             // Question Image Height
             $survey_question_image_height = (isset($options[ $name_prefix . 'question_image_height' ]) && $options[ $name_prefix . 'question_image_height' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_image_height' ] ) ) : '';
