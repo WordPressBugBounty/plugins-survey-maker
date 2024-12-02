@@ -1795,26 +1795,26 @@ class Survey_Maker_Admin {
                         $content[] = '<div id="ays-survey-maker-countdown-main-container">';
                             $content[] = '<div class="ays-survey-maker-countdown-container">';
 
-                                $content[] = '<div id="ays-survey-countdown">';
+                                    $content[] = '<div id="ays-survey-countdown">';
 
-                                    $content[] = '<div>';
-                                        $content[] = __( "Offer ends in:", "survey-maker" );
+                                        $content[] = '<div>';
+                                            $content[] = __( "Offer ends in:", "survey-maker" );
+                                        $content[] = '</div>';
+
+                                        $content[] = '<ul>';
+                                            $content[] = '<li><span id="ays-survey-countdown-days"></span>'. __( "Days", "survey-maker" ) .'</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-hours"></span>'. __( "Hours", "survey-maker" ) .'</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-minutes"></span>'. __( "Minutes", "survey-maker" ) .'</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-seconds"></span>'. __( "Seconds", "survey-maker" ) .'</li>';
+                                        $content[] = '</ul>';
                                     $content[] = '</div>';
 
-                                    $content[] = '<ul>';
-                                        $content[] = '<li><span id="ays-survey-countdown-days"></span>'. __( "Days", "survey-maker" ) .'</li>';
-                                        $content[] = '<li><span id="ays-survey-countdown-hours"></span>'. __( "Hours", "survey-maker" ) .'</li>';
-                                        $content[] = '<li><span id="ays-survey-countdown-minutes"></span>'. __( "Minutes", "survey-maker" ) .'</li>';
-                                        $content[] = '<li><span id="ays-survey-countdown-seconds"></span>'. __( "Seconds", "survey-maker" ) .'</li>';
-                                    $content[] = '</ul>';
-                                $content[] = '</div>';
-
-                                $content[] = '<div id="ays-survey-countdown-content" class="emoji">';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                    $content[] = '<span></span>';
-                                $content[] = '</div>';
+                                    $content[] = '<div id="ays-survey-countdown-content" class="emoji">';
+                                        $content[] = '<span>🚀</span>';
+                                        $content[] = '<span>⌛</span>';
+                                        $content[] = '<span>🔥</span>';
+                                        $content[] = '<span>💣</span>';
+                                    $content[] = '</div>';
 
                             $content[] = '</div>';
                         $content[] = '</div>';
@@ -1824,46 +1824,48 @@ class Survey_Maker_Admin {
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-text-box">';
                         $content[] = '<div>';
 
-                            $content[] = '<span class="ays-survey-black-friday-bundle-title">';
-                                $content[] = __( "<span><a href='https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-sale-banner' class='ays-survey-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>", "survey-maker" );
-                            $content[] = '</span>';
+                                $content[] = '<span class="ays-survey-black-friday-bundle-title">';
+                                    $content[] = __( "<span><a href='https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-mega-bundle-sale-banner' class='ays-survey-black-friday-bundle-title-link' target='_blank'>Black Friday Sale</a></span>", "survey-maker" );
+                                $content[] = '</span>';
 
-                            $content[] = '</br>';
+                                $content[] = '</br>';
 
-                            $content[] = '<span class="ays-survey-black-friday-bundle-desc">';
-                                $content[] = '<a class="ays-survey-black-friday-bundle-desc" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-sale-banner" class="ays-survey-black-friday-bundle-title-link" target="_blank">';
-                                    $content[] = __( "20% OFF", "survey-maker" );
-                                $content[] = '</a>';
-                            $content[] = '</span>';
-                        $content[] = '</div>';
+                                $content[] = '<span class="ays-survey-black-friday-bundle-desc">';
+                                    $content[] = '<a class="ays-survey-black-friday-bundle-desc" href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="ays-survey-black-friday-bundle-title-link" target="_blank">';
+                                        $content[] = __( "50% OFF", "survey-maker" );
+                                    $content[] = '</a>';
+                                $content[] = '</span>';
+                            $content[] = '</div>';
 
-                        $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-survey-dismiss-buttons-container-for-form">';
+                            $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-survey-dismiss-buttons-container-for-form">';
 
-                            $content[] = '<form action="" method="POST">';
-                                $content[] = '<div id="ays-survey-dismiss-buttons-content">';
-                                if( current_user_can( 'manage_options' ) ){
-                                    $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_bf_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", "survey-maker" ) .'</button>';
-                                    $content[] = wp_nonce_field( 'survey-maker-sale-bf-banner' ,  'survey-maker-sale-bf-banner' );
-                                }
-                                $content[] = '</div>';
-                            $content[] = '</form>';
-                            
-                        $content[] = '</div>';
+                                $content[] = '<form action="" method="POST">';
+                                    $content[] = '<div id="ays-survey-dismiss-buttons-content">';
+                                    if( current_user_can( 'manage_options' ) ){
+                                        $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_bf_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", "survey-maker" ) .'</button>';
+                                        $content[] = wp_nonce_field( 'survey-maker-sale-bf-banner' ,  'survey-maker-sale-bf-banner' );
+                                    }
+                                    $content[] = '</div>';
+                                $content[] = '</form>';
+                                
+                            $content[] = '</div>';
 
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-black-friday-bundle-coupon-text-box">';
-                        $content[] = '<div class="ays-survey-black-friday-bundle-coupon-row">';
-                            $content[] = 'bfdeal20off';
-                        $content[] = '</div>';
+                        // $content[] = '<div class="ays-survey-black-friday-bundle-coupon-row">';
+                        //     $content[] = 'bfdeal20off';
+                        // $content[] = '</div>';
 
-                        $content[] = '<div class="ays-survey-black-friday-bundle-text-row">';
-                            $content[] = __( '20% Extra Discount Coupon', "survey-maker" );
+                        $content[] = '<div class="ays-survey-black-friday-bundle-data-title">';
+                            $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="ays-survey-black-friday-bundle-data-title-text" target="_blank">';
+                                $content[] = __( 'MEGA BUNDLE', "survey-maker" );
+                            $content[] = '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', "survey-maker" ) . '</a>';
+                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=black-friday-mega-bundle-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', "survey-maker" ) . '</a>';
                         $content[] = '<span class="ays-survey-dicount-one-time-text">';
                             $content[] = __( "One-time payment", "survey-maker" );
                         $content[] = '</span>';

@@ -104,6 +104,7 @@ div#ays-survey-black-friday-bundle-dicount-month-main.ays_survey_dicount_info {
     line-height: normal;
 }
 
+#ays-survey-black-friday-bundle-dicount-month-main .ays-survey-black-friday-bundle-data-title .ays-survey-black-friday-bundle-data-title-text,
 #ays-survey-black-friday-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-black-friday-bundle-title .ays-survey-black-friday-bundle-title-link {
     font-style: normal;
     font-weight: 700;
@@ -114,6 +115,7 @@ div#ays-survey-black-friday-bundle-dicount-month-main.ays_survey_dicount_info {
     letter-spacing: 0.13em;
     color: #161616;
     text-shadow: -1px 1px 0 #fff, 1px 1px 0 #fff, 1px -1px 0 #fff, -1px -1px 0 #fff;
+    cursor: pointer;
 }
 
 #ays-survey-black-friday-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-black-friday-bundle-desc {
