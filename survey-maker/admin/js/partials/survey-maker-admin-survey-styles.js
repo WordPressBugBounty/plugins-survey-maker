@@ -390,7 +390,7 @@
             $(document).find("#ays-survey-classic_light").prop('checked', true).change();
 
             // Set values where value is empty by default at once (for all options)
-            $(document).find("#ays_survey_width,#ays_survey_mobile_width,#ays_mobile_max_width,#ays_survey_question_image_width,#ays_survey_question_image_height,#ays_survey_custom_class").val('');
+            $(document).find("#ays_survey_width,#ays_survey_mobile_width,#ays_mobile_max_width,#ays_survey_question_image_width,#ays_survey_question_image_height,#ays_survey_question_image_height_mobile,#ays_survey_custom_class").val('');
             // Set dropdowns in pixels
             $(document).find("#ays_survey_width_by_percentage_px").aysDropdown('set selected', 'pixels');
             // Set dropdowns in percentage

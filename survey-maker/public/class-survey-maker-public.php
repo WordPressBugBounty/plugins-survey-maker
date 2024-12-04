@@ -3210,6 +3210,16 @@ class Survey_Maker_Public {
         if( $this->options[ $this->name_prefix . 'question_image_width_mobile' ] != '' ){
             $question_image_width_mobile = $this->options[ $this->name_prefix . 'question_image_width_mobile' ] . 'px';
         }
+        
+        $question_image_height_mobile = 'auto';
+        if( $this->options[ $this->name_prefix . 'question_image_height_mobile' ] != '' ){
+            $question_image_height_mobile = $this->options[ $this->name_prefix . 'question_image_height_mobile' ] . 'px';
+        }
+        else{
+            if($this->options[ $this->name_prefix . 'question_image_height' ] != ''){
+                $question_image_height_mobile = $this->options[ $this->name_prefix . 'question_image_height' ] . 'px';
+            }
+        }
 
         // Question padding mobile
         $question_padding = $this->options[ $this->name_prefix . 'question_padding_mobile' ];
@@ -3340,6 +3350,7 @@ class Survey_Maker_Public {
             }
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-image {
                 width: ' . $question_image_width_mobile . ';
+                height: ' . $question_image_height_mobile . ';
             }
         }';
         $content .= '

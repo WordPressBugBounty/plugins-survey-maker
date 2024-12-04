@@ -1098,6 +1098,25 @@
                             <hr/>
                             <div class="form-group row">
                                 <div class="col-sm-12">
+                                    <label for="ays_survey_question_image_height_mobile">
+                                        <?php echo __('Image height on mobile',"survey-maker")?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the question height in pixels for mobile devices.',"survey-maker"); ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                    <div class="ays_survey_display_flex_width">
+                                        <div>
+                                            <input type="number" class="ays-text-input" id="ays_survey_question_image_height_mobile" name="ays_survey_question_image_height_mobile" value="<?php echo esc_attr($survey_question_image_height_mobile); ?>"/>
+                                        </div>
+                                        <div class="ays_dropdown_max_width">
+                                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
                                     <label for="ays_survey_question_image_sizing">
                                         <?php echo __('Image sizing', "survey-maker" ); ?>
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
