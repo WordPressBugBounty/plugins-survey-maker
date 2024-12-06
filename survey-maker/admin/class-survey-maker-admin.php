@@ -166,7 +166,8 @@ class Survey_Maker_Admin {
 
         wp_enqueue_style('wp-color-picker');
         wp_enqueue_style( $this->plugin_name . '-banner.css', plugin_dir_url(__FILE__) . 'css/banner.css', array(), $this->version, 'all');
-        wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner-black-friday-2024.css', array(), $this->version, 'all');
+        // wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner-black-friday-2024.css', array(), $this->version, 'all');
+        wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-animate.css', plugin_dir_url(__FILE__) . 'css/animate.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-animations.css', plugin_dir_url(__FILE__) . 'css/animations.css', array(), $this->version, 'all');
         // wp_enqueue_style( $this->plugin_name . '-font-awesome', '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css', array(), $this->version, 'all');
@@ -1509,15 +1510,15 @@ class Survey_Maker_Admin {
             /*   OLD INFO OPEN AFTER HALLOWEN END  */
 
             // ONLY FOR Black Friday
-                if(isset($_POST['ays_survey_sale_bf_btn']) && 
-                (isset( $_POST[$this->plugin_name . '-sale-bf-banner'] ) && wp_verify_nonce( $_POST[$this->plugin_name . '-sale-bf-banner'], $this->plugin_name . '-sale-bf-banner' )) &&
+                if(isset($_POST['ays_survey_sale_btn']) && 
+                (isset( $_POST[$this->plugin_name . '-sale-banner'] ) && wp_verify_nonce( $_POST[$this->plugin_name . '-sale-banner'], $this->plugin_name . '-sale-banner' )) &&
                 current_user_can( 'manage_options' )){
         
-                    update_option('ays_survey_sale_bf_btn', 1);
-                    update_option('ays_survey_sale_bf_date', current_time( 'mysql' ));
+                    update_option('ays_survey_sale_btn', 1);
+                    update_option('ays_survey_sale_date', current_time( 'mysql' ));
                 }
             
-                $ays_survey_sale_date = get_option('ays_survey_sale_bf_date');
+                $ays_survey_sale_date = get_option('ays_survey_sale_date');
 
                 $val = 60*60*24*5;
 
@@ -1527,16 +1528,16 @@ class Survey_Maker_Admin {
                 $days_diff = $date_diff / $val;
             
                 if(intval($days_diff) > 0 ){
-                    update_option('ays_survey_sale_bf_btn', 0);
+                    update_option('ays_survey_sale_btn', 0);
                 }
             
             
-                $ays_survey_maker_flag = intval(get_option('ays_survey_sale_bf_btn'));
+                $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
                 if( $ays_survey_maker_flag == 0 ){
                     if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
                         if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
-                            // $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
-                            $this->ays_survey_black_friday_message_2024($ays_survey_maker_flag);
+                            $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
+                            // $this->ays_survey_black_friday_message_2024($ays_survey_maker_flag);
                         }
                     }
                 }
