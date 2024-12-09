@@ -217,6 +217,9 @@ class Survey_Maker_Data {
 
         // Question Image sizing
         $settings[ $name_prefix . 'question_image_sizing' ] = (isset($options[ $name_prefix . 'question_image_sizing' ]) && $options[ $name_prefix . 'question_image_sizing' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_image_sizing' ] ) ) : 'cover';
+        // Question Image sizing mobile
+        $options[ $name_prefix . 'question_image_sizing_mobile' ] = isset($options[ $name_prefix . 'question_image_sizing_mobile' ]) ? $options[ $name_prefix . 'question_image_sizing_mobile' ] : $settings[ $name_prefix . 'question_image_sizing' ];
+        $settings[ $name_prefix . 'question_image_sizing_mobile' ] = (isset($options[ $name_prefix . 'question_image_sizing_mobile' ]) && $options[ $name_prefix . 'question_image_sizing_mobile' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_image_sizing_mobile' ] ) ) : 'cover';
         
         // Question padding
         $settings[ $name_prefix . 'question_padding' ] = (isset($options[ $name_prefix . 'question_padding' ]) && $options[ $name_prefix . 'question_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding' ] ) ) : 24;

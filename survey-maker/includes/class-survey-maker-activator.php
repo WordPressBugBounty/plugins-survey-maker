@@ -348,6 +348,7 @@ class Survey_Maker_Activator {
                     'survey_question_image_height' => '',
                     'survey_question_image_height_mobile' => '',
                     'survey_question_image_sizing' => 'cover',
+                    'survey_question_image_sizing_mobile' => 'cover',
                     'survey_question_padding' => 24,
                     'survey_question_padding_mobile' => 24,
                     'survey_question_caption_text_color' => '#333',

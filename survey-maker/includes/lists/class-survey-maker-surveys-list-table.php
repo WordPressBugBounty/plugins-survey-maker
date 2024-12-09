@@ -508,6 +508,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Question Image sizing
             $survey_question_image_sizing = (isset( $_POST[ $name_prefix . 'survey_question_image_sizing' ] ) && $_POST[ $name_prefix . 'survey_question_image_sizing' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_sizing' ] ) ) : 'cover';
+            // Question Image sizing mobile
+            $survey_question_image_sizing_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] ) ) : 'cover';
             
             // Question padding
             $survey_question_padding = (isset( $_POST[ $name_prefix . 'survey_question_padding' ] ) && $_POST[ $name_prefix . 'survey_question_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_padding' ] ) ) : 24;
@@ -960,6 +962,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_question_image_height'      => $survey_question_image_height,
                 'survey_question_image_height_mobile' => $survey_question_image_height_mobile,
                 'survey_question_image_sizing'      => $survey_question_image_sizing,
+                'survey_question_image_sizing_mobile' => $survey_question_image_sizing_mobile,
                 'survey_question_padding'           => $survey_question_padding,
                 'survey_question_padding_mobile'    => $survey_question_padding_mobile,
                 'survey_question_caption_text_color' => $survey_question_caption_text_color,

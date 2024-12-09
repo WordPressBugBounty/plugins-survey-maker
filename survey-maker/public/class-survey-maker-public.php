@@ -3351,6 +3351,7 @@ class Survey_Maker_Public {
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-image {
                 width: ' . $question_image_width_mobile . ';
                 height: ' . $question_image_height_mobile . ';
+                object-fit: ' . $this->options[ $this->name_prefix . 'question_image_sizing_mobile' ] . ';
             }
         }';
         $content .= '

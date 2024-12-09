@@ -68,6 +68,7 @@
         'survey_question_image_height'                      => '',
         'survey_question_image_height_mobile'               => '',
         'survey_question_image_sizing'                      => 'cover',
+        'survey_question_image_sizing_mobile'               => 'cover',
         'survey_question_padding'                           => 24,
         'survey_question_padding_mobile'                    => 24,
         'survey_question_caption_text_color'                => '#333',
@@ -695,6 +696,9 @@
 
             // Question Image sizing
             $survey_question_image_sizing = (isset($options[ $name_prefix . 'question_image_sizing' ]) && $options[ $name_prefix . 'question_image_sizing' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'question_image_sizing' ] ) ) : 'cover';
+            // Question Image sizing mobile
+            $options[ $name_prefix . 'question_image_sizing_mobile' ] = isset($options[ $name_prefix . 'question_image_sizing_mobile' ]) ? $options[ $name_prefix . 'question_image_sizing_mobile' ] : $survey_question_image_sizing;
+            $survey_question_image_sizing_mobile = (isset($options[ $name_prefix . 'question_image_sizing_mobile' ]) && $options[ $name_prefix . 'question_image_sizing_mobile' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'question_image_sizing_mobile' ] ) ) : 'cover';
             
             // Question padding
             $survey_question_padding = (isset($options[ $name_prefix . 'question_padding' ]) && $options[ $name_prefix . 'question_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding' ] ) ) : 24;

@@ -1147,6 +1147,39 @@
                                     </select>
                                 </div>
                             </div>
+                            <hr/>
+                            <div class="form-group row">
+                                <div class="col-sm-12">
+                                    <label for="ays_survey_question_image_sizing_mobile">
+                                        <?php echo __('Image sizing on mobile', "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
+                                            echo htmlspecialchars( sprintf(
+                                                __('Configure the scales of the question images for mobile devices.',"survey-maker") . '<ul class="ays_help_ul"><li>' .
+                                                __('%sCover:%s Resize the image so that it fills the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
+                                                __('%sContain:%s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
+                                                __('%sNone:%s The image is not resized at all.',"survey-maker") . '</li><li>' .
+                                                __('%sUnset:%s The variable does not exist.',"survey-maker") . '</li></ul>',
+                                                '<em>',
+                                                '</em>',
+                                                '<em>',
+                                                '</em>',
+                                                '<em>',
+                                                '</em>',
+                                                '<em>',
+                                                '</em>'
+                                            ) );
+                                        ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                    <select name="ays_survey_question_image_sizing_mobile" id="ays_survey_question_image_sizing_mobile" class="ays-text-input ays-text-input-short ays_survey_aysDropdown" style="display:block;">
+                                        <option value="cover" <?php echo $survey_question_image_sizing_mobile == 'cover' ? 'selected' : ''; ?>><?php echo __( "Cover", "survey-maker" ); ?></option>
+                                        <option value="contain" <?php echo $survey_question_image_sizing_mobile == 'contain' ? 'selected' : ''; ?>><?php echo __( "Contain", "survey-maker" ); ?></option>
+                                        <option value="none" <?php echo $survey_question_image_sizing_mobile == 'none' ? 'selected' : ''; ?>><?php echo __( "None", "survey-maker" ); ?></option>
+                                        <option value="unset" <?php echo $survey_question_image_sizing_mobile == 'unset' ? 'selected' : ''; ?>><?php echo __( "Unset", "survey-maker" ); ?></option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- Questions Image Styles -->
                     <hr/>
