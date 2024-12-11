@@ -1116,7 +1116,7 @@
                             </div>
                             <hr/>
                             <div class="form-group row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-4">
                                     <label for="ays_survey_question_image_sizing">
                                         <?php echo __('Image sizing', "survey-maker" ); ?>
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
@@ -1139,6 +1139,8 @@
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
+                                </div>
+                                <div class="col-sm-8">
                                     <select name="ays_survey_question_image_sizing" id="ays_survey_question_image_sizing" class="ays-text-input ays-text-input-short ays_survey_aysDropdown" style="display:block;">
                                         <option value="cover" <?php echo $survey_question_image_sizing == 'cover' ? 'selected' : ''; ?>><?php echo __( "Cover", "survey-maker" ); ?></option>
                                         <option value="contain" <?php echo $survey_question_image_sizing == 'contain' ? 'selected' : ''; ?>><?php echo __( "Contain", "survey-maker" ); ?></option>
@@ -1149,7 +1151,7 @@
                             </div>
                             <hr/>
                             <div class="form-group row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-4">
                                     <label for="ays_survey_question_image_sizing_mobile">
                                         <?php echo __('Image sizing on mobile', "survey-maker" ); ?>
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
@@ -1172,6 +1174,8 @@
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
+                                </div>
+                                <div class="col-sm-8">
                                     <select name="ays_survey_question_image_sizing_mobile" id="ays_survey_question_image_sizing_mobile" class="ays-text-input ays-text-input-short ays_survey_aysDropdown" style="display:block;">
                                         <option value="cover" <?php echo $survey_question_image_sizing_mobile == 'cover' ? 'selected' : ''; ?>><?php echo __( "Cover", "survey-maker" ); ?></option>
                                         <option value="contain" <?php echo $survey_question_image_sizing_mobile == 'contain' ? 'selected' : ''; ?>><?php echo __( "Contain", "survey-maker" ); ?></option>
