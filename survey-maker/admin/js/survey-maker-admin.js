@@ -2990,9 +2990,10 @@
                 hour    = minute * 60,
                 day     = hour * 24;
 
-            var countdownEndTime = SurveyMakerAdmin.surveyBannerDate,
+            // var countdownEndTime = SurveyMakerAdmin.surveyBannerDate,
             // var countdownEndTime = "DEC 31, 2022 23:59:59",
-            countDown = new Date(countdownEndTime).getTime(),
+            var countdownEndTime = "DEC 24, 2024 23:59:59";
+            var countDown = new Date(countdownEndTime).getTime(),
     
             x = setInterval(function() {
 
@@ -3003,7 +3004,7 @@
                 var countDownHours   = document.getElementById("ays-survey-countdown-hours");
                 var countDownMinutes = document.getElementById("ays-survey-countdown-minutes");
                 var countDownSeconds = document.getElementById("ays-survey-countdown-seconds");
-
+                
                 if(countDownDays !== null || countDownHours !== null || countDownMinutes !== null || countDownSeconds !== null){
                     countDownDays.innerText = Math.floor(distance / (day)),
                     countDownHours.innerText = Math.floor((distance % (day)) / (hour)),
