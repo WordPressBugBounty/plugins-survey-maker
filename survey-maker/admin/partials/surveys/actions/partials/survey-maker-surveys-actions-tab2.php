@@ -1666,13 +1666,45 @@
                             </label>
                         </div>
                         <div class="col-sm-7 ays_divider_left">
-                            <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id="ays_survey_answers_object_fit" name="ays_survey_answers_object_fit">
-                                <option value="cover" <?php echo ($survey_answers_object_fit == 'cover') ? 'selected' : ''; ?>><?php echo __('Cover',"survey-maker"); ?></option>
-                                <option value="fill" <?php echo ($survey_answers_object_fit == 'fill') ? 'selected' : ''; ?>><?php echo __('Fill',"survey-maker"); ?></option>
-                                <option value="contain" <?php echo ($survey_answers_object_fit == 'contain') ? 'selected' : ''; ?>><?php echo __('Contain',"survey-maker"); ?></option>
-                                <option value="scale-down" <?php echo ($survey_answers_object_fit == 'scale-down') ? 'selected' : ''; ?>><?php echo __('Scale-down',"survey-maker"); ?></option>
-                                <option value="none" <?php echo ($survey_answers_object_fit == 'none') ? 'selected' : ''; ?>><?php echo __('None',"survey-maker"); ?></option>
-                            </select>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_object_fit'>
+                                        <?php echo __('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the size of the images added to the answers for desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id="ays_survey_answers_object_fit" name="ays_survey_answers_object_fit">
+                                        <option value="cover" <?php echo ($survey_answers_object_fit == 'cover') ? 'selected' : ''; ?>><?php echo __('Cover',"survey-maker"); ?></option>
+                                        <option value="fill" <?php echo ($survey_answers_object_fit == 'fill') ? 'selected' : ''; ?>><?php echo __('Fill',"survey-maker"); ?></option>
+                                        <option value="contain" <?php echo ($survey_answers_object_fit == 'contain') ? 'selected' : ''; ?>><?php echo __('Contain',"survey-maker"); ?></option>
+                                        <option value="scale-down" <?php echo ($survey_answers_object_fit == 'scale-down') ? 'selected' : ''; ?>><?php echo __('Scale-down',"survey-maker"); ?></option>
+                                        <option value="none" <?php echo ($survey_answers_object_fit == 'none') ? 'selected' : ''; ?>><?php echo __('None',"survey-maker"); ?></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_answers_object_fit_mobile'>
+                                        <?php echo __('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the size of the images added to the answers for mobile devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7">
+                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id="ays_survey_answers_object_fit_mobile" name="ays_survey_answers_object_fit_mobile">
+                                        <option value="cover" <?php echo ($survey_answers_object_fit_mobile == 'cover') ? 'selected' : ''; ?>><?php echo __('Cover',"survey-maker"); ?></option>
+                                        <option value="fill" <?php echo ($survey_answers_object_fit_mobile == 'fill') ? 'selected' : ''; ?>><?php echo __('Fill',"survey-maker"); ?></option>
+                                        <option value="contain" <?php echo ($survey_answers_object_fit_mobile == 'contain') ? 'selected' : ''; ?>><?php echo __('Contain',"survey-maker"); ?></option>
+                                        <option value="scale-down" <?php echo ($survey_answers_object_fit_mobile == 'scale-down') ? 'selected' : ''; ?>><?php echo __('Scale-down',"survey-maker"); ?></option>
+                                        <option value="none" <?php echo ($survey_answers_object_fit_mobile == 'none') ? 'selected' : ''; ?>><?php echo __('None',"survey-maker"); ?></option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- Answer Object fit -->
                     <hr/>

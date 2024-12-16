@@ -287,6 +287,8 @@ class Survey_Maker_Data {
 
         // Answer object-fit
         $settings[ $name_prefix . 'answers_object_fit' ] = (isset($options[ $name_prefix . 'answers_object_fit' ]) && $options[ $name_prefix . 'answers_object_fit' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'answers_object_fit' ] ) ) : 'cover';
+        // Answer object-fit
+        $settings[ $name_prefix . 'answers_object_fit_mobile' ] = (isset($options[ $name_prefix . 'answers_object_fit_mobile' ]) && $options[ $name_prefix . 'answers_object_fit_mobile' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'answers_object_fit_mobile' ] ) ) : 'cover';
 
         // Answer padding
         $settings[ $name_prefix . 'answers_padding' ] = (isset($options[ $name_prefix . 'answers_padding' ]) && $options[ $name_prefix . 'answers_padding' ] != '') ? absint ( intval( $options[ $name_prefix . 'answers_padding' ] ) ) : 8;

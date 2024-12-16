@@ -572,6 +572,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Answer object-fit
             $survey_answers_object_fit = (isset( $_POST[ $name_prefix . 'survey_answers_object_fit' ] ) && $_POST[ $name_prefix . 'survey_answers_object_fit' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_object_fit' ] ) ) : 'cover';
+            // Answer object-fit mobile
+            $survey_answers_object_fit_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] ) ) : 'cover';
 
             // Answer padding
             $survey_answers_padding = (isset( $_POST[ $name_prefix . 'survey_answers_padding' ] ) && $_POST[ $name_prefix . 'survey_answers_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_padding' ] ) ) : 8;
@@ -983,6 +985,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_answers_view'               => $survey_answers_view,
                 'survey_answers_view_alignment'     => $survey_answers_view_alignment,
                 'survey_answers_object_fit'         => $survey_answers_object_fit,
+                'survey_answers_object_fit_mobile'  => $survey_answers_object_fit_mobile,
                 'survey_answers_padding'            => $survey_answers_padding,
                 'survey_answers_padding_mobile'     => $survey_answers_padding_mobile,
                 'survey_answers_gap'                => $survey_answers_gap,

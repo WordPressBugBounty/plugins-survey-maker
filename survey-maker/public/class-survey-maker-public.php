@@ -3353,6 +3353,9 @@ class Survey_Maker_Public {
                 height: ' . $question_image_height_mobile . ';
                 object-fit: ' . $this->options[ $this->name_prefix . 'question_image_sizing_mobile' ] . ';
             }
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-image {
+                object-fit: ' . $this->options[ $this->name_prefix . 'answers_object_fit_mobile' ] . ';
+            }
         }';
         $content .= '
         @media screen and (max-width: 580px) {

@@ -423,7 +423,7 @@
                 // Section question font size            
                 $(document).find("#ays_survey_question_font_size,#ays_survey_question_font_size_mobile").val(16);
                 // Set dropdowns where value is cover (for all options)
-                $(document).find("#ays_survey_question_image_sizing,#ays_survey_answers_object_fit").aysDropdown('set selected', 'cover');
+                $(document).find("#ays_survey_question_image_sizing,#ays_survey_answers_object_fit,#ays_survey_answers_object_fit").aysDropdown('set selected', 'cover');
                 // Question font size
                 $(document).find("#ays_survey_question_padding").val(24);
                 // Question font size mobile
