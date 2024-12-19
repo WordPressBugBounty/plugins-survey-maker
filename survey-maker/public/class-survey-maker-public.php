@@ -3483,6 +3483,8 @@ class Survey_Maker_Public {
             
             // Title border radius
             $survey_popup_title_border_radius = (isset($options["popup_title_border_radius"]) && $options["popup_title_border_radius"] != "") ? absint ( intval( $options["popup_title_border_radius"] ) ) : 0;
+            // Title border radius mobile
+            $survey_popup_title_border_radius_mobile = (isset($options["popup_title_border_radius_mobile"]) && $options["popup_title_border_radius_mobile"] != "") ? absint ( intval( $options["popup_title_border_radius_mobile"] ) ) : 0;
 
             // Width
             $popup_survey_width = (isset($options['width']) && $options['width'] != '') ? absint ( intval( $options['width'] ) ) : 800;
@@ -3761,6 +3763,7 @@ class Survey_Maker_Public {
                                     letter-spacing: '.$survey_popup_title_letter_spacing_on_mobile.'px;
                                     text-align: '.$survey_popup_title_alignment_on_mobile.';
                                     text-transform: '.$survey_popup_title_transform_mobile.';
+                                    border-radius: '.$survey_popup_title_border_radius_mobile.'px;
                                 }
                             }
                             

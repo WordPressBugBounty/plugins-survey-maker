@@ -306,12 +306,43 @@
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-9 ays_survey_display_flex_width">
-                                <div>
-                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_survey_popup_title_border_radius" name="ays_survey_popup_title_border_radius" value="<?php echo esc_attr($survey_popup_title_border_radius); ?>">
+                            <div class="col-sm-9 ays_divider_left">
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for='<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_border_radius'>
+                                            <?php echo __('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the radius of the title border for desktop devices.',"survey-maker")?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9 ays_survey_display_flex_width">
+                                        <div>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id="ays_survey_popup_title_border_radius" name="ays_survey_popup_title_border_radius" value="<?php echo esc_attr($survey_popup_title_border_radius); ?>">
+                                        </div>
+                                        <div class="ays_dropdown_max_width">
+                                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="ays_dropdown_max_width">
-                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for='<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_border_radius_mobile'>
+                                            <?php echo __('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the radius of the title border for mobile devices.',"survey-maker")?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9 ays_survey_display_flex_width">
+                                        <div>
+                                            <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_popup_title_border_radius_mobile' name='ays_survey_popup_title_border_radius_mobile' value="<?php echo esc_attr($survey_popup_title_border_radius_mobile); ?>"/>
+                                        </div>
+                                        <div class="ays_dropdown_max_width">
+                                            <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div><!-- Title border radius -->

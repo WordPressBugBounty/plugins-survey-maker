@@ -18,6 +18,7 @@
         "popup_title_font_size"     => 25,
         "popup_hide_title_on_mobile"     => 'off',
         "popup_title_border_radius" => 0,
+        "popup_title_border_radius_mobile" => 0,
         "popup_title_mobile_font_size" => 25,
         "popup_title_bg_color"     => "#00000000",
         "popup_title_text_color"     => "#000000",
@@ -126,6 +127,9 @@
 
     // Title border radius
     $survey_popup_title_border_radius = (isset($options["popup_title_border_radius"]) && $options["popup_title_border_radius"] != "") ? absint ( intval( $options["popup_title_border_radius"] ) ) : 0;
+    // Title border radius mobile
+    $options["popup_title_border_radius_mobile"] = isset($options["popup_title_border_radius_mobile"]) ? $options["popup_title_border_radius_mobile"] : $survey_popup_title_border_radius;
+    $survey_popup_title_border_radius_mobile = (isset($options["popup_title_border_radius_mobile"]) && $options["popup_title_border_radius_mobile"] != "") ? absint ( intval( $options["popup_title_border_radius_mobile"] ) ) : 0;
 
     // Survey_id
     $survey_id = isset( $object["survey_id"] ) && $object["survey_id"] != "" ? stripslashes( htmlentities( $object["survey_id"] ) ) : "";

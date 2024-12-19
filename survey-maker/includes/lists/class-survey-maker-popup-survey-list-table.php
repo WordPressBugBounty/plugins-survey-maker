@@ -217,6 +217,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
                         
             // Title border radius
             $survey_popup_title_border_radius = isset( $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] ) && $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] != '' ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] ) ) : 0;
+            // Title border radius mobile
+            $survey_popup_title_border_radius_mobile = isset( $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] != '' ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] ) ) : 0;
 
             if($title == ''){
                 $url = esc_url_raw( remove_query_arg( false ) );
@@ -300,6 +302,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "popup_title_letter_spacing_on_mobile" => $survey_popup_title_letter_spacing_on_mobile,
                 "popup_hide_title_on_mobile" => $survey_popup_hide_title_on_mobile,
                 "popup_title_border_radius" => $survey_popup_title_border_radius,
+                "popup_title_border_radius_mobile" => $survey_popup_title_border_radius_mobile,
                 "width"         	 => $survey_width,
                 "width_mobile"       => $survey_width_mobile,
                 "height"        	 => $survey_heigth,
