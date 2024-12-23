@@ -218,7 +218,7 @@
     // Survey categories IDs
     $surveys = $this->popup_surveys_obj->get_surveys();
 
-    $loader_iamge = '<span class="display_none ays_survey_loader_box"><img src="". SURVEY_MAKER_ADMIN_URL ."/images/loaders/loading.gif"></span>';
+    $loader_iamge = '<span class="display_none ays_survey_loader_box"><img src="'. SURVEY_MAKER_ADMIN_URL .'/images/loaders/loading.gif"></span>';
 
     // Popup full screen mode
     $survey_popup_full_screen = (isset($options["full_screen_mode"]) && $options["full_screen_mode"] == "on") ? "checked" : "";

@@ -13,7 +13,27 @@
 
                 </div>
             </div>
-            <h1><?php echo $heading; ?></h1>
+            <h1 class="wp-heading-inline">
+            <?php
+                    echo esc_html($heading);
+
+                    wp_nonce_field("popup_survey_action", "popup_survey_action");
+                    $other_attributes = array("id" => "ays-button-save");
+                    submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner", "ays_submit", false, $other_attributes);
+
+                    $other_attributes = array(
+                        'id' => 'ays-button-apply',
+                        'title' => 'Ctrl + s',
+                        'data-toggle' => 'tooltip',
+                        'data-delay'=> '{"show":"1000"}'
+                    );
+
+                    submit_button(__("Save", "survey-maker"), "ays-button ays-survey-loader-banner", "ays_apply", false, $other_attributes);
+
+                    echo $loader_iamge;
+
+                ?>
+            </h1>
             <hr/>
             <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">
                 <div class="form-group row">
@@ -859,15 +879,19 @@
             <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>date_created" value="<?php echo $date_created; ?>">
             <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>date_modified" value="<?php echo $date_modified; ?>">
             <?php
+
                 wp_nonce_field("popup_survey_action", "popup_survey_action");
+
                 $other_attributes = array("id" => "ays-button-save");
                 submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner", "ays_submit", false, $other_attributes);
+
                 $other_attributes = array(
                     'id' => 'ays-button-apply',
                     'title' => 'Ctrl + s',
                     'data-toggle' => 'tooltip',
                     'data-delay'=> '{"show":"1000"}'
                 );
+                
                 submit_button(__("Save", "survey-maker"), "ays-button ays-survey-loader-banner", "ays_apply", false, $other_attributes);
 
                 echo $loader_iamge;
