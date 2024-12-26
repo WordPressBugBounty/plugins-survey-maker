@@ -400,7 +400,7 @@
                                 </div>
                             </div>
                             <hr class="row ays-survey-cover-image-options-hr <?php echo $survey_cover_photo != '' ? '' : 'display_none_not_important'; ?>">
-                            <div class="row ays-survey-cover-image-options <?php echo $survey_cover_photo != '' ? '' : 'display_none_not_important'; ?>">
+                            <div class="row ays-survey-cover-image-options survey_position_block <?php echo $survey_cover_photo != '' ? '' : 'display_none_not_important'; ?>">
                                 <div class="col-sm-4">
                                     <label for='<?php echo esc_attr($html_name_prefix); ?>survey_cover_image_height'>
                                         <?php echo __('Image Position', "survey-maker"); ?>
@@ -410,17 +410,24 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-8 ays_divider_left">
-                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-text-input-full" id='<?php echo esc_attr($html_name_prefix); ?>survey_cover_image_pos' name='<?php echo esc_attr($html_name_prefix); ?>survey_cover_image_pos'>
-                                        <option value="left_top"      <?php echo ($survey_cover_photo_position == 'left_top')      ? 'selected' : ''; ?>><?php echo __('Left Top',"survey-maker"); ?></option>
-                                        <option value="left_center"   <?php echo ($survey_cover_photo_position == 'left_center')   ? 'selected' : ''; ?>><?php echo __('Left Center',"survey-maker"); ?></option>
-                                        <option value="left_bottom"   <?php echo ($survey_cover_photo_position == 'left_bottom')   ? 'selected' : ''; ?>><?php echo __('Left Bottom',"survey-maker"); ?></option>
-                                        <option value="center_top"    <?php echo ($survey_cover_photo_position == 'center_top')    ? 'selected' : ''; ?>><?php echo __('Center Top',"survey-maker"); ?></option>
-                                        <option value="center_center" <?php echo ($survey_cover_photo_position == 'center_center') ? 'selected' : ''; ?>><?php echo __('Center Center',"survey-maker"); ?></option>
-                                        <option value="center_bottom" <?php echo ($survey_cover_photo_position == 'center_bottom') ? 'selected' : ''; ?>><?php echo __('Center Bottom',"survey-maker"); ?></option>
-                                        <option value="right_top"     <?php echo ($survey_cover_photo_position == 'right_top')     ? 'selected' : ''; ?>><?php echo __('Right Top',"survey-maker"); ?></option>
-                                        <option value="right_center"  <?php echo ($survey_cover_photo_position == 'right_center')  ? 'selected' : ''; ?>><?php echo __('Right Center',"survey-maker"); ?></option>
-                                        <option value="right_bottom"  <?php echo ($survey_cover_photo_position == 'right_bottom')  ? 'selected' : ''; ?>><?php echo __('Right Bottom',"survey-maker"); ?></option>
-                                    </select>
+                                        <table id="ays-survey-position-table">
+                                        <tr>
+                                            <td data-value="left_top" data-id="1" style="<?php echo $survey_cover_photo_position == "left_top" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                            <td data-value="top_center" data-id="2" style="<?php echo $survey_cover_photo_position == "top_center" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                            <td data-value="right_top" data-id="3" style="<?php echo $survey_cover_photo_position == "right_top" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                        </tr>
+                                        <tr>
+                                            <td data-value="left_center" data-id="4" style="<?php echo $survey_cover_photo_position == "left_center" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                            <td data-value="center_center" data-id="5" style="<?php echo $survey_cover_photo_position == "center_center" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                            <td data-value="right_center" data-id="6" style="<?php echo $survey_cover_photo_position == "right_center" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                        </tr>
+                                        <tr>
+                                            <td data-value="left_bottom" data-id="7" style="<?php echo $survey_cover_photo_position == "left_bottom" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                            <td data-value="center_bottom" data-id="8" style="<?php echo $survey_cover_photo_position == "center_bottom" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                            <td data-value="right_bottom" data-id="9" style="<?php echo $survey_cover_photo_position == "right_bottom" ? "background-color: #a2d6e7" : ""; ?>"></td>
+                                        </tr>
+                                    </table>
+                                    <input type="hidden" name="<?php echo $html_name_prefix; ?>survey_cover_image_pos" id="ays-survey-position-val" value="<?php echo $survey_cover_photo_position; ?>" >
                                 </div>
                             </div>
                             <hr class="row ays-survey-cover-image-options-hr <?php echo $survey_cover_photo != '' ? '' : 'display_none_not_important'; ?>">

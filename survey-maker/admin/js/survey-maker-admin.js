@@ -2992,7 +2992,7 @@
 
             // var countdownEndTime = SurveyMakerAdmin.surveyBannerDate,
             // var countdownEndTime = "DEC 31, 2022 23:59:59",
-            var countdownEndTime = "DEC 24, 2024 23:59:59";
+            var countdownEndTime = "JAN 7, 2025 23:59:59";
             var countDown = new Date(countdownEndTime).getTime(),
     
             x = setInterval(function() {
@@ -3159,6 +3159,12 @@
             $(document).find('.popup_survey_position_block #ays-survey-popup-position-val').val(val);
             aysCheckPopupPosition();
         });
+
+        $(document).find('table#ays-survey-position-table tr td').on('click', function(e){
+            var val = $(this).data('value');
+            $(document).find('.survey_position_block #ays-survey-position-val').val(val);
+            aysCheckPosition();
+        });
         
         function aysCheckPopupPosition(){
             var hiddenVal = $(document).find('.popup_survey_position_block #ays-survey-popup-position-val').val();
@@ -3178,6 +3184,20 @@
             }
 
             $(document).find('table#ays-survey-popup-position-table td').removeAttr('style');
+            $this.css('background-color','#a2d6e7');
+        }
+
+                
+        function aysCheckPosition(){
+            var hiddenVal = $(document).find('.survey_position_block #ays-survey-position-val').val();
+           
+            if (hiddenVal == "") {
+                var $this = $(document).find('table#ays-survey-position-table tr td[data-value="center-center"]');
+            }else{
+                var $this = $(document).find('table#ays-survey-position-table tr td[data-value='+ hiddenVal +']');
+            }
+
+            $(document).find('table#ays-survey-position-table td').removeAttr('style');
             $this.css('background-color','#a2d6e7');
         }
         

@@ -235,12 +235,14 @@
     position: relative;
 }
 
-table#ays-survey-popup-position-table{
+table#ays-survey-popup-position-table,
+table#ays-survey-position-table{
     width: 120px;
     border: 1px solid #B8B8B8;
     cursor: pointer;
 }
 
+table#ays-survey-position-table td,
 table#ays-survey-popup-position-table td{
     border-bottom: 1px solid #B8B8B8;
     border-right: 1px solid #B8B8B8;
