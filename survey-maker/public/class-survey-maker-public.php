@@ -3264,6 +3264,10 @@ class Survey_Maker_Public {
                 text-align: ' . $this->options[ $this->name_prefix . 'buttons_alignment_mobile' ] . ';
             }
 
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons .' . $this->html_class_prefix . 'section-button-container{
+                border-radius: ' . $this->options[ $this->name_prefix . 'buttons_border_radius_mobile' ] . 'px;            
+            }
+
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons .' . $this->html_class_prefix . 'section-button-container .' . $this->html_class_prefix . 'section-button-content .' . $this->html_class_prefix . 'section-button{
                 font-size: ' . $this->options[ $this->name_prefix . 'buttons_mobile_font_size' ] . 'px;
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'buttons_text_letter_spacing_mobile' ] . 'px;

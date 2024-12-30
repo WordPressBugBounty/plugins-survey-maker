@@ -335,6 +335,9 @@ class Survey_Maker_Data {
 
         // Buttons border radius
         $settings[ $name_prefix . 'buttons_border_radius' ] = (isset($options[ $name_prefix . 'buttons_border_radius' ]) && $options[ $name_prefix . 'buttons_border_radius' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_border_radius' ] ) ) : 4;
+        // Buttons border radius mobile
+        $options[ $name_prefix . 'buttons_border_radius_mobile' ] = isset($options[ $name_prefix . 'buttons_border_radius_mobile' ]) ? $options[ $name_prefix . 'buttons_border_radius_mobile' ] : $settings[ $name_prefix . 'buttons_border_radius' ];
+        $settings[ $name_prefix . 'buttons_border_radius_mobile' ] = (isset($options[ $name_prefix . 'buttons_border_radius_mobile' ]) && $options[ $name_prefix . 'buttons_border_radius_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'buttons_border_radius_mobile' ] ) ) : 4;
         
         // Buttons alignment
         $settings[ $name_prefix . 'buttons_alignment' ] = (isset($options[ $name_prefix . 'buttons_alignment' ]) && $options[ $name_prefix . 'buttons_alignment' ] != '') ? esc_attr( $options[ $name_prefix . 'buttons_alignment' ] )  : 'left';

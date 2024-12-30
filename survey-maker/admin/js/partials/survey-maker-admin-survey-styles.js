@@ -290,6 +290,7 @@
             var buttonsFontSize,
                 buttonsLeftRightPadding,
                 buttonsTopBottomPadding,
+                buttonsBorderRadiusMobile,
                 buttonsBorderRadius;
 
             switch(buttonsSize){
@@ -298,18 +299,21 @@
                     buttonsLeftRightPadding = 11;
                     buttonsTopBottomPadding = 0;
                     buttonsBorderRadius = 4;
-                break;
+                    buttonsBorderRadiusMobile = 4;
+                    break;
                 case "large":
                     buttonsFontSize = 17;
                     buttonsLeftRightPadding = 27;
                     buttonsTopBottomPadding = 3;
                     buttonsBorderRadius = 4;
-                break;
+                    buttonsBorderRadiusMobile = 4;
+                    break;
                 default:
                     buttonsFontSize = 14;
                     buttonsLeftRightPadding = 24;
                     buttonsTopBottomPadding = 0;
                     buttonsBorderRadius = 4;
+                    buttonsBorderRadiusMobile = 4;
                 break;
             }
 
@@ -317,6 +321,7 @@
             $(document).find('#ays_survey_buttons_left_right_padding').val(buttonsLeftRightPadding);
             $(document).find('#ays_survey_buttons_top_bottom_padding').val(buttonsTopBottomPadding);
             $(document).find('#ays_survey_buttons_border_radius').val(buttonsBorderRadius);
+            $(document).find('#ays_survey_buttons_border_radius_mobile').val(buttonsBorderRadius);
 
             $(document).find('.ays_buttons_div input[name="next"]').css('font-size', buttonsFontSize + 'px');
             $(document).find('.ays_buttons_div input[name="next"]').css('padding', buttonsTopBottomPadding+'px '+ buttonsLeftRightPadding+'px');
@@ -464,6 +469,8 @@
                 $(document).find("#ays_survey_buttons_font_size,#ays_survey_buttons_mobile_font_size").val(14);
                 // Button border-radius
                 $(document).find("#ays_survey_buttons_border_radius").val(3);
+                // Button border-radius
+                $(document).find("#ays_survey_buttons_border_radius_mobile").val(3);
                 // Button top distance
                 $(document).find("#ays_survey_buttons_top_distance,#ays_survey_buttons_top_distance_mobile").val(10);
                 // Button text letter spacing

@@ -618,6 +618,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Buttons border radius
             $survey_buttons_border_radius = (isset( $_POST[ $name_prefix . 'survey_buttons_border_radius' ] ) && $_POST[ $name_prefix . 'survey_buttons_border_radius' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_border_radius' ] ) ) : 4;
+            // Buttons border radius mobile
+            $survey_buttons_border_radius_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] ) ) : 4;
 
             // Buttons alignment
             $survey_buttons_alignment = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) : 'left';
@@ -1000,6 +1002,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_buttons_left_right_padding'    => $survey_buttons_left_right_padding,
                 'survey_buttons_top_bottom_padding'    => $survey_buttons_top_bottom_padding,
                 'survey_buttons_border_radius'         => $survey_buttons_border_radius,
+                'survey_buttons_border_radius_mobile'  => $survey_buttons_border_radius_mobile,
                 'survey_buttons_alignment'             => $survey_buttons_alignment,
                 'survey_buttons_alignment_mobile'      => $survey_buttons_alignment_mobile,
                 'survey_buttons_top_distance'          => $survey_buttons_top_distance,
