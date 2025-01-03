@@ -2992,7 +2992,7 @@
 
             // var countdownEndTime = SurveyMakerAdmin.surveyBannerDate,
             // var countdownEndTime = "DEC 31, 2022 23:59:59",
-            var countdownEndTime = "JAN 7, 2025 23:59:59";
+            var countdownEndTime = "JAN 15, 2025 23:59:59";
             var countDown = new Date(countdownEndTime).getTime(),
     
             x = setInterval(function() {
