@@ -591,25 +591,25 @@ msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1808
 #: ../admin/class-survey-maker-admin.php:1904
-#: ../admin/class-survey-maker-admin.php:2060
+#: ../admin/class-survey-maker-admin.php:2065
 msgid "Days"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1809
 #: ../admin/class-survey-maker-admin.php:1905
-#: ../admin/class-survey-maker-admin.php:2061
+#: ../admin/class-survey-maker-admin.php:2066
 msgid "Hours"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1810
 #: ../admin/class-survey-maker-admin.php:1906
-#: ../admin/class-survey-maker-admin.php:2062
+#: ../admin/class-survey-maker-admin.php:2067
 msgid "Minutes"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1811
 #: ../admin/class-survey-maker-admin.php:1907
-#: ../admin/class-survey-maker-admin.php:2063
+#: ../admin/class-survey-maker-admin.php:2068
 msgid "Seconds"
 msgstr ""
 
@@ -622,8 +622,8 @@ msgid "50% OFF"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1848
-#: ../admin/class-survey-maker-admin.php:1944
-#: ../admin/class-survey-maker-admin.php:2085
+#: ../admin/class-survey-maker-admin.php:1947
+#: ../admin/class-survey-maker-admin.php:2090
 msgid "Dismiss ad"
 msgstr ""
 
@@ -632,68 +632,68 @@ msgid "MEGA BUNDLE"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1871
-#: ../admin/class-survey-maker-admin.php:1965
+#: ../admin/class-survey-maker-admin.php:1969
 msgid "Get Your Deal"
 msgstr ""
 
 #: ../admin/class-survey-maker-admin.php:1873
-#: ../admin/class-survey-maker-admin.php:1967
+#: ../admin/class-survey-maker-admin.php:1972
 msgid "One-time payment"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1927
-msgid "<span><a href='https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner' class='ays-survey-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>"
+#: ../admin/class-survey-maker-admin.php:1930
+msgid "Christmas Sale"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1934
+#: ../admin/class-survey-maker-admin.php:1937
 msgid "20% Extra OFF"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1960
+#: ../admin/class-survey-maker-admin.php:1963
 msgid "20% Extra Discount Coupon"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2051
+#: ../admin/class-survey-maker-admin.php:2056
 msgid "Limited Time"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2052
+#: ../admin/class-survey-maker-admin.php:2057
 msgid "Survey Maker Plugin"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2077
+#: ../admin/class-survey-maker-admin.php:2082
 msgid "BUY NOW"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2217
+#: ../admin/class-survey-maker-admin.php:2222
 msgid "General Information:"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2221
+#: ../admin/class-survey-maker-admin.php:2226
 msgid "For more information:"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2223
+#: ../admin/class-survey-maker-admin.php:2228
 msgid "YouTube video tutorials"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2226
+#: ../admin/class-survey-maker-admin.php:2231
 msgid "Documentation"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2229
+#: ../admin/class-survey-maker-admin.php:2234
 msgid "Survey Maker plugin pro version"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2232
+#: ../admin/class-survey-maker-admin.php:2237
 msgid "Survey Maker plugin demo"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2236
+#: ../admin/class-survey-maker-admin.php:2241
 msgid "Survey Maker Information"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2237
+#: ../admin/class-survey-maker-admin.php:2242
 #, php-format
 msgid "%s"
 msgstr ""

@@ -1924,13 +1924,16 @@ class Survey_Maker_Admin {
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-survey-christmas-top-bundle-title">';
-                                $content[] = __( "<span><a href='https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner' class='ays-survey-christmas-top-bundle-title-link' target='_blank'>Christmas Sale</a></span>", "survey-maker" );
-                            $content[] = '</span>';
+                                $content[] = '<span>';
+                                $content[] = sprintf('<a class="ays-survey-christmas-top-bundle-desc" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner%s" class="ays-survey-christmas-top-bundle-title-link" target="_blank">', SURVEY_MAKER_VERSION);
 
+                                        $content[] = __( "Christmas Sale", "survey-maker" );
+                                    $content[] = '</a>';
+                                $content[] = '</span>';
                             $content[] = '</br>';
 
                             $content[] = '<span class="ays-survey-christmas-top-bundle-desc">';
-                                $content[] = '<a class="ays-survey-christmas-top-bundle-desc" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner" class="ays-survey-christmas-top-bundle-title-link" target="_blank">';
+                                $content[] = sprintf('<a class="ays-survey-christmas-top-bundle-desc" href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner%s" class="ays-survey-christmas-top-bundle-title-link" target="_blank">', SURVEY_MAKER_VERSION);
                                     $content[] = __( "20% Extra OFF", "survey-maker" );
                                 $content[] = '</a>';
                             $content[] = '</span>';
@@ -1962,7 +1965,9 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Get Your Deal', "survey-maker" ) . '</a>';
+                        $content[] = sprintf('<a href="https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=christmas-sale-banner%s" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">', SURVEY_MAKER_VERSION);
+                            $content[] =  __( 'Get Your Deal', "survey-maker" );
+                        $content[] =  '</a>';
                         $content[] = '<span class="ays-survey-dicount-one-time-text">';
                             $content[] = __( "One-time payment", "survey-maker" );
                         $content[] = '</span>';
