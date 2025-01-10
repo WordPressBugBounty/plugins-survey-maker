@@ -177,7 +177,7 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 ays_divider_left">
                             <input type="checkbox"
                         class="ays-enable-timer1"
                         id="ays_survey_hide_section_pagination_text"
@@ -197,7 +197,7 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 ays_divider_left">
                             <select class="ays-text-input ays-text-input-short" name="ays_survey_pagination_positioning">
                                 <option <?php echo $survey_pagination_positioning == "none" ? "selected" : ""; ?> value="none"><?php echo __( "None", "survey-maker"); ?></option>
                                 <option <?php echo $survey_pagination_positioning == "reverse" ? "selected" : ""; ?> value="reverse"><?php echo __( "Reverse", "survey-maker"); ?></option>
@@ -216,7 +216,7 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 ays_divider_left">
                             <input type="checkbox"
                         class="ays-enable-timer1"
                         id="ays_survey_hide_section_bar"
@@ -236,7 +236,7 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 ays_divider_left">
                             <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_progress_bar_text" name="ays_survey_progress_bar_text" value="<?php echo esc_attr($survey_progress_bar_text); ?>">
                         </div>
                     </div>
@@ -300,7 +300,7 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8 ">
+                        <div class="col-sm-8 ays_divider_left">
                             <input type="text" class="ays-text-input" id='ays_survey_pagination_text_color' name='ays_survey_pagination_text_color' data-alpha="true" value="<?php echo esc_attr($survey_pagination_text_color); ?>"/>
                         </div>
                     </div> <!-- Progress bar text color' -->
@@ -314,34 +314,47 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8 ays_divider_left ays_survey_display_flex_width">
-                            <div>
-                                <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_progress_bar_text_font_size'name='ays_survey_progress_bar_text_font_size' value="<?php echo esc_attr($survey_progress_bar_text_font_size); ?>"/>
+                        <div class="col-sm-8 ays_divider_left">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_title_letter_spacing'>
+                                        <?php echo __('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the progress bar text in pixels desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_progress_bar_text_font_size'name='ays_survey_progress_bar_text_font_size' value="<?php echo esc_attr($survey_progress_bar_text_font_size); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ays_dropdown_max_width">
-                                <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_progress_bar_text_letter_spacing_mobile'>
+                                        <?php echo __('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the progress bar text in pixels for mobile devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_progress_bar_text_font_size_on_mobile'name='ays_survey_progress_bar_text_font_size_on_mobile' value="<?php echo esc_attr($survey_progress_bar_text_font_size_on_mobile); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        
                     </div> <!-- Survey progress bar font size -->
-                    <hr/>
-                    <div class="form-group row">
-                        <div class="col-sm-4">
-                            <label for='ays_survey_progress_bar_text_font_size_on_mobile'>
-                                <?php echo __('Progress bar text font size on mobile', "survey-maker"); ?>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the font size of the progress bar text in pixels for mobile devices.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-8 ays_divider_left ays_survey_display_flex_width">
-                            <div>
-                                <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_progress_bar_text_font_size_on_mobile'name='ays_survey_progress_bar_text_font_size_on_mobile' value="<?php echo esc_attr($survey_progress_bar_text_font_size_on_mobile); ?>"/>
-                            </div>
-                            <div class="ays_dropdown_max_width">
-                                <input type="text" value="px" class='ays-form-hint-for-size' disabled>
-                            </div>
-                        </div>
-                    </div> <!-- Survey progress bar font size mobile -->
                     <hr/>
                     <div class="form-group row">
                         <div class="col-sm-4">
@@ -352,7 +365,7 @@
                                 </a>
                             </label>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-8 ays_divider_left">
                         <select class='ays-text-input ays-text-input-short' id="ays-survey-progress-bar-text-transform" name="ays_survey_progress_bar_text_transform">
                             <option value="none" <?php echo ($survey_progress_bar_text_transform == 'none') ? 'selected' : ''; ?>><?php echo __('Default',"survey-maker"); ?></option>
                             <option value="capitalize" <?php echo ($survey_progress_bar_text_transform == 'capitalize') ? 'selected' : ''; ?>><?php echo __('Capitalize',"survey-maker"); ?></option>
