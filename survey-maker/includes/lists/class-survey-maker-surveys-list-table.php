@@ -733,6 +733,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_progress_bar_text_font_size = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] ) ) : 15;
             $survey_progress_bar_text_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] ) ) : $survey_progress_bar_text_font_size;
             $survey_progress_bar_text_transform = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] )  : 'none';
+            $survey_progress_bar_text_transform_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] )  : 'none';
             // Survey show sections questions count
             $survey_show_sections_questions_count = isset( $_POST[ $name_prefix . 'survey_show_questions_count' ] ) && $_POST[ $name_prefix . 'survey_show_questions_count' ] == 'on' ? 'on' : 'off';
 
@@ -1072,6 +1073,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_progress_bar_text_font_size'  => $survey_progress_bar_text_font_size,
                 'survey_progress_bar_text_font_size_on_mobile' => $survey_progress_bar_text_font_size_on_mobile,
                 'survey_progress_bar_text_transform'  => $survey_progress_bar_text_transform,
+                'survey_progress_bar_text_transform_mobile'  => $survey_progress_bar_text_transform_mobile,
                 'survey_show_sections_questions_count' => $survey_show_sections_questions_count,
                 'survey_required_questions_message' => $survey_required_questions_message,
 

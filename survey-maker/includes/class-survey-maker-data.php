@@ -445,6 +445,8 @@ class Survey_Maker_Data {
         $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] = isset($options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ]) ? $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] : $settings[ $name_prefix . 'progress_bar_text_font_size' ];
         $settings[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] = (isset($options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ]) && $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] ) ) : 15;
         $settings[ $name_prefix . 'progress_bar_text_transform' ] = (isset($options[ $name_prefix . 'progress_bar_text_transform' ]) && $options[ $name_prefix . 'progress_bar_text_transform' ] != '') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_transform' ] )  : 'none';
+        $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] = isset($options[ $name_prefix . 'progress_bar_text_transform_mobile' ]) ? $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] : $settings[ $name_prefix . 'progress_bar_text_transform' ];
+        $settings[ $name_prefix . 'progress_bar_text_transform_mobile' ] = (isset($options[ $name_prefix . 'progress_bar_text_transform_mobile' ]) && $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] )  : 'none';
 
         // Survey show sections questions count
         $options[ $name_prefix . 'show_sections_questions_count' ] = ( isset( $options[ $name_prefix . 'show_sections_questions_count' ] ) ) ? $options[ $name_prefix . 'show_sections_questions_count' ] : "off";

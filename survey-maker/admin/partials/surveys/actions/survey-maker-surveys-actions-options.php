@@ -143,6 +143,7 @@
         'survey_progress_bar_text_font_size' => 15,
         'survey_progress_bar_text_font_size_on_mobile' => 15,
         'survey_progress_bar_text_transform' => 'none',
+        'survey_progress_bar_text_transform_mobile' => 'none',
         'survey_required_questions_message' => 'This is a required question',
 
         // Result Settings Tab
@@ -986,6 +987,8 @@
         $survey_progress_bar_text_font_size = (isset($options[ $name_prefix . 'progress_bar_text_font_size' ]) && $options[ $name_prefix . 'progress_bar_text_font_size' ] != '') ? absint ( intval( $options[ $name_prefix . 'progress_bar_text_font_size' ] ) ) : $survey_answer_font_size;
         $survey_progress_bar_text_font_size_on_mobile = (isset($options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ]) && $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] ) ) : $survey_progress_bar_text_font_size;
         $survey_progress_bar_text_transform = (isset($options[ $name_prefix . 'progress_bar_text_transform' ]) && $options[ $name_prefix . 'progress_bar_text_transform' ] != '') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_transform' ] ) : 'none';
+        $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] = isset($options[ $name_prefix . 'progress_bar_text_transform_mobile' ]) ? $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] : $survey_progress_bar_text_transform;
+        $survey_progress_bar_text_transform_mobile = (isset($options[ $name_prefix . 'progress_bar_text_transform_mobile' ]) && $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] ) : 'none';
         // Survey show sections questions count
         $survey_show_sections_questions_count = (isset($options[$name_prefix . 'show_sections_questions_count']) && $options[$name_prefix . 'show_sections_questions_count'] == "on") ? "checked" : "";
 
