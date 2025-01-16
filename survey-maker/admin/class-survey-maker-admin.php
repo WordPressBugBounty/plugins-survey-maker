@@ -185,6 +185,7 @@ class Survey_Maker_Admin {
 
         wp_enqueue_style( $this->plugin_name . "-general", plugin_dir_url( __FILE__ ) . 'css/survey-maker-general.css', array(), time(), 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/survey-maker-admin.css', array(), time(), 'all' );
+		wp_enqueue_style( $this->plugin_name . "-dashboard", plugin_dir_url( __FILE__ ) . 'css/survey-maker-admin-dashboard.css', array(), time(), 'all' );
 		wp_enqueue_style( $this->plugin_name . "-pro-features", plugin_dir_url( __FILE__ ) . 'css/survey-maker-pro-features.css', array(), time(), 'all' );
         wp_enqueue_style( $this->plugin_name . "-loaders", plugin_dir_url(__FILE__) . 'css/loaders.css', array(), $this->version, 'all');
 
