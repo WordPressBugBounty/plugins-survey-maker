@@ -1,5 +1,18 @@
 <div id="tab2" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab2') ? 'ays-survey-tab-content-active' : ''; ?>">
-    <p class="ays-subtitle"><?php echo __('Styles',"survey-maker"); ?></p>
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <p class="ays-subtitle"><?php echo __('Styles',"survey-maker"); ?></p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center" style="gap: 5px; font-size: 13px">
+            <div>
+                <a href="javascript:void(0);" class="ays-survey-collapse-all-options"><?php echo __("Collapse All", "survey-maker"); ?></a>
+            </div>    
+            |               
+            <div>
+                <a href="javascript:void(0);" class="ays-survey-expand-all-options"><?php echo __("Expand All", "survey-maker"); ?></a>
+            </div>                   
+        </div>
+    </div>
     <hr style="border-width: 2px;"/>
     <div class="form-group row">
         <div class="col-sm-2">

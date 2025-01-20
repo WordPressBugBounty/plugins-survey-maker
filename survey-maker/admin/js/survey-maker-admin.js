@@ -3544,6 +3544,24 @@
             $thisRotateButton.css('transform', `rotate(${newRotation}deg)`).data('rotation', newRotation);
         });
 
+        $(document).on('click', '.ays-survey-collapse-all-options', function(){
+            var $thisMainParent = $(this).parents('.ays-survey-tab-content');
+            var $thisRotateButtons = $thisMainParent.find('.ays-survey-collapse-options-button');
+            var $collapsibleAllOptions = $thisMainParent.find('.ays-survey-collapsible-options');
+            $collapsibleAllOptions.hide();
+            $thisRotateButtons.css('color' , '#c4c4c4');
+            $thisRotateButtons.css('transform', `rotate(-90deg)`).data('rotation', -90);
+        });
+
+        $(document).on('click', '.ays-survey-expand-all-options', function(){
+            var $thisMainParent = $(this).parents('.ays-survey-tab-content');
+            var $thisRotateButtons = $thisMainParent.find('.ays-survey-collapse-options-button');
+            var $collapsibleAllOptions = $thisMainParent.find('.ays-survey-collapsible-options');
+            $collapsibleAllOptions.show();
+            $thisRotateButtons.css('color' , '#008cff');
+            $thisRotateButtons.css('transform', `rotate(0deg)`).data('rotation', 0);
+        });
+
         function showConfirmationIfDelete(e) {
             var $el = $(e.target);
             var elParent = $el.parent();

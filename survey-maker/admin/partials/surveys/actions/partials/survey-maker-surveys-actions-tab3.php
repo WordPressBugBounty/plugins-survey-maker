@@ -1,5 +1,16 @@
 <div id="tab3" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab3') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="ays-survey-collapsible-container" style="margin-top: 20px;">
+        <div class="d-flex justify-content-end align-items-center">
+            <div class="d-flex justify-content-between align-items-center" style="gap: 5px; font-size: 13px">
+                <div>
+                    <a href="javascript:void(0);" class="ays-survey-collapse-all-options"><?php echo __("Collapse All", "survey-maker"); ?></a>
+                </div>    
+                |               
+                <div>
+                    <a href="javascript:void(0);" class="ays-survey-expand-all-options"><?php echo __("Expand All", "survey-maker"); ?></a>
+                </div>                   
+            </div>
+        </div>
         <div class="ays-survey-collapse-options">
             <div><i class="ays_fa ays_fa_arrow_down ays-survey-collapse-options-button" data-rotation="false" style="font-size: 15px;"></i></div>
             <div><p style="margin:0;font-size: 18px;font-weight: 500;"><?php echo __('Primary',"survey-maker"); ?></p></div>
