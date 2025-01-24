@@ -2139,8 +2139,8 @@ class Survey_Maker_Data {
     }
 
     public static function survey_sanitize_specific_content($content) {
-        // Updated pattern to match any tag with an `onerror` attribute or <script> tags
-        $pattern = '/<script.*?>.*?<\/script>|<[^>]+\bonerror\s*=[^>]*>/is';
+        // Pattern to match <script> tags, dangerous attributes, and potential SVG exploits
+        $pattern = '/<script.*?>.*?<\/script>|<[^>]+(?:\bon\w+\s*=\s*|attributeName\s*=\s*[^>]*>)/is';
 
         // Callback function to convert matched tags into text
         $callback = function($matches) {

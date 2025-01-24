@@ -1239,7 +1239,7 @@ class Surveys_List_Table extends WP_List_Table {
                         foreach ($section['questions'] as $question_id => $question) {
                             $question_id = absint(intval($question_id));
 
-                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? stripslashes( $question['title'] ) : __( 'Question', "survey-maker" );
+                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? Survey_Maker_Data::admin_level_sanitize( $question['title'] ) : __( 'Question', "survey-maker" );
 
                             $type = ( isset($question['type']) && $question['type'] != '' ) ? $question['type'] : 'radio';
 
@@ -1449,7 +1449,7 @@ class Surveys_List_Table extends WP_List_Table {
                     $question_id_array = array();
                     if ( isset( $section['questions_add'] ) && ! empty( $section['questions_add'] ) ) {
                         foreach ($section['questions_add'] as $question_id => $question) {
-                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? stripslashes( $question['title'] ) : __( 'Question', "survey-maker" );
+                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? Survey_Maker_Data::admin_level_sanitize( $question['title'] ) : __( 'Question', "survey-maker" );
 
                             $type = ( isset($question['type']) && $question['type'] != '' ) ? $question['type'] : 'radio';
 
@@ -1672,7 +1672,7 @@ class Surveys_List_Table extends WP_List_Table {
                         foreach ($section['questions'] as $question_id => $question) {
                             $question_id = absint(intval($question_id));
 
-                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? stripslashes( $question['title'] ) : __( 'Question', "survey-maker" );
+                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? Survey_Maker_Data::admin_level_sanitize( $question['title'] ) : __( 'Question', "survey-maker" );
 
                             $type = ( isset($question['type']) && $question['type'] != '' ) ? $question['type'] : 'radio';
 
@@ -1880,7 +1880,7 @@ class Surveys_List_Table extends WP_List_Table {
 
                     if( isset( $section['questions_add'] ) && !empty( $section['questions_add'] ) ){
                         foreach ($section['questions_add'] as $question_id => $question) {
-                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? stripslashes( $question['title'] ) : __( 'Question', "survey-maker" );
+                            $ays_question = ( isset($question['title']) && trim( $question['title'] ) != '' ) ? Survey_Maker_Data::admin_level_sanitize( $question['title'] ) : __( 'Question', "survey-maker" );
 
                             $type = ( isset($question['type']) && $question['type'] != '' ) ? $question['type'] : 'radio';
 

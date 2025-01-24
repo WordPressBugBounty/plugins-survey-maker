@@ -413,7 +413,7 @@ $types_with_changeable_charts = array(
                                     <?php if(!$survey_show_questions_as_html): ?>
                                         <div class="ays-survey-individual-question-title"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities($question['question']) ) ); ?></div>
                                     <?php else: 
-                                        $question_title_text = (strpos($question['question'], '<script>') !== false ) ? Survey_Maker_Data::ays_autoembed(preg_replace('#<script(.*?)>(.*?)</script>#is', '$2', $question['question'])) : Survey_Maker_Data::ays_autoembed( $question['question'] );                                        
+                                        $question_title_text = Survey_Maker_Data::ays_autoembed( Survey_Maker_Data::survey_sanitize_specific_content($question['question']) );
                                     ?>
                                         <div class="ays-survey-individual-question-title"><?php echo $question_title_text; ?></div>
                                     <?php endif?>                                    
@@ -688,7 +688,7 @@ $types_with_changeable_charts = array(
                                         <?php if(!$survey_show_questions_as_html): ?>
                                             <div style="padding: 9px 0 4px 0;"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities( $question_results[ $question['id'] ]['question'] ) ) ); ?></div>
                                         <?php else: 
-                                            $question_title_text = (strpos($question['question'], '<script>') !== false ) ? Survey_Maker_Data::ays_autoembed(preg_replace('#<script(.*?)>(.*?)</script>#is', '$2', $question['question'])) : Survey_Maker_Data::ays_autoembed( $question['question'] );                                                                                     
+                                            $question_title_text = Survey_Maker_Data::ays_autoembed( Survey_Maker_Data::survey_sanitize_specific_content($question['question']) );                                                                                     
                                         ?>                                            
                                         <div style="padding: 9px 0 4px 0;"><?php echo $question_title_text; ?></div>
                                         <?php endif?>
