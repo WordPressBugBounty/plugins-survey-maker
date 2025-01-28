@@ -397,6 +397,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Survey Logo position
             $survey_logo_image_position = (isset( $_POST[ $name_prefix . 'survey_logo_pos' ] ) && $_POST[ $name_prefix . 'survey_logo_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_pos' ] ) : 'right';
+            // Survey Logo position mobile
+            $survey_logo_image_position_mobile = (isset( $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] ) : 'right';
 
             // Survey Logo title
             $survey_logo_title = (isset( $_POST[ $name_prefix . 'survey_logo_title' ] ) && $_POST[ $name_prefix . 'survey_logo_title' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_title' ] ) : '';
@@ -951,6 +953,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_logo_url'                   => $survey_logo_image_url,
                 'survey_enable_logo_url'            => $survey_logo_image_url_check,
                 'survey_logo_image_position'        => $survey_logo_image_position,
+                'survey_logo_image_position_mobile' => $survey_logo_image_position_mobile,
                 'survey_logo_title'                 => $survey_logo_title,
                 'survey_cover_photo'                => $survey_cover_photo,
                 'survey_cover_photo_height'         => $survey_cover_photo_height,

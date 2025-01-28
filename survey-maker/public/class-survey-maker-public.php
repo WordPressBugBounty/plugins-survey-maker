@@ -3221,6 +3221,21 @@ class Survey_Maker_Public {
             }
         }
 
+        switch($this->options[ $this->name_prefix . 'logo_image_position_mobile' ]){
+            case "right":
+                $survey_logo_image_position_mobile = "right: 5px;";
+                break;
+            case "left":
+                $survey_logo_image_position_mobile = "left: 5px;";
+                break;
+            case "center":
+                $survey_logo_image_position_mobile = "left: 50%;";
+                break;
+            default:
+                $survey_logo_image_position_mobile = "right: 5px;";
+                break;
+        }
+
         // Question padding mobile
         $question_padding = $this->options[ $this->name_prefix . 'question_padding_mobile' ];
         $question_caption_text_display = !$this->options[ $this->name_prefix . 'question_caption_hide_on_mobile' ] ? 'block' : 'none';
@@ -3327,6 +3342,10 @@ class Survey_Maker_Public {
                 font-size: ' . $this->options[ $this->name_prefix . 'answer_font_size_on_mobile' ] . 'px !important;
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'answer_letter_spacing_mobile' ] . 'px;
                 line-height: 1 !important;
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section .' . $this->html_class_prefix . 'question .' . $this->html_class_prefix . 'image-logo-url{
+               '.$survey_logo_image_position_mobile.'
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-status .' . $this->html_class_prefix . 'live-bar-status-text{

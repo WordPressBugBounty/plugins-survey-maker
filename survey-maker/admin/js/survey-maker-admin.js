@@ -2990,9 +2990,9 @@
                 hour    = minute * 60,
                 day     = hour * 24;
 
-            // var countdownEndTime = SurveyMakerAdmin.surveyBannerDate,
+            var countdownEndTime = SurveyMakerAdmin.surveyBannerDate;
             // var countdownEndTime = "DEC 31, 2022 23:59:59",
-            var countdownEndTime = "JAN 15, 2025 23:59:59";
+            // var countdownEndTime = "JAN 15, 2025 23:59:59";
             var countDown = new Date(countdownEndTime).getTime(),
     
             x = setInterval(function() {

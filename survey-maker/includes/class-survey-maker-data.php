@@ -99,6 +99,9 @@ class Survey_Maker_Data {
 
         // Survey logo position
         $settings[ $name_prefix . 'logo_image_position' ] = (isset($options[ $name_prefix . 'logo_image_position' ]) && $options[ $name_prefix . 'logo_image_position' ] != '') ? esc_attr( $options[ $name_prefix . 'logo_image_position' ] ) : 'right';
+        // Survey logo position mobile
+        $options[ $name_prefix . 'logo_image_position_mobile' ] = isset($options[ $name_prefix . 'logo_image_position_mobile' ]) ? $options[ $name_prefix . 'logo_image_position_mobile' ] : $settings[ $name_prefix . 'logo_image_position' ];
+        $settings[ $name_prefix . 'logo_image_position_mobile' ] = (isset($options[ $name_prefix . 'logo_image_position_mobile' ]) && $options[ $name_prefix . 'logo_image_position_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'logo_image_position_mobile' ] ) : 'right';
 
         // Survey logo title
         $settings[ $name_prefix . 'logo_title' ] = (isset($options[ $name_prefix . 'logo_title' ]) && $options[ $name_prefix . 'logo_title' ] != '') ? esc_attr( $options[ $name_prefix . 'logo_title' ] ) : '';

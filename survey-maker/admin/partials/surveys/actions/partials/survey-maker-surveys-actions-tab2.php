@@ -332,11 +332,41 @@
                                     </label> 
                                 </div>
                                 <div class="col-sm-8 ays_divider_left">
-                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-text-input-full" id='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos' name='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos'>
-                                        <option value="left"   <?php echo ($survey_logo_image_position == 'left')   ? 'selected' : ''; ?>><?php echo __('Left',"survey-maker"); ?></option>
-                                        <option value="center" <?php echo ($survey_logo_image_position == 'center') ? 'selected' : ''; ?>><?php echo __('Center',"survey-maker"); ?></option>
-                                        <option value="right"  <?php echo ($survey_logo_image_position == 'right')  ? 'selected' : ''; ?>><?php echo __('Right',"survey-maker"); ?></option>
-                                    </select>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label for='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos'>
+                                                <?php echo __('On desktop', "survey-maker"); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the position of the Logo image for desktop devices.',"survey-maker")?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-7 ays_survey_display_flex_width">
+                                            <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-text-input-full" id='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos' name='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos'>
+                                                <option value="left"   <?php echo ($survey_logo_image_position == 'left')   ? 'selected' : ''; ?>><?php echo __('Left',"survey-maker"); ?></option>
+                                                <option value="center" <?php echo ($survey_logo_image_position == 'center') ? 'selected' : ''; ?>><?php echo __('Center',"survey-maker"); ?></option>
+                                                <option value="right"  <?php echo ($survey_logo_image_position == 'right')  ? 'selected' : ''; ?>><?php echo __('Right',"survey-maker"); ?></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <label for='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos_mobile'>
+                                                <?php echo __('On mobile', "survey-maker"); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the position of the Logo image for Mobile devices.',"survey-maker")?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-7 ays_survey_display_flex_width">
+                                            <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-text-input-full" id='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos_mobile' name='<?php echo esc_attr($html_name_prefix); ?>survey_logo_pos_mobile'>
+                                                <option value="left"   <?php echo ($survey_logo_image_position_mobile == 'left')   ? 'selected' : ''; ?>><?php echo __('Left',"survey-maker"); ?></option>
+                                                <option value="center" <?php echo ($survey_logo_image_position_mobile == 'center') ? 'selected' : ''; ?>><?php echo __('Center',"survey-maker"); ?></option>
+                                                <option value="right"  <?php echo ($survey_logo_image_position_mobile == 'right')  ? 'selected' : ''; ?>><?php echo __('Right',"survey-maker"); ?></option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <hr class="<?php echo esc_attr($survey_logo_check); ?> ays-survey-logo-open">

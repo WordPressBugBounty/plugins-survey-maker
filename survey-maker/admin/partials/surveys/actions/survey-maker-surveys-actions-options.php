@@ -30,6 +30,7 @@
         'survey_custom_css'                                 => '',
         'survey_logo'                                       => '',
         'survey_logo_image_position'                        => 'right',
+        'survey_logo_image_position_mobile'                 => 'right',
         'survey_logo_title'                                 => '',
         'survey_cover_photo'                                => '',
         'survey_cover_photo_height'                         => 150,
@@ -574,6 +575,9 @@
 
         // Survey Logo position
         $survey_logo_image_position = (isset( $options[ $name_prefix . 'logo_image_position' ] ) && $options[ $name_prefix . 'logo_image_position' ] != '') ? esc_attr( $options[ $name_prefix . 'logo_image_position' ] ) : 'right';
+        // Survey Logo position mobile
+        $options[ $name_prefix . 'logo_image_position_mobile' ] = isset($options[ $name_prefix . 'logo_image_position_mobile' ]) ? $options[ $name_prefix . 'logo_image_position_mobile' ] : $survey_logo_image_position;
+        $survey_logo_image_position_mobile = (isset( $options[ $name_prefix . 'logo_image_position_mobile' ] ) && $options[ $name_prefix . 'logo_image_position_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'logo_image_position_mobile' ] ) : 'right';
 
         // Survey Logo title
         $survey_logo_title = (isset( $options[ $name_prefix . 'logo_title' ] ) && $options[ $name_prefix . 'logo_title' ] != '') ? esc_attr( $options[ $name_prefix . 'logo_title' ] ) : '';
