@@ -1261,7 +1261,7 @@ class Survey_Maker_Data {
         $settings_static_texts = ($result == "") ? array() : json_decode($result, true);
 
         $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
-        $email_validation_error_text = (isset($settings_static_texts['email_validation_error_text']) && $settings_static_texts['email_validation_error_text'] != '') ? stripslashes(esc_attr($settings_static_texts['email_validation_error_text'])) : 'Must be a valid email address';
+        $email_validation_error_text = (isset($settings_static_texts['email_validation_error_text']) && $settings_static_texts['email_validation_error_text'] != '') ? stripslashes(esc_html($settings_static_texts['email_validation_error_text'])) : 'Must be a valid email address';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', "survey-maker");

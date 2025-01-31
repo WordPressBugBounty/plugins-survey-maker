@@ -131,6 +131,7 @@ class Survey_Maker_Public {
             wp_localize_script( $this->plugin_name . '-plugin', 'aysSurveyMakerAjaxPublic', array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'warningIcon' => SURVEY_MAKER_PUBLIC_URL . "/images/warning.svg",
+                'autofill_nonce'  => wp_create_nonce('survey_maker_autofill_nonce')
             ) );
             wp_localize_script( $this->plugin_name, 'aysSurveyLangObj', array(
                 'notAnsweredText'       => __( 'You have not answered this question', "survey-maker" ),
@@ -3174,10 +3175,13 @@ class Survey_Maker_Public {
     }
 
     public function ays_survey_get_user_information() {
-        if(is_user_logged_in()) {
-            $output = wp_get_current_user();
-        } else {
-            $output = array();
+        $output = array();
+        if(isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'survey_maker_autofill_nonce')){
+            if(is_user_logged_in()) {
+                $output = wp_get_current_user();
+            } else {
+                $output = array();
+            }
         }
         return $output;
     }

@@ -422,7 +422,15 @@ class Survey_Maker_Admin {
             $menu_item = 'Survey Maker';
         } else {
             global $wpdb;
-            $sql = "SELECT COUNT(*) FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions WHERE `read` = 0 OR `read` = 2 ";
+            // $sql = "SELECT COUNT(*) FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions WHERE `read` = 0 OR `read` = 2 ";
+            $sql = $wpdb->prepare("
+                SELECT COUNT(*)
+                FROM " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "submissions AS s
+                INNER JOIN " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "surveys AS surv
+                ON s.survey_id = surv.id
+                WHERE (s.read = 0 OR s.read = 2)
+                AND surv.status != %s
+            ", 'trashed');
             $unread_results_count = intval( $wpdb->get_var( $sql ) );
             $menu_item = ($unread_results_count == 0) ? 'Survey Maker' : 'Survey Maker' . '<span class="ays-survey-menu-badge ays-survey-results-bage">' . $unread_results_count . '</span>';
         }
@@ -498,7 +506,15 @@ class Survey_Maker_Admin {
             $results_text = __('Submissions', "survey-maker");
             $menu_item    = __('Submissions', "survey-maker");
         } else {
-            $sql = "SELECT COUNT(*) FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions WHERE `read` = 0 OR `read` = 2 ";
+            // $sql = "SELECT COUNT(*) FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions WHERE `read` = 0 OR `read` = 2 ";
+            $sql = $wpdb->prepare("
+                SELECT COUNT(*)
+                FROM " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "submissions AS subs
+                INNER JOIN " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "surveys AS survs
+                ON subs.survey_id = survs.id
+                WHERE (subs.read = 0 OR subs.read = 2)
+                AND survs.status != %s
+            ", 'trashed');
             $unread_results_count = intval( $wpdb->get_var( $sql ) );
 
             $results_text = __('Submissions', "survey-maker");

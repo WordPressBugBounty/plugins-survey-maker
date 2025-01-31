@@ -100,6 +100,7 @@
                     data.function  = 'ays_survey_get_user_information';
                     data.end_date  = _this.GetFullDateTime();
                     data.unique_id = _this.uniqueId;
+                    data.nonce     = aysSurveyMakerAjaxPublic.autofill_nonce;
                     _this.aysAutofillData(data , _this.$el);
                 }
             }
@@ -310,7 +311,7 @@
             if($(this).val() != ''){
                 if (!(_this.emailValidatePattern.test($(this).val()))) {
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                    errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                    errorMessage += '<span>' + surveySanitizeSpecificContent(aysSurveyLangObj.emailValidationError) + '</span>';
                     $(this).parents('.' + _this.htmlClassPrefix + 'question').addClass('ays-has-error');
                     $(this).parents('.' + _this.htmlClassPrefix + 'question').find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                     $(this).parents('.' + _this.htmlClassPrefix + 'question').find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1087,7 +1088,7 @@
                     }else{
                         if( item.data('type') == 'email' ){
                             if ( ! (_this.emailValidatePattern.test( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() ) ) ) {
-                                errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                                errorMessage += '<span>' + surveySanitizeSpecificContent(aysSurveyLangObj.emailValidationError) + '</span>';
                                 item.addClass('ays-has-error');
                                 item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
                                 item.find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
@@ -1179,7 +1180,7 @@
                 if( item.data('type') == 'email' ){
                     if( ! (_this.emailValidatePattern.test( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() ) ) ){
                         var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                        errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                        errorMessage += '<span>' + surveySanitizeSpecificContent(aysSurveyLangObj.emailValidationError) + '</span>';
 
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
@@ -1208,7 +1209,7 @@
                 if( item.data('type') == 'email' ){
                     if( ! (_this.emailValidatePattern.test( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() ) ) ){
                         var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
-                        errorMessage += '<span>' + aysSurveyLangObj.emailValidationError + '</span>';
+                        errorMessage += '<span>' + surveySanitizeSpecificContent(aysSurveyLangObj.emailValidationError) + '</span>';
 
                         item.addClass('ays-has-error');
                         item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
@@ -2407,6 +2408,23 @@
         } else {
             return false;
         }
+    }
+
+    function surveySanitizeSpecificContent(content) {
+        // Pattern to match <script> tags and dangerous attributes
+        const pattern = /<script.*?>.*?<\/script>|<[^>]+(?:\bon\w+\s*=|attributeName\s*=)[^>]*>/gis;
+    
+        // Replace matched patterns with escaped HTML entities
+        return content.replace(pattern, match => 
+            match.replace(/[<>&"'`]/g, char => ({
+                '<': '&lt;',
+                '>': '&gt;',
+                '&': '&amp;',
+                '"': '&quot;',
+                "'": '&#39;',
+                '`': '&#96;'
+            })[char] || char)
+        );
     }
 
 
