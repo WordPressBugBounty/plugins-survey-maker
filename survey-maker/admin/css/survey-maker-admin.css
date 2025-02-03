@@ -3137,6 +3137,10 @@ div.ays-survey-question-text-types-note-text span{
     .ays-modal-content-survey-templates .ays-survey-templates-content{
         justify-content: center !important;
     }
+
+    .ays-survey-add-question-button{
+        width: 155px;
+    }
 }
 #ays-survey-form .ays-survey-condition-containers-added{
     border-color:rgb(255, 87, 34);
