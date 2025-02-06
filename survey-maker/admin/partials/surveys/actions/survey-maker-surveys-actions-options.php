@@ -141,6 +141,7 @@
         'survey_progress_bar_text_letter_spacing' => 0,
         'survey_progress_bar_text_letter_spacing_mobile' => 0,
         'survey_pagination_text_color' => '#333',
+        'survey_pagination_text_color_mobile' => '#333',
         'survey_progress_bar_text_font_size' => 15,
         'survey_progress_bar_text_font_size_on_mobile' => 15,
         'survey_progress_bar_text_transform' => 'none',
@@ -988,6 +989,8 @@
 
         $options[ $name_prefix . 'pagination_text_color' ] = isset($options[ $name_prefix . 'pagination_text_color' ]) ? $options[ $name_prefix . 'pagination_text_color' ] : $options[ $name_prefix . 'text_color' ];
         $survey_pagination_text_color = (isset($options[ $name_prefix . 'pagination_text_color' ]) && $options[ $name_prefix . 'pagination_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'pagination_text_color' ] ) ) : '#fff';
+        $options[ $name_prefix . 'pagination_text_color_mobile' ] = isset($options[ $name_prefix . 'pagination_text_color_mobile' ]) ? $options[ $name_prefix . 'pagination_text_color_mobile' ] : $survey_pagination_text_color;
+        $survey_pagination_text_color_mobile = (isset($options[ $name_prefix . 'pagination_text_color_mobile' ]) && $options[ $name_prefix . 'pagination_text_color_mobile' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'pagination_text_color_mobile' ] ) ) : '#fff';
         $survey_progress_bar_text_font_size = (isset($options[ $name_prefix . 'progress_bar_text_font_size' ]) && $options[ $name_prefix . 'progress_bar_text_font_size' ] != '') ? absint ( intval( $options[ $name_prefix . 'progress_bar_text_font_size' ] ) ) : $survey_answer_font_size;
         $survey_progress_bar_text_font_size_on_mobile = (isset($options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ]) && $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'progress_bar_text_font_size_on_mobile' ] ) ) : $survey_progress_bar_text_font_size;
         $survey_progress_bar_text_transform = (isset($options[ $name_prefix . 'progress_bar_text_transform' ]) && $options[ $name_prefix . 'progress_bar_text_transform' ] != '') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_transform' ] ) : 'none';

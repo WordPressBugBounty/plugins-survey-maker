@@ -3372,6 +3372,7 @@ class Survey_Maker_Public {
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-status .' . $this->html_class_prefix . 'live-bar-status-text{
                 font-size: ' . $this->options[ $this->name_prefix . 'progress_bar_text_font_size_on_mobile' ] . 'px;
+                color: ' . $this->options[ $this->name_prefix . 'pagination_text_color_mobile' ] . ';
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'progress_bar_text_letter_spacing_mobile' ] . 'px;
                 text-transform: '.$this->options[ $this->name_prefix . 'progress_bar_text_transform_mobile' ].';                
                 line-height: 1;

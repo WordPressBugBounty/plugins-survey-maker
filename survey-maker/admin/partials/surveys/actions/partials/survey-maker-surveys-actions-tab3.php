@@ -312,8 +312,35 @@
                             </label>
                         </div>
                         <div class="col-sm-8 ays_divider_left">
-                            <input type="text" class="ays-text-input" id='ays_survey_pagination_text_color' name='ays_survey_pagination_text_color' data-alpha="true" value="<?php echo esc_attr($survey_pagination_text_color); ?>"/>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_title_letter_spacing'>
+                                        <?php echo __('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the color of the pagination text for desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="ays-text-input" id='ays_survey_pagination_text_color' name='ays_survey_pagination_text_color' data-alpha="true" value="<?php echo esc_attr($survey_pagination_text_color); ?>"/>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_progress_bar_text_letter_spacing_mobile'>
+                                        <?php echo __('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the color of the pagination text for mobile devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <input type="text" class="ays-text-input" id='ays_survey_pagination_text_color_mobile' name='ays_survey_pagination_text_color_mobile' data-alpha="true" value="<?php echo esc_attr($survey_pagination_text_color_mobile); ?>"/>
+                                </div>
+                            </div>
                         </div>
+
                     </div> <!-- Progress bar text color' -->
                     <hr/>
                     <div class="form-group row">

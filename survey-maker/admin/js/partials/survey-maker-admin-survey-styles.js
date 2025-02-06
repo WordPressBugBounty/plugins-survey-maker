@@ -133,7 +133,7 @@
             $(document).find('#ays_survey_buttons_text_color').wpColorPicker('color', defaultButtonsTextColor);
             $(document).find('#ays_survey_button_bg_color').wpColorPicker('color', defaultButtonsBgColor);
             $(document).find('#ays_survey_title_box_shadow_color').wpColorPicker('color', defaultTitleTShColor);
-            $(document).find('#ays_survey_pagination_text_color').wpColorPicker('color', defaultPaginationTextColor);
+            $(document).find('#ays_survey_pagination_text_color,#ays_survey_pagination_text_color_mobile').wpColorPicker('color', defaultPaginationTextColor);
             $(document).find('#ays_survey_full_screen_button_color').wpColorPicker('color', defaultFullScreenButtonColor);
             $(document).find('#ays_survey_question_caption_text_color').wpColorPicker('color', defaultQestionCaptionTextColor);
         }
@@ -270,7 +270,7 @@
             $(document).find('#ays_survey_start_page_background_color').wpColorPicker(ays_survey_color_picker);
             $(document).find('#ays_survey_start_page_text_color').wpColorPicker(ays_survey_color_picker);
             $(document).find('#ays_survey_title_box_shadow_color').wpColorPicker(ays_survey_title_box_shadow_color_picker);
-            $(document).find('#ays_survey_pagination_text_color').wpColorPicker(ays_survey_pagination_text_color);
+            $(document).find('#ays_survey_pagination_text_color,#ays_survey_pagination_text_color_mobile').wpColorPicker(ays_survey_pagination_text_color);
             $(document).find('#ays_survey_full_screen_button_color').wpColorPicker(ays_survey_full_screen_button_color);
             $(document).find('#ays_survey_question_caption_text_color').wpColorPicker(ays_survey_question_caption_text_color);
         }
