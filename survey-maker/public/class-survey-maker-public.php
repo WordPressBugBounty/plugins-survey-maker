@@ -3554,6 +3554,9 @@ class Survey_Maker_Public {
             // // Popup background color
             $popup_bg_color = (isset($options['popup_bg_color']) && $options['popup_bg_color'] != '') ? $options['popup_bg_color'] : '#ffffff';
 
+            // Popup background color | Mobile
+            $popup_bg_color_mobile = (isset($options['popup_bg_color_mobile']) && $options['popup_bg_color_mobile'] != '') ? esc_attr($options['popup_bg_color_mobile']) : $popup_bg_color;
+
             // // Popup trigger type
             $popup_trigger_type = (isset($options["popup_trigger"]) && $options["popup_trigger"] != "") ? esc_attr($options["popup_trigger"]) : "on_load";
             
@@ -3782,9 +3785,10 @@ class Survey_Maker_Public {
                             }
 
                             @media screen and (max-width: 640px){
-                                .ays-survey-popup-modal-' . $popup['id'] . ' {
+                                div.ays-survey-popup-modal-' . $popup['id'] . ' {
                                     width: ' . $popup_survey_width_mobile . 'px;
                                     height: ' . $popup_survey_height_mobile . 'px;
+                                    background-color: ' . $popup_bg_color_mobile . ';
                                 }
                                 .ays-survey-popup-modal-' . $popup['id'] . ' .ays-survey-popup-title-content{
                                     font-size: '.$survey_popup_title_mobile_font_size.'px;

@@ -3130,6 +3130,12 @@
             }
         };
 
+        var ays_survey_popup_bg_color_mobile_picker = {
+            defaultColor: '#ffffff',
+            change: function (e) {
+            }
+        };
+
         var aysSurveyPopupTitleTextColorPicker = {
             defaultColor: '#000000',
             change: function (e) {
@@ -3203,6 +3209,8 @@
         
         // Initialize popup survey color picker
         $(document).find('#ays_survey_popup_bg_color').wpColorPicker(ays_survey_popup_bg_color_picker);
+        // Initialize popup survey color picker
+        $(document).find('#ays_survey_popup_bg_color_mobile').wpColorPicker(ays_survey_popup_bg_color_mobile_picker);
         // Initialize popup survey title bg color picker
         $(document).find('#ays_survey_popup_title_bg_color').wpColorPicker(aysSurveyPopupTitleBgColorPicker);
         // Initialize popup survey title text color picker

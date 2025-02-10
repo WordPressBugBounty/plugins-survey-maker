@@ -276,6 +276,9 @@ class Popup_Survey_List_Table extends WP_List_Table {
             // // Popup background color
             $popup_bg_color = (isset( $_POST[$name_prefix . 'survey_popup_bg_color'] ) &&  $_POST[$name_prefix . 'survey_popup_bg_color'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_bg_color' ] ) : '#ffffff';
 
+            // Popup background color | Mobile
+            $popup_bg_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_bg_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_bg_color_mobile'] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_bg_color_mobile' ] ) ) : '#ffffff';
+
             $hide_popup = isset( $_POST[ $name_prefix . 'survey_hide_popup' ] ) && $_POST[ $name_prefix . 'survey_hide_popup' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup' ] ) : 'off';
             
             // Hide Popup after close
@@ -289,35 +292,36 @@ class Popup_Survey_List_Table extends WP_List_Table {
             
             // Options
             $options = array(
-                "popup_enable_show_title" => $survey_popup_enable_show_title,
-                "popup_title_font_size" => $survey_popup_title_font_size,
-                "popup_title_mobile_font_size" => $survey_popup_title_mobile_font_size,
-                "popup_title_bg_color" => $survey_popup_title_bg_color,
-                "popup_title_text_color" => $survey_popup_title_text_color,
-                "popup_title_alignment" => $survey_popup_title_alignment,
-                "popup_title_alignment_on_mobile" => $survey_popup_title_alignment_on_mobile,
-                "popup_title_transform" => $survey_popup_title_transform,
-                "popup_title_transform_mobile" => $survey_popup_title_transform_mobile,
-                "popup_title_letter_spacing" => $survey_popup_title_letter_spacing,
-                "popup_title_letter_spacing_on_mobile" => $survey_popup_title_letter_spacing_on_mobile,
-                "popup_hide_title_on_mobile" => $survey_popup_hide_title_on_mobile,
-                "popup_title_border_radius" => $survey_popup_title_border_radius,
-                "popup_title_border_radius_mobile" => $survey_popup_title_border_radius_mobile,
-                "width"         	 => $survey_width,
-                "width_mobile"       => $survey_width_mobile,
-                "height"        	 => $survey_heigth,
-                "height_mobile"    	 => $survey_heigth_mobile,
-                "popup_position"     => $popup_position,
-                "popup_margin"       => $popup_margin,
-                "popup_trigger"      => $popup_trigger,
-                "enable_popup_close_after_finish" => $survey_enable_popup_close_after_finish,
-                "popup_close_after_finish_delay"  => $survey_popup_close_after_finish_delay,
-                "popup_selector"     => $popup_selector,
-                'hide_popup'         => $hide_popup,
-                'hide_popup_after_close' => $hide_popup_after_close,
-                'full_screen_mode'   => $survey_popup_full_screen,
-                'popup_enable_close_by_esc' => $survey_popup_enable_close_by_esc,
-                'popup_bg_color'     => $popup_bg_color,
+                "popup_enable_show_title"               => $survey_popup_enable_show_title,
+                "popup_title_font_size"                 => $survey_popup_title_font_size,
+                "popup_title_mobile_font_size"          => $survey_popup_title_mobile_font_size,
+                "popup_title_bg_color"                  => $survey_popup_title_bg_color,
+                "popup_title_text_color"                => $survey_popup_title_text_color,
+                "popup_title_alignment"                 => $survey_popup_title_alignment,
+                "popup_title_alignment_on_mobile"       => $survey_popup_title_alignment_on_mobile,
+                "popup_title_transform"                 => $survey_popup_title_transform,
+                "popup_title_transform_mobile"          => $survey_popup_title_transform_mobile,
+                "popup_title_letter_spacing"            => $survey_popup_title_letter_spacing,
+                "popup_title_letter_spacing_on_mobile"  => $survey_popup_title_letter_spacing_on_mobile,
+                "popup_hide_title_on_mobile"            => $survey_popup_hide_title_on_mobile,
+                "popup_title_border_radius"             => $survey_popup_title_border_radius,
+                "popup_title_border_radius_mobile"      => $survey_popup_title_border_radius_mobile,
+                "width"         	                    => $survey_width,
+                "width_mobile"                          => $survey_width_mobile,
+                "height"        	                    => $survey_heigth,
+                "height_mobile"    	                    => $survey_heigth_mobile,
+                "popup_position"                        => $popup_position,
+                "popup_margin"                          => $popup_margin,
+                "popup_trigger"                         => $popup_trigger,
+                "enable_popup_close_after_finish"       => $survey_enable_popup_close_after_finish,
+                "popup_close_after_finish_delay"        => $survey_popup_close_after_finish_delay,
+                "popup_selector"                        => $popup_selector,
+                'hide_popup'                            => $hide_popup,
+                'hide_popup_after_close'                => $hide_popup_after_close,
+                'full_screen_mode'                      => $survey_popup_full_screen,
+                'popup_enable_close_by_esc'             => $survey_popup_enable_close_by_esc,
+                'popup_bg_color'                        => $popup_bg_color,
+                'popup_bg_color_mobile'                 => $popup_bg_color_mobile,
             );
             
             $message = '';

@@ -175,7 +175,10 @@
     $popup_selector = (isset($options["popup_selector"]) && $options["popup_selector"] != "") ? stripslashes( esc_attr($options["popup_selector"])) : "";    
 
     // Popup background color
-    $survey_popup_bg_color = (isset($options["popup_bg_color"]) && $options["popup_bg_color"] != "") ? $options["popup_bg_color"] : "#ffffff";
+    $survey_popup_bg_color = (isset($options["popup_bg_color"]) && $options["popup_bg_color"] != "") ? esc_attr($options["popup_bg_color"]) : "#ffffff";
+
+    // Popup background color | Mobile
+    $survey_popup_bg_color_mobile = (isset($options["popup_bg_color_mobile"]) && $options["popup_bg_color_mobile"] != "") ? esc_attr($options["popup_bg_color_mobile"]) : $survey_popup_bg_color;
 
     // Popup close after finish
     $survey_enable_popup_close_after_finish = (isset($options["enable_popup_close_after_finish"]) && $options["enable_popup_close_after_finish"] == "on") ? true : false;
