@@ -198,6 +198,7 @@
 
     $wrong_shortcode_text               = (isset($default_texts['wrong_shortcode_text']) && $default_texts['wrong_shortcode_text'] != '') ? stripslashes( esc_attr( $default_texts['wrong_shortcode_text'] ) ) : 'Wrong shortcode initialized';
     $email_validation_error_text        = (isset($default_texts['email_validation_error_text']) && $default_texts['email_validation_error_text'] != '') ? stripslashes( esc_attr( $default_texts['email_validation_error_text'] ) ) : 'Must be a valid email address';
+    $redirecting_after_text        = (isset($default_texts['redirecting_after_text']) && $default_texts['redirecting_after_text'] != '') ? stripslashes( esc_attr( $default_texts['redirecting_after_text'] ) ) : 'Redirecting after';
     // Default texts | End
 
     $buttons_texts_res      = ($actions->ays_get_setting('buttons_texts') === false) ? json_encode(array()) : $actions->ays_get_setting('buttons_texts');
@@ -980,6 +981,19 @@
                             </div>
                             <div class="col-sm-9">
                                 <input type="text" id="ays_survey_email_validation_error_text" name="ays_survey_email_validation_error_text" class="ays-text-input"  value='<?php echo esc_attr($email_validation_error_text); ?>'>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_survey_redirecting_after_text">
+                                    <?php echo __( "Custom Redirection Message Text", "survey-maker" ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo htmlspecialchars(__('Customize the message displayed to survey takers while they are being redirected to another page after the survey submission (e.g. Redirecting after 00:05).', "survey-maker")); ?>">
+                                        <i class="ays_fa ays_fa_info_circle"></i>
+                                    </a>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_survey_redirecting_after_text" name="ays_survey_redirecting_after_text" class="ays-text-input" value='<?php echo esc_attr($redirecting_after_text); ?>'>
                             </div>
                         </div>
 

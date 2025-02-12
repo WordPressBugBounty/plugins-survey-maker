@@ -61,11 +61,13 @@ class Survey_Maker_Settings_Actions {
             // Default texts | Start
             $wrong_shortcode_text               = (isset($_REQUEST[$name_prefix . 'survey_wrong_shortcode_text']) && $_REQUEST[$name_prefix . 'survey_wrong_shortcode_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_wrong_shortcode_text'] )) : 'Wrong shortcode initialized';
             $email_validation_error_text        = (isset($_REQUEST[$name_prefix . 'survey_email_validation_error_text']) && $_REQUEST[$name_prefix . 'survey_email_validation_error_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_email_validation_error_text'] )) : 'Must be a valid email address';
+            $redirecting_after_text             = (isset($_REQUEST[$name_prefix . 'survey_redirecting_after_text']) && $_REQUEST[$name_prefix . 'survey_redirecting_after_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_redirecting_after_text'] )) : 'Redirecting after';
             // Default texts | End
 
             $default_texts = array(
                 'wrong_shortcode_text'                  => $wrong_shortcode_text,
                 'email_validation_error_text'           => $email_validation_error_text,
+                'redirecting_after_text'                => $redirecting_after_text,
             );
             // Default texts | End
 

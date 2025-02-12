@@ -968,26 +968,28 @@ class Survey_Maker_Data {
     public static function secondsToWords($seconds){
         $ret = "";
 
+        $seconds = absint($seconds);
+
         /*** get the days ***/
-        $days = intval(intval($seconds) / (3600 * 24));
+        $days = (int)($seconds / 86400);
         if ($days > 0) {
             $ret .= "$days " . __( 'days', "survey-maker" ) . ' ';
         }
 
         /*** get the hours ***/
-        $hours = (intval($seconds) / 3600) % 24;
+        $hours = (int)(($seconds - ($days * 86400)) / 3600);
         if ($hours > 0) {
             $ret .= "$hours " . __( 'hours', "survey-maker" ) . ' ';
         }
 
         /*** get the minutes ***/
-        $minutes = (intval($seconds) / 60) % 60;
+        $minutes = (int)(($seconds - $days * 86400 - $hours * 3600) / 60);
         if ($minutes > 0) {
             $ret .= "$minutes " . __( 'minutes', "survey-maker" ) . ' ';
         }
 
         /*** get the seconds ***/
-        $seconds = intval($seconds) % 60;
+        $seconds = (int)($seconds - ($days * 86400) - ($hours * 3600) - ($minutes * 60));
         if ($seconds > 0) {
             $ret .= "$seconds " . __( 'seconds', "survey-maker" );
         }
@@ -1264,6 +1266,7 @@ class Survey_Maker_Data {
 
         $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
         $email_validation_error_text = (isset($settings_static_texts['email_validation_error_text']) && $settings_static_texts['email_validation_error_text'] != '') ? stripslashes(esc_html($settings_static_texts['email_validation_error_text'])) : 'Must be a valid email address';
+        $redirecting_after_text      = (isset($settings_static_texts['redirecting_after_text']) && $settings_static_texts['redirecting_after_text'] != '') ? stripslashes( esc_html( $settings_static_texts['redirecting_after_text'] ) ) : 'Redirecting after';
 
         if ($wrong_shortcode_text === 'Wrong shortcode initialized') {
             $wrong_shortcode_text = __('Wrong shortcode initialized', "survey-maker");
@@ -1273,9 +1276,14 @@ class Survey_Maker_Data {
             $email_validation_error_text = __('Must be a valid email address', "survey-maker");
         }
 
+        if ($redirecting_after_text === 'Redirecting after') {
+            $redirecting_after_text = __('Redirecting after', "survey-maker");
+        }
+
         $texts = array(
-            'wrongShortcode' => $wrong_shortcode_text,
-            'emailValidationError' => $email_validation_error_text,
+            'wrongShortcode'        => $wrong_shortcode_text,
+            'emailValidationError'  => $email_validation_error_text,
+            'redirectingAfter'      => $redirecting_after_text,
         );
 
         return $texts;
