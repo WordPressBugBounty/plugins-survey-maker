@@ -675,7 +675,7 @@ class Survey_Maker_Public {
             return "<p class='wrong_shortcode_text' style='color:red;'>" . $this->default_texts['wrongShortcode'] . "</p>";
         }
 
-    	$status = isset( $survey->status ) && $survey->status != '' ? $survey->status : '';
+    	$status = isset( $survey->status ) && $survey->status != '' ? sanitize_text_field($survey->status) : '';
 
         if ( $status == 'trashed' ) {
             return "<p class='wrong_shortcode_text' style='color:red;'>" . $this->default_texts['wrongShortcode'] . "</p>";

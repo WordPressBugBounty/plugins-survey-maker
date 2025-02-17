@@ -252,13 +252,13 @@ class Survey_Categories_List_Table extends WP_List_Table {
             $description = isset( $data[ $name_prefix . 'description' ] ) && $data[ $name_prefix . 'description' ] != '' ? stripslashes( $data[ $name_prefix . 'description' ] ) : '';
 
             // Status
-            $status = isset( $data[ $name_prefix . 'status' ] ) && $data[ $name_prefix . 'status' ] != '' ? $data[ $name_prefix . 'status' ] : 'published';
+            $status = isset( $data[ $name_prefix . 'status' ] ) && $data[ $name_prefix . 'status' ] != '' ? stripslashes( sanitize_text_field($data[ $name_prefix . 'status' ]) ) : 'published';
             
             // Date created
-            $date_created = isset( $data[ $name_prefix . 'date_created' ] ) && Survey_Maker_Admin::validateDate( $data[ $name_prefix . 'date_created' ] ) ? $data[ $name_prefix . 'date_created' ] : current_time( 'mysql' );
+            $date_created = isset( $data[ $name_prefix . 'date_created' ] ) && Survey_Maker_Admin::validateDate( $data[ $name_prefix . 'date_created' ] ) ? stripslashes( sanitize_text_field($data[ $name_prefix . 'date_created' ]) ) : current_time( 'mysql' );
             
             // Date modified
-            $date_modified = isset( $data[ $name_prefix . 'date_modified' ] ) && Survey_Maker_Admin::validateDate( $data[ $name_prefix . 'date_modified' ] ) ? $data[ $name_prefix . 'date_modified' ] : current_time( 'mysql' );
+            $date_modified = isset( $data[ $name_prefix . 'date_modified' ] ) && Survey_Maker_Admin::validateDate( $data[ $name_prefix . 'date_modified' ] ) ? stripslashes( sanitize_text_field($data[ $name_prefix . 'date_modified' ]) ) : current_time( 'mysql' );
 
             // Options
             $options = array(
@@ -599,8 +599,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
         }else{
             $delete_nonce = wp_create_nonce( $this->plugin_name . '-trash-survey-category' );
         }
+
+        $survey_cat_title = (isset($item['title']) && $item['title'] != "") ? esc_attr(stripcslashes($item['title'])) : "";
         
-        $restitle = Survey_Maker_Admin::ays_restriction_string( "word", stripcslashes( $item['title'] ), $this->title_length);
+        $restitle = Survey_Maker_Admin::ays_restriction_string( "word", stripcslashes( $survey_cat_title ), $this->title_length);
         
         $fstatus = '';
         if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
@@ -648,11 +650,11 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
     function column_status( $item ) {
         global $wpdb;
-        $status = ucfirst( $item['status'] );
-        $date = date( 'Y/m/d', strtotime( $item['date_modified'] ) );
+        $status = ucfirst( esc_attr($item['status']) );
+        $date = date( 'Y/m/d', strtotime( esc_attr($item['date_modified']) ) );
         $title_date = date( 'l jS \of F Y h:i:s A', strtotime( $item['date_modified'] ) );
-        $html = "<p style='font-size:14px;margin:0;'>" . $status . "</p>";
-        $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . $title_date . "'>" . $date . "</p>";
+        $html = "<p style='font-size:14px;margin:0;'>" . esc_html($status) . "</p>";
+        $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . esc_attr($title_date) . "'>" . esc_attr($date) . "</p>";
         return $html;
     }
 

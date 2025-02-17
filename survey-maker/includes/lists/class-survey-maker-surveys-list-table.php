@@ -2676,7 +2676,7 @@ class Surveys_List_Table extends WP_List_Table {
             $delete_nonce = wp_create_nonce( $this->plugin_name . '-trash-survey' );
         }
 
-        $survey_title = stripcslashes( $item['title'] );
+        $survey_title = (isset($item['title']) && $item['title'] != "") ? esc_attr(stripcslashes($item['title'])) : "";
         $custom_post_id = isset($item['custom_post_id']) && $item['custom_post_id'] != 0 && $item['custom_post_id'] != '' ? esc_attr($item['custom_post_id']) : 0;
 
         $q = esc_attr( $survey_title );
@@ -2688,7 +2688,7 @@ class Surveys_List_Table extends WP_List_Table {
             $fstatus = '&fstatus=' . esc_attr( $_GET['fstatus'] );
         }
 
-        $title = sprintf( '<a href="?page=%s&action=%s&id=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, stripcslashes($item['title']));
+        $title = sprintf( '<a href="?page=%s&action=%s&id=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, $survey_title);
 
         $actions = array();
         if($item['status'] == 'trashed'){
@@ -2752,11 +2752,11 @@ class Surveys_List_Table extends WP_List_Table {
 
     function column_status( $item ) {
         global $wpdb;
-        $status = ucfirst( $item['status'] );
-        $date = date( 'Y/m/d', strtotime( $item['date_modified'] ) );
-        $title_date = date( 'l jS \of F Y h:i:s A', strtotime( $item['date_modified'] ) );
-        $html = "<p style='font-size:14px;margin:0;'>" . $status . "</p>";
-        $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . $title_date . "'>" . $date . "</p>";
+        $status = ucfirst( esc_attr($item['status']) );
+        $date = date( 'Y/m/d', strtotime( esc_attr($item['date_modified']) ) );
+        $title_date = date( 'l jS \of F Y h:i:s A', strtotime( esc_attr($item['date_modified']) ) );
+        $html = "<p style='font-size:14px;margin:0;'>" . esc_html($status) . "</p>";
+        $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . esc_attr($title_date) . "'>" . esc_attr($date) . "</p>";
         return $html;
     }
 
