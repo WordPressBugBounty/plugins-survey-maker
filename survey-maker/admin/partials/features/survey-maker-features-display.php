@@ -12,7 +12,7 @@
 
 <div class="wrap">
     <h1 class="wp-heading-inline">
-        <?php echo __(esc_html(get_admin_page_title()), "survey-maker"); ?>
+        <?php echo esc_html__(get_admin_page_title(), "survey-maker"); ?>
     </h1>
 
     <div class="ays-survey-features-wrap">
@@ -22,19 +22,19 @@
                     <tr>
                         <th class="tl tl2"></th>
                         <th class="product" style="background:#69C7F1; border-top-left-radius: 5px; border-left:0px;">
-                            <span style="display: block"><?php echo __('Personal',"survey-maker")?></span>
+                            <span style="display: block"><?php echo esc_html__('Personal',"survey-maker")?></span>
                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/personal_avatar.png'; ?>" alt="Free" title="Free" width="100"/>
                         </th>
                         <th class="product" style="background:#69C7F1;">
-                            <span style="display: block"><?php echo  __('Business',"survey-maker")?></span>
+                            <span style="display: block"><?php echo  esc_html__('Business',"survey-maker")?></span>
                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/business_avatar.png'; ?>" alt="Business" title="Business" width="100"/>
                         </th>
                         <th class="product" style="border-top-right-radius: 5px; background:#69C7F1;">
-                            <span style="display: block"><?php echo __('Developer',"survey-maker")?></span>
+                            <span style="display: block"><?php echo esc_html__('Developer',"survey-maker")?></span>
                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/pro_avatar.png'; ?>" alt="Developer" title="Developer" width="100"/>
                         </th>
                         <th class="product" style="border-top-right-radius: 5px; border-right:0px; background:#69C7F1;">
-                            <span style="display: block"><?php echo __('Agency', "survey-maker")?></span>
+                            <span style="display: block"><?php echo esc_html__('Agency', "survey-maker")?></span>
                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/agency_avatar.png'; ?>" alt="Agency" title="Agency" width="100"/>
                         </th>
                     </tr>
@@ -42,7 +42,7 @@
                         <th></th>
                         <th class="price-info">
                             <div class="price-now">
-                                <span><?php echo __('Free',"survey-maker")?></span>
+                                <span><?php echo esc_html__('Free',"survey-maker")?></span>
                             </div>
                         </th>
                         <th class="price-info">
@@ -68,43 +68,43 @@
                 <tbody>
                     <tr>
                         <td></td>
-                        <td colspan="4"><?php echo __('Support for',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Support for',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Support for',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Support for',"survey-maker")?></td>
                         <td>-</td>
-                        <td><?php echo __('5 site',"survey-maker")?></td>
-                        <td><?php echo __('Unlimited sites',"survey-maker")?></td>
-                        <td><?php echo __('Unlimited sites',"survey-maker")?></td>
+                        <td><?php echo esc_html__('5 site',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Unlimited sites',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Unlimited sites',"survey-maker")?></td>
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="3"><?php echo __('Upgrade for',"survey-maker")?></td>
+                        <td colspan="3"><?php echo esc_html__('Upgrade for',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Upgrade for',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Upgrade for',"survey-maker")?></td>
                         <td>-</td>
-                        <td><?php echo __('12 months',"survey-maker")?></td>
-                        <td><?php echo __('Lifetime',"survey-maker")?></td>
-                        <td><?php echo __('Lifetime',"survey-maker")?></td>
+                        <td><?php echo esc_html__('12 months',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Lifetime',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Lifetime',"survey-maker")?></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td colspan="4"><?php echo __('Support for',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Support for',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Support for',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Support for',"survey-maker")?></td>
                         <td>-</td>
-                        <td><?php echo __('12 months',"survey-maker")?></td>
-                        <td><?php echo __('Lifetime',"survey-maker")?></td>
-                        <td><?php echo __('Lifetime',"survey-maker")?></td>
+                        <td><?php echo esc_html__('12 months',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Lifetime',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Lifetime',"survey-maker")?></td>
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Reports in dashboard',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Reports in dashboard',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Reports in dashboard',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Reports in dashboard',"survey-maker")?></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -112,10 +112,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Unlimited Surveys',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Unlimited Surveys',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Unlimited Surveys',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Unlimited Surveys',"survey-maker")?></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -123,10 +123,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Unlimited Questions',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Unlimited Questions',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Unlimited Questions',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Unlimited Questions',"survey-maker")?></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -134,21 +134,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Responsive design',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Responsive design',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Responsive design',"survey-maker")?></td>
-                        <td><i class="ays_fa ays_fa_check"></i></td>
-                        <td><i class="ays_fa ays_fa_check"></i></td>
-                        <td><i class="ays_fa ays_fa_check"></i></td>
-                        <td><i class="ays_fa ays_fa_check"></i></td>
-                    </tr>
-                    <tr>
-                        <td> </td>
-                        <td colspan="4"><?php echo __('Popup Survey',"survey-maker")?></td>
-                    </tr>
-                    <tr>
-                        <td><?php echo __('Popup Survey',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Responsive design',"survey-maker")?></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -156,10 +145,21 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Extra question types',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Popup Survey',"survey-maker")?></td>
+                    </tr>
+                    <tr>
+                        <td><?php echo esc_html__('Popup Survey',"survey-maker")?></td>
+                        <td><i class="ays_fa ays_fa_check"></i></td>
+                        <td><i class="ays_fa ays_fa_check"></i></td>
+                        <td><i class="ays_fa ays_fa_check"></i></td>
+                        <td><i class="ays_fa ays_fa_check"></i></td>
+                    </tr>
+                    <tr>
+                        <td> </td>
+                        <td colspan="4"><?php echo esc_html__('Extra question types',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Extra question types',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Extra question types',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -167,10 +167,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Send mail to user',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Send mail to user',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Send mail to user',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Send mail to user',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -178,10 +178,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Send mail to admin',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Send mail to admin',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Send mail to admin',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Send mail to admin',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -189,10 +189,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Email configuration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Email configuration',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Email configuration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Email configuration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -200,10 +200,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Schedule survey',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Schedule survey',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Schedule survey',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Schedule survey',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -211,10 +211,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Mailchimp integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Mailchimp integration',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Mailchimp integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Mailchimp integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -222,10 +222,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Campaign Monitor integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Campaign Monitor integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Campaign Monitor integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Campaign Monitor integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -233,10 +233,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Slack integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Slack integration',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Slack integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Slack integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -244,10 +244,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('ActiveCampaign integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('ActiveCampaign integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('ActiveCampaign integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('ActiveCampaign integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -255,10 +255,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('User history shortcode',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('User history shortcode',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('User history shortcode',"survey-maker")?></td>
+                        <td><?php echo esc_html__('User history shortcode',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -266,10 +266,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Make questions required',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Make questions required',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Make questions required',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Make questions required',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -277,10 +277,10 @@
                     </tr>                    
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Permissions by user role',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Permissions by user role',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Permissions by user role',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Permissions by user role',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -288,10 +288,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Limit attemps count',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Limit attemps count',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Limit attemps count',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Limit attemps count',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -299,10 +299,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Results with charts',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Results with charts',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Results with charts',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Results with charts',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -310,10 +310,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Export and import surveys',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Export and import surveys',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Export and import surveys',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Export and import surveys',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -321,10 +321,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Submissions summary export',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Submissions summary export',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Submissions summary export',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Submissions summary export',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -332,10 +332,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Individual submission export',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Individual submission export',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Individual submission export',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Individual submission export',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -343,10 +343,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('PDF export',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('PDF export',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('PDF export',"survey-maker")?></td>
+                        <td><?php echo esc_html__('PDF export',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -354,10 +354,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Password protected survey',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Password protected survey',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Password protected survey',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Password protected survey',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -365,10 +365,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Google sheets integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Google sheets integration',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('Google sheets integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Google sheets integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -376,10 +376,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Zapier integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Zapier integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Zapier integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Zapier integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -387,10 +387,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('SendGrid integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('SendGrid integration',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('SendGrid integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('SendGrid integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -398,10 +398,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('GamiPress integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('GamiPress integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('GamiPress integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('GamiPress integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -409,10 +409,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('MadMimi integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('MadMimi integration',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('MadMimi integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('MadMimi integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -420,10 +420,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('GetResponse integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('GetResponse integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('GetResponse integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('GetResponse integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -431,10 +431,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('ConvertKit integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('ConvertKit integration',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('ConvertKit integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('ConvertKit integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -442,10 +442,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Access by user role',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Access by user role',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row" >
-                        <td><?php echo __('Access by user role',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Access by user role',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -453,10 +453,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Conversational surveys',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Conversational surveys',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Conversational surveys',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Conversational surveys',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -464,10 +464,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Logic jump',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Logic jump',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Logic jump',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Logic jump',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -475,10 +475,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Conditional Results',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Conditional Results',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Conditional Results',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Conditional Results',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -486,10 +486,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Conditional Mailing',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Conditional Mailing',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Conditional Mailing',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Conditional Mailing',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -497,10 +497,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Multilingual Surveys',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Multilingual Surveys',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Multilingual Surveys',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Multilingual Surveys',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -508,10 +508,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Point System',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Point System',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Point System',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Point System',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -519,10 +519,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Calculation',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Calculation',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Calculation',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Calculation',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -530,10 +530,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Ranking Question Type',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Ranking Question Type',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Ranking Question Type',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Ranking Question Type',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -541,10 +541,10 @@
                     </tr>                    
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Net Promoter Score (NPS)',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Net Promoter Score (NPS)',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Net Promoter Score (NPS)',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Net Promoter Score (NPS)',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -552,10 +552,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Likert Scale',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Likert Scale',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row" >
-                        <td><?php echo __('Likert Scale',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Likert Scale',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -563,10 +563,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Summary emails',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Summary emails',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Summary emails',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Summary emails',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -574,10 +574,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('PayPal integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('PayPal integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row" >
-                        <td><?php echo __('PayPal integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('PayPal integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -585,10 +585,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Stripe integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Stripe integration',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('Stripe integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Stripe integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><i class="ays_fa ays_fa_check"></i></td>
@@ -596,10 +596,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Klaviyo Integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Klaviyo Integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row">
-                        <td><?php echo __('Klaviyo Integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Klaviyo Integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -607,10 +607,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('MyCred Integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('MyCred Integration',"survey-maker")?></td>
                     </tr>
                     <tr>
-                        <td><?php echo __('MyCred Integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('MyCred Integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -618,10 +618,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Aweber Integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Aweber Integration',"survey-maker")?></td>
                     </tr>
                     <tr  class="compare-row">
-                        <td><?php echo __('Aweber Integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Aweber Integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -629,10 +629,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('MailPoet Integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('MailPoet Integration',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('MailPoet Integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('MailPoet Integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -640,10 +640,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('Text To Speech',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('Text To Speech',"survey-maker")?></td>
                     </tr>
                     <tr  class="compare-row">
-                        <td><?php echo __('Text To Speech',"survey-maker")?></td>
+                        <td><?php echo esc_html__('Text To Speech',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -651,10 +651,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('ChatGPT Integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('ChatGPT Integration',"survey-maker")?></td>
                     </tr>
                     <tr >
-                        <td><?php echo __('ChatGPT Integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('ChatGPT Integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -662,10 +662,10 @@
                     </tr>
                     <tr>
                         <td> </td>
-                        <td colspan="4"><?php echo __('WooCommerce Integration',"survey-maker")?></td>
+                        <td colspan="4"><?php echo esc_html__('WooCommerce Integration',"survey-maker")?></td>
                     </tr>
                     <tr class="compare-row" >
-                        <td><?php echo __('WooCommerce Integration',"survey-maker")?></td>
+                        <td><?php echo esc_html__('WooCommerce Integration',"survey-maker")?></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
                         <td><span>-</span></td>
@@ -676,10 +676,10 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><a href="https://wordpress.org/plugins/survey-maker/" target="_blank" class="price-buy"><?php echo __('Download',"survey-maker")?><span class="hide-mobile"></span></a></td>
-                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo __('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
-                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo __('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
-                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo __('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
+                        <td><a href="https://wordpress.org/plugins/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Download',"survey-maker")?><span class="hide-mobile"></span></a></td>
+                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
+                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
+                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
                     </tr>
                 </tbody>
             </table>

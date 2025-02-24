@@ -1,11 +1,11 @@
 <div id="tab5" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab5') ? 'ays-survey-tab-content-active' : ''; ?>">
-    <p class="ays-subtitle"><?php echo __('Limitation of Users',"survey-maker"); ?></p>
+    <p class="ays-subtitle"><?php echo esc_html__('Limitation of Users',"survey-maker"); ?></p>
     <hr style="border-width: 2px;"/>
     <div class="form-group row ays_toggle_parent">
         <div class="col-sm-3">
             <label for="ays_survey_limit_users">
-                <?php echo __('Maximum number of attempts per user',"survey-maker")?>
-                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, you can manage the attempts count per user for taking the survey.',"survey-maker")?>">
+                <?php echo esc_html__('Maximum number of attempts per user',"survey-maker")?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('After enabling this option, you can manage the attempts count per user for taking the survey.',"survey-maker")?>">
                     <i class="ays_fa ays_fa_info_circle"></i>
                 </a>
             </label>
@@ -20,9 +20,9 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_limit_users_by_ip">
-                            <?php echo __('Detect users by',"survey-maker")?>
+                            <?php echo esc_html__('Detect users by',"survey-maker")?>
                             <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
-                                echo htmlspecialchars( sprintf(__('Choose the method of user detection:',"survey-maker") . '
+                                echo esc_html(htmlspecialchars( sprintf(__('Choose the method of user detection:',"survey-maker") . '
                                     <ul class="ays_help_ul">
                                         <li>' .__('%s By IP %s - Detect the users by their IP addresses and limit them. This will work both for guests and registered users. Note: in general, IP is not a static variable, it is constantly changing when the users change their location/ WIFI/ Internet provider.',"survey-maker") . '</li>
                                         <li>' .__('%s By User ID %s - Detect the users by their WP User IDs and limit them. This will work only for registered users. It\'s recommended to use this method to get more reliable results.',"survey-maker") . '</li>
@@ -37,7 +37,7 @@
                                     '</em>',
                                     '<em>',
                                     '</em>'
-                                ) );
+                                ) ));
                             ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
@@ -46,19 +46,19 @@
                     <div class="col-sm-9">
                         <div class="form-check form-check-inline checkbox_ays">
                             <input type="radio" id="ays_limit_users_by_ip" class="form-check-input" name="ays_survey_limit_users_by" value="ip" <?php echo ($survey_limit_users_by == 'ip') ? 'checked' : ''; ?>/>
-                            <label class="form-check-label" for="ays_limit_users_by_ip"><?php echo __('IP',"survey-maker")?></label>
+                            <label class="form-check-label" for="ays_limit_users_by_ip"><?php echo esc_html__('IP',"survey-maker")?></label>
                         </div>
                         <div class="form-check form-check-inline checkbox_ays">
                             <input type="radio" id="ays_limit_users_by_user_id" class="form-check-input" name="ays_survey_limit_users_by" value="user_id" <?php echo ($survey_limit_users_by == 'user_id') ? 'checked' : ''; ?>/>
-                            <label class="form-check-label" for="ays_limit_users_by_user_id"><?php echo __('User ID',"survey-maker")?></label>
+                            <label class="form-check-label" for="ays_limit_users_by_user_id"><?php echo esc_html__('User ID',"survey-maker")?></label>
                         </div>
                         <div class="form-check form-check-inline checkbox_ays">
                             <input type="radio" id="ays_limit_users_by_cookie" class="form-check-input" name="ays_survey_limit_users_by" value="cookie" <?php echo ($survey_limit_users_by == 'cookie') ? 'checked' : ''; ?>/>
-                            <label class="form-check-label" for="ays_limit_users_by_cookie"><?php echo __('Cookie',"survey-maker")?></label>
+                            <label class="form-check-label" for="ays_limit_users_by_cookie"><?php echo esc_html__('Cookie',"survey-maker")?></label>
                         </div>
                         <div class="form-check form-check-inline checkbox_ays">
                             <input type="radio" id="ays_limit_users_by_ip_cookie" class="form-check-input" name="ays_survey_limit_users_by" value="ip_cookie" <?php echo ($survey_limit_users_by == 'ip_cookie') ? 'checked' : ''; ?>/>
-                            <label class="form-check-label" for="ays_limit_users_by_ip_cookie"><?php echo __('IP and Cookie',"survey-maker")?></label>
+                            <label class="form-check-label" for="ays_limit_users_by_ip_cookie"><?php echo esc_html__('IP and Cookie',"survey-maker")?></label>
                         </div>
                     </div>
                 </div>
@@ -71,15 +71,15 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_max_pass_count">
-                                    <?php echo __('Attempts count',"survey-maker")?>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Specify the count of the attempts per user for taking the survey.',"survey-maker")?>">
+                                    <?php echo esc_html__('Attempts count',"survey-maker")?>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the count of the attempts per user for taking the survey.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -95,8 +95,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_limitation_message">
-                            <?php echo __('Message',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Write the message for those survey takers who have already passed the survey under the given conditions.',"survey-maker")?>">
+                            <?php echo esc_html__('Message',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Write the message for those survey takers who have already passed the survey under the given conditions.',"survey-maker")?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -108,13 +108,9 @@
                                     <i class="ays_fa ays_fa_link"></i>
                                 </div>
                                 <div>
-                                    <span><?php echo __("Message Variables" , "survey-maker"); ?></span>
+                                    <span><?php echo esc_html__("Message Variables" , "survey-maker"); ?></span>
                                     <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
-                                        echo htmlspecialchars( sprintf(
-                                            __('Insert your preferred message variable into the editor by clicking.',"survey-maker"),
-                                            '<strong>',
-                                            '</strong>'
-                                        ) );
+                                        echo esc_attr__('Insert your preferred message variable into the editor by clicking.',"survey-maker");
                                     ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
@@ -145,8 +141,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_redirect_url">
-                            <?php echo __('Redirect URL',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Redirect your visitors to a different URL.',"survey-maker")?>">
+                            <?php echo esc_html__('Redirect URL',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Redirect your visitors to a different URL.',"survey-maker")?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -160,8 +156,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_redirection_delay">
-                            <?php echo __('Redirect delay',"survey-maker")?>(s)
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose the delay on the redirect in seconds. If you set it 0, the redirection will be disabled.',"survey-maker")?>">
+                            <?php echo esc_html__('Redirect delay',"survey-maker")?>(s)
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the delay on the redirect in seconds. If you set it 0, the redirection will be disabled.',"survey-maker")?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -179,7 +175,7 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
@@ -187,7 +183,7 @@
                             <div class="col-sm-3">
                                 <label for="ays_survey_dont_show_survey_container_attempts">
                                     <?php echo esc_attr( __("Don't show survey","survey-maker") ); ?>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Enable this option and the survey container will be hidden on the front-end if the user has reached the maximum attempts count for the survey.","survey-maker"); ?>">
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Enable this option and the survey container will be hidden on the front-end if the user has reached the maximum attempts count for the survey.","survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -197,7 +193,7 @@
                                     <input type="checkbox" />
                                 </div>
                                 <div class="col-sm-11 ays_divider_left">
-                                    <blockquote class="dont_show_survey_container_attempts_blockquote_message"><?php echo __("Note:  If you have enabled this option and the survey taker has reached the attempts count, the redirection option will not work for the survey.", "survey-maker"); ?></blockquote>
+                                    <blockquote class="dont_show_survey_container_attempts_blockquote_message"><?php echo esc_html__("Note:  If you have enabled this option and the survey taker has reached the attempts count, the redirection option will not work for the survey.", "survey-maker"); ?></blockquote>
                                 </div>
                             </div>
                         </div> <!-- Dont Show Survey //Limitation of Users -->
@@ -210,8 +206,8 @@
     <div class="form-group row ays_toggle_parent">
         <div class="col-sm-3">
             <label for="ays_survey_enable_logged_users">
-                <?php echo __('Only for logged-in users',"survey-maker"); ?>
-                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, only logged-in users will be able to participate in the survey.',"survey-maker"); ?>">
+                <?php echo esc_html__('Only for logged-in users',"survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('After enabling this option, only logged-in users will be able to participate in the survey.',"survey-maker"); ?>">
                     <i class="ays_fa ays_fa_info_circle"></i>
                 </a>
             </label>
@@ -223,8 +219,8 @@
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="ays_survey_logged_in_message">
-                        <?php echo __('Message',"survey-maker"); ?>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Write a message for unauthorized users.',"survey-maker"); ?>">
+                        <?php echo esc_html__('Message',"survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Write a message for unauthorized users.',"survey-maker"); ?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -236,14 +232,8 @@
                                 <i class="ays_fa ays_fa_link"></i>
                             </div>
                             <div>
-                                <span><?php echo __("Message Variables" , "survey-maker"); ?></span>
-                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
-                                    echo htmlspecialchars( sprintf(
-                                        __('Insert your preferred message variable into the editor by clicking.',"survey-maker"),
-                                        '<strong>',
-                                        '</strong>'
-                                    ) );
-                                ?>">
+                                <span><?php echo esc_html__("Message Variables" , "survey-maker"); ?></span>
+                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__('Insert your preferred message variable into the editor by clicking.',"survey-maker"); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </div>
@@ -272,8 +262,8 @@
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="ays_survey_show_login_form">
-                        <?php echo __('Show Login form',"survey-maker")?>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Show the login form to not logged-in users.',"survey-maker")?>">
+                        <?php echo esc_html__('Show Login form',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Show the login form to not logged-in users.',"survey-maker")?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -288,8 +278,8 @@
     <div class="form-group row ays_toggle_parent">
         <div class="col-sm-3">
             <label for="ays_survey_enable_tackers_count">
-                <?php echo __('Max count of takers', "survey-maker")?>
-                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Choose how many users can participate in the survey.',"survey-maker")?>">
+                <?php echo esc_html__('Max count of takers', "survey-maker")?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose how many users can participate in the survey.',"survey-maker")?>">
                     <i class="ays_fa ays_fa_info_circle"></i>
                 </a>
             </label>
@@ -301,8 +291,8 @@
             <div class="form-group row">
                 <div class="col-sm-2">
                     <label for="ays_survey_tackers_count">
-                        <?php echo __('Count',"survey-maker")?>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Indicate the number of users who can participate in the survey.',"survey-maker")?>">
+                        <?php echo esc_html__('Count',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Indicate the number of users who can participate in the survey.',"survey-maker")?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -316,17 +306,17 @@
     <hr>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box">
-            <div class="ays-pro-features-v2-big-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=NV-avqsJWfw" data-option-title="<?php echo __('Access only to selected user role(s)',"survey-maker")?>" data-option-text="This feature allows users to create surveys only <strong> certain WordPress users with specific roles </strong> can access. You can choose one or multiple user roles that can take the survey. If you want, you can also <strong> write a message </strong> for users who are not included in your selected list to inform them that they cannot fill in the survey.">                
+            <div class="ays-pro-features-v2-big-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=NV-avqsJWfw" data-option-title="<?php echo esc_attr__('Access only to selected user role(s)',"survey-maker")?>" data-option-text="This feature allows users to create surveys only <strong> certain WordPress users with specific roles </strong> can access. You can choose one or multiple user roles that can take the survey. If you want, you can also <strong> write a message </strong> for users who are not included in your selected list to inform them that they cannot fill in the survey.">                
                 <div class="ays-pro-features-v2-video-button">
                     <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
                     <div class="ays-pro-features-v2-video-text">
-                        <?php echo __("Watch Video" , "survey-maker"); ?>
+                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
                     </div>
                 </div>
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
@@ -335,21 +325,21 @@
                 <div class="ays-pro-features-v2-video-button">
                     <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
                     <div class="ays-pro-features-v2-video-text">
-                        <?php echo __("Watch Video" , "survey-maker"); ?>
+                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
                     </div>
                 </div>
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
             <div class="form-group row ays_toggle_parent">
                 <div class="col-sm-3">
                     <label for="ays_survey_enable_restriction_pass">
-                        <?php echo __('Access only to selected user role(s)',"survey-maker")?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Make the survey available only for the user roles mentioned in the list. By enabling this option, the Only for logged-in users option will be enabled automatically.',"survey-maker")?>">
+                        <?php echo esc_html__('Access only to selected user role(s)',"survey-maker")?>
+                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Make the survey available only for the user roles mentioned in the list. By enabling this option, the Only for logged-in users option will be enabled automatically.',"survey-maker")?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -361,8 +351,8 @@
                     <div class="form-group row">
                         <div class="col-sm-2">
                             <label for="ays_survey_users_roles">
-                                <?php echo __('User role(s)',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Select the role(s) of the user. The option accepts multiple values.',"survey-maker")?>">
+                                <?php echo esc_html__('User role(s)',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Select the role(s) of the user. The option accepts multiple values.',"survey-maker")?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -376,8 +366,8 @@
                     <div class="form-group row">
                         <div class="col-sm-2">
                             <label for="ays_survey_restriction_pass_message">
-                                <?php echo __('Message',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.',"survey-maker")?>">
+                                <?php echo esc_html__('Message',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Message for the users who aren’t included in the above-mentioned list.',"survey-maker")?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -404,7 +394,7 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
@@ -414,15 +404,15 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
             <div class="form-group row ays_toggle_parent">
                 <div class="col-sm-3">
                     <label for="ays_survey_enable_restriction_pass">
-                        <?php echo __('Access only to selected user(s)',"survey-maker")?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Make the survey available only for the user roles mentioned in the list. By enabling this option, the Only for logged-in users option will be enabled automatically.',"survey-maker")?>">
+                        <?php echo esc_html__('Access only to selected user(s)',"survey-maker")?>
+                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Make the survey available only for the user roles mentioned in the list. By enabling this option, the Only for logged-in users option will be enabled automatically.',"survey-maker")?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -434,8 +424,8 @@
                     <div class="form-group row">
                         <div class="col-sm-2">
                             <label for="ays_survey_users_roles">
-                                <?php echo __('User(s)',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Select the role(s) of the user. The option accepts multiple values.',"survey-maker")?>">
+                                <?php echo esc_html__('User(s)',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Select the role(s) of the user. The option accepts multiple values.',"survey-maker")?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -449,8 +439,8 @@
                     <div class="form-group row">
                         <div class="col-sm-2">
                             <label for="ays_survey_restriction_pass_message">
-                                <?php echo __('Message',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Message for the users who aren’t included in the above-mentioned list.',"survey-maker")?>">
+                                <?php echo esc_html__('Message',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Message for the users who aren’t included in the above-mentioned list.',"survey-maker")?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -477,7 +467,7 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
@@ -486,7 +476,7 @@
                     <a href="https://ays-demo.com/job-satisfaction-survey/" target="_blank" class="ays-pro-features-v2-view-demo-button">
                         <div class="ays-pro-features-v2-view-demo-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/view-demo.svg');"></div>
                         <div class="ays-pro-features-v2-view-demo-text">
-                            <?php echo __("View demo" , "survey-maker"); ?>
+                            <?php echo esc_html__("View demo" , "survey-maker"); ?>
                         </div>
                     </a>
                 </div>
@@ -494,15 +484,15 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
             <div class="form-group row ays_toggle_parent">
                 <div class="col-sm-3">
                     <label for="ays_survey_enable_password">
-                        <?php echo __('Password for passing survey', "survey-maker")?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('You can choose a password for users to pass the survey.',"survey-maker")?>">
+                        <?php echo esc_html__('Password for passing survey', "survey-maker")?>
+                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('You can choose a password for users to pass the survey.',"survey-maker")?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -514,19 +504,19 @@
                     <div class="form-group">
                         <label class="checkbox_ays form-check form-check-inline" >
                             <input type="radio" value='general' checked>
-                            <?php echo __('General', "survey-maker") ?>
+                            <?php echo esc_html__('General', "survey-maker") ?>
                         </label>
                         <label class="checkbox_ays form-check form-check-inline" >
                             <input type="radio" value="generated_password" >
-                            <?php echo __('Generated Passwords', "survey-maker") ?>
+                            <?php echo esc_html__('Generated Passwords', "survey-maker") ?>
                         </label>
                     </div>
                     <hr>
                     <div class="form-group row">
                         <div class="col-sm-2">
                             <label for="ays_survey_password_survey">
-                                <?php echo __('Password',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Specify the password for the users who can take the survey.',"survey-maker")?>">
+                                <?php echo esc_html__('Password',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the password for the users who can take the survey.',"survey-maker")?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -539,8 +529,8 @@
                     <div class="form-group row">
                         <div class="col-sm-2">
                             <label for="ays_survey_password_message">
-                                <?php echo __('Message',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Write the message for users who must fill in the password for taking this survey.',"survey-maker")?>">
+                                <?php echo esc_html__('Message',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Write the message for users who must fill in the password for taking this survey.',"survey-maker")?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -566,15 +556,15 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
             <div class="form-group row">
                 <div class="col-sm-3">
                     <label for="ays_survey_enable_limit_by_country">
-                        <?php echo __('Limit by country', "survey-maker")?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('After enabling this option, the given survey will not be available in the selected country.' , "survey-maker")?>">
+                        <?php echo esc_html__('Limit by country', "survey-maker")?>
+                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('After enabling this option, the given survey will not be available in the selected country.' , "survey-maker")?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>

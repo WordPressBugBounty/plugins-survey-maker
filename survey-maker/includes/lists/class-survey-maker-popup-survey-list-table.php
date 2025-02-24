@@ -1063,8 +1063,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
             $notice_class = 'error';
         }
         ?>
-        <div class="notice notice-<?php echo $notice_class; ?> is-dismissible">
-            <p> <?php echo $updated_message; ?> </p>
+        <div class="notice notice-<?php echo esc_attr($notice_class); ?> is-dismissible">
+            <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php
     }

@@ -1311,13 +1311,13 @@ class Survey_Maker_Data {
         $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['exit_button']) ) : 'Exit';
         $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['login_button']) ) : 'Log In';
 
-        $ays_next_button_text     = ($ays_next_button     === 'Next') ? __('Next', $plugin_name) : $ays_next_button;
-        $ays_previous_button_text = ($ays_previous_button === 'Prev') ? __('Prev', $plugin_name) : $ays_previous_button;
-        $ays_clear_button_text    = ($ays_clear_button    === 'Clear selection') ? __('Clear selection', $plugin_name) : $ays_clear_button;
-        $ays_finish_button_text   = ($ays_finish_button   === 'Finish') ? __('Finish', $plugin_name) : $ays_finish_button;
-        $ays_restart_button_text  = ($ays_finish_button   === 'Restart') ? __('Restart', $plugin_name) : $ays_restart_survey_button;
-        $ays_exit_button_text     = ($ays_exit_button     === 'Exit') ? __('Exit', $plugin_name) : $ays_exit_button;
-        $ays_login_button_text    = ($ays_login_button    === 'Log In') ? __('Log In', $plugin_name) : $ays_login_button;
+        $ays_next_button_text     = ($ays_next_button     === 'Next') ? __('Next', "survey-maker") : $ays_next_button;
+        $ays_previous_button_text = ($ays_previous_button === 'Prev') ? __('Prev', "survey-maker") : $ays_previous_button;
+        $ays_clear_button_text    = ($ays_clear_button    === 'Clear selection') ? __('Clear selection', "survey-maker") : $ays_clear_button;
+        $ays_finish_button_text   = ($ays_finish_button   === 'Finish') ? __('Finish', "survey-maker") : $ays_finish_button;
+        $ays_restart_button_text  = ($ays_finish_button   === 'Restart') ? __('Restart', "survey-maker") : $ays_restart_survey_button;
+        $ays_exit_button_text     = ($ays_exit_button     === 'Exit') ? __('Exit', "survey-maker") : $ays_exit_button;
+        $ays_login_button_text    = ($ays_login_button    === 'Log In') ? __('Log In', "survey-maker") : $ays_login_button;
 
         $texts = array(
             'nextButton'         => $ays_next_button_text,
@@ -2001,7 +2001,7 @@ class Survey_Maker_Data {
             wp_redirect( $url );
         }
         else{
-            echo __( 'There are no surveys yet.', "survey-maker" );
+            echo esc_html__( 'There are no surveys yet.', "survey-maker" );
         }
     }
 
@@ -2180,6 +2180,13 @@ class Survey_Maker_Data {
         return wp_kses_post($data);
 
         
+    }
+
+    public static function get_allowed_tags_for_loader() {
+        return array(
+            'span' => array('class' => array()),
+            'img'  => array('src' => array(), 'alt' => array()),
+        );
     }
     
 }

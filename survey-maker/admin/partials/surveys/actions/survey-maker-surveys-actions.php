@@ -7,8 +7,8 @@
         <div class="ays-survey-heading-box">
             <div class="ays-survey-wordpress-user-manual-box">
                 <a href="https://www.youtube.com/watch?v=dxYz-gNrrrY" target="_blank" style="text-decoration: none;font-size: 13px;">
-                    <span><img src='<?php echo SURVEY_MAKER_ADMIN_URL; ?>/images/icons/youtube-video-icon.svg' ></span>
-                    <span style="margin-left: 3px; text-decoration: underline;"><?php echo __('60 min Video Guide', "survey-maker"); ?></span>
+                    <span><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
+                    <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('60 min Video Guide', "survey-maker"); ?></span>
                 </a>
                 <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
                     <i class="ays_fa ays_fa_file_text" ></i> 
@@ -54,9 +54,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <p style="font-size:14px; font-style:italic;">
-                            <?php echo __("To insert the Survey into a page, post or text widget, copy shortcode", "survey-maker"); ?>
-                            <strong class="ays-survey-shortcode-box" onClick="selectElementContents(this)" style="font-size:16px; font-style:normal;" class="ays_help" data-toggle="tooltip" title="<?php echo __('Click for copy',"survey-maker");?>" ><?php echo "[ays_survey id='".esc_attr($id)."']"; ?></strong>
-                            <?php echo " " . __( "and paste it at the desired place in the editor.", "survey-maker"); ?>
+                            <?php echo esc_html__("To insert the Survey into a page, post or text widget, copy shortcode", "survey-maker"); ?>
+                            <strong class="ays-survey-shortcode-box" onClick="selectElementContents(this)" style="font-size:16px; font-style:normal;" class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" ><?php echo "[ays_survey id='".esc_attr($id)."']"; ?></strong>
+                            <?php echo " " . esc_html__( "and paste it at the desired place in the editor.", "survey-maker"); ?>
                         </p>
                     </div>
                 </div>
@@ -66,8 +66,8 @@
             <div class="form-group row">
                 <div class="col-sm-2">
                     <label for='ays-survey-title'>
-                        <?php echo __('Title', "survey-maker"); ?>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give a title to your survey.',"survey-maker"); ?>">
+                        <?php echo esc_html__('Title', "survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Give a title to your survey.',"survey-maker"); ?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </label>
@@ -83,31 +83,31 @@
                     <div class="ays-top-menu">
                         <div class="nav-tab-wrapper ays-top-tab-wrapper">
                             <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("General", "survey-maker");?>
+                                <?php echo esc_html__("General", "survey-maker");?>
                             </a>
                             <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Styles", "survey-maker");?>
+                                <?php echo esc_html__("Styles", "survey-maker");?>
                             </a>
                             <a href="#tab6" data-tab="tab6" class="nav-tab <?php echo ($ays_tab == 'tab6') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Start page", "survey-maker");?>
+                                <?php echo esc_html__("Start page", "survey-maker");?>
                             </a>
                             <a href="#tab3" data-tab="tab3" class="nav-tab <?php echo ($ays_tab == 'tab3') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Settings", "survey-maker");?>
+                                <?php echo esc_html__("Settings", "survey-maker");?>
                             </a>
                             <a href="#tab4" data-tab="tab4" class="nav-tab <?php echo ($ays_tab == 'tab4') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Results Settings", "survey-maker");?>
+                                <?php echo esc_html__("Results Settings", "survey-maker");?>
                             </a>
                             <a href="#tab9" data-tab="tab9" class="nav-tab <?php echo ($ays_tab == 'tab9') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Conditional Result", "survey-maker");?>
+                                <?php echo esc_html__("Conditional Result", "survey-maker");?>
                             </a>
                             <a href="#tab5" data-tab="tab5" class="nav-tab <?php echo ($ays_tab == 'tab5') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Limitation Users", "survey-maker");?>
+                                <?php echo esc_html__("Limitation Users", "survey-maker");?>
                             </a>
                             <a href="#tab7" data-tab="tab7" class="nav-tab <?php echo ($ays_tab == 'tab7') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("E-Mail", "survey-maker");?>
+                                <?php echo esc_html__("E-Mail", "survey-maker");?>
                             </a>
                             <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo __("Integrations", "survey-maker");?>
+                                <?php echo esc_html__("Integrations", "survey-maker");?>
                             </a>
                         </div>  
                     </div>
@@ -146,7 +146,7 @@
                     <!-- Modal Header -->
                     <div class="ays-modal-header">
                         <span class="ays-close">&times;</span>
-                        <h2><?php echo __('Move to section', "survey-maker"); ?></h2>
+                        <h2><?php echo esc_html__('Move to section', "survey-maker"); ?></h2>
                     </div>
 
                     <!-- Modal body -->
@@ -226,7 +226,7 @@
                         <a class="ays_help" data-toggle="tooltip" title="" data-original-title="Saves the assigned settings of the current survey as default. After clicking on this button, each time creating a new survey, the system will take the settings and styles of the current survey. If you want to change and renew it, please click on this button on another survey.">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
-                        <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-save-as-default-pro-button" style="opacity: 0.5;margin: 0;"><?php echo __( 'Save as default', "survey-maker" ); ?></a>
+                        <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-save-as-default-pro-button" style="opacity: 0.5;margin: 0;"><?php echo esc_html__( 'Save as default', "survey-maker" ); ?></a>
                     </div>
                 </div>
             </div>
@@ -245,7 +245,7 @@
                         <div class="ays-survey-icons" style="width:36px;height:36px;line-height: 0;vertical-align: bottom;">
                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/edit-content.svg" style="vertical-align: initial;line-height: 0;margin: 0px;padding: 0;width: 36px;height: 36px;">
                         </div>
-                        <span><?php echo __( 'Edit question', "survey-maker" ); ?></span>
+                        <span><?php echo esc_html__( 'Edit question', "survey-maker" ); ?></span>
                     </h2>
                 </div>
 
@@ -269,8 +269,8 @@
 
                 <!-- Modal footer -->
                 <div class="ays-modal-footer">
-                    <button type="button" class="button button-primary ays-survey-back-to-textarea" data-question-id="" data-question-name="" style="margin-right: 10px;"><?php echo __( 'Back to classic textarea', "survey-maker" ); ?></button>
-                    <button type="button" class="button button-primary ays-survey-apply-question-changes" data-question-id="" data-question-name=""><?php echo __( 'Apply changes', "survey-maker" ); ?></button>
+                    <button type="button" class="button button-primary ays-survey-back-to-textarea" data-question-id="" data-question-name="" style="margin-right: 10px;"><?php echo esc_html__( 'Back to classic textarea', "survey-maker" ); ?></button>
+                    <button type="button" class="button button-primary ays-survey-apply-question-changes" data-question-id="" data-question-name=""><?php echo esc_html__( 'Apply changes', "survey-maker" ); ?></button>
                 </div>
             </div>
         </div>
@@ -283,7 +283,7 @@
                     </div>
                     <!-- Modal Header -->
                     <div class="ays-modal-header ays-modal-content-survey-templates-header">
-                        <h2><?=__('Survey Templates', "survey-maker")?></h2>
+                        <h2><?php echo esc_html__('Survey Templates', "survey-maker")?></h2>
                         <a href="?page=survey-maker" style="display: inline-block;">
                             <span class="ays-close-templates-popup" data-action="ays-close-templates">&times;</span>
                         </a>
@@ -298,10 +298,10 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/blank-plus.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts ays-survey-templates-box-blank-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Blank Survey', "survey-maker")?></h4>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Blank Survey', "survey-maker")?></h4>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button-blank"><?php echo __("Choose" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button-blank"><?php echo esc_html__("Choose" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -311,11 +311,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/customer-feedback.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Customer Feedback Form Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Beautiful, fun, easy to complete. Comes with useful rating questions.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Customer Feedback Form Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Beautiful, fun, easy to complete. Comes with useful rating questions.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="customer-feedback-form"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="customer-feedback-form"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -325,11 +325,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/employee-satisfaction.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Employee Satisfaction Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Great for honing in on specific things to improve.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Employee Satisfaction Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Great for honing in on specific things to improve.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="employee-satisfaction-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="employee-satisfaction-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -339,11 +339,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/event-evaluation.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Event Evaluation Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Get honest feedback from guests and use it to improve your upcoming events.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Event Evaluation Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Get honest feedback from guests and use it to improve your upcoming events.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="event-evaluation-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="event-evaluation-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -353,11 +353,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/product.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Product Research Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Developing a product? Find out more about your target audience with this survey', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Product Research Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Developing a product? Find out more about your target audience with this survey', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="product-research-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="product-research-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -367,11 +367,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/restaurant-evaluation.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Restaurant Evaluation Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Help restaurants get better. Ask questions about your customer\'s dining experience.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Restaurant Evaluation Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Help restaurants get better. Ask questions about your customer\'s dining experience.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="restaurant-evaluation-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="restaurant-evaluation-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -381,11 +381,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/market-research.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Market Research Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Easily learn about what customers like. Understand trends with simple questions.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Market Research Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Easily learn about what customers like. Understand trends with simple questions.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="market-research-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="market-research-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -395,11 +395,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/brand-awareness.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('Brand Awareness Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Know how well people know your brand. Ask easy questions to find out.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('Brand Awareness Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Know how well people know your brand. Ask easy questions to find out.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="brand-awareness-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="brand-awareness-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -409,11 +409,11 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) ; ?>/images/templates/user-persona.png">
                                         </div>
                                         <div class="ays-survey-templates-box-texts">
-                                            <h4 class="ays-survey-templates-box-title"><?php echo __('User Persona Survey Template', "survey-maker")?></h4>
-                                            <div class="ays-survey-templates-box-desc"><?php echo __('Understand your users better. Ask simple questions to know what they like.', "survey-maker")?></div>
+                                            <h4 class="ays-survey-templates-box-title"><?php echo esc_html__('User Persona Survey Template', "survey-maker")?></h4>
+                                            <div class="ays-survey-templates-box-desc"><?php echo esc_html__('Understand your users better. Ask simple questions to know what they like.', "survey-maker")?></div>
                                         </div>
                                         <div class="ays-survey-templates-box-buttons">
-                                            <button class="ays-survey-templates-box-apply-button" data-template="user-persona-survey"><?php echo __("Choose Template" , "survey-maker"); ?></button>
+                                            <button class="ays-survey-templates-box-apply-button" data-template="user-persona-survey"><?php echo esc_html__("Choose Template" , "survey-maker"); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -446,7 +446,7 @@
                                     <div class="pro-features-popup-modal-right-box-content"></div>
 
                                     <div class="pro-features-popup-modal-right-box-button">
-                                        <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo __("Upgrade PRO NOW", "survey-maker"); ?></a>
+                                        <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo esc_html__("Upgrade PRO NOW", "survey-maker"); ?></a>
                                     </div>
                             </div>
                             </div>

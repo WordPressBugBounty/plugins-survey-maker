@@ -116,7 +116,7 @@ class Surveys_List_Table extends WP_List_Table {
         ?>
         <div id="category-filter-div-surveylist" class="alignleft actions bulkactions">
             <select name="filterby-<?php echo esc_attr( $which ); ?>" id="survey-category-filter-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Category',"survey-maker")?></option>
+                <option value=""><?php echo esc_html__('Select Category',"survey-maker")?></option>
                 <?php
                     foreach($categories_select as $key => $cat_title){
                         echo "<option ".esc_attr($cat_title['selected'])." value='".esc_attr($cat_title['id'])."'>".esc_attr($cat_title['title'])."</option>";
@@ -126,7 +126,7 @@ class Surveys_List_Table extends WP_List_Table {
         </div>
         <div id="user-filter-div-surveylist" class="alignleft actions bulkactions">
             <select name="filterbyuser-<?php echo esc_attr( $which ); ?>" id="survey-category-filter-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('Select Author',"survey-maker")?></option>
+                <option value=""><?php echo esc_html__('Select Author',"survey-maker")?></option>
                 <?php
                     foreach($users as $user_key => $user){
                         $user_selected = ( isset($author_id) && $user['author_id'] == $author_id ) ? "selected" : "";
@@ -143,7 +143,7 @@ class Surveys_List_Table extends WP_List_Table {
             <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="user-filter-apply-<?php echo esc_attr( $which ); ?> button ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?>" value="Filter">
         </div>
         
-        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( ( $_REQUEST['page'] ) ); ?>" class="button"><?php echo __( "Clear filters", "survey-maker" ); ?></a>
+        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( ( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
     }
     

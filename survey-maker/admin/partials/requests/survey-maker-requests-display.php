@@ -3,13 +3,13 @@
         <div class="ays-survey-wordpress-user-manual-box">
             <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
                 <i class="ays_fa ays_fa_file_text" ></i> 
-                <span style="margin-left: 3px;text-decoration: underline;"><?php echo __( "View Documentation", "survey-maker" ); ?></span>
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "View Documentation", "survey-maker" ); ?></span>
             </a>
 
         </div>
     </div>
     <h1 class="wp-heading-inline">
-        <?php echo __(esc_html(get_admin_page_title()),"survey-maker"); ?>
+        <?php echo esc_html__( get_admin_page_title(), "survey-maker" ); ?>
     </h1>
     <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">
         <div id="poststuff">
@@ -24,7 +24,7 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
@@ -33,7 +33,7 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>

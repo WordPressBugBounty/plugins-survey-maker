@@ -274,7 +274,7 @@ class Survey_Maker_Settings_Actions {
             foreach($message_variables as $message_variable_box_key => $message_variable_box_value){
                 $content[] = '<fieldset>';
                     $content[] = '<legend>
-                                    <h5>'.__( ucwords(str_replace('_', ' ', $message_variable_box_key)) ,"survey-maker").'</h5>
+                                    <h5>'.esc_html__( ucwords(str_replace('_', ' ', $message_variable_box_key)) ,"survey-maker").'</h5>
                                   </legend>';
                 foreach($message_variable_box_value as $message_variable => $description){
                     $message_variable_input = $with_flags ? '%%' . $message_variable . '%%' : $message_variable;

@@ -57,7 +57,7 @@ class Survey_Each_Submission_List_Table extends WP_List_Table {
             ?>
             <div id="user-filter-div-<?php echo esc_attr( $which ); ?>" class="alignleft actions bulkactions">
                 <select name="filterbyuser-<?php echo esc_attr( $which ); ?>" id="bulk-action-selector-top2-<?php echo esc_attr( $which ); ?>">
-                    <option value=""><?php echo __('Select User', "survey-maker"); ?></option>
+                    <option value=""><?php echo esc_html__('Select User', "survey-maker"); ?></option>
                     <?php
                         foreach($users_res as $key => $user){
                             $selected = "";
@@ -82,7 +82,7 @@ class Survey_Each_Submission_List_Table extends WP_List_Table {
                 </select>
                 <input type="button" id="doaction2-<?php echo esc_attr( $which ); ?>" class="user-filter-apply-<?php echo esc_attr( $which ); ?> button ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> ays-survey-question-filter-each-submission" value="Filter">
             </div>
-            <a style="display:inline-block;" href="<?php echo esc_attr( $clear_url ); ?>" class="button"><?php echo __( "Clear filters", "survey-maker" ); ?></a>
+            <a style="display:inline-block;" href="<?php echo esc_attr( $clear_url ); ?>" class="button"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
             <?php
         }
     }

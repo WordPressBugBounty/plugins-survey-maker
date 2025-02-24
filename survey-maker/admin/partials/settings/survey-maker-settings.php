@@ -278,7 +278,7 @@
             <input type="hidden" name="ays_survey_tab" value="<?php echo esc_attr($ays_survey_tab); ?>">
             <h1 class="wp-heading-inline">
             <?php
-                echo __('General Settings',"survey-maker");
+                echo esc_html__('General Settings',"survey-maker");
             ?>
             </h1>
             <?php
@@ -291,36 +291,36 @@
                 <div class="ays-settings-wrapper-tabs">
                     <div class="nav-tab-wrapper" style="position:sticky; top:35px;">
                         <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_survey_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("General", "survey-maker");?>
+                            <?php echo esc_html__("General", "survey-maker");?>
                         </a>
                         <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_survey_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Integrations", "survey-maker");?>
+                            <?php echo esc_html__("Integrations", "survey-maker");?>
                         </a>
                         <a href="#tab3" data-tab="tab3" class="nav-tab <?php echo ($ays_survey_tab == 'tab3') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Message Variables", "survey-maker");?>
+                            <?php echo esc_html__("Message Variables", "survey-maker");?>
                         </a>
                         <a href="#tab4" data-tab="tab4" class="nav-tab <?php echo ($ays_survey_tab == 'tab4') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Text Customizations", "survey-maker");?>
+                            <?php echo esc_html__("Text Customizations", "survey-maker");?>
                         </a>
                         <a href="#tab5" data-tab="tab5" class="nav-tab <?php echo ($ays_survey_tab == 'tab5') ? 'nav-tab-active' : ''; ?>">
-                            <?php echo __("Shortcodes", "survey-maker");?>
+                            <?php echo esc_html__("Shortcodes", "survey-maker");?>
                         </a>
                     </div>
                 </div>
                 <div class="ays-survey-tabs-wrapper">
                     <div id="tab1" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab1') ? 'ays-survey-tab-content-active' : ''; ?>">
-                        <p class="ays-subtitle"><?php echo __('General Settings',"survey-maker")?></p>
+                        <p class="ays-subtitle"><?php echo esc_html__('General Settings',"survey-maker")?></p>
                         <hr/>
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_question"></i></strong>
-                                <h5><?php echo __('Default parameters for Survey',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Default parameters for Survey',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_default_type">
-                                        <?php echo __( "Surveys default question type", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can choose default question type which will be selected in the Add new survey page.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Surveys default question type", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('You can choose default question type which will be selected in the Add new survey page.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -347,8 +347,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_answer_default_count">
-                                        <?php echo __( "Answer default count", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('You can write the default answer count which will be showing in the Add new question page (this will work only with radio, checkbox, and dropdown types).',"survey-maker")?>">
+                                        <?php echo esc_html__( "Answer default count", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('You can write the default answer count which will be showing in the Add new question page (this will work only with radio, checkbox, and dropdown types).',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -361,8 +361,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_textarea_height">
-                                        <?php echo __( "Textarea height (public)", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the height of the textarea by entering a numeric value. It applies to Paragraph question type textarea.',"survey-maker"); ?>">
+                                        <?php echo esc_html__( "Textarea height (public)", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Set the height of the textarea by entering a numeric value. It applies to Paragraph question type textarea.',"survey-maker"); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -375,8 +375,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_wp_editor_height">
-                                        <?php echo __( "WP Editor height", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Give the default value to the height of the WP Editor. It will apply to all WP Editors within the plugin on the dashboard.',"survey-maker"); ?>">
+                                        <?php echo esc_html__( "WP Editor height", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Give the default value to the height of the WP Editor. It will apply to all WP Editors within the plugin on the dashboard.',"survey-maker"); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -389,8 +389,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_make_questions_required">
-                                        <?php echo __( "Make questions required", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('By enabling this option, the questions of newly created surveys will be required by default. Note: The changes will not be applied to the already created surveys.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Make questions required", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('By enabling this option, the questions of newly created surveys will be required by default. Note: The changes will not be applied to the already created surveys.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -403,8 +403,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_lazy_loading_for_images">
-                                        <?php echo __( "Lazy loading for images", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick this option to delay the loading of images of questions and answers to improve the performance of your plugin.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Lazy loading for images", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Tick this option to delay the loading of images of questions and answers to improve the performance of your plugin.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -418,17 +418,17 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="fa fa-server"></i></strong>
-                                <h5><?php echo __('Users IP addresses',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Users IP addresses',"survey-maker")?></h5>
                             </legend>
                             <blockquote class="ays_warning">
-                                <p style="margin:0;"><?php echo __( "If this option is enabled then the 'Limitation by IP' option will not work!", "survey-maker" ); ?></p>
+                                <p style="margin:0;"><?php echo esc_html__( "If this option is enabled then the 'Limitation by IP' option will not work!", "survey-maker" ); ?></p>
                             </blockquote>
                             <hr/>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_disable_user_ip">
-                                        <?php echo __( "Do not store IP addresses", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, IP address of the users will not be stored in database. Note: If this option is enabled, then the `Limits user by IP` option will not work.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Do not store IP addresses", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('After enabling this option, IP address of the users will not be stored in database. Note: If this option is enabled, then the `Limits user by IP` option will not work.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -442,13 +442,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="fa fa-user-secret"></i></strong>
-                                <h5><?php echo __('Anonymity Survey',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Anonymity Survey',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_disable_user_name">
-                                        <?php echo __( "Do not store User Names", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, User Names will not be stored in database.',"survey-maker"); ?>">
+                                        <?php echo esc_html__( "Do not store User Names", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('After enabling this option, User Names will not be stored in database.',"survey-maker"); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -461,8 +461,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_disable_user_email">
-                                        <?php echo __( "Do not store User Emails", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option, User Emails will not be stored in database.',"survey-maker"); ?>">
+                                        <?php echo esc_html__( "Do not store User Emails", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('After enabling this option, User Emails will not be stored in database.',"survey-maker"); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -476,13 +476,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="fa fa-align-left"></i></strong>
-                                <h5><?php echo __('Excerpt words count in list tables',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Excerpt words count in list tables',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_title_length">
-                                        <?php echo __( "Survey list table", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the surveys to be shown in the Surveys List Table by putting your preferred count of words in the following field. (For example: if you put 10,  you will see the first 10 words of each survey in the Surveys page of your dashboard.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Survey list table", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Determine the length of the surveys to be shown in the Surveys List Table by putting your preferred count of words in the following field. (For example: if you put 10,  you will see the first 10 words of each survey in the Surveys page of your dashboard.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -495,8 +495,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_submissions_title_length">
-                                        <?php echo __( "Submissions list table", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the submissions to be shown in the Submissions List Table by putting your preferred count of words in the following field. (For example: if you put 10,you will see the first 10 words of each submissions in the Submissions page of your dashboard.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Submissions list table", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Determine the length of the submissions to be shown in the Submissions List Table by putting your preferred count of words in the following field. (For example: if you put 10,you will see the first 10 words of each submissions in the Submissions page of your dashboard.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -509,8 +509,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_categories_title_length">
-                                        <?php echo __( "Survey categories list table", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the survey categories to be shown in the Survey categories List Table by putting your preferred count of words in the following field. (For example: if you put 10,you will see the first 10 words of each Category in the Survey categories page of your dashboard.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Survey categories list table", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Determine the length of the survey categories to be shown in the Survey categories List Table by putting your preferred count of words in the following field. (For example: if you put 10,you will see the first 10 words of each Category in the Survey categories page of your dashboard.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -523,8 +523,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_popups_title_length">
-                                        <?php echo __( "Popup Survey list table", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Determine the length of the popup survey titles to be shown in the Popup Survey List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each Survey Title in the Popup Survey page of your dashboard.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Popup Survey list table", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Determine the length of the popup survey titles to be shown in the Popup Survey List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each Survey Title in the Popup Survey page of your dashboard.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -538,13 +538,13 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="fa fa-code"></i></strong>
-                                <h5><?php echo __('Animation Top',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Animation Top',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_enable_animation_top">
-                                        <?php echo __( "Enable animation", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Enable animation of the scroll offset of the survey container. It works when the survey container is visible on the screen partly and the user starts the survey and moves from one question to another.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Enable animation", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Enable animation of the scroll offset of the survey container. It works when the survey container is visible on the screen partly and the user starts the survey and moves from one question to another.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -557,8 +557,8 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_animation_top">
-                                        <?php echo __( "Scroll offset(px)", "survey-maker" ); ?>
-                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the scroll offset of the survey container after the animation starts. It works when the survey container is visible on the screen partly and the user starts the survey and moves from one question to another.',"survey-maker")?>">
+                                        <?php echo esc_html__( "Scroll offset(px)", "survey-maker" ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Define the scroll offset of the survey container after the animation starts. It works when the survey container is visible on the screen partly and the user starts the survey and moves from one question to another.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
                                     </label>
@@ -572,12 +572,12 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="fa fa-bell"></i></strong>
-                                <h5><?php echo __('Menu notifications', 'survey-maker'); ?></h5>
+                                <h5><?php echo esc_html__('Menu notifications', 'survey-maker'); ?></h5>
                             </legend>
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_disable_survey_menu_notification">
-                                        <?php echo __( "Disable Survey Maker menu item notification", 'survey-maker' ); ?>
+                                        <?php echo esc_html__( "Disable Survey Maker menu item notification", 'survey-maker' ); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Survey Maker menu.', 'survey-maker') ); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
@@ -591,7 +591,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-4">
                                     <label for="ays_survey_disable_submission_menu_notification">
-                                        <?php echo __( "Disable Submissions menu item notification", 'survey-maker' ); ?>
+                                        <?php echo esc_html__( "Disable Submissions menu item notification", 'survey-maker' ); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Enable this option and the notifications will not be displayed in the Submissions menu.', 'survey-maker') ); ?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
                                         </a>
@@ -606,7 +606,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_globe"></i></strong>
-                                <h5><?php echo __('Who will have permission to Survey menu',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Who will have permission to Survey menu',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -615,15 +615,15 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_user_roles">
-                                                <?php echo __( "Select user role", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Ability to manage Survey Maker plugin only for selected user roles.',"survey-maker")?>">
+                                                <?php echo esc_html__( "Select user role", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Ability to manage Survey Maker plugin only for selected user roles.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -640,7 +640,7 @@
                                         </div>
                                     </div>
                                     <blockquote>
-                                        <?php echo __( "Ability to manage Survey Maker plugin only for selected user roles.", "survey-maker" ); ?>
+                                        <?php echo esc_html__( "Ability to manage Survey Maker plugin only for selected user roles.", "survey-maker" ); ?>
                                     </blockquote>
                                 </div>
                             </div>
@@ -649,7 +649,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;"><i class="ays_fa ays_fa_globe"></i></strong>
-                                <h5><?php echo __('Block Users by IP addresses',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('Block Users by IP addresses',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -658,15 +658,15 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_block_by_user_ips">
-                                                <?php echo __( "Block Users by IP addresses", "survey-maker" ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After enabling this option you will be able to block particular User IPs.', "survey-maker")?>">
+                                                <?php echo esc_html__( "Block Users by IP addresses", "survey-maker" ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('After enabling this option you will be able to block particular User IPs.', "survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -679,8 +679,8 @@
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <label for="ays_survey_users_ips_that_will_blocked">
-                                                    <?php echo __( "Block User IP's", "survey-maker" ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __("After adding User IP's, you can restrict the access to the survey. The users with particular IP addresses will not be able to pass the survey. You will be able to add as many User IP's as you may need.","survey-maker"); ?>">
+                                                    <?php echo esc_html__( "Block User IP's", "survey-maker" ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("After adding User IP's, you can restrict the access to the survey. The users with particular IP addresses will not be able to pass the survey. You will be able to add as many User IP's as you may need.","survey-maker"); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -700,29 +700,29 @@
                         <fieldset class="ays_toggle_parent">
                             <legend>
                                 <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/send-mail-50x50.png" alt="">
-                                <h5><?php echo __("Send automatic email reporting to admin(s)","survey-maker")?></h5>
+                                <h5><?php echo esc_html__("Send automatic email reporting to admin(s)","survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                                    <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=buvMKemTNQ4" data-option-title="<?php echo __('Send Automatic Email Reporting To Admin(s)',"survey-maker")?>" data-option-text="<strong> Get reports to your email </strong> about the submissions of the surveys, including information about your survey responses in a specific time period <strong> presented in a chart </strong> with the names of survey takers, their submission numbers, and the statistics about the increase or decrease of the submissions in the percentage. Just choose the <strong> frequency </strong> you want to receive the reports: hourly, daily, twice daily, or weekly, and <strong> add one or multiple emails </strong> to get the reports. ">
+                                    <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=buvMKemTNQ4" data-option-title="<?php echo esc_attr__('Send Automatic Email Reporting To Admin(s)',"survey-maker")?>" data-option-text="<strong> Get reports to your email </strong> about the submissions of the surveys, including information about your survey responses in a specific time period <strong> presented in a chart </strong> with the names of survey takers, their submission numbers, and the statistics about the increase or decrease of the submissions in the percentage. Just choose the <strong> frequency </strong> you want to receive the reports: hourly, daily, twice daily, or weekly, and <strong> add one or multiple emails </strong> to get the reports. ">
                                         <div class="ays-pro-features-v2-video-button">
                                             <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
                                             <div class="ays-pro-features-v2-video-text">
-                                                <?php echo __("Watch Video" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
                                             </div>
                                         </div>
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_email_to_admins">
-                                                <?php echo __( "Send automatic email reporting per session", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Set up automatic email reporting to inform yourself or anyone else, about the submissions of surveys. It will indicate the times of submissions all surveys will have at that given moment,  will send a table which will include the names of all surveys and the number of submissions each one will have and will show the statistics of the growth/decline of the submissions in percentage',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Send automatic email reporting per session", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Set up automatic email reporting to inform yourself or anyone else, about the submissions of surveys. It will indicate the times of submissions all surveys will have at that given moment,  will send a table which will include the names of all surveys and the number of submissions each one will have and will show the statistics of the growth/decline of the submissions in percentage',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -737,8 +737,8 @@
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <label for="ays_survey_admin_email_sessions">
-                                                    <?php echo __( "Session period", "survey-maker" ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the time for one session and the provided email(s) will receive an automatic email notification once during the period.',"survey-maker"); ?>">
+                                                    <?php echo esc_html__( "Session period", "survey-maker" ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Specify the time for one session and the provided email(s) will receive an automatic email notification once during the period.',"survey-maker"); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -764,8 +764,8 @@
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <label for="ays_survey_admins_emails">
-                                                    <?php echo __( "Email addresses", "survey-maker" ); ?>
-                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Provide emails to which you need to send the survey's reports. Insert emails comma separated.","survey-maker"); ?>">
+                                                    <?php echo esc_html__( "Email addresses", "survey-maker" ); ?>
+                                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Provide emails to which you need to send the survey's reports. Insert emails comma separated.","survey-maker"); ?>">
                                                         <i class="ays_fa ays_fa_info_circle"></i>
                                                     </a>
                                                 </label>
@@ -785,7 +785,7 @@
                         <fieldset class="ays_toggle_parent">
                             <legend>
                             <strong style="font-size:30px;"><i class="fa fa-th-list"></i></strong>
-                                <h5><?php echo __("Submissions settings","survey-maker")?></h5>
+                                <h5><?php echo esc_html__("Submissions settings","survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -794,15 +794,15 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Matrix scale results", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('The results can be displayed by Votes and by Percentage. Choosing by Votes, the system will display the results based on votes. To see the percentage you need to hover over the vote numbers. You will be able to do the same in the case of choosing by Percentage as well.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Matrix scale results", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('The results can be displayed by Votes and by Percentage. Choosing by Votes, the system will display the results based on votes. To see the percentage you need to hover over the vote numbers. You will be able to do the same in the case of choosing by Percentage as well.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -811,11 +811,11 @@
                                             <div class="form-group">
                                                 <label class="checkbox_ays form-check form-check-inline" for="ays_survey_matrix_scale_show_result_type_votes">
                                                     <input type="radio" checked>
-                                                    <?php echo __('By Votes', "survey-maker") ?>
+                                                    <?php echo esc_html__('By Votes', "survey-maker") ?>
                                                 </label>
                                                 <label class="checkbox_ays form-check form-check-inline" for="ays_survey_matrix_scale_show_result_type_percentage">
                                                     <input type="radio" >
-                                                    <?php echo __('By Percentage', "survey-maker") ?>
+                                                    <?php echo esc_html__('By Percentage', "survey-maker") ?>
                                                 </label>
                                             </div>
                                         </div>
@@ -824,8 +824,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Show results by", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Specify how the the charts will be displayed. Note that ascending and descending orderings can be used with Checkbox, Linear/Star scales, Star list, Slider List question types only.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Show results by", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Specify how the the charts will be displayed. Note that ascending and descending orderings can be used with Checkbox, Linear/Star scales, Star list, Slider List question types only.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -834,15 +834,15 @@
                                             <div class="form-group">
                                                 <label class="checkbox_ays form-check form-check-inline" for="ays_survey_show_submissions_order_type_defalut">
                                                     <input type="radio" id="ays_survey_show_submissions_order_type_defalut" value="by_default" checked>
-                                                    <?php echo __('Default', "survey-maker") ?>
+                                                    <?php echo esc_html__('Default', "survey-maker") ?>
                                                 </label>
                                                 <label class="checkbox_ays form-check form-check-inline" for="ays_survey_show_submissions_order_type_ascending">
                                                     <input type="radio" id="ays_survey_show_submissions_order_type_ascending" value='by_asc' >
-                                                    <?php echo __('Ascending', "survey-maker") ?>
+                                                    <?php echo esc_html__('Ascending', "survey-maker") ?>
                                                 </label>
                                                 <label class="checkbox_ays form-check form-check-inline" for="ays_survey_show_submissions_order_type_descending">
                                                     <input type="radio" id="ays_survey_show_submissions_order_type_descending" value='by_desc' >
-                                                    <?php echo __('Descending', "survey-maker") ?>
+                                                    <?php echo esc_html__('Descending', "survey-maker") ?>
                                                 </label>
                                             </div>
                                         </div>
@@ -854,21 +854,21 @@
                         <fieldset class="ays_toggle_parent">
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __("Survey multilanguage","survey-maker")?></h5>
+                                <h5><?php echo esc_html__("Survey multilanguage","survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                                    <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=hZsu0QOtXOs" data-option-title="<?php echo __('Survey multilanguage',"survey-maker")?>" data-option-text="Do you want to reach a global audience and have a survey that will go viral? Having a multilanguage survey on your website helps you reach a wider range of people and boost your website traffic. Make use of the shortcode and display the surveys in your desired language.">
+                                    <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=hZsu0QOtXOs" data-option-title="<?php echo esc_attr__('Survey multilanguage',"survey-maker")?>" data-option-text="Do you want to reach a global audience and have a survey that will go viral? Having a multilanguage survey on your website helps you reach a wider range of people and boost your website traffic. Make use of the shortcode and display the surveys in your desired language.">
                                         <div class="ays-pro-features-v2-video-button">
                                             <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
                                             <div class="ays-pro-features-v2-video-text">
-                                                <?php echo __("Watch Video" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
                                             </div>
                                         </div>
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
@@ -877,8 +877,8 @@
                                             <div class="form-group row">
                                                 <div class="col-sm-4">
                                                     <label for="ays_survey_multilanugage_shortcode">
-                                                        <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Write your desired text in any WordPress language. It will be translated in the front-end. The languages must be included in the ISO 639-1 Code column.', "survey-maker"); ?>">
+                                                        <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Write your desired text in any WordPress language. It will be translated in the front-end. The languages must be included in the ISO 639-1 Code column.', "survey-maker"); ?>">
                                                             <i class="ays_fa ays_fa_info_circle"></i>
                                                         </a>
                                                     </label>
@@ -894,11 +894,7 @@
                                         <ul class="ays-survey-general-settings-blockquote-ul">
                                             <li>
                                                 <?php
-                                                    echo sprintf(
-                                                        __( "In this shortcode you can add your desired text and its translation. The translated version of the text will be displayed in the front-end. The languages must be written in the %sLanguage Code%s", "survey-maker" ),
-                                                        '<a href="https://www.loc.gov/standards/iso639-2/php/code_list.php" target="_blank">',
-                                                        '</a>'
-                                                    );
+                                                    echo esc_html__( "In this shortcode you can add your desired text and its translation. The translated version of the text will be displayed in the front-end. The languages must be written in the Language Code", "survey-maker" );                                                    
                                                 ?>
                                             </li>
                                         </ul>
@@ -908,7 +904,7 @@
                         </fieldset><!-- Survey multilanguage -->
                     </div>
                     <div id="tab2" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab2') ? 'ays-survey-tab-content-active' : ''; ?>">
-                        <p class="ays-subtitle"><?php echo __('Integrations',"survey-maker")?></p>
+                        <p class="ays-subtitle"><?php echo esc_attr__('Integrations',"survey-maker")?></p>
                         <hr/>
                         <?php
                             do_action( 'ays_sm_settings_page_integrations' );
@@ -916,25 +912,25 @@
                     </div>
                     <div id="tab3" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab3') ? 'ays-survey-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
-                            <?php echo __('Message variables',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p><?php echo __( 'You can copy these variables and paste them in the following options from the survey settings', "survey-maker" ); ?>:</p>
+                            <?php echo esc_html__('Message variables',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p><?php echo esc_attr__( 'You can copy these variables and paste them in the following options from the survey settings', "survey-maker" ); ?>:</p>
                                 <ul class='ays_tooltop_ul'>
-                                    <li><?php echo __( 'Thank you message', "survey-maker" ); ?></li>
+                                    <li><?php echo esc_html__( 'Thank you message', "survey-maker" ); ?></li>
                                 </ul>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
                         <blockquote>
-                            <p><?php echo __( "You can copy these variables and paste them in the following options from the survey settings", "survey-maker" ); ?>:</p>
-                            <p style="text-indent:10px;margin:0;">- <?php echo __( "Thank you message", "survey-maker" ); ?></p>
+                            <p><?php echo esc_html__( "You can copy these variables and paste them in the following options from the survey settings", "survey-maker" ); ?>:</p>
+                            <p style="text-indent:10px;margin:0;">- <?php echo esc_html__( "Thank you message", "survey-maker" ); ?></p>
                             <div style="margin-top: 20px;background: #dae2e2;padding: 10px;">
-                                <p style="margin:0;"><?php echo __( "Message variables for these features are available only in the Pro version.", "survey-maker" ); ?></p>
-                                <p style="text-indent:10px;margin:0;color:red;">- <?php echo __( "Send email to user", "survey-maker" ); ?></p>
-                                <p style="text-indent:10px;margin:0;color:red;">- <?php echo __( "Send email to admin", "survey-maker" ); ?></p>
-                                <p style="text-indent:10px;margin:0;color:red;">- <?php echo __( "Email configuration", "survey-maker" ); ?></p>
-                                <p style="text-indent:30px;margin:0;color:red;">* <?php echo __( "From Name", "survey-maker" ); ?></p>
-                                <p style="text-indent:30px;margin:0;color:red;">* <?php echo __( "Subject", "survey-maker" ); ?></p>
-                                <p style="text-indent:30px;margin:0;color:red;">* <?php echo __( "Reply To Name", "survey-maker" ); ?></p>
+                                <p style="margin:0;"><?php echo esc_html__( "Message variables for these features are available only in the Pro version.", "survey-maker" ); ?></p>
+                                <p style="text-indent:10px;margin:0;color:red;">- <?php echo esc_html__( "Send email to user", "survey-maker" ); ?></p>
+                                <p style="text-indent:10px;margin:0;color:red;">- <?php echo esc_html__( "Send email to admin", "survey-maker" ); ?></p>
+                                <p style="text-indent:10px;margin:0;color:red;">- <?php echo esc_html__( "Email configuration", "survey-maker" ); ?></p>
+                                <p style="text-indent:30px;margin:0;color:red;">* <?php echo esc_html__( "From Name", "survey-maker" ); ?></p>
+                                <p style="text-indent:30px;margin:0;color:red;">* <?php echo esc_html__( "Subject", "survey-maker" ); ?></p>
+                                <p style="text-indent:30px;margin:0;color:red;">* <?php echo esc_html__( "Reply To Name", "survey-maker" ); ?></p>
                             </div>
                         </blockquote>
                         <hr>
@@ -948,20 +944,20 @@
                     </div>
                     <div id="tab4" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab4') ? 'ays-survey-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
-                            <?php echo __('Default Texts', "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'If you make a change here, these words will not be translatable via translation tools!', "survey-maker" ); ?>">
+                            <?php echo esc_html__('Default Texts', "survey-maker"); ?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'If you make a change here, these words will not be translatable via translation tools!', "survey-maker" ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
                         <blockquote class="ays_warning">
-                            <p style="margin:0;"><?php echo __( "If you make a change here, these words will not be translatable via translation tools!", "survey-maker" ); ?></p>
+                            <p style="margin:0;"><?php echo esc_html__( "If you make a change here, these words will not be translatable via translation tools!", "survey-maker" ); ?></p>
                         </blockquote>
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_wrong_shortcode_text">
-                                    <?php echo __( "Wrong shortcode text", "survey-maker" ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed if the post/page contains an incorrect shortcode', "survey-maker" ); ?>">
+                                    <?php echo esc_html__( "Wrong shortcode text", "survey-maker" ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The text will be displayed if the post/page contains an incorrect shortcode', "survey-maker" ); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -973,8 +969,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_email_validation_error_text">
-                                    <?php echo __( "Email validation error text", "survey-maker" ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo htmlspecialchars(__('The text will be displayed if the survey taker fills in an invalid email address (e.g. without "@" and ".") in the Email field.', "survey-maker")); ?>">
+                                    <?php echo esc_html__( "Email validation error text", "survey-maker" ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__('The text will be displayed if the survey taker fills in an invalid email address (e.g. without "@" and ".") in the Email field.', "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -986,8 +982,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_redirecting_after_text">
-                                    <?php echo __( "Custom Redirection Message Text", "survey-maker" ); ?>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo htmlspecialchars(__('Customize the message displayed to survey takers while they are being redirected to another page after the survey submission (e.g. Redirecting after 00:05).', "survey-maker")); ?>">
+                                    <?php echo esc_html__( "Custom Redirection Message Text", "survey-maker" ); ?>
+                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_html__('Customize the message displayed to survey takers while they are being redirected to another page after the survey submission (e.g. Redirecting after 00:05).', "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -1004,15 +1000,15 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_country_limitation_text">
-                                            <?php echo __( "Country limitation text", "survey-maker" ); ?>
-                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed if the user tries to access the survey from the country for which there is a limitation set from the survey settings.', "survey-maker" ); ?>">
+                                            <?php echo esc_html__( "Country limitation text", "survey-maker" ); ?>
+                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The text will be displayed if the user tries to access the survey from the country for which there is a limitation set from the survey settings.', "survey-maker" ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1030,15 +1026,15 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_ip_blocked_text">
-                                            <?php echo __( "IP blocked text", "survey-maker" ); ?>
-                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed if the survey is accessed from a blocked IP.', "survey-maker" ); ?>">
+                                            <?php echo esc_html__( "IP blocked text", "survey-maker" ); ?>
+                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The text will be displayed if the survey is accessed from a blocked IP.', "survey-maker" ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1056,15 +1052,15 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_enter_password_text">
-                                            <?php echo __( "Enter password text", "survey-maker" ); ?>
-                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed when the survey taker is prompted to enter a password.', "survey-maker" ); ?>">
+                                            <?php echo esc_html__( "Enter password text", "survey-maker" ); ?>
+                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The text will be displayed when the survey taker is prompted to enter a password.', "survey-maker" ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1082,15 +1078,15 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_wrong_password_text">
-                                            <?php echo __( "Wrong password text", "survey-maker" ); ?>
-                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be displayed in case the survey taker fills in the incorrect password.', "survey-maker" ); ?>">
+                                            <?php echo esc_html__( "Wrong password text", "survey-maker" ); ?>
+                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The text will be displayed in case the survey taker fills in the incorrect password.', "survey-maker" ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1108,15 +1104,15 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_answer_explanation_text">
-                                            <?php echo __( "Answer explanation text", "survey-maker" ); ?>
-                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The placeholder text that will be displayed in the textarea if the user explanation option is on.', "survey-maker" ); ?>">
+                                            <?php echo esc_html__( "Answer explanation text", "survey-maker" ); ?>
+                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The placeholder text that will be displayed in the textarea if the user explanation option is on.', "survey-maker" ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1134,15 +1130,15 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_admin_email_message_subject_text">
-                                            <?php echo __( "Admin email subject text", "survey-maker" ); ?>
-                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'The text will be sent as an email subject if the Send Email to Admin option is enabled for the survey.', "survey-maker" ); ?>">
+                                            <?php echo esc_html__( "Admin email subject text", "survey-maker" ); ?>
+                                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'The text will be sent as an email subject if the Send Email to Admin option is enabled for the survey.', "survey-maker" ); ?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -1150,7 +1146,7 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="ays-text-input">
                                         <blockquote class="ays_warning" style="margin-top: 8px">
-                                            <p style="margin:0;"><?php echo __( "Note: The text must include the <strong>%s</strong> sign (that is the name of the survey the user passed) in it. Otherwise, the default text will be displayed.", "survey-maker" ); ?></p>
+                                            <p style="margin:0;"><?php echo esc_html__( "Note: The text must include the <strong>%s</strong> sign (that is the name of the survey the user passed) in it. Otherwise, the default text will be displayed.", "survey-maker" ); ?></p>
                                         </blockquote>
                                     </div>
                                 </div>
@@ -1159,19 +1155,19 @@
 
                         <hr />
                         <p class="ays-subtitle">
-                            <?php echo __('Buttons texts',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo __( 'If you make a change here, these words will not be translated!', "survey-maker" ); ?>">
+                            <?php echo esc_html__('Buttons texts',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p style='margin-bottom:3px;'><?php echo esc_html__( 'If you make a change here, these words will not be translated!', "survey-maker" ); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </p>
                         <blockquote class="ays_warning">
-                            <p style="margin:0;"><?php echo __( "If you make a change here, these words will not be translated!", "survey-maker" ); ?></p>
+                            <p style="margin:0;"><?php echo esc_html__( "If you make a change here, these words will not be translated!", "survey-maker" ); ?></p>
                         </blockquote>
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_next_button">
-                                    <?php echo __( "Next button", "survey-maker" ); ?>
+                                    <?php echo esc_html__( "Next button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1181,7 +1177,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_previous_button">
-                                <?php echo __( "Previous button", "survey-maker" ); ?>
+                                <?php echo esc_html__( "Previous button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1191,7 +1187,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_clear_button">
-                                    <?php echo __( "Clear selection button", "survey-maker" ); ?>
+                                    <?php echo esc_html__( "Clear selection button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1201,7 +1197,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_finish_button">
-                                    <?php echo __( "Finish button", "survey-maker" ); ?>
+                                    <?php echo esc_html__( "Finish button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1211,7 +1207,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_restart_button">
-                                <?php echo __( "Restart survey button", "survey-maker" ); ?>
+                                <?php echo esc_html__( "Restart survey button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1221,7 +1217,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_exit_button">
-                                    <?php echo __( "Exit button", "survey-maker" ); ?>
+                                    <?php echo esc_html__( "Exit button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1231,7 +1227,7 @@
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_login_button">
-                                    <?php echo __( "Log In button", "survey-maker" ); ?>
+                                    <?php echo esc_html__( "Log In button", "survey-maker" ); ?>
                                 </label>
                             </div>
                             <div class="col-sm-9">
@@ -1245,18 +1241,18 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_check_button">
-                                            <?php echo __( "Check button", "survey-maker" ); ?>
+                                            <?php echo esc_html__( "Check button", "survey-maker" ); ?>
                                         </label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="ays-text-input ays-text-input-short"  value='<?php echo __("Check button", "survey-maker"); ?>'>
+                                        <input type="text" class="ays-text-input ays-text-input-short"  value='<?php echo esc_html__("Check button", "survey-maker"); ?>'>
                                     </div>
                                 </div>
                             </div>
@@ -1268,18 +1264,18 @@
                                     <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo __("Upgrade" , "survey-maker"); ?>
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-3">
                                         <label for="ays_survey_start_button">
-                                            <?php echo __( "Start button", "survey-maker" ); ?>
+                                            <?php echo esc_html__( "Start button", "survey-maker" ); ?>
                                         </label>
                                     </div>
                                     <div class="col-sm-9">
-                                        <input type="text" class="ays-text-input ays-text-input-short"  value='<?php echo __("Start button", "survey-maker"); ?>'>
+                                        <input type="text" class="ays-text-input ays-text-input-short"  value='<?php echo esc_html__("Start button", "survey-maker"); ?>'>
                                     </div>
                                 </div>          
                             </div>          
@@ -1287,21 +1283,21 @@
                     </div>
                     <div id="tab5" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab5') ? 'ays-survey-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">
-                            <?php echo __('Shortcodes',"survey-maker"); ?>
+                            <?php echo esc_html__('Shortcodes',"survey-maker"); ?>
                         </p>                        
                         <hr>
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Display survey summary',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Display survey summary',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the given shortcode and insert it into any post or page to show the charts of the submissions of the given survey. Please change \'Your_Survey_ID\' to the corresponding ID of your survey.', "survey-maker" ); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Copy the given shortcode and insert it into any post or page to show the charts of the submissions of the given survey. Please change \'Your_Survey_ID\' to the corresponding ID of your survey.', "survey-maker" ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1317,14 +1313,14 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Extra shortcodes',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Extra shortcodes',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_user_first_name">
-                                                <?php echo __( "Show User First Name", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show User First Name", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's First Name. If the user is not logged-in, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1342,7 +1338,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_user_last_name">
-                                                <?php echo __( "Show User Last Name", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show User Last Name", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's last name. If the user is not logged-in, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1360,7 +1356,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_user_nickname">
-                                                <?php echo __( "Show User Nickname", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show User Nickname", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's nickname. If the user is not logged-in, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1378,7 +1374,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_user_display_name">
-                                                <?php echo __( "Show User Display name", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show User Display name", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's display name. If the user is not logged-in, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1396,7 +1392,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_user_email">
-                                                <?php echo __( "Show User Email", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show User Email", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows the logged-in user's email. If the user is not logged-in, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1414,7 +1410,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_user_wordpress_roles">
-                                                <?php echo __( "Show User WordPress Roles", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show User WordPress Roles", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Shows user's role(s) when logged-in. In case the user is not logged-in, the field will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1432,8 +1428,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_passed_users_count">
-                                                <?php echo __( "Passed users count", "survey-maker" ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it in posts. Insert the Survey ID to receive the number of participants of the survey.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Passed users count", "survey-maker" ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Copy the following shortcode and paste it in posts. Insert the Survey ID to receive the number of participants of the survey.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1450,7 +1446,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_show_creation_date">
-                                                <?php echo __( "Show survey creation date", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show survey creation date", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Survey ID in the shortcode. It will show the creation date of the particular survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1468,7 +1464,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_show_sections_count">
-                                                <?php echo __( "Show survey sections count", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show survey sections count", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Survey ID in the shortcode. It will show the number of the sections of the given survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1486,7 +1482,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_show_questions_count">
-                                                <?php echo __( "Show survey questions count", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show survey questions count", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Survey ID in the shortcode. It will show the number of the questions of the given survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1504,7 +1500,7 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_categories_count">
-                                                <?php echo __( "Show survey categories count", "survey-maker" ); ?>
+                                                <?php echo esc_html__( "Show survey categories count", "survey-maker" ); ?>
                                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("Put this shortcode on a page to show the total count of survey categories.","survey-maker") ); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1521,15 +1517,15 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Most popular survey',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Most popular survey',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_most_popular">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Designed to show the most popular survey that is passed most commonly by users.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Designed to show the most popular survey that is passed most commonly by users.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1545,15 +1541,15 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Survey Links by Category',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Survey Links by Category',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="padding:0px;margin:0;">
                                 <div class="col-sm-12" style="padding:20px;">
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_links_by_category">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __('After adding the shortcode all surveys from the particular category will be collected in the front-end. After clicking on the Open button you will be redirected to the Survey page.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('After adding the shortcode all surveys from the particular category will be collected in the front-end. After clicking on the Open button you will be redirected to the Survey page.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1569,7 +1565,7 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('All submission settings',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('All submission settings',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1578,15 +1574,15 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label >
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Copy the given shortcode and insert it into any post or page to show all the submissions of the surveys.',"survey-maker")?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Copy the given shortcode and insert it into any post or page to show all the submissions of the surveys.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1599,8 +1595,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label>
-                                                <?php echo __( "Show to guests too", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Show the table to guests as well. By default, it is displayed only for logged-in users. So if the option is disabled, then only the logged-in users will be able to see the table. 
+                                                <?php echo esc_html__( "Show to guests too", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Show the table to guests as well. By default, it is displayed only for logged-in users. So if the option is disabled, then only the logged-in users will be able to see the table. 
                                                 Note: Despite the fact of showing the table to the guests, the table will contain only the info of the logged-in users.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
@@ -1614,8 +1610,8 @@
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "Table columns", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Select and reorder the given columns which should be displayed on the front-end.',"survey-maker")?>">
+                                                <?php echo esc_html__( "Table columns", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Select and reorder the given columns which should be displayed on the front-end.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1644,30 +1640,30 @@
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('User history settings',"survey-maker")?></h5>
+                                <h5><?php echo esc_html__('User history settings',"survey-maker")?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                                    <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=P30TcPIgSSQ" data-option-title="<?php echo __('User History Settings Shortcode',"survey-maker")?>" data-option-text="Are you trying to <strong> get all survey submissions from the current user </strong> displayed on a page? Then, use the “User history settings” shortcode to have a full report of the current user's survey submissions. You have the option to <strong> choose the order of data in the table </strong> and the option to <strong> remove unnecessary information </strong> from it.
+                                    <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=P30TcPIgSSQ" data-option-title="<?php echo esc_attr__('User History Settings Shortcode',"survey-maker")?>" data-option-text="Are you trying to <strong> get all survey submissions from the current user </strong> displayed on a page? Then, use the “User history settings” shortcode to have a full report of the current user's survey submissions. You have the option to <strong> choose the order of data in the table </strong> and the option to <strong> remove unnecessary information </strong> from it.
 Follow the steps in the video to get your survey submissions from the current user without facing any challenges.">
                                         <div class="ays-pro-features-v2-video-button">
                                             <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
                                             <div class="ays-pro-features-v2-video-text">
-                                                <?php echo __("Watch Video" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
                                             </div>
                                         </div>
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label >
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Copy the given shortcode and insert it into any post or page to show the current user’s submissions history. Each user will see individually presented content based on their taken surveys.',"survey-maker")?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Copy the given shortcode and insert it into any post or page to show the current user’s submissions history. Each user will see individually presented content based on their taken surveys.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1680,8 +1676,8 @@ Follow the steps in the video to get your survey submissions from the current us
                                     <div class="form-group row">
                                         <div class="col-sm-12">
                                             <label>
-                                                <?php echo __( "User history submissions table columns", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Select and reorder the given columns which should be displayed on the front-end.',"survey-maker")?>">
+                                                <?php echo esc_html__( "User history submissions table columns", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Select and reorder the given columns which should be displayed on the front-end.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1710,7 +1706,7 @@ Follow the steps in the video to get your survey submissions from the current us
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Display question summary',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Display question summary',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1719,7 +1715,7 @@ Follow the steps in the video to get your survey submissions from the current us
                                             <a href="https://ays-demo.com/survey-question-summary-shortcode/" target="_blank" class="ays-pro-features-v2-view-demo-button">
                                                 <div class="ays-pro-features-v2-view-demo-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/view-demo.svg');"></div>
                                                 <div class="ays-pro-features-v2-view-demo-text">
-                                                    <?php echo __("View demo" , "survey-maker"); ?>
+                                                    <?php echo esc_html__("View demo" , "survey-maker"); ?>
                                                 </div>
                                             </a>
                                         </div>
@@ -1727,15 +1723,15 @@ Follow the steps in the video to get your survey submissions from the current us
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Display each question summary individually on the front-end. To insert question ID, please click on the three dots located at the bottom right corner of the question(Surveys > the given survey > General tab).',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Display each question summary individually on the front-end. To insert question ID, please click on the three dots located at the bottom right corner of the question(Surveys > the given survey > General tab).',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1751,7 +1747,7 @@ Follow the steps in the video to get your survey submissions from the current us
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Recent surveys',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Recent surveys',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1760,15 +1756,15 @@ Follow the steps in the video to get your survey submissions from the current us
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode, configure it based on your preferences and paste it into the post or widget.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Copy the following shortcode, configure it based on your preferences and paste it into the post or widget.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1784,7 +1780,7 @@ Follow the steps in the video to get your survey submissions from the current us
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('User Activity Per Day Settings',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('User Activity Per Day Settings',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1793,15 +1789,15 @@ Follow the steps in the video to get your survey submissions from the current us
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('See how many surveys a user passed per day.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('See how many surveys a user passed per day.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1817,7 +1813,7 @@ Follow the steps in the video to get your survey submissions from the current us
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __('Survey Activity Per Day Settings',"survey-maker"); ?></h5>
+                                <h5><?php echo esc_html__('Survey Activity Per Day Settings',"survey-maker"); ?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1826,15 +1822,15 @@ Follow the steps in the video to get your survey submissions from the current us
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('See how many times the survey is passed per day.',"survey-maker"); ?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('See how many times the survey is passed per day.',"survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1853,7 +1849,7 @@ Follow the steps in the video to get your survey submissions from the current us
                         <fieldset>
                             <legend>
                                 <strong style="font-size:30px;">[ ]</strong>
-                                <h5><?php echo __( 'Request Form' , "survey-maker" )?></h5>
+                                <h5><?php echo esc_html__( 'Request Form' , "survey-maker" )?></h5>
                             </legend>
                             <div class="form-group row" style="margin:0px;">
                                 <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1862,15 +1858,15 @@ Follow the steps in the video to get your survey submissions from the current us
                                         <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
-                                                <?php echo __("Upgrade" , "survey-maker"); ?>
+                                                <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                             </div>
                                         </a>
                                     </div>
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_survey_front_request">
-                                                <?php echo __( "Shortcode", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('Copy the following shortcode and paste it into your desired post. It will allow users to send a request for building a survey with simple settings (Survey title, questions, answers). Find the list of the requests in the Frontend Requests page, which is located on the Survey Maker left navbar. For accepting the request, the admin needs to click on the Approve button next to the given survey.',"survey-maker")?>">
+                                                <?php echo esc_html__( "Shortcode", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Copy the following shortcode and paste it into your desired post. It will allow users to send a request for building a survey with simple settings (Survey title, questions, answers). Find the list of the requests in the Frontend Requests page, which is located on the Survey Maker left navbar. For accepting the request, the admin needs to click on the Approve button next to the given survey.',"survey-maker")?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1883,8 +1879,8 @@ Follow the steps in the video to get your survey submissions from the current us
                                     <div class="form-group row">
                                         <div class="col-sm-4">
                                             <label for="ays_survey_front_request_auto_approve">
-                                                <?php echo __( "Enable auto-approve", "survey-maker" ); ?>
-                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __('If the option is enabled, the user requests from the Request Form shortcode will automatically be approved and added to the Surveys page.', "survey-maker"); ?>">
+                                                <?php echo esc_html__( "Enable auto-approve", "survey-maker" ); ?>
+                                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('If the option is enabled, the user requests from the Request Form shortcode will automatically be approved and added to the Surveys page.', "survey-maker"); ?>">
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
@@ -1894,7 +1890,7 @@ Follow the steps in the video to get your survey submissions from the current us
                                         </div>
                                     </div>
                                     <blockquote>
-                                        <p style="margin:0;"><?php echo __( "Ability to allow users to create a survey from the front-end.", "survey-maker" ); ?></p>
+                                        <p style="margin:0;"><?php echo esc_html__( "Ability to allow users to create a survey from the front-end.", "survey-maker" ); ?></p>
                                     </blockquote>
                                 </div>
                             </div>
@@ -1947,7 +1943,7 @@ Follow the steps in the video to get your survey submissions from the current us
                         <div class="pro-features-popup-modal-right-box-content"></div>
 
                         <div class="pro-features-popup-modal-right-box-button">
-                            <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo __("Upgrade PRO NOW", "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo esc_html__("Upgrade PRO NOW", "survey-maker"); ?></a>
                         </div>
                 </div>
                 </div>

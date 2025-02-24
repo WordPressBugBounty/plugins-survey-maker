@@ -373,7 +373,7 @@ class Survey_Maker_Integrations
                     </div>
                 </div>
                 <blockquote>';
-        $content .= __( "You can get your API key and Client ID from your Account Settings page.");
+        $content .= __( "You can get your API key and Client ID from your Account Settings page.", "survey-maker");
         $content .= '</blockquote>
             </div>
         </div>
@@ -490,7 +490,7 @@ class Survey_Maker_Integrations
         $content .= sprintf( __( "If you don't have any ZAP created, go", "survey-maker" ) . "<a href='%s' target='_blank'> %s.</a>", "https://zapier.com/app/editor/", "here..." );
         $content .= '</blockquote>
                     <blockquote>
-                    '.__("We will send you all data from survey information form with the “AysSurvey” key by POST method.").'
+                    '.__("We will send you all data from survey information form with the “AysSurvey” key by POST method.", "survey-maker").'
                     </blockquote>
             </div>
         </div>
@@ -633,7 +633,7 @@ class Survey_Maker_Integrations
                             </div>
                         </div>
                 <blockquote>';
-        $content .= __( "Your API URL and Key can be found in your account on the My Settings page under the “Developer” tab.");
+        $content .= __( "Your API URL and Key can be found in your account on the My Settings page under the “Developer” tab.", "survey-maker");
         $content .= '</blockquote>
             </div>
         </div>
@@ -716,24 +716,6 @@ class Survey_Maker_Integrations
         public function ays_settings_page_slack_content( $integrations, $args ){
         $actions = $this->settings_obj;
         
-        $slack_res    = ($actions->ays_get_setting('slack') === false) ? json_encode(array()) : $actions->ays_get_setting('slack');
-        $slack        = json_decode($slack_res, true);
-        $slack_client = isset($slack['client']) ? $slack['client'] : '';
-        $slack_secret = isset($slack['secret']) ? $slack['secret'] : '';
-        $slack_token  = isset($slack['token']) ? $slack['token'] : '';
-        $slack_oauth  = '';
-        
-        $data_code = '';
-        $code_content = sprintf(__("1. You will need to " . "<a href='%s' target='_blank'>%s</a>" . " new Slack App.", "survey-maker"), "https://api.slack.com/apps?new_app=1", "create");
-        $server_http = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443 ? "https://" : "http://")) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] . "&oauth=slack";
-        $slack_readonly = $slack_oauth ? '' : 'readonly';
-        if ($slack_oauth) {
-            $slack_temp_code = "";
-            $slack_client    = "";
-            $data_code       = !empty($slack_temp_code) ? $slack_temp_code : "";
-            $ays_survey_tab  = 'tab2';
-        }
-        
         $icon  = SURVEY_MAKER_ADMIN_URL . '/images/integrations/slack_logo.png';
         $title = __( 'Slack', "survey-maker" );
 
@@ -751,25 +733,6 @@ class Survey_Maker_Integrations
                     $content .= '</div>';
         $content .= '<div class="form-group row">
                         <div class="col-sm-12">';
-        if(!$slack_oauth){
-            $content .= '<div class="form-group row" aria-describedby="aaa">
-                            <div class="col-sm-3">
-                                <button id="slackInstructionsPopOver" type="button" class="btn btn-info" title="'.__("Slack Integration Setup Instructions", "survey-maker").'">'.__("Instructions", "survey-maker").'</button>
-                                <div class="d-none" id="slackInstructions">
-                                    <p>'.$code_content.'</p>
-                                    <p>'.__("2. Complete Project creation for get App credentials.", "survey-maker").'</p>
-                                    <p>'.__("3. Next, go to the Features > OAuth & Permissions > Redirect URLs section.", "survey-maker").'</p>
-                                    <p>'.__("4. Click Add a new Redirect URL.", "survey-maker").'</p>
-                                    <p>'.__("5. In the shown input field, put this value below", "survey-maker").'</p>
-                                    <p>
-                                        <code>'.$server_http.'</code>
-                                    </p>
-                                    <p>'.__("6. Then click the Add button.", "survey-maker").'</p>
-                                    <p>'.__("7. Then click the Save URLs button.", "survey-maker").'</p>
-                                </div>
-                            </div>
-                        </div>';
-        }
         $content .= '<div class="form-group row" aria-describedby="aaa">
                         <div class="col-sm-3">
                             <label for="ays_slack_client">
@@ -777,7 +740,7 @@ class Survey_Maker_Integrations
                             </label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" class="ays-text-input" id="ays_slack_client" name="ays_slack_client" value='.$slack_client.'>
+                            <input type="text" class="ays-text-input" id="ays_slack_client" name="ays_slack_client" value="">
                         </div>
                     </div>
                     <hr/>';
@@ -786,12 +749,7 @@ class Survey_Maker_Integrations
                             <label for="ays_slack_oauth">'.__("Slack Authorization", "survey-maker").'</label>
                         </div>
                         <div class="col-sm-9">';
-                        if($slack_oauth){
-                            $content .= '<span class="btn btn-success pointer-events-none">'.__("Authorized", "survey-maker").'</span>';
-                        }
-                        else{
-                            $content .= '<button type="button" id="slackOAuth2" class="btn btn-outline-secondary disabled">'.__("Authorize", "survey-maker").'</button>';
-                        }
+                        $content .= '<button type="button" id="slackOAuth2" class="btn btn-outline-secondary disabled">'.esc_html__("Authorize", "survey-maker").'</button>';
 
         $content .= '</div>
                     </div>
@@ -801,7 +759,7 @@ class Survey_Maker_Integrations
                             <label for="ays_slack_secret">'.__('App Client Secret', "survey-maker").'</label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="text" class="ays-text-input" id="ays_slack_secret" name="ays_slack_secret" value="'.$slack_secret.'" '.$slack_readonly.'>
+                            <input type="text" class="ays-text-input" id="ays_slack_secret" name="ays_slack_secret" value="">
                         </div>
                     </div>
                     <hr/>';                    
@@ -810,17 +768,11 @@ class Survey_Maker_Integrations
                             <label for="ays_slack_oauth">'.__('App Access Token', "survey-maker").'</label>
                         </div>
                         <div class="col-sm-9">';
-                        if($slack_oauth){
-                            $content .= '<button type="button" data-code='.$data_code.' id="slackOAuthGetToken" data-success='.__("Access granted", "survey-maker").' class="btn btn-outline-secondary disabled">'.__("Get it", "survey-maker").'</button>';
-                        }
-                        else{
-                            $content .= '<button type="button" class="btn btn-outline-secondary disabled">'.__("Need Authorization", "survey-maker").'</button>';
-                            $content .= '<input type="hidden" id="ays_slack_token" name="ays_slack_token" value="'.$slack_token.'">';
-                        }
+                        $content .= '<button type="button" class="btn btn-outline-secondary disabled">'.__("Need Authorization", "survey-maker").'</button>';
         $content .= '</div></div>';
 
         $content .= '<blockquote>
-                        '.__( "You can get your App Client ID and Client Secret from your App's Basic Information page.").'
+                        '.__( "You can get your App Client ID and Client Secret from your App's Basic Information page.", "survey-maker").'
                     </blockquote>
             </div>
         </div>

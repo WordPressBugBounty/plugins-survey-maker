@@ -6,7 +6,7 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
@@ -15,7 +15,7 @@
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
@@ -33,11 +33,11 @@
                         </div>
                         </div>
                         <div>
-                        <span style="padding: 10px;"><?php echo __("Add condition", "survey-maker");?></span>
+                        <span style="padding: 10px;"><?php echo esc_html__("Add condition", "survey-maker");?></span>
                         </div>
                     </div>
                     <div>
-                        <button type="button" class="button ays-survey-condition-refresh-data"><?php echo __("Refresh questions data", "survey-maker");?></button>    
+                        <button type="button" class="button ays-survey-condition-refresh-data"><?php echo esc_html__("Refresh questions data", "survey-maker");?></button>    
                     </div>
                 </div>
                 <div class="ays-survey-condition-containers-info">
@@ -62,7 +62,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question">
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14" selected="">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15">Age</option>
@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="ays-survey-condition-select-question-answers">
                                         <select class="ays-survey-condition-select-question-with-answers" >
-                                            <option value="0">- <?php echo __("Select", "survey-maker");?> -</option>
+                                            <option value="0">- <?php echo esc_html__("Select", "survey-maker");?> -</option>
                                             <option value="34" selected="">Male</option>
                                             <option value="35">Female</option>
                                         </select>
@@ -101,7 +101,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question" >
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15" selected="">Age</option>
@@ -150,7 +150,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question">
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15" selected="">Age</option>
@@ -255,7 +255,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question" >
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14" selected="">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15">Age</option>
@@ -266,7 +266,7 @@
                                     </div>
                                     <div class="ays-survey-condition-select-question-answers">
                                         <select class="ays-survey-condition-select-question-with-answers" >
-                                            <option value="0">- <?php echo __("Select", "survey-maker");?> -</option>
+                                            <option value="0">- <?php echo esc_html__("Select", "survey-maker");?> -</option>
                                             <option value="34">Male</option>
                                             <option value="35" selected="">Female</option>
                                         </select>
@@ -294,7 +294,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question" >
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15" selected="">Age</option>
@@ -343,7 +343,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question" >
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15" selected="">Age</option>
@@ -478,7 +478,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question">
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15">Age</option>
@@ -524,7 +524,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question" >
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15">Age</option>
@@ -573,7 +573,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question" >
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15">Age</option>
@@ -622,7 +622,7 @@
                                     <div class="ays-survey-condition-selects">
                                     <div class="ays-survey-condition-select-question-box-questions">
                                         <select class="ays-survey-condition-select-question">
-                                            <option value="0"><?php echo __("Select", "survey-maker");?></option>
+                                            <option value="0"><?php echo esc_html__("Select", "survey-maker");?></option>
                                             <option value="13" data-type="radio" data-question-id="13">RAdio</option>
                                             <option value="14" data-type="radio" data-question-id="14">Gender</option>
                                             <option value="15" data-type="number" data-question-id="15" selected="">Age</option>
@@ -693,7 +693,7 @@
                                     <div class="col-sm-3">
                                         <div class="ays-survey-conditions-redirect-messages-labels">
                                             <label class="ays-survey-redirect-message-delay-label" for="ays-survey-redirect-delay-current-3">
-                                                <?php echo __("Delay", "survey-maker");?>
+                                                <?php echo esc_html__("Delay", "survey-maker");?>
                                             </label>
                                         </div>
                                     </div>
@@ -708,7 +708,7 @@
                                     <div class="col-sm-3">
                                         <div class="ays-survey-conditions-redirect-messages-labels">
                                             <label class="ays-survey-redirect-message-url-label" for="ays-survey-redirect-url-current-3">
-                                                <?php echo __("Url", "survey-maker");?>
+                                                <?php echo esc_html__("Url", "survey-maker");?>
                                             </label>
                                         </div>
                                     </div>
@@ -733,7 +733,7 @@
                         </div>
                     </div>
                     <div>
-                        <span style="padding: 10px;"><?php echo __("Add condition", "survey-maker");?></span>
+                        <span style="padding: 10px;"><?php echo esc_html__("Add condition", "survey-maker");?></span>
                     </div>
                 </div>
             </div>

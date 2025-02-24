@@ -85,21 +85,21 @@ class Survey_Categories_List_Table extends WP_List_Table {
         <div id="survey-filter-div-<?php echo esc_attr( $which ); ?>" class="alignleft actions bulkactions">
 
             <select name="filterbyDescription-<?php echo esc_attr( $which ); ?>" id="bulk-action-survey-cat-description-selector-<?php echo esc_attr( $which ); ?>">
-                <option value=""><?php echo __('With/without description',"survey-maker"); ?></option>
+                <option value=""><?php echo esc_html__('With/without description',"survey-maker"); ?></option>
                 <?php
                     foreach($survey_cat_description as $key => $cat_description) {
                         $selected = "";
                         if( $description_key === sanitize_text_field($key) ) {
                             $selected = "selected";
                         }
-                        echo "<option ".$selected." value='".esc_attr( $key )."'>".$cat_description."</option>";
+                        echo "<option ".esc_attr($selected)." value='".esc_attr( $key )."'>".esc_html($cat_description)."</option>";
                     }
                 ?>
             </select>
-            <input type="button" id="doaction-survey-<?php echo esc_attr( $which ); ?>" class="ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo __( "Filter", "survey-maker" ); ?>">
+            <input type="button" id="doaction-survey-<?php echo esc_attr( $which ); ?>" class="ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_html__( "Filter", "survey-maker" ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo __( "Clear filters", "survey-maker" ); ?></a>
+        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
     }
 

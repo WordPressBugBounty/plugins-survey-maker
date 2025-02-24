@@ -1,8 +1,8 @@
 <div id="tab8" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab8') ? 'ays-survey-tab-content-active' : ''; ?>">
-    <p class="ays-subtitle"><?php echo __('Integrations settings',"survey-maker")?></p>
+    <p class="ays-subtitle"><?php echo esc_html__('Integrations settings',"survey-maker")?></p>
     <div>
         <span style="font-size: 12px;padding: 2px 10px;font-style: italic;">
-            <a href="https://ays-pro.com/instructions-for-survey-maker-plugin-integrations/" style="color:#524e4e;position:relative;" target="_blank" title="PRO feature"><?php echo __("Read the Detailed Guide", "survey-maker"); ?></a>
+            <a href="https://ays-pro.com/instructions-for-survey-maker-plugin-integrations/" style="color:#524e4e;position:relative;" target="_blank" title="PRO feature"><?php echo esc_html__("Read the Detailed Guide", "survey-maker"); ?></a>
         </span>
     </div>
     <hr/>

@@ -119,7 +119,7 @@ $types_with_changeable_charts = array(
     </div>
     <h1 class="wp-heading-inline" style="padding-left:15px;">
         <?php
-        echo sprintf( '<a href="?page=%s" class="go_back"><span><i class="fa fa-long-arrow-left" aria-hidden="true"></i> %s</span></a>', $this->plugin_name."-submissions", __("Back to Submissions", "survey-maker") );
+        echo sprintf( '<a href="?page=%s" class="go_back"><span><i class="fa fa-long-arrow-left" aria-hidden="true"></i> %s</span></a>', esc_attr($this->plugin_name)."-submissions", esc_html__("Back to Submissions", "survey-maker") );
         ?>
     </h1>
     <div style="display: flex; justify-content: space-between;flex-wrap:wrap">
@@ -131,39 +131,39 @@ $types_with_changeable_charts = array(
                     "action" => "edit",
                     "id"     => $survey_id
                 ) , $url));
-                echo "<span>". __("Reports for", "survey-maker") . "</span>" ." <a href='".esc_url($url)."' target='_blank' class='ays-survey-to-curnet-survey'>\"" .    __(esc_html($survey_name['title']), "survey-maker") . "\""."</a>";
+                echo "<span>". esc_html__("Reports for", "survey-maker") . "</span>" ." <a href='".esc_url($url)."' target='_blank' class='ays-survey-to-curnet-survey'>\"" .    esc_html__($survey_name['title'], "survey-maker") . "\""."</a>";
             ?>
         </h1>
         <div class="ays-survey-question-action-butons" style="padding: 10px; display: inline-block;">
-            <a type="button" class="button button-primary ays-survey-question-actions-pro-button" href="#" style="opacity:0.5;" data-video-url="https://www.youtube.com/watch?v=5azAn4qEOmo" data-option-title="<?php echo __('Export Submissions',"survey-maker")?>" data-option-text="<strong> To get the reports </strong> of your survey submissions, use the “Export Submissions” feature. You also have the option to <strong> select specific users, the period of submissions </strong> , and also the <strong> format of your exporting document </strong>. Get the instant report of your submissions in your desired format."><?php echo __('Export submissions', "survey-maker"); ?></a>
-            <a type="button" class="button button-primary ays-survey-question-actions-pro-button" href="#" style="opacity:0.5;"  data-video-url="https://www.youtube.com/watch?v=EKhq0Sja3tE" data-option-title="<?php echo __('Export to XLSX',"survey-maker")?>" data-option-text="Analyzing the survey submissions is the most important part of surveys, and having the results at your disposal makes the process of analyzing much easier. <strong> Download the reports in.</strong> XLSX format and have the full results sheet at your fingertips with the <strong> answers, their percentages </strong>, and <strong> the number of survey takers. </strong>"><?php echo __('Export to XLSX', "survey-maker"); ?></a>
+            <a type="button" class="button button-primary ays-survey-question-actions-pro-button" href="#" style="opacity:0.5;" data-video-url="https://www.youtube.com/watch?v=5azAn4qEOmo" data-option-title="<?php echo esc_attr__('Export Submissions',"survey-maker")?>" data-option-text="<strong> To get the reports </strong> of your survey submissions, use the “Export Submissions” feature. You also have the option to <strong> select specific users, the period of submissions </strong> , and also the <strong> format of your exporting document </strong>. Get the instant report of your submissions in your desired format."><?php echo esc_html__('Export submissions', "survey-maker"); ?></a>
+            <a type="button" class="button button-primary ays-survey-question-actions-pro-button" href="#" style="opacity:0.5;"  data-video-url="https://www.youtube.com/watch?v=EKhq0Sja3tE" data-option-title="<?php echo esc_attr__('Export to XLSX',"survey-maker")?>" data-option-text="Analyzing the survey submissions is the most important part of surveys, and having the results at your disposal makes the process of analyzing much easier. <strong> Download the reports in.</strong> XLSX format and have the full results sheet at your fingertips with the <strong> answers, their percentages </strong>, and <strong> the number of survey takers. </strong>"><?php echo esc_html__('Export to XLSX', "survey-maker"); ?></a>
         </div>
     </div>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small" style="background-color: rgb(53 113 196 / 7%);">
-            <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=N3vJjECIShQ" data-option-title="<?php echo __('Submission filters',"survey-maker")?>" data-option-text="Easily filter submissions on your survey based on the question answers. Get the needed data and make improvements due to the well-designed filtering system. Make use of this option and filter survey responses quickly.">
+            <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=N3vJjECIShQ" data-option-title="<?php echo esc_attr__('Submission filters',"survey-maker")?>" data-option-text="Easily filter submissions on your survey based on the question answers. Get the needed data and make improvements due to the well-designed filtering system. Make use of this option and filter survey responses quickly.">
                 <div class="ays-pro-features-v2-video-button">
                     <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
                     <div class="ays-pro-features-v2-video-text">
-                        <?php echo __("Watch Video" , "survey-maker"); ?>
+                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
                     </div>
                 </div>
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
             <div class="ays-survey-submissions-filters-section">
                 <div class="ays-survey-submissions-filter-button">
                     <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="visible" preserveAspectRatio="none" viewBox="0 0 16 16" width="16" height="16"><g transform="translate(0, 0)"><defs><path id="path-169778375629214" d="M20.31816722868322 5.092834549770544 C20.31816722868322 5.092834549770544 5.817641447783829 5.092834549770544 5.817641447783829 5.092834549770544 C5.512596577862579 5.071023695167673 5.251129546501509 5.256415959292082 5.14218495010106 5.539957069129414 C5.011451434420527 5.801687324363874 5.076818192260794 6.1397555707083855 5.316496304341776 6.3360532621342305 C5.316496304341776 6.3360532621342305 10.894459640044625 11.930537467770824 10.894459640044625 11.930537467770824 C10.894459640044625 11.930537467770824 10.894459640044625 17.448683682297368 10.894459640044625 17.448683682297368 C10.894459640044625 17.644981373723212 10.970720857524936 17.830373637847625 11.112348832845516 17.961238765464852 C11.112348832845516 17.961238765464852 14.02116955673743 20.872987854948224 14.02116955673743 20.872987854948224 C14.151903072417964 21.01475840986689 14.337108886298722 21.09109640097694 14.533209159819528 21.09109640097694 C14.631259296579927 21.09109640097694 14.729309433340331 21.069285546374072 14.81646511046069 21.036569264469758 C15.099721061101844 20.927514991455404 15.27403241534256 20.654879308919504 15.252243496062473 20.3495273444793 C15.252243496062473 20.3495273444793 15.252243496062473 11.930537467770826 15.252243496062473 11.930537467770826 C15.252243496062473 11.930537467770826 20.841101291405362 6.336053262134233 20.841101291405362 6.336053262134233 C21.0698849438463 6.139755570708387 21.146146161326612 5.812592751665312 21.00451818600603 5.539957069129416 C20.895573589605586 5.256415959292082 20.623212098604473 5.071023695167673 20.31816722868322 5.092834549770544 Z" vector-effect="non-scaling-stroke"/></defs><g transform="translate(-5.07598791074798, -5.0910964009769435)"><path d="M20.31816722868322 5.092834549770544 C20.31816722868322 5.092834549770544 5.817641447783829 5.092834549770544 5.817641447783829 5.092834549770544 C5.512596577862579 5.071023695167673 5.251129546501509 5.256415959292082 5.14218495010106 5.539957069129414 C5.011451434420527 5.801687324363874 5.076818192260794 6.1397555707083855 5.316496304341776 6.3360532621342305 C5.316496304341776 6.3360532621342305 10.894459640044625 11.930537467770824 10.894459640044625 11.930537467770824 C10.894459640044625 11.930537467770824 10.894459640044625 17.448683682297368 10.894459640044625 17.448683682297368 C10.894459640044625 17.644981373723212 10.970720857524936 17.830373637847625 11.112348832845516 17.961238765464852 C11.112348832845516 17.961238765464852 14.02116955673743 20.872987854948224 14.02116955673743 20.872987854948224 C14.151903072417964 21.01475840986689 14.337108886298722 21.09109640097694 14.533209159819528 21.09109640097694 C14.631259296579927 21.09109640097694 14.729309433340331 21.069285546374072 14.81646511046069 21.036569264469758 C15.099721061101844 20.927514991455404 15.27403241534256 20.654879308919504 15.252243496062473 20.3495273444793 C15.252243496062473 20.3495273444793 15.252243496062473 11.930537467770826 15.252243496062473 11.930537467770826 C15.252243496062473 11.930537467770826 20.841101291405362 6.336053262134233 20.841101291405362 6.336053262134233 C21.0698849438463 6.139755570708387 21.146146161326612 5.812592751665312 21.00451818600603 5.539957069129416 C20.895573589605586 5.256415959292082 20.623212098604473 5.071023695167673 20.31816722868322 5.092834549770544 Z" style="stroke-width: 0; stroke-linecap: butt; stroke-linejoin: miter; fill: rgb(19, 101, 143);" vector-effect="non-scaling-stroke"/></g></g></svg>
-                    <?php echo __( "Filters", "survey-maker" ); ?>
+                    <?php echo esc_html__( "Filters", "survey-maker" ); ?>
                 </div>
                 <div class="ays-survey-submissions-filter-container">
                     <div class="ays-survey-submissions-filter-section">
                         <select class="form-select" id="ays-survey-submissions-filter-post">
-                            <option value=""><?php echo __( "Select post", "survey-maker" ); ?></option>                    
+                            <option value=""><?php echo esc_html__( "Select post", "survey-maker" ); ?></option>                    
                         </select>
                         <input type="date" name="filterbystartdate" class="ays-survey-submissions-filter-date" id="ays-survey-submissions-filter-start-date" placeholder="From">
                         <input type="date" name="filterbyenddate" class="ays-survey-submissions-filter-date" id="ays-survey-submissions-filter-end-date" placeholder="To">
@@ -173,10 +173,10 @@ $types_with_changeable_charts = array(
                     <br>
                     <div class="ays-survey-submissions-filter-section">
                         <select class="form-select ays-survey-submissions-filter-question">
-                            <option value=""><?php echo __( "Select question", "survey-maker" ); ?></option>                            
+                            <option value=""><?php echo esc_html__( "Select question", "survey-maker" ); ?></option>                            
                         </select>
                         <select name="filterbyanswer" class="form-select ays-survey-submissions-filter-answer">
-                            <option value=""><?php echo __( "Select answer", "survey-maker" ); ?></option>    
+                            <option value=""><?php echo esc_html__( "Select answer", "survey-maker" ); ?></option>    
                         </select>
                     </div>
                 </div>
@@ -184,10 +184,10 @@ $types_with_changeable_charts = array(
         </div>
     </div>
     <div class="nav-tab-wrapper">
-        <a href="#statistics_of_answer" class="nav-tab <?php echo ($ays_survey_tab == 'statistics_of_answer') ? 'nav-tab-active' : ''; ?>"><?php echo __("Summary", "survey-maker"); ?></a>
-        <a href="#questions" class="nav-tab <?php echo ($ays_survey_tab == 'questions') ? 'nav-tab-active' : ''; ?>"><?php echo __("Individual", "survey-maker"); ?></a>
-        <a href="#poststuff" class="nav-tab <?php echo ($ays_survey_tab == 'poststuff') ? 'nav-tab-active' : ''; ?>" ><?php echo __("Submissions", "survey-maker"); ?></a>
-        <a href="#statistics" class="nav-tab <?php echo ($ays_survey_tab == 'statistics') ? 'nav-tab-active' : ''; ?>"><?php echo __("Analytics", "survey-maker"); ?></a>
+        <a href="#statistics_of_answer" class="nav-tab <?php echo ($ays_survey_tab == 'statistics_of_answer') ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__("Summary", "survey-maker"); ?></a>
+        <a href="#questions" class="nav-tab <?php echo ($ays_survey_tab == 'questions') ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__("Individual", "survey-maker"); ?></a>
+        <a href="#poststuff" class="nav-tab <?php echo ($ays_survey_tab == 'poststuff') ? 'nav-tab-active' : ''; ?>" ><?php echo esc_html__("Submissions", "survey-maker"); ?></a>
+        <a href="#statistics" class="nav-tab <?php echo ($ays_survey_tab == 'statistics') ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__("Analytics", "survey-maker"); ?></a>
     </div>
     <div id="poststuff" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'poststuff') ? 'ays-survey-tab-content-active' : ''; ?>">
         <div id="post-body" class="metabox-holder">
@@ -217,7 +217,7 @@ $types_with_changeable_charts = array(
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
@@ -226,14 +226,14 @@ $types_with_changeable_charts = array(
                 <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo __("Upgrade" , "survey-maker"); ?>
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
             </div>
             <div class="ays-survey-submission-summary-question-container">
                 <div class="ays-survey-submission-summary-question-header">
                     <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Submission count per day", "survey-maker"); ?></h1>
+                        <h1 style="text-align:center;"><?php echo esc_html__("Submission count per day", "survey-maker"); ?></h1>
                     </div>
                 </div>
                 <div class="ays-survey-submission-summary-question-content">
@@ -243,7 +243,7 @@ $types_with_changeable_charts = array(
             <div class="ays-survey-submission-summary-question-container">
                 <div class="ays-survey-submission-summary-question-header">
                     <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Survey passed users by user role", "survey-maker"); ?></h1>
+                        <h1 style="text-align:center;"><?php echo esc_html__("Survey passed users by user role", "survey-maker"); ?></h1>
                     </div>
                 </div>
                 <div class="ays-survey-submission-summary-question-content">
@@ -253,7 +253,7 @@ $types_with_changeable_charts = array(
             <div class="ays-survey-submission-summary-question-container">
                 <div class="ays-survey-submission-summary-question-header">
                     <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Detected device", "survey-maker"); ?></h1>
+                        <h1 style="text-align:center;"><?php echo esc_html__("Detected device", "survey-maker"); ?></h1>
                     </div>
                 </div>
                 <div class="ays-survey-submission-summary-question-content">
@@ -263,7 +263,7 @@ $types_with_changeable_charts = array(
             <div class="ays-survey-submission-summary-question-container">
                 <div class="ays-survey-submission-summary-question-header">
                     <div class="ays-survey-submission-summary-question-header-content">
-                        <h1 style="text-align:center;"><?php echo __("Detected Countries", "survey-maker"); ?></h1>
+                        <h1 style="text-align:center;"><?php echo esc_html__("Detected Countries", "survey-maker"); ?></h1>
                     </div>
                 </div>
                 <div class="ays-survey-submission-summary-question-content">
@@ -278,12 +278,12 @@ $types_with_changeable_charts = array(
             <div class="ays_survey_container_each_result">
                 <div class="ays_survey_response_count">
                     <div class="form-group row">
-                        <div class="col-sm-6" style="font-size: 13px;"><?php echo __('Responses cannot be edited',"survey-maker"); ?></div>
+                        <div class="col-sm-6" style="font-size: 13px;"><?php echo esc_html__('Responses cannot be edited',"survey-maker"); ?></div>
                         <div class="col-sm-6 ays-survey-question-action-butons" style="align-items: center;">
-                            <span style="min-width: 70px;"><?php echo __("Export to", "survey-maker"); ?></span>
+                            <span style="min-width: 70px;"><?php echo esc_html__("Export to", "survey-maker"); ?></span>
                             <a download="" id="downloadFile" hidden href=""></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("PDF", "survey-maker"); ?></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("XLSX", "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo esc_html__("PDF", "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo esc_html__("XLSX", "survey-maker"); ?></a>
                         </div>
                     </div>
                     <?php
@@ -293,16 +293,16 @@ $types_with_changeable_charts = array(
                         <div class="col-sm-6">
                             <h1><?php 
                                 echo esc_attr($submission_count_and_ids['submission_count']);
-                                echo __(" Responses","survey-maker");
+                                echo esc_html__(" Responses","survey-maker");
                             ?></h1>
                         </div>
                         <div class="col-sm-6 ays-survey-question-action-butons">
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5;"><?php echo __( 'Print', "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5;"><?php echo esc_html__( 'Print', "survey-maker"); ?></a>
                         </div>
                     </div>
                     <div class="ays_survey_previous_next_conteiner">
                         <div class="ays_survey_previous_next ays_survey_previous" data-name="ays_survey_previous">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Previous response',"survey-maker"); ?>">
+                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo esc_attr__('Previous response',"survey-maker"); ?>">
                                 <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-left.svg">
                             </div>
                         </div>
@@ -316,7 +316,7 @@ $types_with_changeable_charts = array(
                             <span>of <?php echo esc_attr($submission_count_and_ids['submission_count']); ?></span>
                         </div>
                         <div class="ays_survey_previous_next ays_survey_next" data-name="ays_survey_next">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Next response',"survey-maker"); ?>">
+                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo esc_attr__('Next response',"survey-maker"); ?>">
                                 <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-right.svg">
                             </div>
                         </div>
@@ -324,7 +324,7 @@ $types_with_changeable_charts = array(
                     <?php
                     else:?>
                         <h1 style="width:100%;text-align:center;"><?php
-                        echo __("There are no responses yet.","survey-maker");
+                        echo esc_html("There are no responses yet.","survey-maker");
                         ?></h1>
                     <?php
                     endif;
@@ -334,36 +334,36 @@ $types_with_changeable_charts = array(
                 <div class="ays_survey_each_sub_user_info">
                     <div class="ays_survey_each_sub_user_info_header">
                         <div class="ays_survey_each_sub_user_info_header_text">
-                            <span><?php echo __("User Information" , "survey-maker"); ?></span>
+                            <span><?php echo esc_html__("User Information" , "survey-maker"); ?></span>
                         </div>
                         <div class="ays_survey_each_sub_user_info_header_button">
-                            <button type="button" class="button ays_help" data-toggle="tooltip" title="<?php echo __('Click for copy',"survey-maker");?>" data-clipboard-text="<?php echo esc_attr($survey_data_formated_for_clipboard); ?>"><?php echo __("Copy user info to clipboard" , "survey-maker"); ?></button>
+                            <button type="button" class="button ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" data-clipboard-text="<?php echo esc_attr($survey_data_formated_for_clipboard); ?>"><?php echo esc_html__("Copy user info to clipboard" , "survey-maker"); ?></button>
                         </div>
                     </div>
                     <div class="ays_survey_each_sub_user_info_body ays_survey_copyable_box">
                         <div class="ays_survey_each_sub_user_info_columns">
-                            <div ><?php echo __("User name" , "survey-maker"); ?></div>
+                            <div ><?php echo esc_html__("User name" , "survey-maker"); ?></div>
                             <div class="ays_survey_each_sub_user_info_name"><?php echo esc_html($individual_user_name);?></div>
                         </div>
                         <div class="ays_survey_each_sub_user_info_columns">
-                            <div ><?php echo __("User email" , "survey-maker"); ?></div>
+                            <div ><?php echo esc_html__("User email" , "survey-maker"); ?></div>
                             <div class="ays_survey_each_sub_user_info_email"><?php echo esc_html($individual_user_email);?></div>
                         </div>
                         <div class="ays_survey_each_sub_user_info_columns">
-                            <div ><?php echo __("User IP" , "survey-maker");   ?></div>
+                            <div ><?php echo esc_html__("User IP" , "survey-maker");   ?></div>
                             <div class="ays_survey_each_sub_user_info_user_ip"><?php echo esc_html($individual_user_ip);?></div>
                         </div>
                         <div class="ays_survey_each_sub_user_info_columns">
-                            <div ><?php echo __("Submission Date" , "survey-maker"); ?></div>
+                            <div ><?php echo esc_html__("Submission Date" , "survey-maker"); ?></div>
                             <div class="ays_survey_each_sub_user_info_sub_date"><?php echo esc_html($individual_user_date);?></div>
                         </div>
                         <div class="ays_survey_each_sub_user_info_columns">
-                            <div ><?php echo __("Submission id" , "survey-maker"); ?></div>
+                            <div ><?php echo esc_html__("Submission id" , "survey-maker"); ?></div>
                             <div class="ays_survey_each_sub_user_info_sub_id"><?php echo esc_html($individual_user_sub_id);?></div>
                         </div>
                         <?php if( isset($individual_user_device_type) && $individual_user_device_type != '' ): ?>
                             <div class="ays_survey_each_sub_user_info_columns">
-                                <div><?php echo __("Device" , "survey-maker"); ?></div>
+                                <div><?php echo esc_html__("Device" , "survey-maker"); ?></div>
                                 <div class="ays_survey_each_sub_user_info_device_type"><?php echo esc_html(ucfirst($individual_user_device_type));?></div>
                             </div>
                         <?php endif; ?>
@@ -376,13 +376,13 @@ $types_with_changeable_charts = array(
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="ays-survey-each-sub-dashboard-admin-note">
                             <div class="ays-survey-each-sub-dashboard-admin-note-button-box">
-                                <button type="button" class="button button-primary ays-survey-each-sub-dashboard-admin-note-button-box"><?php echo __( 'Click For Admin Note', "survey-maker"); ?></button>
+                                <button type="button" class="button button-primary ays-survey-each-sub-dashboard-admin-note-button-box"><?php echo esc_html__( 'Click For Admin Note', "survey-maker"); ?></button>
                             </div>
                         </div>
                     </div>
@@ -606,28 +606,28 @@ $types_with_changeable_charts = array(
                 ?>
                 <div class="ays_survey_response_count">
                     <div class="form-group row">
-                        <div class="col-sm-6" style="font-size: 13px;"><?php echo __('Responses cannot be edited',"survey-maker"); ?></div>
+                        <div class="col-sm-6" style="font-size: 13px;"><?php echo esc_html__('Responses cannot be edited',"survey-maker"); ?></div>
                         <div class="col-sm-6 ays-survey-question-action-butons" style="align-items: center;">
-                            <span style="min-width: 70px;"><?php echo __("Export to", "survey-maker"); ?></span>
+                            <span style="min-width: 70px;"><?php echo esc_html__("Export to", "survey-maker"); ?></span>
                             <a download="" id="downloadFile" hidden href=""></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("PDF", "survey-maker"); ?></a>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo __("XLSX", "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo esc_html__("PDF", "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-export-button" style="opacity: 0.5;"><?php echo esc_html__("XLSX", "survey-maker"); ?></a>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
                             <h1><?php 
                                 echo esc_attr($submission_count_and_ids['submission_count']);
-                                echo __(" Responses","survey-maker");
+                                echo esc_html__(" Responses","survey-maker");
                             ?></h1>
                         </div>
                         <div class="col-sm-6 ays-survey-question-action-butons">
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5;"><?php echo __( 'Print', "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5;"><?php echo esc_html__( 'Print', "survey-maker"); ?></a>
                         </div>
                     </div>
                     <div class="ays_survey_previous_next_conteiner">
                         <div class="ays_survey_previous_next ays_survey_previous" data-name="ays_survey_previous">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Previous response',"survey-maker"); ?>">
+                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo esc_attr__('Previous response',"survey-maker"); ?>">
                                 <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-left.svg">
                             </div>
                         </div>
@@ -641,7 +641,7 @@ $types_with_changeable_charts = array(
                             <span>of <?php echo esc_attr($submission_count_and_ids['submission_count']); ?></span>
                         </div>
                         <div class="ays_survey_previous_next ays_survey_next" data-name="ays_survey_next">
-                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo __('Next response',"survey-maker"); ?>">
+                            <div class="appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php echo esc_attr__('Next response',"survey-maker"); ?>">
                                 <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/arrow-right.svg">
                             </div>
                         </div>
@@ -658,10 +658,10 @@ $types_with_changeable_charts = array(
         <div class="wrap">
             <div class="ays-survey-submission-summary-question-container ays-survey-submission-summary-header-container" style="padding: 20px;">
                 <div class="ays-survey-submission-summary-question-container-title">
-                    <h2 style="margin: 0;"><?php echo sprintf( __( 'In total %s submission', "survey-maker" ), intval( esc_attr($submission_count_and_ids['submission_count']) ) ); ?></h2>
+                    <h2 style="margin: 0;"><?php echo esc_html__(sprintf( __( 'In total %s submission', "survey-maker" ), intval( esc_attr($submission_count_and_ids['submission_count']) ) )); ?></h2>
                 </div>
                 <div class="ays-survey-submission-summary-question-container-buttons">
-                    <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker" style="opacity:0.5;"><?php echo __( 'Print', "survey-maker"); ?></a>
+                    <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker" style="opacity:0.5;"><?php echo esc_html__( 'Print', "survey-maker"); ?></a>
                 </div>
             </div>
             <?php
@@ -676,7 +676,7 @@ $types_with_changeable_charts = array(
                         </div>
                         <?php else:?>
                         <div class="ays_survey_name ays-survey-submission-summary-section-header" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
-                            <h3><?php echo __( 'Untitled section' , "survey-maker" );; ?></h3>
+                            <h3><?php echo esc_html__( 'Untitled section' , "survey-maker" );; ?></h3>
                         </div>
                         <?php endif; ?>
                         <?php
@@ -692,7 +692,7 @@ $types_with_changeable_charts = array(
                                         ?>                                            
                                         <div style="padding: 9px 0 4px 0;"><?php echo $question_title_text; ?></div>
                                         <?php endif?>
-                                        <p style="text-align:center;"><?php echo esc_attr($question_results[ $question['id'] ]['sum_of_answers_count']); echo __(' submissions',"survey-maker"); ?></p>
+                                        <p style="text-align:center;"><?php echo esc_attr($question_results[ $question['id'] ]['sum_of_answers_count']); echo esc_html__(' submissions',"survey-maker"); ?></p>
                                     </div>
                                     <?php if (isset($question['type']) && $question['type'] && array_key_exists($question['type'], $types_with_changeable_charts)): ?>
                                         <div class="ays-survey-submission-summary-question-buttons-flexbox">
@@ -701,8 +701,8 @@ $types_with_changeable_charts = array(
                                                 $default_chart = $types_with_changeable_charts[$question['type']]['default'];
                                                 $all_chart_types = $types_with_changeable_charts[$question['type']]['all'];
                                                 foreach ($all_chart_types as $chart_type): ?>
-                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-survey-submission-summary-question-change-chart-type-btn" data-chart-type="<?= $chart_type ?>" title="<?php echo __("These features are available only in PRO version.", "survey-maker"); ?>">
-                                                        <img src="<?php echo SURVEY_MAKER_ADMIN_URL . '/images/icons/' . $chart_type?>-chart-submission-icon.png">
+                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-survey-submission-summary-question-change-chart-type-btn" data-chart-type="<?php echo esc_attr($chart_type) ?>" title="<?php echo esc_attr__("These features are available only in PRO version.", "survey-maker"); ?>">
+                                                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/icons/' . esc_attr($chart_type)?>-chart-submission-icon.png">
                                                     </a>
                                                 <?php endforeach; ?>
                                             </div>
@@ -822,7 +822,7 @@ $types_with_changeable_charts = array(
                                         <?php
                                             if( !empty( $question_results[ $question['id'] ]['otherAnswers'] ) ):
                                         ?>
-                                        <h2 class="ays-survey-subtitle"><?php echo __( '"Other" answers', "survey-maker" ); ?></h2>
+                                        <h2 class="ays-survey-subtitle"><?php echo esc_html__( '"Other" answers', "survey-maker" ); ?></h2>
                                         <div class="ays-survey-submission-text-answers-div">
                                             <?php
                                                 if( isset( $question_results[ $question['id'] ]['otherAnswers'] ) && !empty( $question_results[ $question['id'] ]['otherAnswers'] ) ):
@@ -864,7 +864,7 @@ $types_with_changeable_charts = array(
             </div>
             <div class="ays-modal-header">
                 <span class="ays-close" id="ays-close-results">&times;</span>
-                <h2><?php echo __("Detailed report", "survey-maker"); ?></h2>
+                <h2><?php echo esc_html__("Detailed report", "survey-maker"); ?></h2>
             </div>
             <div class="ays-modal-body" id="ays-results-body">
             </div>
@@ -879,25 +879,25 @@ $types_with_changeable_charts = array(
           <!-- Modal Header -->
             <div class="ays-modal-header">
                 <span class="ays-close">&times;</span>
-                <h2><?=__('Export Filter', "survey-maker")?></h2>
+                <h2><?php echo esc_html__('Export Filter', "survey-maker")?></h2>
             </div>
 
           <!-- Modal body -->
             <div class="ays-modal-body">
                 <form method="post" id="ays_export_answers_filter">
                     <div class="filter-col">
-                        <label for="user_id-answers-filter"><?=__("Users", "survey-maker")?></label>
-                        <button type="button" class="ays_userid_clear button button-small wp-picker-default"><?=__("Clear", "survey-maker")?></button>
+                        <label for="user_id-answers-filter"><?php echo esc_html__("Users", "survey-maker")?></label>
+                        <button type="button" class="ays_userid_clear button button-small wp-picker-default"><?php echo esc_html__("Clear", "survey-maker")?></button>
                         <select name="user_id-select[]" id="user_id-answers-filter" multiple="multiple"></select>
                         <input type="hidden" name="quiz_id-answers-filter" id="quiz_id-answers-filter" value="<?php echo esc_attr($survey_id); ?>">
                     </div>
                     <div class="filter-block">
                         <div class="filter-block filter-col">
-                            <label for="start-date-answers-filter"><?=__("Start Date from", "survey-maker")?></label>
+                            <label for="start-date-answers-filter"><?php echo esc_html__("Start Date from", "survey-maker")?></label>
                             <input type="date" name="start-date-filter" id="start-date-answers-filter">
                         </div>
                         <div class="filter-block filter-col">
-                            <label for="end-date-answers-filter"><?=__("Start Date to", "survey-maker")?></label>
+                            <label for="end-date-answers-filter"><?php echo esc_html__("Start Date to", "survey-maker")?></label>
                             <input type="date" name="end-date-filter" id="end-date-answers-filter">
                         </div>
                     </div>
@@ -909,8 +909,8 @@ $types_with_changeable_charts = array(
                 <div class="export_results_count">
                     <p>Matched <span></span> results</p>
                 </div>
-                <span><?php echo __('Export to', "survey-maker"); ?></span>
-                <button type="button" class="button button-primary export-anwers-action" data-type="xlsx" quiz-id="<?php echo esc_attr($survey_id); ?>"><?=__('XLSX', "survey-maker")?></button>
+                <span><?php echo esc_html__('Export to', "survey-maker"); ?></span>
+                <button type="button" class="button button-primary export-anwers-action" data-type="xlsx" quiz-id="<?php echo esc_attr($survey_id); ?>"><?php echo esc_html__('XLSX', "survey-maker")?></button>
                 <a download="" id="downloadFile" hidden href=""></a>
             </div>
 
@@ -939,7 +939,7 @@ $types_with_changeable_charts = array(
                                 <div class="pro-features-popup-modal-right-box-content"></div>
 
                                 <div class="pro-features-popup-modal-right-box-button">
-                                    <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo __("Upgrade PRO NOW", "survey-maker"); ?></a>
+                                    <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo esc_html__("Upgrade PRO NOW", "survey-maker"); ?></a>
                                 </div>
                         </div>
                         </div>

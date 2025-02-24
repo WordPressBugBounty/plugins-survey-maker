@@ -8,7 +8,7 @@
                 <div class="ays-survey-wordpress-user-manual-box">
                     <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
                         <i class="ays_fa ays_fa_file_text" ></i> 
-                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo __( "View Documentation", "survey-maker" ); ?></span>
+                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "View Documentation", "survey-maker" ); ?></span>
                     </a>
 
                 </div>
@@ -30,7 +30,7 @@
 
                     submit_button(__("Save", "survey-maker"), "ays-button ays-survey-loader-banner", "ays_apply", false, $other_attributes);
 
-                    echo $loader_iamge;
+                    echo wp_kses($loader_iamge, Survey_Maker_Data::get_allowed_tags_for_loader());
 
                 ?>
             </h1>
@@ -39,8 +39,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="<?php echo esc_attr($html_name_prefix); ?>status">
-                            <?php echo __('Enable popup',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Turn on the popup for the website based on your configured options.', "survey-maker"); ?>">
+                            <?php echo esc_html__('Enable popup',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Turn on the popup for the website based on your configured options.', "survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -53,22 +53,22 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays-title">
-                            <?php echo __("Title", "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Give a title to your popup.","survey-maker"); ?>">
+                            <?php echo esc_html__("Title", "survey-maker"); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Give a title to your popup.","survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
                     </div>
                     <div class="col-sm-9">
-                        <input type="text" class="ays-text-input" id="ays-title" name="<?php echo esc_attr($html_name_prefix); ?>title" value="<?php echo $title; ?>" />
+                        <input type="text" class="ays-text-input" id="ays-title" name="<?php echo esc_attr($html_name_prefix); ?>title" value="<?php echo esc_attr($title); ?>" />
                     </div>
                 </div> <!-- Title -->
                 <hr>
                 <div class="form-group row ays_toggle_parent">
                     <div class="col-sm-3">
                         <label for="ays_survey_popup_enable_show_title">
-                            <span><?php echo __("Show popup title", "survey-maker"); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Tick this option to show the popup title on the popup box on the front page.", "survey-maker"); ?>">
+                            <span><?php echo esc_html__("Show popup title", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to show the popup title on the popup box on the front page.", "survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -80,8 +80,8 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_survey_popup_title_font_size">
-                                    <?php echo __('Font size',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the font size of the popup title.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Font size',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the font size of the popup title.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -90,8 +90,8 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
-                                            <?php echo __('On desktop', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -109,8 +109,8 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
-                                            <?php echo __('On mobile', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -130,36 +130,36 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_survey_popup_title_text_color">
-                                    <?php echo __('Background color',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the background color of the popup title.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Background color',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the background color of the popup title.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="ays-text-input" id='ays_survey_popup_title_bg_color' name='ays_survey_popup_title_bg_color' data-alpha="true" value="<?php echo $survey_popup_title_bg_color; ?>"/>
+                                <input type="text" class="ays-text-input" id='ays_survey_popup_title_bg_color' name='ays_survey_popup_title_bg_color' data-alpha="true" value="<?php echo esc_attr($survey_popup_title_bg_color); ?>"/>
                             </div>
                         </div><!-- Popup title Background color -->
                         <hr/>
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_survey_popup_title_text_color">
-                                    <?php echo __('Text color',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text color of the popup title.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Text color',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color of the popup title.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-9">
-                                <input type="text" class="ays-text-input" id='ays_survey_popup_title_text_color' name='ays_survey_popup_title_text_color' data-alpha="true" value="<?php echo $survey_popup_title_text_color; ?>"/>
+                                <input type="text" class="ays-text-input" id='ays_survey_popup_title_text_color' name='ays_survey_popup_title_text_color' data-alpha="true" value="<?php echo esc_attr($survey_popup_title_text_color); ?>"/>
                             </div>
                         </div><!-- Popup title text color -->
                         <hr/>
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays-survey-title-alignment">
-                                    <?php echo __('Text alignment',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text alignment of the popup title.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Text alignment',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text alignment of the popup title.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -168,17 +168,17 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
-                                            <?php echo __('On desktop', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-9">
                                         <select id="ays-survey-title-alignment" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_alignment">
-                                            <option value="left" <?php echo $survey_popup_title_alignment == 'left' ? 'selected' : ''; ?>><?php echo __('Left' , "survey-maker") ?></option>
-                                            <option value="center" <?php echo $survey_popup_title_alignment == 'center' ? 'selected' : ''; ?>><?php echo __('Center' , "survey-maker") ?></option>
-                                            <option value="right" <?php echo $survey_popup_title_alignment == 'right' ? 'selected' : ''; ?>><?php echo __('Right' , "survey-maker") ?></option>
+                                            <option value="left" <?php echo $survey_popup_title_alignment == 'left' ? 'selected' : ''; ?>><?php echo esc_html__('Left' , "survey-maker") ?></option>
+                                            <option value="center" <?php echo $survey_popup_title_alignment == 'center' ? 'selected' : ''; ?>><?php echo esc_html__('Center' , "survey-maker") ?></option>
+                                            <option value="right" <?php echo $survey_popup_title_alignment == 'right' ? 'selected' : ''; ?>><?php echo esc_html__('Right' , "survey-maker") ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -186,17 +186,17 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
-                                            <?php echo __('On mobile', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-9">
                                         <select id="ays-survey-title-alignment-on-mobile" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_alignment_on_mobile">
-                                            <option value="left" <?php echo $survey_popup_title_alignment_on_mobile   == 'left' ? 'selected' : ''; ?>><?php echo __('Left' , "survey-maker") ?></option>
-                                            <option value="center" <?php echo $survey_popup_title_alignment_on_mobile == 'center' ? 'selected' : ''; ?>><?php echo __('Center' , "survey-maker") ?></option>
-                                            <option value="right" <?php echo $survey_popup_title_alignment_on_mobile  == 'right' ? 'selected' : ''; ?>><?php echo __('Right' , "survey-maker") ?></option>
+                                            <option value="left" <?php echo $survey_popup_title_alignment_on_mobile   == 'left' ? 'selected' : ''; ?>><?php echo esc_html__('Left' , "survey-maker") ?></option>
+                                            <option value="center" <?php echo $survey_popup_title_alignment_on_mobile == 'center' ? 'selected' : ''; ?>><?php echo esc_html__('Center' , "survey-maker") ?></option>
+                                            <option value="right" <?php echo $survey_popup_title_alignment_on_mobile  == 'right' ? 'selected' : ''; ?>><?php echo esc_html__('Right' , "survey-maker") ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -206,8 +206,8 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays-survey-popup-title-transform">
-                                    <?php echo __('Text transform',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text transformation of popup title, such as converting to uppercase or lowercase.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Text transform',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of popup title, such as converting to uppercase or lowercase.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -216,18 +216,18 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
-                                            <?php echo __('On desktop', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text transformation of popup title for desktop devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of popup title for desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-9">
                                         <select id="ays-survey-popup-title-transform" name="ays_survey_popup_title_transform">
-                                            <option value="none" <?php echo ($survey_popup_title_transform == 'none') ? 'selected' : ''; ?>><?php echo __('Default',"survey-maker"); ?></option>
-                                            <option value="capitalize" <?php echo ($survey_popup_title_transform == 'capitalize') ? 'selected' : ''; ?>><?php echo __('Capitalize',"survey-maker"); ?></option>
-                                            <option value="uppercase" <?php echo ($survey_popup_title_transform == 'uppercase') ? 'selected' : ''; ?>><?php echo __('Uppercase',"survey-maker"); ?></option>
-                                            <option value="lowercase" <?php echo ($survey_popup_title_transform == 'lowercase') ? 'selected' : ''; ?>><?php echo __('Lowercase',"survey-maker"); ?></option>
+                                            <option value="none" <?php echo ($survey_popup_title_transform == 'none') ? 'selected' : ''; ?>><?php echo esc_html__('Default',"survey-maker"); ?></option>
+                                            <option value="capitalize" <?php echo ($survey_popup_title_transform == 'capitalize') ? 'selected' : ''; ?>><?php echo esc_html__('Capitalize',"survey-maker"); ?></option>
+                                            <option value="uppercase" <?php echo ($survey_popup_title_transform == 'uppercase') ? 'selected' : ''; ?>><?php echo esc_html__('Uppercase',"survey-maker"); ?></option>
+                                            <option value="lowercase" <?php echo ($survey_popup_title_transform == 'lowercase') ? 'selected' : ''; ?>><?php echo esc_html__('Lowercase',"survey-maker"); ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -235,18 +235,18 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
-                                            <?php echo __('On mobile', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the text transformation of popup title for mobile devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of popup title for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
                                     </div>
                                     <div class="col-sm-9">
                                         <select id="ays-survey-popup-title-transform-mobile" name="ays_survey_popup_title_transform_mobile">
-                                            <option value="none" <?php echo ($survey_popup_title_transform_mobile == 'none') ? 'selected' : ''; ?>><?php echo __('Default',"survey-maker"); ?></option>
-                                            <option value="capitalize" <?php echo ($survey_popup_title_transform_mobile == 'capitalize') ? 'selected' : ''; ?>><?php echo __('Capitalize',"survey-maker"); ?></option>
-                                            <option value="uppercase" <?php echo ($survey_popup_title_transform_mobile == 'uppercase') ? 'selected' : ''; ?>><?php echo __('Uppercase',"survey-maker"); ?></option>
-                                            <option value="lowercase" <?php echo ($survey_popup_title_transform_mobile == 'lowercase') ? 'selected' : ''; ?>><?php echo __('Lowercase',"survey-maker"); ?></option>
+                                            <option value="none" <?php echo ($survey_popup_title_transform_mobile == 'none') ? 'selected' : ''; ?>><?php echo esc_html__('Default',"survey-maker"); ?></option>
+                                            <option value="capitalize" <?php echo ($survey_popup_title_transform_mobile == 'capitalize') ? 'selected' : ''; ?>><?php echo esc_html__('Capitalize',"survey-maker"); ?></option>
+                                            <option value="uppercase" <?php echo ($survey_popup_title_transform_mobile == 'uppercase') ? 'selected' : ''; ?>><?php echo esc_html__('Uppercase',"survey-maker"); ?></option>
+                                            <option value="lowercase" <?php echo ($survey_popup_title_transform_mobile == 'lowercase') ? 'selected' : ''; ?>><?php echo esc_html__('Lowercase',"survey-maker"); ?></option>
                                         </select>
                                     </div>
                                 </div>
@@ -256,8 +256,8 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for='ays_survey_popup_title_letter_spacing'>
-                                    <?php echo __('Letter spacing', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the survey popup title in pixels.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Letter spacing', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the survey popup title in pixels.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -266,8 +266,8 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
-                                            <?php echo __('On desktop', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -285,8 +285,8 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
-                                            <?php echo __('On mobile', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -306,8 +306,8 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_survey_popup_hide_title_on_mobile">
-                                    <span><?php echo __("Hide on mobile", "survey-maker"); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Tick this option to hide the popup title on mobile devices.", "survey-maker"); ?>">
+                                    <span><?php echo esc_html__("Hide on mobile", "survey-maker"); ?></span>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the popup title on mobile devices.", "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -320,8 +320,8 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_survey_popup_title_border_radius">
-                                    <?php echo __('Border radius',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the radius of the title border.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Border radius',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the radius of the title border.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -330,8 +330,8 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_border_radius'>
-                                            <?php echo __('On desktop', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the radius of the title border for desktop devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the radius of the title border for desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -349,8 +349,8 @@
                                 <div class="row">
                                     <div class="col-sm-2">
                                         <label for='<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_border_radius_mobile'>
-                                            <?php echo __('On mobile', "survey-maker"); ?>
-                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the radius of the title border for mobile devices.',"survey-maker")?>">
+                                            <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the radius of the title border for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
                                             </a>
                                         </label>
@@ -372,13 +372,9 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays-category">
-                            <?php echo __("Select Survey", "survey-maker"); ?>
+                            <?php echo esc_html__("Select Survey", "survey-maker"); ?>
                             <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
-                                echo htmlspecialchars( sprintf(
-                                    __("Choose the survey which you want to display within the popup from your already created list.","survey-maker"),
-                                    "<strong>",
-                                    "</strong>"
-                                ) );
+                                echo esc_html__("Choose the survey which you want to display within the popup from your already created list.","survey-maker");
                             ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
@@ -395,7 +391,7 @@
                                   $selected = "";
                               }
                               ?>
-                              <option value="<?php echo $survey["id"]; ?>" <?php echo $selected; ?>><?php echo $survey["title"]; ?></option>
+                              <option value="<?php echo esc_attr($survey["id"]); ?>" <?php echo esc_attr($selected); ?>><?php echo esc_html($survey["title"]); ?></option>
                           <?php
                           endforeach;
                             ?>
@@ -407,8 +403,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_popup_survey_width">
-                            <?php echo __("Popup width", "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the width of your popup in pixels.","survey-maker"); ?>">
+                            <?php echo esc_html__("Popup width", "survey-maker"); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the width of your popup in pixels.","survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -417,15 +413,15 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>popup_survey_width'>
-                                    <?php echo __('On desktop', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the width of your popup in pixels for desktop devices.',"survey-maker")?>">
+                                    <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the width of your popup in pixels for desktop devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
-                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_width" name="ays_popup_survey_width" value="<?php echo $popup_survey_width; ?>"/>
+                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_width" name="ays_popup_survey_width" value="<?php echo esc_attr($popup_survey_width); ?>"/>
                                 </div>                        
                                 <div class="ays_dropdown_max_width">
                                     <input type="text" value="px" class='ays-form-hint-for-size' disabled>
@@ -436,15 +432,15 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>popup_survey_width_mobile'>
-                                    <?php echo __('On mobile', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the width of your popup in pixels for mobile devices.',"survey-maker")?>">
+                                    <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the width of your popup in pixels for mobile devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
-                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_width_mobile" name="ays_popup_survey_width_mobile" value="<?php echo $popup_survey_width_mobile; ?>"/>
+                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_width_mobile" name="ays_popup_survey_width_mobile" value="<?php echo esc_attr($popup_survey_width_mobile); ?>"/>
                                 </div>                        
                                 <div class="ays_dropdown_max_width">
                                     <input type="text" value="px" class='ays-form-hint-for-size' disabled>
@@ -457,8 +453,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_popup_survey_height">
-                            <?php echo __("Popup height", "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the height of your popup in pixels.","survey-maker"); ?>">
+                            <?php echo esc_html__("Popup height", "survey-maker"); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the height of your popup in pixels.","survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -467,15 +463,15 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>popup_survey_width'>
-                                    <?php echo __('On desktop', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the height of your popup in pixels for desktop devices.',"survey-maker")?>">
+                                    <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels for desktop devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
-                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_height" name="ays_popup_survey_height" value="<?php echo $popup_survey_height; ?>"/>
+                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_height" name="ays_popup_survey_height" value="<?php echo esc_attr($popup_survey_height); ?>"/>
                                 </div>
                                 <div class="ays_dropdown_max_width">
                                     <input type="text" value="px" class='ays-form-hint-for-size' disabled>
@@ -486,15 +482,15 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>popup_survey_height_mobile'>
-                                    <?php echo __('On mobile', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the height of your popup in pixels for mobile devices.',"survey-maker")?>">
+                                    <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels for mobile devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
-                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_height_mobile" name="ays_popup_survey_height_mobile" value="<?php echo $popup_survey_height_mobile; ?>"/>
+                                    <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_height_mobile" name="ays_popup_survey_height_mobile" value="<?php echo esc_attr($popup_survey_height_mobile); ?>"/>
                                 </div>
                                 <div class="ays_dropdown_max_width">
                                     <input type="text" value="px" class='ays-form-hint-for-size' disabled>
@@ -507,8 +503,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_popup_bg_color">
-                            <span><?php echo __("Popup background color", "survey-maker"); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the background color of your popup.", "survey-maker"); ?>">
+                            <span><?php echo esc_html__("Popup background color", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the background color of your popup.", "survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -517,15 +513,15 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>popup_bg_color'>
-                                    <?php echo __('On desktop', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the background color of the popup for desktop devices.',"survey-maker")?>">
+                                    <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the background color of the popup for desktop devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
-                                    <input type="text" class="ays-text-input" id='ays_survey_popup_bg_color' name='ays_survey_popup_bg_color' data-alpha="true" value="<?php echo $survey_popup_bg_color; ?>"/>
+                                    <input type="text" class="ays-text-input" id='ays_survey_popup_bg_color' name='ays_survey_popup_bg_color' data-alpha="true" value="<?php echo esc_attr($survey_popup_bg_color); ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -533,15 +529,15 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <label for='<?php echo esc_attr($html_name_prefix); ?>popup_bg_color_mobile'>
-                                    <?php echo __('On mobile', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Set the background color of the popup for mobile devices.',"survey-maker")?>">
+                                    <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set the background color of the popup for mobile devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
                             </div>
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
-                                    <input type="text" class="ays-text-input" id='ays_survey_popup_bg_color_mobile' name='ays_survey_popup_bg_color_mobile' data-alpha="true" value="<?php echo $survey_popup_bg_color_mobile; ?>"/>
+                                    <input type="text" class="ays-text-input" id='ays_survey_popup_bg_color_mobile' name='ays_survey_popup_bg_color_mobile' data-alpha="true" value="<?php echo esc_attr($survey_popup_bg_color_mobile); ?>"/>
                                 </div>
                             </div>
                         </div>
@@ -551,8 +547,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_hide_popup">
-                            <span><?php echo __("Hide popup after one submission", "survey-maker"); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("By enabling the option, the popup will not be shown as soon as a visitor submits the survey.", "survey-maker"); ?>">
+                            <span><?php echo esc_html__("Hide popup after one submission", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("By enabling the option, the popup will not be shown as soon as a visitor submits the survey.", "survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -565,8 +561,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_hide_popup_after_close">
-                            <span><?php echo __("Hide popup after close", "survey-maker"); ?></span>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __("By enabling the option, the popup will not be shown as soon as a visitor clicks the close button.", "survey-maker"); ?>">
+                            <span><?php echo esc_html__("Hide popup after close", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("By enabling the option, the popup will not be shown as soon as a visitor clicks the close button.", "survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -583,15 +579,15 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_hide_popup_on_pc">
-                                    <span><?php echo __("Hide popup on desktop", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Tick this option to hide the survey popup on desktop.", "survey-maker"); ?>">
+                                    <span><?php echo esc_html__("Hide popup on desktop", "survey-maker"); ?></span>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on desktop.", "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -610,15 +606,15 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_hide_popup_on_mobile">
-                                    <span><?php echo __("Hide popup on mobile", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Tick this option to hide the survey popup on mobile.", "survey-maker"); ?>">
+                                    <span><?php echo esc_html__("Hide popup on mobile", "survey-maker"); ?></span>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on mobile.", "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -637,15 +633,15 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_hide_popup_on_tablet">
-                                    <span><?php echo __("Hide popup on tablets", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Tick this option to hide the survey popup on tablets.", "survey-maker"); ?>">
+                                    <span><?php echo esc_html__("Hide popup on tablets", "survey-maker"); ?></span>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on tablets.", "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -664,15 +660,15 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label>
-                                    <span><?php echo __("Show on ", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("Select on which pages of your website you need the popup to be loaded. For the Except and Selected options, you can choose specific posts and post types.", "survey-maker") ?>">
+                                    <span><?php echo esc_html__("Show on ", "survey-maker"); ?></span>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Select on which pages of your website you need the popup to be loaded. For the Except and Selected options, you can choose specific posts and post types.", "survey-maker") ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -680,15 +676,15 @@
                             <div class="col-sm-9">
                                 <label class="ays_survey_loader">
                                     <input type="radio" class="ays-survey-popup-show-where" checked/>
-                                    <span><?php echo __("All pages", "survey-maker"); ?></span>
+                                    <span><?php echo esc_html__("All pages", "survey-maker"); ?></span>
                                 </label>
                                 <label class="ays_survey_loader">
                                     <input type="radio" class="ays-survey-popup-show-where"/>
-                                    <span><?php echo __("Except", "survey-maker"); ?></span>
+                                    <span><?php echo esc_html__("Except", "survey-maker"); ?></span>
                                 </label>
                                 <label class="ays_survey_loader">
                                     <input type="radio" class="ays-survey-popup-show-where"/>
-                                    <span><?php echo __("Selected", "survey-maker"); ?></span>
+                                    <span><?php echo esc_html__("Selected", "survey-maker"); ?></span>
                                 </label>
                             </div>
                         </div><!-- Survey show in pages -->
@@ -699,9 +695,9 @@
                 <div class="popup_survey_position_block">
                     <div class="form-group row">
                         <div class="col-sm-3">
-                            <label for="<?php echo $this->plugin_name; ?>-popup-position">
-                                <span><?php echo __("Popup position", "survey-maker"); ?></span>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the position of the popup on the screen.", "survey-maker"); ?>">
+                            <label for="<?php echo esc_attr($this->plugin_name); ?>-popup-position">
+                                <span><?php echo esc_html__("Popup position", "survey-maker"); ?></span>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the position of the popup on the screen.", "survey-maker"); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
@@ -724,21 +720,21 @@
                                     <td data-value="right-bottom" data-id="9" style="<?php echo $popup_position == "right-bottom" ? "background-color: #a2d6e7" : ""; ?>"></td>
                                 </tr>
                             </table>
-                            <input type="hidden" name="<?php echo $html_name_prefix; ?>survey_popup_position" id="ays-survey-popup-position-val" value="<?php echo $popup_position; ?>" >
+                            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_position" id="ays-survey-popup-position-val" value="<?php echo esc_attr($popup_position); ?>" >
                         </div>
                     </div>
                     <hr class="ays_pb_hr_hide <?php echo $popup_position == "center-center" ? "display_none" : ""; ?>"/>
                     <div id="popupMargin" class="form-group row <?php echo $popup_position == "center-center" ? "display_none" : ""; ?>">
                         <div class="col-sm-3">
-                            <label for="<?php echo $this->plugin_name; ?>-pb_margin">
-                                <span><?php echo __("Popup margin", "survey-maker"); ?>(px)</span>
-                                <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Specify the popup margin in pixels. It accepts only numerical values.", "survey-maker"); ?>">
+                            <label for="<?php echo esc_attr($this->plugin_name); ?>-pb_margin">
+                                <span><?php echo esc_html__("Popup margin", "survey-maker"); ?>(px)</span>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the popup margin in pixels. It accepts only numerical values.", "survey-maker"); ?>">
                                     <i class="ays_fa ays_fa_info_circle"></i>
                                 </a>
                             </label>
                         </div>
                         <div class="col-sm-9">
-                            <input type="number" id="<?php echo $this->plugin_name; ?>-popup_margin" name="<?php echo $html_name_prefix; ?>survey_popup_margin"  class="ays-text-input-short"  value="<?php echo $popup_margin; ?>" />
+                            <input type="number" id="<?php echo esc_attr($this->plugin_name); ?>-popup_margin" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_margin"  class="ays-text-input-short"  value="<?php echo esc_attr($popup_margin); ?>" />
                         </div>
                     </div>
                 </div>
@@ -748,14 +744,14 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="<?php echo esc_attr($html_name_prefix); ?>survey_popup_trigger">
-                            <span> <?php echo __('Popup trigger', "survey-maker"); ?></span>
+                            <span> <?php echo esc_html__('Popup trigger', "survey-maker"); ?></span>
                                 <a class="ays_help" data-toggle="tooltip" data-html="true"
                                 title="<?php
-                                    echo __('Choose when to show the popup on the website.', "survey-maker") .
+                                    echo esc_html__('Choose when to show the popup on the website.', "survey-maker") .
                                     "<ul style='list-style-type: circle;padding-left: 20px;'>".
-                                        "<li>". __('On page load - popup will be shown as soon as the page is loaded.',"survey-maker") ."</li>".
-                                        "<li>". __('On click - popup will be shown when the user clicks on the assigned CSS element(s). Select CSS element with the help of CSS selector(s) option.',"survey-maker") ."</li>".
-                                        "<li>". __('On Exit - the popup will show up as soon as the user wants to leave the page.',"survey-maker") ."</li>".
+                                        "<li>". esc_html__('On page load - popup will be shown as soon as the page is loaded.',"survey-maker") ."</li>".
+                                        "<li>". esc_html__('On click - popup will be shown when the user clicks on the assigned CSS element(s). Select CSS element with the help of CSS selector(s) option.',"survey-maker") ."</li>".
+                                        "<li>". esc_html__('On Exit - the popup will show up as soon as the user wants to leave the page.',"survey-maker") ."</li>".
                                     "</ul>";
                                 ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -772,11 +768,11 @@
                                         $selected = '';
                                     endif;
                             ?>
-                                <option value="<?php echo $trigger_type_key; ?>" <?php echo $selected; ?>><?php echo $trigger_type_val; ?></option>
+                                <option value="<?php echo esc_attr($trigger_type_key); ?>" <?php echo esc_attr($selected); ?>><?php echo esc_html($trigger_type_val); ?></option>
                             <?php
                                 endforeach;
                             ?>
-                            <option value="on_exit_popup" disabled><?php echo __('On Exit (Pro)', "survey-maker"); ?></option>
+                            <option value="on_exit_popup" disabled><?php echo esc_html__('On Exit (Pro)', "survey-maker"); ?></option>
 
                         </select>
                     </div>
@@ -786,15 +782,15 @@
                     <div class="col-sm-3">
                         <label for="<?php echo esc_attr($html_name_prefix); ?>survey_popup_selector">
                     <span>
-                        <?php echo __('CSS selector(s) for trigger click', "survey-maker"); ?>
-                        <a class="ays_help" data-toggle="tooltip" title="<?php echo __("Add your preferred CSS selector(s) if you have given “On click” or “Both” value to the “Popup trigger” option. For example #mybutton or .mybutton.", "survey-maker"); ?>">
+                        <?php echo esc_html__('CSS selector(s) for trigger click', "survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Add your preferred CSS selector(s) if you have given “On click” or “Both” value to the “Popup trigger” option. For example #mybutton or .mybutton.", "survey-maker"); ?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
                         </a>
                     </span>
                         </label>
                     </div>
                     <div class="col-sm-9">
-                        <input type="text" id="<?php echo esc_attr($html_name_prefix); ?>survey_popup_selector" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_selector"  class="ays-text-input" value="<?php echo $popup_selector; ?>" placeholder="#myButtonId, .myButtonClass, .myButton" />
+                        <input type="text" id="<?php echo esc_attr($html_name_prefix); ?>survey_popup_selector" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_selector"  class="ays-text-input" value="<?php echo esc_attr($popup_selector); ?>" placeholder="#myButtonId, .myButtonClass, .myButton" />
                     </div>
                 </div>
                 <!-- Popup Trigger end  -->
@@ -802,8 +798,8 @@
                 <div class="form-group row ays_toggle_parent">
                     <div class="col-sm-3">
                         <label for="ays_survey_enable_popup_close_after_finish">
-                            <?php echo __('Enable close popup after finish',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick this option to close the popup after finish.',"survey-maker")?>">
+                            <?php echo esc_html__('Enable close popup after finish',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Tick this option to close the popup after finish.',"survey-maker")?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -820,8 +816,8 @@
                         <div class="form-group row">
                             <div class="col-sm-2">
                                 <label for="ays_survey_popup_close_after_finish_delay">
-                                    <?php echo __('Delay',"survey-maker")?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Specify the delay for closing the popup after finish.',"survey-maker"); ?>">
+                                    <?php echo esc_html__('Delay',"survey-maker")?>
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the delay for closing the popup after finish.',"survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -845,15 +841,15 @@
                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                 <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                 <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo __("Upgrade" , "survey-maker"); ?>
+                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                                 </div>
                             </a>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_close_popup_overlay_outside_click">
-                                    <?php echo __('Close by clicking outside the box', "survey-maker"); ?>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo __("If the option is enabled, the user can close the popup by clicking outside the box.", "survey-maker"); ?>">
+                                    <?php echo esc_html__('Close by clicking outside the box', "survey-maker"); ?>
+                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("If the option is enabled, the user can close the popup by clicking outside the box.", "survey-maker"); ?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -868,8 +864,8 @@
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_enable_popup_full_screen_mode">
-                            <?php echo __('Enable full-screen mode',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Allow the popup to enter full-screen mode by pressing the icon located in the top-right corner of the popup container.',"survey-maker")?>">
+                            <?php echo esc_html__('Enable full-screen mode',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Allow the popup to enter full-screen mode by pressing the icon located in the top-right corner of the popup container.',"survey-maker")?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -880,15 +876,15 @@
                                id="ays_survey_enable_popup_full_screen_mode"
                                name="ays_survey_enable_popup_full_screen_mode"
                                value="on"
-                               <?php echo $survey_popup_full_screen;?>/>
+                               <?php echo esc_attr($survey_popup_full_screen);?>/>
                     </div>
                 </div> <!-- Open Full Screen Mode -->
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
                         <label for="ays_survey_popup_enable_close_by_esc">
-                            <?php echo __('Close by pressing the ESC',"survey-maker")?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo __('Tick this option to allow close the popup by pressing the ESC button from the keyboard.',"survey-maker")?>">
+                            <?php echo esc_html__('Close by pressing the ESC',"survey-maker")?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Tick this option to allow close the popup by pressing the ESC button from the keyboard.',"survey-maker")?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -899,15 +895,15 @@
                                id="ays_survey_popup_enable_close_by_esc"
                                name="ays_survey_popup_enable_close_by_esc"
                                value="on"
-                               <?php echo $survey_popup_enable_close_by_esc;?>/>
+                               <?php echo esc_attr($survey_popup_enable_close_by_esc);?>/>
                     </div>
                 </div> <!-- Close by pressing the ESC -->
             </div>
             <hr/>
             
-            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>author_id" value="<?php echo $author_id; ?>">
-            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>date_created" value="<?php echo $date_created; ?>">
-            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>date_modified" value="<?php echo $date_modified; ?>">
+            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>author_id" value="<?php echo esc_attr($author_id); ?>">
+            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>date_created" value="<?php echo esc_attr($date_created); ?>">
+            <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>date_modified" value="<?php echo esc_attr($date_modified); ?>">
             <?php
 
                 wp_nonce_field("popup_survey_action", "popup_survey_action");
@@ -924,7 +920,7 @@
                 
                 submit_button(__("Save", "survey-maker"), "ays-button ays-survey-loader-banner", "ays_apply", false, $other_attributes);
 
-                echo $loader_iamge;
+                echo wp_kses($loader_iamge, Survey_Maker_Data::get_allowed_tags_for_loader());
             ?>
         </form>
     </div>
