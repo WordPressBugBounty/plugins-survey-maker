@@ -49,8 +49,8 @@ class Survey_Each_Submission_List_Table extends WP_List_Table {
             $quiz_id = null;
             $user_id = null;
 
-            if( isset( $_GET['wpuser'] )){
-                $user_id = absint( sanitize_text_field( $_GET['wpuser'] ) );
+            if( isset( $_GET['filterbyuser'] )){
+                $user_id = absint( sanitize_text_field( $_GET['filterbyuser'] ) );
             }
 
             $clear_url = "?page=" . sanitize_text_field( $_REQUEST['page'] ) . "&survey=" . absint( sanitize_text_field( $_REQUEST['survey'] ) ) . "&ays_survey_tab=poststuff";
@@ -181,8 +181,8 @@ class Survey_Each_Submission_List_Table extends WP_List_Table {
             $where[] = ' `read` = ' . esc_sql( $read ) . ' ';
         }
 
-        if( isset( $_REQUEST['wpuser'] ) ){
-            $user_id = absint( sanitize_text_field( $_REQUEST['wpuser'] ) );
+        if( isset( $_REQUEST['filterbyuser'] ) ){
+            $user_id = absint( sanitize_text_field( $_REQUEST['filterbyuser'] ) );
             $where[] = ' `user_id` = '.$user_id.' ';
         }
         

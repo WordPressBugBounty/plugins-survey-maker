@@ -773,7 +773,7 @@
                                         </a>
                                     </label>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 ays_survey_display_flex_width">
                                     <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id='<?php echo esc_attr($html_name_prefix); ?>survey_section_title_alignment' name='<?php echo esc_attr($html_name_prefix); ?>survey_section_title_alignment'>
                                         <option value="left"   <?php echo ($survey_section_title_alignment == 'left')   ? 'selected' : ''; ?>><?php echo esc_html__('Left',"survey-maker"); ?></option>
                                         <option value="center" <?php echo ($survey_section_title_alignment == 'center') ? 'selected' : ''; ?>><?php echo esc_html__('Center',"survey-maker"); ?></option>
@@ -791,7 +791,7 @@
                                         </a>
                                     </label>
                                 </div>
-                                <div class="col-sm-7 ">
+                                <div class="col-sm-7 ays_survey_display_flex_width">
                                     <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id='<?php echo esc_attr($html_name_prefix); ?>survey_section_title_alignment_mobile' name='<?php echo esc_attr($html_name_prefix); ?>survey_section_title_alignment_mobile'>
                                         <option value="left"   <?php echo ($survey_section_title_alignment_mobile == 'left')   ? 'selected' : ''; ?>><?php echo esc_html__('Left',"survey-maker"); ?></option>
                                         <option value="center" <?php echo ($survey_section_title_alignment_mobile == 'center') ? 'selected' : ''; ?>><?php echo esc_html__('Center',"survey-maker"); ?></option>
@@ -1370,7 +1370,7 @@
                                 </div>
                                 <div class="col-sm-7 ays_survey_display_flex_width">
                                     <div>
-                                        <input type="number" class="ays-text-input ays-text-input-short" id='ays_survey_question_caption_font_size' name='ays_survey_question_caption_font_size' value="<?php echo esc_attr($survey_question_caption_font_size); ?>"/>
+                                        <input type="number" class="ays-text-input" id='ays_survey_question_caption_font_size' name='ays_survey_question_caption_font_size' value="<?php echo esc_attr($survey_question_caption_font_size); ?>"/>
                                     </div>
                                     <div class="ays_dropdown_max_width">
                                         <input type="text" value="px" class='ays-form-hint-for-size' disabled>
@@ -1418,8 +1418,8 @@
                                         </a>
                                     </label>
                                 </div>
-                                <div class="col-sm-7">
-                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-aysDropdown-answer-view" id="ays_survey_question_caption_text_transform" name="ays_survey_question_caption_text_transform">
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-aysDropdown-answer-view " id="ays_survey_question_caption_text_transform" name="ays_survey_question_caption_text_transform">
                                         <option value="none" <?php echo ($survey_question_caption_text_transform == 'none') ? 'selected' : ''; ?>><?php echo esc_html__('Default',"survey-maker"); ?></option>
                                         <option value="capitalize" <?php echo ($survey_question_caption_text_transform == 'capitalize') ? 'selected' : ''; ?>><?php echo esc_html__('Capitalize',"survey-maker"); ?></option>
                                         <option value="uppercase" <?php echo ($survey_question_caption_text_transform == 'uppercase') ? 'selected' : ''; ?>><?php echo esc_html__('Uppercase',"survey-maker"); ?></option>
@@ -1437,8 +1437,8 @@
                                         </a>
                                     </label>
                                 </div>
-                                <div class="col-sm-7">
-                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-aysDropdown-answer-view" id="ays_survey_question_caption_text_transform_mobile" name="ays_survey_question_caption_text_transform_mobile">
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown ays-survey-aysDropdown-answer-view " id="ays_survey_question_caption_text_transform_mobile" name="ays_survey_question_caption_text_transform_mobile">
                                         <option value="none" <?php echo ($survey_question_caption_text_transform_mobile == 'none') ? 'selected' : ''; ?>><?php echo esc_html__('Default',"survey-maker"); ?></option>
                                         <option value="capitalize" <?php echo ($survey_question_caption_text_transform_mobile == 'capitalize') ? 'selected' : ''; ?>><?php echo esc_html__('Capitalize',"survey-maker"); ?></option>
                                         <option value="uppercase" <?php echo ($survey_question_caption_text_transform_mobile == 'uppercase') ? 'selected' : ''; ?>><?php echo esc_html__('Uppercase',"survey-maker"); ?></option>
@@ -1725,7 +1725,7 @@
                                         </a>
                                     </label>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 ays_survey_display_flex_width">
                                     <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id="ays_survey_answers_object_fit" name="ays_survey_answers_object_fit">
                                         <option value="cover" <?php echo ($survey_answers_object_fit == 'cover') ? 'selected' : ''; ?>><?php echo esc_html__('Cover',"survey-maker"); ?></option>
                                         <option value="fill" <?php echo ($survey_answers_object_fit == 'fill') ? 'selected' : ''; ?>><?php echo esc_html__('Fill',"survey-maker"); ?></option>
@@ -1745,7 +1745,7 @@
                                         </a>
                                     </label>
                                 </div>
-                                <div class="col-sm-7">
+                                <div class="col-sm-7 ays_survey_display_flex_width">
                                     <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" id="ays_survey_answers_object_fit_mobile" name="ays_survey_answers_object_fit_mobile">
                                         <option value="cover" <?php echo ($survey_answers_object_fit_mobile == 'cover') ? 'selected' : ''; ?>><?php echo esc_html__('Cover',"survey-maker"); ?></option>
                                         <option value="fill" <?php echo ($survey_answers_object_fit_mobile == 'fill') ? 'selected' : ''; ?>><?php echo esc_html__('Fill',"survey-maker"); ?></option>
@@ -2115,7 +2115,7 @@
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-7">
+                            <div class="col-sm-7 ays_survey_display_flex_width">
                                 <select class="ays-text-input ays-text-input-short" id="ays_survey_buttons_alignment" name="ays_survey_buttons_alignment">
                                     <option value="left" <?php echo ($survey_buttons_alignment == 'left' ) ? 'selected' : ''; ?>>
                                         <?php echo esc_html__('Left',"survey-maker"); ?>
@@ -2139,7 +2139,7 @@
                                     </a>
                                 </label>
                             </div>
-                            <div class="col-sm-7">
+                            <div class="col-sm-7 ays_survey_display_flex_width">
                                 <select class="ays-text-input ays-text-input-short" id="ays_survey_buttons_alignment_mobile" name="ays_survey_buttons_alignment_mobile">
                                     <option value="left" <?php echo ($survey_buttons_alignment_mobile == 'left' ) ? 'selected' : ''; ?>>
                                         <?php echo esc_html__('Left',"survey-maker"); ?>
