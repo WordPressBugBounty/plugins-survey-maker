@@ -727,6 +727,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_enable_progress_bar = isset( $_POST[ $name_prefix . 'survey_enable_progres_bar' ] ) && $_POST[ $name_prefix . 'survey_enable_progres_bar' ] == 'on' ? 'on' : 'off';
             $survey_hide_section_pagination_text = isset( $_POST[ $name_prefix . 'survey_hide_section_pagination_text' ] ) && $_POST[ $name_prefix . 'survey_hide_section_pagination_text' ] == 'on' ? 'on' : 'off';
             $survey_pagination_positioning = isset( $_POST[ $name_prefix . 'survey_pagination_positioning' ] ) && $_POST[ $name_prefix . 'survey_pagination_positioning' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_pagination_positioning' ]) : 'none';
+            $survey_pagination_positioning_mobile = isset( $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] ) && $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ]) : 'none';
             $survey_hide_section_bar = isset( $_POST[ $name_prefix . 'survey_hide_section_bar' ] ) && $_POST[ $name_prefix . 'survey_hide_section_bar' ] == 'on' ? 'on' : 'off';
             $survey_progress_bar_text = isset( $_POST[ $name_prefix . 'survey_progress_bar_text' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_progress_bar_text' ]) : 'Page';
             $survey_progress_bar_text_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] ))) : '0';
@@ -1069,6 +1070,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_enable_progress_bar'        => $survey_enable_progress_bar,
                 'survey_hide_section_pagination_text' => $survey_hide_section_pagination_text,
                 'survey_pagination_positioning'       => $survey_pagination_positioning,
+                'survey_pagination_positioning_mobile' => $survey_pagination_positioning_mobile,
                 'survey_hide_section_bar'             => $survey_hide_section_bar,
                 'survey_progress_bar_text'            => $survey_progress_bar_text,
                 'survey_progress_bar_text_letter_spacing' => $survey_progress_bar_text_letter_spacing,

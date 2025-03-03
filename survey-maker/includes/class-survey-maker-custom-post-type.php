@@ -58,7 +58,7 @@
         public static function update_surveys_table_custom_post_id($custom_post_id, $survey_id){
             global $wpdb;
             $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
-            $result = $wpdb->update(
+            $result = $wpdb->update(// phpcs:ignore WordPress.DB.DirectDatabaseQuery
                 $table,
                 array('custom_post_id' => $custom_post_id),
                 array( 'id' => $survey_id ),

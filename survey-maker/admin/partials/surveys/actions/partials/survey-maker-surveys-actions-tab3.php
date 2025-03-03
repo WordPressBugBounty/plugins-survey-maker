@@ -209,12 +209,47 @@
                             </label>
                         </div>
                         <div class="col-sm-8 ays_divider_left">
-                            <select class="ays-text-input ays-text-input-short" name="ays_survey_pagination_positioning">
-                                <option <?php echo $survey_pagination_positioning == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__( "None", "survey-maker"); ?></option>
-                                <option <?php echo $survey_pagination_positioning == "reverse" ? "selected" : ""; ?> value="reverse"><?php echo esc_html__( "Reverse", "survey-maker"); ?></option>
-                                <option <?php echo $survey_pagination_positioning == "column" ? "selected" : ""; ?> value="column"><?php echo esc_html__( "Column", "survey-maker"); ?></option>
-                                <option <?php echo $survey_pagination_positioning == "column_reverse" ? "selected" : ""; ?> value="column_reverse"><?php echo esc_html__( "Column Reverse", "survey-maker"); ?></option>
-                            </select>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_pagination_positioning'>
+                                        <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Tick the checkbox to change the position of the pagination items for desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div>
+                                        <select class="ays-text-input ays-text-input-short" name="ays_survey_pagination_positioning" id='<?php echo esc_attr($html_name_prefix); ?>survey_pagination_positioning'>
+                                            <option <?php echo $survey_pagination_positioning == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__( "None", "survey-maker"); ?></option>
+                                            <option <?php echo $survey_pagination_positioning == "reverse" ? "selected" : ""; ?> value="reverse"><?php echo esc_html__( "Reverse", "survey-maker"); ?></option>
+                                            <option <?php echo $survey_pagination_positioning == "column" ? "selected" : ""; ?> value="column"><?php echo esc_html__( "Column", "survey-maker"); ?></option>
+                                            <option <?php echo $survey_pagination_positioning == "column_reverse" ? "selected" : ""; ?> value="column_reverse"><?php echo esc_html__( "Column Reverse", "survey-maker"); ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_pagination_positioning_mobile'>
+                                        <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Tick the checkbox to change the position of the pagination items for mobile devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div>
+                                        <select class="ays-text-input ays-text-input-short" name="ays_survey_pagination_positioning_mobile" id='<?php echo esc_attr($html_name_prefix); ?>survey_pagination_positioning_mobile'>
+                                            <option <?php echo $survey_pagination_positioning_mobile == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__( "None", "survey-maker"); ?></option>
+                                            <option <?php echo $survey_pagination_positioning_mobile == "reverse" ? "selected" : ""; ?> value="reverse"><?php echo esc_html__( "Reverse", "survey-maker"); ?></option>
+                                            <option <?php echo $survey_pagination_positioning_mobile == "column" ? "selected" : ""; ?> value="column"><?php echo esc_html__( "Column", "survey-maker"); ?></option>
+                                            <option <?php echo $survey_pagination_positioning_mobile == "column_reverse" ? "selected" : ""; ?> value="column_reverse"><?php echo esc_html__( "Column Reverse", "survey-maker"); ?></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <hr>

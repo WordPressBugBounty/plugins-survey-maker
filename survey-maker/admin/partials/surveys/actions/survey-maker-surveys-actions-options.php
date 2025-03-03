@@ -136,6 +136,7 @@
         'survey_full_screen_button_color' => '#333',
         'survey_hide_section_pagination_text' => 'off',
         'survey_pagination_positioning' => 'none',
+        'survey_pagination_positioning_mobile' => 'none',
         'survey_hide_section_bar' => 'off',
         'survey_progress_bar_text' => 'Page',
         'survey_progress_bar_text_letter_spacing' => 0,
@@ -980,6 +981,8 @@
         $survey_enable_progress_bar = (isset($options[$name_prefix . 'enable_progress_bar']) && $options[$name_prefix . 'enable_progress_bar'] == "on") ? "checked" : "";
         $survey_hide_section_pagination_text = (isset($options[$name_prefix . 'hide_section_pagination_text']) && $options[$name_prefix . 'hide_section_pagination_text'] == "on") ? "checked" : "";
         $survey_pagination_positioning = (isset($options[$name_prefix . 'pagination_positioning']) && $options[$name_prefix . 'pagination_positioning'] != "") ? esc_attr($options[$name_prefix . 'pagination_positioning']) : "none";
+        $options[$name_prefix . 'pagination_positioning_mobile'] = isset($options[$name_prefix . 'pagination_positioning_mobile']) ? $options[$name_prefix . 'pagination_positioning_mobile'] : $survey_pagination_positioning;
+        $survey_pagination_positioning_mobile = (isset($options[$name_prefix . 'pagination_positioning_mobile']) && $options[$name_prefix . 'pagination_positioning_mobile'] != "") ? esc_attr($options[$name_prefix . 'pagination_positioning_mobile']) : "none";
         $survey_hide_section_bar = (isset($options[$name_prefix . 'hide_section_bar']) && $options[$name_prefix . 'hide_section_bar'] == "on") ? "checked" : "";
         $survey_progress_bar_text = (isset($options[$name_prefix . 'progress_bar_text']) && $options[$name_prefix . 'progress_bar_text'] != "") ? esc_attr($options[$name_prefix . 'progress_bar_text']) : "Page";
         $survey_progress_bar_text_letter_spacing = (isset( $options[ $name_prefix . 'progress_bar_text_letter_spacing' ] ) && $options[ $name_prefix . 'progress_bar_text_letter_spacing' ] != '' && $options[ $name_prefix . 'progress_bar_text_letter_spacing' ] != '0') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_letter_spacing' ] ) : 0;

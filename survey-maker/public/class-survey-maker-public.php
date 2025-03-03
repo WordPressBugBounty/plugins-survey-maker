@@ -3240,6 +3240,30 @@ class Survey_Maker_Public {
                 break;
         }
 
+        $survey_pagination_positioning_mobile = isset($this->options[ $this->name_prefix . 'pagination_positioning_mobile' ]) ? $this->options[ $this->name_prefix . 'pagination_positioning_mobile' ] : 'none';
+        $pagination_positioning_mobile = "row";
+        // $pagination_number_height = "";
+        switch ($survey_pagination_positioning_mobile) {
+            case 'none':
+                $pagination_positioning_mobile = "row";
+                break;
+            case 'reverse':
+                $pagination_positioning_mobile = "row-reverse";
+                break;
+            case 'column':
+                $pagination_positioning_mobile = "column";
+                // $pagination_number_height = "line-height: 1;";
+                break;
+            case 'column_reverse':
+                $pagination_positioning_mobile = "column-reverse";
+                // $pagination_number_height = "line-height: 1;";
+            break;
+            default:
+                $pagination_positioning_mobile = "row";
+                // $pagination_number_height = "";
+                break;
+        }
+
         // Question padding mobile
         $question_padding = $this->options[ $this->name_prefix . 'question_padding_mobile' ];
         $question_caption_text_display = !$this->options[ $this->name_prefix . 'question_caption_hide_on_mobile' ] ? 'block' : 'none';
@@ -3259,6 +3283,7 @@ class Survey_Maker_Public {
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-main{
                 flex-wrap: wrap;
+                flex-direction: '.$pagination_positioning_mobile.';
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'footer-with-live-bar{

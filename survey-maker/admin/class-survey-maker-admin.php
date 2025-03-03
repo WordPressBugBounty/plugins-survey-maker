@@ -645,27 +645,27 @@ class Survey_Maker_Admin {
         global $wpdb;
         return 'manage_options';
 
-        $sql = "SELECT meta_value FROM {$wpdb->prefix}aysquiz_settings WHERE `meta_key` = 'user_roles'";
-        $result = $wpdb->get_var($sql);
+        // $sql = "SELECT meta_value FROM {$wpdb->prefix}aysquiz_settings WHERE `meta_key` = 'user_roles'";
+        // $result = $wpdb->get_var($sql);
         
-        $capability = 'manage_options';
-        if($result !== null){
-            $ays_user_roles = json_decode($result, true);
-            if(is_user_logged_in()){
-                $current_user = wp_get_current_user();
-                $current_user_roles = $current_user->roles;
-                $ishmar = 0;
-                foreach($current_user_roles as $r){
-                    if(in_array($r, $ays_user_roles)){
-                        $ishmar++;
-                    }
-                }
-                if($ishmar > 0){
-                    $capability = "read";
-                }
-            }
-        }
-        return $capability;
+        // $capability = 'manage_options';
+        // if($result !== null){
+        //     $ays_user_roles = json_decode($result, true);
+        //     if(is_user_logged_in()){
+        //         $current_user = wp_get_current_user();
+        //         $current_user_roles = $current_user->roles;
+        //         $ishmar = 0;
+        //         foreach($current_user_roles as $r){
+        //             if(in_array($r, $ays_user_roles)){
+        //                 $ishmar++;
+        //             }
+        //         }
+        //         if($ishmar > 0){
+        //             $capability = "read";
+        //         }
+        //     }
+        // }
+        // return $capability;
     }
 
 
