@@ -15,8 +15,11 @@ if(isset($_REQUEST['s'])){
     $ays_survey_tab = 'poststuff';
 }
 
-$sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id =" . absint( $survey_id );
-$survey_name = $wpdb->get_row( $sql, 'ARRAY_A' );
+$sql = $wpdb->prepare(
+    "SELECT * FROM {$wpdb->prefix}" . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id = %d",
+    absint($survey_id)
+);
+$survey_name = $wpdb->get_row($sql, "ARRAY_A");
 
 $survey_options = isset( $survey_name['options'] ) && $survey_name['options'] != '' ? json_decode( $survey_name['options'], true ) : array();
 
@@ -658,7 +661,7 @@ $types_with_changeable_charts = array(
         <div class="wrap">
             <div class="ays-survey-submission-summary-question-container ays-survey-submission-summary-header-container" style="padding: 20px;">
                 <div class="ays-survey-submission-summary-question-container-title">
-                    <h2 style="margin: 0;"><?php echo esc_html__(sprintf( __( 'In total %s submission', "survey-maker" ), intval( esc_attr($submission_count_and_ids['submission_count']) ) )); ?></h2>
+                    <h2 style="margin: 0;"><?php echo esc_html__(sprintf( 'In total %s submission', intval( esc_attr($submission_count_and_ids['submission_count']) ) ), "survey-maker"); ?></h2>
                 </div>
                 <div class="ays-survey-submission-summary-question-container-buttons">
                     <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker" style="opacity:0.5;"><?php echo esc_html__( 'Print', "survey-maker"); ?></a>
