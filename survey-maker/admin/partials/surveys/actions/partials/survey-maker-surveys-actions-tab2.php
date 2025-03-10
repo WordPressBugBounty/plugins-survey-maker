@@ -121,7 +121,7 @@
             <div class="ays-survey-collapsible-container">
                 <div class="ays-survey-collapse-options">
                     <div><i class="ays_fa ays_fa_arrow_down ays-survey-collapse-options-button" data-rotation="false" style="font-size: 15px;"></i></div>
-                    <div><p style="margin:0;font-size: 18px;font-weight: 500;"><?php echo esc_html__('Survey styles',"survey-maker"); ?></p></div>
+                    <div><p style="margin:0;font-size: 18px;font-weight: 500;cursor: pointer"><?php echo esc_html__('Survey styles',"survey-maker"); ?></p></div>
                 </div>
                 <hr/>
                 <div class="ays-survey-collapsible-options">
@@ -1004,7 +1004,7 @@
             <div class="ays-survey-collapsible-container">
                 <div class="ays-survey-collapse-options">
                     <div><i class="ays_fa ays_fa_arrow_down ays-survey-collapse-options-button" data-rotation="false" style="font-size: 15px;"></i></div>
-                    <div><p style="margin:0;font-size: 18px;font-weight: 500;"><?php echo esc_html__('Question styles',"survey-maker"); ?></p></div>
+                    <div><p style="margin:0;font-size: 18px;font-weight: 500;cursor: pointer"><?php echo esc_html__('Question styles',"survey-maker"); ?></p></div>
                 </div>
                 <hr/>
                 <div class="ays-survey-collapsible-options">
@@ -1524,7 +1524,7 @@
             <div class="ays-survey-collapsible-container">
                 <div class="ays-survey-collapse-options">
                     <div><i class="ays_fa ays_fa_arrow_down ays-survey-collapse-options-button" data-rotation="false" style="font-size: 15px;"></i></div>
-                    <div><p style="margin:0;font-size: 18px;font-weight: 500;"><?php echo esc_html__('Answer styles',"survey-maker"); ?></p></div>
+                    <div><p style="margin:0;font-size: 18px;font-weight: 500;cursor: pointer"><?php echo esc_html__('Answer styles',"survey-maker"); ?></p></div>
                 </div>
                 <hr/>
                 <div class="ays-survey-collapsible-options">
@@ -1917,7 +1917,7 @@
     <div class="ays-survey-collapsible-container">
         <div class="ays-survey-collapse-options">
             <div><i class="ays_fa ays_fa_arrow_down ays-survey-collapse-options-button" data-rotation="false" style="font-size: 15px;"></i></div>
-            <div><p style="margin:0;font-size: 18px;font-weight: 500;"><?php echo esc_html__('Button  styles',"survey-maker"); ?></p></div>
+            <div><p style="margin:0;font-size: 18px;font-weight: 500;cursor: pointer"><?php echo esc_html__('Button  styles',"survey-maker"); ?></p></div>
         </div>
         <hr/>
         <div class="ays-survey-collapsible-options">

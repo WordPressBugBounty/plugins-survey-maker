@@ -3212,7 +3212,7 @@
         // Initialize popup survey color picker
         $(document).find('#ays_survey_popup_bg_color_mobile').wpColorPicker(ays_survey_popup_bg_color_mobile_picker);
         // Initialize popup survey title bg color picker
-        $(document).find('#ays_survey_popup_title_bg_color').wpColorPicker(aysSurveyPopupTitleBgColorPicker);
+        $(document).find('#ays_survey_popup_title_bg_color,#ays_survey_popup_title_bg_color_mobile').wpColorPicker(aysSurveyPopupTitleBgColorPicker);
         // Initialize popup survey title text color picker
         $(document).find('#ays_survey_popup_title_text_color').wpColorPicker(aysSurveyPopupTitleTextColorPicker);
 

@@ -191,6 +191,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
 
             // Popup title bg color
             $survey_popup_title_bg_color = (isset( $_POST[$name_prefix . 'survey_popup_title_bg_color'] ) &&  $_POST[$name_prefix . 'survey_popup_title_bg_color'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_bg_color' ] ) : '#00000000';
+            // Popup title bg color mobile
+            $survey_popup_title_bg_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_bg_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_bg_color_mobile'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_bg_color_mobile' ] ) : '#00000000';
 
             // Popup title text color
             $survey_popup_title_text_color = (isset( $_POST[$name_prefix . 'survey_popup_title_text_color'] ) &&  $_POST[$name_prefix . 'survey_popup_title_text_color'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_text_color' ] ) : '#ffffff';
@@ -296,6 +298,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "popup_title_font_size"                 => $survey_popup_title_font_size,
                 "popup_title_mobile_font_size"          => $survey_popup_title_mobile_font_size,
                 "popup_title_bg_color"                  => $survey_popup_title_bg_color,
+                "popup_title_bg_color_mobile"           => $survey_popup_title_bg_color_mobile,
                 "popup_title_text_color"                => $survey_popup_title_text_color,
                 "popup_title_alignment"                 => $survey_popup_title_alignment,
                 "popup_title_alignment_on_mobile"       => $survey_popup_title_alignment_on_mobile,

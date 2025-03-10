@@ -21,6 +21,7 @@
         "popup_title_border_radius_mobile" => 0,
         "popup_title_mobile_font_size" => 25,
         "popup_title_bg_color"     => "#00000000",
+        "popup_title_bg_color_mobile" => "#00000000",
         "popup_title_text_color"     => "#000000",
         "popup_title_transform"     => "none",
         "popup_title_transform_mobile" => "none",
@@ -97,7 +98,10 @@
     $survey_popup_title_mobile_font_size = (isset($options["popup_title_mobile_font_size"]) && $options["popup_title_mobile_font_size"] != "") ? absint ( intval( $options["popup_title_mobile_font_size"] ) ) : $survey_popup_title_font_size;
 
     // Popup title bg color
-    $survey_popup_title_bg_color = (isset($options["popup_title_bg_color"]) && $options["popup_title_bg_color"] != "") ? esc_attr ( $options["popup_title_bg_color"] ) : "#00000000";
+    $survey_popup_title_bg_color = (isset($options["popup_title_bg_color"]) && $options["popup_title_bg_color"] != "") ? esc_attr ( $options["popup_title_bg_color"] ) : "#00000000";    
+    // Popup title bg color mobile
+    $options["popup_title_bg_color_mobile"] = isset($options["popup_title_bg_color_mobile"]) ? $options["popup_title_bg_color_mobile"] : $survey_popup_title_bg_color;
+    $survey_popup_title_bg_color_mobile = (isset($options["popup_title_bg_color_mobile"]) && $options["popup_title_bg_color_mobile"] != "") ? esc_attr ( $options["popup_title_bg_color_mobile"] ) : "#00000000";
 
     // Popup title text color
     $survey_popup_title_text_color = (isset($options["popup_title_text_color"]) && $options["popup_title_text_color"] != "") ? esc_attr ( $options["popup_title_text_color"] ) : "#000000";
