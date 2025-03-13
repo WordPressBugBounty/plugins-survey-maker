@@ -9,6 +9,8 @@
                 textColor: "#333",
                 buttonsTextColor: "#333",
                 buttonsBgColor: "#fff",
+                startPageBgColor: "#fff",
+                startPageTextColor: "#333",
                 titleTextShadColor: "#333",
                 paginationTextColor: "#333",
                 fullScreenButtonColor: "#333",
@@ -19,6 +21,8 @@
                 bgColor: "#333",
                 textColor: "#fff",
                 buttonsTextColor: "#333",
+                startPageBgColor: "#333",
+                startPageTextColor: "#fff",
                 buttonsBgColor: "#fff",
                 titleTextShadColor: "#333",
                 paginationTextColor: "#fff",
@@ -31,6 +35,8 @@
                 textColor: "#0a0a0a",
                 loaderColor: "#333",
                 buttonsTextColor: "#0a0a0a",
+                startPageBgColor: "rgba(0,0,0,0)",
+                startPageTextColor: "#0a0a0a",
                 questionCaptionTextColor: "#0a0a0a",
             },
             modern: {
@@ -39,6 +45,8 @@
                 textColor: "#0a0a0a",
                 loaderColor: "#333",
                 buttonsTextColor: "#fff",
+                startPageBgColor: "rgba(0,0,0,0)",
+                startPageTextColor: "#0a0a0a",     
                 buttonsBgColor: "#4285F4",
                 startPageBgColor: "rgba(0,0,0,0)",
                 startPageTextColor: "#0a0a0a",                
@@ -61,6 +69,8 @@
             var defaultTextColor,
                 defaultLoaderColor,
                 defaultBgColor, 
+                defaultStartPageBgColor,
+                defaultStartPageTextColor,
                 defaultSurveyColor, 
                 defaultButtonsTextColor, 
                 defaultButtonsBgColor, 
@@ -76,6 +86,8 @@
                     defaultTextColor = defaultColors.classicDark.textColor;
                     defaultLoaderColor = defaultColors.classicDark.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicDark.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.classicDark.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.classicDark.startPageTextColor;
                     defaultButtonsBgColor = defaultColors.classicDark.buttonsBgColor;
                     defaultTitleTShColor = defaultColors.classicDark.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicDark.paginationTextColor;
@@ -88,6 +100,8 @@
                     defaultTextColor = defaultColors.classicLight.textColor;
                     defaultLoaderColor = defaultColors.classicLight.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicLight.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.classicLight.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.classicLight.startPageTextColor;
                     defaultButtonsBgColor = defaultColors.classicLight.buttonsBgColor;
                     defaultTitleTShColor = defaultColors.classicLight.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicLight.paginationTextColor;
@@ -101,6 +115,8 @@
                     defaultTextColor = defaultColors.minimal.textColor;
                     defaultLoaderColor = defaultColors.minimal.loaderColor;
                     defaultButtonsTextColor = defaultColors.minimal.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.minimal.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.minimal.startPageTextColor;
                     defaultQestionCaptionTextColor = defaultColors.minimal.questionCaptionTextColor;
                     break;
                 case 'modern':
@@ -110,6 +126,8 @@
                     defaultTextColor = defaultColors.modern.textColor;
                     defaultLoaderColor = defaultColors.modern.loaderColor;
                     defaultButtonsTextColor = defaultColors.modern.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.modern.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.modern.startPageTextColor;
                     defaultButtonsBgColor = defaultColors.modern.buttonsBgColor;
                     defaultQestionCaptionTextColor = defaultColors.modern.questionCaptionTextColor;
                     break;
@@ -119,6 +137,8 @@
                     defaultTextColor = defaultColors.classicLight.textColor;
                     defaultLoaderColor = defaultColors.classicLight.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicLight.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.classicLight.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.classicLight.startPageTextColor;
                     defaultButtonsBgColor = defaultColors.classicLight.buttonsBgColor;
                     defaultTitleTShColor = defaultColors.classicLight.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicLight.paginationTextColor;
@@ -131,6 +151,8 @@
             $(document).find('#ays_survey_text_color').wpColorPicker('color', defaultTextColor);
             $(document).find('#ays_survey_loader_color').wpColorPicker('color', defaultLoaderColor);
             $(document).find('#ays_survey_buttons_text_color').wpColorPicker('color', defaultButtonsTextColor);
+            $(document).find('#ays_survey_start_page_background_color').wpColorPicker('color', defaultStartPageBgColor);
+            $(document).find('#ays_survey_start_page_text_color').wpColorPicker('color', defaultStartPageTextColor);
             $(document).find('#ays_survey_button_bg_color').wpColorPicker('color', defaultButtonsBgColor);
             $(document).find('#ays_survey_title_box_shadow_color').wpColorPicker('color', defaultTitleTShColor);
             $(document).find('#ays_survey_pagination_text_color,#ays_survey_pagination_text_color_mobile').wpColorPicker('color', defaultPaginationTextColor);
@@ -139,7 +161,7 @@
         }
 
         function surveyThemeSetup( SurveyTheme ){
-            var defaultTextColor, defaultLoaderColor, defaultBgColor, defaultSurveyColor,defaultButtonsTextColor, defaultButtonsBgColor, defaultTitleTShColor, defaultPaginationTextColor, defaultFullScreenButtonColor, defaultQestionCaptionTextColor;
+            var defaultTextColor, defaultLoaderColor, defaultBgColor, defaultSurveyColor,defaultButtonsTextColor,defaultStartPageBgColor, defaultStartPageTextColor, defaultButtonsBgColor, defaultTitleTShColor, defaultPaginationTextColor, defaultFullScreenButtonColor, defaultQestionCaptionTextColor;
 
             switch ( SurveyTheme ) {
                 case 'classic_dark':
@@ -149,6 +171,8 @@
                     defaultLoaderColor = defaultColors.classicDark.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicDark.buttonsTextColor;
                     defaultButtonsBgColor = defaultColors.classicDark.buttonsBgColor;
+                    defaultStartPageBgColor = defaultColors.classicDark.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.classicDark.startPageTextColor;
                     defaultTitleTShColor = defaultColors.classicDark.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicDark.paginationTextColor;
                     defaultFullScreenButtonColor = defaultColors.classicDark.fullScreenButtonColor;
@@ -160,6 +184,8 @@
                     defaultTextColor = defaultColors.classicLight.textColor;
                     defaultLoaderColor = defaultColors.classicLight.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicLight.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.classicLight.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.classicLight.startPageTextColor;
                     defaultButtonsBgColor = defaultColors.classicLight.buttonsBgColor;
                     defaultTitleTShColor = defaultColors.classicLight.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicLight.paginationTextColor;
@@ -173,6 +199,8 @@
                     defaultTextColor = defaultColors.minimal.textColor;
                     defaultLoaderColor = defaultColors.minimal.loaderColor;
                     defaultButtonsTextColor = defaultColors.minimal.buttonsTextColor;
+                    defaultStartPageBgColor = defaultColors.minimal.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.minimal.startPageTextColor;
                     defaultQestionCaptionTextColor = defaultColors.minimal.questionCaptionTextColor;
                     break;
                 case 'modern':
@@ -183,6 +211,8 @@
                     defaultLoaderColor = defaultColors.modern.loaderColor;
                     defaultButtonsTextColor = defaultColors.modern.buttonsTextColor;
                     defaultButtonsBgColor = defaultColors.modern.buttonsBgColor;
+                    defaultStartPageBgColor = defaultColors.modern.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.modern.startPageTextColor;
                     defaultQestionCaptionTextColor = defaultColors.modern.questionCaptionTextColor;
                     break;
                 default:
@@ -192,6 +222,8 @@
                     defaultLoaderColor = defaultColors.classicLight.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicLight.buttonsTextColor;
                     defaultButtonsBgColor = defaultColors.classicLight.buttonsBgColor;
+                    defaultStartPageBgColor = defaultColors.business.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.business.startPageTextColor;
                     defaultTitleTShColor = defaultColors.classicLight.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicLight.paginationTextColor;
                     defaultFullScreenButtonColor = defaultColors.classicLight.fullScreenButtonColor;
@@ -225,6 +257,18 @@
 
             var ays_survey_buttons_text_color_picker = {
                 defaultColor: defaultButtonsTextColor,
+                change: function (e) {
+                }
+            };
+
+            var ays_survey_start_page_background_color_picker = {
+                defaultColor: defaultStartPageBgColor,
+                change: function (e) {
+                }
+            };
+            
+            var ays_survey_start_page_text_color_picker = {
+                defaultColor: defaultStartPageTextColor,
                 change: function (e) {
                 }
             };
@@ -266,9 +310,9 @@
             $(document).find('#ays_survey_text_color').wpColorPicker(ays_survey_text_color_picker);
             $(document).find('#ays_survey_loader_color').wpColorPicker(ays_survey_loader_color_picker);
             $(document).find('#ays_survey_buttons_text_color').wpColorPicker(ays_survey_buttons_text_color_picker);
+            $(document).find('#ays_survey_start_page_background_color').wpColorPicker(ays_survey_start_page_background_color_picker);
+            $(document).find('#ays_survey_start_page_text_color').wpColorPicker(ays_survey_start_page_text_color_picker);
             $(document).find('#ays_survey_button_bg_color').wpColorPicker(ays_survey_buttons_background_color_picker);
-            $(document).find('#ays_survey_start_page_background_color').wpColorPicker(ays_survey_color_picker);
-            $(document).find('#ays_survey_start_page_text_color').wpColorPicker(ays_survey_color_picker);
             $(document).find('#ays_survey_title_box_shadow_color').wpColorPicker(ays_survey_title_box_shadow_color_picker);
             $(document).find('#ays_survey_pagination_text_color,#ays_survey_pagination_text_color_mobile').wpColorPicker(ays_survey_pagination_text_color);
             $(document).find('#ays_survey_full_screen_button_color').wpColorPicker(ays_survey_full_screen_button_color);

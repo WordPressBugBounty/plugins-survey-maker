@@ -114,6 +114,7 @@
         // Settings Tab
         'survey_show_title' => 'on',
         'survey_show_section_header' => 'on',
+        'survey_enable_start_page' => 'off',
         'survey_enable_randomize_answers' => 'off',
         'survey_enable_randomize_questions' => 'off',
         'survey_enable_clear_answer' => 'off',
@@ -881,6 +882,38 @@
         </style>";
 
     // =======================  //  ======================= // ======================= // ======================= // ======================= //
+
+    // =============================================================
+    // =====================  Start page Tab  ======================
+    // ========================    START   =========================
+
+            
+        // Enable start page
+        $options[ $name_prefix . 'enable_start_page' ] = isset($options[ $name_prefix . 'enable_start_page' ]) ? esc_attr($options[ $name_prefix . 'enable_start_page' ]) : 'off';
+        $survey_enable_start_page = (isset($options[ $name_prefix . 'enable_start_page' ]) && $options[ $name_prefix . 'enable_start_page' ] == 'on') ? true : false;
+
+        // Start page title
+        $survey_start_page_title = (isset($options[ $name_prefix . 'start_page_title' ]) &&  $options[ $name_prefix . 'start_page_title' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_title' ] ) : '';
+
+        // Start page description
+        $survey_start_page_description = (isset($options[ $name_prefix . 'start_page_description' ]) &&  $options[ $name_prefix . 'start_page_description' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'start_page_description' ] ) ) : '';
+        
+        // Start button position
+        $survey_start_page_button_pos = (isset($options[ $name_prefix . 'start_page_button_pos' ]) && $options[ $name_prefix . 'start_page_button_pos' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_button_pos' ] ) ) : 'left';
+
+        // Start page Background color
+        $survey_start_page_background_color = (isset($options[ $name_prefix . 'start_page_background_color' ]) && $options[ $name_prefix . 'start_page_background_color' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'start_page_background_color' ] ) ) : '#fff';
+
+        // Start page Text Color
+        $survey_start_page_text_color = (isset($options[ $name_prefix . 'start_page_text_color' ]) && $options[ $name_prefix . 'start_page_text_color' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'start_page_text_color' ] ) ) : '#333';
+
+        // Custom class for Start page container
+        $survey_start_page_custom_class = (isset($options[ $name_prefix . 'start_page_custom_class' ]) && $options[ $name_prefix . 'start_page_custom_class' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_custom_class' ] ) ) : '';
+
+
+    // =============================================================
+    // =====================  Start page Tab  ======================
+    // ========================     END     ========================
 
     // =============================================================
     // ======================  Settings Tab  =======================

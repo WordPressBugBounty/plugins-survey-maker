@@ -1,141 +1,126 @@
 <div id="tab6" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab6') ? 'ays-survey-tab-content-active' : ''; ?>">
-    <div class="form-group row" style="margin-top: 15px;">
-        <div class="col-sm-12 ays-pro-features-v2-main-box">
-            <div class="ays-pro-features-v2-big-buttons-box">
-                <div class="ays-pro-features-v2-video-button"></div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
+    <p class="ays-subtitle"><?php echo esc_html__('Start page settings',"survey-maker")?></p>
+    <p><?php echo esc_html__("Configure your survey's start page by adding the title, description and styling it the way you want. The start page will be shown to the survey takers before displaying the survey.","survey-maker")?></p>
+    <hr/>
+    <div class="form-group row">
+        <div class="col-sm-3">
+            <label for="ays_survey_enable_start_page">
+                <?php echo esc_html__('Enable start page',"survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Tick the checkbox if you want to add a start page to your survey. After enabling this option, a new tab will appear next to the Settings tab, where you can configure Start Page settings.',"survey-maker"); ?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
                 </a>
-            </div>
-            <div class="ays-pro-features-v2-small-buttons-box">
-                <div class="ays-pro-features-v2-video-button"></div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <p class="ays-subtitle"><?php echo esc_html__('Start page settings',"survey-maker")?></p>
-            <p><?php echo esc_html__("Configure your survey's start page by adding the title, description and styling it the way you want. The start page will be shown to the survey takers before displaying the survey.","survey-maker")?></p>
-            <hr/>
-            <div style="display: flex;justify-content: center; align-items: center;margin-bottom: 15px;position: relative;" class="ays-survey-zindex-for-pro"><iframe width="560" height="315" src="https://www.youtube.com/embed/NfILS3ndd0U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen></iframe></div>
-            <hr/>
-
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="ays_survey_enable_start_page">
-                        <?php echo esc_html__('Enable start page',"survey-maker"); ?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Tick the checkbox if you want to add a start page to your survey. After enabling this option, a new tab will appear next to the Settings tab, where you can configure Start Page settings.',"survey-maker"); ?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="checkbox" value="on" checked/>
-                </div>
-            </div> <!-- Enable start page -->
-            <hr/>
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="ays_survey_start_page_title">
-                        <?php echo esc_html__('Start page title',"survey-maker"); ?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Give a title to the start page',"survey-maker"); ?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                </div>
-                <div class="col-sm-9">
-                    <input type="text" class="ays-text-input" />
-                </div>
-            </div> <!-- Start page title -->
-            <hr/>
-            <div class="form-group row">
-                <div class="col-sm-3">
-                    <label for="ays_survey_start_page_description">
-                        <?php echo esc_html__('Start page description',"survey-maker"); ?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Provide some information about the survey. This will show up on the start page.',"survey-maker"); ?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                </div>
-                <div class="col-sm-9">
-                    <?php
-                    $content = "";
-                    $editor_id = 'ays_survey_start_page_description';
-                    $settings = array('editor_height' => 100, 'textarea_name' => '', 'editor_class' => 'ays-textarea', 'media_elements' => true);
-                    wp_editor($content, $editor_id, $settings);
-                    ?>
-                    
-                    <div style="margin-top: 15px;font-style: italic;font-size: 14px;">
-                        <?php 
-                            echo esc_html__('Note: Insert the URL parameter to display personalized start page to your website visitors.
-                                        If the description text of the start page and the parameter you added after the URL are the same, it will be replaced and the description will take the value you have written.
-                                        You can write the parameter like this and add it after the URL: %%%%anyparameter%%%%.
-                                        For example, you can write %%%%user_name%%%% in the Start page description, then, add the following URL parameter on the front end ?user_name=name.', "survey-maker");
-                            ?>
-                    </div>
-                </div>
-            </div> <!-- Start page description -->
-            <hr/>
-            <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Start page styles',"survey-maker"); ?></p>
-            <hr/>
-            <div class="form-group row"> <!-- Start page Styles -->
-                <div class="col-lg-7 col-sm-12">
-                    <div class="form-group row">
-                        <div class="col-sm-5">
-                            <label for='ays_survey_start_page_background_color'>
-                                <?php echo esc_html__('Background color', "survey-maker"); ?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the background color of the start page.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-7 ays_divider_left">
-                            <input type="text" class="ays-text-input" id='ays_survey_start_page_background_color' data-alpha="true" value='#d1d1d1'>
-                        </div>
-                    </div> <!-- Start page Background Color -->
-                    <hr/>
-                    <div class="form-group row">
-                        <div class="col-sm-5">
-                            <label for='ays_survey_start_page_text_color'>
-                                <?php echo esc_html__('Text color', "survey-maker"); ?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color of the start page.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-7 ays_divider_left">
-                            <input type="text" class="ays-text-input" id='ays_survey_start_page_text_color' value='#333333'/>
-                        </div>
-                    </div> <!-- Start page Text Color -->
-                    <hr/>
-                    <div class="form-group row">
-                        <div class="col-sm-5">
-                            <label for="ays_survey_start_page_custom_class">
-                                <?php echo esc_html__('Custom class for start page container',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Use your custom HTML class for adding your custom styles to the survey start page container.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-7 ays_divider_left">
-                            <input type="text" class="ays-text-input" placeholder="myClass myAnotherClass..." >
-                        </div>
-                    </div> <!-- Custom class for start page container -->
-                </div>
-                <hr/>
-                <div class="col-lg-5 col-sm-12 ays_divider_left" style="position:relative;">
-                    <div id="ays_buttons_styles_tab" class="display_none" style="position:sticky;top:50px; margin:auto;">
-                        <div class="ays_buttons_div" style="justify-content: center; overflow:hidden;">
-                            <input type="button" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo esc_attr__( "Start", "survey-maker" ); ?>">
-                        </div>
-                    </div>
-                </div> <!-- Start page Styles Live -->
-            </div> <!-- Start page Styles End -->
+            </label>
         </div>
-    </div> 
+        <div class="col-sm-9">
+            <input type="checkbox" id="ays_survey_enable_start_page" name="ays_survey_enable_start_page" value="on" <?php echo $survey_enable_start_page ? 'checked' : ''; ?>/>
+        </div>
+    </div> <!-- Enable start page -->
+    <hr/>
+    <div class="form-group row">
+        <div class="col-sm-3">
+            <label for="ays_survey_start_page_title">
+                <?php echo esc_html__('Start page title',"survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Give a title to the start page',"survey-maker"); ?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
+                </a>
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <input type="text" class="ays-text-input" id="ays_survey_start_page_title" name="ays_survey_start_page_title" value="<?php echo esc_attr($survey_start_page_title); ?>"/>
+        </div>
+    </div> <!-- Start page title -->
+    <hr/>
+    <div class="form-group row">
+        <div class="col-sm-3">
+            <label for="ays_survey_start_page_description">
+                <?php echo esc_html__('Start page description',"survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Provide some information about the survey. This will show up on the start page.',"survey-maker"); ?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
+                </a>
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <?php
+            $content = $survey_start_page_description;
+            $editor_id = 'ays_survey_start_page_description';
+            $settings = array('editor_height' => $survey_wp_editor_height, 'textarea_name' => 'ays_survey_start_page_description', 'editor_class' => 'ays-textarea', 'media_elements' => true);
+            wp_editor($content, $editor_id, $settings);
+            ?>
+        </div>
+    </div> <!-- Start page description -->
+    <hr/>
+    <div class="form-group row">
+        <div class="col-sm-3">
+            <label for="ays_survey_start_page_button_pos">
+                <?php echo esc_html__('Start button position', "survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the alignment of the start button.', "survey-maker"); ?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
+                </a>
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <select class="ays-text-input ays-text-input-short" name="ays_survey_start_page_button_pos" id="ays_survey_start_page_button_pos">
+                <option <?php echo $survey_start_page_button_pos == "left" ? "selected" : ""; ?> value="left"><?php echo esc_html__( "Left", "survey-maker"); ?></option>
+                <option <?php echo $survey_start_page_button_pos == "center" ? "selected" : ""; ?> value="center"><?php echo esc_html__( "Center", "survey-maker"); ?></option>
+                <option <?php echo $survey_start_page_button_pos == "right" ? "selected" : ""; ?> value="right"><?php echo esc_html__( "Right", "survey-maker"); ?></option>
+            </select>
+
+        </div>
+    </div> <!-- Start button position -->
+    <hr/>
+    <p class="ays-subtitle" style="margin-top:0;"><?php echo esc_html__('Start page styles',"survey-maker"); ?></p>
+    <hr/>
+    <div class="form-group row"> <!-- Start page Styles -->
+        <div class="col-lg-7 col-sm-12">
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label for='ays_survey_start_page_background_color'>
+                        <?php echo esc_html__('Background color', "survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the background color of the start page.',"survey-maker"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-7 ays_divider_left">
+                    <input type="text" class="ays-text-input" id='ays_survey_start_page_background_color' data-alpha="true" name='ays_survey_start_page_background_color' value="<?php echo esc_attr($survey_start_page_background_color); ?>"/>
+                </div>
+            </div> <!-- Start page Background Color -->
+            <hr/>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label for='ays_survey_start_page_text_color'>
+                        <?php echo esc_html__('Text color', "survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color of the start page.',"survey-maker"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-7 ays_divider_left">
+                    <input type="text" class="ays-text-input" id='ays_survey_start_page_text_color' data-alpha="true"name='ays_survey_start_page_text_color' value="<?php echo esc_attr($survey_start_page_text_color); ?>"/>
+                </div>
+            </div> <!-- Start page Text Color -->
+            <hr/>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <label for="ays_survey_start_page_custom_class">
+                        <?php echo esc_html__('Custom class for start page container',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Use your custom HTML class for adding your custom styles to the survey start page container.',"survey-maker"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-7 ays_divider_left">
+                    <input type="text" class="ays-text-input" name="ays_survey_start_page_custom_class" id="ays_survey_start_page_custom_class" placeholder="myClass myAnotherClass..." value="<?php echo esc_attr($survey_start_page_custom_class); ?>">
+                </div>
+            </div> <!-- Custom class for start page container -->
+        </div>
+        <hr/>
+        <div class="col-lg-5 col-sm-12 ays_divider_left" style="position:relative;">
+            <div id="ays_buttons_styles_tab" class="display_none" style="position:sticky;top:50px; margin:auto;">
+                <div class="ays_buttons_div" style="justify-content: center; overflow:hidden;">
+                    <input type="button" name="next" class="action-button ays-quiz-live-button" style="padding:0;" value="<?php echo esc_attr__( "Start", "survey-maker" ); ?>">
+                </div>
+            </div>
+        </div> <!-- Start page Styles Live -->
+    </div> <!-- Start page Styles End -->
 </div>

@@ -113,6 +113,10 @@
         _this.aysNext();
         _this.aysFinish();
 
+        _this.$el.on('click', '.' + _this.htmlClassPrefix + 'start-button', function(e){
+            _this.start(e);
+        });
+
         _this.$el.on('click', '.' + _this.htmlClassPrefix + 'answer-label-other input', function(){
             $(this).parents('.' + _this.htmlClassPrefix + 'answer').find('.' + _this.htmlClassPrefix + 'answer-other-input').focus();
             _this.confirmBeforeUnload = true;
@@ -393,65 +397,67 @@
 
     AysSurveyPlugin.prototype.start = function(e) {
         var _this = this;
-        var $this = _this.$el.find('.ays_next.start_button');
+        // var $this = _this.$el.find('.ays_next.start_button');
 
-        _this.quizId = _this.$el.find('input[name="ays_quiz_id"]').val();
-        _this.dbOptions = JSON.parse(atob(window.aysQuizOptions[_this.quizId]));
-        if(typeof _this.dbOptions.answers_rw_texts == 'undefined'){
-            _this.dbOptions.answers_rw_texts = 'on_passing';
-        }
-        if(typeof _this.dbOptions.make_questions_required == 'undefined'){
-            _this.dbOptions.make_questions_required = 'off';
-        }
-        var quizOptionsName = 'quizOptions_' + _this.quizId;
-        _this.QuizQuestionsOptions = [];
-        if(typeof window[quizOptionsName] !== 'undefined'){
-            for(var i in window[quizOptionsName]){
-                _this.QuizQuestionsOptions[i] = JSON.parse(window.atob(window[quizOptionsName][i]));
-            }
-        }
+        // _this.quizId = _this.$el.find('input[name="ays_quiz_id"]').val();
+        // _this.dbOptions = JSON.parse(atob(window.aysQuizOptions[_this.quizId]));
+        // console.log(_this.dbOptions);
+        // if(typeof _this.dbOptions.answers_rw_texts == 'undefined'){
+        //     _this.dbOptions.answers_rw_texts = 'on_passing';
+        // }
+        // if(typeof _this.dbOptions.make_questions_required == 'undefined'){
+        //     _this.dbOptions.make_questions_required = 'off';
+        // }
+        // var quizOptionsName = 'quizOptions_' + _this.quizId;
+        // _this.QuizQuestionsOptions = [];
+        // if(typeof window[quizOptionsName] !== 'undefined'){
+        //     for(var i in window[quizOptionsName]){
+        //         _this.QuizQuestionsOptions[i] = JSON.parse(window.atob(window[quizOptionsName][i]));
+        //     }
+        // }
 
-        _this.aysResetQuiz( _this.$el );
+        // _this.aysResetQuiz( _this.$el );
 
-        _this.$el.css('padding-bottom', '0px');
+        // _this.$el.css('padding-bottom', '0px');
 
-        var isRequiredQuestion = (_this.dbOptions.make_questions_required && _this.dbOptions.make_questions_required == "on") ? true : false;
-        if(isRequiredQuestion === true){
-            _this.$el.find('div[data-question-id]').each(function(){
-                var thisStep = $(this);
-                if(!thisStep.find('input.ays_next').hasClass('ays_display_none')){
-                    thisStep.find('input.ays_next').attr('disabled', 'disabled');
-                }else if(!thisStep.find('i.ays_next_arrow').hasClass('ays_display_none')){
-                    thisStep.find('i.ays_next_arrow').attr('disabled', 'disabled');
-                }
+        // var isRequiredQuestion = (_this.dbOptions.make_questions_required && _this.dbOptions.make_questions_required == "on") ? true : false;
+        // if(isRequiredQuestion === true){
+        //     _this.$el.find('div[data-question-id]').each(function(){
+        //         var thisStep = $(this);
+        //         if(!thisStep.find('input.ays_next').hasClass('ays_display_none')){
+        //             thisStep.find('input.ays_next').attr('disabled', 'disabled');
+        //         }else if(!thisStep.find('i.ays_next_arrow').hasClass('ays_display_none')){
+        //             thisStep.find('i.ays_next_arrow').attr('disabled', 'disabled');
+        //         }
 
-                if(!thisStep.find('input.ays_early_finish').hasClass('ays_display_none')){
-                    thisStep.find('input.ays_early_finish').attr('disabled', 'disabled');
-                }else if(!thisStep.find('i.ays_early_finish').hasClass('ays_display_none')){
-                    thisStep.find('i.ays_early_finish').attr('disabled', 'disabled');
-                }
-            });
-        }
+        //         if(!thisStep.find('input.ays_early_finish').hasClass('ays_display_none')){
+        //             thisStep.find('input.ays_early_finish').attr('disabled', 'disabled');
+        //         }else if(!thisStep.find('i.ays_early_finish').hasClass('ays_display_none')){
+        //             thisStep.find('i.ays_early_finish').attr('disabled', 'disabled');
+        //         }
+        //     });
+        // }
 
-        setTimeout(function(){
-            _this.$el.css('border-radius', _this.dbOptions.quiz_border_radius + 'px');
-            _this.$el.find('.step').css('border-radius', _this.dbOptions.quiz_border_radius + 'px');
-        }, 400);
+        // setTimeout(function(){
+        //     _this.$el.css('border-radius', _this.dbOptions.quiz_border_radius + 'px');
+        //     _this.$el.find('.step').css('border-radius', _this.dbOptions.quiz_border_radius + 'px');
+        // }, 400);
 
-        $(e.target).parents('div.step').removeClass('active-step');
-        $(e.target).parents('div.step').next().addClass('active-step');
-        _this.current_fs = $this.parents('.step');
-        _this.next_fs = $this.parents('.step').next();
-        _this.startLiveProgressBar($this);
+        // $(e.target).parents('div.step').removeClass('active-step');
+        // $(e.target).parents('div.step').next().addClass('active-step');
+        // _this.current_fs = $this.parents('.step');
+        // _this.next_fs = $this.parents('.step').next();
+        // _this.startLiveProgressBar($this);
 
-        if(_this.dbOptions.enable_pass_count == 'on'){
-            _this.aysAnimateStep(_this.$el.data('questEffect'), _this.$el.find('.ays_quizn_ancnoxneri_qanak'));
-        }
-        if(_this.dbOptions.enable_rate_avg == 'on'){
-            _this.aysAnimateStep(_this.$el.data('questEffect'), _this.$el.find('.ays_quiz_rete_avg'));
-        }
-        _this.selects();
-        _this.answersField();
+        // if(_this.dbOptions.enable_pass_count == 'on'){
+        //     _this.aysAnimateStep(_this.$el.data('questEffect'), _this.$el.find('.ays_quizn_ancnoxneri_qanak'));
+        // }
+        // if(_this.dbOptions.enable_rate_avg == 'on'){
+        //     _this.aysAnimateStep(_this.$el.data('questEffect'), _this.$el.find('.ays_quiz_rete_avg'));
+        // }
+        // _this.selects();
+        // _this.answersField();
+        _this.activeStep( $(e.target), 'next', null);
     };
 
     AysSurveyPlugin.prototype.startTime = function (e) {

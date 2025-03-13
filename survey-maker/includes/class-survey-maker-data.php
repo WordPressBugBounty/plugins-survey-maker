@@ -371,6 +371,38 @@ class Survey_Maker_Data {
 
         // =======================  //  ======================= // ======================= // ======================= // ======================= //
 
+        // =============================================================
+        // =====================  Start page Tab  ======================
+        // ========================    START   =========================
+
+        
+            // Enable start page
+            $options[ $name_prefix . 'enable_start_page' ] = isset($options[ $name_prefix . 'enable_start_page' ]) ? $options[ $name_prefix . 'enable_start_page' ] : 'off';
+            $settings[ $name_prefix . 'enable_start_page' ] = (isset($options[ $name_prefix . 'enable_start_page' ]) && $options[ $name_prefix . 'enable_start_page' ] == 'on') ? true : false;
+
+            // Start page title
+            $settings[ $name_prefix . 'start_page_title' ]  = (isset($options[ $name_prefix . 'start_page_title' ]) &&  $options[ $name_prefix . 'start_page_title' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_title' ] ) : '';
+
+            // Start page description
+            $settings[ $name_prefix . 'start_page_description' ]  = (isset($options[ $name_prefix . 'start_page_description' ]) &&  $options[ $name_prefix . 'start_page_description' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'start_page_description' ] ) ) : '';
+
+            // Start button position
+            $settings[ $name_prefix . 'start_page_button_pos' ] = (isset($options[ $name_prefix . 'start_page_button_pos' ]) &&  $options[ $name_prefix . 'start_page_button_pos' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_button_pos' ] )  : 'left';
+
+            // Start page Background color
+            $settings[ $name_prefix . 'start_page_background_color' ] = (isset($options[ $name_prefix . 'start_page_background_color' ]) && $options[ $name_prefix . 'start_page_background_color' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'start_page_background_color' ] ) ) : '#fff';
+
+            // Start page Text Color
+            $settings[ $name_prefix . 'start_page_text_color' ] = (isset($options[ $name_prefix . 'start_page_text_color' ]) && $options[ $name_prefix . 'start_page_text_color' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'start_page_text_color' ] ) ) : '#333';
+
+            // Custom class for Start page container
+            $settings[ $name_prefix . 'start_page_custom_class' ] = (isset($options[ $name_prefix . 'start_page_custom_class' ]) && $options[ $name_prefix . 'start_page_custom_class' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_custom_class' ] ) ) : '';
+
+
+        // =============================================================
+        // =====================  Start page Tab  ======================
+        // ========================     END     ========================
+
 
         // =============================================================
         // ======================  Settings Tab  =======================
@@ -1312,7 +1344,8 @@ class Survey_Maker_Data {
         $ays_restart_survey_button  = (isset($settings_buttons_texts['restart_button']) && $settings_buttons_texts['restart_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['restart_button']) ) : 'Restart survey';
         $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['exit_button']) ) : 'Exit';
         $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['login_button']) ) : 'Log In';
-
+        $ays_start_button           = __('Start', "survey-maker");
+        
         $ays_next_button_text     = ($ays_next_button     === 'Next') ? __('Next', "survey-maker") : $ays_next_button;
         $ays_previous_button_text = ($ays_previous_button === 'Prev') ? __('Prev', "survey-maker") : $ays_previous_button;
         $ays_clear_button_text    = ($ays_clear_button    === 'Clear selection') ? __('Clear selection', "survey-maker") : $ays_clear_button;
@@ -1321,6 +1354,12 @@ class Survey_Maker_Data {
         $ays_exit_button_text     = ($ays_exit_button     === 'Exit') ? __('Exit', "survey-maker") : $ays_exit_button;
         $ays_login_button_text    = ($ays_login_button    === 'Log In') ? __('Log In', "survey-maker") : $ays_login_button;
 
+        if ($ays_start_button === 'Start') {
+            $ays_start_button_text = __('Start', "survey-maker");
+        }else{
+            $ays_start_button_text = $ays_start_button;
+        }
+
         $texts = array(
             'nextButton'         => $ays_next_button_text,
             'previousButton'     => $ays_previous_button_text,
@@ -1328,7 +1367,8 @@ class Survey_Maker_Data {
             'finishButton'       => $ays_finish_button_text,
             'restartButton'      => $ays_restart_button_text,
             'exitButton'         => $ays_exit_button_text,
-            'loginButton'        => $ays_login_button_text
+            'loginButton'        => $ays_login_button_text,
+            'startButton'        => $ays_start_button_text,
         );
         return $texts;
     }

@@ -1132,6 +1132,39 @@ class Survey_Maker_Public {
     	$content = array();
     	$content[] = '<div class="' . $this->html_class_prefix . 'sections">';
 
+        
+        if( $this->options[ $this->name_prefix . 'enable_start_page'] === true ){
+            $content[] = '<div class="' . $this->html_class_prefix . 'section ' . $this->html_class_prefix . 'section-start-page">';
+
+                $content[] = '<div class="' . $this->html_class_prefix . 'section-content ' . $this->options[ $this->name_prefix .'start_page_custom_class'] . '">';
+                    
+                    $content[] = '<div class="' . $this->html_class_prefix . 'section-header">';
+
+                        $content[] = '<div class="' . $this->html_class_prefix . 'section-title-row">';
+                            $content[] = '<span class="' . $this->html_class_prefix . 'section-title">' . stripslashes( $this->options[ $this->name_prefix .'start_page_title'] ) . '</span>';
+                        $content[] = '</div>';
+                        $survey_start_page_description_content = stripslashes( $this->options[ $this->name_prefix .'start_page_description']);
+                        $survey_start_page_description_content = $survey_start_page_description_content;
+                        
+                        $content[] = '<div class="' . $this->html_class_prefix . 'section-desc">' . $survey_start_page_description_content . '</div>';
+
+                        $content[] = '<div class="' . $this->html_class_prefix . 'section-buttons">';
+    
+                            $content[] = '<div class="' . $this->html_class_prefix . 'section-button-container" tabindex="0">';
+                                $content[] = '<div class="' . $this->html_class_prefix . 'section-button-content">';
+                                    $content[] = '<input type="button" class="' . $this->html_class_prefix . 'section-button ' . $this->html_class_prefix . 'start-button" value="'. $this->buttons_texts[ 'startButton' ] .'" />';
+                                $content[] = '</div>';
+                            $content[] = '</div>';
+    
+                        $content[] = '</div>';
+
+                    $content[] = '</div>';
+
+                $content[] = '</div>';
+
+            $content[] = '</div>';
+        }
+
         $survey_current_post_id = get_the_ID();
         $survey_current_post_author_email = get_the_author_meta('email');
         $survey_current_post_author_nickname = get_the_author_meta('user_nicename');
@@ -2476,6 +2509,18 @@ class Survey_Maker_Public {
                 break;
         }
 
+        switch($this->options[ $this->name_prefix . 'start_page_button_pos' ]){
+            case "left":
+                $survey_start_page_button_pos = 'justify-content: flex-start;';
+            break;
+            case "center":
+                $survey_start_page_button_pos = 'justify-content: center;';
+            break;
+            case "right":
+                $survey_start_page_button_pos = 'justify-content: flex-end;';
+            break;
+        }
+
         $answers_list_width = "width:initial;";
         $answers_list_direction = "";
         if($this->options[ $this->name_prefix . 'answers_view_alignment' ] == 'center' && $this->options[ $this->name_prefix . 'answers_view' ] == 'list'){
@@ -2512,6 +2557,21 @@ class Survey_Maker_Public {
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-header,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {
                 background-color: ' . $this->options[ $this->name_prefix . 'background_color' ] . ';
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section.' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-header {
+                background-color: ' . $this->options[ $this->name_prefix . 'start_page_background_color' ] . ';
+                color: ' . $this->options[ $this->name_prefix . 'start_page_text_color' ] . ';
+            }
+            
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section.' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-header *,
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section.' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-header .' . $this->html_class_prefix . 'section-title-row {
+                color: ' . $this->options[ $this->name_prefix . 'start_page_text_color' ] . ';
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-buttons {
+                display: flex;
+                '.$survey_start_page_button_pos.'
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {

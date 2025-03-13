@@ -651,6 +651,38 @@ class Surveys_List_Table extends WP_List_Table {
 
 
             // =============================================================
+            // =====================  Start page Tab  ======================
+            // ========================    START   =========================
+
+            
+                // Enable start page
+                $survey_enable_start_page = (isset( $_POST[ $name_prefix . 'survey_enable_start_page' ] ) && $_POST[ $name_prefix . 'survey_enable_start_page' ] == 'on') ? 'on' : 'off';
+
+                // Start page Title
+                $survey_start_page_title = isset( $_POST[ $name_prefix . 'survey_start_page_title' ] ) && $_POST[ $name_prefix . 'survey_start_page_title' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title' ] ) ) : '';
+
+                // Start page description
+                $survey_start_page_description = (isset( $_POST[ $name_prefix . 'survey_start_page_description' ] ) && $_POST[ $name_prefix . 'survey_start_page_description' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_start_page_description' ] ) : '';
+
+                // Start button position
+                $survey_start_page_button_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) : 'left';
+
+                // Start page Background color
+                $survey_start_page_background_color = (isset( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_background_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) ) : '#fff';
+
+                // Start page Text Color
+                $survey_start_page_text_color = (isset( $_POST[ $name_prefix . 'survey_start_page_text_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_text_color' ] ) ) : '#333';
+
+                // Start page Custom class
+                $survey_start_page_custom_class = (isset( $_POST[ $name_prefix . 'survey_start_page_custom_class' ] ) && $_POST[ $name_prefix . 'survey_start_page_custom_class' ] != '') ? stripslashes( esc_attr( $_POST[ $name_prefix . 'survey_start_page_custom_class' ] ) ) : '';
+            
+
+            // =============================================================
+            // ====================    Start page Tab    ===================
+            // ========================     END     ========================
+
+
+            // =============================================================
             // ======================  Settings Tab  =======================
             // ========================    START   =========================
 
@@ -1038,6 +1070,15 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_section_description_font_size_mobile' => $survey_section_description_font_size_mobile,
                 'survey_section_description_letter_spacing'   => $survey_section_description_letter_spacing,
                 'survey_section_description_letter_spacing_mobile' => $survey_section_description_letter_spacing_mobile,
+
+                // Start page tab
+                'survey_enable_start_page'          => $survey_enable_start_page,
+                'survey_start_page_title'           => $survey_start_page_title,
+                'survey_start_page_description'     => $survey_start_page_description,
+                'survey_start_page_button_pos'      => $survey_start_page_button_pos,
+                'survey_start_page_background_color'=> $survey_start_page_background_color,
+                'survey_start_page_text_color'      => $survey_start_page_text_color,
+                'survey_start_page_custom_class'    => $survey_start_page_custom_class,
 
                 // Settings Tab
                 'survey_show_title'                         => $survey_show_title,

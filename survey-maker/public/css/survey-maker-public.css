@@ -118,6 +118,13 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
     margin-top: 12px;
 }
 
+.ays-survey-container .ays-survey-section.ays-survey-section-start-page .ays-survey-section-header {
+   text-align: center;
+}
+
+.ays-survey-container .ays-survey-section.ays-survey-section-start-page .ays-survey-section-header .ays-survey-section-title-row {
+   justify-content: center;
+}
 
 .ays-survey-container .ays-survey-section .ays-survey-section-questions-count {
    font-family: Roboto,Arial,sans-serif;
