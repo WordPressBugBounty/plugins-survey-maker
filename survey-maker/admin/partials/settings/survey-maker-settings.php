@@ -62,6 +62,10 @@
             "type_name" => __("Date", "survey-maker") , 
             "type_version" => "free"
         ),  
+        "time"         => array(
+            "type_name" => __("Time", "survey-maker") , 
+            "type_version" => "free"
+        ),
         "yesorno" => array(
             "type_name" => __("Yes or No", "survey-maker") , 
             "type_version" => "free"
@@ -111,10 +115,6 @@
             "type_name" => __("Slider (Pro)", "survey-maker") , 
             "type_version" => "pro"
         ),
-        "time"         => array(
-            "type_name" => __("Time (Pro)", "survey-maker") , 
-            "type_version" => "pro"
-        ),  
         "date_time"    => array(
             "type_name" => __("Date and Time (Pro)", "survey-maker") , 
             "type_version" => "pro"

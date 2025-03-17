@@ -1131,6 +1131,7 @@ class Survey_Maker_Admin {
             'short_text',
             'number',
             'date',
+            'time',
             'star',
             'phone',
             'name',
@@ -1300,6 +1301,7 @@ class Survey_Maker_Admin {
             'short_text',
             'phone',
             'date',
+            'time',
             'star',
             'number',
             'name',
@@ -1319,6 +1321,13 @@ class Survey_Maker_Admin {
 
                     if( $individual_questions_result['user_answer'] != '' ){
                         $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = date( 'd . m . Y', strtotime(nl2br(htmlentities($individual_questions_result['user_answer']))) );
+                    }else{
+                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
+                    }
+                }
+                elseif( $individual_questions_result['type'] == 'time' ){
+                    if( $individual_questions_result['user_answer'] != '' ){
+                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = implode(" : ", explode( ":", $individual_questions_result['user_answer'] ));
                     }else{
                         $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
                     }

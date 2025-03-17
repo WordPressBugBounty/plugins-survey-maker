@@ -195,6 +195,7 @@ class Survey_Maker_Submissions_Summary
             'name',
             'email',
             'date',
+            'time',
         );
 
         $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-container" id="' . $this->html_class_prefix . 'submission-summary-container-' . $this->unique_id_in_class . '" data-id="' . $this->unique_id . '">';
@@ -225,7 +226,7 @@ class Survey_Maker_Submissions_Summary
                                 $content[] = '</div>';
 
                                 $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-question-content">';
-                                    if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) && $question_results[ $question['id'] ]['question_type'] != 'date' ):
+                                    if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) && $question_results[ $question['id'] ]['question_type'] != 'date' && $question_results[ $question['id'] ]['question_type'] != 'time' ):
                                         $content[] = '<div class="' . $this->html_class_prefix . 'submission-text-answers-div">';
                                             if( isset( $question_results[ $question['id'] ]['answers'] ) && !empty( $question_results[ $question['id'] ]['answers'] ) ):
                                                 if( isset( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) && !empty( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) ):
@@ -295,6 +296,53 @@ class Survey_Maker_Submissions_Summary
                                                                     $content[] = '</div>';
                                                                 $content[] = '</div>';
                                                             }
+                                                        }
+                                                    }
+                                                }
+                                            $content[] = '</div>';
+                                        $content[] = '</div>';
+                                    elseif( $question_results[ $question['id'] ]['question_type'] == 'time' ):
+                                        $content[] = '<div class="ays-survey-question-time-summary-wrapper">';
+                                            $content[] = '<div class="ays-survey-question-time-summary-wrap">';
+                                                if( isset( $question_results[ $question['id'] ]['answers'] ) && !empty( $question_results[ $question['id'] ]['answers'] ) ){
+                                                    if( isset( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) && !empty( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) ){
+                                                        $hours_array = array();
+                                                        foreach( $question_results[ $question['id'] ]['answers'][ $question['id'] ] as $aid => $answer ){
+                                                            $answer_hour_minutes = explode( ':', $answer );
+                                                            $answer_hour = isset($answer_hour_minutes[0]) && $answer_hour_minutes[0] != "" ? esc_attr($answer_hour_minutes[0]) : "00";
+                                                            $answer_minute = isset($answer_hour_minutes[1]) && $answer_hour_minutes[1] != "" ? esc_attr($answer_hour_minutes[1]) : "00";                                                            
+                                                            if( isset( $hours_array[ $answer_hour ] ) ){
+                                                                if( isset( $hours_array[ $answer_hour ][ $answer_minute ] ) ){
+                                                                    $hours_array[ $answer_hour ][ $answer_minute ] += 1;
+                                                                }else{
+                                                                    $hours_array[ $answer_hour ][ $answer_minute ] = 1;
+                                                                }
+                                                            }else{
+                                                                $hours_array[ $answer_hour ][ $answer_minute ] = 1;
+                                                            }
+                                                        }
+                                                        ksort($hours_array);
+                                                        foreach( $hours_array as $k_hours => $v_hours ){
+                                                                
+                                                            $content[] = '<div class="ays-survey-question-time-summary-row">';
+                                                                $content[] = '<div class="ays-survey-question-time-summary-hour"><span class="ays-survey-question-time-summary-hour-all">'.$k_hours.' :</span></div>';
+                                                                    $content[] = '<div class="ays-survey-question-time-summary-hours">';
+                                                                        $content[] = '<div class="ays-survey-question-time-summary-hours-row">';
+                                                                                foreach( $v_hours as $k_hour => $count ){
+                                                                                    if( $count == 1 ){
+                                                                                        $content[] = '<div class="ays-survey-question-time-summary-hours-row-hour">
+                                                                                                        <span>'. esc_html( $k_hour ) .'</span>
+                                                                                                    </div>';
+                                                                                    }else{
+                                                                                        $content[] = '<div class="ays-survey-question-time-summary-hours-row-hour ays-survey-question-time-summary-hours-row-hour-with-count">
+                                                                                                        <span>'. esc_html( $k_hour ) .'</span>
+                                                                                                        <div class="ays-survey-question-time-summary-hours-row-hour-count">'. esc_html( $count ) .'</div>';
+                                                                                        $content[] = '</div>';
+                                                                                    }
+                                                                                }
+                                                                    $content[] = '</div>';
+                                                                $content[] = '</div>';
+                                                            $content[] = '</div>';
                                                         }
                                                     }
                                                 }

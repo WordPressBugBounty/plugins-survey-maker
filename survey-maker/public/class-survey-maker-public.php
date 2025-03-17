@@ -93,6 +93,7 @@ class Survey_Maker_Public {
         wp_enqueue_style( $this->plugin_name . "-dropdown", plugin_dir_url( __FILE__ ) . 'css/dropdown.min.css', array(), $this->version, 'all' );
         wp_enqueue_style( $this->plugin_name . '-select2', plugin_dir_url(__FILE__) . 'css/survey-maker-select2.min.css', array(), $this->version, 'all');
 		wp_enqueue_style( $this->plugin_name . "-loaders", plugin_dir_url( __FILE__ ) . 'css/loaders.css', array(), $this->version, 'all' );
+        wp_enqueue_style( $this->plugin_name . '-timepicker', plugin_dir_url( __FILE__ ) . '/css/survey-maker-timepicker.css', array(), $this->version, 'all');
 
     }
     
@@ -128,6 +129,8 @@ class Survey_Maker_Public {
             wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/survey-maker-public.js', array( 'jquery' ), $this->version, false );
             wp_enqueue_script( $this->plugin_name . '-sweetalert-js', SURVEY_MAKER_PUBLIC_URL . '/js/survey-maker-sweetalert2.all.min.js', array('jquery'), $this->version, true );
             wp_enqueue_script( $this->plugin_name . '-ajax', plugin_dir_url( __FILE__ ) . 'js/survey-maker-public-ajax.js', array( 'jquery' ), $this->version, false );
+            wp_enqueue_script( $this->plugin_name . "-timepicker", plugin_dir_url(__FILE__) . '/js/survey-maker-timepicker.js', array( 'jquery' ), $this->version, false );
+
             wp_localize_script( $this->plugin_name . '-plugin', 'aysSurveyMakerAjaxPublic', array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'warningIcon' => SURVEY_MAKER_PUBLIC_URL . "/images/warning.svg",
@@ -597,6 +600,7 @@ class Survey_Maker_Public {
                 case "number":
                 case "phone":
                 case "date":
+                case "time":
                     $user_answer = $question_answer;
                     $answer_id = 0;
                     break;
@@ -1479,6 +1483,7 @@ class Survey_Maker_Public {
             "select",
             "star",
             "date",
+            "time",
             "text",
             "short_text",
             "number",
@@ -2281,6 +2286,37 @@ class Survey_Maker_Public {
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box ' . $this->html_class_prefix . 'question-date-input-box">';
 
                     $content[] = '<input type="date" class="' . $minimal_class . ' ' . $this->html_class_prefix . 'input" type="text" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]"  tabindex="0">';
+
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+        $content[] = '</div>';
+
+        $content = implode( '', $content );
+
+        return $content;
+    }
+
+    public function ays_survey_question_type_TIME_html( $question ){
+        $content = array();
+
+        // $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-date-input ' . $this->html_class_prefix . 'question-input';
+        // if( $minimal_theme ){
+        //     $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input " . $this->html_class_prefix."minimal-theme-input-date";
+        // }
+
+        $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+
+            $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-time-box">';
+                $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box ' . $this->html_class_prefix . 'question-time-input-box">';
+
+                    $content[] = '<input class="' . $minimal_class . ' ' . $this->html_class_prefix . 'input ays-survey-timepicker" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" placeholder="00:00" tabindex="0">';
+
+                    // if( ! $minimal_theme ){
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                        $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                    // }
 
                 $content[] = '</div>';
             $content[] = '</div>';

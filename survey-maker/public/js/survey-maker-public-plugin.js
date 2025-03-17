@@ -391,6 +391,11 @@
             _this.confirmBeforeUnload = true;
         });
 
+        var timeInput = _this.$el.find('.' + _this.htmlClassPrefix + 'timepicker');
+        if(timeInput.length > 0){
+            _this.$el.find('.' + _this.htmlClassPrefix + 'timepicker').timepicker();
+        }
+
         _this.aysSurveyonTabPress();
         
     }
@@ -1080,7 +1085,7 @@
             for (var i = 0; i < requiredQuestions.length; i++) {
                 var item = requiredQuestions.eq(i);
                 var checkMinVotes = requiredQuestions.eq(i).data('isMin');
-                if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' || item.data('type') == 'date'){
+                if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' || item.data('type') == 'date' || item.data('type') == 'time'){
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
                     if( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() == '' ){
                         errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';

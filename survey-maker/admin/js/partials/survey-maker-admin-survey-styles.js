@@ -222,8 +222,8 @@
                     defaultLoaderColor = defaultColors.classicLight.loaderColor;
                     defaultButtonsTextColor = defaultColors.classicLight.buttonsTextColor;
                     defaultButtonsBgColor = defaultColors.classicLight.buttonsBgColor;
-                    defaultStartPageBgColor = defaultColors.business.startPageBgColor;
-                    defaultStartPageTextColor = defaultColors.business.startPageTextColor;
+                    defaultStartPageBgColor = defaultColors.classicLight.startPageBgColor;
+                    defaultStartPageTextColor = defaultColors.classicLight.startPageTextColor;
                     defaultTitleTShColor = defaultColors.classicLight.titleTextShadColor;
                     defaultPaginationTextColor = defaultColors.classicLight.paginationTextColor;
                     defaultFullScreenButtonColor = defaultColors.classicLight.fullScreenButtonColor;

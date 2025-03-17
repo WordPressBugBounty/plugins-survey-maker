@@ -1545,6 +1545,7 @@ class Survey_Maker_Data {
             'linear_scale',
             'star',
             'date',
+            'time',
         );
 
         //Question types different charts
@@ -1695,6 +1696,7 @@ class Survey_Maker_Data {
             'linear_scale',
             'star',
             'date',
+            'time',
         );
 
         foreach ($individual_questions_results as $key => $individual_questions_result) {
@@ -1707,6 +1709,13 @@ class Survey_Maker_Data {
                 if( $individual_questions_result['type'] == 'date' ){
                     if( $individual_questions_result['user_answer'] != '' ){
                         $question_answer_id[ $individual_questions_result['question_id'] ] = date( 'd . m . Y', strtotime( $individual_questions_result['user_answer'] ) );
+                    }else{
+                        $question_answer_id[ $individual_questions_result['question_id'] ] = '';
+                    }
+                }
+                elseif( $individual_questions_result['type'] == 'time' ){
+                    if( $individual_questions_result['user_answer'] != '' ){
+                        $question_answer_id[ $individual_questions_result['question_id'] ] = implode(" : ", explode( ":", $individual_questions_result['user_answer'] ));
                     }else{
                         $question_answer_id[ $individual_questions_result['question_id'] ] = '';
                     }

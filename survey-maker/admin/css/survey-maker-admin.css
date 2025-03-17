@@ -391,6 +391,7 @@ strong, b {
 .row input[type=password],
 .row input[type=color], 
 .row input[type=date], 
+.row input[type=time],
 .row input[type=datetime],
 .row input[type=datetime-local], 
 .row input[type=email],
