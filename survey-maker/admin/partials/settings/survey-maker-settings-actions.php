@@ -78,6 +78,7 @@ class Survey_Maker_Settings_Actions {
             $finish_button          = (isset($_REQUEST[$name_prefix .'survey_finish_button']) && $_REQUEST[$name_prefix .'survey_finish_button'] != '') ? stripslashes( sanitize_text_field($_REQUEST[$name_prefix .'survey_finish_button']) ) : 'Finish';
             $exit_button            = (isset($_REQUEST[$name_prefix .'survey_exit_button']) && $_REQUEST[$name_prefix .'survey_exit_button'] != '') ? stripslashes( sanitize_text_field($_REQUEST[$name_prefix .'survey_exit_button']) ) : 'Exit';
             $login_button           = (isset($_REQUEST[$name_prefix .'survey_login_button']) && $_REQUEST[$name_prefix .'survey_login_button'] != '') ? stripslashes( sanitize_text_field($_REQUEST[$name_prefix .'survey_login_button']) ) : 'Log in';
+            $start_button           = (isset($_REQUEST[$name_prefix .'survey_start_button']) && $_REQUEST[$name_prefix .'survey_start_button'] != '') ? stripslashes( sanitize_text_field( $_REQUEST[$name_prefix .'survey_start_button'] )) : 'Start';
 
             $buttons_texts = array(
                 'next_button'           => $next_button,
@@ -86,7 +87,8 @@ class Survey_Maker_Settings_Actions {
                 'clear_button'          => $clear_button,
                 'finish_button'         => $finish_button,
                 'exit_button'           => $exit_button,
-                'login_button'          => $login_button
+                'login_button'          => $login_button,
+                'start_button'          => $start_button,
             );
 
             $options = array(

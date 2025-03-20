@@ -211,6 +211,7 @@
     $survey_finish_button   = (isset($buttons_texts['finish_button']) && $buttons_texts['finish_button'] != '') ? stripslashes( esc_attr($buttons_texts['finish_button']) ) : 'Finish';
     $survey_exit_button     = (isset($buttons_texts['exit_button']) && $buttons_texts['exit_button'] != '') ? stripslashes( esc_attr($buttons_texts['exit_button']) ) : 'Exit';
     $survey_login_button    = (isset($buttons_texts['login_button']) && $buttons_texts['login_button'] != '') ? stripslashes( esc_attr($buttons_texts['login_button']) ) : 'Log In';
+    $survey_start_button    = (isset($buttons_texts['start_button']) && $buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $buttons_texts['start_button'] ) ) : 'Start';
 
     $default_all_submissions_columns = array(
         'User Name',
@@ -966,6 +967,7 @@
                                 <input type="text" id="ays_survey_wrong_shortcode_text" name="ays_survey_wrong_shortcode_text" class="ays-text-input"  value='<?php echo esc_attr($wrong_shortcode_text); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_email_validation_error_text">
@@ -979,6 +981,7 @@
                                 <input type="text" id="ays_survey_email_validation_error_text" name="ays_survey_email_validation_error_text" class="ays-text-input"  value='<?php echo esc_attr($email_validation_error_text); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_redirecting_after_text">
@@ -992,6 +995,7 @@
                                 <input type="text" id="ays_survey_redirecting_after_text" name="ays_survey_redirecting_after_text" class="ays-text-input" value='<?php echo esc_attr($redirecting_after_text); ?>'>
                             </div>
                         </div>
+                        <hr>
 
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1019,6 +1023,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1045,6 +1050,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1071,6 +1077,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1097,6 +1104,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1123,6 +1131,7 @@
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1174,6 +1183,7 @@
                                 <input type="text" id="ays_survey_next_button" name="ays_survey_next_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_next_button); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_previous_button">
@@ -1184,6 +1194,7 @@
                                 <input type="text" id="ays_survey_previous_button" name="ays_survey_previous_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_previous_button); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_clear_button">
@@ -1194,6 +1205,7 @@
                                 <input type="text" id="ays_survey_clear_button" name="ays_survey_clear_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_clear_button); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_finish_button">
@@ -1204,6 +1216,7 @@
                                 <input type="text" id="ays_survey_finish_button" name="ays_survey_finish_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_finish_button); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_restart_button">
@@ -1214,6 +1227,7 @@
                                 <input type="text" id="ays_survey_restart_button" name="ays_survey_restart_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_restart_button); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_exit_button">
@@ -1224,6 +1238,7 @@
                                 <input type="text" id="ays_survey_exit_button" name="ays_survey_exit_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_exit_button); ?>'>
                             </div>
                         </div>
+                        <hr>
                         <div class="form-group row">
                             <div class="col-sm-3">
                                 <label for="ays_survey_login_button">
@@ -1233,7 +1248,19 @@
                             <div class="col-sm-9">
                                 <input type="text" id="ays_survey_login_button" name="ays_survey_login_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_login_button); ?>'>
                             </div>
+                        </div>                        
+                        <hr>
+                        <div class="form-group row">
+                            <div class="col-sm-3">
+                                <label for="ays_survey_start_button">
+                                    <?php echo esc_html__( "Start button", "survey-maker" ); ?>
+                                </label>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" id="ays_survey_start_button" name="ays_survey_start_button" class="ays-text-input ays-text-input-short"  value='<?php echo esc_attr($survey_start_button); ?>'>
+                            </div>
                         </div>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1256,30 +1283,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group row" style="margin:0px;">
-                            <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                                <div class="ays-pro-features-v2-small-buttons-box">
-                                    <div class="ays-pro-features-v2-video-button"></div>
-                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                        <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                        <div class="ays-pro-features-v2-upgrade-text">
-                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-3">
-                                        <label for="ays_survey_start_button">
-                                            <?php echo esc_html__( "Start button", "survey-maker" ); ?>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="ays-text-input ays-text-input-short"  value='<?php echo esc_html__("Start button", "survey-maker"); ?>'>
-                                    </div>
-                                </div>          
-                            </div>          
-                        </div>          
+                        </div>        
                     </div>
                     <div id="tab5" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab5') ? 'ays-survey-tab-content-active' : ''; ?>">
                         <p class="ays-subtitle">

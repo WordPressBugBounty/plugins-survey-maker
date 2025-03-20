@@ -1344,7 +1344,7 @@ class Survey_Maker_Data {
         $ays_restart_survey_button  = (isset($settings_buttons_texts['restart_button']) && $settings_buttons_texts['restart_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['restart_button']) ) : 'Restart survey';
         $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['exit_button']) ) : 'Exit';
         $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['login_button']) ) : 'Log In';
-        $ays_start_button           = __('Start', "survey-maker");
+        $ays_start_button           = (isset($settings_buttons_texts['start_button']) && $settings_buttons_texts['start_button'] != '') ? stripslashes( esc_attr( $settings_buttons_texts['start_button'] ) ) : 'Start';
         
         $ays_next_button_text     = ($ays_next_button     === 'Next') ? __('Next', "survey-maker") : $ays_next_button;
         $ays_previous_button_text = ($ays_previous_button === 'Prev') ? __('Prev', "survey-maker") : $ays_previous_button;
