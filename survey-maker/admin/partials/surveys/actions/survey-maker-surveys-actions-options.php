@@ -902,6 +902,9 @@
         
         // Start button position
         $survey_start_page_button_pos = (isset($options[ $name_prefix . 'start_page_button_pos' ]) && $options[ $name_prefix . 'start_page_button_pos' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_button_pos' ] ) ) : 'left';
+        // Start button position mobile
+        $options[ $name_prefix . 'start_page_button_pos_mobile' ] = isset($options[ $name_prefix . 'start_page_button_pos_mobile' ]) ? $options[ $name_prefix . 'start_page_button_pos_mobile' ] : $survey_start_page_button_pos;
+        $survey_start_page_button_pos_mobile = (isset($options[ $name_prefix . 'start_page_button_pos_mobile' ]) && $options[ $name_prefix . 'start_page_button_pos_mobile' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_button_pos_mobile' ] ) ) : 'left';
 
         // Start page Background color
         $survey_start_page_background_color = (isset($options[ $name_prefix . 'start_page_background_color' ]) && $options[ $name_prefix . 'start_page_background_color' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'start_page_background_color' ] ) ) : '#fff';

@@ -666,6 +666,8 @@ class Surveys_List_Table extends WP_List_Table {
 
                 // Start button position
                 $survey_start_page_button_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) : 'left';
+                // Start button position mobile
+                $survey_start_page_button_pos_mobile = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] ) : 'left';
 
                 // Start page Background color
                 $survey_start_page_background_color = (isset( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_background_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) ) : '#fff';
@@ -1076,6 +1078,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_start_page_title'           => $survey_start_page_title,
                 'survey_start_page_description'     => $survey_start_page_description,
                 'survey_start_page_button_pos'      => $survey_start_page_button_pos,
+                'survey_start_page_button_pos_mobile' => $survey_start_page_button_pos_mobile,
                 'survey_start_page_background_color'=> $survey_start_page_background_color,
                 'survey_start_page_text_color'      => $survey_start_page_text_color,
                 'survey_start_page_custom_class'    => $survey_start_page_custom_class,

@@ -388,6 +388,9 @@ class Survey_Maker_Data {
 
             // Start button position
             $settings[ $name_prefix . 'start_page_button_pos' ] = (isset($options[ $name_prefix . 'start_page_button_pos' ]) &&  $options[ $name_prefix . 'start_page_button_pos' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_button_pos' ] )  : 'left';
+            // Start button position mobile
+            $options[ $name_prefix . 'start_page_button_pos_mobile' ] = isset($options[ $name_prefix . 'start_page_button_pos_mobile' ]) ? $options[ $name_prefix . 'start_page_button_pos_mobile' ] : $settings[ $name_prefix . 'start_page_button_pos' ];
+            $settings[ $name_prefix . 'start_page_button_pos_mobile' ] = (isset($options[ $name_prefix . 'start_page_button_pos_mobile' ]) &&  $options[ $name_prefix . 'start_page_button_pos_mobile' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_button_pos_mobile' ] )  : 'left';
 
             // Start page Background color
             $settings[ $name_prefix . 'start_page_background_color' ] = (isset($options[ $name_prefix . 'start_page_background_color' ]) && $options[ $name_prefix . 'start_page_background_color' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'start_page_background_color' ] ) ) : '#fff';

@@ -3336,6 +3336,19 @@ class Survey_Maker_Public {
                 break;
         }
 
+        
+        switch($this->options[ $this->name_prefix . 'start_page_button_pos_mobile' ]){
+            case "left":
+                $survey_start_page_button_pos_mobile = 'justify-content: flex-start;';
+            break;
+            case "center":
+                $survey_start_page_button_pos_mobile = 'justify-content: center;';
+            break;
+            case "right":
+                $survey_start_page_button_pos_mobile = 'justify-content: flex-end;';
+            break;
+        }
+
         $survey_pagination_positioning_mobile = isset($this->options[ $this->name_prefix . 'pagination_positioning_mobile' ]) ? $this->options[ $this->name_prefix . 'pagination_positioning_mobile' ] : 'none';
         $pagination_positioning_mobile = "row";
         // $pagination_number_height = "";
@@ -3505,6 +3518,10 @@ class Survey_Maker_Public {
             }
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'answer-image {
                 object-fit: ' . $this->options[ $this->name_prefix . 'answers_object_fit_mobile' ] . ';
+            }
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-buttons {
+                display: flex;
+                '.$survey_start_page_button_pos_mobile.'
             }
         }';
         $content .= '
