@@ -57,5 +57,8 @@ if( get_option('ays_survey_maker_upgrade_plugin','false') === 'false' ){
 
     delete_option( "ays_survey_db_version");
     delete_option( "ays_survey_maker_upgrade_plugin");
+    delete_option('survey_maker_first_time_activation_page');
+    delete_option('survey_maker_agree_terms');
+    delete_option('survey_maker_show_agree_terms');
     unregister_post_type( 'ays-survey-maker' );
 }

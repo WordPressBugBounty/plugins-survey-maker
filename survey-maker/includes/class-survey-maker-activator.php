@@ -873,6 +873,12 @@ class Survey_Maker_Activator {
 
     public static function ays_survey_update_db_check() {
         global $ays_survey_db_version;
+		$is_plugin_downloaded = get_option('ays_survey_db_version', false) === false;
+
+        if ($is_plugin_downloaded) {
+			update_option('survey_maker_first_time_activation_page', true);
+		}
+
         if ( get_site_option( 'ays_survey_db_version' ) != $ays_survey_db_version ) {
             self::activate();
         }

@@ -1,0 +1,208 @@
+/* Welcome page start */
+
+#survey-maker-welcome {
+    /* border-top: 3px solid #f88b07; */
+    color: #555;
+    padding-top: 210px;
+}
+  
+@media (max-width: 767px) {
+    #survey-maker-welcome {
+        padding-top: 64px;
+    }
+}
+  
+#survey-maker-welcome *,
+#survey-maker-welcome *::before,
+#survey-maker-welcome *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+  
+#survey-maker-welcome .survey-maker-welcome-container {
+    margin: 0 auto;
+    max-width: 516px;
+    padding: 0;
+}
+  
+#survey-maker-welcome .survey-maker-welcome-block {
+    padding: 40px 0;
+}
+  
+@media (max-width: 767px) {
+    #survey-maker-welcome .survey-maker-welcome-block {
+        padding: 20px;
+    }
+}
+  
+#survey-maker-welcome img {
+    max-width: 100%;
+    height: auto;
+}
+  
+#survey-maker-welcome h1 {
+    color: #222;
+    font-size: 20px;
+    text-align: center;
+    margin: 0 0 16px 0;
+    font-weight: 700;
+}
+  
+#survey-maker-welcome h6 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    /* text-align: center; */
+    margin: 0;
+    color: #000000;
+}
+  
+#survey-maker-welcome .survey-maker-welcome-button-wrap {
+    /* max-width: 590px; */
+    margin: 0 auto 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 15px;
+}
+
+#survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-left a {
+    background-color: #83ABED;
+    border: 1px solid #83ABED;
+    color: #000000;
+}
+
+#survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-left a:hover {
+    background-color: #7092ca;
+}
+
+
+#survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-right a {
+    background: #EEEEEE;
+    border: 1px solid #CCCCCC;
+    color: #666666;
+}
+
+#survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-right a:hover {
+    background-color: #d7d7d7;
+}
+
+#survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-left a,
+#survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-right a{
+    
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 28px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+  
+@media (max-width: 767px) {
+    #survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-left {
+        padding: 0;
+        margin-bottom: 20px;
+    }
+}
+
+button.survey-maker-tu-agree:hover {
+    background: #3A99FF;
+}
+  
+@media (max-width: 767px) {
+
+    #survey-maker-welcome .survey-maker-welcome-button-wrap{
+        justify-content: center;
+    }
+
+    #survey-maker-welcome .survey-maker-welcome-button-wrap .survey-maker-welcome-right {
+        padding: 0;
+    }
+}
+  
+#survey-maker-welcome .survey-maker-welcome-intro {
+    background-color: #fff;
+    /* border: 2px solid #e1e1e1; */
+    border-radius: 10px;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 50px 32px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    /* max-width: 570px; */
+}
+  
+#survey-maker-welcome .survey-maker-welcome-intro .survey-maker-welcome-logo {
+    border-radius: 50%;
+    height: 110px;
+    width: 110px;
+    position: absolute;
+    top: -58px;
+    left: 50%;
+    margin-left: -55px;
+    border: 4px solid #ffffff;
+}
+
+.survey-maker-welcome-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+  
+.survey-maker-welcome-modal-content {
+    position: relative;
+    max-width: 700px;
+    height: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.survey-maker-welcome-modal-content iframe{
+    width: 100%;
+}
+
+.survey-maker-welcome-modal-close {
+    position: absolute;
+    top: 0;
+    right: 3px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #000;
+}
+
+button.survey-maker-tu-cancel {
+    border-radius: 8px;
+    padding: 10px 52px;
+    border: 0;
+    color: #00000066;
+    background: transparent;
+    transition: .3s;
+    font-size: 16px;    
+    font-weight: 500;
+}
+
+button.survey-maker-tu-cancel:hover {
+    background: #2915151A;
+}
+button.survey-maker-tu-agree {
+    border-radius: 8px;
+    padding: 10px 14px;
+    background-color: #007BFF;
+    border: 0;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+/* Welcome page end */

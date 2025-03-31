@@ -123,6 +123,11 @@ class Survey_Maker {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-survey-maker-admin.php';
 
 		/**
+         * The class responsible for showing Poll Maker Welcome page.
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-survey-maker-ays-welcome.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */

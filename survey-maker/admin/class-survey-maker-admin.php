@@ -204,6 +204,12 @@ class Survey_Maker_Admin {
         $version2 = '5.5';
         $versionCompare = $this->aysSurveyMakerVersionCompare($version1, $operator, $version2);
 
+        $check_terms_agreement = get_option('survey_maker_agree_terms');
+        
+        if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
+            wp_enqueue_script( $this->plugin_name.'-hotjar', plugin_dir_url(__FILE__) . 'js/extras/survey-maker-hotjar.js', array(), $this->version, false);
+        }
+
         if ($versionCompare) {
             wp_enqueue_script( $this->plugin_name.'-wp-load-scripts', plugin_dir_url(__FILE__) . 'js/survey-maker-wp-load-scripts.js', array(), $this->version, true);
         }
