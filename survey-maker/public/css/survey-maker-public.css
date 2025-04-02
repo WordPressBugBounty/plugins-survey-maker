@@ -970,6 +970,16 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
    width: 100% !important;
 }
 
+.ays-survey-container .ays-survey-date-and-time-answer{
+   width: 100% !important;
+}
+
+.ays-survey-container .ays-survey-question-box.ays-survey-question-date-time-box .ays-survey-date-time-inner-box{
+   display: flex;
+   flex-wrap: wrap;
+   gap: 10px;
+}
+
 .ays-survey-container .ays-survey-section .ays-survey-question-select-conteiner .select2-container {
    display: block;
    width: 100%!important;

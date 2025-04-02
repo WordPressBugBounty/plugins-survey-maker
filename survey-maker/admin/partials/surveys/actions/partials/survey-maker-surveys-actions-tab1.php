@@ -269,7 +269,6 @@
                                                         <option value="slider_list" disabled>Slider List (Pro)</option>
                                                         <option value="linear_scale" disabled>Linear Scale (Pro)</option>
                                                         <option value="slider" disabled>Slider (Pro)</option>
-                                                        <option value="date_time" disabled>Date and Time (Pro)</option>
                                                         <option value="uplaod" disabled>Upload (Pro)</option>
                                                         <option value="hidden" disabled>Hidden (Pro)</option>
                                                         <option value="html" disabled>HTML (Pro)</option>
@@ -618,9 +617,24 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            <?php elseif($survey_default_type == 'date_time'): ?>
+                                                <div class="ays-survey-question-types_date_time">
+                                                    <div class="ays-survey-answer-row" data-id="1">
+                                                        <div class="ays-survey-question-types-conteiner">
+                                                            <div class="ays-survey-question-types-box isDisabled">
+                                                                <div class="ays-survey-question-types-box-body">
+                                                                    <div class="ays-survey-answer-box ays_survey_time">
+                                                                        <input type="text" autocomplete="off" tabindex="0" value="Month, day, year, hour, minute" disabled="" dir="auto">
+                                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             <?php else :?>
                                             <div class="ays-survey-question-types">
-                                                <div class="ays-survey-answer-row" data-id="1" <?php echo $survey_default_type == 'star' || $survey_default_type == 'date' || $survey_default_type == 'time' ? 'style="display:none;"' : '' ;?>>
+                                                <div class="ays-survey-answer-row" data-id="1" <?php echo $survey_default_type == 'star' || $survey_default_type == 'date' || $survey_default_type == 'time' || $survey_default_type == 'date_time' ? 'style="display:none;"' : '' ;?>>
                                                     <div class="ays-survey-question-types-conteiner">
                                                         <div class="ays-survey-question-types-box isDisabled <?php echo esc_attr($survey_default_type); ?>">
                                                             <div class="ays-survey-question-types-box-body">
@@ -636,7 +650,7 @@
                                             </div>
                                             <?php endif;?>
                                         </div>
-                                        <div class="ays-survey-other-answer-and-actions-row" <?php echo $survey_default_type == 'star' || $survey_default_type == 'date' || $survey_default_type == 'time' ? 'style="display:none;"' : '' ;?>>
+                                        <div class="ays-survey-other-answer-and-actions-row" <?php echo $survey_default_type == 'star' || $survey_default_type == 'date' || $survey_default_type == 'time' || $survey_default_type == 'date_time' ? 'style="display:none;"' : '' ;?>>
                                             <?php if( !in_array( $survey_default_type, $text_question_types )): ?>
                                             <div class="ays-survey-answer-row ays-survey-other-answer-row" style="display: none;">
                                                 <div class="ays-survey-answer-wrap">
@@ -1219,7 +1233,6 @@
                                                                     <option value="slider_list" disabled>Slider List (Pro)</option>
                                                                     <option value="linear_scale" disabled>Linear Scale (Pro)</option>
                                                                     <option value="slider" disabled>Slider (Pro)</option>
-                                                                    <option value="date_time" disabled>Date and Time (Pro)</option>
                                                                     <option value="uplaod" disabled>Upload (Pro)</option>
                                                                     <option value="hidden" disabled>Hidden (Pro)</option>
                                                                     <option value="html" disabled>HTML (Pro)</option>
@@ -1314,7 +1327,7 @@
                                                     foreach ($question['answers'] as $answer_key => $answer):
                                                     ?>
                                                     <!-- Answers start -->
-                                                    <div class="ays-survey-answer-row" data-id="<?php echo esc_attr($answer['id']); ?>" <?php echo ($selected_question_type == 'date' || $selected_question_type == 'time' || $selected_question_type == 'star') ? 'style="display:none;"' : '' ?>>
+                                                    <div class="ays-survey-answer-row" data-id="<?php echo esc_attr($answer['id']); ?>" <?php echo ($selected_question_type == 'date' || $selected_question_type == 'time' || $selected_question_type == 'date_time' || $selected_question_type == 'star') ? 'style="display:none;"' : '' ?>>
                                                         <div class="ays-survey-answer-wrap">
                                                             <div class="ays-survey-answer-dlg-dragHandle">
                                                                 <div class="ays-survey-icons ays-survey-icons-hidden">
@@ -1515,6 +1528,23 @@
                                                     </div>
                                                 </div>
                                                 <?php
+                                                elseif($question['type'] == 'date_time'):
+                                                ?>
+                                                <div class="ays-survey-question-types_date_time">
+                                                    <div class="ays-survey-answer-row" data-id="1">
+                                                        <div class="ays-survey-question-types-conteiner">
+                                                            <div class="ays-survey-question-types-box isDisabled">
+                                                                <div class="ays-survey-question-types-box-body">
+                                                                    <div class="ays-survey-answer-box ays_survey_time">
+                                                                        <input type="text" autocomplete="off" tabindex="0" value="Month, day, year, hour, minute" disabled="" dir="auto">
+                                                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <?php
                                                 endif;
                                                 ?>
                                                 <div class="ays-survey-other-answer-and-actions-row">
@@ -1564,7 +1594,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="ays-survey-answer-row" <?php echo $question['type'] == 'star' || $question['type'] == 'date' || $question['type'] == 'time' ? 'style="display:none;"' : '' ;?> >
+                                                    <div class="ays-survey-answer-row" <?php echo $question['type'] == 'star' || $question['type'] == 'date' || $question['type'] == 'time' || $question['type'] == 'date_time' ? 'style="display:none;"' : '' ;?> >
                                                         <div class="ays-survey-answer-wrap">
                                                             <div class="ays-survey-answer-dlg-dragHandle" >
                                                                 <div class="ays-survey-icons invisible">
@@ -2138,7 +2168,6 @@
                                             <option value="slider_list" disabled>Slider List (Pro)</option>
                                             <option value="linear_scale" disabled>Linear Scale (Pro)</option>
                                             <option value="slider" disabled>Slider (Pro)</option>
-                                            <option value="date_time" disabled>Date and Time (Pro)</option>
                                             <option value="uplaod" disabled>Upload (Pro)</option>
                                             <option value="hidden" disabled>Hidden (Pro)</option>
                                             <option value="html" disabled>HTML (Pro)</option>
@@ -2815,6 +2844,23 @@
                     </div>
                 </div>
                 <!-- Question type time end -->
+
+                <!-- Question type date and time starting  -->
+                <div class="ays-survey-question-types_date_time">
+                    <div class="ays-survey-answer-row" data-id="1">
+                        <div class="ays-survey-question-types-conteiner">
+                            <div class="ays-survey-question-types-box isDisabled">
+                                <div class="ays-survey-question-types-box-body">
+                                    <div class="ays-survey-answer-box ays_survey_time">
+                                        <input type="text" autocomplete="off" tabindex="0" value="Month, day, year, hour, minute" disabled="" dir="auto">
+                                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Question type date and time end -->
 
                 <!-- Question Type Yes or No clone Start -->
                 <div class="ays-survey-question-type-yes-or-no">

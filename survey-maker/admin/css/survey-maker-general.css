@@ -1986,10 +1986,12 @@ textarea.ays-survey-question-input-textarea {
     left: -15px;
 }
 
-.ays_survey_date {
+.ays_survey_date,
+.ays_survey_time {
     margin-left:20px;
 }
-.ays_survey_date > i {
+.ays_survey_date > i,
+.ays_survey_time > i {
     font-size:20px;color: gray;
 }
 

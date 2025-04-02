@@ -1085,8 +1085,37 @@
             for (var i = 0; i < requiredQuestions.length; i++) {
                 var item = requiredQuestions.eq(i);
                 var checkMinVotes = requiredQuestions.eq(i).data('isMin');
-                if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' || item.data('type') == 'date' || item.data('type') == 'time'){
+                if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' || item.data('type') == 'date' || item.data('type') == 'time' || item.data('type') == 'date_time'){
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
+
+                    if(item.data('type') == 'date_time'){
+                        var dateTimeInps = item.find( '.' + _this.htmlClassPrefix + 'input' );
+                        var dateTimeInps = item.find( '.' + _this.htmlClassPrefix + 'input:not(.' + _this.htmlClassPrefix + 'not-required-field)' );
+                        var dateTimeChecker = true;
+                        dateTimeInps.each(function(e,i){
+                            if($(i).val() == ''){
+                                dateTimeChecker = false;
+                                
+                                if($(dateTimeInps[0]).val() == ''){
+                                    $(dateTimeInps[0]).focus();
+                                }
+                                else{
+                                    $(dateTimeInps[e]).focus();
+                                }
+                                errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';
+                                item.addClass('ays-has-error');
+                                item.find('.' + _this.htmlClassPrefix + 'question-validation-error').html(errorMessage);
+                                item.find('.' + _this.htmlClassPrefix + 'question-validation-error').show();
+                                _this.goToTop( item );
+                                
+                                empty_inputs++;
+                            }
+                        });
+                        if(!dateTimeChecker){
+                            break;
+                        }
+                    }
+                    
                     if( item.find( '.' + _this.htmlClassPrefix + 'input' ).val() == '' ){
                         errorMessage += '<span>' + _this.dbOptions.survey_required_questions_message + '</span>';
                         item.addClass('ays-has-error');

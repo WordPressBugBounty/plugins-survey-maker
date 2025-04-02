@@ -89,7 +89,7 @@
         }else{
             questionContent = editorPopup.find('#ays_survey_question_editor').val();
         }
-        var action = 'ays_live_preivew_content';
+        var action = 'ays_survey_maker_live_preview_content';
         var data = {};
         data.action = action;
         data.content = questionContent;

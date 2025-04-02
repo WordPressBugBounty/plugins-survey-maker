@@ -1138,6 +1138,7 @@ class Survey_Maker_Admin {
             'number',
             'date',
             'time',
+	        'date_time',
             'star',
             'phone',
             'name',
@@ -1308,6 +1309,7 @@ class Survey_Maker_Admin {
             'phone',
             'date',
             'time',
+            'date_time',
             'star',
             'number',
             'name',
@@ -1334,6 +1336,16 @@ class Survey_Maker_Admin {
                 elseif( $individual_questions_result['type'] == 'time' ){
                     if( $individual_questions_result['user_answer'] != '' ){
                         $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = implode(" : ", explode( ":", $individual_questions_result['user_answer'] ));
+                    }else{
+                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
+                    }
+                }
+                elseif( $individual_questions_result['type'] == 'date_time' ){
+                    if( $individual_questions_result['user_answer'] != '' ){
+                        $user_date_time_answer = explode(" ", $individual_questions_result['user_answer'] );
+                        if((isset($user_date_time_answer[0]) && $user_date_time_answer[0] != '-') && (isset($user_date_time_answer[1]) && $user_date_time_answer[1] != '-')){                            
+                            $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = date( 'd . m . Y', strtotime(nl2br(htmlentities($user_date_time_answer[0]))) ) . " " . implode(" : ", explode( ":", $user_date_time_answer[1] ));
+                        }
                     }else{
                         $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
                     }
@@ -2223,7 +2235,7 @@ class Survey_Maker_Admin {
     //     }
     // }
 
-    public function ays_live_preivew_content(){
+    public function ays_survey_maker_live_preview_content(){
 
         $content = isset($_REQUEST['content']) && $_REQUEST['content'] != '' ? wp_kses_post( $_REQUEST['content'] ) : null;
         if($content === null){

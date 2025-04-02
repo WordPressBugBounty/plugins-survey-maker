@@ -604,6 +604,17 @@ class Survey_Maker_Public {
                     $user_answer = $question_answer;
                     $answer_id = 0;
                     break;
+                case "date_time":
+                    if(is_array($question_answer) && ($question_answer['date'] != '' || $question_answer['time'] != '')){
+                        $question_answer['date'] = $question_answer['date'] != '' ? $question_answer['date'] : '-';
+                        $question_answer['time'] = $question_answer['time'] != '' ? $question_answer['time'] : '-';
+                        $user_answer = implode(" " , $question_answer);
+                    }
+                    else{
+                        $user_answer = $question_answer;
+                    }
+                    $answer_id = 0;
+                    break;
                 case "name":
                     $user_answer = $question_answer;
                     $answer_id = 0;
@@ -1484,6 +1495,7 @@ class Survey_Maker_Public {
             "star",
             "date",
             "time",
+            "date_time",
             "text",
             "short_text",
             "number",
@@ -2327,6 +2339,53 @@ class Survey_Maker_Public {
 
         return $content;
     }
+
+    public function ays_survey_question_type_DATE_TIME_html( $question ){
+        $content = array();
+
+        $minimal_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-date-input ' . $this->html_class_prefix . 'question-input';
+
+        $minimal_theme = $this->options[ $this->name_prefix . 'is_minimal' ] ? true : false;
+        $minimal_date_class = $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'question-date-input ' . $this->html_class_prefix . 'question-input';
+        if( $minimal_theme ){
+            $minimal_date_class = $this->html_class_prefix . "minimal-theme-textarea-input " . $this->html_class_prefix."minimal-theme-input-date";
+        }
+
+        $content[] = '<div class="' . $this->html_class_prefix . 'answer ' . $this->html_class_prefix . 'date-and-time-answer">';
+
+            $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-date-time-box">';
+                $content[] = '<div class="' . $this->html_class_prefix . 'date-time-inner-box">';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box ' . $this->html_class_prefix . 'question-date-input-box">';
+
+                        $content[] = '<input type="date" class="' . $minimal_date_class . ' ' . $this->html_class_prefix . 'input" type="text"
+                                        name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer][date]">';
+
+                        if( ! $minimal_theme ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                        }
+
+                    $content[] = '</div>';
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box ' . $this->html_class_prefix . 'question-time-input-box">';
+
+                        $content[] = '<input class="' . $minimal_class . ' ' . $this->html_class_prefix . 'input ays-survey-timepicker" name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer][time]" placeholder="00:00" tabindex="0">';
+
+                        // if( ! $minimal_theme ){
+                            $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
+                        // }
+
+                    $content[] = '</div>';
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+        $content[] = '</div>';
+
+        $content = implode( '', $content );
+
+        return $content;
+    }
+    
 
     public function ays_survey_question_type_EMAIL_html( $question ){
         $content = array();

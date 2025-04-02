@@ -80,6 +80,7 @@ $text_types = array(
     'email',
     'date',
     'time',
+    'date_time',
 );
 
 $submission_count_and_ids = $this->get_submission_count_and_ids();
@@ -727,7 +728,7 @@ $types_with_changeable_charts = array(
                                 
                                 <div class="ays-survey-submission-summary-question-content">
                                     <?php
-                                        if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) && $question_results[ $question['id'] ]['question_type'] != 'date' && $question_results[ $question['id'] ]['question_type'] != 'time'):
+                                        if( in_array( $question_results[ $question['id'] ]['question_type'], $text_types ) && $question_results[ $question['id'] ]['question_type'] != 'date' && $question_results[ $question['id'] ]['question_type'] != 'time' && $question_results[ $question['id'] ]['question_type'] != 'date_time'):
                                     ?>
                                     <div class="ays-survey-submission-text-answers-div">
                                         <?php
@@ -872,6 +873,88 @@ $types_with_changeable_charts = array(
                                                         </div>
                                                         <?php
                                                     }
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                    </div>
+                                    <?php
+                                    elseif( $question_results[ $question['id'] ]['question_type'] == 'date_time' ):
+                                    ?>
+                                    <div class="ays-survey-question-date-time-summary-wrapper">
+                                        <div class="ays-survey-question-date-time-summary-wrap">
+                                            <?php
+                                            if( isset( $question_results[ $question['id'] ]['answers'] ) && !empty( $question_results[ $question['id'] ]['answers'] ) ){
+                                                if( isset( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) && !empty( $question_results[ $question['id'] ]['answers'][ $question['id'] ] ) ){
+                                                    $dates_array = array();
+                                                    $time_array = array();
+                                                    foreach( $question_results[ $question['id'] ]['answers'][ $question['id'] ] as $aid => $answer ){
+                                                        $each_answer = explode(" " , trim($answer));
+                                                        $date_answer = isset($each_answer[0]) && $each_answer[0] != '' ? $each_answer[0] : '';
+                                                        $time_answer = isset($each_answer[1]) && $each_answer[1] != '' ? $each_answer[1] : '';
+                                                        if($time_answer != '-' || $date_answer != '-'){
+                                                            $year_month_day = $date_answer != '-' ? explode( '-', $date_answer ) : '-';
+
+                                                            $dates_collected = '';
+                                                            if($year_month_day != '-'){
+                                                                $dates_collected = date_i18n( 'F Y d', strtotime( $year_month_day[0] ."-". $year_month_day[1] . "-". $year_month_day[2] ) );
+                                                            }
+
+                                                            $dates_array[] = $dates_collected;
+                                                            $time_array[$dates_collected][] = $time_answer;
+                                                            $dates_new_array = array_count_values($dates_array);
+                                                        }
+                                                    }
+
+                                                    if(!empty($dates_array)){
+                                                        foreach($dates_new_array as $new_date => $new_date_value){
+                                                            ?>
+                                                            <div class="ays-survey-question-date-time-summary-row">
+
+                                                                <div class="ays-survey-question-date-time-summary-year-month-day">
+                                                                    <div class="ays-survey-question-date-time-summary-year-month-day-row">
+                                                                        <?php
+                                                                        if( $new_date_value == 1 ){
+                                                                            ?>
+                                                                            <div class="ays-survey-question-time-summary-hours-row-hour" <?php echo !$new_date ? 'style="background-color: white;"' : '' ?>>
+                                                                                <span><?php echo esc_html( $new_date ); ?></span>
+                                                                            </div>
+                                                                            <?php
+                                                                        }elseif($new_date != ''){
+                                                                            ?>
+                                                                            <div class="ays-survey-question-time-summary-hours-row-hour ays-survey-question-time-summary-hours-row-hour-with-count">
+                                                                                <span><?php echo esc_html( $new_date ); ?></span>
+                                                                                <div class="ays-survey-question-time-summary-hours-row-hour-count"><?php echo esc_html( $new_date_value ); ?></div>
+                                                                            </div>
+                                                                            <?php
+                                                                        }
+                                                                        ?>
+                                                                    </div>
+
+                                                                </div>
+                                                                <div class="ays-survey-question-date-summary-days">
+                                                                    <?php
+                                                                    $time_array_new = array();
+                                                                    foreach( $time_array[$new_date] as $f => $r ){
+                                                                        if($r != '' && $r != '-') {
+                                                                            if( isset( $time_array_new[ $r ] ) ){
+                                                                                $time_array_new[ $r ] += 1;
+                                                                            }else{
+                                                                                $time_array_new[ $r ] = 1;
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                    foreach( $time_array_new as $f => $r ){
+                                                                        ?><span class="ays-survey-question-date-time-summary-hour-all"><?php echo esc_attr($f); ?><span class="ays-survey-question-date-time-summary-hour-all-count"><?php echo esc_attr($r); ?></span></span><?php
+                                                                    }
+                                                                    ?>
+                                                                </div>
+                                                            </div>
+                                                            <?php
+                                                        }
+                                                    }
+
                                                 }
                                             }
                                             ?>

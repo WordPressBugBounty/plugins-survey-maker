@@ -1549,6 +1549,7 @@ class Survey_Maker_Data {
             'star',
             'date',
             'time',
+            'date_time',
         );
 
         //Question types different charts
