@@ -683,6 +683,10 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="ays-survey-features-video">
+                <div class="ays-survey-features-video-icon"><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></div>
+                <div class="ays-survey-features-video-text"><a href="https://www.youtube.com/watch?v=1YVNtofpI4c" target="_blank">Watch Plans Comparison Video </a></div>
+            </div>
         </div>
     </div>
 </div>

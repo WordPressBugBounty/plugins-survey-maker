@@ -1875,6 +1875,32 @@ div.wrap .ays-survey-wp-heading-inline{
     overflow-x: auto;
 }
 
+.ays-survey-features-wrap .ays-survey-features-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    gap: 5px;
+}
+
+.ays-survey-features-wrap .ays-survey-features-video .ays-survey-features-video-icon{
+    display: flex;
+}
+
+.ays-survey-features-wrap .ays-survey-features-video .ays-survey-features-video-text{
+    font-weight: 700;
+}
+
+.ays-survey-features-wrap .ays-survey-features-video .ays-survey-features-video-text a{
+    color: black;
+    box-shadow: unset;
+    outline: none;
+}
+
+.ays-survey-features-wrap .ays-survey-features-video .ays-survey-features-video-icon img{
+    width: 25px;
+}
+
 .ays-survey-features-wrap .comparison table {
     width: 100%;
     border-collapse: collapse;

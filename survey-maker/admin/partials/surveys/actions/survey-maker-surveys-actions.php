@@ -25,13 +25,12 @@
             </h1>
             <div>
                 <div class="ays-survey-subtitle-main-box">
-                    <p class="ays-subtitle">
+                    <p class="ays-subtitle" style="display: flex; gap: 20px;">
 
                         <?php if(isset($id) && count($get_all_surveys) > 1):?>
-                            <span class="ays-subtitle-inner-surveys-page">
-                                <i class="ays_fa ays_fa_arrow_down ays-survey-open-surveys-list" style="font-size: 15px;"></i>   
-                            </span>
                             <strong class="ays_survey_title_in_top"><?php echo esc_attr( stripslashes( $object['title'] ) ); ?></strong>
+                            <img class="ays-survey-open-surveys-list" src="<?php echo esc_url( SURVEY_MAKER_ADMIN_URL ) .'/images/icons/list-icon.svg'; ?>">
+
                         <?php endif; ?>
                         
                     </p>
