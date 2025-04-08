@@ -3709,6 +3709,11 @@ input.ays-survey-text-input-90-width {
     box-shadow: none;
 }
 
+.ays-surveys-button-box .ays-surveys-button-second-row .ays-survey-save-as-default-pro-button:hover{
+    background-color: #ffa500;
+    border-color: #ffa500;
+}
+
 /* Survey subscribe email start */
 
 #ays-survey-subscribe-email-page-main{

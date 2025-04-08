@@ -17,21 +17,21 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../admin/class-survey-maker-admin.php:230
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:893
+#: ../admin/class-survey-maker-admin.php:236
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1035
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:94
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:100
 msgid "Clear"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:231
+#: ../admin/class-survey-maker-admin.php:237
 msgid "Clear color"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:232
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:227
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:246
-#: ../admin/partials/settings/survey-maker-settings.php:837
+#: ../admin/class-survey-maker-admin.php:238
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:253
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:272
+#: ../admin/partials/settings/survey-maker-settings.php:838
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1423
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1442
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:453
@@ -39,280 +39,281 @@ msgstr ""
 msgid "Default"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:233
+#: ../admin/class-survey-maker-admin.php:239
 msgid "Select default color"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:234
+#: ../admin/class-survey-maker-admin.php:240
 msgid "Select Color"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:235
+#: ../admin/class-survey-maker-admin.php:241
 msgid "Color value"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:281
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:405
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:406
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:407
-#: ../public/class-survey-maker-public.php:914
-#: ../public/class-survey-maker-public.php:915
-#: ../public/class-survey-maker-public.php:916
+#: ../admin/class-survey-maker-admin.php:287
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:410
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:411
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:412
+#: ../public/class-survey-maker-public.php:929
+#: ../public/class-survey-maker-public.php:930
+#: ../public/class-survey-maker-public.php:931
 msgid "Your answer"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:284
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:409
-#: ../public/class-survey-maker-public.php:917
+#: ../admin/class-survey-maker-admin.php:290
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:414
+#: ../public/class-survey-maker-public.php:932
 msgid "Your email"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:285
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:410
-#: ../public/class-survey-maker-public.php:918
+#: ../admin/class-survey-maker-admin.php:291
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:415
+#: ../public/class-survey-maker-public.php:933
 msgid "Your name"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:286
+#: ../admin/class-survey-maker-admin.php:292
 msgid "Select user roles"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:287
+#: ../admin/class-survey-maker-admin.php:293
 #: ../admin/partials/settings/survey-maker-settings.php:58
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:391
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:408
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:392
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:413
 msgid "Phone"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:288
+#: ../admin/class-survey-maker-admin.php:294
 msgid "Add question"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:289
+#: ../admin/class-survey-maker-admin.php:295
 msgid "Add section"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:290
+#: ../admin/class-survey-maker-admin.php:296
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:624
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2714
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2758
 msgid "Duplicate"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:291
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:307
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1243
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2145
+#: ../admin/class-survey-maker-admin.php:297
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:305
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1269
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2204
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:370
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:498
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:503
 msgid "Delete"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:292
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:563
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:589
+#: ../admin/class-survey-maker-admin.php:298
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:568
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:594
 msgid "Add Image"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:293
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:566
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:592
+#: ../admin/class-survey-maker-admin.php:299
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:571
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:597
 msgid "Edit Image"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:294
+#: ../admin/class-survey-maker-admin.php:300
 msgid "Remove Image"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:295
+#: ../admin/class-survey-maker-admin.php:301
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:153
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1086
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2644
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1114
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2703
 msgid "Collapse section questions"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:296
+#: ../admin/class-survey-maker-admin.php:302
 msgid "Expand section questions"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:297
+#: ../admin/class-survey-maker-admin.php:303
 msgid "Select question default type"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:298
+#: ../admin/class-survey-maker-admin.php:304
 msgid "Choose answer"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:299
+#: ../admin/class-survey-maker-admin.php:305
 msgid "Yes"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:300
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:128
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:194
+#: ../admin/class-survey-maker-admin.php:306
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:127
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:193
+#: ../includes/class-survey-maker-ays-welcome.php:167
 msgid "Cancel"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:301
+#: ../admin/class-survey-maker-admin.php:307
 msgid "Are you sure you want to delete this question?"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:302
+#: ../admin/class-survey-maker-admin.php:308
 msgid "Are you sure you want to delete this section?"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:303
+#: ../admin/class-survey-maker-admin.php:309
 msgid "Can't load resource."
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:304
+#: ../admin/class-survey-maker-admin.php:310
 msgid "Maybe something went wrong."
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:305
+#: ../admin/class-survey-maker-admin.php:311
 msgid "Maybe the data has been deleted."
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:306
+#: ../admin/class-survey-maker-admin.php:312
 msgid "Sorry minimum count of questions should be 1"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:307
-#: ../admin/class-survey-maker-admin.php:308
-#: ../admin/class-survey-maker-admin.php:310
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:919
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1829
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2517
+#: ../admin/class-survey-maker-admin.php:313
+#: ../admin/class-survey-maker-admin.php:314
+#: ../admin/class-survey-maker-admin.php:316
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:947
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1890
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2576
 msgid "Enable selection count"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:309
+#: ../admin/class-survey-maker-admin.php:315
 msgid "Disable selection count"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:311
+#: ../admin/class-survey-maker-admin.php:317
 msgid "Disable max selection count"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:312
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:920
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1830
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2518
+#: ../admin/class-survey-maker-admin.php:318
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:948
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1891
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2577
 msgid "Enable word limitation"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:313
+#: ../admin/class-survey-maker-admin.php:319
 msgid "Disable word limitation"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:314
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:921
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1831
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2519
+#: ../admin/class-survey-maker-admin.php:320
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:949
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1892
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2578
 msgid "Enable limitation"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:315
+#: ../admin/class-survey-maker-admin.php:321
 msgid "Disable limitation"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:316
+#: ../admin/class-survey-maker-admin.php:322
 msgid "Successfully sent"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:317
+#: ../admin/class-survey-maker-admin.php:323
 msgid "Failed"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:318
+#: ../admin/class-survey-maker-admin.php:324
 msgid "Select page"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:319
+#: ../admin/class-survey-maker-admin.php:325
 msgid "Select post type"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:320
+#: ../admin/class-survey-maker-admin.php:326
 msgid "Copied!"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:321
+#: ../admin/class-survey-maker-admin.php:327
 msgid "Click for copy"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:322
+#: ../admin/class-survey-maker-admin.php:328
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:193
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:918
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1132
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1828
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2516
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:149
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:946
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1160
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1889
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2575
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:148
 msgid "Move to section"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:323
+#: ../admin/class-survey-maker-admin.php:329
 msgid "If you choose one of these templates, your questions will be deleted."
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:328
+#: ../admin/class-survey-maker-admin.php:334
 msgid "Are you sure you want to go to the next survey page?"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:329
+#: ../admin/class-survey-maker-admin.php:335
 msgid "Are you sure you want to go to the previous question page?"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:330
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:308
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1244
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2146
+#: ../admin/class-survey-maker-admin.php:336
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:306
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1270
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2205
 msgid "Add a caption"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:331
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1244
+#: ../admin/class-survey-maker-admin.php:337
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1270
 msgid "Close caption"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:332
+#: ../admin/class-survey-maker-admin.php:338
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:333
+#: ../admin/class-survey-maker-admin.php:339
 msgid "Note: The survey has reached the limit of %t inputs out of a maximum of %f. To save changes, please contact your hosting provider to increase the max_input_vars limit."
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:334
+#: ../admin/class-survey-maker-admin.php:340
 msgid "Rating"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:335
+#: ../admin/class-survey-maker-admin.php:341
 msgid "Stars count"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:338
+#: ../admin/class-survey-maker-admin.php:344
 msgid "Email field is empty"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:339
+#: ../admin/class-survey-maker-admin.php:345
 msgid "Invalid Email address"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:340
+#: ../admin/class-survey-maker-admin.php:346
 msgid "Website field is empty"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:341
+#: ../admin/class-survey-maker-admin.php:347
 msgid "Invalid website address"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:342
+#: ../admin/class-survey-maker-admin.php:348
 msgid "Your request was successfully submitted. We will get in touch with you until November 10. Thank you!"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:456
-#: ../admin/class-survey-maker-admin.php:457
-#: ../admin/class-survey-maker-admin.php:804
+#: ../admin/class-survey-maker-admin.php:462
+#: ../admin/class-survey-maker-admin.php:463
+#: ../admin/class-survey-maker-admin.php:810
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:22
 #: ../admin/partials/survey-maker-admin-display.php:39
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:675
@@ -320,118 +321,117 @@ msgstr ""
 msgid "Surveys"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:470
-#: ../admin/class-survey-maker-admin.php:471
+#: ../admin/class-survey-maker-admin.php:476
+#: ../admin/class-survey-maker-admin.php:477
 msgid "Export / Import"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:484
-#: ../admin/class-survey-maker-admin.php:485
-#: ../admin/class-survey-maker-admin.php:820
+#: ../admin/class-survey-maker-admin.php:490
+#: ../admin/class-survey-maker-admin.php:491
+#: ../admin/class-survey-maker-admin.php:826
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:37
 msgid "Survey Categories"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:506
-#: ../admin/class-survey-maker-admin.php:507
-#: ../admin/class-survey-maker-admin.php:520
-#: ../admin/class-survey-maker-admin.php:877
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:192
+#: ../admin/class-survey-maker-admin.php:512
+#: ../admin/class-survey-maker-admin.php:513
+#: ../admin/class-survey-maker-admin.php:526
+#: ../admin/class-survey-maker-admin.php:883
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:194
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:11
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:12
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2834
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2878
 msgid "Submissions"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:539
+#: ../admin/class-survey-maker-admin.php:545
 msgid "Each"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:555
-#: ../admin/class-survey-maker-admin.php:556
+#: ../admin/class-survey-maker-admin.php:561
+#: ../admin/class-survey-maker-admin.php:562
 msgid "How to use"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:566
-#: ../admin/class-survey-maker-admin.php:567
-#: ../admin/partials/settings/survey-maker-settings.php:281
-#: ../admin/partials/settings/survey-maker-settings.php:312
+#: ../admin/class-survey-maker-admin.php:572
+#: ../admin/class-survey-maker-admin.php:573
+#: ../admin/partials/settings/survey-maker-settings.php:282
+#: ../admin/partials/settings/survey-maker-settings.php:313
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:7
 msgid "General Settings"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:578
-#: ../admin/class-survey-maker-admin.php:579
+#: ../admin/class-survey-maker-admin.php:584
+#: ../admin/class-survey-maker-admin.php:585
 msgid "Our products"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:589
-#: ../admin/class-survey-maker-admin.php:590
+#: ../admin/class-survey-maker-admin.php:595
+#: ../admin/class-survey-maker-admin.php:596
 msgid "PRO Features"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:601
-#: ../admin/class-survey-maker-admin.php:602
+#: ../admin/class-survey-maker-admin.php:607
+#: ../admin/class-survey-maker-admin.php:608
 msgid "Grab your GIFT"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:614
-#: ../admin/class-survey-maker-admin.php:615
-#: ../admin/class-survey-maker-admin.php:836
+#: ../admin/class-survey-maker-admin.php:620
+#: ../admin/class-survey-maker-admin.php:621
+#: ../admin/class-survey-maker-admin.php:842
 #: ../admin/partials/features/survey-maker-features-display.php:148
 #: ../admin/partials/features/survey-maker-features-display.php:151
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:36
 msgid "Popup Survey"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:627
-#: ../admin/class-survey-maker-admin.php:628
+#: ../admin/class-survey-maker-admin.php:633
+#: ../admin/class-survey-maker-admin.php:634
 msgid "Frontend Requests"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:682
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:95
+#: ../admin/class-survey-maker-admin.php:688
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:94
 msgid "Settings"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:683
+#: ../admin/class-survey-maker-admin.php:689
 msgid "Demo"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:684
+#: ../admin/class-survey-maker-admin.php:690
 #: ../admin/partials/export-import/survey-maker-export-import-display.php:36
 #: ../admin/partials/export-import/survey-maker-export-import-display.php:79
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:582
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:609
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:636
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:663
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:844
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:608
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:635
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:662
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:689
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:870
 #: ../admin/partials/requests/survey-maker-requests-display.php:27
 #: ../admin/partials/requests/survey-maker-requests-display.php:36
-#: ../admin/partials/settings/survey-maker-settings.php:618
-#: ../admin/partials/settings/survey-maker-settings.php:661
-#: ../admin/partials/settings/survey-maker-settings.php:717
-#: ../admin/partials/settings/survey-maker-settings.php:797
-#: ../admin/partials/settings/survey-maker-settings.php:871
-#: ../admin/partials/settings/survey-maker-settings.php:1003
-#: ../admin/partials/settings/survey-maker-settings.php:1029
-#: ../admin/partials/settings/survey-maker-settings.php:1055
-#: ../admin/partials/settings/survey-maker-settings.php:1081
-#: ../admin/partials/settings/survey-maker-settings.php:1107
-#: ../admin/partials/settings/survey-maker-settings.php:1133
-#: ../admin/partials/settings/survey-maker-settings.php:1244
-#: ../admin/partials/settings/survey-maker-settings.php:1267
-#: ../admin/partials/settings/survey-maker-settings.php:1577
-#: ../admin/partials/settings/survey-maker-settings.php:1658
-#: ../admin/partials/settings/survey-maker-settings.php:1726
-#: ../admin/partials/settings/survey-maker-settings.php:1759
-#: ../admin/partials/settings/survey-maker-settings.php:1792
-#: ../admin/partials/settings/survey-maker-settings.php:1825
-#: ../admin/partials/settings/survey-maker-settings.php:1861
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:157
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:223
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:232
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:382
+#: ../admin/partials/settings/survey-maker-settings.php:619
+#: ../admin/partials/settings/survey-maker-settings.php:662
+#: ../admin/partials/settings/survey-maker-settings.php:718
+#: ../admin/partials/settings/survey-maker-settings.php:798
+#: ../admin/partials/settings/survey-maker-settings.php:872
+#: ../admin/partials/settings/survey-maker-settings.php:1007
+#: ../admin/partials/settings/survey-maker-settings.php:1034
+#: ../admin/partials/settings/survey-maker-settings.php:1061
+#: ../admin/partials/settings/survey-maker-settings.php:1088
+#: ../admin/partials/settings/survey-maker-settings.php:1115
+#: ../admin/partials/settings/survey-maker-settings.php:1142
+#: ../admin/partials/settings/survey-maker-settings.php:1271
+#: ../admin/partials/settings/survey-maker-settings.php:1581
+#: ../admin/partials/settings/survey-maker-settings.php:1662
+#: ../admin/partials/settings/survey-maker-settings.php:1730
+#: ../admin/partials/settings/survey-maker-settings.php:1763
+#: ../admin/partials/settings/survey-maker-settings.php:1796
+#: ../admin/partials/settings/survey-maker-settings.php:1829
+#: ../admin/partials/settings/survey-maker-settings.php:1865
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:159
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:225
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:234
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:384
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:54
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:63
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:77
@@ -455,8 +455,6 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:470
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:487
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:559
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:9
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:18
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:14
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:23
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab9.php:9
@@ -501,103 +499,103 @@ msgstr ""
 msgid "Upgrade"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:694
+#: ../admin/class-survey-maker-admin.php:700
 msgid "Free Support"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:695
-#: ../admin/class-survey-maker-admin.php:2248
+#: ../admin/class-survey-maker-admin.php:701
+#: ../admin/class-survey-maker-admin.php:2275
 msgid "Documentation"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:696
+#: ../admin/class-survey-maker-admin.php:702
 msgid "Rate us"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:697
+#: ../admin/class-survey-maker-admin.php:703
 msgid "Video tutorial"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:852
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2833
+#: ../admin/class-survey-maker-admin.php:858
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2877
 msgid "Questions"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:865
+#: ../admin/class-survey-maker-admin.php:871
 msgid "Question Categories"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:889
+#: ../admin/class-survey-maker-admin.php:895
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:9
 msgid "Results"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:921
+#: ../admin/class-survey-maker-admin.php:927
 msgid "Support"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:923
+#: ../admin/class-survey-maker-admin.php:929
 msgid "Docs"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:925
+#: ../admin/class-survey-maker-admin.php:931
 msgid "Suggest a Feature"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:929
+#: ../admin/class-survey-maker-admin.php:935
 msgid "If you love our plugin, please do big favor and rate us on"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1202
-#: ../includes/class-survey-maker-data.php:1573
+#: ../admin/class-survey-maker-admin.php:1210
+#: ../includes/class-survey-maker-data.php:1618
 msgid "\"Other\" answer(s)"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1275
+#: ../admin/class-survey-maker-admin.php:1283
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:68
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:350
 msgid "Guest"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1279
+#: ../admin/class-survey-maker-admin.php:1287
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:71
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2781
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2825
 msgid "Deleted User"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1684
+#: ../admin/class-survey-maker-admin.php:1711
 msgid "Offer ends in:"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:1708
+#: ../admin/class-survey-maker-admin.php:1735
 msgid "Buy Now !"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2239
+#: ../admin/class-survey-maker-admin.php:2266
 msgid "General Information:"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2243
+#: ../admin/class-survey-maker-admin.php:2270
 msgid "For more information:"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2245
+#: ../admin/class-survey-maker-admin.php:2272
 msgid "YouTube video tutorials"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2251
+#: ../admin/class-survey-maker-admin.php:2278
 msgid "Survey Maker plugin pro version"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2254
+#: ../admin/class-survey-maker-admin.php:2281
 msgid "Survey Maker plugin demo"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2258
+#: ../admin/class-survey-maker-admin.php:2285
 msgid "Survey Maker Information"
 msgstr ""
 
-#: ../admin/class-survey-maker-admin.php:2259
+#: ../admin/class-survey-maker-admin.php:2286
 #, php-format
 msgid "%s"
 msgstr ""
@@ -738,7 +736,7 @@ msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:192
 #: ../admin/partials/features/survey-maker-features-display.php:195
-#: ../admin/partials/settings/survey-maker-settings.php:930
+#: ../admin/partials/settings/survey-maker-settings.php:931
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:220
 msgid "Email configuration"
 msgstr ""
@@ -775,9 +773,9 @@ msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:269
 #: ../admin/partials/features/survey-maker-features-display.php:272
-#: ../admin/partials/settings/survey-maker-settings.php:392
+#: ../admin/partials/settings/survey-maker-settings.php:393
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:155
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1088
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1116
 msgid "Make questions required"
 msgstr ""
 
@@ -868,9 +866,9 @@ msgstr ""
 
 #: ../admin/partials/features/survey-maker-features-display.php:467
 #: ../admin/partials/features/survey-maker-features-display.php:470
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:927
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1837
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2521
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:955
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1898
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2580
 msgid "Logic jump"
 msgstr ""
 
@@ -1072,19 +1070,19 @@ msgstr ""
 msgid "See All Plugins"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:51
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:52
 msgid "Add new popup"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:54
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:55
 msgid "Edit popup"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:169
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:173
 msgid "On load"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:170
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:174
 msgid "On Click"
 msgstr ""
 
@@ -1095,18 +1093,18 @@ msgid "View Documentation"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:22
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:912
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:938
 #: ../admin/partials/surveys/actions/survey-maker-survey-categories-actions.php:30
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:127
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:191
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:126
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:190
 msgid "Save and close"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:31
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:921
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:947
 #: ../admin/partials/surveys/actions/survey-maker-survey-categories-actions.php:41
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:125
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:188
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:124
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:187
 msgid "Save"
 msgstr ""
 
@@ -1116,10 +1114,10 @@ msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:56
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:5
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:69
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:723
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:68
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:726
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:673
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2822
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2866
 msgid "Title"
 msgstr ""
 
@@ -1132,13 +1130,14 @@ msgid "Font size"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:93
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:171
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:219
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:269
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:333
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:416
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:466
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:516
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:143
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:197
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:245
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:295
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:359
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:442
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:492
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:542
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:338
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:530
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:578
@@ -1171,17 +1170,19 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:353
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:394
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:445
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:65
 msgid "On desktop"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:112
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:189
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:238
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:288
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:352
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:435
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:485
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:532
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:157
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:215
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:264
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:314
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:378
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:461
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:511
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:558
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:356
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:548
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:597
@@ -1214,27 +1215,28 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:367
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:413
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:464
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:83
 msgid "On mobile"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:133
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:145
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:91
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:107
 msgid "Background color"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:147
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:173
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:159
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:105
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:121
 msgid "Text color"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:161
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:187
 msgid "Text alignment"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:179
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:197
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:205
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:223
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:346
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:364
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:538
@@ -1249,11 +1251,13 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1683
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2121
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2145
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:73
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:91
 msgid "Left"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:180
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:198
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:206
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:224
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:347
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:365
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:539
@@ -1268,11 +1272,13 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1685
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2124
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2148
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:74
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:92
 msgid "Center"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:181
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:199
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:207
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:225
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:348
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:366
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:540
@@ -1287,15 +1293,17 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1684
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2127
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:2151
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:75
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:93
 msgid "Right"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:209
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:235
 msgid "Text transform"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:228
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:247
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:254
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:273
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1424
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1443
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:454
@@ -1303,8 +1311,8 @@ msgstr ""
 msgid "Capitalize"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:229
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:248
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:255
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:274
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1425
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1444
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:455
@@ -1312,8 +1320,8 @@ msgstr ""
 msgid "Uppercase"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:230
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:249
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:256
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:275
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1426
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1445
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:456
@@ -1321,129 +1329,129 @@ msgstr ""
 msgid "Lowercase"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:259
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:285
 msgid "Letter spacing"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:309
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:335
 msgid "Hide on mobile"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:323
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:349
 msgid "Border radius"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:375
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:401
 msgid "Select Survey"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:377
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:403
 msgid "Choose the survey which you want to display within the popup from your already created list."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:406
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:432
 msgid "Popup width"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:456
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:482
 msgid "Popup height"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:506
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:532
 msgid "Popup background color"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:550
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:576
 msgid "Hide popup after one submission"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:564
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:590
 msgid "Hide popup after close"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:589
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:615
 msgid "Hide popup on desktop"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:616
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:642
 msgid "Hide popup on mobile"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:643
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:669
 msgid "Hide popup on tablets"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:670
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:696
 msgid "Show on "
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:679
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:705
 msgid "All pages"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:683
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:709
 msgid "Except"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:687
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:713
 msgid "Selected"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:699
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:725
 msgid "Popup position"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:730
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:756
 msgid "Popup margin"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:747
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:773
 msgid "Popup trigger"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:750
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:776
 msgid "Choose when to show the popup on the website."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:752
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:778
 msgid "On page load - popup will be shown as soon as the page is loaded."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:753
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:779
 msgid "On click - popup will be shown when the user clicks on the assigned CSS element(s). Select CSS element with the help of CSS selector(s) option."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:754
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:780
 msgid "On Exit - the popup will show up as soon as the user wants to leave the page."
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:775
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:801
 msgid "On Exit (Pro)"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:785
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:811
 msgid "CSS selector(s) for trigger click"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:801
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:827
 msgid "Enable close popup after finish"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:819
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:845
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab9.php:696
 msgid "Delay"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:851
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:877
 msgid "Close by clicking outside the box"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:867
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:893
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:660
 msgid "Enable full-screen mode"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:886
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:912
 msgid "Close by pressing the ESC"
 msgstr ""
 
@@ -1458,119 +1466,121 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings-actions.php:253
+#: ../admin/partials/settings/survey-maker-settings-actions.php:255
 msgid "Changes saved."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings-actions.php:255
+#: ../admin/partials/settings/survey-maker-settings-actions.php:257
 msgid "Quiz attribute ."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings-actions.php:257
+#: ../admin/partials/settings/survey-maker-settings-actions.php:259
 msgid "Quiz attribute deleted."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings-actions.php:259
+#: ../admin/partials/settings/survey-maker-settings-actions.php:261
 msgid "Duration old data is successfully updated."
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:30
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:384
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:385
 msgid "Radio"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:34
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:385
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:386
 msgid "Checkbox (Multi)"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:38
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:386
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:387
 msgid "Dropdown"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:42
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:387
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:388
 msgid "Star Rating"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:46
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:388
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:389
 msgid "Paragraph"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:50
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:389
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:390
 msgid "Short Text"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:54
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:390
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:391
 msgid "Number"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:62
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:392
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:393
 msgid "Date"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:66
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:393
-msgid "Yes or No"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:394
+msgid "Time"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:70
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:394
-msgid "Email"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:395
+msgid "Date and Time"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:74
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:395
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:396
+msgid "Yes or No"
+msgstr ""
+
+#: ../admin/partials/settings/survey-maker-settings.php:78
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:397
+msgid "Email"
+msgstr ""
+
+#: ../admin/partials/settings/survey-maker-settings.php:82
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:398
 msgid "Name"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:79
+#: ../admin/partials/settings/survey-maker-settings.php:87
 msgid "Matrix Scale (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:83
+#: ../admin/partials/settings/survey-maker-settings.php:91
 msgid "Matrix Scale Checkbox (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:87
+#: ../admin/partials/settings/survey-maker-settings.php:95
 msgid "Net Promoter Score (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:91
+#: ../admin/partials/settings/survey-maker-settings.php:99
 msgid "Ranking (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:95
+#: ../admin/partials/settings/survey-maker-settings.php:103
 msgid "Calculation (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:99
+#: ../admin/partials/settings/survey-maker-settings.php:107
 msgid "Star List (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:103
+#: ../admin/partials/settings/survey-maker-settings.php:111
 msgid "Slider List (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:107
+#: ../admin/partials/settings/survey-maker-settings.php:115
 msgid "Linear Scale (Pro)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:111
-msgid "Slider (Pro)"
-msgstr ""
-
-#: ../admin/partials/settings/survey-maker-settings.php:115
-msgid "Time (Pro)"
-msgstr ""
-
 #: ../admin/partials/settings/survey-maker-settings.php:119
-msgid "Date and Time (Pro)"
+msgid "Slider (Pro)"
 msgstr ""
 
 #: ../admin/partials/settings/survey-maker-settings.php:123
@@ -1601,142 +1611,142 @@ msgstr ""
 msgid "Weekly"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:229
+#: ../admin/partials/settings/survey-maker-settings.php:230
 msgid "The date of the submission survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:230
+#: ../admin/partials/settings/survey-maker-settings.php:231
 msgid "The time of the submission survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:231
+#: ../admin/partials/settings/survey-maker-settings.php:232
 msgid "Use to identify the uniqueness of each attempt."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:232
+#: ../admin/partials/settings/survey-maker-settings.php:233
 msgid "The ID of the current post."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:233
+#: ../admin/partials/settings/survey-maker-settings.php:234
 msgid "The URL of the home page."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:234
+#: ../admin/partials/settings/survey-maker-settings.php:235
 msgid "The Email of the author of the post."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:235
+#: ../admin/partials/settings/survey-maker-settings.php:236
 msgid "The Post title of the current post."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:236
+#: ../admin/partials/settings/survey-maker-settings.php:237
 msgid "The Nickname of the author of the post."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:237
+#: ../admin/partials/settings/survey-maker-settings.php:238
 msgid "The title of the website."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:240
+#: ../admin/partials/settings/survey-maker-settings.php:241
 msgid "The name the user entered into the survey form. It will work only if the name field exists in the form."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:241
+#: ../admin/partials/settings/survey-maker-settings.php:242
 msgid "The E-mail the user entered into the survey form. It will work only if the email field exists in the form."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:242
+#: ../admin/partials/settings/survey-maker-settings.php:243
 msgid "The E-mail that was filled in their WordPress site during registration."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:243
+#: ../admin/partials/settings/survey-maker-settings.php:244
 msgid "The ID of the current user."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:244
+#: ../admin/partials/settings/survey-maker-settings.php:245
 msgid "The number of the passed users count of the given survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:245
+#: ../admin/partials/settings/survey-maker-settings.php:246
 msgid "The user's first name that was filled in their WordPress site during registration."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:246
+#: ../admin/partials/settings/survey-maker-settings.php:247
 msgid "The user's last name that was filled in their WordPress site during registration."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:247
+#: ../admin/partials/settings/survey-maker-settings.php:248
 msgid "The user's nick name that was filled in their WordPress site during registration."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:248
+#: ../admin/partials/settings/survey-maker-settings.php:249
 msgid "The user's role(s) when logged-in. In case the user is not logged-in, the field will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:249
+#: ../admin/partials/settings/survey-maker-settings.php:250
 msgid "The user's display name that was filled in their WordPress site during registration."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:250
+#: ../admin/partials/settings/survey-maker-settings.php:251
 msgid "The user's ip address."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:251
+#: ../admin/partials/settings/survey-maker-settings.php:252
 msgid "Shows the admin's email that was filled in their WordPress profile."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:254
+#: ../admin/partials/settings/survey-maker-settings.php:255
 msgid "The title of the survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:255
+#: ../admin/partials/settings/survey-maker-settings.php:256
 msgid "The ID of the survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:256
+#: ../admin/partials/settings/survey-maker-settings.php:257
 msgid "It will show the author of the current survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:257
+#: ../admin/partials/settings/survey-maker-settings.php:258
 msgid "It will show the author email of the current survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:258
+#: ../admin/partials/settings/survey-maker-settings.php:259
 msgid "Prints the webpage link where the current survey is posted."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:259
+#: ../admin/partials/settings/survey-maker-settings.php:260
 msgid "The number of the questions of the given survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:260
+#: ../admin/partials/settings/survey-maker-settings.php:261
 msgid "The number of the sections of the given survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:261
+#: ../admin/partials/settings/survey-maker-settings.php:262
 msgid "Shows the submission count of a particular survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:262
+#: ../admin/partials/settings/survey-maker-settings.php:263
 msgid "The creation date of the survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:263
+#: ../admin/partials/settings/survey-maker-settings.php:264
 msgid "The last modified date of the survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:294
+#: ../admin/partials/settings/survey-maker-settings.php:295
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:507
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:86
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:85
 msgid "General"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:297
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:110
+#: ../admin/partials/settings/survey-maker-settings.php:298
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:109
 msgid "Integrations"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:300
+#: ../admin/partials/settings/survey-maker-settings.php:301
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab4.php:30
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab4.php:340
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:111
@@ -1744,204 +1754,204 @@ msgstr ""
 msgid "Message Variables"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:303
+#: ../admin/partials/settings/survey-maker-settings.php:304
 msgid "Text Customizations"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:306
-#: ../admin/partials/settings/survey-maker-settings.php:1286
+#: ../admin/partials/settings/survey-maker-settings.php:307
+#: ../admin/partials/settings/survey-maker-settings.php:1290
 msgid "Shortcodes"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:317
+#: ../admin/partials/settings/survey-maker-settings.php:318
 msgid "Default parameters for Survey"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:322
+#: ../admin/partials/settings/survey-maker-settings.php:323
 msgid "Surveys default question type"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:323
+#: ../admin/partials/settings/survey-maker-settings.php:324
 msgid "You can choose default question type which will be selected in the Add new survey page."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:350
+#: ../admin/partials/settings/survey-maker-settings.php:351
 msgid "Answer default count"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:351
+#: ../admin/partials/settings/survey-maker-settings.php:352
 msgid "You can write the default answer count which will be showing in the Add new question page (this will work only with radio, checkbox, and dropdown types)."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:364
+#: ../admin/partials/settings/survey-maker-settings.php:365
 msgid "Textarea height (public)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:365
+#: ../admin/partials/settings/survey-maker-settings.php:366
 msgid "Set the height of the textarea by entering a numeric value. It applies to Paragraph question type textarea."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:378
+#: ../admin/partials/settings/survey-maker-settings.php:379
 msgid "WP Editor height"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:379
+#: ../admin/partials/settings/survey-maker-settings.php:380
 msgid "Give the default value to the height of the WP Editor. It will apply to all WP Editors within the plugin on the dashboard."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:393
+#: ../admin/partials/settings/survey-maker-settings.php:394
 msgid "By enabling this option, the questions of newly created surveys will be required by default. Note: The changes will not be applied to the already created surveys."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:406
+#: ../admin/partials/settings/survey-maker-settings.php:407
 msgid "Lazy loading for images"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:407
+#: ../admin/partials/settings/survey-maker-settings.php:408
 msgid "Tick this option to delay the loading of images of questions and answers to improve the performance of your plugin."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:421
+#: ../admin/partials/settings/survey-maker-settings.php:422
 msgid "Users IP addresses"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:424
+#: ../admin/partials/settings/survey-maker-settings.php:425
 msgid "If this option is enabled then the 'Limitation by IP' option will not work!"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:430
+#: ../admin/partials/settings/survey-maker-settings.php:431
 msgid "Do not store IP addresses"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:431
+#: ../admin/partials/settings/survey-maker-settings.php:432
 msgid "After enabling this option, IP address of the users will not be stored in database. Note: If this option is enabled, then the `Limits user by IP` option will not work."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:445
+#: ../admin/partials/settings/survey-maker-settings.php:446
 msgid "Anonymity Survey"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:450
+#: ../admin/partials/settings/survey-maker-settings.php:451
 msgid "Do not store User Names"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:451
+#: ../admin/partials/settings/survey-maker-settings.php:452
 msgid "After enabling this option, User Names will not be stored in database."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:464
+#: ../admin/partials/settings/survey-maker-settings.php:465
 msgid "Do not store User Emails"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:465
+#: ../admin/partials/settings/survey-maker-settings.php:466
 msgid "After enabling this option, User Emails will not be stored in database."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:479
+#: ../admin/partials/settings/survey-maker-settings.php:480
 msgid "Excerpt words count in list tables"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:484
+#: ../admin/partials/settings/survey-maker-settings.php:485
 msgid "Survey list table"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:485
+#: ../admin/partials/settings/survey-maker-settings.php:486
 msgid "Determine the length of the surveys to be shown in the Surveys List Table by putting your preferred count of words in the following field. (For example: if you put 10,  you will see the first 10 words of each survey in the Surveys page of your dashboard."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:498
+#: ../admin/partials/settings/survey-maker-settings.php:499
 msgid "Submissions list table"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:499
+#: ../admin/partials/settings/survey-maker-settings.php:500
 msgid "Determine the length of the submissions to be shown in the Submissions List Table by putting your preferred count of words in the following field. (For example: if you put 10,you will see the first 10 words of each submissions in the Submissions page of your dashboard."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:512
+#: ../admin/partials/settings/survey-maker-settings.php:513
 msgid "Survey categories list table"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:513
+#: ../admin/partials/settings/survey-maker-settings.php:514
 msgid "Determine the length of the survey categories to be shown in the Survey categories List Table by putting your preferred count of words in the following field. (For example: if you put 10,you will see the first 10 words of each Category in the Survey categories page of your dashboard."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:526
+#: ../admin/partials/settings/survey-maker-settings.php:527
 msgid "Popup Survey list table"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:527
+#: ../admin/partials/settings/survey-maker-settings.php:528
 msgid "Determine the length of the popup survey titles to be shown in the Popup Survey List Table by putting your preferred count of words in the following field. (For example: if you put 10, you will see the first 10 words of each Survey Title in the Popup Survey page of your dashboard."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:541
+#: ../admin/partials/settings/survey-maker-settings.php:542
 msgid "Animation Top"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:546
+#: ../admin/partials/settings/survey-maker-settings.php:547
 msgid "Enable animation"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:547
+#: ../admin/partials/settings/survey-maker-settings.php:548
 msgid "Enable animation of the scroll offset of the survey container. It works when the survey container is visible on the screen partly and the user starts the survey and moves from one question to another."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:560
+#: ../admin/partials/settings/survey-maker-settings.php:561
 msgid "Scroll offset(px)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:561
+#: ../admin/partials/settings/survey-maker-settings.php:562
 msgid "Define the scroll offset of the survey container after the animation starts. It works when the survey container is visible on the screen partly and the user starts the survey and moves from one question to another."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:575
+#: ../admin/partials/settings/survey-maker-settings.php:576
 msgid "Menu notifications"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:580
+#: ../admin/partials/settings/survey-maker-settings.php:581
 msgid "Disable Survey Maker menu item notification"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:581
+#: ../admin/partials/settings/survey-maker-settings.php:582
 msgid "Enable this option and the notifications will not be displayed in the Survey Maker menu."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:594
+#: ../admin/partials/settings/survey-maker-settings.php:595
 msgid "Disable Submissions menu item notification"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:595
+#: ../admin/partials/settings/survey-maker-settings.php:596
 msgid "Enable this option and the notifications will not be displayed in the Submissions menu."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:609
+#: ../admin/partials/settings/survey-maker-settings.php:610
 msgid "Who will have permission to Survey menu"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:625
+#: ../admin/partials/settings/survey-maker-settings.php:626
 msgid "Select user role"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:643
+#: ../admin/partials/settings/survey-maker-settings.php:644
 msgid "Ability to manage Survey Maker plugin only for selected user roles."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:652
-#: ../admin/partials/settings/survey-maker-settings.php:668
+#: ../admin/partials/settings/survey-maker-settings.php:653
+#: ../admin/partials/settings/survey-maker-settings.php:669
 msgid "Block Users by IP addresses"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:682
+#: ../admin/partials/settings/survey-maker-settings.php:683
 msgid "Block User IP's"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:703
+#: ../admin/partials/settings/survey-maker-settings.php:704
 msgid "Send automatic email reporting to admin(s)"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:711
-#: ../admin/partials/settings/survey-maker-settings.php:865
-#: ../admin/partials/settings/survey-maker-settings.php:1652
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:151
+#: ../admin/partials/settings/survey-maker-settings.php:712
+#: ../admin/partials/settings/survey-maker-settings.php:866
+#: ../admin/partials/settings/survey-maker-settings.php:1656
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:153
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:935
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:967
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:1017
@@ -1952,450 +1962,449 @@ msgstr ""
 msgid "Watch Video"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:724
+#: ../admin/partials/settings/survey-maker-settings.php:725
 msgid "Send automatic email reporting per session"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:740
+#: ../admin/partials/settings/survey-maker-settings.php:741
 msgid "Session period"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:741
+#: ../admin/partials/settings/survey-maker-settings.php:742
 msgid "Specify the time for one session and the provided email(s) will receive an automatic email notification once during the period."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:767
+#: ../admin/partials/settings/survey-maker-settings.php:768
 msgid "Email addresses"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:788
+#: ../admin/partials/settings/survey-maker-settings.php:789
 msgid "Submissions settings"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:804
+#: ../admin/partials/settings/survey-maker-settings.php:805
 msgid "Matrix scale results"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:814
+#: ../admin/partials/settings/survey-maker-settings.php:815
 msgid "By Votes"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:818
+#: ../admin/partials/settings/survey-maker-settings.php:819
 msgid "By Percentage"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:827
+#: ../admin/partials/settings/survey-maker-settings.php:828
 msgid "Show results by"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:841
+#: ../admin/partials/settings/survey-maker-settings.php:842
 msgid "Ascending"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:845
+#: ../admin/partials/settings/survey-maker-settings.php:846
 msgid "Descending"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:857
+#: ../admin/partials/settings/survey-maker-settings.php:858
 msgid "Survey multilanguage"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:880
-#: ../admin/partials/settings/survey-maker-settings.php:1299
-#: ../admin/partials/settings/survey-maker-settings.php:1527
-#: ../admin/partials/settings/survey-maker-settings.php:1551
-#: ../admin/partials/settings/survey-maker-settings.php:1584
-#: ../admin/partials/settings/survey-maker-settings.php:1665
-#: ../admin/partials/settings/survey-maker-settings.php:1733
-#: ../admin/partials/settings/survey-maker-settings.php:1766
-#: ../admin/partials/settings/survey-maker-settings.php:1799
-#: ../admin/partials/settings/survey-maker-settings.php:1832
-#: ../admin/partials/settings/survey-maker-settings.php:1868
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2830
+#: ../admin/partials/settings/survey-maker-settings.php:881
+#: ../admin/partials/settings/survey-maker-settings.php:1303
+#: ../admin/partials/settings/survey-maker-settings.php:1531
+#: ../admin/partials/settings/survey-maker-settings.php:1555
+#: ../admin/partials/settings/survey-maker-settings.php:1588
+#: ../admin/partials/settings/survey-maker-settings.php:1669
+#: ../admin/partials/settings/survey-maker-settings.php:1737
+#: ../admin/partials/settings/survey-maker-settings.php:1770
+#: ../admin/partials/settings/survey-maker-settings.php:1803
+#: ../admin/partials/settings/survey-maker-settings.php:1836
+#: ../admin/partials/settings/survey-maker-settings.php:1872
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2874
 msgid "Shortcode"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:897
+#: ../admin/partials/settings/survey-maker-settings.php:898
 msgid "In this shortcode you can add your desired text and its translation. The translated version of the text will be displayed in the front-end. The languages must be written in the Language Code"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:915
+#: ../admin/partials/settings/survey-maker-settings.php:916
 msgid "Message variables"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:918
-#: ../admin/partials/settings/survey-maker-settings.php:925
+#: ../admin/partials/settings/survey-maker-settings.php:919
+#: ../admin/partials/settings/survey-maker-settings.php:926
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab4.php:7
 msgid "Thank you message"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:924
+#: ../admin/partials/settings/survey-maker-settings.php:925
 msgid "You can copy these variables and paste them in the following options from the survey settings"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:927
+#: ../admin/partials/settings/survey-maker-settings.php:928
 msgid "Message variables for these features are available only in the Pro version."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:928
+#: ../admin/partials/settings/survey-maker-settings.php:929
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:30
 msgid "Send email to user"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:929
+#: ../admin/partials/settings/survey-maker-settings.php:930
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:149
 msgid "Send email to admin"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:931
+#: ../admin/partials/settings/survey-maker-settings.php:932
 msgid "From Name"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:932
+#: ../admin/partials/settings/survey-maker-settings.php:933
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:262
 msgid "Subject"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:933
+#: ../admin/partials/settings/survey-maker-settings.php:934
 msgid "Reply To Name"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:947
+#: ../admin/partials/settings/survey-maker-settings.php:948
 msgid "Default Texts"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:948
-#: ../admin/partials/settings/survey-maker-settings.php:953
+#: ../admin/partials/settings/survey-maker-settings.php:949
+#: ../admin/partials/settings/survey-maker-settings.php:954
 msgid "If you make a change here, these words will not be translatable via translation tools!"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:959
+#: ../admin/partials/settings/survey-maker-settings.php:960
 msgid "Wrong shortcode text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:960
+#: ../admin/partials/settings/survey-maker-settings.php:961
 msgid "The text will be displayed if the post/page contains an incorrect shortcode"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:972
+#: ../admin/partials/settings/survey-maker-settings.php:974
 msgid "Email validation error text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:973
+#: ../admin/partials/settings/survey-maker-settings.php:975
 msgid "The text will be displayed if the survey taker fills in an invalid email address (e.g. without \"@\" and \".\") in the Email field."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:985
+#: ../admin/partials/settings/survey-maker-settings.php:988
 msgid "Custom Redirection Message Text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:986
+#: ../admin/partials/settings/survey-maker-settings.php:989
 msgid "Customize the message displayed to survey takers while they are being redirected to another page after the survey submission (e.g. Redirecting after 00:05)."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1010
+#: ../admin/partials/settings/survey-maker-settings.php:1014
 msgid "Country limitation text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1011
+#: ../admin/partials/settings/survey-maker-settings.php:1015
 msgid "The text will be displayed if the user tries to access the survey from the country for which there is a limitation set from the survey settings."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1036
+#: ../admin/partials/settings/survey-maker-settings.php:1041
 msgid "IP blocked text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1037
+#: ../admin/partials/settings/survey-maker-settings.php:1042
 msgid "The text will be displayed if the survey is accessed from a blocked IP."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1062
+#: ../admin/partials/settings/survey-maker-settings.php:1068
 msgid "Enter password text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1063
+#: ../admin/partials/settings/survey-maker-settings.php:1069
 msgid "The text will be displayed when the survey taker is prompted to enter a password."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1088
+#: ../admin/partials/settings/survey-maker-settings.php:1095
 msgid "Wrong password text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1089
+#: ../admin/partials/settings/survey-maker-settings.php:1096
 msgid "The text will be displayed in case the survey taker fills in the incorrect password."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1114
+#: ../admin/partials/settings/survey-maker-settings.php:1122
 msgid "Answer explanation text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1115
+#: ../admin/partials/settings/survey-maker-settings.php:1123
 msgid "The placeholder text that will be displayed in the textarea if the user explanation option is on."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1140
+#: ../admin/partials/settings/survey-maker-settings.php:1149
 msgid "Admin email subject text"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1141
+#: ../admin/partials/settings/survey-maker-settings.php:1150
 msgid "The text will be sent as an email subject if the Send Email to Admin option is enabled for the survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1149
+#: ../admin/partials/settings/survey-maker-settings.php:1158
 #, php-format
 msgid "Note: The text must include the <strong>%s</strong> sign (that is the name of the survey the user passed) in it. Otherwise, the default text will be displayed."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1158
+#: ../admin/partials/settings/survey-maker-settings.php:1167
 msgid "Buttons texts"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1159
-#: ../admin/partials/settings/survey-maker-settings.php:1164
+#: ../admin/partials/settings/survey-maker-settings.php:1168
+#: ../admin/partials/settings/survey-maker-settings.php:1173
 msgid "If you make a change here, these words will not be translated!"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1170
+#: ../admin/partials/settings/survey-maker-settings.php:1179
 msgid "Next button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1180
+#: ../admin/partials/settings/survey-maker-settings.php:1190
 msgid "Previous button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1190
+#: ../admin/partials/settings/survey-maker-settings.php:1201
 msgid "Clear selection button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1200
+#: ../admin/partials/settings/survey-maker-settings.php:1212
 msgid "Finish button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1210
+#: ../admin/partials/settings/survey-maker-settings.php:1223
 msgid "Restart survey button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1220
+#: ../admin/partials/settings/survey-maker-settings.php:1234
 msgid "Exit button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1230
+#: ../admin/partials/settings/survey-maker-settings.php:1245
 msgid "Log In button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1251
-#: ../admin/partials/settings/survey-maker-settings.php:1255
-msgid "Check button"
-msgstr ""
-
-#: ../admin/partials/settings/survey-maker-settings.php:1274
-#: ../admin/partials/settings/survey-maker-settings.php:1278
+#: ../admin/partials/settings/survey-maker-settings.php:1256
 msgid "Start button"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1292
+#: ../admin/partials/settings/survey-maker-settings.php:1278
+#: ../admin/partials/settings/survey-maker-settings.php:1282
+msgid "Check button"
+msgstr ""
+
+#: ../admin/partials/settings/survey-maker-settings.php:1296
 msgid "Display survey summary"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1300
+#: ../admin/partials/settings/survey-maker-settings.php:1304
 msgid "Copy the given shortcode and insert it into any post or page to show the charts of the submissions of the given survey. Please change 'Your_Survey_ID' to the corresponding ID of your survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1316
+#: ../admin/partials/settings/survey-maker-settings.php:1320
 msgid "Extra shortcodes"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1323
+#: ../admin/partials/settings/survey-maker-settings.php:1327
 msgid "Show User First Name"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1324
+#: ../admin/partials/settings/survey-maker-settings.php:1328
 msgid "Shows the logged-in user's First Name. If the user is not logged-in, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1341
+#: ../admin/partials/settings/survey-maker-settings.php:1345
 msgid "Show User Last Name"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1342
+#: ../admin/partials/settings/survey-maker-settings.php:1346
 msgid "Shows the logged-in user's last name. If the user is not logged-in, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1359
+#: ../admin/partials/settings/survey-maker-settings.php:1363
 msgid "Show User Nickname"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1360
+#: ../admin/partials/settings/survey-maker-settings.php:1364
 msgid "Shows the logged-in user's nickname. If the user is not logged-in, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1377
+#: ../admin/partials/settings/survey-maker-settings.php:1381
 msgid "Show User Display name"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1378
+#: ../admin/partials/settings/survey-maker-settings.php:1382
 msgid "Shows the logged-in user's display name. If the user is not logged-in, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1395
+#: ../admin/partials/settings/survey-maker-settings.php:1399
 msgid "Show User Email"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1396
+#: ../admin/partials/settings/survey-maker-settings.php:1400
 msgid "Shows the logged-in user's email. If the user is not logged-in, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1413
+#: ../admin/partials/settings/survey-maker-settings.php:1417
 msgid "Show User WordPress Roles"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1414
+#: ../admin/partials/settings/survey-maker-settings.php:1418
 msgid "Shows user's role(s) when logged-in. In case the user is not logged-in, the field will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1431
+#: ../admin/partials/settings/survey-maker-settings.php:1435
 msgid "Passed users count"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1432
+#: ../admin/partials/settings/survey-maker-settings.php:1436
 msgid "Copy the following shortcode and paste it in posts. Insert the Survey ID to receive the number of participants of the survey."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1449
+#: ../admin/partials/settings/survey-maker-settings.php:1453
 msgid "Show survey creation date"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1450
+#: ../admin/partials/settings/survey-maker-settings.php:1454
 msgid "You need to insert Your Survey ID in the shortcode. It will show the creation date of the particular survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1467
+#: ../admin/partials/settings/survey-maker-settings.php:1471
 msgid "Show survey sections count"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1468
+#: ../admin/partials/settings/survey-maker-settings.php:1472
 msgid "You need to insert Your Survey ID in the shortcode. It will show the number of the sections of the given survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1485
+#: ../admin/partials/settings/survey-maker-settings.php:1489
 msgid "Show survey questions count"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1486
+#: ../admin/partials/settings/survey-maker-settings.php:1490
 msgid "You need to insert Your Survey ID in the shortcode. It will show the number of the questions of the given survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1503
+#: ../admin/partials/settings/survey-maker-settings.php:1507
 msgid "Show survey categories count"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1504
+#: ../admin/partials/settings/survey-maker-settings.php:1508
 msgid "Put this shortcode on a page to show the total count of survey categories."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1520
+#: ../admin/partials/settings/survey-maker-settings.php:1524
 msgid "Most popular survey"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1544
+#: ../admin/partials/settings/survey-maker-settings.php:1548
 msgid "Survey Links by Category"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1568
+#: ../admin/partials/settings/survey-maker-settings.php:1572
 msgid "All submission settings"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1598
+#: ../admin/partials/settings/survey-maker-settings.php:1602
 msgid "Show to guests too"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1613
+#: ../admin/partials/settings/survey-maker-settings.php:1617
 msgid "Table columns"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1643
+#: ../admin/partials/settings/survey-maker-settings.php:1647
 msgid "User history settings"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1679
+#: ../admin/partials/settings/survey-maker-settings.php:1683
 msgid "User history submissions table columns"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1709
+#: ../admin/partials/settings/survey-maker-settings.php:1713
 msgid "Display question summary"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1718
+#: ../admin/partials/settings/survey-maker-settings.php:1722
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:96
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:928
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab5.php:479
 msgid "View demo"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1750
+#: ../admin/partials/settings/survey-maker-settings.php:1754
 msgid "Recent surveys"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1783
+#: ../admin/partials/settings/survey-maker-settings.php:1787
 msgid "User Activity Per Day Settings"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1816
+#: ../admin/partials/settings/survey-maker-settings.php:1820
 msgid "Survey Activity Per Day Settings"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1852
+#: ../admin/partials/settings/survey-maker-settings.php:1856
 msgid "Request Form"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1882
+#: ../admin/partials/settings/survey-maker-settings.php:1886
 msgid "Enable auto-approve"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1893
+#: ../admin/partials/settings/survey-maker-settings.php:1897
 msgid "Ability to allow users to create a survey from the front-end."
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1914
+#: ../admin/partials/settings/survey-maker-settings.php:1918
 msgid "Save changes"
 msgstr ""
 
-#: ../admin/partials/settings/survey-maker-settings.php:1946
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:945
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:449
+#: ../admin/partials/settings/survey-maker-settings.php:1950
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1087
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:448
 msgid "Upgrade PRO NOW"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:125
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:127
 msgid "Back to Submissions"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:137
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:139
 msgid "Reports for"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:141
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:143
 msgid "Export submissions"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:142
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:144
 msgid "Export to XLSX"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:164
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:166
 msgid "Filters"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:169
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:171
 msgid "Select post"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:173
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:175
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:99
 msgid "Filter"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:174
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:176
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:85
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:75
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:102
@@ -2403,165 +2412,165 @@ msgstr ""
 msgid "Clear filters"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:179
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:181
 msgid "Select question"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:182
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:184
 msgid "Select answer"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:190
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:192
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab4.php:252
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:82
 msgid "Summary"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:191
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:193
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab4.php:257
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab7.php:86
 msgid "Individual"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:193
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:195
 msgid "Analytics"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:239
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:241
 msgid "Submission count per day"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:249
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:251
 msgid "Survey passed users by user role"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:259
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:261
 msgid "Detected device"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:269
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:271
 msgid "Detected Countries"
-msgstr ""
-
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:284
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:612
-msgid "Responses cannot be edited"
 msgstr ""
 
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:286
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:614
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:915
-#: ../admin/partials/submissions/survey-maker-submissions-display.php:121
-msgid "Export to"
+msgid "Responses cannot be edited"
 msgstr ""
 
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:288
 #: ../admin/partials/submissions/survey-maker-each-submission-display.php:616
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1057
+#: ../admin/partials/submissions/survey-maker-submissions-display.php:121
+msgid "Export to"
+msgstr ""
+
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:290
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:618
 msgid "PDF"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:289
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:617
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:916
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:291
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:619
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1058
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:123
 msgid "XLSX"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:299
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:624
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:301
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:626
 msgid " Responses"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:303
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:628
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:667
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:305
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:630
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:669
 msgid "Print"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:340
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:342
 msgid "User Information"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:343
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:345
 msgid "Copy user info to clipboard"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:348
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:350
 msgid "User name"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:352
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:354
 msgid "User email"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:356
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:358
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:419
 msgid "User IP"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:360
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:362
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:422
 msgid "Submission Date"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:364
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:366
 msgid "Submission id"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:369
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:371
 msgid "Device"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:388
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:390
 msgid "Click For Admin Note"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:437
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:304
-#: ../public/class-survey-maker-public.php:146
-#: ../public/class-survey-maker-public.php:1836
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:439
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:303
+#: ../public/class-survey-maker-public.php:149
+#: ../public/class-survey-maker-public.php:1886
 msgid "Choose"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:576
-#: ../public/class-survey-maker-public.php:1654
-#: ../public/class-survey-maker-public.php:1759
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:578
+#: ../public/class-survey-maker-public.php:1704
+#: ../public/class-survey-maker-public.php:1809
 msgid "Other"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:682
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:684
 msgid "Untitled section"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:698
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:700
 msgid " submissions"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:828
-#: ../public/partials/class-survey-maker-submissions-summary-shortcode.php:306
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:970
+#: ../public/partials/class-survey-maker-submissions-summary-shortcode.php:428
 msgid "\"Other\" answers"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:870
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1012
 msgid "Detailed report"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:885
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1027
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:86
 msgid "Export Filter"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:892
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1034
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:93
 msgid "Users"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:899
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1041
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:105
 msgid "Start Date from"
 msgstr ""
 
-#: ../admin/partials/submissions/survey-maker-each-submission-display.php:903
+#: ../admin/partials/submissions/survey-maker-each-submission-display.php:1045
 #: ../admin/partials/submissions/survey-maker-submissions-display.php:109
 msgid "Start Date to"
 msgstr ""
@@ -2802,10 +2811,10 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:49
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:39
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:78
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:660
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:663
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:141
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:184
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2703
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2747
 msgid "Draft"
 msgstr ""
 
@@ -2843,245 +2852,245 @@ msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:64
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:111
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:997
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1045
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2555
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2602
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1025
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1073
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2614
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2661
 msgid "Section"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:66
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:113
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:999
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1047
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2557
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2604
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1027
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1075
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2616
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2663
 msgid "of"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:99
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:156
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1032
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1089
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2590
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2647
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1060
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1117
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2649
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2706
 msgid "Delete section"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:100
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:157
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1033
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1090
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2591
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2648
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1061
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1118
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2650
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2707
 msgid "Duplicate section"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:194
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1133
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2045
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1161
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2106
 msgid "Delete question"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:196
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:923
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1135
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1833
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:951
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1163
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1894
 msgid "Question ID"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:279
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1215
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2117
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:277
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1241
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2176
 msgid "View all question types"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:280
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1216
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2118
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:278
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1242
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2177
 msgid "All question types (video guide)"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:306
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1242
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2144
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:664
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:304
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1268
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2203
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:667
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:617
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2707
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2751
 msgid "Edit"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:543
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1412
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2704
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:541
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1438
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2763
 msgid "You can insert your custom placeholder for input. Note your custom text will not be translated"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:547
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1416
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2707
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:545
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1442
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2766
 msgid "Note: Phone question type can contain only numbers and the following signs + ( ) -"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:676
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1557
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2285
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:704
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1618
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2344
 msgid "Add option"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:682
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1571
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2291
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:710
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1632
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2350
 msgid "or"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:686
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1575
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2295
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:714
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1636
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2354
 msgid "add \"Other\""
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:703
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1594
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2311
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:731
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1655
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2370
 msgid "Minimum selection number"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:718
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1609
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2325
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:746
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1670
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2384
 msgid "Maximum selection number"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:734
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1629
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2340
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:762
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1690
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2399
 msgid "Limit by"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:738
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1633
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2344
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:766
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1694
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2403
 msgid "Characters"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:739
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1634
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2345
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:767
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1695
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2404
 msgid "Word"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:747
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:822
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1642
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1732
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2353
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2423
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:775
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:850
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1703
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1793
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2412
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2482
 msgid "Length"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:761
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1656
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2365
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:789
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1717
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2424
 msgid "Show word/character counter"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:772
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1677
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2377
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:800
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1738
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2436
 msgid "Minimum value"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:784
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1690
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2388
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:812
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1751
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2447
 msgid "Maximum value"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:796
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1704
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2399
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:824
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1765
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2458
 msgid "Error message"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:809
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1718
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2411
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:837
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1779
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2470
 msgid "Show error message"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:836
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1746
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2436
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:864
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1807
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2495
 msgid "Show character counter"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:862
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1772
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2460
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:890
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1833
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2519
 msgid "Bulk add"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:895
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1805
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2493
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:923
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1866
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2552
 msgid "Required"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:930
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1840
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2524
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:958
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1901
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2583
 msgid "User explanation"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:933
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1843
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2527
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:961
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1904
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2586
 msgid "Hide results"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:936
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1846
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2530
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:964
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1907
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2589
 msgid "Admin note"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:939
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1849
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2533
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:967
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1910
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2592
 msgid "URL parametr"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:942
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1852
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2536
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:970
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1913
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2595
 msgid "Value prefix"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:945
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1855
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2539
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:973
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1916
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2598
 msgid "Value suffix"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:966
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1880
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2670
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:994
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1941
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2729
 msgid "Add Question"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:978
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1892
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2682
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1006
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1953
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2741
 msgid "Add Section"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2646
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2705
 msgid "Make questions required "
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:4
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:89
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:88
 msgid "Styles"
 msgstr ""
 
@@ -3850,10 +3859,10 @@ msgid "Pre-start message:"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:1105
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:132
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:965
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:133
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:1005
 #: ../includes/class-survey-maker-activator.php:408
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:715
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:749
 msgid "The survey will be available soon!"
 msgstr ""
 
@@ -3862,11 +3871,11 @@ msgid "Expiration message:"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:1127
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:133
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:968
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:134
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:1008
 #: ../includes/class-survey-maker-activator.php:409
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:718
-#: ../public/class-survey-maker-public.php:838
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:752
+#: ../public/class-survey-maker-public.php:853
 msgid "This survey has expired!"
 msgstr ""
 
@@ -4096,40 +4105,35 @@ msgstr ""
 msgid "Limit by country"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:22
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:2
 msgid "Start page settings"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:23
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:3
 msgid "Configure your survey's start page by adding the title, description and styling it the way you want. The start page will be shown to the survey takers before displaying the survey."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:31
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:8
 msgid "Enable start page"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:45
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:22
 msgid "Start page title"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:59
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:36
 msgid "Start page description"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:75
-#, php-format
-msgid ""
-"Note: Insert the URL parameter to display personalized start page to your website visitors.\n"
-"                                        If the description text of the start page and the parameter you added after the URL are the same, it will be replaced and the description will take the value you have written.\n"
-"                                        You can write the parameter like this and add it after the URL: %%%%anyparameter%%%%.\n"
-"                                        For example, you can write %%%%user_name%%%% in the Start page description, then, add the following URL parameter on the front end ?user_name=name."
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:55
+msgid "Start button position"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:84
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:100
 msgid "Start page styles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:119
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab6.php:135
 msgid "Custom class for start page container"
 msgstr ""
 
@@ -4294,155 +4298,155 @@ msgstr ""
 msgid "Save and new"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:210
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:211
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:420
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:67
 msgid "User Name"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:211
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:212
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:421
 msgid "User Email"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:212
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:242
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:213
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:243
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:66
 #: ../pb_templates/survey-maker-elementor.php:39
 #: ../public/partials/class-survey-maker-survey-links-by-category.php:49
 msgid "Survey Title"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:213
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:243
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:214
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:244
 msgid "Survey ID"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:214
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:244
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:215
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:245
 msgid "Questions Count"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:215
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:216
 msgid "Current Date"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:216
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:245
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:217
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:246
 msgid "Current Time"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:217
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:218
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:423
 msgid "Unique Code"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:218
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:246
-msgid "Sections Count"
-msgstr ""
-
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:219
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:247
-msgid "Users Count"
+msgid "Sections Count"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:220
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:248
-msgid "Users First Name"
+msgid "Users Count"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:221
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:249
-msgid "Users Last Name"
+msgid "Users First Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:222
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:250
-msgid "Users Nick Name"
+msgid "Users Last Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:223
-msgid "Users Wordpress Roles"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:251
+msgid "Users Nick Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:224
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:252
-msgid "Users Display Name"
+msgid "Users Wordpress Roles"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:225
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:253
-msgid "Users IP Address"
+msgid "Users Display Name"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:226
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:254
-msgid "Creation Date"
+msgid "Users IP Address"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:227
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:255
-msgid "Modified Date"
+msgid "Creation Date"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:228
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:256
-msgid "Survey Author"
+msgid "Modified Date"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:229
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:257
-msgid "Survey Author Email"
+msgid "Survey Author"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:230
-msgid "Survey Page Link"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:258
+msgid "Survey Author Email"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:231
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:258
-msgid "Admin Email"
+msgid "Survey Page Link"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:232
-msgid "Submission count"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:259
+msgid "Admin Email"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:233
-msgid "Post id"
+msgid "Submission count"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:234
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:259
-msgid "Home page URL"
+msgid "Post id"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:235
-msgid "Post Author Email"
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:260
+msgid "Home page URL"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:236
-msgid "Post Title"
+msgid "Post Author Email"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:237
-msgid "Post Author Nickname"
+msgid "Post Title"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:238
+msgid "Post Author Nickname"
+msgstr ""
+
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:239
 msgid "Site title"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:251
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:252
 msgid "Users WordPress Roles"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:266
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:267
 msgid "Add new survey"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:273
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions-options.php:274
 msgid "Edit survey"
 msgstr ""
 
@@ -4451,138 +4455,138 @@ msgstr ""
 msgid "60 min Video Guide"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:57
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:56
 msgid "To insert the Survey into a page, post or text widget, copy shortcode"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:59
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:58
 msgid "and paste it at the desired place in the editor."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:92
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:91
 msgid "Start page"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:98
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:97
 msgid "Results Settings"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:101
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:100
 msgid "Conditional Result"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:104
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:103
 msgid "Limitation Users"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:107
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:106
 msgid "E-Mail"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:212
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:211
 msgid "Prev Survey"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:221
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:220
 msgid "Next Survey"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:229
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:228
 msgid "Save as default"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:248
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:247
 msgid "Edit question"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:272
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:271
 msgid "Back to classic textarea"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:273
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:272
 msgid "Apply changes"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:286
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:285
 msgid "Survey Templates"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:301
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:300
 msgid "Blank Survey"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:314
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:313
 msgid "Customer Feedback Form Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:315
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:314
 msgid "Beautiful, fun, easy to complete. Comes with useful rating questions."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:318
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:332
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:346
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:360
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:374
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:388
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:402
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:416
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:317
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:331
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:345
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:359
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:373
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:387
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:401
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:415
 msgid "Choose Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:328
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:327
 msgid "Employee Satisfaction Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:329
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:328
 msgid "Great for honing in on specific things to improve."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:342
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:341
 msgid "Event Evaluation Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:343
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:342
 msgid "Get honest feedback from guests and use it to improve your upcoming events."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:356
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:355
 msgid "Product Research Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:357
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:356
 msgid "Developing a product? Find out more about your target audience with this survey"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:370
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:369
 msgid "Restaurant Evaluation Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:371
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:370
 msgid "Help restaurants get better. Ask questions about your customer's dining experience."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:384
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:383
 msgid "Market Research Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:385
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:384
 msgid "Easily learn about what customers like. Understand trends with simple questions."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:398
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:397
 msgid "Brand Awareness Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:399
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:398
 msgid "Know how well people know your brand. Ask easy questions to find out."
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:412
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:411
 msgid "User Persona Survey Template"
 msgstr ""
 
-#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:413
+#: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:412
 msgid "Understand your users better. Ask simple questions to know what they like."
 msgstr ""
 
@@ -4590,63 +4594,92 @@ msgstr ""
 msgid "Create Your First Survey in Under One Minute"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:978
+#: ../includes/class-survey-maker-ays-welcome.php:39
+#: ../includes/class-survey-maker-ays-welcome.php:40
+msgid "Welcome to Survey Maker"
+msgstr ""
+
+#: ../includes/class-survey-maker-ays-welcome.php:152
+msgid "Survey Maker Logo"
+msgstr ""
+
+#: ../includes/class-survey-maker-ays-welcome.php:155
+msgid "Thank you for using Survey Maker plugin !"
+msgstr ""
+
+#: ../includes/class-survey-maker-ays-welcome.php:156
+msgid "To enhance the user experience of our product, we would like to request permission to track certain user interactions. Please rest assured that this tracking will be minimal and will only involve non-sensitive actions, such as specific clicks within the interface. No personal or sensitive data will be collected."
+msgstr ""
+
+#: ../includes/class-survey-maker-ays-welcome.php:157
+msgid "Our goal is solely to improve the functionality and usability of the product based on user behavior."
+msgstr ""
+
+#: ../includes/class-survey-maker-ays-welcome.php:172
+msgid "Agree & continue"
+msgstr ""
+
+#: ../includes/class-survey-maker-data.php:1013
 msgid "days"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:984
+#: ../includes/class-survey-maker-data.php:1019
 msgid "hours"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:990
+#: ../includes/class-survey-maker-data.php:1025
 msgid "minutes"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:996
+#: ../includes/class-survey-maker-data.php:1031
 msgid "seconds"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1274
+#: ../includes/class-survey-maker-data.php:1309
 msgid "Wrong shortcode initialized"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1278
+#: ../includes/class-survey-maker-data.php:1313
 msgid "Must be a valid email address"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1282
+#: ../includes/class-survey-maker-data.php:1317
 msgid "Redirecting after"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1316
+#: ../includes/class-survey-maker-data.php:1352
 msgid "Next"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1317
+#: ../includes/class-survey-maker-data.php:1353
 msgid "Prev"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1318
+#: ../includes/class-survey-maker-data.php:1354
 msgid "Clear selection"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1319
+#: ../includes/class-survey-maker-data.php:1355
 msgid "Finish"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1320
+#: ../includes/class-survey-maker-data.php:1356
 msgid "Restart"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1321
+#: ../includes/class-survey-maker-data.php:1357
 msgid "Exit"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:1322
+#: ../includes/class-survey-maker-data.php:1358
 msgid "Log In"
 msgstr ""
 
-#: ../includes/class-survey-maker-data.php:2006
+#: ../includes/class-survey-maker-data.php:1361
+msgid "Start"
+msgstr ""
+
+#: ../includes/class-survey-maker-data.php:2059
 msgid "There are no surveys yet."
 msgstr ""
 
@@ -5211,10 +5244,10 @@ msgstr ""
 
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:424
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:71
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:732
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:735
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:473
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:677
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2836
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2880
 msgid "ID"
 msgstr ""
 
@@ -5258,9 +5291,9 @@ msgid "Request Date"
 msgstr ""
 
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:69
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:731
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:734
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:676
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2835
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2879
 msgid "Status"
 msgstr ""
 
@@ -5282,101 +5315,101 @@ msgstr ""
 msgid "Trash"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:633
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:636
 msgid "Unpublish"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:636
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:639
 msgid "Publish"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:655
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:769
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:658
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:772
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:614
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:714
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2698
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2887
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2742
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2931
 msgid "Restore"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:656
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:770
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:659
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:773
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:622
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:715
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2699
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2888
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2743
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2932
 msgid "Delete Permanently"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:668
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:764
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:671
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:767
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:625
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:709
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2715
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2882
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2759
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2926
 msgid "Move to trash"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:727
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2826
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:730
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2870
 msgid "Author"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:730
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:733
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:466
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:49
 msgid "Survey"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1015
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1018
 msgid "Popup created."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1018
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1021
 msgid "Popup saved."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1021
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1024
 msgid "Popup duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1024
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1027
 msgid "Popup deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1027
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1030
 msgid "Popup moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1030
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1033
 msgid "Popup restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1033
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1036
 msgid "Popups are duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1036
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1039
 msgid "Popups are deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1039
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1042
 msgid "Popups are moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1042
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1045
 msgid "Popups are restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1045
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1048
 msgid "Popups are published."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1048
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1051
 msgid "Popups are unpublished."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1052
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1055
 msgid "Error: Popup title can not be empty."
 msgstr ""
 
@@ -5402,7 +5435,7 @@ msgid "Unread results"
 msgstr ""
 
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:471
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2829
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2873
 msgid "Categories"
 msgstr ""
 
@@ -5462,79 +5495,79 @@ msgstr ""
 msgid "Select Author"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1249
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1459
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1682
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1890
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1293
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1503
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1726
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1934
 msgid "Question"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1388
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1422
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1596
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1820
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:1855
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2027
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1432
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1466
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1640
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1864
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:1899
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2071
 msgid "Option"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2709
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2753
 msgid "View submissions"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2711
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2755
 msgid "Preview"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2831
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2875
 msgid "Code include"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:2832
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:2876
 msgid "Sections"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3140
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3184
 msgid "Survey created."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3143
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3187
 msgid "Survey saved."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3146
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3190
 msgid "Survey duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3149
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3193
 msgid "Survey deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3152
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3196
 msgid "Survey moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3155
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3199
 msgid "Survey restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3158
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3202
 msgid "Surveys are duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3161
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3205
 msgid "Surveys are deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3164
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3208
 msgid "Surveys are moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3167
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3211
 msgid "Surveys are restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-surveys-list-table.php:3171
+#: ../includes/lists/class-survey-maker-surveys-list-table.php:3215
 msgid "Error: Survey title can not be empty."
 msgstr ""
 
@@ -5552,96 +5585,96 @@ msgstr ""
 msgid "Select survey"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:137
+#: ../public/class-survey-maker-public.php:140
 msgid "You have not answered this question"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:138
+#: ../public/class-survey-maker-public.php:141
 msgid "Do you want to finish the quiz? Are you sure?"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:139
+#: ../public/class-survey-maker-public.php:142
 msgid "Sorry"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:140
+#: ../public/class-survey-maker-public.php:143
 msgid "We are unable to store your data"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:141
+#: ../public/class-survey-maker-public.php:144
 msgid "Connection is lost"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:142
+#: ../public/class-survey-maker-public.php:145
 msgid "Please check your connection and try again"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:143
+#: ../public/class-survey-maker-public.php:146
 msgid "Select an answer"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:144
+#: ../public/class-survey-maker-public.php:147
 msgid "Share Dialog"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:145
+#: ../public/class-survey-maker-public.php:148
 msgid "Password is wrong!"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:149
+#: ../public/class-survey-maker-public.php:152
 msgid "This is a required question"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:150
+#: ../public/class-survey-maker-public.php:153
 msgid "Min votes count should be"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:151
+#: ../public/class-survey-maker-public.php:154
 msgid "Max votes count should be"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:228
+#: ../public/class-survey-maker-public.php:231
 #: ../public/partials/class-survey-maker-survey-links-by-category.php:52
 msgid "Survey link"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:443
+#: ../public/class-survey-maker-public.php:446
 msgid "Thank you for completing this survey."
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:788
+#: ../public/class-survey-maker-public.php:803
 msgid "You've already responded"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:810
+#: ../public/class-survey-maker-public.php:825
 msgid "Sign in to continue"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:811
+#: ../public/class-survey-maker-public.php:826
 msgid "To fill out this form, you must be signed in. Your identity will remain anonymous."
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:1028
+#: ../public/class-survey-maker-public.php:1043
 msgid "You're in the preview mode. Note: All elements work correctly on the front end."
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:1072
+#: ../public/class-survey-maker-public.php:1087
 msgid "Full screen"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:1367
+#: ../public/class-survey-maker-public.php:1415
 #, php-format
 msgid "%s %s of %s"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:1948
-#: ../public/class-survey-maker-public.php:2023
-#: ../public/class-survey-maker-public.php:2099
-#: ../public/class-survey-maker-public.php:2184
+#: ../public/class-survey-maker-public.php:1998
+#: ../public/class-survey-maker-public.php:2073
+#: ../public/class-survey-maker-public.php:2149
+#: ../public/class-survey-maker-public.php:2234
 msgid "left"
 msgstr ""
 
-#: ../public/class-survey-maker-public.php:3140
+#: ../public/class-survey-maker-public.php:3295
 msgid "You already passed this survey."
 msgstr ""
 
@@ -5664,12 +5697,12 @@ msgstr ""
 msgid "There are no questions atteched yet."
 msgstr ""
 
-#: ../public/partials/class-survey-maker-submissions-summary-shortcode.php:204
+#: ../public/partials/class-survey-maker-submissions-summary-shortcode.php:205
 #, php-format
 msgid "In total %s submission"
 msgstr ""
 
-#: ../public/partials/class-survey-maker-submissions-summary-shortcode.php:223
+#: ../public/partials/class-survey-maker-submissions-summary-shortcode.php:224
 msgid "submissions"
 msgstr ""
 
