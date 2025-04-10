@@ -168,6 +168,7 @@ class Survey_Maker_Admin {
         wp_enqueue_style( $this->plugin_name . '-banner.css', plugin_dir_url(__FILE__) . 'css/banner.css', array(), $this->version, 'all');
         // wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner-black-friday-2024.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner.css', array(), $this->version, 'all');
+        wp_enqueue_style( $this->plugin_name . '-mega-bundle-banner-2025.css', plugin_dir_url(__FILE__) . 'css/survey-maker-mega-bundle-banner-2025.css', array(), $this->version, 'all');
         // wp_enqueue_style( $this->plugin_name . '-banner-christmas.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner-christmas-2024.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-animate.css', plugin_dir_url(__FILE__) . 'css/animate.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-animations.css', plugin_dir_url(__FILE__) . 'css/animations.css', array(), $this->version, 'all');
@@ -1582,7 +1583,8 @@ class Survey_Maker_Admin {
                     if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
                         if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
                             // $this->ays_survey_christmas_top_message_2024($ays_survey_maker_flag);
-                            $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
+                            // $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
+                            $this->ays_quiz_new_mega_bundle_message_2025($ays_survey_maker_flag);
                             // $this->ays_survey_black_friday_message_2024($ays_survey_maker_flag);
                         }
                     }
@@ -1658,6 +1660,92 @@ class Survey_Maker_Admin {
     //         echo html_entity_decode(esc_html( $content ));
     //     }
     // }
+
+
+    // New Mega Bundle
+    public function ays_quiz_new_mega_bundle_message_2025($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+
+            $survey_cta_button_link = esc_url('https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=mega-bundle-2025-sale-banner-' . SURVEY_MAKER_VERSION);
+
+            $content[] = '<div id="ays-survey-new-mega-bundle-2025-dicount-month-main" class="notice notice-success is-dismissible ays_survey_dicount_info">';
+                $content[] = '<div id="ays-survey-dicount-month" class="ays_survey_dicount_month">';
+
+                    $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-text-box">';
+                        $content[] = '<div>';
+
+                            $content[] = '<span class="ays-survey-new-mega-bundle-2025-title">';
+                                $content[] = __( "<span><a href='". $survey_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'survey-maker' );
+                            $content[] = '</span>';
+
+                            $content[] = '</br>';
+
+                            $content[] = '<span class="ays-survey-new-mega-bundle-2025-desc">';
+                                $content[] = __( "30 Day Money Back Guarantee", 'survey-maker' );
+                            $content[] = '</span>';
+                        $content[] = '</div>';
+
+                        $content[] = '<div>';
+                                $content[] = '<img class="ays-survey-new-mega-bundle-guaranteeicon" src="' . SURVEY_MAKER_ADMIN_URL . '/images/ays-survey-mega-bundle-2025-discount.svg" style="width: 80px;">';
+                        $content[] = '</div>';
+
+                        $content[] = '<div style="position: absolute;right: 10px;bottom: 1px;" class="ays-survey-dismiss-buttons-container-for-form">';
+
+                            $content[] = '<form action="" method="POST">';
+                                $content[] = '<div id="ays-survey-dismiss-buttons-content">';
+                                if( current_user_can( 'manage_options' ) ){
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'survey-maker' ) .'</button>';
+                                    $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner' ,  SURVEY_MAKER_NAME . '-sale-banner' );
+                                }
+                                $content[] = '</div>';
+                            $content[] = '</form>';
+                            
+                        $content[] = '</div>';
+
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-countdown-box">';
+
+                        $content[] = '<div id="ays-survey-maker-countdown-main-container">';
+                            $content[] = '<div class="ays-survey-maker-countdown-container">';
+
+                                $content[] = '<div id="ays-survey-countdown">';
+
+                                    $content[] = '<ul>';
+                                        $content[] = '<li><span id="ays-survey-countdown-days"></span>'. __( "Days", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-hours"></span>'. __( "Hours", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-minutes"></span>'. __( "Minutes", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-seconds"></span>'. __( "Seconds", 'survey-maker' ) .'</li>';
+                                    $content[] = '</ul>';
+                                $content[] = '</div>';
+
+                                $content[] = '<div id="ays-survey-countdown-content" class="emoji">';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                    $content[] = '<span></span>';
+                                $content[] = '</div>';
+
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+                            
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
+                        $content[] = '<a href="'. $survey_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'survey-maker' ) . '</a>';
+                        $content[] = '<span class="ays-survey-dicount-one-time-text">';
+                            $content[] = __( "One-time payment", 'survey-maker' );
+                        $content[] = '</span>';
+                    $content[] = '</div>';
+                $content[] = '</div>';
+            $content[] = '</div>';
+
+            $content = implode( '', $content );
+            echo wp_kses_post($content);
+        }
+    }
+    
         
     public function ays_survey_new_mega_bundle_message($ishmar){
         if($ishmar == 0 ){
