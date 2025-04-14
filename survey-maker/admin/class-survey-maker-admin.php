@@ -340,6 +340,7 @@ class Survey_Maker_Admin {
             'maxInputVarsWarningMessage'        => __( 'Note: The survey has reached the limit of %t inputs out of a maximum of %f. To save changes, please contact your hosting provider to increase the max_input_vars limit.', "survey-maker"),
             'rating'                            => __( 'Rating', "survey-maker"),
             'stars_count'                       => __( 'Stars count', "survey-maker"),
+            "preivewSurvey"                     => __( "Preview Survey", 'survey-maker' ),
         ) );
         wp_localize_script($this->plugin_name . '-ajax', 'survey_maker_ajax', array(
             "emptyEmailError"   => __( 'Email field is empty', "survey-maker"),
@@ -364,6 +365,11 @@ class Survey_Maker_Admin {
                 wp_dequeue_script('mwai');
                 wp_dequeue_script('mwai-vendor');
             }
+            if (is_plugin_active('html5-video-player/html5-video-player.php')) {
+                wp_dequeue_style('h5vp-admin');
+                wp_dequeue_style('fs_common');
+            }
+
         }
     }
     
