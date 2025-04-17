@@ -3109,6 +3109,25 @@ textarea.ays-survey-question-input-textarea {
     .ays-survey-question-type-all-text-types-box.ays-survey-question-types-box{
         width: 70%;
     }
+
+    .ays-modal-body .ays-survey-question-action-butons, .ays-modal-body .ays_survey_each_sub_user_info_columns {
+        flex-wrap: wrap ;
+    }
+
+    .ays-modal-body .ays_survey_each_sub_user_info_columns div:last-child {
+        border-top: 1px solid #00000082;
+        border-left: 0 ;
+        padding: 0 ;
+        width: 100% ;
+        text-align: start;
+        margin: 0;
+    }
+    .ays_questions_answers {
+        overflow: auto;
+    }
+    .ays-survey-answer-star{
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 574px) {

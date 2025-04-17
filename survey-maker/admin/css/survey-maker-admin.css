@@ -4194,6 +4194,10 @@ input.ays-survey-text-input-90-width {
     box-shadow: none !important;
 }
 
+.ays_survey_results{
+    cursor: pointer;
+}
+
 /* Survey Templates end */
 
 /*User Page Settings Table Start*/

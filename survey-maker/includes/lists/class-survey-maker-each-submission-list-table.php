@@ -365,8 +365,9 @@ class Survey_Each_Submission_List_Table extends WP_List_Table {
         }
         $title .= sprintf( '<input type="hidden" value="%d" class="ays_survey_result">', absint( $item['id']) );
         $actions = array(        
+            'view-details' => sprintf( '<a href="javascript:void(0);" data-result="%d" class="%s">%s</a>', absint( $item['id'] ), 'ays-show-results', __('Detailed report', "survey-maker")),
                 
-            'view_detailed' => sprintf( '<a class="ays-survey-no-trigger ays-survey-view-detailed-button" data-message="this submission" href="#">%s</a>', __('View Detailed', "survey-maker") ),
+            // 'view_detailed' => sprintf( '<a class="ays-survey-no-trigger ays-survey-view-detailed-button" data-message="this submission" href="#">%s</a>', __('View Detailed', "survey-maker") ),
             'delete' => sprintf( '<a class="ays_confirm_del ays-survey-no-trigger" data-message="this submission" href="?page=%s&action=%s&survey=%s&item=%s&_wpnonce=%s">%s</a>', sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $result['survey_id'] ), absint( $item['id'] ), $delete_nonce, __('Delete', "survey-maker") )
         );
         

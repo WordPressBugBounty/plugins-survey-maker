@@ -328,6 +328,7 @@ class Survey_Maker_Admin {
             'clickForCopy'                      => __( 'Click for copy', "survey-maker"),
             'moveToSection'                     => __( 'Move to section', "survey-maker"),
             'confirmMessageTemplate'            => __( 'If you choose one of these templates, your questions will be deleted.', "survey-maker"),
+            'okSurvey'                          => __( 'OK', "survey-maker"),
             'icons' => array(
                 'radioButtonUnchecked'  => SURVEY_MAKER_ADMIN_URL . '/images/icons/radio-button-unchecked.svg',
                 'checkboxUnchecked'     => SURVEY_MAKER_ADMIN_URL . '/images/icons/checkbox-unchecked.svg',
@@ -2452,6 +2453,172 @@ class Survey_Maker_Admin {
         }
 
         return $get_ays_survey_banner_time;
+    }
+
+    //---------------- Survey submisson open results in popup ----------------
+
+
+    public function ays_survey_show_results(){
+        
+        global $wpdb;
+        if( !is_user_logged_in() ) {
+            echo json_encode( array(
+                'status' => false,
+                'rows' => ""
+            ) );
+            
+        };
+        if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'ays_survey_show_results' && isset($_REQUEST['survey_id']) && !empty($_REQUEST['survey_id'])) {
+
+            ob_start();
+
+            $survey_id = absint(intval($_REQUEST['survey_id']));
+
+
+            $this->settings_obj = new Survey_Maker_Settings_Actions($this->plugin_name);
+
+            $filters = array();
+
+            $submission_count_and_ids = Survey_Maker_Data::get_submission_count_and_ids( $survey_id, $filters );
+            $submission_ids_arr = ( isset( $submission_count_and_ids['submission_ids_arr'] ) && ! empty( $submission_count_and_ids['submission_ids_arr'] ) ) ? Survey_Maker_Data::recursive_sanitize_text_field( $submission_count_and_ids['submission_ids_arr'] ) : array();
+            $filters['filter_submission_ids'] = $submission_ids_arr;
+            
+            
+            $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id =" . absint( $survey_id );
+            $survey_name = $wpdb->get_row( $sql, 'ARRAY_A' );
+            
+            $survey_options = isset( $survey_name['options'] ) && $survey_name['options'] != '' ? json_decode( $survey_name['options'], true ) : array();
+            
+            $survey_for_charts = isset( $survey_options['survey_color'] ) && $survey_options['survey_color'] != '' ? esc_attr($survey_options['survey_color']) : "rgb(255, 87, 34)";
+            $survey_for_charts_text_color = isset( $survey_options['survey_text_color'] ) && $survey_options['survey_text_color'] != '' ? esc_attr($survey_options['survey_text_color']) : "rgb(255, 87, 34)";
+            if(isset( $survey_options['survey_color'] ) && $survey_options['survey_color'] == 'rgba(0,0,0,0)'){
+                $survey_for_charts = "rgba(0,0,0,1)";
+            }
+            if($survey_for_charts_text_color == 'rgba(0,0,0,0)'){
+                $survey_for_charts_text_color = "rgba(0,0,0,1)";
+            }
+            // Allow HTML in answers
+            $survey_options[ 'survey_allow_html_in_answers' ] = isset($survey_options[ 'survey_allow_html_in_answers' ]) ? $survey_options[ 'survey_allow_html_in_answers' ] : 'off';
+            $allow_html_in_answers = (isset($survey_options[ 'survey_allow_html_in_answers' ]) && $survey_options[ 'survey_allow_html_in_answers' ] == 'on') ? true : false;
+            
+            // Allow HTML in description
+            $survey_options[ 'survey_allow_html_in_section_description' ] = isset($survey_options[ 'survey_allow_html_in_section_description' ]) ? $survey_options[ 'survey_allow_html_in_section_description' ] : 'off';
+            $survey_allow_html_in_section_description = (isset($survey_options[ 'survey_allow_html_in_section_description' ]) && $survey_options[ 'survey_allow_html_in_section_description' ] == 'on') ? true : false;
+            
+            $user_id = get_current_user_id();
+
+            $author_id = isset( $survey_name['author_id'] ) && $survey_name['author_id'] != "" ? intval( $survey_name['author_id'] ) : 0;
+            $survey_title = isset( $survey_name['title'] ) && $survey_name['title'] != "" ? esc_html__( $survey_name['title'], "survey-maker" ) : "";
+            
+            $owner = false;
+            if( $user_id == $author_id ){
+                $owner = true;
+            }
+            
+            if( !$owner ){
+                $url = esc_url_raw( remove_query_arg( array( 'page', 'survey' ) ) ) . "?page=survey-maker-submissions";
+                wp_redirect( $url );
+            }
+           
+            $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
+
+            $submission_id = (isset($_REQUEST['submission_id']) && $_REQUEST['submission_id'] != '') ? absint( sanitize_text_field( $_REQUEST['submission_id'] ) ) : null;
+            if($submission_id == null){
+
+                return array(
+                        'status' => false,
+                        'rows' => ""
+                    );
+            }
+            $submission = array(
+                'id' => $submission_id
+            );
+
+            
+            $ays_survey_individual_questions = $this->ays_survey_individual_results_for_one_submission( $submission, $survey_name );
+
+            // Show question title as HTML
+            $survey_options[ 'survey_show_questions_as_html' ] = isset($survey_options[ 'survey_show_questions_as_html' ]) ? $survey_options[ 'survey_show_questions_as_html' ] : 'on';
+            $survey_show_questions_as_html = $survey_options[ 'survey_show_questions_as_html' ] == 'on' ? true : false;
+            
+            // Get user info
+            $individual_user_name   = "";
+            $individual_user_email  = "";
+            $individual_user_ip     = "";
+            $individual_user_date   = "";
+            $individual_user_sub_id = "";
+            $individual_user_password = "";
+            $dashboard_admin_note = "";
+            $individual_user_device_type = "";
+            if( isset($ays_survey_individual_questions['user_info']) && is_array( $ays_survey_individual_questions['user_info']) ){
+                $individual_user_name   = isset($ays_survey_individual_questions['user_info']['user_name']) && isset($ays_survey_individual_questions['user_info']['user_name']) ? stripslashes(  $ays_survey_individual_questions['user_info']['user_name'] ) : "";
+                $individual_user_email  = isset($ays_survey_individual_questions['user_info']['user_email']) && isset($ays_survey_individual_questions['user_info']['user_email'])  ? stripslashes( esc_attr( $ays_survey_individual_questions['user_info']['user_email'] ) ) : "";
+                $individual_user_ip     = isset($ays_survey_individual_questions['user_info']['user_ip']) && isset($ays_survey_individual_questions['user_info']['user_ip'])  ? stripslashes( esc_attr( $ays_survey_individual_questions['user_info']['user_ip'] ) ) : "";
+                $individual_user_date   = isset($ays_survey_individual_questions['user_info']['submission_date']) && isset($ays_survey_individual_questions['user_info']['submission_date'])  ? stripslashes( esc_attr( $ays_survey_individual_questions['user_info']['submission_date'] ) ) : "";
+                $individual_user_sub_id = isset($ays_survey_individual_questions['user_info']['id']) && isset($ays_survey_individual_questions['user_info']['id'])  ? stripslashes( esc_attr( $ays_survey_individual_questions['user_info']['id'] ) ) : "";
+                $individual_user_password = isset($ays_survey_individual_questions['user_info']['password']) && isset($ays_survey_individual_questions['user_info']['password'])  ? stripslashes( esc_attr( $ays_survey_individual_questions['user_info']['password'] ) ) : "";
+                $individual_user_extra_data  = isset($ays_survey_individual_questions['user_info']['options']) && $ays_survey_individual_questions['user_info']['options']  != '' ? json_decode(($ays_survey_individual_questions['user_info']['options']) , 'true') : array();
+                $individual_user_device_type = isset($individual_user_extra_data['device']) && $individual_user_extra_data['device']  != '' ? esc_attr($individual_user_extra_data['device']) : '';
+                $dashboard_admin_note = isset($ays_survey_individual_questions['user_info']['admin_note']) && isset($ays_survey_individual_questions['user_info']['admin_note'])  ? stripslashes( esc_attr( $ays_survey_individual_questions['user_info']['admin_note'] ) ) : "";
+            }
+
+            $text_types = array(
+                'text',
+                'short_text',
+                'number',
+                'phone',
+                'name',
+                'hidden',
+                'email',
+                'date',
+                'time',
+                'date_time',
+            );
+
+            $submissions_count = 0;
+            if(intval($submission_count_and_ids['submission_count']) > 0){
+                $submissions_count = $submission_count_and_ids['submission_count'];
+            }
+
+            $export_disabled = 'disabled';
+            if( $submissions_count > 0 ){
+                $export_disabled = '';
+            }
+            
+            $survey_data_clipboard = array(
+                "user_name"   => $individual_user_name,
+                "user_email"  => $individual_user_email,
+                "user_ip"     => $individual_user_ip,
+                "user_date"   => $individual_user_date,
+                "user_sub_id" => $individual_user_sub_id,
+                "user_device_type" => $individual_user_device_type,
+            );
+
+            if($individual_user_password){
+                $survey_data_clipboard['user_password'] = $individual_user_password;
+            }
+            
+            $survey_data_formated_for_clipboard = Survey_Maker_Data::ays_survey_copy_text_formater($survey_data_clipboard);
+            
+            
+            Survey_Maker_Data::get_template_part( 'partials/submissions/partials/survey-maker-each-submission-individual', '', get_defined_vars() );
+            
+            $wpdb->get_var("UPDATE " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions SET `read`= 1 WHERE `id`= $submission_id");
+
+            $html = ob_get_clean();
+
+            echo json_encode( array(
+                'status' => true,
+                'rows' => $html
+            ) );
+            wp_die();
+        }
+
+        echo json_encode( array(
+            'status' => false,
+            'rows' => ""
+        ) );
+
     }
 
     // public function ays_survey_subscribe_email(){

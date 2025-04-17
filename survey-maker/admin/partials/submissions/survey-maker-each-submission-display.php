@@ -1004,8 +1004,8 @@ $types_with_changeable_charts = array(
 
     <div id="ays-results-modal" class="ays-modal">
         <div class="ays-modal-content">
-            <div class="ays-preloader">
-                <img class="loader" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/loaders/3-1.svg">
+            <div class="ays-survey-preloader">
+                <img class="loader" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/loaders/tail-spin-result.svg" alt="" width="100">
             </div>
             <div class="ays-modal-header">
                 <span class="ays-close" id="ays-close-results">&times;</span>

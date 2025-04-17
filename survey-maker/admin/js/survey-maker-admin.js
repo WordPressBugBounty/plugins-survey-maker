@@ -3659,6 +3659,12 @@
             $thisRotateButtons.css('transform', `rotate(0deg)`).data('rotation', 0);
         });
 
+        $(document).on('click', 'body', function(e){
+            if($(e.target).hasClass('ays-modal')){
+                $(e.target).find(".ays-close").trigger("click");
+            }
+        });
+
         function showConfirmationIfDelete(e) {
             var $el = $(e.target);
             var elParent = $el.parent();

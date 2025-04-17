@@ -1846,6 +1846,124 @@ class Survey_Maker_Data {
         return $all_count;
     }
 
+    public static function get_template_part( $slug, $name = null, $args = array(), $path = 'admin' ) {
+		/**
+		 * Fires before the specified template part file is loaded.
+		 *
+		 * The dynamic portion of the hook name, `$slug`, refers to the slug name
+		 * for the generic template part.
+		 *
+		 * @since 1.0.0
+		 * @since 1.0.0 The `$args` parameter was added.
+		 *
+		 * @param string      $slug The slug name for the generic template.
+		 * @param string|null $name The name of the specialized template.
+		 * @param array       $args Additional arguments passed to the template.
+		 */
+
+		$templates = array();
+		$name      = (string) $name;
+		if ( '' !== $name ) {
+			$templates[] = "{$slug}-{$name}.php";
+		}
+
+		$templates[] = "{$slug}.php";
+
+		/**
+		 * Fires before an attempt is made to locate and load a template part.
+		 *
+		 * @since 1.0.0
+		 * @since 1.0.0 The `$args` parameter was added.
+		 *
+		 * @param string   $slug      The slug name for the generic template.
+		 * @param string   $name      The name of the specialized template.
+		 * @param string[] $templates Array of template files to search for, in order.
+		 * @param array    $args      Additional arguments passed to the template.
+		 */
+		do_action( 'ays_sm_get_template_part', $slug, $name, $templates, $path, $args );
+
+		if ( ! self::locate_template( $templates, true, false, $path, $args ) ) {
+			return false;
+		}
+	}
+
+    public static function locate_template( $template_names, $load = false, $require_once = true, $path = 'admin', $args = array() ) {
+		$located = '';
+		foreach ( (array) $template_names as $template_name ) {
+			if ( ! $template_name ) {
+				continue;
+			}
+
+			$path = $path == 'public' ? SURVEY_MAKER_PUBLIC_PATH : SURVEY_MAKER_ADMIN_PATH;
+
+			if ( file_exists( $path . '/' . $template_name ) ) {
+				$located = $path . '/' . $template_name;
+				break;
+			} elseif ( file_exists( $path . '/' . $template_name ) ) {
+				$located = $path . '/' . $template_name;
+				break;
+			}
+		}
+		if ( $load && '' !== $located ) {
+
+			self::load_template( $located, $require_once, $args );
+		}
+
+		return $located;
+	}
+
+    public static function load_template( $_template_file, $require_once = true, $args = array() ) {
+		if ( $require_once ) {
+
+			require_once $_template_file;
+		} else {
+			require $_template_file;
+		}
+	}
+
+    
+    public static function get_submission_count_and_ids( $survey_id, $filters = array() ){
+        global $wpdb;
+
+        if($survey_id === null){
+            return false;
+        }
+        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+
+        $filters_where_condition = "";
+        if (isset($filters['is_filter']) && $filters['is_filter']) {
+            $filters_where_condition = self::get_filters_where_condition($filters);
+        }
+       
+        //submission of each result
+        $submission_ids = "SELECT id
+                           FROM {$submitions_table} j 
+                           WHERE survey_id=". absint( $survey_id ) . $filters_where_condition . "
+                           ORDER BY id";
+        $submission_ids_result = $wpdb->get_results($submission_ids,'ARRAY_A');
+
+	    $submission_count_sql = "SELECT COUNT(id) AS count_submission
+								 FROM {$submitions_table} 
+                            	 WHERE survey_id=". absint( $survey_id ) . $filters_where_condition ." ";
+	    $submission_count_result = $wpdb->get_var($submission_count_sql);
+        $submission_count = '';
+        $submissions_id_arr = array();
+
+        foreach ($submission_ids_result as $key => $submission_id_result) {
+            $submission_count = intval($submission_count_result);
+            $submissions_id_arr[] = $submission_id_result['id'];
+        }
+        $submissions_id_str = implode(',', $submissions_id_arr );
+        
+        $submission_count_and_ids = array(
+            'submission_count' => $submission_count,
+            'submission_ids' => $submissions_id_str,
+            'submission_ids_arr' => $submissions_id_arr,
+        );
+
+        return $submission_count_and_ids;
+    }
+
     // Check users cookie
     public static function ays_survey_set_cookie($attr){
         $cookie_name = $attr['name'].$attr['id'];

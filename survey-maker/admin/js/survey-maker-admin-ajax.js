@@ -124,4 +124,89 @@
             }
         });
     });
+
+    // Open results more information popup window
+    $(document).on('click', '.ays_survey_results', function(e){
+
+        if(!($(e.target).hasClass('ays_confirm_del') || $(e.target).hasClass('ays_result_delete'))){
+
+            e.preventDefault();
+
+            var this_element = $(this);
+
+            $(document).find('div.ays-survey-preloader').css('display', 'flex');
+            $(document).find('#ays-results-modal').aysModal('show');
+            var submission_id = $(this).find('.ays-show-results').data('result');
+            var surveyId = $(document).find('.ays_number_of_result').attr('data-id');
+            $.ajax({
+                url: ajaxurl,
+                method: 'post',
+                dataType: 'json',
+                data: {
+                    action: 'ays_survey_show_results',
+                    survey_id: surveyId,
+                    submission_id: submission_id,
+                },
+                success: function(response){
+                    if(response.status === true){
+                        $('div#ays-results-body').html(response.rows);
+                        $(document).find('div.ays-survey-preloader').css('display', 'none');
+                        if($(this_element).hasClass('ays_read_result')){
+                            $(this_element).removeClass('ays_read_result');
+
+                            var count = parseInt($(document).find('.ays-survey-results-bage').eq(0).text()) -1;
+                            if(count == 0){
+                                $(document).find('.ays-survey-results-bage').remove();
+                            } else {
+                                $(document).find('.ays-survey-results-bage').text(count);
+                            }
+                        }
+                        
+                    }else{
+                        swal.fire({
+                            type: 'info',
+                            html: "<h2>"+ SurveyMakerAdmin.loadResource +"</h2><br><h6>"+ SurveyMakerAdmin.dataDeleted +"</h6>",
+                            confirmButtonText: SurveyMakerAdmin.okSurvey,
+
+                        }).then(function(res) {
+                            $(document).find('div.ays-survey-preloader').css('display', 'none');
+                            if($(this_element).hasClass('ays_read_result')){
+                                $(this_element).removeClass('ays_read_result');
+                                var count = parseInt($(document).find('.ays-survey-results-bage').eq(0).text()) -1;
+                                if(count == 0){
+                                    $(document).find('.ays-survey-results-bage').remove();
+                                } else {
+                                    $(document).find('.ays-survey-results-bage').text(count);
+                                }
+                            }
+                            
+                            $(document).find('.ays-modal').aysModal('hide');
+                        });
+                    }
+                },
+                error: function(){
+                    swal.fire({
+                        type: 'info',
+                        html: "<h2>"+ SurveyMakerAdmin.loadResource +"</h2><br><h6>"+ SurveyMakerAdmin.dataDeleted +"</h6>",
+                        confirmButtonText: SurveyMakerAdmin.okSurvey,
+                    }).then(function(res) {
+                        $(document).find('div.ays-survey-preloader').css('display', 'none');
+                        if($(this_element).hasClass('ays_read_result')){
+                            $(this_element).removeClass('ays_read_result');
+                            var count = parseInt($(document).find('.ays-survey-results-bage').eq(0).text()) -1;
+                            if(count == 0){
+                                $(document).find('.ays-survey-results-bage').remove();
+                            } else {
+                                $(document).find('.ays-survey-results-bage').text(count);
+                            }
+                        }
+                        
+                        $(document).find('.ays-modal').aysModal('hide');
+                    });
+                }
+            });
+        }
+    
+    })
+
 })( jQuery );
