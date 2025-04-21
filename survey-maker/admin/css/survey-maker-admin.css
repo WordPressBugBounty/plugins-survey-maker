@@ -740,11 +740,15 @@ div.ays-top-menu-wrapper div.ays-top-menu div.ays-top-tab-wrapper {
     transform: translate(0);
     transition: .5s ease-in-out;
     padding-right: 7px;
-    width: fit-content;
+    min-width: fit-content;
+    width: 100%;
 }
 div.ays-top-menu-wrapper div.ays-top-menu div.ays-top-tab-wrapper a{
     padding: 8px 25px;
     font-size: 15px;
+    display: inline-block;
+    flex-grow: 1;
+    text-align: center;
 }
 
 

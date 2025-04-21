@@ -23,6 +23,7 @@
                     echo esc_html($heading);
                 ?>
             </h1>
+            
             <div>
                 <div class="ays-survey-subtitle-main-box">
                     <p class="ays-subtitle" style="display: flex; gap: 20px;">
@@ -60,6 +61,22 @@
                     </div>
                 </div>
                 <?php endif;?>
+            </div>
+            <div class="ays-survey-add-new-button-box ays-survey-add-new-button-survey-edit-box top-menu-buttons-container">
+                <?php
+                    $save_attributes = array(
+                        'id' => 'ays-button-apply-top',
+                        'title' => 'Ctrl + s',
+                        'data-toggle' => 'tooltip',
+                        'data-delay'=> '{"show":"1000"}'
+                    );
+                    
+                    submit_button(__('Save', "survey-maker"), 'primary ays-survey-primary ays-survey-loader-banner', 'ays_apply_top', false, $save_attributes);
+                    $save_and_close_attributes = array('id' => 'ays-button-save-top');
+                    submit_button(__('Save and close', "survey-maker"), 'ays-survey-loader-banner ays-survey-submit-button-margin-unset', 'ays_submit_top', false, $save_and_close_attributes);
+                    submit_button(__('Cancel', "survey-maker"), 'button ays-survey-loader-banner', 'ays_survey_cancel', false, array());
+                    echo wp_kses_post($loader_iamge);
+                ?>
             </div>
             <hr/>
             <div class="form-group row">
@@ -111,22 +128,6 @@
                         </div>  
                     </div>
                     <div class="ays_menu_right" data-scroll="-1"><i class="ays_fa ays_fa_angle_right"></i></div>
-                </div>
-                <div class="ays-survey-add-new-button-box ays-survey-add-new-button-survey-edit-box top-menu-buttons-container">
-                    <?php
-                        $save_attributes = array(
-                            'id' => 'ays-button-apply-top',
-                            'title' => 'Ctrl + s',
-                            'data-toggle' => 'tooltip',
-                            'data-delay'=> '{"show":"1000"}'
-                        );
-                        
-                        submit_button(__('Save', "survey-maker"), 'primary ays-survey-primary ays-survey-loader-banner', 'ays_apply_top', false, $save_attributes);
-                        $save_and_close_attributes = array('id' => 'ays-button-save-top');
-                        submit_button(__('Save and close', "survey-maker"), 'ays-survey-loader-banner ays-survey-submit-button-margin-unset', 'ays_submit_top', false, $save_and_close_attributes);
-                        submit_button(__('Cancel', "survey-maker"), 'button ays-survey-loader-banner', 'ays_survey_cancel', false, array());
-                        echo wp_kses_post($loader_iamge);
-                    ?>
                 </div>
             </div>
             
@@ -220,12 +221,6 @@
                             submit_button(__('Next Survey', "survey-maker"), 'button ays-button ays-survey-next-survey-button', 'ays_survey_next_button', false, $other_attributes);
                         }
                     ?>
-                    </div>
-                    <div class="ays_save_default_button_box">
-                        <a class="ays_help" data-toggle="tooltip" title="" data-original-title="Saves the assigned settings of the current survey as default. After clicking on this button, each time creating a new survey, the system will take the settings and styles of the current survey. If you want to change and renew it, please click on this button on another survey.">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                        <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary ays-survey-save-as-default-pro-button" style="opacity: 0.5;margin: 0;"><?php echo esc_html__( 'Save as default', "survey-maker" ); ?></a>
                     </div>
                 </div>
             </div>
