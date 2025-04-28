@@ -719,6 +719,11 @@ class Surveys_List_Table extends WP_List_Table {
             // Allow HTML in answers
             $survey_allow_html_in_answers = (isset( $_POST[ $name_prefix . 'survey_allow_html_in_answers' ] ) && $_POST[ $name_prefix . 'survey_allow_html_in_answers' ] == 'on') ? 'on' : 'off';
 
+            // ---- Buttons settings Start  ---- //
+                // Finish button text
+                $survey_finish_button_each_text = (isset($_POST[ $name_prefix . 'survey_finish_button_each_text' ]) && $_POST[ $name_prefix . 'survey_finish_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_finish_button_each_text' ]) ) : 'Finish';
+            // ---- Buttons settings End  ---- //
+
             // Allow HTML in section description
             $survey_allow_html_in_section_description = (isset( $_POST[ $name_prefix . 'survey_allow_html_in_section_description' ] ) && $_POST[ $name_prefix . 'survey_allow_html_in_section_description' ] == 'on') ? 'on' : 'off';
 
@@ -1095,6 +1100,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_enable_survey_start_loader'         => $survey_enable_survey_start_loader,
                 'survey_before_start_loader'                => $survey_before_start_loader,
                 'survey_allow_html_in_answers'              => $survey_allow_html_in_answers,
+                'survey_finish_button_each_text'            => $survey_finish_button_each_text,
                 'survey_allow_html_in_section_description'  => $survey_allow_html_in_section_description,
                 'survey_enable_leave_page'                  => $survey_enable_leave_page,
                 'survey_auto_numbering'                     => $survey_auto_numbering,

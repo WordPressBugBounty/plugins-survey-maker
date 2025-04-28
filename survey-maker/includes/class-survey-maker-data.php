@@ -452,6 +452,11 @@ class Survey_Maker_Data {
         $options[ $name_prefix . 'allow_html_in_answers' ] = isset($options[ $name_prefix . 'allow_html_in_answers' ]) ? $options[ $name_prefix . 'allow_html_in_answers' ] : 'off';
         $settings[ $name_prefix . 'allow_html_in_answers' ] = (isset($options[ $name_prefix . 'allow_html_in_answers' ]) && $options[ $name_prefix . 'allow_html_in_answers' ] == 'on') ? true : false;
 
+        // ---- Buttons settings Start  ---- //
+            // Finish button text
+            $settings[ $name_prefix . 'finish_button_each_text' ] = (isset($options[ $name_prefix . 'finish_button_each_text' ]) && $options[ $name_prefix . 'finish_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'finish_button_each_text' ]) ) : '';            
+        // ---- Buttons settings End  ---- //
+
         // Allow HTML in section description
         $options[ $name_prefix . 'allow_html_in_section_description' ] = isset($options[ $name_prefix . 'allow_html_in_section_description' ]) ? $options[ $name_prefix . 'allow_html_in_section_description' ] : 'off';
         $settings[ $name_prefix . 'allow_html_in_section_description' ] = (isset($options[ $name_prefix . 'allow_html_in_section_description' ]) && $options[ $name_prefix . 'allow_html_in_section_description' ] == 'on') ? true : false;
@@ -1343,7 +1348,8 @@ class Survey_Maker_Data {
         $ays_next_button            = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['next_button']) ) : 'Next';
         $ays_previous_button        = (isset($settings_buttons_texts['prev_button']) && $settings_buttons_texts['prev_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['prev_button']) ) : 'Prev';
         $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['clear_button']) ) : 'Clear selection';
-        $ays_finish_button          = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? esc_attr($settings_buttons_texts['finish_button']) : 'Finish';
+        $settings_buttons_texts['finish_button'] = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? esc_attr($settings_buttons_texts['finish_button']) : 'Finish';
+        $ays_finish_button          = (isset($settings['survey_finish_button_each_text']) && $settings['survey_finish_button_each_text'] != '') ? esc_attr($settings['survey_finish_button_each_text']) : $settings_buttons_texts['finish_button'];
         $ays_restart_survey_button  = (isset($settings_buttons_texts['restart_button']) && $settings_buttons_texts['restart_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['restart_button']) ) : 'Restart survey';
         $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['exit_button']) ) : 'Exit';
         $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['login_button']) ) : 'Log In';

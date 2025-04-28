@@ -712,11 +712,14 @@ class Survey_Maker_Public {
             $settings_options = array();
         }
     
-        $this->buttons_texts = Survey_Maker_Data::ays_set_survey_texts( $this->plugin_name, $this->options );
+        // $this->buttons_texts = Survey_Maker_Data::ays_set_survey_texts( $this->plugin_name, $this->options );
 
         $this->message_variable_data = Survey_Maker_Data::ays_set_survey_message_variables_data( $id, $survey, $settings_options );
 
         $this->options = Survey_Maker_Data::get_survey_validated_data_from_array( $survey, $attr );
+
+        $this->buttons_texts = Survey_Maker_Data::ays_set_survey_texts( $this->plugin_name, $this->options );
+
         
         $user_id = get_current_user_id();
 

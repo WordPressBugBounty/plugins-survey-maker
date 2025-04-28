@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.5.8
+Stable tag: 5.1.5.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -217,7 +217,7 @@ For more detailed information please check the [Documentation](https://ays-pro.c
 
 Didn't find the feature you're looking for in the Survey Maker plugin? You're welcome to [suggest a new feature](https://wordpress.org/support/plugin/survey-maker/).
 
-**New Chart Builder plugin:** Create static and dynamic charts for your WordPress website using our [WordPress Chart plugin](https://wordpress.org/plugins/chart-builder/). Transfer your data into charts easily.
+**New Fox LMS plugin:** A powerful [WordPress LMS plugin](https://wordpress.org/plugins/fox-lms/) to create, manage, and deliver online courses directly from your WordPress site.
 
 Don't forget, in case of any problems or upcoming questions feel free to contact us via the following [FREE SUPPORT FORUM](https://wordpress.org/support/plugin/survey-maker/).
 
@@ -331,6 +331,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.5.9 =
+* Added: [Fox LMS](https://wordpress.org/plugins/fox-lms) Plugin to the Our Products page
+* Added: Finish button text option for each survey
 
 = 5.1.5.8 =
 * Improved: Styles on the surveys page

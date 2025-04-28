@@ -5,6 +5,25 @@
         <div class="ays-survey-card">
             <div class="ays-survey-card__content flexible">
                 <div class="ays-survey-card__content-img-box">
+                    <img class="ays-survey-card__img" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/icon-fox-lms-128x128.png" alt="Survey Maker">
+                </div>
+                <div class="ays-survey-card__text-block">
+                    <h5 class="ays-survey-card__title"><?php echo esc_html__('Fox LMS', "survey-maker"); ?></h5>
+                    <p class="ays-survey-card__text"><?php echo esc_html__('Build and manage online courses directly on your WordPress site.', "survey-maker"); ?>
+                        <span class="ays-survey-card__text-hidden">
+                            <?php echo esc_html__('With the FoxLMS plugin, you can create, sell, and organize courses, lessons, and quizzes, transforming your website into a dynamic e-learning platform.', "survey-maker"); ?>
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="ays-survey-card__footer">
+                <a target="_blank" href="https://wordpress.org/plugins/fox-lms/" class="ays-survey-card__btn-info">WP.org</a>
+                <a target="_blank" href="https://foxlms.com/pricing/?utm_source=dashboard&utm_medium=survey-free&utm_campaign=fox-lms-our-products-page" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
+            </div>
+        </div>
+        <div class="ays-survey-card">
+            <div class="ays-survey-card__content flexible">
+                <div class="ays-survey-card__content-img-box">
                     <img class="ays-survey-card__img" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/quiz.png" alt="Survey Maker">
                 </div>
                 <div class="ays-survey-card__text-block">

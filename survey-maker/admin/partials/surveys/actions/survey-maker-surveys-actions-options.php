@@ -360,6 +360,10 @@
 
     $multiple_sections = $sections_count > 1 ? true : false;
 
+    // Genaral button texts
+    $gen_button_texts = ($this->settings_obj->ays_get_setting('buttons_texts') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('buttons_texts'), true);
+    $gen_finish_button_text = (isset($gen_button_texts['finish_button']) && $gen_button_texts['finish_button'] != '') ? stripslashes( esc_attr($gen_button_texts['finish_button']) ) : 'Finish';
+
     $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
     $survey_default_type = (isset($gen_options[$name_prefix . 'default_type']) && $gen_options[$name_prefix . 'default_type'] != '') ? stripslashes($gen_options[$name_prefix . 'default_type']) : null;
     $survey_answer_default_count = (isset($gen_options[$name_prefix . 'answer_default_count']) && $gen_options[$name_prefix . 'answer_default_count'] != '') ? intval($gen_options[$name_prefix . 'answer_default_count']) : null;
@@ -962,6 +966,13 @@
         // Allow HTML in answers
         $options[ $name_prefix . 'allow_html_in_answers' ] = isset($options[ $name_prefix . 'allow_html_in_answers' ]) ? $options[ $name_prefix . 'allow_html_in_answers' ] : 'off';
         $survey_allow_html_in_answers = (isset($options[ $name_prefix . 'allow_html_in_answers' ]) && $options[ $name_prefix . 'allow_html_in_answers' ] == 'on') ? true : false;
+
+        // ---- Buttons settings Start  ---- //
+            // Finish button text
+            $options[ $name_prefix . 'finish_button_each_text' ] = isset($options[ $name_prefix . 'finish_button_each_text' ]) ? $options[ $name_prefix . 'finish_button_each_text' ] : $gen_finish_button_text;            
+            $survey_finish_button_each_text = (isset($options[ $name_prefix . 'finish_button_each_text' ]) && $options[ $name_prefix . 'finish_button_each_text' ] != '') ? $options[ $name_prefix . 'finish_button_each_text' ] : 'Finish';
+        // ---- Buttons settings End  ---- //
+
 
         // Allow HTML in section description
         $options[ $name_prefix . 'allow_html_in_section_description' ] = isset($options[ $name_prefix . 'allow_html_in_section_description' ]) ? $options[ $name_prefix . 'allow_html_in_section_description' ] : 'off';
