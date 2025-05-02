@@ -455,6 +455,8 @@ class Survey_Maker_Data {
         // ---- Buttons settings Start  ---- //
             // Finish button text
             $settings[ $name_prefix . 'finish_button_each_text' ] = (isset($options[ $name_prefix . 'finish_button_each_text' ]) && $options[ $name_prefix . 'finish_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'finish_button_each_text' ]) ) : '';            
+            // Next button text
+            $settings[ $name_prefix . 'next_button_each_text' ] = (isset($options[ $name_prefix . 'next_button_each_text' ]) && $options[ $name_prefix . 'next_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'next_button_each_text' ]) ) : '';            
         // ---- Buttons settings End  ---- //
 
         // Allow HTML in section description
@@ -1345,7 +1347,7 @@ class Survey_Maker_Data {
         $result = $wpdb->get_var($sql);
         $settings_buttons_texts = ($result == "") ? array() : json_decode($result, true);
 
-        $ays_next_button            = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['next_button']) ) : 'Next';
+        $ays_next_button            = (isset($settings['survey_next_button_each_text']) && $settings['survey_next_button_each_text'] != '') ? esc_attr($settings['survey_next_button_each_text']) : $settings_buttons_texts['next_button'];
         $ays_previous_button        = (isset($settings_buttons_texts['prev_button']) && $settings_buttons_texts['prev_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['prev_button']) ) : 'Prev';
         $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['clear_button']) ) : 'Clear selection';
         $settings_buttons_texts['finish_button'] = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? esc_attr($settings_buttons_texts['finish_button']) : 'Finish';

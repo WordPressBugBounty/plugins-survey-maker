@@ -363,6 +363,7 @@
     // Genaral button texts
     $gen_button_texts = ($this->settings_obj->ays_get_setting('buttons_texts') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('buttons_texts'), true);
     $gen_finish_button_text = (isset($gen_button_texts['finish_button']) && $gen_button_texts['finish_button'] != '') ? stripslashes( esc_attr($gen_button_texts['finish_button']) ) : 'Finish';
+    $gen_next_button_text = (isset($gen_button_texts['next_button']) && $gen_button_texts['next_button'] != '') ? stripslashes( esc_attr($gen_button_texts['next_button']) ) : 'Next';
 
     $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
     $survey_default_type = (isset($gen_options[$name_prefix . 'default_type']) && $gen_options[$name_prefix . 'default_type'] != '') ? stripslashes($gen_options[$name_prefix . 'default_type']) : null;
@@ -971,6 +972,9 @@
             // Finish button text
             $options[ $name_prefix . 'finish_button_each_text' ] = isset($options[ $name_prefix . 'finish_button_each_text' ]) ? $options[ $name_prefix . 'finish_button_each_text' ] : $gen_finish_button_text;            
             $survey_finish_button_each_text = (isset($options[ $name_prefix . 'finish_button_each_text' ]) && $options[ $name_prefix . 'finish_button_each_text' ] != '') ? $options[ $name_prefix . 'finish_button_each_text' ] : 'Finish';
+            // Next button text
+            $options[ $name_prefix . 'next_button_each_text' ] = isset($options[ $name_prefix . 'next_button_each_text' ]) ? $options[ $name_prefix . 'next_button_each_text' ] : $gen_next_button_text;            
+            $survey_next_button_each_text = (isset($options[ $name_prefix . 'next_button_each_text' ]) && $options[ $name_prefix . 'next_button_each_text' ] != '') ? $options[ $name_prefix . 'next_button_each_text' ] : 'Next';
         // ---- Buttons settings End  ---- //
 
 
