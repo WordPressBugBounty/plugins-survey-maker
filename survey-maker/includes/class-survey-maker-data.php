@@ -457,6 +457,8 @@ class Survey_Maker_Data {
             $settings[ $name_prefix . 'finish_button_each_text' ] = (isset($options[ $name_prefix . 'finish_button_each_text' ]) && $options[ $name_prefix . 'finish_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'finish_button_each_text' ]) ) : '';            
             // Next button text
             $settings[ $name_prefix . 'next_button_each_text' ] = (isset($options[ $name_prefix . 'next_button_each_text' ]) && $options[ $name_prefix . 'next_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'next_button_each_text' ]) ) : '';            
+            // Previous button text
+            $settings[ $name_prefix . 'previous_button_each_text' ] = (isset($options[ $name_prefix . 'previous_button_each_text' ]) && $options[ $name_prefix . 'previous_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'previous_button_each_text' ]) ) : '';            
         // ---- Buttons settings End  ---- //
 
         // Allow HTML in section description
@@ -1347,11 +1349,17 @@ class Survey_Maker_Data {
         $result = $wpdb->get_var($sql);
         $settings_buttons_texts = ($result == "") ? array() : json_decode($result, true);
 
-        $ays_next_button            = (isset($settings['survey_next_button_each_text']) && $settings['survey_next_button_each_text'] != '') ? esc_attr($settings['survey_next_button_each_text']) : $settings_buttons_texts['next_button'];
-        $ays_previous_button        = (isset($settings_buttons_texts['prev_button']) && $settings_buttons_texts['prev_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['prev_button']) ) : 'Prev';
+        $settings_buttons_texts['next_button'] = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? esc_attr($settings_buttons_texts['next_button']) : 'Next';
+        $ays_next_button = (isset($settings['survey_next_button_each_text']) && $settings['survey_next_button_each_text'] != '') ? esc_attr($settings['survey_next_button_each_text']) : $settings_buttons_texts['next_button'];
+
+        $settings_buttons_texts['prev_button'] = (isset($settings_buttons_texts['prev_button']) && $settings_buttons_texts['prev_button'] != '') ? esc_attr($settings_buttons_texts['prev_button']) : 'Prev';
+        $ays_previous_button = (isset($settings['survey_previous_button_each_text']) && $settings['survey_previous_button_each_text'] != '') ? esc_attr($settings['survey_previous_button_each_text']) : $settings_buttons_texts['prev_button'];
+
         $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['clear_button']) ) : 'Clear selection';
+
         $settings_buttons_texts['finish_button'] = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? esc_attr($settings_buttons_texts['finish_button']) : 'Finish';
-        $ays_finish_button          = (isset($settings['survey_finish_button_each_text']) && $settings['survey_finish_button_each_text'] != '') ? esc_attr($settings['survey_finish_button_each_text']) : $settings_buttons_texts['finish_button'];
+        $ays_finish_button = (isset($settings['survey_finish_button_each_text']) && $settings['survey_finish_button_each_text'] != '') ? esc_attr($settings['survey_finish_button_each_text']) : $settings_buttons_texts['finish_button'];
+
         $ays_restart_survey_button  = (isset($settings_buttons_texts['restart_button']) && $settings_buttons_texts['restart_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['restart_button']) ) : 'Restart survey';
         $ays_exit_button            = (isset($settings_buttons_texts['exit_button']) && $settings_buttons_texts['exit_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['exit_button']) ) : 'Exit';
         $ays_login_button           = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['login_button']) ) : 'Log In';
