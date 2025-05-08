@@ -365,6 +365,7 @@
     $gen_finish_button_text = (isset($gen_button_texts['finish_button']) && $gen_button_texts['finish_button'] != '') ? stripslashes( esc_attr($gen_button_texts['finish_button']) ) : 'Finish';
     $gen_next_button_text = (isset($gen_button_texts['next_button']) && $gen_button_texts['next_button'] != '') ? stripslashes( esc_attr($gen_button_texts['next_button']) ) : 'Next';
     $gen_previous_button_text = (isset($gen_button_texts['prev_button']) && $gen_button_texts['prev_button'] != '') ? stripslashes( esc_attr($gen_button_texts['prev_button']) ) : 'Prev';
+    $gen_restart_button_text = (isset($gen_button_texts['restart_button']) && $gen_button_texts['restart_button'] != '') ? stripslashes( esc_attr($gen_button_texts['restart_button']) ) : 'Restart';
 
     $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
     $survey_default_type = (isset($gen_options[$name_prefix . 'default_type']) && $gen_options[$name_prefix . 'default_type'] != '') ? stripslashes($gen_options[$name_prefix . 'default_type']) : null;
@@ -979,6 +980,9 @@
             // Previous button text
             $options[ $name_prefix . 'previous_button_each_text' ] = isset($options[ $name_prefix . 'previous_button_each_text' ]) ? $options[ $name_prefix . 'previous_button_each_text' ] : $gen_previous_button_text;            
             $survey_previous_button_each_text = (isset($options[ $name_prefix . 'previous_button_each_text' ]) && $options[ $name_prefix . 'previous_button_each_text' ] != '') ? $options[ $name_prefix . 'previous_button_each_text' ] : 'Prev';
+            // Restart button text
+            $options[ $name_prefix . 'restart_button_each_text' ] = isset($options[ $name_prefix . 'restart_button_each_text' ]) ? $options[ $name_prefix . 'restart_button_each_text' ] : $gen_restart_button_text;            
+            $survey_restart_button_each_text = (isset($options[ $name_prefix . 'restart_button_each_text' ]) && $options[ $name_prefix . 'restart_button_each_text' ] != '') ? $options[ $name_prefix . 'restart_button_each_text' ] : 'Restart';
         // ---- Buttons settings End  ---- //
 
 
