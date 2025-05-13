@@ -366,6 +366,7 @@
     $gen_next_button_text = (isset($gen_button_texts['next_button']) && $gen_button_texts['next_button'] != '') ? stripslashes( esc_attr($gen_button_texts['next_button']) ) : 'Next';
     $gen_previous_button_text = (isset($gen_button_texts['prev_button']) && $gen_button_texts['prev_button'] != '') ? stripslashes( esc_attr($gen_button_texts['prev_button']) ) : 'Prev';
     $gen_restart_button_text = (isset($gen_button_texts['restart_button']) && $gen_button_texts['restart_button'] != '') ? stripslashes( esc_attr($gen_button_texts['restart_button']) ) : 'Restart';
+    $gen_exit_button_text = (isset($gen_button_texts['exit_button']) && $gen_button_texts['exit_button'] != '') ? stripslashes( esc_attr($gen_button_texts['exit_button']) ) : 'Exit';
 
     $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
     $survey_default_type = (isset($gen_options[$name_prefix . 'default_type']) && $gen_options[$name_prefix . 'default_type'] != '') ? stripslashes($gen_options[$name_prefix . 'default_type']) : null;
@@ -983,6 +984,9 @@
             // Restart button text
             $options[ $name_prefix . 'restart_button_each_text' ] = isset($options[ $name_prefix . 'restart_button_each_text' ]) ? $options[ $name_prefix . 'restart_button_each_text' ] : $gen_restart_button_text;            
             $survey_restart_button_each_text = (isset($options[ $name_prefix . 'restart_button_each_text' ]) && $options[ $name_prefix . 'restart_button_each_text' ] != '') ? $options[ $name_prefix . 'restart_button_each_text' ] : 'Restart';
+            // Exit button text
+            $options[ $name_prefix . 'exit_button_each_text' ] = isset($options[ $name_prefix . 'exit_button_each_text' ]) ? $options[ $name_prefix . 'exit_button_each_text' ] : $gen_exit_button_text;            
+            $survey_exit_button_each_text = (isset($options[ $name_prefix . 'exit_button_each_text' ]) && $options[ $name_prefix . 'exit_button_each_text' ] != '') ? $options[ $name_prefix . 'exit_button_each_text' ] : 'Exit';
         // ---- Buttons settings End  ---- //
 
 

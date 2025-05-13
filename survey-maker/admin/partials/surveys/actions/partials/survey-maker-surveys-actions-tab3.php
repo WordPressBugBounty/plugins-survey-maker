@@ -686,6 +686,21 @@
                 </div>
             </div> <!-- Survey Restart button text -->
             <hr/>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="ays_survey_exit_button_each_text">
+                        <?php echo esc_html__('Exit button text',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Specify text for the exit button',"survey-maker");
+                        ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="ays_survey_exit_button_each_text" name="ays_survey_exit_button_each_text" class="ays-text-input" value="<?php echo esc_attr($survey_exit_button_each_text); ?>">
+                </div>
+            </div> <!-- Survey Exit button text -->
+            <hr/>
         </div>
     </div>
     <div class="ays-survey-collapsible-container">

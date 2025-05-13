@@ -728,6 +728,8 @@ class Surveys_List_Table extends WP_List_Table {
                 $survey_previous_button_each_text = (isset($_POST[ $name_prefix . 'survey_previous_button_each_text' ]) && $_POST[ $name_prefix . 'survey_previous_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_previous_button_each_text' ]) ) : 'Prev';
                 // Restart button text
                 $survey_restart_button_each_text = (isset($_POST[ $name_prefix . 'survey_restart_button_each_text' ]) && $_POST[ $name_prefix . 'survey_restart_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_restart_button_each_text' ]) ) : 'Restart';
+                // Exit button text
+                $survey_exit_button_each_text = (isset($_POST[ $name_prefix . 'survey_exit_button_each_text' ]) && $_POST[ $name_prefix . 'survey_exit_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_exit_button_each_text' ]) ) : 'Exit';
             // ---- Buttons settings End  ---- //
 
             // Allow HTML in section description
@@ -1110,6 +1112,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_next_button_each_text'              => $survey_next_button_each_text,
                 'survey_previous_button_each_text'          => $survey_previous_button_each_text,
                 'survey_restart_button_each_text'           => $survey_restart_button_each_text,
+                'survey_exit_button_each_text'              => $survey_exit_button_each_text,
                 'survey_allow_html_in_section_description'  => $survey_allow_html_in_section_description,
                 'survey_enable_leave_page'                  => $survey_enable_leave_page,
                 'survey_auto_numbering'                     => $survey_auto_numbering,
