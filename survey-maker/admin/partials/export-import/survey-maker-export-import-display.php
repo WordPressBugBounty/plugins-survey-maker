@@ -16,6 +16,7 @@ $example_export_path = SURVEY_MAKER_ADMIN_URL . '/partials/export-import/survey-
             echo esc_html(__(get_admin_page_title(),"survey-maker"));
             ?>
         </h1>
+        <?php do_action('ays_survey_sale_banner'); ?>
 
         <div style="display: flex;justify-content: center; align-items: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/xLSv8h87fX4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
 

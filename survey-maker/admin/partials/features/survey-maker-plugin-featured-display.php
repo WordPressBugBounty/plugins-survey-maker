@@ -1,6 +1,7 @@
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <div class="wrap">
     <h1 id="ays-survey-intro-title"><?php echo esc_html__('Please feel free to use our other awesome plugins!', "survey-maker"); ?></h1>
+    <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-cards-block">
         <div class="ays-survey-card">
             <div class="ays-survey-card__content flexible">

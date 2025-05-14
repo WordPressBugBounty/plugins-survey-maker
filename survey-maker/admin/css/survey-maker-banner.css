@@ -2035,7 +2035,7 @@ div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-color: #191919; */
+    background-color: #5551FF;
     /*background-image: linear-gradient(45deg, #dbdbdb, transparent);*/
 }
 
@@ -2253,6 +2253,10 @@ div#ays-survey-new-mega-bundle-dicount-month-main button.notice-dismiss:before{
 
 
 @media all and (max-width: 768px) {
+    div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice {
+        display: none !important;
+    }
+
     div#ays-survey-new-mega-bundle-dicount-month-main {
         padding-right: 0;
     }

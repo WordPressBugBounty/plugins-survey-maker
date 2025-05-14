@@ -35,7 +35,7 @@
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    align-items: flex-end;
+    align-items: center;
     align-content: stretch;
     padding: 0;
     margin: 0 20px 0 0;
@@ -165,7 +165,7 @@
 
 .ays-navigation-container-logo-updrade-box{
     display: flex;
-    width: 270px;
+    /*width: 270px;*/
     align-items: center;
 }
 
@@ -226,6 +226,25 @@
     }
 }
 
+@media screen and (max-width: 768px){    
+    .ays-notice-banner .modile-ddmenu-sm {
+        display: block;
+    }
+    .ays-notice-banner .modile-ddmenu-md {
+        display: none;
+    }
+    .ays-notice-banner .modile-ddmenu-xs {
+        display: none;
+    }
+    div.ays-notice-banner{
+        width: 100%;
+    }
+    div.ays-notice-banner li ul.ddmenu {
+        right: 0;
+    }
+}
+
+
 @media screen and (min-width: 531px) and (max-width: 768px){
     .ays-notice-banner .modile-ddmenu-sm {
         display: none;
@@ -254,12 +273,32 @@
     .ays-notice-banner .modile-ddmenu-xs {
         display: none;
     }
+
+    .ays-navigation-container-logo-updrade-box .ays-survey-upgrade-container span.ays-survey-logo-container-one-time-text,
     .ays-navigation-container-logo-updrade-box .ays-navigation-container-updrade-button-text{
-        display: none;
+        /*display: none;*/
     }
     
+    div.ays-survey-coupon-container .ays-survey-coupon-box,
     .ays-navigation-container-updrade-button-box{
         padding: 5px 10px;
+    }
+
+    div.ays-notice-banner li ul.ddmenu {
+        right: 0;
+    }
+
+    div.ays-notice-banner .navigation-bar #navigation-container > ul {
+        justify-content: flex-end;
+        align-items: center;
+        min-width: unset;
+        margin-right: 0;
+        width: 40px;
+    }
+
+    div.ays-survey-upgrade-container,
+    div.ays-survey-coupon-container {
+        margin-left: 10px;
     }
 }
 @media screen and (max-width: 530px){    
@@ -288,3 +327,61 @@ div#screen-meta {
 }
 
 /* ~~ Top Navigation Bar ~~ */
+
+/* Survey Top Banner Coupon Button | Start */
+
+.ays-survey-coupon-container .ays-survey-coupon-box {
+    display: flex;
+    align-items: center;
+    border: 2px dashed #000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 5px 15px;
+    border-radius: 20px;
+    color: #000;
+    background-color: #f9dc6c;
+    cursor: pointer;
+}
+
+.ays-navigation-container-logo-updrade-box span.ays-survey-logo-container-one-time-text{
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.ays-survey-upgrade-container,
+.ays-survey-coupon-container {
+    margin-left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ays-survey-coupon-container .ays-survey-coupon-box span {
+    margin-left: 5px;
+}
+
+.ays-survey-coupon-container .ays-survey-coupon-box img {
+    width: 10px;
+}
+
+.ays-coupon-container .ays-survey-coupon-box img {
+    width: 8px;
+}
+
+.ays-survey-coupon-container .ays-survey-coupon-box:hover {
+    color: #000;
+    background-color: #f1c51b;
+}
+
+.ays-survey-coupon-container .ays-survey-coupon-box:focus {
+    box-shadow: unset;
+}
+
+.ays-survey-coupon-container .ays-survey-coupon-box:hover .ays-survey-svg-light-hover{
+    display: flex;
+}
+/* Survey Top Banner Coupon Button | End */

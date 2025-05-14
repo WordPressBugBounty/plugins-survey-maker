@@ -275,13 +275,14 @@
                 </a>
             </div>
         </div>
+        <h1 class="wp-heading-inline">
+        <?php
+            echo esc_html__('General Settings',"survey-maker");
+        ?>
+        </h1>
+        <?php do_action('ays_survey_sale_banner'); ?>
         <form method="post" id="ays-survey-settings-form">
             <input type="hidden" name="ays_survey_tab" value="<?php echo esc_attr($ays_survey_tab); ?>">
-            <h1 class="wp-heading-inline">
-            <?php
-                echo esc_html__('General Settings',"survey-maker");
-            ?>
-            </h1>
             <?php
                 if( isset( $_REQUEST['status'] ) ){
                     $actions->survey_settings_notices( sanitize_text_field( $_REQUEST['status'] ) );

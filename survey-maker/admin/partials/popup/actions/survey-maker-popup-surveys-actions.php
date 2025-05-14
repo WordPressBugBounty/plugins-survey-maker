@@ -3,6 +3,12 @@
 ?>
 <div class="wrap">
     <div class="container-fluid">
+        <h1 class="wp-heading-inline">
+        <?php
+            echo esc_html($heading);
+        ?>
+        </h1>
+        <?php do_action('ays_survey_sale_banner'); ?>
         <form class="ays-survey-popup-surveys-form" id="ays-survey-popup-surveys-form" method="post">
             <div class="ays-survey-heading-box">
                 <div class="ays-survey-wordpress-user-manual-box">
@@ -13,13 +19,13 @@
 
                 </div>
             </div>
-            <h1 class="wp-heading-inline">
+            <h2 class="wp-heading-inline">
             <?php
-                    echo esc_html($heading);
+                    // echo esc_html($heading);
 
                     wp_nonce_field("popup_survey_action", "popup_survey_action");
                     $other_attributes = array("id" => "ays-button-save");
-                    submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner", "ays_submit", false, $other_attributes);
+                    submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner ays-survey-disable-left-margin", "ays_submit", false, $other_attributes);
 
                     $other_attributes = array(
                         'id' => 'ays-button-apply',
@@ -33,7 +39,7 @@
                     echo wp_kses($loader_iamge, Survey_Maker_Data::get_allowed_tags_for_loader());
 
                 ?>
-            </h1>
+            </h2>
             <hr/>
             <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">
                 <div class="form-group row">
@@ -935,7 +941,7 @@
                 wp_nonce_field("popup_survey_action", "popup_survey_action");
 
                 $other_attributes = array("id" => "ays-button-save");
-                submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner", "ays_submit", false, $other_attributes);
+                submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner ays-survey-disable-left-margin", "ays_submit", false, $other_attributes);
 
                 $other_attributes = array(
                     'id' => 'ays-button-apply',

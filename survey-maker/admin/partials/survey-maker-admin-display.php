@@ -25,6 +25,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
             <?php echo esc_html(__(get_admin_page_title(),"survey-maker")); ?> <i class="ays_fa ays_fa_heart_o animated"></i>
         </h1>
     </div>
+    <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-faq-main">
         <h2>
             <?php echo esc_html__("How to create a simple survey in 3 steps with the help of the", "survey-maker" ) .

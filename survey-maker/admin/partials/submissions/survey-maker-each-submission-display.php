@@ -127,6 +127,7 @@ $types_with_changeable_charts = array(
         echo sprintf( '<a href="?page=%s" class="go_back"><span><i class="fa fa-long-arrow-left" aria-hidden="true"></i> %s</span></a>', esc_attr($this->plugin_name)."-submissions", esc_html__("Back to Submissions", "survey-maker") );
         ?>
     </h1>
+    <?php do_action('ays_survey_sale_banner'); ?>
     <div style="display: flex; justify-content: space-between;flex-wrap:wrap">
         <h1 class="wp-heading-inline" style="padding-left:15px;">
             <?php               

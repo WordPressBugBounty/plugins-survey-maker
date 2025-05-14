@@ -16,13 +16,14 @@
                 </a>
             </div>
         </div>
+        <h1 class="wp-heading-inline">
+            <?php
+                echo esc_html($heading);
+            ?>
+        </h1>
+        <?php do_action('ays_survey_sale_banner'); ?>
         <form method="post" id="ays-survey-form" class="ays-survey-main-form">
             <input type="hidden" name="ays_survey_tab" value="<?php echo esc_attr($ays_tab); ?>">
-            <h1 class="wp-heading-inline">
-                <?php
-                    echo esc_html($heading);
-                ?>
-            </h1>
             
             <div>
                 <div class="ays-survey-subtitle-main-box">

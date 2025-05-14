@@ -294,7 +294,8 @@ class Survey_Maker {
 		$this->loader->add_filter( 'plugin_row_meta', $plugin_admin, 'add_survey_row_meta' , 10 , 2 );
 
 		// Sale Banner
-		$this->loader->add_action( 'admin_notices', $plugin_admin, 'ays_survey_sale_baner', 1 );
+		// $this->loader->add_action( 'admin_notices', $plugin_admin, 'ays_survey_sale_baner', 15 );
+		$this->loader->add_action( 'ays_survey_sale_banner', $plugin_admin, 'ays_survey_sale_baner', 15 );
 	}
 
 	/**

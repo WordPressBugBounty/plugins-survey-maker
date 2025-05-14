@@ -533,6 +533,34 @@
         _this.tooltip("show");
     }
 
+    function selectAndCopyElementContents(el) {
+        if (window.getSelection && document.createRange) {
+            var _this = jQuery(document).find('.ays-survey-copy-element-box');
+
+            var text      = el.textContent;
+            var textField = document.createElement('textarea');
+
+            textField.innerText = text;
+            document.body.appendChild(textField);
+            textField.select();
+            document.execCommand('copy');
+            textField.remove();
+
+            var selection = window.getSelection();
+            selection.setBaseAndExtent(el,0,el,1);
+
+            _this.attr( "data-original-title", SurveyMakerAdmin.copied );
+            _this.attr( "title", SurveyMakerAdmin.copied );
+
+            _this.tooltip("show");
+
+        } else if (document.selection && document.body.createTextRange) {
+            var textRange = document.body.createTextRange();
+            textRange.moveToElementText(el);
+            textRange.select();
+        }
+    }
+
     function nl2br (str, is_xhtml) {
         if (typeof str === 'undefined' || str === null) {
             return '';

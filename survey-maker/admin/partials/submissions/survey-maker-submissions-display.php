@@ -15,6 +15,7 @@
         echo esc_html__(get_admin_page_title(),"survey-maker");
         ?>
     </h1>
+    <?php do_action('ays_survey_sale_banner'); ?>
     <div class="question-action-butons">
         <a href="https://ays-pro.com/wordpress/survey-maker" class="button button-primary" style="float: right;opacity: 0.5;" target="_blank"><?php echo esc_html__('Export', "survey-maker"); ?></a>
     </div>

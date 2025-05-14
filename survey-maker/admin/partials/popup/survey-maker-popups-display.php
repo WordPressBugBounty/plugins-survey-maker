@@ -32,6 +32,7 @@ if($action == 'unpublish' || $action == 'publish'){
         echo esc_html__( get_admin_page_title(), "survey-maker" );
         ?>
     </h1>
+    <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-maker-add-new-button-box">
         <?php 
             echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));

@@ -1542,6 +1542,10 @@ span.ays_survey_small_hint_text{
     display: flex;
 }
 
+.ays-survey-disable-left-margin {
+    margin-left: 0 !important;
+}
+
 .ays_survey_display_flex_width .ays_dropdown_max_width{
     margin-left: 15px;
 }
@@ -1989,6 +1993,7 @@ div.wrap .ays-survey-wp-heading-inline{
     border-collapse: collapse;
     border-spacing: 0;
     table-layout: auto;
+    text-align: inherit;
 }
 
 .ays-survey-features-wrap .comparison td,

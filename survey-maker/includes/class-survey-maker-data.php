@@ -463,6 +463,8 @@ class Survey_Maker_Data {
             $settings[ $name_prefix . 'restart_button_each_text' ] = (isset($options[ $name_prefix . 'restart_button_each_text' ]) && $options[ $name_prefix . 'restart_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'restart_button_each_text' ]) ) : '';            
             // Exit button text
             $settings[ $name_prefix . 'exit_button_each_text' ] = (isset($options[ $name_prefix . 'exit_button_each_text' ]) && $options[ $name_prefix . 'exit_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'exit_button_each_text' ]) ) : '';            
+            // Clear selection button text
+            $settings[ $name_prefix . 'clear_selection_button_each_text' ] = (isset($options[ $name_prefix . 'clear_selection_button_each_text' ]) && $options[ $name_prefix . 'clear_selection_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'clear_selection_button_each_text' ]) ) : '';            
         // ---- Buttons settings End  ---- //
 
         // Allow HTML in section description
@@ -1072,20 +1074,24 @@ class Survey_Maker_Data {
 
     public static function get_user_ip(){
         $ipaddress = '';
-        if (getenv('REMOTE_ADDR'))
-            $ipaddress = getenv('REMOTE_ADDR');
-        elseif (getenv('HTTP_CLIENT_IP'))
-            $ipaddress = getenv('HTTP_CLIENT_IP');
-        else if (getenv('HTTP_X_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-        else if (getenv('HTTP_X_FORWARDED'))
-            $ipaddress = getenv('HTTP_X_FORWARDED');
-        else if (getenv('HTTP_FORWARDED_FOR'))
-            $ipaddress = getenv('HTTP_FORWARDED_FOR');
-        else if (getenv('HTTP_FORWARDED'))
-            $ipaddress = getenv('HTTP_FORWARDED');
-        else
-            $ipaddress = 'UNKNOWN';
+        if( !empty($_SERVER) && !empty($_SERVER['REMOTE_ADDR']) ){
+            $ipaddress = isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] ? sanitize_text_field($_SERVER['REMOTE_ADDR']) : 'UNKNOWN';
+        } else {
+            if (getenv('REMOTE_ADDR'))
+                $ipaddress = getenv('REMOTE_ADDR');
+            elseif (getenv('HTTP_CLIENT_IP'))
+                $ipaddress = getenv('HTTP_CLIENT_IP');
+            else if (getenv('HTTP_X_FORWARDED_FOR'))
+                $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+            else if (getenv('HTTP_X_FORWARDED'))
+                $ipaddress = getenv('HTTP_X_FORWARDED');
+            else if (getenv('HTTP_FORWARDED_FOR'))
+                $ipaddress = getenv('HTTP_FORWARDED_FOR');
+            else if (getenv('HTTP_FORWARDED'))
+                $ipaddress = getenv('HTTP_FORWARDED');
+            else
+                $ipaddress = 'UNKNOWN';
+        }
         return $ipaddress;
     }
 
@@ -1123,6 +1129,15 @@ class Survey_Maker_Data {
 
     // FOR REVIEW
     public static function get_user_ip_validated(){
+        
+        if( !empty($_SERVER) && !empty($_SERVER['REMOTE_ADDR']) ){
+            $ipaddress = isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] ? sanitize_text_field($_SERVER['REMOTE_ADDR']) : 'UNKNOWN';
+
+            if(!empty($ipaddress) && $ipaddress != 'UNKNOWN' ){
+                return $ipaddress;
+            }
+        }
+
         $headers_to_check = array(
             'HTTP_CLIENT_IP',
             'HTTP_X_FORWARDED_FOR',
@@ -1359,7 +1374,8 @@ class Survey_Maker_Data {
         $settings_buttons_texts['prev_button'] = (isset($settings_buttons_texts['prev_button']) && $settings_buttons_texts['prev_button'] != '') ? esc_attr($settings_buttons_texts['prev_button']) : 'Prev';
         $ays_previous_button = (isset($settings['survey_previous_button_each_text']) && $settings['survey_previous_button_each_text'] != '') ? esc_attr($settings['survey_previous_button_each_text']) : $settings_buttons_texts['prev_button'];
 
-        $ays_clear_button           = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? stripslashes( esc_attr($settings_buttons_texts['clear_button']) ) : 'Clear selection';
+        $settings_buttons_texts['clear_button'] = (isset($settings_buttons_texts['clear_button']) && $settings_buttons_texts['clear_button'] != '') ? esc_attr($settings_buttons_texts['clear_button']) : 'Clear selection';
+        $ays_clear_button           = (isset($settings['survey_clear_selection_button_each_text']) && $settings['survey_clear_selection_button_each_text'] != '') ? esc_attr($settings['survey_clear_selection_button_each_text']) : $settings_buttons_texts['clear_button'];
 
         $settings_buttons_texts['finish_button'] = (isset($settings_buttons_texts['finish_button']) && $settings_buttons_texts['finish_button'] != '') ? esc_attr($settings_buttons_texts['finish_button']) : 'Finish';
         $ays_finish_button = (isset($settings['survey_finish_button_each_text']) && $settings['survey_finish_button_each_text'] != '') ? esc_attr($settings['survey_finish_button_each_text']) : $settings_buttons_texts['finish_button'];

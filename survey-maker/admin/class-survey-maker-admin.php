@@ -168,7 +168,7 @@ class Survey_Maker_Admin {
         wp_enqueue_style( $this->plugin_name . '-banner.css', plugin_dir_url(__FILE__) . 'css/banner.css', array(), $this->version, 'all');
         // wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner-black-friday-2024.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-banner-black-friday.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner.css', array(), $this->version, 'all');
-        wp_enqueue_style( $this->plugin_name . '-mega-bundle-banner-2025.css', plugin_dir_url(__FILE__) . 'css/survey-maker-mega-bundle-banner-2025.css', array(), $this->version, 'all');
+        // wp_enqueue_style( $this->plugin_name . '-mega-bundle-banner-2025.css', plugin_dir_url(__FILE__) . 'css/survey-maker-mega-bundle-banner-2025.css', array(), $this->version, 'all');
         // wp_enqueue_style( $this->plugin_name . '-banner-christmas.css', plugin_dir_url(__FILE__) . 'css/survey-maker-banner-christmas-2024.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-animate.css', plugin_dir_url(__FILE__) . 'css/animate.css', array(), $this->version, 'all');
         wp_enqueue_style( $this->plugin_name . '-animations.css', plugin_dir_url(__FILE__) . 'css/animations.css', array(), $this->version, 'all');
@@ -633,6 +633,7 @@ class Survey_Maker_Admin {
         );
 
         add_action("load-$hook_popup_surveys", array($this, 'screen_option_popup_surveys'));
+        add_action("load-$hook_popup_surveys", array($this, 'add_tabs'));
     }
         
     public function add_plugin_survey_front_requests_submenu(){
@@ -645,6 +646,8 @@ class Survey_Maker_Admin {
             array($this, 'display_plugin_requests_page')
         );
         $this->requests_obj = new Survey_Requests_List_Table($this->plugin_name);
+
+        add_action("load-$hook_requests", array($this, 'add_tabs'));
     }
 
     public function survey_maker_select_submenu($file) {
@@ -1588,12 +1591,12 @@ class Survey_Maker_Admin {
                 $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
                 if( $ays_survey_maker_flag == 0 ){
                     if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
-                        if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
+                        // if( !(Survey_Maker_Admin::get_max_id('surveys') <= 1) ){
                             // $this->ays_survey_christmas_top_message_2024($ays_survey_maker_flag);
-                            // $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
-                            $this->ays_quiz_new_mega_bundle_message_2025($ays_survey_maker_flag);
+                            $this->ays_survey_new_mega_bundle_message($ays_survey_maker_flag);
+                            // $this->ays_quiz_new_mega_bundle_message_2025($ays_survey_maker_flag);
                             // $this->ays_survey_black_friday_message_2024($ays_survey_maker_flag);
-                        }
+                        // }
                     }
                 }
             
@@ -1764,7 +1767,7 @@ class Survey_Maker_Admin {
 
                         $content[] = '<div class="ays-survey-dicount-wrap-text-box-texts">';
                             $content[] = '<div>
-                                            <a href="https://ays-pro.com/mega-bundle?utm_source=survey-maker-free&utm_medium=dashboard&utm_campaign=survey-mega-bundle'.SURVEY_MAKER_VERSION.'" target="_blank" style="color:#ffffff; text-decoration: underline;">Mega Bundle </a> (Quiz + Survey + Poll)
+                                            <a href="https://ays-pro.com/mega-bundle?utm_source=survey-maker-free&utm_medium=dashboard&utm_campaign=survey-mega-bundle-'.SURVEY_MAKER_VERSION.'" target="_blank" style="color:#ffffff; text-decoration: underline;">Mega Bundle </a> (Quiz + Survey + Poll)
                                           </div>
                                           <div style="position: relative;">
                                             <span class="ays-survey-sale-baner-mega-bundle-sale-text">50%</span>
@@ -1802,9 +1805,9 @@ class Survey_Maker_Admin {
 
                                 $content[] = '<div id="ays-survey-countdown">';
 
-                                    $content[] = '<div>';
-                                        $content[] = __( "Offer ends in:", "survey-maker" );
-                                    $content[] = '</div>';
+                                    // $content[] = '<div>';
+                                    //     $content[] = __( "Offer ends in:", "survey-maker" );
+                                    // $content[] = '</div>';
 
                                     $content[] = '<ul>';
                                         $content[] = '<li><span id="ays-survey-countdown-days"></span>days</li>';
@@ -1827,7 +1830,7 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=survey-maker-free&utm_medium=dashboard&utm_campaign=survey-mega-bundle'.SURVEY_MAKER_VERSION.'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', "survey-maker" ) . '</a>';
+                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=survey-maker-free&utm_medium=dashboard&utm_campaign=survey-mega-bundle-'.SURVEY_MAKER_VERSION.'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', "survey-maker" ) . '</a>';
                         $content[] = '<span >One-time payment</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';

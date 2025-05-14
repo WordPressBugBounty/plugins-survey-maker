@@ -14,6 +14,7 @@
     <h1 class="wp-heading-inline">
         <?php echo esc_html__(get_admin_page_title(), "survey-maker"); ?>
     </h1>
+    <?php do_action('ays_survey_sale_banner'); ?>
 
     <div class="ays-survey-features-wrap">
         <div class="comparison">

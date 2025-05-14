@@ -11,6 +11,7 @@
     <h1 class="wp-heading-inline">
         <?php echo esc_html__( get_admin_page_title(), "survey-maker" ); ?>
     </h1>
+    <?php do_action('ays_survey_sale_banner'); ?>
     <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">
         <div id="poststuff">
             <div id="post-body" class="metabox-holder">

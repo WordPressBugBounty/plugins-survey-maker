@@ -11,8 +11,9 @@
                 </a>
             </div>
         </div>
+        <h1><?php echo esc_html($heading); ?></h1>
+        <?php do_action('ays_survey_sale_banner'); ?>
         <form class="ays-survey-category-form" id="ays-survey-category-form" method="post">
-            <h1><?php echo esc_html($heading); ?></h1>
             <hr/>
             
             <?php
