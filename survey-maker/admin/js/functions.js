@@ -49,6 +49,28 @@
             break;
         }
     }
+    
+    jQuery.fn.aysEditorModal = function(action){
+        var jQuerythis = jQuery(this);
+        switch(action){
+            case 'hide':
+                jQuery(this).find('.ays-modal-content').css('animation-name', 'zoomOut');
+                setTimeout(function(){
+                    jQuery(document.body).removeClass('modal-open');
+                    jQuery(document).find('.ays-modal-backdrop').remove();
+                    jQuerythis.hide();
+                }, 250);
+            break;
+            case 'show': 
+            default:
+                jQuerythis.show();
+                jQuery(this).find('.ays-modal-content').css('animation-name', 'zoomIn');
+                jQuery(document).find('.modal-backdrop').remove();
+                jQuery(document.body).append('<div class="ays-modal-backdrop"></div>');
+                jQuery(document.body).addClass('modal-open');
+            break;
+        }
+    }
 
     function checkTrue(flag) {
         return flag === true;

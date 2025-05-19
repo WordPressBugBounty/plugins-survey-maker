@@ -235,7 +235,7 @@
 
                 <!-- Modal Header -->
                 <div class="ays-modal-header">
-                    <span class="ays-close">&times;</span>
+                    <span class="ays-close-editor-popup">&times;</span>
                     <h2>
                         <div class="ays-survey-icons" style="width:36px;height:36px;line-height: 0;vertical-align: bottom;">
                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/edit-content.svg" style="vertical-align: initial;line-height: 0;margin: 0px;padding: 0;width: 36px;height: 36px;">

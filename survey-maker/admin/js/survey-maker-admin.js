@@ -323,6 +323,10 @@
             $(document).find('.ays-modal').aysModal('hide');
         });
 
+        $(document).find('.ays-close-editor-popup').on('click', function () {
+            $(document).find('.ays-modal').aysEditorModal('hide');
+        });
+
         $(document).find('.ays-close-templates-popup').on('click', function (e) {            
             var $this = $(this);
             var dataAction = $this.attr('data-action');
@@ -1486,7 +1490,7 @@
                 $(document).find('#ays_survey_question_editor').val( questionContent );
             }
 
-            editorPopup.aysModal('open');
+            editorPopup.aysEditorModal('open');
         });
 
         $(document).on('dblclick click', '.ays-survey-question-preview-box', function(e){
@@ -1508,7 +1512,7 @@
                 $(document).find('#ays_survey_question_editor').val( questionContent );
             }
 
-            editorPopup.aysModal('open');
+            editorPopup.aysEditorModal('open');
         });
 
         $(document).on('click', '.ays-survey-back-to-textarea', function(e){
@@ -1530,7 +1534,7 @@
                 autosize.update(aysSurveyQuestionTextArea);
 //            }, 100 );
 
-            editorPopup.aysModal('hide');
+            editorPopup.aysEditorModal('hide');
         });
 
         $(document).on('click', '.ays-survey-move-question-into-section', function(e){
@@ -3662,6 +3666,7 @@
         $(document).on('click', 'body', function(e){
             if($(e.target).hasClass('ays-modal')){
                 $(e.target).find(".ays-close").trigger("click");
+                $(e.target).find(".ays-close-editor-popup").trigger("click");
             }
         });
 

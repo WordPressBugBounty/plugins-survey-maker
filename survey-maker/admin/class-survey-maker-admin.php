@@ -370,6 +370,12 @@ class Survey_Maker_Admin {
                 wp_dequeue_style('h5vp-admin');
                 wp_dequeue_style('fs_common');
             }
+            if (is_plugin_active('wp-social/wp-social.php')) {
+                wp_dequeue_style('wp_social_select2_css');
+                wp_deregister_script('wp_social_select2_js');
+                wp_dequeue_script('wp_social_select2_js');
+            }
+
 
         }
     }

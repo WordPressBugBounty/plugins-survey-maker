@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.6.4
+Stable tag: 5.1.6.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.6.5 ( May 19, 2025 ) =
+* Fixed: CSS conflict with the WP Social Login and Register plugin
+* Fixed: Edit question with the wp editor issue
 
 = 5.1.6.4 ( May 14, 2025 ) =
 * Added: Clear selection button text option for each survey

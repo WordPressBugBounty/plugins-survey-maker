@@ -119,7 +119,7 @@
                         $(document).find('#ays_survey_question_editor').val(" ");
                     }
                     
-                    editorPopup.aysModal('hide');
+                    editorPopup.aysEditorModal('hide');
                 }
             }
         });
