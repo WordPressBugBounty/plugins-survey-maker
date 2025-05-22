@@ -368,6 +368,7 @@
     $gen_restart_button_text = (isset($gen_button_texts['restart_button']) && $gen_button_texts['restart_button'] != '') ? stripslashes( esc_attr($gen_button_texts['restart_button']) ) : 'Restart';
     $gen_exit_button_text = (isset($gen_button_texts['exit_button']) && $gen_button_texts['exit_button'] != '') ? stripslashes( esc_attr($gen_button_texts['exit_button']) ) : 'Exit';
     $gen_clear_selection_button_text = (isset($gen_button_texts['clear_button']) && $gen_button_texts['clear_button'] != '') ? stripslashes( esc_attr($gen_button_texts['clear_button']) ) : 'Clear selection';
+    $gen_start_button_text = (isset($gen_button_texts['start_button']) && $gen_button_texts['start_button'] != '') ? stripslashes( esc_attr($gen_button_texts['start_button']) ) : 'Start';
 
     $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
     $survey_default_type = (isset($gen_options[$name_prefix . 'default_type']) && $gen_options[$name_prefix . 'default_type'] != '') ? stripslashes($gen_options[$name_prefix . 'default_type']) : null;
@@ -991,6 +992,9 @@
             // Clear selection button text
             $options[ $name_prefix . 'clear_selection_button_each_text' ] = isset($options[ $name_prefix . 'clear_selection_button_each_text' ]) ? $options[ $name_prefix . 'clear_selection_button_each_text' ] : $gen_clear_selection_button_text;            
             $survey_clear_selection_button_each_text = (isset($options[ $name_prefix . 'clear_selection_button_each_text' ]) && $options[ $name_prefix . 'clear_selection_button_each_text' ] != '') ? $options[ $name_prefix . 'clear_selection_button_each_text' ] : 'Clear selection';
+            // Start button text
+            $options[ $name_prefix . 'start_button_each_text' ] = isset($options[ $name_prefix . 'start_button_each_text' ]) ? $options[ $name_prefix . 'start_button_each_text' ] : $gen_start_button_text;            
+            $survey_start_button_each_text = (isset($options[ $name_prefix . 'start_button_each_text' ]) && $options[ $name_prefix . 'start_button_each_text' ] != '') ? $options[ $name_prefix . 'start_button_each_text' ] : 'Start';
         // ---- Buttons settings End  ---- //
 
 
