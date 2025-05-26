@@ -731,6 +731,21 @@
                 </div>
             </div> <!-- Survey Start button text -->
             <hr/>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="ays_survey_login_button_each_text">
+                        <?php echo esc_html__('Log in button text',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_html__('Specify text for the log in button',"survey-maker");
+                        ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="text" id="ays_survey_login_button_each_text" name="ays_survey_login_button_each_text" class="ays-text-input" value="<?php echo esc_attr($survey_login_button_each_text); ?>">
+                </div>
+            </div> <!-- Survey Start button text -->
+            <hr/>
         </div>
     </div>
     <div class="ays-survey-collapsible-container">

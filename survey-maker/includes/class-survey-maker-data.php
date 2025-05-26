@@ -467,6 +467,8 @@ class Survey_Maker_Data {
             $settings[ $name_prefix . 'clear_selection_button_each_text' ] = (isset($options[ $name_prefix . 'clear_selection_button_each_text' ]) && $options[ $name_prefix . 'clear_selection_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'clear_selection_button_each_text' ]) ) : '';            
             // Start button text
             $settings[ $name_prefix . 'start_button_each_text' ] = (isset($options[ $name_prefix . 'start_button_each_text' ]) && $options[ $name_prefix . 'start_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'start_button_each_text' ]) ) : '';            
+            // Login button text
+            $settings[ $name_prefix . 'login_button_each_text' ] = (isset($options[ $name_prefix . 'login_button_each_text' ]) && $options[ $name_prefix . 'login_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'login_button_each_text' ]) ) : '';            
         // ---- Buttons settings End  ---- //
 
         // Allow HTML in section description
@@ -1391,6 +1393,9 @@ class Survey_Maker_Data {
 
         $settings_buttons_texts['start_button'] = (isset($settings_buttons_texts['start_button']) && $settings_buttons_texts['start_button'] != '') ? esc_attr($settings_buttons_texts['start_button']) : 'Start';
         $ays_start_button           = (isset($settings['survey_start_button_each_text']) && $settings['survey_start_button_each_text'] != '') ? stripslashes( esc_attr( $settings['survey_start_button_each_text'] ) ) : $settings_buttons_texts['start_button'];
+
+        $settings_buttons_texts['login_button'] = (isset($settings_buttons_texts['login_button']) && $settings_buttons_texts['login_button'] != '') ? esc_attr($settings_buttons_texts['login_button']) : 'Log in';
+        $ays_login_button           = (isset($settings['survey_login_button_each_text']) && $settings['survey_login_button_each_text'] != '') ? stripslashes( esc_attr( $settings['survey_login_button_each_text'] ) ) : $settings_buttons_texts['login_button'];
         
         $ays_next_button_text     = ($ays_next_button     === 'Next') ? __('Next', "survey-maker") : $ays_next_button;
         $ays_previous_button_text = ($ays_previous_button === 'Prev') ? __('Prev', "survey-maker") : $ays_previous_button;

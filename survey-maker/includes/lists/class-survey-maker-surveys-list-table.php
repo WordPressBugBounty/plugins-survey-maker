@@ -734,6 +734,8 @@ class Surveys_List_Table extends WP_List_Table {
                 $survey_clear_selection_button_each_text = (isset($_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ]) && $_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ]) ) : 'Clear selection';
                 // Start button text
                 $survey_start_button_each_text = (isset($_POST[ $name_prefix . 'survey_start_button_each_text' ]) && $_POST[ $name_prefix . 'survey_start_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_start_button_each_text' ]) ) : 'Start';
+                // Login button text
+                $survey_login_button_each_text = (isset($_POST[ $name_prefix . 'survey_login_button_each_text' ]) && $_POST[ $name_prefix . 'survey_login_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_login_button_each_text' ]) ) : 'Log in';
             // ---- Buttons settings End  ---- //
 
             // Allow HTML in section description
@@ -1119,6 +1121,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_exit_button_each_text'              => $survey_exit_button_each_text,
                 'survey_clear_selection_button_each_text'   => $survey_clear_selection_button_each_text,
                 'survey_start_button_each_text'             => $survey_start_button_each_text,
+                'survey_login_button_each_text'             => $survey_login_button_each_text,
                 'survey_allow_html_in_section_description'  => $survey_allow_html_in_section_description,
                 'survey_enable_leave_page'                  => $survey_enable_leave_page,
                 'survey_auto_numbering'                     => $survey_auto_numbering,

@@ -1948,7 +1948,12 @@ Follow the steps in the video to get your survey submissions from the current us
                         <div class="pro-features-popup-modal-right-box-content"></div>
 
                         <div class="pro-features-popup-modal-right-box-button">
-                            <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo esc_html__("Upgrade PRO NOW", "survey-maker"); ?></a>
+                            <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo esc_html__("Pricing", "survey-maker"); ?></a>
+                        </div>
+                        <div class="pro-features-popup-modal-right-box-footer-text">
+                            <span class="ays_quiz_small_hint_text_for_message_variables">
+                                <?php echo esc_html__('One-time payment', "survey-maker")?>
+                            </span>
                         </div>
                 </div>
                 </div>

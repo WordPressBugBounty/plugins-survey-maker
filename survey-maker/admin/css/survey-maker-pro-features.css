@@ -383,6 +383,13 @@ div.pro-features-popup-conteiner {
     margin-top: 20px;
 }
 
+#pro-features-popup-modal .pro-features-popup-modal-right-box-footer-text .ays_quiz_small_hint_text_for_message_variables {
+    font-style: italic;
+    font-size: 11px;
+    color: gray;
+    margin-top: 20px;
+}
+
 #pro-features-popup-modal .pro-features-popup-modal-right-box-button .pro-features-popup-modal-right-box-link {
     -webkit-appearance: none;
     background: #fff;
