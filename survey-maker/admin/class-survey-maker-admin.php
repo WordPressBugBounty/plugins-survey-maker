@@ -376,6 +376,13 @@ class Survey_Maker_Admin {
                 wp_dequeue_script('wp_social_select2_js');
             }
 
+            // Theme | Pixel Ebook Store
+            wp_dequeue_style('pixel-ebook-store-free-demo-content-style');
+
+            // Theme | Interactive Education
+            wp_dequeue_style('interactive-education-free-demo-content-style');
+
+
 
         }
     }

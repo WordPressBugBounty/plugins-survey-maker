@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.6.7
+Stable tag: 5.1.6.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,11 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.6.8 ( May 29, 2025 ) =
+* Fixed: Conflict with Pixel Ebook Store theme
+* Fixed: Conflict with Interactive Education theme
+* Updated: POT file
 
 = 5.1.6.7 ( May 26, 2025 ) =
 * Added: Login button text option for each survey
