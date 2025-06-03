@@ -3689,7 +3689,10 @@ class Survey_Maker_Public {
                     
             // Popup title text color
             $survey_popup_title_text_color = (isset($options["popup_title_text_color"]) && $options["popup_title_text_color"] != "") ? esc_attr ( $options["popup_title_text_color"] ) : "#000000";
-                    
+            // Popup title text color mobile
+            $options["popup_title_text_color_mobile"] = isset($options["popup_title_text_color_mobile"]) ? $options["popup_title_text_color_mobile"] : $survey_popup_title_text_color;
+            $survey_popup_title_text_color_mobile = (isset($options["popup_title_text_color_mobile"]) && $options["popup_title_text_color_mobile"] != "") ? esc_attr ( $options["popup_title_text_color_mobile"] ) : "#000000";
+
             // Popup title alignment
             $survey_popup_title_alignment = (isset($options["popup_title_alignment"]) && $options["popup_title_alignment"] != "") ? esc_attr ( $options["popup_title_alignment"] ) : "left";
 
@@ -3995,6 +3998,7 @@ class Survey_Maker_Public {
                                 }
                                 .ays-survey-popup-modal-' . $popup['id'] . ' .ays-survey-popup-title-content{
                                     font-size: '.$survey_popup_title_mobile_font_size.'px;
+                                    color: '.$survey_popup_title_text_color_mobile.';
                                     background-color: '.$survey_popup_title_bg_color_mobile.';
                                     '.$hide_popup_on_mobile_class.';
                                     letter-spacing: '.$survey_popup_title_letter_spacing_on_mobile.'px;

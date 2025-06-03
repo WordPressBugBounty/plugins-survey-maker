@@ -183,7 +183,34 @@
                                 </label>
                             </div>
                             <div class="col-sm-9 ays_divider_left">
-                                <input type="text" class="ays-text-input" id='ays_survey_popup_title_text_color' name='ays_survey_popup_title_text_color' data-alpha="true" value="<?php echo esc_attr($survey_popup_title_text_color); ?>"/>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for='<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_text_color'>
+                                            <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color of the popup title for desktop devices.',"survey-maker")?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="ays-text-input" id='ays_survey_popup_title_text_color' name='ays_survey_popup_title_text_color' data-alpha="true" value="<?php echo esc_attr($survey_popup_title_text_color); ?>"/>
+
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <label for='<?php echo esc_attr($html_name_prefix); ?>survey_popup_title_text_color_mobile'>
+                                            <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text color of the popup title for mobile devices.',"survey-maker")?>">
+                                                <i class="ays_fa ays_fa_info_circle"></i>
+                                            </a>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="ays-text-input" id='ays_survey_popup_title_text_color_mobile' name='ays_survey_popup_title_text_color_mobile' data-alpha="true" value="<?php echo esc_attr($survey_popup_title_text_color_mobile); ?>"/>
+                                    </div>
+                                </div>
                             </div>
                         </div><!-- Popup title text color -->
                         <hr/>

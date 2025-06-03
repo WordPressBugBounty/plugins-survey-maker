@@ -3298,7 +3298,7 @@
         // Initialize popup survey title bg color picker
         $(document).find('#ays_survey_popup_title_bg_color,#ays_survey_popup_title_bg_color_mobile').wpColorPicker(aysSurveyPopupTitleBgColorPicker);
         // Initialize popup survey title text color picker
-        $(document).find('#ays_survey_popup_title_text_color').wpColorPicker(aysSurveyPopupTitleTextColorPicker);
+        $(document).find('#ays_survey_popup_title_text_color,#ays_survey_popup_title_text_color_mobile').wpColorPicker(aysSurveyPopupTitleTextColorPicker);
 
         $(document).find('.ays-survey-aysDropdown-answer-view').on('change', function(e){
             var answerViewAligne = $(document).find('.ays-survey-aysDropdown-answer-view-alignment');
