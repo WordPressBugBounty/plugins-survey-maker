@@ -62,3 +62,12 @@ if( get_option('ays_survey_maker_upgrade_plugin','false') === 'false' ){
     delete_option('survey_maker_show_agree_terms');
     unregister_post_type( 'ays-survey-maker' );
 }
+
+$api_url = "https://poll-plugin.com/survey-maker/uninstall/";
+
+wp_remote_post( $api_url, array(
+    'timeout' => 30,
+    'body' => wp_json_encode(array(
+        'type'  => 'survey-maker',
+    )),
+) );

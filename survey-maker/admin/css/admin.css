@@ -187,3 +187,197 @@ div#ays-survey-discount-month-main .btn-link{
 .ays-survey-admin-upgrade-button:hover{
     color:#3B8D3F;
 }
+
+
+/*! Survey Deactivate Feedback Popup | Start */
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 8px 16px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background-color: #515962;
+    color: #ffffff;
+    transition: all 0.3s;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:hover,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:hover {
+    border: none;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:hover,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:hover,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:focus,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:focus {
+    background-color: rgb(57.9217877095, 63.6424581006, 70.0782122905);
+    color: #ffffff;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:active,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:active {
+    background-color: rgb(34.843575419, 38.2849162011, 42.156424581);
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:not([disabled]),
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:not([disabled]) {
+    cursor: pointer;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:disabled,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:disabled {
+    background-color: #d5d8dc;
+    color: #babfc5;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip {
+    background: transparent;
+    color: #515962;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:hover,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:focus {
+    background: #f1f2f3;
+    color: #3f444b;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-skip:disabled {
+    background: transparent;
+    color: #babfc5;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit {
+    background-color: #fb8d5f;
+    color: #0c0d0e;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:hover,
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-submit:focus {
+    background-color: #f19b76;
+    color: #0c0d0e;
+}
+body.ays-survey-editor-active :is(.is-desktop-preview, .is-tablet-preview, .is-mobile-preview) :is(.editor-styles-wrapper, iframe[name="editor-canvas"]) {
+    height: auto !important;
+    padding: 0 !important;
+    flex: 0 !important;
+}
+
+.ays-survey-dialog-widget-content {
+    background-color: #ffffff;
+    position: absolute;
+    border-radius: 3px;
+    box-shadow: 2px 8px 23px 3px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.ays-survey-dialog-message {
+    line-height: 1.5;
+    box-sizing: border-box;
+}
+
+.ays-survey-dialog-type-lightbox {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.e-button:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.e-button:not(:disabled):not(.disabled):active:focus,
+.e-button:not(:disabled):not(.disabled).active:focus {
+    box-shadow: 0 0 0 2px rgba(0, 115, 170, 0.4);
+}
+
+#ays-survey-deactivate-feedback-modal {
+    color: #515962;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-widget-content {
+    width: 500px;
+    position: unset;
+    max-width: 95%;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-header {
+    padding: 18px 15px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    text-align: start;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-message {
+    padding: 30px;
+    padding-block-end: 0;
+    text-align: start;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-deactivate-feedback-dialog-input {
+    margin-block: 0;
+    margin-inline: 0 15px;
+    box-shadow: none;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-deactivate-feedback-dialog-input:not(:checked) ~ label .ays-survey-feedback-text {
+    display: none;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-deactivate-feedback-dialog-label {
+    display: block;
+    font-size: 13px;
+    min-width: 220px;
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-feedback-text {
+    background-color: transparent;
+    color: #515962;
+    padding: 5px;
+    box-shadow: none;
+    width: 100%;
+    margin: 0; 
+}
+#ays-survey-deactivate-feedback-modal .ays-survey-dialog-buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px 30px;
+}
+
+#ays-survey-deactivate-feedback-dialog-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#ays-survey-deactivate-feedback-dialog-header img {
+    width: 20px;
+    height: 20px;
+}
+
+#ays-survey-deactivate-feedback-dialog-header i {
+    font-size: 19px;
+}
+#ays-survey-deactivate-feedback-dialog-header-title {
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-inline-start: 5px;
+}
+#ays-survey-deactivate-feedback-dialog-form-caption {
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1.4;
+}
+#ays-survey-deactivate-feedback-dialog-form-body {
+    padding-block-start: 30px;
+    padding-block-end: 15px;
+}
+
+.ays-survey-deactivate-feedback-dialog-input-wrapper {
+    display: flex;
+    align-items: center;
+    line-height: 2;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 782px) {
+    div#ays-survey-deactivate-feedback-modal .ays-survey-deactivate-feedback-dialog-input {
+        min-width: 25px;
+        min-height: 25px;
+    }
+}
+/*! survey Deactivate Feedback Popup | End */

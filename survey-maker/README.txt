@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.6.9
+Stable tag: 5.1.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.7.0 ( Jun 5, 2025 ) =
+* Added: Feedback popup after deactivating plugin
+* Improved: Some changes on the admin dashboard
 
 = 5.1.6.9 ( Jun 2, 2025 ) =
 * Added: Popup Title text color option for mobile devices
