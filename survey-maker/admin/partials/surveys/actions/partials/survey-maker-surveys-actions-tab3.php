@@ -480,6 +480,133 @@
                     </div><!--Survey progress text transform -->
                 </div>
             </div> <!-- Live progres bar -->
+            <hr/>      
+            <div class="form-group row ays_toggle_parent">
+                <div class="col-sm-4">
+                    <label for="ays_survey_enable_schedule">
+                        <?php echo esc_html__('Schedule the Survey', "survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the period of time when your survey will be active. When the time is due, a message will inform the survey takers about it.', "survey-maker"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                    <?php if( current_user_can( 'manage_options' ) ): ?>
+                    <p class="ays_survey_small_hint_text_for_message_variables">
+                        <span><?php echo esc_html__( "To change your GMT " , "survey-maker" ); ?></span>
+                        <a href="<?php echo esc_url($wp_general_settings_url); ?>" target="_blank"><?php echo esc_html__( "click here" , "survey-maker" ); ?></a>
+                    </p>
+                    <?php endif; ?>
+                </div>
+                <div class="col-sm-1">
+                    <input id="ays_survey_enable_schedule" type="checkbox" class="active_date_check ays_toggle_checkbox" name="ays_survey_enable_schedule" <?php echo $survey_enable_schedule ? 'checked' : '' ?>>
+                </div>
+                <div class="col-sm-7 ays_toggle_target ays_divider_left active_date <?php echo $survey_enable_schedule ? '' : 'display_none_not_important'; ?>">
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label class="form-check-label" for="ays_survey_schedule_active">
+                                <?php echo esc_html__('Start date:', "survey-maker"); ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set a date since which your survey will be active.', "survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="input-group mb-3">
+                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_active" name="ays_survey_schedule_active" value="<?php echo esc_attr($survey_schedule_active); ?>" placeholder="<?php echo current_time( 'mysql' ); ?>">
+                                <div class="input-group-append">
+                                    <label for="ays_survey_schedule_active" class="input-group-text">
+                                        <span><i class="ays_fa ays_fa_calendar"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label class="form-check-label" for="ays_survey_schedule_deactive">
+                                <?php echo esc_html__('End date:', "survey-maker"); ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set a date since which your survey will be inactive.', "survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="input-group mb-3">
+                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_deactive" name="ays_survey_schedule_deactive" value="<?php echo esc_attr($survey_schedule_deactive); ?>" placeholder="<?php echo current_time( 'mysql' ); ?>">
+                                <div class="input-group-append">
+                                    <label for="ays_survey_schedule_deactive" class="input-group-text">
+                                        <span><i class="ays_fa ays_fa_calendar"></i></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!--Show timer start -->
+                    <hr>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label class="form-check-label" for="ays_survey_schedule_pre_start_message">
+                                <?php echo esc_html__("Pre start message:", "survey-maker") ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Write a message that will inform the survey takers about the activation of the survey.', "survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="editor">
+                                <?php
+                                $content   = $survey_schedule_pre_start_message;
+                                $editor_id = 'ays_survey_schedule_pre_start_message';
+                                $settings  = array(
+                                    'editor_height'  => $survey_wp_editor_height,
+                                    'textarea_name'  => 'ays_survey_schedule_pre_start_message',
+                                    'editor_class'   => 'ays-textarea',
+                                    'media_elements' => false
+                                );
+                                wp_editor($content, $editor_id, $settings);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label class="form-check-label" for="ays_survey_schedule_expiration_message">
+                                <?php echo esc_html__("Expiration message:", "survey-maker") ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set down a message that will inform the survey takers that they cannot take the survey anymore.', "survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="editor">
+                                <?php
+                                $content   = $survey_schedule_expiration_message;
+                                $editor_id = 'ays_survey_schedule_expiration_message';
+                                $settings  = array(
+                                    'editor_height'  => $survey_wp_editor_height,
+                                    'textarea_name'  => 'ays_survey_schedule_expiration_message',
+                                    'editor_class'   => 'ays-textarea',
+                                    'media_elements' => false
+                                );
+                                wp_editor($content, $editor_id, $settings);
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="form-group row">
+                        <div class="col-sm-4">
+                            <label for="ays_survey_dont_show_survey_container">
+                                <?php echo esc_html__('Don\'t show survey',"survey-maker"); ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Do not show the survey container on the front-end at all when it is expired or has not started yet.","survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="checkbox" id="ays_survey_dont_show_survey_container" name="ays_survey_dont_show_survey_container" value="on" <?php echo ($survey_dont_show_survey_container) ? 'checked' : ''; ?>/>
+                        </div>
+                    </div> <!-- Dont Show Survey -->
+                </div>
+            </div> <!-- Schedule the Survey -->          
             <hr/>                
         </div>
     </div>
@@ -1138,136 +1265,4 @@
         </div>
     </div><!-- Terms and Conditions -->
     <hr/>
-    <div class="form-group row" style="margin:0px;">
-        <div class="col-sm-12 ays-pro-features-v2-main-box">
-            <div class="ays-pro-features-v2-big-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=6Y8pa0RAiVE" data-option-title="<?php echo esc_attr__('Schedule the Survey',"survey-maker")?>" data-option-text="<strong> Define the period of time </strong> when your survey will be active with this feature. Choose the times your survey will be active and inactive. To inform your survey takers that the survey is not active yet or has already expired, you can <strong> leave a message. </strong> Add media or forms to your messages to make them engaging and catchy. If you decide not to show your survey at all when it is inactive, mark the 'Don't show survey' option. ">
-                <div class="ays-pro-features-v2-video-button">
-                    <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
-                    <div class="ays-pro-features-v2-video-text">
-                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
-                    </div>
-                </div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <div class="ays-pro-features-v2-small-buttons-box">
-                <div class="ays-pro-features-v2-video-button">
-                    <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
-                    <div class="ays-pro-features-v2-video-text">
-                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
-                    </div>
-                </div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label for="ays_survey_enable_schedule">
-                        <?php echo esc_html__('Schedule the Survey', "survey-maker"); ?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip"
-                           title="<?php echo esc_attr__('Define the period of time when your survey will be active. When the time is due, a message will inform the survey takers about it.', "survey-maker"); ?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                    <p class="ays_survey_small_hint_text_for_message_variables">
-                        <span><?php echo esc_html__( "To change your GMT " , "survey-maker" ); ?></span>
-                        <a href="<?php echo esc_url($wp_general_settings_url); ?>" target="_blank"><?php echo esc_html__( "click here" , "survey-maker" ); ?></a>
-                    </p>
-                </div>
-                <div class="col-sm-1">
-                    <input id="ays_survey_enable_schedule" type="checkbox" checked class="active_date_check">
-                </div>
-                <div class="col-sm-7 ays_toggle_target ays_divider_left active_date">
-                    <div class="form-group row">
-                        <div class="col-sm-4">
-                            <label class="form-check-label" for="ays_survey_schedule_active"> <?php echo esc_html__('Start date:', "survey-maker"); ?> </label>
-                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Set a date since which your survey will be active.', "survey-maker"); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="input-group mb-3">
-                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_active" placeholder="<?php echo esc_attr(current_time( 'mysql' )); ?>">
-                                <div class="input-group-append">
-                                    <label for="ays_survey_schedule_active" class="input-group-text">
-                                        <span><i class="ays_fa ays_fa_calendar"></i></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-4">
-                            <label class="form-check-label" for="ays_survey_schedule_deactive"> <?php echo esc_html__('End date:', "survey-maker"); ?> </label>
-                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Set a date since which your survey will be inactive.', "survey-maker"); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="input-group mb-3">
-                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_deactive" placeholder="<?php echo esc_attr(current_time( 'mysql' )); ?>">
-                                <div class="input-group-append">
-                                    <label for="ays_survey_schedule_deactive" class="input-group-text">
-                                        <span><i class="ays_fa ays_fa_calendar"></i></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-4">
-                            <label class="form-check-label" for="ays_survey_schedule_pre_start_message"><?php echo esc_html__("Pre-start message:", "survey-maker") ?></label>
-                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Write a message that will inform the survey takers about the activation of the survey.', "survey-maker"); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="editor">
-                                <?php
-                                $content   = __( 'The survey will be available soon!' , "survey-maker" );
-                                $editor_id = 'ays_survey_schedule_pre_start_message';
-                                $settings  = array(
-                                    'editor_height'  => '100',
-                                    'editor_class'   => 'ays-textarea',
-                                    'media_elements' => false
-                                );
-                                wp_editor($content, $editor_id, $settings);
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-4">
-                            <label class="form-check-label" for="ays_survey_schedule_expiration_message"><?php echo esc_html__("Expiration message:", "survey-maker") ?></label>
-                            <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Set down a message that will inform the survey takers that they cannot take the survey anymore.', "survey-maker"); ?>">
-                                <i class="ays_fa ays_fa_info_circle"></i>
-                            </a>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="editor">
-                                <?php
-                                $content   = __( 'This survey has expired!' , "survey-maker" );
-                                $editor_id = 'ays_survey_schedule_expiration_message';
-                                $settings  = array(
-                                    'editor_height'  => '100',
-                                    'editor_class'   => 'ays-textarea',
-                                    'media_elements' => false
-                                );
-                                wp_editor($content, $editor_id, $settings);
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
-        </div>
-    </div> <!-- Schedule the Survey ( PRO ) -->
 </div>

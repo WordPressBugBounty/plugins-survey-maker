@@ -132,6 +132,7 @@
         'survey_show_timer_type' => 'countdown',
         'survey_schedule_pre_start_message' =>  __("The survey will be available soon!", "survey-maker"),
         'survey_schedule_expiration_message' => __("This survey has expired!", "survey-maker"),
+        'survey_dont_show_survey_container'  => 'off',
         'survey_auto_numbering' => 'none',
         'survey_auto_numbering_questions' => 'none',
         'survey_full_screen_button_color' => '#333',
@@ -1045,6 +1046,9 @@
 
             // Expiration message
             $survey_schedule_expiration_message = (isset($options[ $name_prefix . 'schedule_expiration_message' ]) &&  $options[ $name_prefix . 'schedule_expiration_message' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'schedule_expiration_message' ] ) ) : __("This survey has expired!", "survey-maker");
+
+            // Dont Show Survey
+            $survey_dont_show_survey_container = (isset($options[ $name_prefix . 'dont_show_survey_container' ]) && $options[ $name_prefix . 'dont_show_survey_container' ] == 'on') ? true : false;
 
         //---- Schedule End  ---- //
 

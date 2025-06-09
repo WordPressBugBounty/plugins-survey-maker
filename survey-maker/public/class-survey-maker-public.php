@@ -918,6 +918,57 @@ class Survey_Maker_Public {
         }
 
         $this->options[ $this->name_prefix . 'loader_html' ] = $survey_loader_html;
+
+        /*
+         * Schedule quiz
+         * Check is quiz expired
+         */
+        
+        $is_expired = false;
+        $active_date_check = false;
+        $startDate_atr = '';
+        $endDate_atr = '';
+        $current_time = strtotime( current_time( "Y:m:d H:i:s" ) );
+		$startDate = strtotime( $this->options[ $this->name_prefix . 'schedule_active' ] );
+        $endDate   = strtotime( $this->options[ $this->name_prefix . 'schedule_deactive' ] );
+        
+		$expired_survey_message = __('The survey has expired.', "survey-maker");
+
+        if ( $this->options[ $this->name_prefix . 'enable_schedule' ] ) {
+            $active_date_check = true;
+
+            if ( $this->options[ $this->name_prefix . 'schedule_active' ] ) {
+                $startDate_atr = $startDate - $current_time;
+            }elseif ( $this->options[ $this->name_prefix . 'schedule_deactive' ] ) {
+                $endDate_atr = $endDate - $current_time;
+            }
+
+            if ($startDate > $current_time) {
+                if($this->options[ $this->name_prefix . 'dont_show_survey_container' ]){
+                    $hide_survey_and_popup = '
+                    <style>
+                        .' . $this->html_class_prefix . 'popup-survey-window[data-survey-id="' . $id . '"]{
+                            display:none !important;
+                    }
+                    </style>';
+                    return $hide_survey_and_popup;
+                }
+				$is_expired = true;
+                $expired_survey_message = $this->options[ $this->name_prefix . 'schedule_pre_start_message' ];
+			}elseif ($endDate < $current_time) {
+                if($this->options[ $this->name_prefix . 'dont_show_survey_container' ]){
+                    $hide_survey_and_popup = '
+                    <style>
+                        .' . $this->html_class_prefix . 'popup-survey-window[data-survey-id="' . $id . '"]{
+                            display:none !important;
+                    }
+                    </style>';
+                    return $hide_survey_and_popup;
+                }
+                $is_expired = true;
+                $expired_survey_message = $this->options[ $this->name_prefix . 'schedule_expiration_message' ];
+            }
+		}
         
         if( !$limit ){
             $sections = Survey_Maker_Data::get_sections_by_survey_id( $sections_ids );
@@ -1032,7 +1083,7 @@ class Survey_Maker_Public {
         }
 
         $blocked_content_class = '';
-        if( $limit && !$logged_in_limit ){
+        if( ( $limit || $is_expired ) && !$logged_in_limit ){
             $blocked_content_class = " " . $this->html_class_prefix . "blocked-content ";
         }
 
@@ -1126,9 +1177,16 @@ class Survey_Maker_Public {
         $current_survey_page_link = esc_url( $ays_survey_protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
     	$content[] = '<input type="hidden" name="'. $this->html_name_prefix .'current_page_link" value="'. $current_survey_page_link .'">';
 
-        if( !$limit ){
+        if( !$limit && !$is_expired ){
             $content[] = $this->create_sections( $sections );
         }else{
+            if( $is_expired && !$limit ){
+                $limit_message = $expired_survey_message;
+            }
+            else if($is_expired && $limit){
+                $limit_message = $expired_survey_message;
+            }
+            
             $content[] = $this->create_restricted_content( $limit_message );
         }
         

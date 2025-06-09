@@ -749,26 +749,29 @@ class Surveys_List_Table extends WP_List_Table {
 
             //---- Schedule Start  ---- //
 
-            // Schedule the Survey
-            $survey_enable_schedule = (isset( $_POST[ $name_prefix . 'survey_enable_schedule' ] ) && $_POST[ $name_prefix . 'survey_enable_schedule' ] == 'on') ? 'on' : 'off';
+                // Schedule the Survey
+                $survey_enable_schedule = (isset( $_POST[ $name_prefix . 'survey_enable_schedule' ] ) && $_POST[ $name_prefix . 'survey_enable_schedule' ] == 'on') ? 'on' : 'off';
 
-            // Start date
-            $survey_schedule_active = (isset( $_POST[ $name_prefix . 'survey_schedule_active' ] ) && $_POST[ $name_prefix . 'survey_schedule_active' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_schedule_active' ] ) ) : '';
+                // Start date
+                $survey_schedule_active = (isset( $_POST[ $name_prefix . 'survey_schedule_active' ] ) && $_POST[ $name_prefix . 'survey_schedule_active' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_schedule_active' ] ) ) : '';
 
-            // End date
-            $survey_schedule_deactive = (isset( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) && $_POST[ $name_prefix . 'survey_schedule_deactive' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) ) : '';
+                // End date
+                $survey_schedule_deactive = (isset( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) && $_POST[ $name_prefix . 'survey_schedule_deactive' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) ) : '';
 
-            // Show timer
-            $survey_schedule_show_timer = (isset( $_POST[ $name_prefix . 'survey_schedule_show_timer' ] ) && $_POST[ $name_prefix . 'survey_schedule_show_timer' ] == 'on') ? 'on' : 'off';
+                // Show timer
+                $survey_schedule_show_timer = (isset( $_POST[ $name_prefix . 'survey_schedule_show_timer' ] ) && $_POST[ $name_prefix . 'survey_schedule_show_timer' ] == 'on') ? 'on' : 'off';
 
-            // Show countdown / start date
-            $survey_show_timer_type = (isset( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) && $_POST[ $name_prefix . 'survey_show_timer_type' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) ) : 'countdown';
+                // Show countdown / start date
+                $survey_show_timer_type = (isset( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) && $_POST[ $name_prefix . 'survey_show_timer_type' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) ) : 'countdown';
 
-            // Pre start message
-            $survey_schedule_pre_start_message = (isset( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) : __("The survey will be available soon!", "survey-maker");
+                // Pre start message
+                $survey_schedule_pre_start_message = (isset( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) : __("The survey will be available soon!", "survey-maker");
 
-            // Expiration message
-            $survey_schedule_expiration_message = (isset( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) : __("This survey has expired!", "survey-maker");
+                // Expiration message
+                $survey_schedule_expiration_message = (isset( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) : __("This survey has expired!", "survey-maker");
+
+                // Dont Show Survey
+                $survey_dont_show_survey_container = (isset( $_POST[ $name_prefix . 'survey_dont_show_survey_container' ] ) && $_POST[ $name_prefix . 'survey_dont_show_survey_container' ] == 'on') ? 'on' : 'off';
 
             //---- Schedule End  ---- //
 
@@ -1135,6 +1138,8 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_show_timer_type'            => $survey_show_timer_type,
                 'survey_schedule_pre_start_message' => $survey_schedule_pre_start_message,
                 'survey_schedule_expiration_message'=> $survey_schedule_expiration_message,
+                'survey_dont_show_survey_container' => $survey_dont_show_survey_container,
+                
                 'survey_logo_url_new_tab'           => $survey_logo_url_new_tab,
                 'survey_full_screen_mode'           => $survey_full_screen,
                 'survey_full_screen_button_color'   => $survey_full_screen_button_color,

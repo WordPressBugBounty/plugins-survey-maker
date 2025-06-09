@@ -375,6 +375,12 @@ class Survey_Maker_Admin {
                 wp_deregister_script('wp_social_select2_js');
                 wp_dequeue_script('wp_social_select2_js');
             }
+            if (is_plugin_active('real-media-library-lite/index.php')) {
+                wp_dequeue_style('real-media-library-lite-rml');
+            }
+            
+            // Theme | Phlox 2.17.6
+            wp_dequeue_style('auxin-admin-style');
 
             // Theme | Pixel Ebook Store
             wp_dequeue_style('pixel-ebook-store-free-demo-content-style');

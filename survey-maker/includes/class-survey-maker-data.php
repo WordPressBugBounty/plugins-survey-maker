@@ -452,6 +452,43 @@ class Survey_Maker_Data {
         $options[ $name_prefix . 'allow_html_in_answers' ] = isset($options[ $name_prefix . 'allow_html_in_answers' ]) ? $options[ $name_prefix . 'allow_html_in_answers' ] : 'off';
         $settings[ $name_prefix . 'allow_html_in_answers' ] = (isset($options[ $name_prefix . 'allow_html_in_answers' ]) && $options[ $name_prefix . 'allow_html_in_answers' ] == 'on') ? true : false;
 
+        //---- Schedule Start  ---- //
+
+            // Schedule the Survey
+            $options[ $name_prefix . 'enable_schedule' ] = isset($options[ $name_prefix . 'enable_schedule' ]) ? $options[ $name_prefix . 'enable_schedule' ] : 'off';
+            $settings[ $name_prefix . 'enable_schedule' ] = (isset($options[ $name_prefix . 'enable_schedule' ]) && $options[ $name_prefix . 'enable_schedule' ] == 'on') ? true : false;
+
+            if ( $settings[ $name_prefix . 'enable_schedule' ] ) {
+                $activateTimeVal = (isset($options[ $name_prefix . 'schedule_active' ]) && $options[ $name_prefix . 'schedule_active' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'schedule_active' ] ) ) : current_time( 'mysql' );
+                $deactivateTimeVal = (isset($options[ $name_prefix . 'schedule_deactive' ]) && $options[ $name_prefix . 'schedule_deactive' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'schedule_deactive' ] ) ) : current_time( 'mysql' );
+
+                $activateTime = strtotime($activateTimeVal);
+                $settings[ $name_prefix . 'schedule_active' ] = date('Y-m-d H:i:s', $activateTime);
+
+                $deactivateTime = strtotime($deactivateTimeVal);
+                $settings[ $name_prefix . 'schedule_deactive' ] = date('Y-m-d H:i:s', $deactivateTime);
+            } else {
+                $settings[ $name_prefix . 'schedule_active' ] = current_time( 'mysql' );
+                $settings[ $name_prefix . 'schedule_deactive' ] = current_time( 'mysql' );
+            }
+
+            // Show timer
+            $options[ $name_prefix . 'schedule_show_timer' ] = isset($options[ $name_prefix . 'schedule_show_timer' ]) ? $options[ $name_prefix . 'schedule_show_timer' ] : 'off';
+            $settings[ $name_prefix . 'schedule_show_timer' ] = (isset($options[ $name_prefix . 'schedule_show_timer' ]) && $options[ $name_prefix . 'schedule_show_timer' ] == 'on') ? true : false;
+
+            // Show countdown / start date
+            $settings[ $name_prefix . 'show_timer_type' ] = (isset($options[ $name_prefix . 'show_timer_type' ]) && $options[ $name_prefix . 'show_timer_type' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'show_timer_type' ] ) ) : 'countdown';
+
+            // Pre start message
+            $settings[ $name_prefix . 'schedule_pre_start_message' ] = (isset($options[ $name_prefix . 'schedule_pre_start_message' ]) &&  $options[ $name_prefix . 'schedule_pre_start_message' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'schedule_pre_start_message' ] ) ) : __("The survey will be available soon!", "survey-maker");
+
+            // Expiration message
+            $settings[ $name_prefix . 'schedule_expiration_message' ] = (isset($options[ $name_prefix . 'schedule_expiration_message' ]) &&  $options[ $name_prefix . 'schedule_expiration_message' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'schedule_expiration_message' ] ) ) : __("This survey has expired!", "survey-maker");
+
+            // Expiration message
+            $settings[ $name_prefix . 'dont_show_survey_container' ] = (isset($options[ $name_prefix . 'dont_show_survey_container' ]) && $options[ $name_prefix . 'dont_show_survey_container' ] == 'on') ? true : false;
+        //---- Schedule End  ---- //
+
         // ---- Buttons settings Start  ---- //
             // Finish button text
             $settings[ $name_prefix . 'finish_button_each_text' ] = (isset($options[ $name_prefix . 'finish_button_each_text' ]) && $options[ $name_prefix . 'finish_button_each_text' ] != '') ? stripslashes( esc_attr($options[ $name_prefix . 'finish_button_each_text' ]) ) : '';            
