@@ -147,7 +147,7 @@
                     },
                     bars: 'horizontal',
                     bar: { groupWidth: "50%" },
-                    colors: [ thisAysSurveyPublicChartData.surveyColor ]
+                    colors: [detectColor(thisAysSurveyPublicChartData.surveyColor)]
                 };
 
                 var chart = new google.visualization.BarChart( document.getElementById( 'survey_answer_chart_' + questionId ) );
@@ -326,4 +326,37 @@
             }
         }
     });
+
+    function detectColor(color, percent) {
+        if (typeof percent == "undefined") {
+            percent = "";
+        }
+        var returnColor;
+        var indexOfColor = color.indexOf("(");
+        if (indexOfColor !== -1) {
+            var rgb = color.substring(indexOfColor + 1, color.length - 1).replace(/ /g, '').split(',');
+            if (percent != "") {
+                returnColor = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ' , ' + percent + '%)';
+            }
+            else {
+                returnColor = 'rgb(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ')';
+            }
+        }
+        else {
+            if (percent != "") {
+                if (percent == 100) {
+                    returnColor = color;
+                }
+                else {
+                    returnColor = color + (isNaN(parseInt(percent, 8)) ? "" : parseInt(percent, 8));
+
+                }
+            }
+            else {
+                returnColor = color;
+            }
+        }
+        return returnColor;
+
+    }
 })(jQuery);

@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.7.1
+Stable tag: 5.1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.7.2 ( Jun 12, 2025 ) =
+* Fixed: Summary shortcode issue with the Modern/Minimal theme
+* Fixed: Language translation problem
 
 = 5.1.7.1 ( Jun 9, 2025 ) =
 * Added: Schedule the Survey functionality
