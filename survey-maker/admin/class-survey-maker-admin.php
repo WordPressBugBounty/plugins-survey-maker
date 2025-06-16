@@ -378,6 +378,29 @@ class Survey_Maker_Admin {
             if (is_plugin_active('real-media-library-lite/index.php')) {
                 wp_dequeue_style('real-media-library-lite-rml');
             }
+
+            if (is_plugin_active('happyforms/happyforms.php')) {
+                wp_dequeue_style('happyforms-admin');
+            }
+
+            if (is_plugin_active('ultimate-viral-quiz/index.php')) {
+                wp_dequeue_style('select2');
+                wp_dequeue_style('dataTables');
+                
+                wp_dequeue_script('sweetalert');
+                wp_dequeue_script('select2');
+                wp_dequeue_script('dataTables');
+            }
+
+            if (is_plugin_active('forms-by-made-it/madeit-form.php')) {
+                wp_dequeue_style('madeit-form-admin-style');
+            }
+
+            if (is_plugin_active('search-replace-for-block-editor/search-replace-for-block-editor.php')) {
+                wp_deregister_script('search-replace-for-block-editor');
+                wp_dequeue_script('search-replace-for-block-editor');
+            }
+
             
             // Theme | Phlox 2.17.6
             wp_dequeue_style('auxin-admin-style');
