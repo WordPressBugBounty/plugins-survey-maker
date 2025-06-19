@@ -911,6 +911,9 @@
         // Start page title
         $survey_start_page_title = (isset($options[ $name_prefix . 'start_page_title' ]) &&  $options[ $name_prefix . 'start_page_title' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_title' ] ) : '';
 
+        // Start page title position
+        $survey_start_page_title_pos = (isset($options[ $name_prefix . 'start_page_title_pos' ]) && $options[ $name_prefix . 'start_page_title_pos' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_title_pos' ] ) ) : 'center';
+
         // Start page description
         $survey_start_page_description = (isset($options[ $name_prefix . 'start_page_description' ]) &&  $options[ $name_prefix . 'start_page_description' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'start_page_description' ] ) ) : '';
         

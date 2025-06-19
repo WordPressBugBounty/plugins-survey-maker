@@ -2725,6 +2725,10 @@ class Survey_Maker_Public {
                 color: ' . $this->options[ $this->name_prefix . 'start_page_text_color' ] . ';
             }
 
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section.' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-header .' . $this->html_class_prefix . 'section-title-row {
+                justify-content: ' . $this->options[ $this->name_prefix . 'start_page_title_pos' ] . ';
+            }
+
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-buttons {
                 display: flex;
                 '.$survey_start_page_button_pos.'

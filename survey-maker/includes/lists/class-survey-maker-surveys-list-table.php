@@ -661,6 +661,9 @@ class Surveys_List_Table extends WP_List_Table {
                 // Start page Title
                 $survey_start_page_title = isset( $_POST[ $name_prefix . 'survey_start_page_title' ] ) && $_POST[ $name_prefix . 'survey_start_page_title' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title' ] ) ) : '';
 
+                // Start page Title position
+                $survey_start_page_title_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_title_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_title_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title_pos' ] ) : 'center';
+
                 // Start page description
                 $survey_start_page_description = (isset( $_POST[ $name_prefix . 'survey_start_page_description' ] ) && $_POST[ $name_prefix . 'survey_start_page_description' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_start_page_description' ] ) : '';
 
@@ -1098,6 +1101,7 @@ class Surveys_List_Table extends WP_List_Table {
                 // Start page tab
                 'survey_enable_start_page'            => $survey_enable_start_page,
                 'survey_start_page_title'             => $survey_start_page_title,
+                'survey_start_page_title_pos'         => $survey_start_page_title_pos,
                 'survey_start_page_description'       => $survey_start_page_description,
                 'survey_start_page_button_pos'        => $survey_start_page_button_pos,
                 'survey_start_page_button_pos_mobile' => $survey_start_page_button_pos_mobile,

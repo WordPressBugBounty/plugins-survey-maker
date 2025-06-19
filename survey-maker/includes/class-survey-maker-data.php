@@ -383,6 +383,9 @@ class Survey_Maker_Data {
             // Start page title
             $settings[ $name_prefix . 'start_page_title' ]  = (isset($options[ $name_prefix . 'start_page_title' ]) &&  $options[ $name_prefix . 'start_page_title' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_title' ] ) : '';
 
+            // Start button position
+            $settings[ $name_prefix . 'start_page_title_pos' ] = (isset($options[ $name_prefix . 'start_page_title_pos' ]) &&  $options[ $name_prefix . 'start_page_title_pos' ] != '') ? stripslashes( $options[ $name_prefix . 'start_page_title_pos' ] )  : 'center';
+
             // Start page description
             $settings[ $name_prefix . 'start_page_description' ]  = (isset($options[ $name_prefix . 'start_page_description' ]) &&  $options[ $name_prefix . 'start_page_description' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'start_page_description' ] ) ) : '';
 

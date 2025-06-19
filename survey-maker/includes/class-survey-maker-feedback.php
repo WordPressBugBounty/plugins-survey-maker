@@ -79,8 +79,16 @@ class Survey_Maker_Feedback {
 			),
 			'found_a_better_plugin' => array(
 				'title' => esc_html__( 'I found a better alternative', 'survey-maker' ),
-				'input_placeholder' => esc_html__( 'Please share which plugin', 'survey-maker' ),
+				'input_placeholder' => esc_html__( 'Other', 'survey-maker' ),
+				'sub_reason' => array(
+					'wp_forms'         			=> esc_html__( 'WPForms', 'survey-maker' ),
+					'formidable_forms' 			=> esc_html__( 'Formidable Forms', 'survey-maker' ),
+					'qsm' 		     			=> esc_html__( 'QSM', 'survey-maker' ),
+					'fluent_forms' 				=> esc_html__( 'Fluent Forms', 'survey-maker' ),
+					'survey_by_opinion_stage'	=> esc_html__( 'Survey by Opinion Stage', 'survey-maker' ),
+				),
 			),
+
 			'couldnt_get_the_plugin_to_work' => array(
 				'title' => esc_html__( "The plugin didn’t work as expected", 'survey-maker' ),
 				'input_placeholder' => '',
@@ -95,8 +103,13 @@ class Survey_Maker_Feedback {
 			),
 			'plugin_or_theme_conflict' => array(
 				'title' => esc_html__( "Conflicts with other plugins or themes", 'survey-maker' ),
-				'input_placeholder' => esc_html__( 'Please share which plugin or theme', 'survey-maker' ),
+				'input_placeholder' => '',
+				'alert' => sprintf( __("Contact our %s support team %s to find and fix the issue.", 'survey-maker'),
+                                    "<a href='https://ays-pro.com/contact' target='_blank'>",
+                                    "</a>"
+                                ),
 			),
+
 			'survey_pro' => array(
 				'title' => esc_html__( 'I’m using the premium version now', 'survey-maker' ),
 				'input_placeholder' => '',
@@ -130,11 +143,25 @@ class Survey_Maker_Feedback {
 								<div class="ays-survey-deactivate-feedback-dialog-input-wrapper">
 									<input id="ays-survey-deactivate-feedback-<?php echo esc_attr( $reason_key ); ?>" class="ays-survey-deactivate-feedback-dialog-input" type="radio" name="ays_survey_reason_key" value="<?php echo esc_attr( $reason_key ); ?>" />
 									<label for="ays-survey-deactivate-feedback-<?php echo esc_attr( $reason_key ); ?>" class="ays-survey-deactivate-feedback-dialog-label"><?php echo esc_html( $reason['title'] ); ?>
-									<?php if ( ! empty( $reason['input_placeholder'] ) ) : ?>
+									<?php if ( ! empty( $reason['input_placeholder'] ) && empty( $reason['sub_reason'] ) ) : ?>
 										<input class="ays-survey-feedback-text" type="text" name="ays_survey_reason_<?php echo esc_attr( $reason_key ); ?>" placeholder="<?php echo esc_attr( $reason['input_placeholder'] ); ?>" />
 									<?php endif; ?>
 									<?php if ( ! empty( $reason['alert'] ) ) : ?>
-										<div class="ays-survey-feedback-text"><?php echo esc_html( $reason['alert'] ); ?></div>
+										<div class="ays-survey-feedback-text ays-survey-feedback-text-color"><?php echo wp_kses_post( $reason['alert'] ); ?></div>
+									<?php endif; ?>
+									<?php if ( ! empty( $reason['sub_reason'] ) && is_array($reason['sub_reason']) ) : ?>
+										<div class="ays-survey-deactivate-feedback-sub-dialog-input-wrapper">
+										<?php foreach ( $reason['sub_reason'] as $sub_reason_key => $sub_reason ) : ?>
+											<div class="ays-survey-deactivate-feedback-dialog-input-wrapper">
+												<input id="ays-survey-deactivate-feedback-sub-<?php echo esc_attr( $sub_reason_key ); ?>" class="ays-survey-deactivate-feedback-dialog-input" type="radio" name="ays_survey_sub_reason_key" value="<?php echo esc_attr( $sub_reason_key ); ?>" />
+												<label for="ays-survey-deactivate-feedback-sub-<?php echo esc_attr( $sub_reason_key ); ?>" class="ays-survey-deactivate-feedback-dialog-label"><?php echo esc_html( $sub_reason ); ?>
+												</label>
+											</div>
+										<?php endforeach; ?>
+										</div>
+										<?php if ( ! empty( $reason['input_placeholder'] ) ) : ?>
+											<input class="ays-survey-feedback-text" type="text" name="ays_survey_reason_<?php echo esc_attr( $reason_key ); ?>" placeholder="<?php echo esc_attr( $reason['input_placeholder'] ); ?>" />
+										<?php endif; ?>
 									<?php endif; ?>
 									</label>
 								</div>
@@ -179,10 +206,11 @@ class Survey_Maker_Feedback {
 		}
 
 		$reason_key = !empty($_REQUEST['ays_survey_reason_key']) ? sanitize_text_field($_REQUEST['ays_survey_reason_key']) : "";
+		$sub_reason_key = !empty($_REQUEST['ays_survey_sub_reason_key']) ? sanitize_text_field($_REQUEST['ays_survey_sub_reason_key']) : "";
 		$reason_text = !empty($_REQUEST["ays_survey_reason_{$reason_key}"]) ? sanitize_text_field($_REQUEST["ays_survey_reason_{$reason_key}"]) : "";
 		$type = !empty($_REQUEST["type"]) ? sanitize_text_field($_REQUEST["type"]) : "";
 
-		self::send_feedback( $reason_key, $reason_text, $type );
+		self::send_feedback( $reason_key, $sub_reason_key, $reason_text, $type );
 
 		wp_send_json_success();
 	}
@@ -209,7 +237,7 @@ class Survey_Maker_Feedback {
 	 *
 	 * @return array The response of the request.
 	 */
-	public static function send_feedback( $feedback_key, $feedback_text, $type ) {
+	public static function send_feedback( $feedback_key,$sub_feedback_key, $feedback_text, $type ) {
 		return wp_remote_post( self::$api_feedback_url, array(
 			'timeout' => 30,
 			'body' => wp_json_encode(array(
@@ -218,6 +246,7 @@ class Survey_Maker_Feedback {
 				'site_lang' 	=> get_bloginfo( 'language' ),
 				'button' 		=> $type,
 				'feedback_key' 	=> $feedback_key,
+				'sub_feedback_key' 	=> $sub_feedback_key,
 				'feedback' 		=> $feedback_text,
 			)),
 		) );

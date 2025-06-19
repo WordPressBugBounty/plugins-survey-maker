@@ -51,6 +51,36 @@
     <hr/>
     <div class="form-group row">
         <div class="col-sm-3">
+            <label for="ays_survey_start_page_title_pos">
+                <?php echo esc_html__('Start page title position', "survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the alignment of the start page title.', "survey-maker"); ?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
+                </a>
+            </label>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_start_page_title_pos'>
+                        <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the alignment of the start page title for desktop devices.',"survey-maker")?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-5 ays_survey_display_flex_width">                    
+                    <select class="ays-text-input ays-text-input-short" name="ays_survey_start_page_title_pos" id="ays_survey_start_page_title_pos">
+                        <option <?php echo $survey_start_page_title_pos == "left" ? "selected" : ""; ?> value="left"><?php echo esc_html__( "Left", "survey-maker"); ?></option>
+                        <option <?php echo $survey_start_page_title_pos == "center" ? "selected" : ""; ?> value="center"><?php echo esc_html__( "Center", "survey-maker"); ?></option>
+                        <option <?php echo $survey_start_page_title_pos == "right" ? "selected" : ""; ?> value="right"><?php echo esc_html__( "Right", "survey-maker"); ?></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Start title position -->
+    <hr/>
+    <div class="form-group row">
+        <div class="col-sm-3">
             <label for="ays_survey_start_page_button_pos">
                 <?php echo esc_html__('Start button position', "survey-maker"); ?>
                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the alignment of the start button.', "survey-maker"); ?>">
