@@ -913,6 +913,9 @@
 
         // Start page title position
         $survey_start_page_title_pos = (isset($options[ $name_prefix . 'start_page_title_pos' ]) && $options[ $name_prefix . 'start_page_title_pos' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_title_pos' ] ) ) : 'center';
+        // Start button position mobile
+        $options[ $name_prefix . 'start_page_title_pos_mobile' ] = isset($options[ $name_prefix . 'start_page_title_pos_mobile' ]) ? $options[ $name_prefix . 'start_page_title_pos_mobile' ] : $survey_start_page_title_pos;
+        $survey_start_page_title_pos_mobile = (isset($options[ $name_prefix . 'start_page_title_pos_mobile' ]) && $options[ $name_prefix . 'start_page_title_pos_mobile' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'start_page_title_pos_mobile' ] ) ) : 'center';
 
         // Start page description
         $survey_start_page_description = (isset($options[ $name_prefix . 'start_page_description' ]) &&  $options[ $name_prefix . 'start_page_description' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'start_page_description' ] ) ) : '';

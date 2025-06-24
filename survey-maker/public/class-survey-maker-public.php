@@ -3600,6 +3600,10 @@ class Survey_Maker_Public {
                 line-height: 1 !important;
             }
 
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section.' . $this->html_class_prefix . 'section-start-page .' . $this->html_class_prefix . 'section-header .' . $this->html_class_prefix . 'section-title-row {
+                justify-content: ' . $this->options[ $this->name_prefix . 'start_page_title_pos_mobile' ] . ';
+            }
+
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-select.dropdown div.item {
                 font-size: ' . $this->options[ $this->name_prefix . 'answer_font_size_on_mobile' ] . 'px !important;
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'answer_letter_spacing_mobile' ] . 'px;
