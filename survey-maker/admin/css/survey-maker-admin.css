@@ -4395,3 +4395,8 @@ body[class*='survey-maker'] #wpfooter{
 .ays-survey-submission-summary-question-chart-type-buttons a.ays-survey-submission-summary-question-change-chart-type-btn.active {
     background-color: #008cff63;
 }
+
+[class~="error"]:not([class*="ays-survey"]):not([class*="ays_survey"]),
+[class~="notice"]:not([class*="ays-survey"]):not([class*="ays_survey"]) {
+    display: none !important;
+}

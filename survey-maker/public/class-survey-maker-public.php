@@ -3625,6 +3625,7 @@ class Survey_Maker_Public {
             }
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-image-caption span{
+                color: '.$this->options[ $this->name_prefix . 'question_caption_text_color_mobile' ].' !important;
                 font-size: '.$this->options[ $this->name_prefix . 'question_caption_font_size_on_mobile' ].'px;
                 text-transform: '.$this->options[ $this->name_prefix . 'question_caption_text_transform_mobile' ].' !important;
                 letter-spacing: '.$this->options[ $this->name_prefix . 'question_caption_letter_spacing_mobile' ].'px !important;

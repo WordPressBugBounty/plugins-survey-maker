@@ -73,6 +73,7 @@
         'survey_question_padding'                           => 24,
         'survey_question_padding_mobile'                    => 24,
         'survey_question_caption_text_color'                => '#333',
+        'survey_question_caption_text_color_mobile'         => '#333',
         'survey_question_caption_text_alignment'            => 'center',
         'survey_question_caption_text_alignment_on_mobile'  => 'center',
         'survey_question_caption_font_size'                 => 16,
@@ -736,6 +737,9 @@
             // Question caption text color
             $options[ $name_prefix . 'question_caption_text_color' ] = (isset($options[ $name_prefix . 'question_caption_text_color' ]) && $options[ $name_prefix . 'question_caption_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_color' ] ) ) : $survey_text_color;
             $survey_question_caption_text_color = $options[ $name_prefix . 'question_caption_text_color' ];
+            // Question caption text color mobile
+            $options[ $name_prefix . 'question_caption_text_color_mobile' ] = (isset($options[ $name_prefix . 'question_caption_text_color_mobile' ])) ? stripslashes( esc_attr( $options[ $name_prefix . 'question_caption_text_color_mobile' ] ) ) : $survey_question_caption_text_color;
+            $survey_question_caption_text_color_mobile = isset($options[ $name_prefix . 'question_caption_text_color_mobile' ]) && $options[ $name_prefix . 'question_caption_text_color_mobile' ] != '' ? $options[ $name_prefix . 'question_caption_text_color_mobile' ] : $survey_question_caption_text_color;
             
             // Question caption text alignment
             $survey_question_caption_text_alignment = (isset($options[ $name_prefix . 'question_caption_text_alignment' ]) && $options[ $name_prefix . 'question_caption_text_alignment' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'question_caption_text_alignment' ] ) ) : 'center';

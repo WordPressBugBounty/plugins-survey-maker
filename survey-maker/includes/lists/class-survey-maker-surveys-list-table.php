@@ -521,6 +521,8 @@ class Surveys_List_Table extends WP_List_Table {
             
             // Question caption text color
             $survey_question_caption_text_color = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) ) : $survey_text_color;
+            // Question caption text color mobile
+            $survey_question_caption_text_color_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] ) ) : $survey_text_color;
             
             // Question caption text alignment
             $survey_question_caption_text_alignment = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] ) : 'center';
@@ -1037,6 +1039,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_question_padding'             => $survey_question_padding,
                 'survey_question_padding_mobile'      => $survey_question_padding_mobile,
                 'survey_question_caption_text_color'  => $survey_question_caption_text_color,
+                'survey_question_caption_text_color_mobile' => $survey_question_caption_text_color_mobile,
                 'survey_question_caption_text_alignment'           => $survey_question_caption_text_alignment,
                 'survey_question_caption_text_alignment_on_mobile' => $survey_question_caption_text_alignment_on_mobile,
                 'survey_question_caption_font_size'             => $survey_question_caption_font_size,

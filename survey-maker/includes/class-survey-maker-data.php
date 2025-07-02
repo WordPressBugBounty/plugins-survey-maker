@@ -233,6 +233,9 @@ class Survey_Maker_Data {
         
         // Question caption text color
         $settings[ $name_prefix . 'question_caption_text_color' ] = (isset($options[ $name_prefix . 'question_caption_text_color' ]) && $options[ $name_prefix . 'question_caption_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_color' ] ) ) : $settings[ $name_prefix . 'text_color' ];
+        // Question caption text color mobile
+        $options[ $name_prefix . 'question_caption_text_color_mobile' ] = (isset($options[ $name_prefix . 'question_caption_text_color_mobile' ])) ?  $options[ $name_prefix . 'question_caption_text_color_mobile' ] : $settings[ $name_prefix . 'question_caption_text_color' ];
+        $settings[ $name_prefix . 'question_caption_text_color_mobile' ] = (isset($options[ $name_prefix . 'question_caption_text_color_mobile' ]) && $options[ $name_prefix . 'question_caption_text_color_mobile' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_color_mobile' ] ) ) : $settings[ $name_prefix . 'text_color' ];
         
         // Question caption text alignment
         $settings[ $name_prefix . 'question_caption_text_alignment' ] = (isset($options[ $name_prefix . 'question_caption_text_alignment' ]) && $options[ $name_prefix . 'question_caption_text_alignment' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_alignment' ] ) ) : 'center';

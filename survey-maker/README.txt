@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.7.6
+Stable tag: 5.1.7.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,11 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.7.7 ( Jun 30, 2025 ) =
+* Added: Question caption text color mobile option
+* Improved: Some changes on the admin dashboard
+* Fixed: Some styles issue on the admin dashboard
 
 = 5.1.7.6 ( Jun 26, 2025 ) =
 * Improved: Styles on the admin dashboard

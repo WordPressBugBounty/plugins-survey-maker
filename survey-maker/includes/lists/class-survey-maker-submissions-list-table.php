@@ -637,7 +637,7 @@ class Submissions_List_Table extends WP_List_Table {
             return;
 
         ?>
-        <div class="notice notice-success is-dismissible">
+        <div class="ays-survey-admin-notice notice notice-success is-dismissible">
             <p> <?php echo esc_html($updated_message); ?> </p>
         </div>
         <?php

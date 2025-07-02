@@ -1297,7 +1297,33 @@
                             </label>
                         </div>
                         <div class="col-sm-7 ays_divider_left">
-                            <input type="text" class="ays-text-input" id='ays_survey_question_caption_text_color' data-alpha="true" name='ays_survey_question_caption_text_color' value="<?php echo esc_attr($survey_question_caption_text_color); ?>"/>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_question_caption_text_color'>
+                                        <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the color of the question caption texts for desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <input type="text" class="ays-text-input" id='ays_survey_question_caption_text_color' data-alpha="true" name='ays_survey_question_caption_text_color' value="<?php echo esc_attr($survey_question_caption_text_color); ?>"/>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_question_caption_text_color_mobile'>
+                                        <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the color of the question caption texts for mobile devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <input type="text" class="ays-text-input" id='ays_survey_question_caption_text_color_mobile' data-alpha="true" name='ays_survey_question_caption_text_color_mobile' value="<?php echo esc_attr($survey_question_caption_text_color_mobile); ?>"/>
+                                </div>
+                            </div>
                         </div>
                     </div> <!-- Question caption text color -->
                     <hr/>
