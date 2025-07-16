@@ -4400,3 +4400,13 @@ body[class*='survey-maker'] #wpfooter{
 [class~="notice"]:not([class*="ays-survey"]):not([class*="ays_survey"]) {
     display: none !important;
 }
+
+.ays-survey-card__btn-info.disabled {
+    color: #a7aaad !important;
+    border-color: #dcdcde !important;
+    background: #f6f7f7 !important;
+    box-shadow: none !important;
+    cursor: default;
+    transform: none !important;
+    outline: unset;
+}

@@ -249,7 +249,8 @@ class Survey_Categories_List_Table extends WP_List_Table {
             }
 
             // Description
-            $description = isset( $data[ $name_prefix . 'description' ] ) && $data[ $name_prefix . 'description' ] != '' ? stripslashes( $data[ $name_prefix . 'description' ] ) : '';
+            // Sanitize description to allow only safe HTML tags and remove scripts.
+            $description = isset( $data[ $name_prefix . 'description' ] ) && $data[ $name_prefix . 'description' ] != '' ? stripslashes( wp_kses_post( $data[ $name_prefix . 'description' ] ) ) : '';
 
             // Status
             $status = isset( $data[ $name_prefix . 'status' ] ) && $data[ $name_prefix . 'status' ] != '' ? stripslashes( sanitize_text_field($data[ $name_prefix . 'status' ]) ) : 'published';

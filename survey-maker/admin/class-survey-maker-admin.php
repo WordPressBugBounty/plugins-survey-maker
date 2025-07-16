@@ -127,20 +127,20 @@ class Survey_Maker_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-        add_filter('set-screen-option', array(__CLASS__, 'set_screen'), 10, 3);
-        // $per_page_array = array(
-        //     'quizes_per_page',
-        //     'questions_per_page',
-        //     'quiz_categories_per_page',
-        //     'question_categories_per_page',
-        //     'attributes_per_page',
-        //     'quiz_results_per_page',
-        //     'quiz_each_results_per_page',
-        //     'quiz_orders_per_page',
-        // );
-        // foreach($per_page_array as $option_name){
-        //     add_filter('set_screen_option_'.$option_name, array(__CLASS__, 'set_screen'), 10, 3);
-        // }
+	       add_filter('set-screen-option', array(__CLASS__, 'set_screen'), 10, 3);
+	       // $per_page_array = array(
+	       //     'quizes_per_page',
+	       //     'questions_per_page',
+	       //     'quiz_categories_per_page',
+	       //     'question_categories_per_page',
+	       //     'attributes_per_page',
+	       //     'quiz_results_per_page',
+	       //     'quiz_each_results_per_page',
+	       //     'quiz_orders_per_page',
+	       // );
+	       // foreach($per_page_array as $option_name){
+	       //     add_filter('set_screen_option_'.$option_name, array(__CLASS__, 'set_screen'), 10, 3);
+	       // }
 
 	}
 
@@ -342,6 +342,8 @@ class Survey_Maker_Admin {
             'rating'                            => __( 'Rating', "survey-maker"),
             'stars_count'                       => __( 'Stars count', "survey-maker"),
             "preivewSurvey"                     => __( "Preview Survey", 'survey-maker' ),
+            'activate'                          => __( 'Activate', "survey-maker" ),
+            'activated'                         => __( 'Activated', "survey-maker" ),
         ) );
         wp_localize_script($this->plugin_name . '-ajax', 'survey_maker_ajax', array(
             "emptyEmailError"   => __( 'Email field is empty', "survey-maker"),
@@ -2711,6 +2713,202 @@ class Survey_Maker_Admin {
     //         }
     //     }
     // }
+
+    /**
+     * Check if plugin can be installed
+     */
+    public function ays_survey_can_install($plugin_slug) {
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        
+        $plugins = get_plugins();
+        foreach ($plugins as $plugin_file => $plugin_data) {
+            if (strpos($plugin_file, $plugin_slug) !== false) {
+                return false; // Plugin already exists
+            }
+        }
+        return true; // Plugin can be installed
+    }
+
+    /**
+     * Check if plugin can be activated
+     */
+    public function ays_survey_can_activate($plugin_slug) {
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+        
+        $plugins = get_plugins();
+        foreach ($plugins as $plugin_file => $plugin_data) {
+            if (strpos($plugin_file, $plugin_slug) !== false) {
+                return !is_plugin_active($plugin_file); // Can activate if not already active
+            }
+        }
+        return false; // Plugin doesn't exist
+    }
+
+    /**
+     * Install plugin via AJAX
+     */
+    public function ays_survey_install_plugin() {
+        if (!current_user_can('install_plugins')) {
+            wp_die(json_encode(array('success' => false, 'message' => 'Insufficient permissions')));
+        }
+
+        if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
+            wp_die(json_encode(array('success' => false, 'message' => 'Security check failed')));
+        }
+
+        $plugin_slug = sanitize_text_field($_POST['plugin_slug']);
+        
+        if (!function_exists('plugins_api')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
+        }
+        if (!class_exists('WP_Upgrader')) {
+            require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+        }
+
+        $api = plugins_api('plugin_information', array('slug' => $plugin_slug));
+        
+        if (is_wp_error($api)) {
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Plugin not found'))));
+        }
+
+        $upgrader = new Plugin_Upgrader(new WP_Ajax_Upgrader_Skin());
+        $result = $upgrader->install($api->download_link);
+
+        if ($result) {
+            // Load plugin.php for get_plugins() and activate_plugin() if not loaded yet
+            if ( ! function_exists( 'get_plugins' ) ) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            }
+
+            // Clear plugins cache to ensure the newly installed plugin is visible
+            if ( function_exists( 'wp_clean_plugins_cache' ) ) {
+                wp_clean_plugins_cache();
+            }
+
+            $plugins = get_plugins();
+            $plugin_file = '';
+            
+            foreach ( $plugins as $file => $plugin_data ) {
+                if ( strpos( $file, $plugin_slug ) !== false ) {
+                    $plugin_file = $file;
+                    break;
+                }
+            }
+
+            if ( empty( $plugin_file ) ) {
+                wp_die( json_encode( array( 'success' => false, 'message' => esc_html__('Plugin main file not found')) ) );
+            }
+
+            // Ensure activate_plugin() is available
+            if ( ! function_exists( 'activate_plugin' ) ) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+            }
+
+            $activate = activate_plugin( $plugin_file );
+            
+            if ( is_wp_error( $activate ) ) {
+                wp_die( json_encode( array( 'success' => false, 'message' => $activate->get_error_message() ) ) );
+            }
+
+            wp_die( json_encode( array( 'success' => true, 'message' => esc_html__('Plugin installed and activated successfully')) ) );
+        
+        } else {
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Installation failed'))));
+        }
+    }
+
+    /**
+     * Activate plugin via AJAX
+     */
+    public function ays_survey_activate_plugin() {
+        if (!current_user_can('activate_plugins')) {
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Insufficient permissions'))));
+        }
+
+        if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Security check failed'))));
+        }
+
+        $plugin_slug = sanitize_text_field($_POST['plugin_slug']);
+        
+        if (!function_exists('get_plugins')) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
+        $plugins = get_plugins();
+        $plugin_file = '';
+        
+        foreach ($plugins as $file => $plugin_data) {
+            if (strpos($file, $plugin_slug) !== false) {
+                $plugin_file = $file;
+                break;
+            }
+        }
+
+        if (empty($plugin_file)) {
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Plugin not found'))));
+        }
+
+        $result = activate_plugin($plugin_file);
+        
+        if (is_wp_error($result)) {
+            wp_die(json_encode(array('success' => false, 'message' => $result->get_error_message())));
+        } else {
+            wp_die(json_encode(array('success' => true, 'message' => esc_html__('Plugin activated successfully'))));
+        }
+    }
+
+    /**
+     * Get AYS plugins data
+     */
+    public function get_am_plugins() {
+        return array(
+            'quiz-maker' => array(
+                'name' => 'Quiz Maker',
+                'slug' => 'quiz-maker',
+                'description' => 'Create engaging quizzes with multiple question types'
+            ),
+            'poll-maker' => array(
+                'name' => 'Poll Maker',
+                'slug' => 'poll-maker',
+                'description' => 'Build interactive polls for your audience'
+            ),
+            'popup-box' => array(
+                'name' => 'Popup Box',
+                'slug' => 'ays-popup-box',
+                'description' => 'Create beautiful popups and modals'
+            ),
+            'gallery-photo-gallery' => array(
+                'name' => 'Gallery Photo Gallery',
+                'slug' => 'gallery-photo-gallery',
+                'description' => 'Showcase your photos in stunning galleries'
+            ),
+            'secure-copy-content-protection' => array(
+                'name' => 'Secure Copy Content Protection',
+                'slug' => 'secure-copy-content-protection',
+                'description' => 'Protect your content from copying'
+            ),
+            'ays-chatgpt-assistant' => array(
+                'name' => 'ChatGPT Assistant',
+                'slug' => 'ays-chatgpt-assistant',
+                'description' => 'AI-powered chat assistant for your website'
+            ),
+            'personal-dictionary' => array(
+                'name' => 'Personal Dictionary',
+                'slug' => 'personal-dictionary',
+                'description' => 'Create and manage custom dictionaries'
+            ),
+            'chartify' => array(
+                'name' => 'Chartify',
+                'slug' => 'chart-builder',
+                'description' => 'Build beautiful charts and graphs'
+            )
+        );
+    }
 
 
 }

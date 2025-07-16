@@ -209,4 +209,56 @@
     
     })
 
+    $(document).on('click', '.ays-survey-plugin-btn', function(e) {
+        e.preventDefault();
+        
+        var $button = $(this);
+        var action = $button.data('action');
+        var plugin = $button.data('plugin');
+        
+        if (!action || !plugin || $button.prop('disabled')) {
+            return;
+        }
+        
+        // Disable button and show loading
+        $button.prop('disabled', true);
+        var originalText = $button.text();
+        $button.html('<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>');
+        
+        var ajaxAction = action === 'install' ? 'ays_survey_install_plugin' : 'ays_survey_activate_plugin';
+        
+        $.ajax({
+            url: ajaxurl,
+            type: 'POST',
+            data: {
+                action: ajaxAction,
+                plugin_slug: plugin,
+                nonce: SurveyMakerAdmin.nonce
+            },
+            success: function(response) {
+                try {
+                    var result = typeof response === 'string' ? JSON.parse(response) : response;
+                    
+                    if (result.success) {
+                        // Mark as activated immediately for both install and activate actions
+                        $button.html(SurveyMakerAdmin.activated);
+                        $button.removeClass('ays-survey-plugin-btn');
+                        $button.prop('disabled', true);
+                        $button.addClass('disabled');
+                    } else {
+                        $button.html(originalText);
+                        $button.prop('disabled', false);
+                    }
+                } catch (e) {
+                    $button.html(originalText);
+                    $button.prop('disabled', false);
+                }
+            },
+            error: function() {
+                $button.text(originalText);
+                $button.prop('disabled', false);
+            }
+        });
+    });
+
 })( jQuery );

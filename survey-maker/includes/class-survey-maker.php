@@ -276,7 +276,11 @@ class Survey_Maker {
 		// Live preview
 		$this->loader->add_action( 'wp_ajax_ays_survey_add_survey_template', $plugin_admin, 'ays_survey_add_survey_template' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_add_survey_template', $plugin_admin, 'ays_survey_add_survey_template' );
-		
+	
+		// Install and activate plugin AJAX actions
+	    $this->loader->add_action('wp_ajax_ays_survey_install_plugin', $plugin_admin, 'ays_survey_install_plugin');
+	    $this->loader->add_action('wp_ajax_ays_survey_activate_plugin', $plugin_admin, 'ays_survey_activate_plugin');
+
 		// Grab your gift
 		// $this->loader->add_action( 'wp_ajax_ays_survey_subscribe_email', $plugin_admin, 'ays_survey_subscribe_email' );
         // $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_subscribe_email', $plugin_admin, 'ays_survey_subscribe_email' );
