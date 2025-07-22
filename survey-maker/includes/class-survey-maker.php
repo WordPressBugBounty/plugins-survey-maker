@@ -304,6 +304,10 @@ class Survey_Maker {
 		// Sale Banner
 		// $this->loader->add_action( 'admin_notices', $plugin_admin, 'ays_survey_sale_baner', 15 );
 		$this->loader->add_action( 'ays_survey_sale_banner', $plugin_admin, 'ays_survey_sale_baner', 15 );
+
+		// Disable all notices from other plugins
+		$this->loader->add_action('current_screen', $plugin_admin, 'ays_survey_disable_all_notice_from_plugin', 200, 1);
+
 	}
 
 	/**

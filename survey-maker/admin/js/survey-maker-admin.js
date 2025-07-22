@@ -613,6 +613,52 @@
             return clone;
         }
 
+        // Auto-scroll functionality for drag and drop
+        var autoScrollTimer = null;
+        var autoScrollSpeed = 10; // pixels per scroll
+        var autoScrollZone = 50; // pixels from edge to trigger scroll
+
+        function startAutoScroll(direction) {
+            if (autoScrollTimer) return; // Already scrolling
+            
+            autoScrollTimer = setInterval(function() {
+                var currentScroll = $(window).scrollTop();
+                var newScroll = currentScroll + (direction * autoScrollSpeed);
+                
+                // Ensure we don't scroll beyond document bounds
+                var maxScroll = $(document).height() - $(window).height();
+                newScroll = Math.max(0, Math.min(newScroll, maxScroll));
+                
+                $(window).scrollTop(newScroll);
+            }, 16); // ~60fps
+        }
+
+        function stopAutoScroll() {
+            if (autoScrollTimer) {
+                clearInterval(autoScrollTimer);
+                autoScrollTimer = null;
+            }
+        }
+
+        function handleAutoScroll(event, ui) {
+            var mouseY = event.clientY || (event.originalEvent && event.originalEvent.clientY);
+            var windowHeight = $(window).height();
+            
+            if (!mouseY) return;
+            
+            // Check if mouse is near top or bottom of viewport
+            if (mouseY < autoScrollZone) {
+                // Near top - scroll up
+                startAutoScroll(-1);
+            } else if (mouseY > windowHeight - autoScrollZone) {
+                // Near bottom - scroll down
+                startAutoScroll(1);
+            } else {
+                // In middle zone - stop scrolling
+                stopAutoScroll();
+            }
+        }
+
         var sectionDragHandle = {
             handle: '.ays-survey-section-dlg-dragHandle',
             appendTo: "parent",
@@ -627,6 +673,7 @@
             // helper: aysSurveyQuestionSortableHelper,
             sort: function(e, ui){
                 ui.placeholder.css('height', ui.helper.height());
+                handleAutoScroll(e, ui); // Add auto-scroll functionality
             },
             update: function( event, ui ){
                 var sortableContainer = $(event.target);
@@ -635,6 +682,9 @@
                     $(this).find('.ays-survey-section-ordering').val(i+1);
                     $(this).find('.ays-survey-section-number').text(i+1);
                 });
+            },
+            stop: function(e, ui) {
+                stopAutoScroll(); // Stop auto-scroll when dragging ends
             }
         };
 
@@ -653,6 +703,7 @@
             connectWith: '.ays-survey-sections-conteiner .ays-survey-section-questions',
             sort: function(e, ui){
                 ui.placeholder.css('height', ui.helper.height());
+                handleAutoScroll(e, ui); // Add auto-scroll functionality
             },
             receive: function( event, ui ){
                 var section = $(event.target).parents('.ays-survey-section-box');
@@ -679,6 +730,9 @@
                 questions.each(function(i){
                     $(this).find('.ays-survey-question-ordering').val(i+1);
                 });
+            },
+            stop: function(e, ui) {
+                stopAutoScroll(); // Stop auto-scroll when dragging ends
             }
         };
 
@@ -693,12 +747,18 @@
             revert: true,
             forcePlaceholderSize: true,
             forceHelperSize: true,
+            sort: function(e, ui){
+                handleAutoScroll(e, ui); // Add auto-scroll functionality
+            },
             update: function( event, ui ){
                 var sortableContainer = $(event.target);
                 var answers = sortableContainer.find('.ays-survey-answer-row');
                 answers.each(function(i){
                     $(this).find('.ays-survey-answer-ordering').val(i+1);
                 });
+            },
+            stop: function(e, ui) {
+                stopAutoScroll(); // Stop auto-scroll when dragging ends
             }
         }
         // Answers ordering jQuery UI
