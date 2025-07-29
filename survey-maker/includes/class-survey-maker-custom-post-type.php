@@ -39,12 +39,12 @@
             $post_content = '[ays_survey id="'.$survey_id.'"]';
 
             $new_post = array(
-                'post_title' => $survey_title,
-                'post_author' => $author_id,
-                'post_type'   => 'ays-survey-maker', // Custom post type name is -> ays-survey-maker
+                'post_title'   => $survey_title,
+                'post_author'  => $author_id,
+                'post_type'    => 'ays-survey-maker', // Custom post type name is -> ays-survey-maker
                 'post_content' => $post_content,
-                'post_status' => 'draft',
-                'post_date' => current_time( 'mysql' ),
+                'post_status'  => 'draft',
+                'post_date'    => current_time( 'mysql' ),
             );
             $post_id = wp_insert_post($new_post);
             if($update){

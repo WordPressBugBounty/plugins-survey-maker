@@ -825,7 +825,7 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
 
 
 .ays-survey-container .ays-survey-section .ays-survey-question-date-box {
-   width: 100% !important;
+   width: 170px !important;
 }
 
 .ays-survey-container .ays-survey-section .ays-survey-question-input-box {

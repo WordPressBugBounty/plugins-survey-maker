@@ -1262,9 +1262,9 @@ class Survey_Maker_Data {
             $section_questions = self::get_questions_by_section_id( intval( $section['id'] ), $question_ids );
 
             foreach ($section_questions as $question_key => $question) {
-                $section_questions[$question_key]['question'] = (isset($question['question']) && $question['question'] != '') ? stripslashes( $question['question'] ) : '';
-                $section_questions[$question_key]['image'] = (isset($question['image']) && $question['image'] != '') ? $question['image'] : '';
-                $section_questions[$question_key]['type'] = (isset($question['type']) && $question['type'] != '') ? $question['type'] : 'radio';
+                $section_questions[$question_key]['question']     = (isset($question['question']) && $question['question'] != '') ? stripslashes( $question['question'] ) : '';
+                $section_questions[$question_key]['image']        = (isset($question['image']) && $question['image'] != '') ? $question['image'] : '';
+                $section_questions[$question_key]['type']         = (isset($question['type']) && $question['type'] != '') ? $question['type'] : 'radio';
                 $section_questions[$question_key]['user_variant'] = (isset($question['user_variant']) && $question['user_variant'] == 'on') ? true : false;
 
                 $opts = json_decode( $question['options'], true );
@@ -1273,8 +1273,8 @@ class Survey_Maker_Data {
                 $q_answers = self::get_answers_by_question_id( intval( $question['id'] ) );
 
                 foreach ($q_answers as $answer_key => $answer) {
-                    $q_answers[$answer_key]['answer'] = (isset($answer['answer']) && $answer['answer'] != '') ? stripslashes( $answer['answer'] ) : '';
-                    $q_answers[$answer_key]['image'] = (isset($answer['image']) && $answer['image'] != '') ? $answer['image'] : '';
+                    $q_answers[$answer_key]['answer']      = (isset($answer['answer']) && $answer['answer'] != '') ? stripslashes( $answer['answer'] ) : '';
+                    $q_answers[$answer_key]['image']       = (isset($answer['image']) && $answer['image'] != '') ? $answer['image'] : '';
                     $q_answers[$answer_key]['placeholder'] = (isset($answer['placeholder']) && $answer['placeholder'] != '') ? $answer['placeholder'] : '';
                 }
 
@@ -1379,7 +1379,7 @@ class Survey_Maker_Data {
         $result = $wpdb->get_var($sql);
         $settings_static_texts = ($result == "") ? array() : json_decode($result, true);
 
-        $wrong_shortcode_text = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
+        $wrong_shortcode_text        = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
         $email_validation_error_text = (isset($settings_static_texts['email_validation_error_text']) && $settings_static_texts['email_validation_error_text'] != '') ? stripslashes(esc_html($settings_static_texts['email_validation_error_text'])) : 'Must be a valid email address';
         $redirecting_after_text      = (isset($settings_static_texts['redirecting_after_text']) && $settings_static_texts['redirecting_after_text'] != '') ? stripslashes( esc_html( $settings_static_texts['redirecting_after_text'] ) ) : 'Redirecting after';
 
@@ -2452,7 +2452,7 @@ class Survey_Maker_Data {
     public static function get_allowed_tags_for_loader() {
         return array(
             'span' => array('class' => array()),
-            'img'  => array('src' => array(), 'alt' => array()),
+            'img'  => array('src'   => array(), 'alt' => array()),
         );
     }
     

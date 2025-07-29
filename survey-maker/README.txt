@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 5.1.7.9
+Stable tag: 5.1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.8.0 ( Jul 29, 2025 ) =
+* Fixed: Limitation of the number of characters in numeric types
+* Fixed: Date type question width issue
 
 = 5.1.7.9 ( Jul 14, 2025 ) =
 * Added: Auto-scroll in drag and drop question on admin page

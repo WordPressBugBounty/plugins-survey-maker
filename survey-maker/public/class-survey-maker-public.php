@@ -3930,20 +3930,20 @@ class Survey_Maker_Public {
                     $additional_css = '';
                     switch ( $popup_position ){
                         case "center-center":
-                            $ays_survey_popup_conteiner_pos_top = '12px';
-                            $ays_survey_popup_conteiner_pos_left = '0';
-                            $ays_survey_popup_conteiner_pos_right = '0';
-                            $ays_survey_popup_conteiner_pos_bottom = '0';
-                            $popup_margin = 'auto';
-                            $additional_css = 'max-height: calc( 100vh - 12px )';
+                            $ays_survey_popup_conteiner_pos_top     = '12px';
+                            $ays_survey_popup_conteiner_pos_left    = '0';
+                            $ays_survey_popup_conteiner_pos_right   = '0';
+                            $ays_survey_popup_conteiner_pos_bottom  = '0';
+                            $popup_margin                           = 'auto';
+                            $additional_css                         = 'max-height: calc( 100vh - 12px )';
                             break;
                         case "left-top":
 
-                            $ays_survey_popup_conteiner_pos_top = '0';
-                            $ays_survey_popup_conteiner_pos_left = '0';
-                            $ays_survey_popup_conteiner_pos_right = 'unset';
+                            $ays_survey_popup_conteiner_pos_top    = '0';
+                            $ays_survey_popup_conteiner_pos_left   = '0';
+                            $ays_survey_popup_conteiner_pos_right  = 'unset';
                             $ays_survey_popup_conteiner_pos_bottom = 'unset';
-                            $popup_margin .= 'px';
+                            $popup_margin                          = 'px';
 
                             if( absint( $popup_margin ) < 12 ){
                                 $margin_right = 'margin-top: 12px;';
@@ -3951,12 +3951,12 @@ class Survey_Maker_Public {
                             break;
                         case "top-center":
 
-                            $ays_survey_popup_conteiner_pos_top = '0';
-                            $ays_survey_popup_conteiner_pos_left = '50%';
-                            $ays_survey_popup_conteiner_pos_right = 'unset';
+                            $ays_survey_popup_conteiner_pos_top    = '0';
+                            $ays_survey_popup_conteiner_pos_left   = '50%';
+                            $ays_survey_popup_conteiner_pos_right  = 'unset';
                             $ays_survey_popup_conteiner_pos_bottom = 'unset';
-                            $popup_margin .= 'px auto';
-                            $additional_css = 'transform: translateX(-50%);';
+                            $popup_margin                          = 'px auto';
+                            $additional_css                        = 'transform: translateX(-50%);';
 
                             if( absint( $popup_margin ) < 12 ){
                                 $margin_right = 'margin-top: 12px;';
@@ -3964,9 +3964,9 @@ class Survey_Maker_Public {
                             break;    
                         case "right-top":
 
-                            $ays_survey_popup_conteiner_pos_top = '0';
-                            $ays_survey_popup_conteiner_pos_left = 'unset';
-                            $ays_survey_popup_conteiner_pos_right = '0';
+                            $ays_survey_popup_conteiner_pos_top    = '0';
+                            $ays_survey_popup_conteiner_pos_left   = 'unset';
+                            $ays_survey_popup_conteiner_pos_right  = '0';
                             $ays_survey_popup_conteiner_pos_bottom = 'unset';
                             $popup_margin .= 'px';
                             if( absint( $popup_margin ) < 12 ){
@@ -3976,20 +3976,20 @@ class Survey_Maker_Public {
                             break;
                         case "left-center":
 
-                            $ays_survey_popup_conteiner_pos_top = '0';
-                            $ays_survey_popup_conteiner_pos_left = '0';
-                            $ays_survey_popup_conteiner_pos_right = 'unset';
+                            $ays_survey_popup_conteiner_pos_top    = '0';
+                            $ays_survey_popup_conteiner_pos_left   = '0';
+                            $ays_survey_popup_conteiner_pos_right  = 'unset';
                             $ays_survey_popup_conteiner_pos_bottom = '0';
-                            $popup_margin = 'auto ' . $popup_margin . 'px';
+                            $popup_margin                          = 'auto ' . $popup_margin . 'px';
                             
                             break; 
                         case "right-center":
                             
-                            $ays_survey_popup_conteiner_pos_top = '0';
-                            $ays_survey_popup_conteiner_pos_left = 'unset';
-                            $ays_survey_popup_conteiner_pos_right = '0';
+                            $ays_survey_popup_conteiner_pos_top    = '0';
+                            $ays_survey_popup_conteiner_pos_left   = 'unset';
+                            $ays_survey_popup_conteiner_pos_right  = '0';
                             $ays_survey_popup_conteiner_pos_bottom = '0';
-                            $popup_margin = 'auto ' . $popup_margin . 'px';
+                            $popup_margin                          = 'auto ' . $popup_margin . 'px';
 
                             if( absint( $popup_margin ) < 12 ){
                                 $margin_right = 'margin-right: 12px;';
@@ -3997,11 +3997,11 @@ class Survey_Maker_Public {
                             break;       
                         case "right-bottom":
 
-                            $ays_survey_popup_conteiner_pos_top = 'unset';
-                            $ays_survey_popup_conteiner_pos_left = 'unset';
-                            $ays_survey_popup_conteiner_pos_right = '0';
+                            $ays_survey_popup_conteiner_pos_top    = 'unset';
+                            $ays_survey_popup_conteiner_pos_left   = 'unset';
+                            $ays_survey_popup_conteiner_pos_right  = '0';
                             $ays_survey_popup_conteiner_pos_bottom = '0';
-                            $popup_margin .= 'px';
+                            $popup_margin                          = 'px';
 
                             if( absint( $popup_margin ) < 12 ){
                                 $margin_right = 'margin-right: 12px;';
@@ -4009,21 +4009,21 @@ class Survey_Maker_Public {
                             break;
                         case "center-bottom":
 
-                            $ays_survey_popup_conteiner_pos_top = 'unset';
-                            $ays_survey_popup_conteiner_pos_left = '50%';
-                            $ays_survey_popup_conteiner_pos_right = 'unset';
+                            $ays_survey_popup_conteiner_pos_top    = 'unset';
+                            $ays_survey_popup_conteiner_pos_left   = '50%';
+                            $ays_survey_popup_conteiner_pos_right  = 'unset';
                             $ays_survey_popup_conteiner_pos_bottom = '0';
-                            $popup_margin .= 'px auto';
-                            $additional_css = 'transform: translateX(-50%);';
+                            $popup_margin                          = 'px auto';
+                            $additional_css                        = 'transform: translateX(-50%);';
                             
                             break;    
                         case "left-bottom":
 
-                            $ays_survey_popup_conteiner_pos_top = 'unset';
-                            $ays_survey_popup_conteiner_pos_left = '0';
-                            $ays_survey_popup_conteiner_pos_right = 'unset';
+                            $ays_survey_popup_conteiner_pos_top    = 'unset';
+                            $ays_survey_popup_conteiner_pos_left   = '0';
+                            $ays_survey_popup_conteiner_pos_right  = 'unset';
                             $ays_survey_popup_conteiner_pos_bottom = '0';
-                            $popup_margin .= 'px';
+                            $popup_margin                          = 'px';
                             
                             break;
                     }

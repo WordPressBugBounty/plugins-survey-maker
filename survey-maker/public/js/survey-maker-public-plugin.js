@@ -359,7 +359,7 @@
         });
 
         // Number limit character/word
-        _this.$el.find('input.ays-survey-check-number-limit').on('keyup', function(e) {
+        _this.$el.find('input.ays-survey-check-number-limit').on('input', function(e) {
             var currentQuestion = $(this).parents(".ays-survey-question");
             var currentquestionId = currentQuestion.find('.' + _this.htmlClassPrefix + 'question-id').val();
             var questionTextLimitOptions = _this.dbOptions[ _this.dbOptionsPrefix + 'number_limit_options' ][currentquestionId];
@@ -2301,7 +2301,11 @@
                         if (wordsLength > questionTextMaxLength) {
                             // var trimmed = tval.split('', questionTextMaxLength).join("");
                             // $this.val(trimmed);
+                            showErrorMessage++;
                             question.addClass('ays-has-error');
+                        } else {
+                            // Remove error class if length is within limit
+                            question.removeClass('ays-has-error');
                         }
                     }
                 // }
@@ -2347,6 +2351,11 @@
                 }
             }
             // if (e.type=="keyup") {
+                $this.val(tval.substring(0, questionTextMaxLength));
+                // Remove error class after trimming text to valid length
+                if ($this.val().length <= questionTextMaxLength) {
+                    question.removeClass('ays-has-error');
+                }
                 if ( questionEnableTextMessage ) {
                     if(questionTextMaxLength != '' && questionTextMaxLength != 0){
                         if (remainder <= 0) {
