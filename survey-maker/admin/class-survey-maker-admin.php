@@ -205,11 +205,11 @@ class Survey_Maker_Admin {
         $version2 = '5.5';
         $versionCompare = $this->aysSurveyMakerVersionCompare($version1, $operator, $version2);
 
-        $check_terms_agreement = get_option('survey_maker_agree_terms');
+        // $check_terms_agreement = get_option('survey_maker_agree_terms');
         
-        if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
-            wp_enqueue_script( $this->plugin_name.'-hotjar', plugin_dir_url(__FILE__) . 'js/extras/survey-maker-hotjar.js', array(), $this->version, false);
-        }
+        // if($check_terms_agreement === 'true' && strpos($hook_suffix, $this->plugin_name) !== false){
+        //     wp_enqueue_script( $this->plugin_name.'-hotjar', plugin_dir_url(__FILE__) . 'js/extras/survey-maker-hotjar.js', array(), $this->version, false);
+        // }
 
         if ($versionCompare) {
             wp_enqueue_script( $this->plugin_name.'-wp-load-scripts', plugin_dir_url(__FILE__) . 'js/survey-maker-wp-load-scripts.js', array(), $this->version, true);
@@ -894,9 +894,9 @@ class Survey_Maker_Admin {
     public function screen_option_popup_surveys(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Popup Survey', "survey-maker"),
+            'label'   => __('Popup Survey', "survey-maker"),
             'default' => 20,
-            'option' => 'popup_survey_per_page'
+            'option'  => 'popup_survey_per_page'
         );
 
         if( ! ( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ) ){
@@ -910,9 +910,9 @@ class Survey_Maker_Admin {
     public function screen_option_questions(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Questions', "survey-maker"),
+            'label'   => __('Questions', "survey-maker"),
             'default' => 20,
-            'option' => 'survey_questions_per_page'
+            'option'  => 'survey_questions_per_page'
         );
 
         add_screen_option($option, $args);
@@ -923,9 +923,9 @@ class Survey_Maker_Admin {
     public function screen_option_questions_categories(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Question Categories', "survey-maker"),
+            'label'   => __('Question Categories', "survey-maker"),
             'default' => 20,
-            'option' => 'survey_question_categories_per_page'
+            'option'  => 'survey_question_categories_per_page'
         );
 
         add_screen_option($option, $args);
@@ -935,9 +935,9 @@ class Survey_Maker_Admin {
     public function screen_option_submissions(){
         $option = 'per_page';
         $args = array(
-            'label' => __('Submissions', "survey-maker"),
+            'label'   => __('Submissions', "survey-maker"),
             'default' => 20,
-            'option' => 'survey_submissions_results_per_page'
+            'option'  => 'survey_submissions_results_per_page'
         );
 
         add_screen_option($option, $args);
@@ -947,9 +947,9 @@ class Survey_Maker_Admin {
     public function screen_option_each_survey_submission() {
         $option = 'per_page';
         $args = array(
-            'label' => __('Results', "survey-maker"),
+            'label'   => __('Results', "survey-maker"),
             'default' => 50,
-            'option' => 'survey_each_submission_results_per_page',
+            'option'  => 'survey_each_submission_results_per_page',
         );
 
         add_screen_option($option, $args);
