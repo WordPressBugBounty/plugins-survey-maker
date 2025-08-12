@@ -203,4 +203,4 @@ class Survey_Maker_Ays_Welcome {
         ) );
     }
 }
-new Survey_Maker_Ays_Welcome();
+//new Survey_Maker_Ays_Welcome();

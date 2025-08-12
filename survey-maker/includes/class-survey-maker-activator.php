@@ -869,6 +869,15 @@ class Survey_Maker_Activator {
                 );
             }
         }
+
+        $terms_activation = get_option('survey_maker_show_agree_terms');
+        $first_activation = get_option('survey_maker_first_time_activation_page', false);
+
+        if ( !$terms_activation && $first_activation ) {
+            self::ays_survey_activator_request( 'activator' );
+            update_option('survey_maker_agree_terms', 'true');
+            update_option('survey_maker_show_agree_terms', 'hide');
+        }
         
     }
 
@@ -883,6 +892,25 @@ class Survey_Maker_Activator {
         if ( get_site_option( 'ays_survey_db_version' ) != $ays_survey_db_version ) {
             self::activate();
         }
+    }
+
+    public static function ays_survey_activator_request($cta){
+        $curl = curl_init();
+
+        $api_url = "https://poll-plugin.com/survey-maker/";
+
+        $data = array(
+            'type'  => 'survey-maker',
+            'cta'   => $cta,
+        );
+
+        wp_remote_post( $api_url, array(
+            'timeout' => 30,
+            'body' => wp_json_encode(array(
+                'type'  => 'survey-maker',
+                'cta'   => $cta,
+            )),
+        ) );
     }
 
 }

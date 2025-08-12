@@ -332,6 +332,10 @@ post_max_size 256M
 
 == Changelog ==
 
+= 5.1.8.2 ( Aug 12, 2025 ) =
+* Updated: POT file
+* Improved: Some changes on the admin dashboard
+
 = 5.1.8.1 ( Aug 5, 2025 ) =
 * Improved: Some changes on the admin dashboard
 
