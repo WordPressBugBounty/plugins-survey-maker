@@ -63,7 +63,9 @@
                     <h4><?php echo esc_html__( "Create Your First Survey in Under One Minute", "survey-maker" ); ?></h4>
                 </div>
                 <div class="ays-survey-create-survey-youtube-video">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vZ2-VEd8Bq4" loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%;"></iframe>
+                    <div class="ays-survey-youtube-placeholder" data-video-id="vZ2-VEd8Bq4">
+                        <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/create-survey-video-screenshot.webp'); ?>" width="560" height="315">
+                    </div>
                 </div>
                 <div class="ays-survey-create-survey-youtube-video-button-box-top">
                     <?php echo sprintf( '<a href="?page=%s&action=%s" class="ays-survey-add-new-button-video ays-survey-add-new-button-new-design"> %s ' . esc_html__('Add New', "survey-maker") . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));?>

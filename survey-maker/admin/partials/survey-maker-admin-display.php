@@ -59,7 +59,9 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
             <h4><?php echo esc_html__( "Community", "survey-maker" ); ?></h4>
         </div>
         <div class="ays-survey-community-youtube-video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/EMN9MlMGlbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+            <div class="ays-survey-youtube-placeholder" data-video-id="EMN9MlMGlbo">
+                <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/community-video-screenshot.webp'); ?>" width="560" height="315">
+            </div>
         </div>
         <div class="ays-survey-community-container">
             <div class="ays-survey-community-item">

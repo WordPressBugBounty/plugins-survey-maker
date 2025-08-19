@@ -3723,6 +3723,21 @@
             $thisRotateButtons.css('transform', `rotate(0deg)`).data('rotation', 0);
         });
 
+        // Replace image to YouTube embed video
+        $(document).on('click', '.ays-survey-youtube-placeholder', function() {
+            var videoId = $(this).data('video-id');
+            var iframe = $('<iframe>', {
+                src: 'https://www.youtube.com/embed/' + videoId + '?autoplay=1',
+                class: '',
+                width: 560,
+                height: 315,
+                frameborder: 0,
+                allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+                allowfullscreen: true,
+            });
+            $(this).replaceWith(iframe);
+        });
+
         $(document).on('click', 'body', function(e){
             if($(e.target).hasClass('ays-modal')){
                 $(e.target).find(".ays-close").trigger("click");

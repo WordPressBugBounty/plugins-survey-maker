@@ -60,7 +60,11 @@ if($action == 'unpublish' || $action == 'publish'){
             <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__('Add New', "survey-maker") . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg,Survey_Maker_Data::get_allowed_tags_for_loader()));?>
         </div>
         <?php if($survey_max_id <= 0): ?>
-            <div style="display: flex;justify-content: center; align-items: center;margin-bottom: 15px;"><iframe width="560" height="315" src="https://www.youtube.com/embed/gM6SQdOw3fA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+            <div class="ays-survey-create-survey-video-box" style="margin: auto;">
+                <div class="ays-survey-youtube-placeholder" data-video-id="gM6SQdOw3fA">
+                    <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/create-popup-survey-video-screenshot.webp'); ?>" width="560" height="315">
+                </div>
+            </div>
         <?php else: ?>
             <div class="ays-survey-create-survey-video-box" style="margin: auto;height: 83px;">
                 <div class="ays-survey-create-survey-youtube-video">

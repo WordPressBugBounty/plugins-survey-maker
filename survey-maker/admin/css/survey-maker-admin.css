@@ -3708,6 +3708,10 @@ input.ays-survey-text-input-90-width {
     margin-top: 10px !important;
 }
 
+.ays-survey-youtube-placeholder{
+    cursor: pointer;
+}
+
 .ays-survey-create-survey-youtube-video{
     display: flex;
     align-items: center;

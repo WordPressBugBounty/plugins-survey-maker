@@ -18,7 +18,11 @@ $example_export_path = SURVEY_MAKER_ADMIN_URL . '/partials/export-import/survey-
         </h1>
         <?php do_action('ays_survey_sale_banner'); ?>
 
-        <div style="display: flex;justify-content: center; align-items: center;"><iframe width="560" height="315" src="https://www.youtube.com/embed/xLSv8h87fX4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div style="display: flex;justify-content: center; align-items: center;">
+            <div class="ays-survey-youtube-placeholder" data-video-id="xLSv8h87fX4">
+                <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/export-import-video-screenshot.webp'); ?>" width="560" height="315">
+            </div>
+        </div>
 
         <div class="nav-tab-wrapper">
             <a href="#tab1" class="nav-tab nav-tab-active"><?php echo esc_html__('Export',"survey-maker"); ?></a>
