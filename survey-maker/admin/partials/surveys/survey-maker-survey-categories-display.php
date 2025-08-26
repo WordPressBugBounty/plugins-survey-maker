@@ -4,6 +4,13 @@ $action = ( isset($_GET['action']) ) ? sanitize_key( $_GET['action'] ) : '';
 $id     = ( isset($_GET['id']) ) ? absint( sanitize_key( $_GET['id'] ) ) : null;
 
 if( $action == 'duplicate' && !is_null($id) ){
+    // Verify nonce to protect against CSRF
+    $nonce = isset($_GET['_wpnonce']) ? sanitize_text_field( $_GET['_wpnonce'] ) : '';
+
+    if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-duplicate-survey-category' ) ) {
+        die( 'Go get a life script kiddies' );
+    }
+    
     $this->surveys_categories_obj->duplicate_survey_categories($id);
 }
 

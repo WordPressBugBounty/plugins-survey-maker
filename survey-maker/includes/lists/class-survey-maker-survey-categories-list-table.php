@@ -386,7 +386,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
         if( $result >= 0 ){
             $message = "duplicated";
-            $url = esc_url_raw( remove_query_arg(array('action', 'id')  ) ) . '&status=' . $message;
+            $url = esc_url_raw( remove_query_arg(array('action', 'id', '_wpnonce')  ) ) . '&status=' . $message;
             wp_redirect( $url );
         }
     }
@@ -622,7 +622,8 @@ class Survey_Categories_List_Table extends WP_List_Table {
             if($item['status'] == 'trashed'){
                 $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce );
             }else{
-                $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ) );
+                $dup_nonce = wp_create_nonce( $this->plugin_name . '-duplicate-survey-category' );
+                $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ), $dup_nonce );
                 $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'trash', absint( $item['id'] ), $delete_nonce );
             }
         }
@@ -920,7 +921,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
             $updated_message =  __( 'Survey category deleted.', "survey-maker" );
         elseif ( 'duplicated' == $status )
             $updated_message =  __( 'Survey category duplicated.', "survey-maker" );
-
+        
         if ( empty( $updated_message ) )
             return;
 

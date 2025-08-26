@@ -15,7 +15,9 @@
         <?php echo esc_html__(get_admin_page_title(), "survey-maker"); ?>
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
-
+    <h3 class="wp-heading" style="text-align: center;">
+        <?php echo esc_html__( 'Back to School Sale – Enjoy 20% off until September 1st!' , 'survey-maker'); ?>
+    </h3>
     <div class="ays-survey-features-wrap">
         <div class="comparison">
             <table>
@@ -48,19 +50,19 @@
                         </th>
                         <th class="price-info">
                             <div class="price-now"><span style="text-decoration: line-through; color: red;">$75</span></div>
-                            <div class="price-now"><span>$59</span></div>
+                            <div class="price-now"><span>$47</span></div>
                             <!-- <div class="price-now"><span>$39</span></div>  -->
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Until December 31</span></div> -->
                         </th>
                         <th class="price-info">
                             <div class="price-now"><span span style="text-decoration: line-through; color: red;">$250</span></div>
-                            <div class="price-now"><span>$149</span></div>
+                            <div class="price-now"><span>$119</span></div>
                             <!-- <div class="price-now"><span>$103</span></div>  -->
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Until December 31</span></div>  -->
                         </th>
                         <th class="price-info">
                             <div class="price-now"><span span style="text-decoration: line-through; color: red;">$450</span></div>
-                            <div class="price-now"><span>$299</span></div>
+                            <div class="price-now"><span>$239</span></div>
                             <!-- <div class="price-now"><span style="color: red; font-size: 12px;">Until November 27</span>
                             </div> -->
                         </th>

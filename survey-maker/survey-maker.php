@@ -16,7 +16,7 @@
  * Plugin Name:       Survey Maker
  * Plugin URI:        https://ays-pro.com/wordpress/survey-maker
  * Description:       Survey Maker plugin allows you to create unlimited surveys with unlimited sections and unlimited questions.
- * Version:           5.1.8.3
+ * Version:           5.1.8.4
  * Author:            Survey Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SURVEY_MAKER_VERSION', '5.1.8.3' );
+define( 'SURVEY_MAKER_VERSION', '5.1.8.4' );
 define( 'SURVEY_MAKER_NAME_VERSION', '1.0.0' );
 define( 'SURVEY_MAKER_NAME', 'survey-maker' );
 define( 'SURVEY_MAKER_DB_PREFIX', 'ayssurvey_' );
@@ -138,12 +138,12 @@ function survey_maker_general_admin_notice(){
                             </a>                           
                             <span class="ays-survey-logo-container-one-time-text"><?php echo esc_html__( "One-time payment", 'quiz-maker' ); ?></span>
                         </div>
-                        <div class="ays-survey-coupon-container">
+                        <!-- <div class="ays-survey-coupon-container">
                             <div class="ays-survey-coupon-box ays-survey-copy-element-box-parent">
                                 <span onClick="selectAndCopyElementContents(this)" class="ays-survey-copy-element-box" data-toggle="tooltip" title="<?php echo esc_html__( "Click for copy", 'survey-maker' ); ?>">summer2025</span>
                             </div>
                             <span class="ays-survey-logo-container-one-time-text"><?php echo esc_html__( "Extra 20% Coupon", 'survey-maker' ); ?></span>
-                        </div>
+                        </div> -->
                     </div>
                     <ul id="menu">
                         <!-- <li class="modile-ddmenu-xss"><a class="ays-btn" href="https://ays-pro.com/wordpress/survey-maker/" target="_blank">PRO</a></li> -->
