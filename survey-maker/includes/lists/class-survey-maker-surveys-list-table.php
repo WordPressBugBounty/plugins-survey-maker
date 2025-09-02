@@ -519,6 +519,12 @@ class Surveys_List_Table extends WP_List_Table {
             // Question padding mobile
             $survey_question_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_padding_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) ) : 24;
             
+            // Question border radius
+            $survey_question_border_radius = (isset( $_POST[ $name_prefix . 'survey_question_border_radius' ] ) && $_POST[ $name_prefix . 'survey_question_border_radius' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_border_radius' ] ) ) : 8;
+            
+            // Question border radius mobile
+            $survey_question_border_radius_mobile = (isset( $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] ) ) : 8;
+            
             // Question caption text color
             $survey_question_caption_text_color = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) ) : $survey_text_color;
             // Question caption text color mobile
@@ -1038,6 +1044,8 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_question_image_sizing_mobile' => $survey_question_image_sizing_mobile,
                 'survey_question_padding'             => $survey_question_padding,
                 'survey_question_padding_mobile'      => $survey_question_padding_mobile,
+                'survey_question_border_radius'       => $survey_question_border_radius,
+                'survey_question_border_radius_mobile' => $survey_question_border_radius_mobile,
                 'survey_question_caption_text_color'  => $survey_question_caption_text_color,
                 'survey_question_caption_text_color_mobile' => $survey_question_caption_text_color_mobile,
                 'survey_question_caption_text_alignment'           => $survey_question_caption_text_alignment,

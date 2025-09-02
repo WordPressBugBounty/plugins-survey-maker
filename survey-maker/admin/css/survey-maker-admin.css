@@ -4414,3 +4414,7 @@ body[class*='survey-maker'] #wpfooter{
     transform: none !important;
     outline: unset;
 }
+
+div.masteriyo-notice {
+    display: none !important;
+}

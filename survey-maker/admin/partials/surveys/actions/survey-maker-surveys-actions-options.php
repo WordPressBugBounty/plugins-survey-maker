@@ -72,6 +72,8 @@
         'survey_question_image_sizing_mobile'               => 'cover',
         'survey_question_padding'                           => 24,
         'survey_question_padding_mobile'                    => 24,
+        'survey_question_border_radius'                     => 8,
+        'survey_question_border_radius_mobile'              => 8,
         'survey_question_caption_text_color'                => '#333',
         'survey_question_caption_text_color_mobile'         => '#333',
         'survey_question_caption_text_alignment'            => 'center',
@@ -733,6 +735,13 @@
             // Question padding mobile
             $options[ $name_prefix . 'question_padding_mobile' ] = isset($options[ $name_prefix . 'question_padding_mobile' ]) ? $options[ $name_prefix . 'question_padding_mobile' ] : $survey_question_padding;
             $survey_question_padding_mobile = (isset($options[ $name_prefix . 'question_padding_mobile' ]) && $options[ $name_prefix . 'question_padding_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_padding_mobile' ] ) ) : 24;
+            
+            // Question border radius
+            $survey_question_border_radius = (isset($options[ $name_prefix . 'question_border_radius' ]) && $options[ $name_prefix . 'question_border_radius' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_border_radius' ] ) ) : 8;
+            
+            // Question border radius mobile
+            $options[ $name_prefix . 'question_border_radius_mobile' ] = isset($options[ $name_prefix . 'question_border_radius_mobile' ]) ? $options[ $name_prefix . 'question_border_radius_mobile' ] : $survey_question_border_radius;
+            $survey_question_border_radius_mobile = (isset($options[ $name_prefix . 'question_border_radius_mobile' ]) && $options[ $name_prefix . 'question_border_radius_mobile' ] != '') ? absint ( intval( $options[ $name_prefix . 'question_border_radius_mobile' ] ) ) : 8;
             
             // Question caption text color
             $options[ $name_prefix . 'question_caption_text_color' ] = (isset($options[ $name_prefix . 'question_caption_text_color' ]) && $options[ $name_prefix . 'question_caption_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'question_caption_text_color' ] ) ) : $survey_text_color;

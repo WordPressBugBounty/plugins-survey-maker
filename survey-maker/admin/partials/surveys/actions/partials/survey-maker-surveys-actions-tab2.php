@@ -1289,6 +1289,56 @@
                     <hr/>
                     <div class="form-group row">
                         <div class="col-sm-5">
+                            <label for='ays_survey_question_border_radius'>
+                                <?php echo esc_html__('Question border radius', "survey-maker"); ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the border radius of the survey questions box in pixels.',"survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-7 ays_divider_left">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_question_border_radius'>
+                                        <?php echo esc_html__('On desktop', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the border radius of the survey questions box in pixels for desktop devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input" id='ays_survey_question_border_radius' name='ays_survey_question_border_radius' value="<?php echo esc_attr($survey_question_border_radius); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_question_border_radius_mobile'>
+                                        <?php echo esc_html__('On mobile', "survey-maker"); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the border radius of the survey questions box in pixels for mobile devices.',"survey-maker")?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-7 ays_survey_display_flex_width">
+                                    <div>
+                                        <input type="number" class="ays-text-input" id='ays_survey_question_border_radius_mobile' name='ays_survey_question_border_radius_mobile' value="<?php echo esc_attr($survey_question_border_radius_mobile); ?>"/>
+                                    </div>
+                                    <div class="ays_dropdown_max_width">
+                                        <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- Question border radius -->
+                    <hr/>
+                    <div class="form-group row">
+                        <div class="col-sm-5">
                             <label for='ays_survey_question_caption_text_color'>
                                 <?php echo esc_html__('Question caption text color', "survey-maker"); ?>
                                 <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the color of the question caption texts.',"survey-maker"); ?>">

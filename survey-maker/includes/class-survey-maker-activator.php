@@ -351,6 +351,8 @@ class Survey_Maker_Activator {
                     'survey_question_image_sizing_mobile' => 'cover',
                     'survey_question_padding' => 24,
                     'survey_question_padding_mobile' => 24,
+                    'survey_question_border_radius' => 8,
+                    'survey_question_border_radius_mobile' => 8,
                     'survey_question_caption_text_color' => '#333',
                     'survey_question_caption_text_color_mobile' => '#333',
                     'survey_question_caption_text_alignment' => 'center',

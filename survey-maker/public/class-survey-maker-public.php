@@ -2696,6 +2696,7 @@ class Survey_Maker_Public {
 
         // Question padding
         $question_padding = $this->options[ $this->name_prefix . 'question_padding' ];
+        $question_border_radius = $this->options[ $this->name_prefix . 'question_border_radius' ];
 
         $content[] = '
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' {
@@ -2737,6 +2738,7 @@ class Survey_Maker_Public {
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {
                 ' . ( $this->options[ $this->name_prefix . 'logo' ] != '' ? 'padding: '.$question_padding.'px '.$question_padding.'px 0 '.$question_padding.'px;' : 'padding: '.$question_padding.'px;' ) . '
                 ' . ( $this->options[ $this->name_prefix . 'logo' ] != '' ? 'padding-bottom: 50px;' : '' ) . '
+                border-radius: ' . $question_border_radius . 'px;
             }
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' input.' . $this->html_class_prefix . 'question-input {
@@ -3500,6 +3502,7 @@ class Survey_Maker_Public {
         // Question padding mobile
         $question_padding = $this->options[ $this->name_prefix . 'question_padding_mobile' ];
         $question_caption_text_display = !$this->options[ $this->name_prefix . 'question_caption_hide_on_mobile' ] ? 'block' : 'none';
+        $question_border_radius = $this->options[ $this->name_prefix . 'question_border_radius_mobile' ];
         $content .= '
         @media screen and (max-width: 640px){
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' {
@@ -3534,6 +3537,7 @@ class Survey_Maker_Public {
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {
                 ' . ( $this->options[ $this->name_prefix . 'logo' ] != '' ? 'padding: '.$question_padding.'px '.$question_padding.'px 0 '.$question_padding.'px;' : 'padding: '.$question_padding.'px;' ) . '
+                border-radius: ' . $question_border_radius . 'px;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons {
