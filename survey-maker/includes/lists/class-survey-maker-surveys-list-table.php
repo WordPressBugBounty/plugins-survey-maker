@@ -2351,28 +2351,70 @@ class Surveys_List_Table extends WP_List_Table {
     public static function delete_items( $id ) {
         global $wpdb;
 
-        $survey_custom_post_id = Survey_Maker_Data::get_survey_current_column($id, 'custom_post_id', 'trashed');
+        // ------------------------------------------------------------------
+        // Delete related data from custom plugin tables first
+        // ------------------------------------------------------------------
 
+        $questions_table              = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions";
+        $sections_table               = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections";
+        $submissions_table            = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submissions_questions_table  = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
+        $answers_table                = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers";
+        $surveys_table                = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
+
+        // Fetch survey row to obtain related section/question IDs
+        $survey_row = self::get_item_by_id( $id );
+
+        // Delete questions (and their submissions) belonging to the survey
+        $question_ids = array();
+        if ( ! empty( $survey_row['question_ids'] ) ) {
+            $question_ids = array_map( 'absint', array_filter( explode( ',', $survey_row['question_ids'] ) ) );
+        }
+
+        if ( ! empty( $question_ids ) ) {
+            // Remove answer options for those questions
+            $wpdb->query( "DELETE FROM {$answers_table} WHERE question_id IN (" . implode( ',', $question_ids ) . ")" );
+            // Remove questions themselves
+            $wpdb->query( "DELETE FROM {$questions_table} WHERE id IN (" . implode( ',', $question_ids ) . ")" );
+            // Remove any answers users have submitted for those questions
+            $wpdb->query( "DELETE FROM {$submissions_questions_table} WHERE question_id IN (" . implode( ',', $question_ids ) . ")" );
+        }
+
+        // Delete sections belonging to the survey
+        $section_ids = array();
+        if ( ! empty( $survey_row['section_ids'] ) ) {
+            $section_ids = array_map( 'absint', array_filter( explode( ',', $survey_row['section_ids'] ) ) );
+        }
+
+        if ( ! empty( $section_ids ) ) {
+            $wpdb->query( "DELETE FROM {$sections_table} WHERE id IN (" . implode( ',', $section_ids ) . ")" );
+        }
+
+        // Remove submissions linked to this survey
         $wpdb->delete(
-            $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions",
+            $submissions_table,
             array( 'survey_id' => absint( $id ) ),
             array( '%d' )
         );
 
+        // Finally, delete the survey record itself
         $wpdb->delete(
-            $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys",
+            $surveys_table,
             array( 'id' => absint( $id ) ),
             array( '%d' )
         );
-        
-        if(isset($survey_custom_post_id) && $survey_custom_post_id > 0){
-            $survey_custom_post_id = intval($survey_custom_post_id);
-            $check_custom_post_type = get_post_type($survey_custom_post_id);
-            if(isset($check_custom_post_type) && $check_custom_post_type == 'ays-survey-maker'){
-                wp_delete_post($survey_custom_post_id);
+
+        // ------------------------------------------------------------------
+        // Remove associated custom post (if any)
+        // ------------------------------------------------------------------
+        $survey_custom_post_id = Survey_Maker_Data::get_survey_current_column( $id, 'custom_post_id', 'trashed' );
+        if ( isset( $survey_custom_post_id ) && $survey_custom_post_id > 0 ) {
+            $survey_custom_post_id   = intval( $survey_custom_post_id );
+            $check_custom_post_type  = get_post_type( $survey_custom_post_id );
+            if ( $check_custom_post_type === 'ays-survey-maker' ) {
+                wp_delete_post( $survey_custom_post_id, true );
             }
         }
-
     }
 
     /**
