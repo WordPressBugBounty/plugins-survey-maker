@@ -2267,17 +2267,17 @@ class Survey_Maker_Public {
         $survey_input_type_placeholder = isset($question['options']['placeholder']) && $question['options']['placeholder'] != "" ? $question['options']['placeholder'] : '';
 
         //Input types value
-        $enable_url_parameter =  isset($question['options']['enable_url_parameter']) && $question['options']['enable_url_parameter'] == true ? true : false;
-        $url_parameter = $enable_url_parameter && isset($question['options']['url_parameter']) && $question['options']['url_parameter'] != "" ? $question['options']['url_parameter'] : ''; 
+        $enable_url_parameter    =  isset($question['options']['enable_url_parameter']) && $question['options']['enable_url_parameter'] == true ? true : false;
+        $url_parameter           = $enable_url_parameter && isset($question['options']['url_parameter']) && $question['options']['url_parameter'] != "" ? $question['options']['url_parameter'] : ''; 
         $survey_input_type_value = isset($_GET[$url_parameter]) && $_GET[$url_parameter] ? $_GET[$url_parameter] : '';
 
-        $enable_number_limit = isset($question['options']['enable_number_limitation']) && $question['options']['enable_number_limitation'] == "on" ? true : false;
+        $enable_number_limit         = isset($question['options']['enable_number_limitation']) && $question['options']['enable_number_limitation'] == "on" ? true : false;
         $enable_number_limit_message = isset($question['options']['enable_number_error_message']) && $question['options']['enable_number_error_message'] == "on" ? true : false;
-        $number_limit_message = isset($question['options']['number_error_message']) && $question['options']['number_error_message'] != "" ? stripslashes(esc_attr($question['options']['number_error_message'])) : "";
-        $show_limit  = isset($question['options']['enable_number_limit_counter']) && $question['options']['enable_number_limit_counter'] == "on" ? true : false;  
-        $limit_length  = isset($question['options']['number_limit_length']) && $question['options']['number_limit_length'] != "" ? $question['options']['number_limit_length'] : "";  
-        $limit_by = "Character";
-        $limit_checker = false;
+        $number_limit_message        = isset($question['options']['number_error_message']) && $question['options']['number_error_message'] != "" ? stripslashes(esc_attr($question['options']['number_error_message'])) : "";
+        $show_limit                  = isset($question['options']['enable_number_limit_counter']) && $question['options']['enable_number_limit_counter'] == "on" ? true : false;  
+        $limit_length                = isset($question['options']['number_limit_length']) && $question['options']['number_limit_length'] != "" ? $question['options']['number_limit_length'] : "";  
+        $limit_by                    = "Character";
+        $limit_checker               = false;
 
         $number_limit_class = $this->html_class_prefix . 'is-phone-type ';
         if($enable_number_limit){
@@ -4089,13 +4089,13 @@ class Survey_Maker_Public {
                             var aysSurveyPopupsOptions = [];
                         }
                         aysSurveyPopupsOptions['" . $popup['id'] . "']  = '" . base64_encode( json_encode( array(
-                            'hidePopup'      => $hide_popup,
-                            'hidePopupAfterClose' => $hide_popup_after_close,
-                            'popup_trigger'  => $popup_trigger_type,
+                            'hidePopup'                        => $hide_popup,
+                            'hidePopupAfterClose'              => $hide_popup_after_close,
+                            'popup_trigger'                    => $popup_trigger_type,
                             'enable_popup_close_after_finish'  => $survey_enable_popup_close_after_finish,
-                            'popup_close_after_finish_delay'  => $survey_popup_close_after_finish_delay,
-                            'popup_selector' => $popup_selector,
-                            'popupEnableCloseByEsc' => $survey_popup_enable_close_by_esc,
+                            'popup_close_after_finish_delay'   => $survey_popup_close_after_finish_delay,
+                            'popup_selector'                   => $popup_selector,
+                            'popupEnableCloseByEsc'            => $survey_popup_enable_close_by_esc,
 
                         ) ) ) . "';";
                     $popup_survey_view .= '</script>';

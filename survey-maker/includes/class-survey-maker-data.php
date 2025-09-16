@@ -2143,10 +2143,10 @@ class Survey_Maker_Data {
             }
         }
 
-        $message_data['user_display_name'] = $user_display_name;
+        $message_data['user_display_name']    = $user_display_name;
         $message_data['user_wordpress_roles'] = $user_wordpress_roles;
         $message_data['user_wordpress_email'] = $user_email;
-        $message_data['user_ip_address'] = self::get_user_ip();
+        $message_data['user_ip_address']      = self::get_user_ip();
 		
         return $message_data;
     }
