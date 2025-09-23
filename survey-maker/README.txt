@@ -3,8 +3,8 @@ Contributors: ays-pro
 Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
-Tested up to: 6.8
-Stable tag: 5.1.8.7
+Tested up to: 6.8.2
+Stable tag: 5.1.8.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,11 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.1.8.8 ( Sep 23, 2025 ) =
+* Improved: Some changes on the admin dashboard
+* Improved: The banner style on the admin dashboard
+* Tested: Compatible up to 6.8.2
 
 = 5.1.8.7 ( Sep 16, 2025 ) =
 * Improved: Some changes on the admin dashboard
