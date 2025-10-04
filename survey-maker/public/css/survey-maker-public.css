@@ -819,13 +819,17 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
    width: 60%;
 }
 
+.ays-survey-container .ays-survey-section .ays-survey-question-box.ays-survey-question-date-time-box {
+   width: 100%;
+}
+
 .ays-survey-container .ays-survey-section .ays-survey-question-type-text-box {
    width: 100%;
 }
 
 
 .ays-survey-container .ays-survey-section .ays-survey-question-date-box {
-   width: 170px !important;
+   /*width: 170px !important;*/
 }
 
 .ays-survey-container .ays-survey-section .ays-survey-question-input-box {

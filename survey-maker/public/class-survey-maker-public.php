@@ -606,8 +606,8 @@ class Survey_Maker_Public {
                     break;
                 case "date_time":
                     if(is_array($question_answer) && ($question_answer['date'] != '' || $question_answer['time'] != '')){
-                        $question_answer['date'] = $question_answer['date'] != '' ? $question_answer['date'] : '-';
-                        $question_answer['time'] = $question_answer['time'] != '' ? $question_answer['time'] : '-';
+                        $question_answer['date'] = $question_answer['date'] != '' ? stripslashes ( sanitize_text_field( $question_answer['date'] ) ) : '-';
+                        $question_answer['time'] = $question_answer['time'] != '' ? stripslashes ( sanitize_text_field( $question_answer['time'] ) ) : '-';
                         $user_answer = implode(" " , $question_answer);
                     }
                     else{
@@ -993,7 +993,7 @@ class Survey_Maker_Public {
                 $sections[$section_key]['title'] = (isset($section['title']) && $section['title'] != '') ? stripslashes( esc_html( $section['title'] ) ) : '';
 
                 if ( $this->options[ $this->name_prefix . 'allow_html_in_section_description' ] ) {
-                    $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( $section['description'] ) : '';
+                    $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( wp_kses( stripslashes( $section['description'] ), Survey_Maker_Data::ays_survey_allowed_html()) ) : '';
                 } else {
                     $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( esc_html( $section['description'] ) ) : '';
                 }
@@ -1388,7 +1388,7 @@ class Survey_Maker_Public {
 
                         $content[] = '<div class="' . $this->html_class_prefix . 'section-desc">' . stripslashes( $section['description'] ) . '</div>';
                         if( $this->options[ $this->name_prefix . 'show_sections_questions_count' ] ){
-                            $content[] = '<div class="' . $this->html_class_prefix . 'section-questions-count" title="Questions Count">' . count( $section['questions'] ) . '</div>';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'section-questions-count" title="'. esc_attr__('Questions Count', 'survey-maker') .'">' . count( $section['questions'] ) . '</div>';
                         }
 
                     $content[] = '</div>';

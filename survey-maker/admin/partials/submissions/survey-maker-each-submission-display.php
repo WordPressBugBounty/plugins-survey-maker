@@ -550,9 +550,13 @@ $types_with_changeable_charts = array(
                                         $checked = '';
                                         if( $question['type'] == 'radio' && intval( $user_answer ) == 0 && $other_answer != ""){
                                             $checked = 'checked';
-                                        }
-                                        if( $question['type'] == 'checkbox' && !empty( $user_answer ) && in_array( '0', $user_answer ) ){
-                                            $checked = 'checked';
+                                        }                                        
+
+                                        if( $question['type'] == 'checkbox' && !empty( $user_answer ) ){
+                                            $user_answer_array = is_array($user_answer) ? $user_answer : array($user_answer);
+                                            if( in_array( '0', $user_answer_array ) ){
+                                                $checked = 'checked';
+                                            }
                                         }
 
                                         if( $question['type'] == 'yesorno' && intval( $user_answer ) == 0 && $other_answer != ""){
@@ -891,8 +895,8 @@ $types_with_changeable_charts = array(
                                                     $time_array = array();
                                                     foreach( $question_results[ $question['id'] ]['answers'][ $question['id'] ] as $aid => $answer ){
                                                         $each_answer = explode(" " , trim($answer));
-                                                        $date_answer = isset($each_answer[0]) && $each_answer[0] != '' ? $each_answer[0] : '';
-                                                        $time_answer = isset($each_answer[1]) && $each_answer[1] != '' ? $each_answer[1] : '';
+                                                        $date_answer = isset($each_answer[0]) && $each_answer[0] != '' ? stripslashes ( esc_html( $each_answer[0] ) ) : '';
+                                                        $time_answer = isset($each_answer[1]) && $each_answer[1] != '' ? stripslashes ( esc_html( $each_answer[1] ) ) : '';
                                                         if($time_answer != '-' || $date_answer != '-'){
                                                             $year_month_day = $date_answer != '-' ? explode( '-', $date_answer ) : '-';
 
