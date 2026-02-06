@@ -19,7 +19,7 @@ class Survey_Maker_Settings_Actions {
 
             // Survey Question default type
             $survey_default_type = (isset($_REQUEST[$name_prefix .'survey_default_type']) && $_REQUEST[$name_prefix .'survey_default_type'] != '') ? sanitize_text_field($_REQUEST[$name_prefix .'survey_default_type']) : '';
-            $survey_answer_default_count = (isset($_REQUEST[$name_prefix . 'survey_answer_default_count']) && $_REQUEST[$name_prefix . 'survey_answer_default_count'] != '') ? absint( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_answer_default_count'] ) ) : 1;
+            $survey_answer_default_count = (isset($_REQUEST[$name_prefix . 'survey_answer_default_count']) && $_REQUEST[$name_prefix . 'survey_answer_default_count'] != '') ? absint( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_answer_default_count'] ) ) : 3;
 
             // Textarea height (public)
             $survey_textarea_height = (isset($_REQUEST[$name_prefix . 'survey_textarea_height']) && $_REQUEST[$name_prefix . 'survey_textarea_height'] != '' && $_REQUEST[$name_prefix . 'survey_textarea_height'] != 0 ) ? absint( sanitize_text_field($_REQUEST[$name_prefix . 'survey_textarea_height']) ) : 100;

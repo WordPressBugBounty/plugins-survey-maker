@@ -9,8 +9,8 @@
 .ays-survey-action-add-answer-box-main-new .appsMaterialWizButtonPapericonbuttonEl.ays-survey-action-add-answer-box-new{
     width: initial;
     padding: 10px 5px;
+    padding-left: 0;
 }
-
 
 .appsMaterialWizButtonPapericonbuttonEl {
     -webkit-user-select: none;
@@ -1095,6 +1095,9 @@ textarea.ays-survey-question-input-textarea.ays-survey-question-input ~ .ays-sur
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
     height: 48px;
+}
+.ays-survey-answer-icon-box.ays-survey-answer-icon-just.ays-survey-display-none {
+    display: none;
 }
 .ays-survey-answer-row .ays-survey-answer-icon-box.ays-survey-answer-icon-just i {
     font-size: 25px;
@@ -2321,6 +2324,46 @@ textarea.ays-survey-question-input-textarea {
 }
 
 /* Date question type */ /* Time question type END */
+
+.ays-survey-question-admin-note {
+    padding: 0 50px;
+}
+
+.ays-survey-question-admin-note .ays-survey-answer-box {
+    position: relative;
+    width: 80%;
+}
+
+.ays-survey-question-admin-note .ays-survey-answer-box .ays-survey-input {
+    width: 100%;
+}
+
+.ays-survey-question-admin-note-label {
+    font-size: 14px;
+    color: #5f6368;
+    position: relative;
+    width: 100%;
+}
+
+.ays-survey-question-admin-note-label span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+}
+
+.ays-survey-question-more-actions .ays-survey-question-action[data-action*="admin-note"] {
+    -webkit-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
 
 /* Text Limitation start */
 .ays-survey-question-more-option-wrap-limitations {

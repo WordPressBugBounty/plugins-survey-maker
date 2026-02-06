@@ -49,12 +49,14 @@
     border-radius: 3px;
     margin: 0;
 }
+
 a.only_pro_lik,
 .pro_features p a {
     color: #f50057 !important;
     font-weight: 700;
     transition: all .3s ease-in;
 }
+
 a.only_pro_lik:hover,
 .pro_features p a:hover{
     color: #C51162 !important;
@@ -66,11 +68,15 @@ a.only_pro_lik:hover,
 }
 
 .dropdown-item.ays-survey-question-action.ays-survey-question-actions-pro a{
-    color: #212529;
+    color: #2125297d;
     border: 0;
     box-shadow: unset;
     outline: none;
-} 
+}
+
+.survey_pro_span_style {
+    color: #2125297d;
+}
 
 .dropdown-item.ays-survey-question-action.ays-survey-question-actions-pro:active a{
     color: #fff;
@@ -1041,6 +1047,7 @@ blockquote span {
 .select2.select2-container {
     width: 100%!important;
 }
+#ays_survey_change_create_author + .select2.select2-container, 
 .ays_quiz_stat_select_div .select2.select2-container {
     width: 200px!important;
 }
@@ -1478,7 +1485,15 @@ div.ays-survey-body-for-select-lenght .ays-survey-choose-for-select-lenght-star-
     width: 120px;
     border-radius: 4px;
 }
-
+.ays-survey-action-add-answer {
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.141), 0 1px 3px 0 rgba(0, 0, 0, 0.122);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #fff;
+    border: 1px solid #dadce0;
+    -webkit-border-radius: 8px !important;
+    border-radius: 8px !important;
+    padding: 0px 10px !important;
+}
 #ays-survey-form .ays-survey-answer-icon-box.ays-survey-section-actions-more.dropdown {
     display: block;
 }
@@ -3709,13 +3724,36 @@ input.ays-survey-text-input-90-width {
 }
 
 .ays-survey-youtube-placeholder{
+    position: relative;
     cursor: pointer;
+    max-width: 100%;
+    width: 560px;
+    height: 315px;
+    margin: 0 auto;
 }
 
-.ays-survey-create-survey-youtube-video{
+.ays-survey-create-survey-youtube-video {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.ays-survey-create-survey-video-box iframe {
+    max-width: 100%;
+}
+
+.ays-survey-youtube-placeholder img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    div.ays-survey-youtube-placeholder {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .ays-survey-create-survey-youtube-video-button-box-top{

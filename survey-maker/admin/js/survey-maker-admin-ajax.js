@@ -138,6 +138,7 @@
             $(document).find('#ays-results-modal').aysModal('show');
             var submission_id = $(this).find('.ays-show-results').data('result');
             var surveyId = $(document).find('.ays_number_of_result').attr('data-id');
+            var wp_nonce = $(document).find('#ays_survey_ajax_results_nonce').val();
             $.ajax({
                 url: ajaxurl,
                 method: 'post',
@@ -146,6 +147,7 @@
                     action: 'ays_survey_show_results',
                     survey_id: surveyId,
                     submission_id: submission_id,
+                    _ajax_nonce: wp_nonce,
                 },
                 success: function(response){
                     if(response.status === true){
@@ -259,6 +261,35 @@
                 $button.prop('disabled', false);
             }
         });
+    });
+
+    $(document).find('#ays_survey_change_create_author').select2({
+        placeholder: survey_maker_ajax.selectUser,
+        minimumInputLength: 1,
+        allowClear: true,
+        language: {
+            // You can find all of the options in the language files provided in the
+            // build. They all must be functions that return the string that should be
+            // displayed.
+            searching: function() {
+                return survey_maker_ajax.searching;
+            },
+            inputTooShort: function () {
+                return survey_maker_ajax.pleaseEnterMore;
+            }
+        },
+        ajax: {
+            url: survey_maker_ajax.ajax_url,
+            dataType: 'json',
+            data: function (response) {
+                var checkedUsers = $(document).find('#ays_survey_change_create_author').val();
+                return {
+                    action: 'ays_survey_author_user_search',
+                    search: response.term,
+                    val: checkedUsers,
+                };
+            },
+        }
     });
 
 })( jQuery );

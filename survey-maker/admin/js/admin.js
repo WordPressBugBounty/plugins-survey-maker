@@ -42,12 +42,14 @@
                 return false;
             }
 
+            var wp_nonce = $(document).find('#ays_survey_ajax_deactivate_plugin_nonce').val();
             var feedback_container = $(document).find('.ays-survey-dialog-widget');
             var upgrade_plugin = false;
             if (result.value) upgrade_plugin = true;
             var data = {
                 action: 'deactivate_plugin_option_sm', 
-                upgrade_plugin: upgrade_plugin
+                upgrade_plugin: upgrade_plugin,
+                _ajax_nonce: wp_nonce,
             };
             $.ajax({
                 url: SurveyMakerAdmin.ajaxUrl,

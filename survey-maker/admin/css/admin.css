@@ -39,6 +39,11 @@ ul.ays-wp-notice-answers{
     font-weight: bold;
 }
 
+#toplevel_page_survey-maker .wp-first-item,
+#adminmenu .wp-submenu-head {
+    display: none;
+}
+
 .survey-elementor-widget-logo-wrap .survey-elementor-widget-logo:before,
 .survey-elementor-widget-logo:before {
     content: "";

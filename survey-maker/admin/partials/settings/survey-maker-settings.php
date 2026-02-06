@@ -136,7 +136,7 @@
     // Survey question default type
     $options['survey_default_type'] = !isset($options['survey_default_type']) ? 'radio' : $options['survey_default_type'];
     $survey_default_type = (isset($options['survey_default_type']) && $options['survey_default_type'] != '') ? esc_attr($options['survey_default_type']) : 'radio';
-    $survey_answer_default_count = (isset($options['survey_answer_default_count']) && $options['survey_answer_default_count'] != '')? $options['survey_answer_default_count'] : 1;
+    $survey_answer_default_count = (isset($options['survey_answer_default_count']) && $options['survey_answer_default_count'] != '')? $options['survey_answer_default_count'] : 3;
 
     // Do not store IP addresses
     $options['survey_disable_user_ip'] = (isset($options['survey_disable_user_ip']) && $options['survey_disable_user_ip'] == 'on') ? $options['survey_disable_user_ip'] : 'off' ;
@@ -226,17 +226,22 @@
 
     // Add message varibales here
     $message_variables = array(        
-        'general_message_variables' => array(
-            'current_date'         => __('The date of the submission survey.' , "survey-maker"),
-            'current_time'         => __('The time of the submission survey.' , "survey-maker"),
-            'unique_code'          => __('Use to identify the uniqueness of each attempt.' , "survey-maker"),
-            'post_id'              => __('The ID of the current post.' , "survey-maker"),
-            'home_page_url'        => __('The URL of the home page.' , "survey-maker"),
-            'post_author_email'    => __('The Email of the author of the post.' , "survey-maker"),
-            'post_title'           => __('The Post title of the current post.' , "survey-maker"),
-            'post_author_nickname' => __('The Nickname of the author of the post.' , "survey-maker"),
-            'site_title'           => __('The title of the website.' , "survey-maker"),
-        ),
+        'general_message_variables'   => array(
+            'current_date'            => __('The date of the submission survey.' , "survey-maker"),
+            'current_time'            => __('The time of the submission survey.' , "survey-maker"),
+            'current_day'             => __('The day of the submission survey.' , "survey-maker"),
+            'current_month'           => __('The month of the submission survey.' , "survey-maker"),
+            'unique_code'             => __('Use to identify the uniqueness of each attempt.' , "survey-maker"),
+            'post_id'                 => __('The ID of the current post.' , "survey-maker"),
+            'home_page_url'           => __('The URL of the home page.' , "survey-maker"),
+            'post_author_email'       => __('The Email of the author of the post.' , "survey-maker"),
+            'post_title'              => __('The Post title of the current post.' , "survey-maker"),
+            'post_author_nickname'    => __('The Nickname of the author of the post.' , "survey-maker"),
+            'post_author_first_name'  => __('The First Name of the author of the post.' , "survey-maker"),
+            'post_author_last_name'   => __('The Last Name of the author of the post.' , "survey-maker"),
+            'site_title'              => __('The title of the website.' , "survey-maker"),
+            'site_description'        => __('The description of the website.' , "survey-maker"),
+        ),  
         'user_message_variables' => array(
             'user_name'  => __('The name the user entered into the survey form. It will work only if the name field exists in the form.' , "survey-maker"),
             'user_email' => __('The E-mail the user entered into the survey form. It will work only if the email field exists in the form.' , "survey-maker"),

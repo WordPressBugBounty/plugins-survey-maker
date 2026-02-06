@@ -1037,7 +1037,25 @@
                     </div>
                 </div>
             </div> <!-- Change current survey creation date -->
-            <hr/>                
+            <hr/>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="ays_survey_change_create_author">
+                        <?php echo esc_html__('Change the author of the current survey',"survey-maker"); ?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('You can change the author who created the current survey to your preferred one. You need to write the User ID here. Please note, that in case you write an ID, by which there are no users found, the changes will not be applied and the previous author will remain the same.',"survey-maker"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-8">
+                    <select class="ays-text-input ays-text-input-short select2-container-200-width" id='ays_survey_change_create_author'name='ays_survey_change_create_author'>
+                        <option value=""><?php echo __('Select User','survey-maker')?></option>
+                        <?php
+                            echo "<option value='" . $ays_survey_create_author_data['ID'] . "' selected>" . $ays_survey_create_author_data['display_name'] . "</option>";
+                        ?>
+                    </select>                    
+                </div>
+            </div> <!-- Change the author of the current survey -->
         </div>
     </div>
     <div class="form-group row" style="margin:0px;">

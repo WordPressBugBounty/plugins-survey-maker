@@ -642,12 +642,12 @@
 
                 _this.$el.find('.' + _this.htmlClassPrefix + 'sections > .' + _this.htmlClassPrefix + 'section.' + _this.htmlClassPrefix + 'results-content').show(150);
 
-                var aysQuizLoader = form.find('div.ays-loader[data-role="loader"]');
+                var aysQuizLoader = form.find('div.ays-loader[data-role="loader"]');                
                 aysQuizLoader.addClass(aysQuizLoader.data('class'));
                 aysQuizLoader.removeClass('ays-survey-loader');
 
                 setTimeout(function () {
-                    _this.sendSurveyData(data, $(e.target));
+                    _this.sendSurveyData(data, $(e.target));                    
                 }, 2000);
 
                 _this.goTo();
@@ -1971,6 +1971,7 @@
             var aysQuizLoader = _this.$el.find('div.ays-loader[data-role="loader"]');
             aysQuizLoader.addClass('ays-survey-loader');
             aysQuizLoader.removeClass(aysQuizLoader.data('class'));
+            _this.$el.find('div.ays-survey-loader.ays-survey-loader-snake').hide();
             _this.$el.find('.ays-survey-loader-with-text').hide();
             _this.$el.find('.ays-survey-loader-with-custom-gif').hide();
             if( response.message ){

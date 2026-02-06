@@ -238,10 +238,11 @@ class Survey_Maker {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'disable_scripts', 100 );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'disable_scripts', 100 );		
 
         // Add menu item
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_menu' );
+        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_dashboard_menu', 10 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_surveys_submenu', 90 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_survey_categories_submenu', 95 );		
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_survey_front_requests_submenu', 100 );
@@ -276,6 +277,9 @@ class Survey_Maker {
 		// Live preview
 		$this->loader->add_action( 'wp_ajax_ays_survey_add_survey_template', $plugin_admin, 'ays_survey_add_survey_template' );
         $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_add_survey_template', $plugin_admin, 'ays_survey_add_survey_template' );
+
+        $this->loader->add_action( 'wp_ajax_ays_survey_author_user_search', $plugin_admin, 'ays_survey_author_user_search' );
+        $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_author_user_search', $plugin_admin, 'ays_survey_author_user_search' );
 	
 		// Install and activate plugin AJAX actions
 	    $this->loader->add_action('wp_ajax_ays_survey_install_plugin', $plugin_admin, 'ays_survey_install_plugin');
@@ -293,6 +297,7 @@ class Survey_Maker {
         $this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'codemirror_enqueue_scripts');
 
         $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'survey_maker_admin_footer', 1 );
+        // $this->loader->add_action( 'in_admin_footer', $plugin_admin, 'ays_survey_black_friady_popup_box', 10 );
 
         $this->loader->add_action( 'elementor/widgets/widgets_registered', $plugin_admin, 'survey_maker_el_widgets_registered' );
 

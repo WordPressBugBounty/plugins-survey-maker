@@ -813,6 +813,25 @@ class Surveys_List_Table extends WP_List_Table {
             // Survey required questions message
             $survey_required_questions_message = isset( $_POST[ $name_prefix . 'survey_required_questions_message' ] ) && $_POST[ $name_prefix . 'survey_required_questions_message' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_required_questions_message' ]) : '';
 
+            // Change the author of the current quiz
+            $survey_change_create_author = ( isset($_POST[$name_prefix . 'survey_change_create_author' ]) && $_POST[$name_prefix . 'survey_change_create_author'] != "" ) ? absint( sanitize_text_field( $_POST[$name_prefix . 'survey_change_create_author'] ) ) : '';
+
+            if ( $survey_change_create_author != "" && $survey_change_create_author > 0 ) {
+                $user = get_userdata($survey_change_create_author);
+                if ( ! is_null( $user ) && $user ) {
+                    $survey_author = array(
+                        'id' => $user->ID."",
+                        'name' => $user->data->display_name
+                    );
+                    $author_id = $survey_author['id'];
+
+                } else {
+                    $author_data = json_decode($author, true);
+                    $survey_change_create_author = (isset( $author_data['id'] ) && $author_data['id'] != "") ? absint( sanitize_text_field( $author_data['id'] ) ) : get_current_user_id();
+                    $author_id = $survey_change_create_author;
+                }
+            }
+
 
 
             // =============================================================
@@ -1177,7 +1196,7 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_progress_bar_text_transform_mobile'  => $survey_progress_bar_text_transform_mobile,
                 'survey_show_sections_questions_count' => $survey_show_sections_questions_count,
                 'survey_required_questions_message' => $survey_required_questions_message,
-
+                'survey_change_create_author'        => $survey_change_create_author,
                 // Result Settings Tab
                 'survey_redirect_after_submit'      => $survey_redirect_after_submit,
                 'survey_submit_redirect_url'        => $survey_submit_redirect_url,
@@ -1401,6 +1420,9 @@ class Surveys_List_Table extends WP_List_Table {
                             $question_image_caption = ( isset($question['options']['image_caption']) && $question['options']['image_caption'] != '' ) ? sanitize_text_field($question['options']['image_caption']) : '';
                             $question_image_caption_enable = ( isset($question['options']['image_caption_enable']) && $question['options']['image_caption_enable'] == 'on' ) ? 'on' : 'off';
                             
+                            // Admin note
+                            $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) && $question['options']['enable_admin_note'] == 'on' ? 'on' : 'off';
+                            $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? sanitize_text_field( $question['options']['admin_note'] ) : '';
 
                             // With editor
                             $with_editor = ( isset($question['options']['with_editor']) && $question['options']['with_editor'] == 'on' ) ? 'on' : 'off';
@@ -1433,6 +1455,9 @@ class Surveys_List_Table extends WP_List_Table {
                                 'image_caption_enable'     => $question_image_caption_enable,
 
                                 'with_editor' => $with_editor,
+
+                                'enable_admin_note'   => $enable_admin_note,
+                                'admin_note'          => $admin_note,
                             );
 
                             $question_result = $wpdb->update(
@@ -1614,6 +1639,10 @@ class Surveys_List_Table extends WP_List_Table {
                             // With editor
                             $with_editor = ( isset($question['options']['with_editor']) && $question['options']['with_editor'] == 'on' ) ? 'on' : 'off';
 
+                            // Admin note
+                            $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) ? $question['options']['enable_admin_note'] : 'off';
+                            $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? $question['options']['admin_note'] : '';
+
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
@@ -1641,6 +1670,9 @@ class Surveys_List_Table extends WP_List_Table {
                                 'image_caption_enable'        => $question_image_caption_enable,
 
                                 'with_editor' => $with_editor,
+
+                                'enable_admin_note'   => $enable_admin_note,
+                                'admin_note'          => $admin_note,
                             );
 
                             $question_result = $wpdb->insert(
@@ -1837,6 +1869,10 @@ class Surveys_List_Table extends WP_List_Table {
                             // With editor
                             $with_editor = ( isset($question['options']['with_editor']) && $question['options']['with_editor'] == 'on' ) ? 'on' : 'off';
 
+                            // Admin note
+                            $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) ? $question['options']['enable_admin_note'] : 'off';
+                            $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? $question['options']['admin_note'] : '';
+
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
@@ -1865,6 +1901,9 @@ class Surveys_List_Table extends WP_List_Table {
                                 'image_caption_enable'     => $question_image_caption_enable,                             
 
                                 'with_editor' => $with_editor,
+
+                                'enable_admin_note'   => $enable_admin_note,
+                                'admin_note'          => $admin_note,
                             );
 
                             $question_result = $wpdb->update(
@@ -2043,6 +2082,10 @@ class Surveys_List_Table extends WP_List_Table {
                             // With editor
                             $with_editor = ( isset($question['options']['with_editor']) && $question['options']['with_editor'] == 'on' ) ? 'on' : 'off';
 
+                            // Admin note
+                            $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) ? $question['options']['enable_admin_note'] : 'off';
+                            $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? $question['options']['admin_note'] : '';
+
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
@@ -2071,6 +2114,9 @@ class Surveys_List_Table extends WP_List_Table {
                                 'image_caption_enable'     => $question_image_caption_enable,
                                 
                                 'with_editor' => $with_editor,
+                                
+                                'enable_admin_note'   => $enable_admin_note,
+                                'admin_note'          => $admin_note,
                             );
 
                             $question_result = $wpdb->insert(

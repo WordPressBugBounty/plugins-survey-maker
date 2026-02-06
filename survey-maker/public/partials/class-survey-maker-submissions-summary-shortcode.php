@@ -498,6 +498,30 @@ class Survey_Maker_Submissions_Summary
 
     public function ays_generate_submissions_summary_method( $attr ) {
 
+        global $post;
+
+        $allow = false;
+
+        // Check post author's capability
+        if ( isset( $post->post_author ) ) {
+            $author_id = (int) $post->post_author;
+            $author = get_user_by( 'id', $author_id );
+
+            if ( $author && user_can( $author, 'manage_options' ) ) {
+                $allow = true;
+            }
+        }
+
+        // Check current logged-in user's capability
+        if ( is_user_logged_in() && current_user_can( 'manage_options' ) ) {
+            $allow = true;
+        }
+
+        // If neither author nor current user can manage options — stop rendering
+        if ( ! $allow ) {
+            return str_replace(array("\r\n", "\n", "\r"), '', '');
+        }
+
         $id = (isset($attr['id']) && $attr['id'] != '') ? absint(intval($attr['id'])) : null;
         $this->default_texts = Survey_Maker_Data::ays_set_default_texts( $this->plugin_name, array() );
 

@@ -996,6 +996,9 @@
             newElement.find('.ays-survey-question-number-limitations input.ays-survey-number-number-limit-length').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'enable_number_limit_counter'));
             // Number limitation options end
 
+            newElement.find('.ays-survey-question-admin-note-saver').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'enable_admin_note'));
+            newElement.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'admin_note'));
+
             // Star start
             newElement.find('select.ays-survey-choose-for-select-lenght').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'scale_length'));
             newElement.find('input.ays-survey-input-star-1').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_1'));
@@ -1317,6 +1320,22 @@
                     popup.attr('data-question-name', questionName);
                     aysSurveySectionsInitToMoveQuestions( currentSection, currentQuestion );
                     popup.aysModal('show');
+                break;
+                case 'enable-admin-note':
+                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+                    var enableCheckbox = parentQuestion.find('.ays-survey-question-admin-note-saver');
+                    parentQuestion.find('.ays-survey-question-admin-note').removeClass('display_none');
+                    enableCheckbox.val('on');
+                    $this.find('.ays-survey-question-action-icon').removeClass('display_none');
+                    $this.attr('data-action', 'disable-admin-note');
+                break;
+                case 'disable-admin-note':
+                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+                    var enableCheckbox = parentQuestion.find('.ays-survey-question-admin-note-saver');                    
+                    parentQuestion.find('.ays-survey-question-admin-note').addClass('display_none');
+                    enableCheckbox.val('off');
+                    $this.find('.ays-survey-question-action-icon').addClass('display_none');
+                    $this.attr('data-action', 'enable-admin-note');
                 break;
             }
         });
@@ -1785,6 +1804,9 @@
             clonedElement.find('.ays-survey-question-img-caption-enable').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'image_caption_enable'));
             clonedElement.find('.ays-survey-question-ordering').val(questionId);
 
+            clonedElement.find('.ays-survey-question-admin-note-saver').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'enable_admin_note'));
+            clonedElement.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'admin_note'));
+
             answers.each(function(j){
                 var answerId = j+1; //answers.find('.ays-survey-answer-box input.ays-survey-input').length;
                 $(this).addClass('ays-survey-new-answer');
@@ -2033,6 +2055,9 @@
             element.find('.ays-survey-question-image-caption').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'image_caption'));
             element.find('.ays-survey-question-img-caption-enable').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'image_caption_enable'));
 
+            element.find('.ays-survey-question-admin-note-saver').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'enable_admin_note'));
+            element.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'admin_note'));
+            
             element.find('.ays-survey-open-question-editor-flag').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'with_editor'));
             element.find('.ays-survey-question-ordering').val(questionId);
             
@@ -2536,6 +2561,9 @@
             element.find('.ays-survey-question-img-caption-enable').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'image_caption_enable'));
 
             element.find('.ays-survey-open-question-editor-flag').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'with_editor'));
+
+            element.find('.ays-survey-question-admin-note-saver').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'enable_admin_note'));
+            element.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'admin_note'));
 
             answers.each(function(){
                 var answerId = $(this).attr('data-id');
@@ -3126,7 +3154,8 @@
             customCss.html(newCss);
         }
 
-        var checkCountdownIsExists = $(document).find('#ays-survey-maker-countdown-main-container');
+        // var checkCountdownIsExists = $(document).find('#ays-survey-maker-countdown-main-container');
+        var checkCountdownIsExists = $(document).find('#ays-survey-countdown-main-container');
         
         if ( checkCountdownIsExists.length > 0 ) {
             var second  = 1000,
@@ -3134,9 +3163,8 @@
                 hour    = minute * 60,
                 day     = hour * 24;
 
+            // var countdownEndTime = "DEC 05, 2025 23:59:59";
             var countdownEndTime = SurveyMakerAdmin.surveyBannerDate;
-            // var countdownEndTime = "DEC 31, 2022 23:59:59",
-            // var countdownEndTime = "JAN 15, 2025 23:59:59";
             var countDown = new Date(countdownEndTime).getTime(),
     
             x = setInterval(function() {

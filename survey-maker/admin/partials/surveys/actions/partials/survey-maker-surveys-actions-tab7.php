@@ -2,8 +2,13 @@
     <p class="ays-subtitle"><?php echo esc_html__('E-mail settings', "survey-maker"); ?></p>
     <hr/>
     <div style="display: flex;justify-content: center; align-items: center;margin-bottom: 15px;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/-NNIV6bNSGA" loading="lazy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>    </div>
-        <hr>
+        <div class="ays-survey-community-youtube-video">
+            <div class="ays-survey-youtube-placeholder" data-video-id="-NNIV6bNSGA">
+                <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/email-tab-video-screenshot.webp'); ?>" width="560" height="315">
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box">
             <div class="ays-pro-features-v2-big-buttons-box">

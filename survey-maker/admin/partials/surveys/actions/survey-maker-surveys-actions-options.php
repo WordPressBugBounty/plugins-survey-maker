@@ -12,6 +12,7 @@
     $name_prefix = 'survey_';
 
     $user_id = get_current_user_id();
+    $user = get_userdata($user_id);
 
     $action_is_add = ($action == 'add') ? true : false;
 
@@ -114,6 +115,10 @@
         'survey_buttons_text_letter_spacing' => 0,
         'survey_buttons_text_letter_spacing_mobile' => 0,
 
+        'survey_admin_note_color'           => '#000',                
+        'survey_admin_note_text_transform'  => 'none',                
+        'survey_admin_note_font_size'       => 11,    
+
         // Settings Tab
         'survey_show_title' => 'on',
         'survey_show_section_header' => 'on',
@@ -153,7 +158,7 @@
         'survey_progress_bar_text_transform' => 'none',
         'survey_progress_bar_text_transform_mobile' => 'none',
         'survey_required_questions_message' => 'This is a required question',
-
+        'survey_change_create_author' => $user_id,
         // Result Settings Tab
         'survey_redirect_after_submit' => 'off',
         'survey_submit_redirect_url' => '',
@@ -212,56 +217,61 @@
     );
 
     $survey_message_vars = array(
-        '%%user_name%%'                     => __('User Name', "survey-maker"),
-        '%%user_email%%'                    => __('User Email', "survey-maker"),
-        '%%survey_title%%'                  => __('Survey Title', "survey-maker"),
-        '%%survey_id%%'                     => __('Survey ID', "survey-maker"),
-        '%%questions_count%%'               => __('Questions Count', "survey-maker"),
-        '%%current_date%%'                  => __('Current Date', "survey-maker"),
-        '%%current_time%%'                  => __('Current Time', "survey-maker"),
-        '%%unique_code%%'                   => __('Unique Code', "survey-maker"),
-        '%%sections_count%%'                => __('Sections Count', "survey-maker"),
-        '%%users_count%%'                   => __('Users Count', "survey-maker"),
-        '%%users_first_name%%'              => __('Users First Name', "survey-maker"),
-        '%%users_last_name%%'               => __('Users Last Name', "survey-maker"),
-        '%%users_nick_name%%'               => __('Users Nick Name', "survey-maker"),
-        '%%user_wordpress_roles%%'          => __('Users Wordpress Roles', "survey-maker"),
-        '%%users_display_name%%'            => __('Users Display Name', "survey-maker"),
-        '%%users_ip_address%%'              => __('Users IP Address', "survey-maker"),
-        '%%creation_date%%'                 => __('Creation Date', "survey-maker"),
-        '%%modified_date%%'                 => __('Modified Date', "survey-maker"),
-        '%%current_survey_author%%'         => __('Survey Author', "survey-maker"),
-        '%%current_survey_author_email%%'   => __('Survey Author Email', "survey-maker"),
-        '%%current_survey_page_link%%'      => __('Survey Page Link', "survey-maker"),
-        '%%admin_email%%'                   => __('Admin Email', "survey-maker"),
-        '%%submission_count%%'              => __('Submission count', "survey-maker"),
-        '%%post_id%%'                       => __('Post id', "survey-maker"),
-        '%%home_page_url%%'                 => __('Home page URL', "survey-maker"),
-        '%%post_author_email%%'             => __('Post Author Email', "survey-maker"),
-        '%%post_title%%'                    => __('Post Title', "survey-maker"),
-        '%%post_author_nickname%%'          => __('Post Author Nickname', "survey-maker"),
-        '%%site_title%%'                    => __('Site title', "survey-maker"),
+        '%%user_name%%'                   => __('User Name', "survey-maker"),
+        '%%user_email%%'                  => __('User Email', "survey-maker"),
+        '%%survey_title%%'                => __('Survey Title', "survey-maker"),
+        '%%survey_id%%'                   => __('Survey ID', "survey-maker"),
+        '%%questions_count%%'             => __('Questions Count', "survey-maker"),
+        '%%current_date%%'                => __('Current Date', "survey-maker"),
+        '%%current_time%%'                => __('Current Time', "survey-maker"),
+        '%%current_day%%'                 => __('Current Day', "survey-maker"),
+        '%%current_month%%'               => __('Current Month', "survey-maker"),
+        '%%unique_code%%'                 => __('Unique Code', "survey-maker"),
+        '%%sections_count%%'              => __('Sections Count', "survey-maker"),
+        '%%users_count%%'                 => __('Users Count', "survey-maker"),
+        '%%users_first_name%%'            => __('Users First Name', "survey-maker"),
+        '%%users_last_name%%'             => __('Users Last Name', "survey-maker"),
+        '%%users_nick_name%%'             => __('Users Nick Name', "survey-maker"),
+        '%%user_wordpress_roles%%'        => __('Users Wordpress Roles', "survey-maker"),
+        '%%users_display_name%%'          => __('Users Display Name', "survey-maker"),
+        '%%users_ip_address%%'            => __('Users IP Address', "survey-maker"),
+        '%%creation_date%%'               => __('Creation Date', "survey-maker"),
+        '%%modified_date%%'               => __('Modified Date', "survey-maker"),
+        '%%current_survey_author%%'       => __('Survey Author', "survey-maker"),
+        '%%current_survey_author_email%%' => __('Survey Author Email', "survey-maker"),
+        '%%current_survey_page_link%%'    => __('Survey Page Link', "survey-maker"),
+        '%%admin_email%%'                 => __('Admin Email', "survey-maker"),
+        '%%submission_count%%'            => __('Submission count', "survey-maker"),
+        '%%post_id%%'                     => __('Post id', "survey-maker"),
+        '%%home_page_url%%'               => __('Home page URL', "survey-maker"),
+        '%%post_author_email%%'           => __('Post Author Email', "survey-maker"),
+        '%%post_title%%'                  => __('Post Title', "survey-maker"),
+        '%%post_author_nickname%%'        => __('Post Author Nickname', "survey-maker"),
+        '%%post_author_first_name%%'      => __('Post Author First Name', "survey-maker"),
+        '%%post_author_last_name%%'       => __('Post Author Last Name', "survey-maker"),
+        '%%site_title%%'                  => __('Site Title', "survey-maker"),
+        '%%site_description%%'            => __('Site Description', "survey-maker"),
     );
 
     $survey_limitation_message_vars = array(
-        '%%survey_title%%'                  => __('Survey Title', "survey-maker"),
-        '%%survey_id%%'                     => __('Survey ID', "survey-maker"),
-        '%%questions_count%%'               => __('Questions Count', "survey-maker"),
-        '%%current_time%%'                  => __('Current Time', "survey-maker"),
-        '%%sections_count%%'                => __('Sections Count', "survey-maker"),
-        '%%users_count%%'                   => __('Users Count', "survey-maker"),
-        '%%users_first_name%%'              => __('Users First Name', "survey-maker"),
-        '%%users_last_name%%'               => __('Users Last Name', "survey-maker"),
-        '%%users_nick_name%%'               => __('Users Nick Name', "survey-maker"),
-        '%%user_wordpress_roles%%'          => __('Users WordPress Roles', "survey-maker"),
-        '%%users_display_name%%'            => __('Users Display Name', "survey-maker"),
-        '%%users_ip_address%%'              => __('Users IP Address', "survey-maker"),
-        '%%creation_date%%'                 => __('Creation Date', "survey-maker"),
-        '%%modified_date%%'                 => __('Modified Date', "survey-maker"),
-        '%%current_survey_author%%'         => __('Survey Author', "survey-maker"),
-        '%%current_survey_author_email%%'   => __('Survey Author Email', "survey-maker"),
-        '%%admin_email%%'                   => __('Admin Email', "survey-maker"),
-        '%%home_page_url%%'                 => __('Home page URL', "survey-maker"),
+        '%%survey_title%%'                => __('Survey Title', "survey-maker"),
+        '%%survey_id%%'                   => __('Survey ID', "survey-maker"),
+        '%%questions_count%%'             => __('Questions Count', "survey-maker"),
+        '%%current_time%%'                => __('Current Time', "survey-maker"),
+        '%%sections_count%%'              => __('Sections Count', "survey-maker"),
+        '%%users_count%%'                 => __('Users Count', "survey-maker"),
+        '%%users_first_name%%'            => __('Users First Name', "survey-maker"),
+        '%%users_last_name%%'             => __('Users Last Name', "survey-maker"),
+        '%%users_nick_name%%'             => __('Users Nick Name', "survey-maker"),
+        '%%user_wordpress_roles%%'        => __('Users WordPress Roles', "survey-maker"),
+        '%%users_display_name%%'          => __('Users Display Name', "survey-maker"),
+        '%%users_ip_address%%'            => __('Users IP Address', "survey-maker"),
+        '%%creation_date%%'               => __('Creation Date', "survey-maker"),
+        '%%modified_date%%'               => __('Modified Date', "survey-maker"),
+        '%%current_survey_author%%'       => __('Survey Author', "survey-maker"),
+        '%%current_survey_author_email%%' => __('Survey Author Email', "survey-maker"),
+        '%%admin_email%%'                 => __('Admin Email', "survey-maker"),
+        '%%home_page_url%%'               => __('Home page URL', "survey-maker"),
     );
 
     $heading = '';
@@ -393,7 +403,7 @@
     }
 
     if($survey_answer_default_count === null){
-        $survey_answer_default_count = '1';
+        $survey_answer_default_count = '3';
     }
 
     $question_types = array(
@@ -512,6 +522,11 @@
 
             $opts['with_editor'] = ! isset( $opts['with_editor'] ) ? 'off' : $opts['with_editor'];
             $opts['with_editor'] = $opts['with_editor'] == 'on' ? true : false;
+
+            //Admin note
+            $opts['enable_admin_note'] = ( isset( $opts['enable_admin_note'] ) ) && $opts['enable_admin_note'] == 'on' ? true : false;
+            $opts['admin_note'] = ( isset( $opts['admin_note'] ) ) && $opts['admin_note'] != '' ? stripslashes( esc_attr( $opts['admin_note'] ) ) : '';
+
 
             $q_answers = Survey_Maker_Data::get_answers_by_question_id( intval( $question['id'] ) );
 
@@ -1103,6 +1118,32 @@
         $survey_progress_bar_text_transform_mobile = (isset($options[ $name_prefix . 'progress_bar_text_transform_mobile' ]) && $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] != '') ? esc_attr( $options[ $name_prefix . 'progress_bar_text_transform_mobile' ] ) : 'none';
         // Survey show sections questions count
         $survey_show_sections_questions_count = (isset($options[$name_prefix . 'show_sections_questions_count']) && $options[$name_prefix . 'show_sections_questions_count'] == "on") ? "checked" : "";
+
+        // Change the author of the current survey        
+        $survey_change_create_author = (isset($options[ $name_prefix . 'change_create_author' ]) && $options[ $name_prefix . 'change_create_author' ] != '') ? absint( esc_attr( $options[$name_prefix . 'change_create_author' ] ) ) : intval($object['author_id' ]);
+
+        if( $survey_change_create_author  && $survey_change_create_author > 0 ){
+            global $wpdb;
+            $users_table = esc_sql( $wpdb->base_prefix . 'users' );
+
+            $sql_users = "SELECT ID,display_name FROM {$users_table} WHERE ID = {$survey_change_create_author}";
+
+            $ays_survey_create_author_data = $wpdb->get_row($sql_users, "ARRAY_A");
+
+            if( is_null( $ays_survey_create_author_data ) || empty($ays_survey_create_author_data) ){
+                $survey_change_create_author = $user_id;
+                $ays_survey_create_author_data = array(
+                    "ID" => $user_id,
+                    "display_name" => $user->data->display_name,
+                );
+            }
+        } else {
+            $survey_change_create_author = $user_id;
+            $ays_survey_create_author_data = array(
+                "ID" => $user_id,
+                "display_name" => $user->data->display_name,
+            );
+        }
 
         // Survey required questions message
         $options[ $name_prefix . 'required_questions_message' ] = isset($options[ $name_prefix . 'required_questions_message' ]) ? $options[ $name_prefix . 'required_questions_message' ] : 'This is a required question';

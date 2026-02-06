@@ -15,6 +15,8 @@ if(isset($_REQUEST['s'])){
     $ays_survey_tab = 'poststuff';
 }
 
+$survey_results_plugin_nonce = wp_create_nonce( 'survey-maker-ajax-results-nonce' );
+
 $sql = $wpdb->prepare(
     "SELECT * FROM {$wpdb->prefix}" . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id = %d",
     absint($survey_id)
@@ -1019,6 +1021,7 @@ $types_with_changeable_charts = array(
             <div class="ays-modal-body" id="ays-results-body">
             </div>
         </div>
+        <input type="hidden" id="ays_survey_ajax_results_nonce" name="ays_survey_ajax_results_nonce" value="<?php echo esc_attr($survey_results_plugin_nonce); ?>">
     </div>
 
     <div class="ays-modal" id="export-answers-filters">

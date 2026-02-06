@@ -118,7 +118,7 @@
                             <div class="ays-survey-section-head">
                                 <!--  Section Title Start  -->
                                 <div class="ays-survey-section-title-conteiner">
-                                    <input type="text" class="ays-survey-section-title ays-survey-input" tabindex="0" name="<?php echo esc_attr($html_name_prefix); ?>section_add[1][title]" placeholder="<?php echo esc_attr__( 'Section title' , "survey-maker" ); ?>" value=""/>
+                                    <input type="text" class="ays-survey-section-title ays-survey-input" tabindex="0" name="<?php echo esc_attr($html_name_prefix); ?>section_add[1][title]" placeholder="<?php echo esc_attr__( 'Section title' , "survey-maker" ); ?>" value="<?php echo esc_attr__( 'Default section' , "survey-maker" ); ?>"/>
                                     <div class="ays-survey-input-underline"></div>
                                     <div class="ays-survey-input-underline-animation"></div>
                                 </div>
@@ -153,8 +153,8 @@
                                             <button type="button" class="dropdown-item ays-survey-collapse-section-questions"><?php echo esc_html__( 'Collapse section questions', "survey-maker" ); ?></button>
                                             <input type="checkbox" hidden class="make-questions-required-checkbox">
                                             <button type="button" class="dropdown-item ays-survey-section-questions-required" data-flag="off"><?php echo esc_html__( 'Make questions required', "survey-maker" ); ?> <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/done.svg" class="ays-survey-required-section-img"></button>
-                                            <button type="button" class="dropdown-item ays-survey-delete-section display_none"><?php echo esc_html__( 'Delete section', "survey-maker" ); ?></button>
                                             <button type="button" class="dropdown-item ays-survey-duplicate-section"><?php echo esc_html__( 'Duplicate section', "survey-maker" ); ?></button>
+                                            <button type="button" class="dropdown-item ays-survey-delete-section display_none"><?php echo esc_html__( 'Delete section', "survey-maker" ); ?></button>
                                         </div>
                                     </div>
                                 </div>
@@ -165,6 +165,7 @@
                             <div class="ays-survey-section-questions">
                                 <div class="ays-survey-question-answer-conteiner ays-survey-new-question" data-name="questions_add" data-id="1">
                                     <input type="hidden" class="ays-survey-question-collapsed-input" name="<?php echo esc_attr($html_name_prefix); ?>section_add[1][questions_add][1][options][collapsed]" value="expanded">
+                                    <input type="hidden" class="ays-survey-question-admin-note-saver" name="<?php echo esc_attr($html_name_prefix); ?>section_add[1][questions_add][1][options][enable_admin_note]" value="off">
                                     <div class="ays-survey-question-wrap-collapsed display_none">
                                         <div class="ays-survey-question-dlg-dragHandle">
                                             <div class="ays-survey-icons ays-survey-icons-hidden">
@@ -215,7 +216,7 @@
                                                         <div class="ays-survey-question-input-box">
                                                             <textarea class="ays-survey-remove-default-border ays-survey-question-input-textarea ays-survey-question-input ays-survey-input"
                                                                 name="<?php echo esc_attr($html_name_prefix); ?>section_add[1][questions_add][1][title]"
-                                                                placeholder="<?php echo esc_attr__( 'Question', "survey-maker" ); ?>" style="height: 24px;"></textarea>
+                                                                placeholder="<?php echo esc_attr__( 'Question', "survey-maker" ); ?>" style="height: 24px;"><?php echo esc_html__( 'Default question', "survey-maker" ); ?></textarea>
                                                             <input type="hidden" name="<?php echo esc_attr($html_name_prefix); ?>question_ids[]" value="">
                                                             <div class="ays-survey-input-underline"></div>
                                                             <div class="ays-survey-input-underline-animation"></div>
@@ -687,7 +688,7 @@
                                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/dragndrop-vertical.svg">
                                                         </div>
                                                     </div>
-                                                    <div class="ays-survey-answer-icon-box ays-survey-answer-icon-just">
+                                                    <div class="ays-survey-answer-icon-box ays-survey-answer-icon-just ays-survey-display-none">
                                                         <div class="ays-survey-icons">
                                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/radio-button-unchecked.svg">
                                                         </div>
@@ -873,6 +874,20 @@
                                                 <hr>
                                             </div>
                                             <!-- Number limitations end -->
+                                            <!-- Admin note -->
+                                            <div class="ays-survey-question-admin-note display_none">
+                                                <div class="ays-survey-answer-box" style="margin: 20px 0px;">
+                                                    <label class="ays-survey-question-admin-note-label">
+                                                        <span><?php echo esc_html__( "Admin note", "survey-maker" ); ?></span>
+                                                        <input type="text" class="ays-survey-input" autocomplete="off" tabindex="0" 
+                                                            placeholder="<?php echo esc_attr__( "Your example here", "survey-maker" ); ?>" style="font-size: 14px;" 
+                                                            name="<?php echo esc_attr($html_name_prefix); ?>section_add[1][questions_add][1][options][admin_note]"
+                                                            value="" >
+                                                        <div class="ays-survey-input-underline"></div> 
+                                                        <div class="ays-survey-input-underline-animation"></div>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="ays-survey-actions-row">
                                             <div class="ays-survey-actions-left">
@@ -950,27 +965,32 @@
                                                         <button type="button" class="dropdown-item ays-survey-question-action" data-action="copy-question-id">
                                                             <?php echo esc_html__( 'Question ID', "survey-maker" ); ?>
                                                             <strong class="ays-survey-shortcode-box" onClick="selectElementContents(this)" style="font-size:16px; font-style:normal;" class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" > <?php echo esc_attr($id); ?></strong>
-                                                        </button>                                                        
+                                                        </button>
+                                                        <button type="button" class="dropdown-item ays-survey-question-action" data-action="enable-admin-note">
+                                                            <img class="ays-survey-question-action-icon display_none" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/done.svg">
+                                                            <?php echo esc_html__( 'Admin note', "survey-maker" ); ?>
+                                                        </button>        
                                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro ays-survey-question-actions-pro-button <?php echo in_array( $survey_default_type, $logic_jump_question_types ) ? '' : 'display_none'; ?>" data-action="go-to-section-based-on-answers-enable" data-video-url="https://www.youtube.com/watch?v=BTeCGFKJmlk" data-option-title="<?php echo esc_attr__('Logic Jump',"survey-maker")?>" data-option-text="Logic Jump allows to create <strong> responsive surveys </strong> that save the survey taker's time by skipping irrelevant questions or sections. Add more logic to your surveys with a few clicks by choosing the necessary set of questions you want to follow a particular question. Note that this feature works only with <strong> “Radio” </strong> and <strong> “Yes or No” </strong> questions. ">
-                                                            <?php echo esc_html__( 'Logic jump', "survey-maker" ); ?> (Pro) 
+                                                            <span class="survey_pro_span_style">
+                                                            <?php echo esc_html__( 'Logic jump', "survey-maker" ); ?> (Pro)</span> 
                                                         </button>
                                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-user-explanation" style="font-style: italic;">
-                                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'User explanation', "survey-maker" ); ?> (Pro) </a>
+                                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'User explanation', "survey-maker" ); ?> (Pro)</span>  </a>
                                                         </button>
                                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="disable-hide-results" style="font-style: italic;">
                                                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Hide results', "survey-maker" ); ?> (Pro) </a>
                                                         </button>
-                                                        <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-admin-note">
-                                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Admin note', "survey-maker" ); ?> (Pro) </a>
-                                                        </button>
                                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro ays-survey-question-actions-pro-button" data-action="enable-url-parameter" data-video-url="https://www.youtube.com/watch?v=1nvOtwlmVAo" data-option-title="<?php echo esc_attr__('URL parametr',"survey-maker")?>" data-option-text="The URL parameter is a great tool <strong> to help you collect and analyze your submission results easier. </strong> It is handy when you need to share your survey on various platforms to identify where the respondents came from. You can also use this feature when you know some information about your survey takers and want to save their time and ensure the accuracy of the survey. URL Parameter is more popular with the <strong> hidden question type </strong> because you can share the surveys with specific scenarios. For instance, if you need to send your survey to the Marketing and Development team employees, you can assign URL parameters, and it will be easier to track and analyze the results separately.  ">
-                                                            <a href="#" ><?php echo esc_html__( 'URL parametr', "survey-maker" ); ?> (Pro) </a>
+                                                            <a href="#" >
+                                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'URL parametr', "survey-maker" ); ?> (Pro)</span>  </a>
                                                         </button>
                                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-value-prefix">
                                                             <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Value prefix', "survey-maker" ); ?> (Pro) </a>
                                                         </button>
                                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-value-suffix">
-                                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Value suffix', "survey-maker" ); ?> (Pro) </a>
+                                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'Value suffix', "survey-maker" ); ?> (Pro)</span>  </a>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -1114,8 +1134,8 @@
                                                 <button type="button" class="dropdown-item ays-survey-collapse-section-questions"><?php echo esc_html__( 'Collapse section questions', "survey-maker" ); ?></button>
                                                 <input type="checkbox" hidden class="make-questions-required-checkbox" >
                                                 <button type="button" class="dropdown-item ays-survey-section-questions-required" data-flag="off"><?php echo esc_html__( 'Make questions required', "survey-maker" ); ?> <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/done.svg" class="ays-survey-required-section-img"></button>
-                                                <button type="button" class="dropdown-item ays-survey-delete-section <?php echo $multiple_sections ? '' : 'display_none'; ?>"><?php echo esc_html__( 'Delete section', "survey-maker" ); ?></button>
                                                 <button type="button" class="dropdown-item ays-survey-duplicate-section"><?php echo esc_html__( 'Duplicate section', "survey-maker" ); ?></button>
+                                                <button type="button" class="dropdown-item ays-survey-delete-section <?php echo $multiple_sections ? '' : 'display_none'; ?>"><?php echo esc_html__( 'Delete section', "survey-maker" ); ?></button>
                                             </div>
                                         </div>
                                     </div>
@@ -1130,6 +1150,7 @@
                                         ?>
                                         <div class="ays-survey-question-answer-conteiner ays-survey-old-question" data-name="questions" data-id="<?php echo esc_attr($question['id']); ?>">
                                             <input type="hidden" class="ays-survey-question-collapsed-input" name="<?php echo esc_attr($html_name_prefix); ?>sections[<?php echo esc_attr($section['id']); ?>][questions][<?php echo esc_attr($question['id']); ?>][options][collapsed]" value="<?php echo esc_attr($question['options']['collapsed']); ?>">
+                                            <input type="hidden" class="ays-survey-question-admin-note-saver" name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][enable_admin_note]" value="<?php echo $question['options']['enable_admin_note'] ? 'on' : 'off'; ?>">
                                             <div class="ays-survey-question-wrap-collapsed <?php echo $question['options']['collapsed'] == 'expanded' ? 'display_none' : ''; ?>">
                                                 <div class="ays-survey-question-dlg-dragHandle">
                                                     <div class="ays-survey-icons ays-survey-icons-hidden">
@@ -1601,7 +1622,7 @@
                                                                     <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/dragndrop-vertical.svg">
                                                                 </div>
                                                             </div>
-                                                            <div class="ays-survey-answer-icon-box ays-survey-answer-icon-just">
+                                                            <div class="ays-survey-answer-icon-box ays-survey-answer-icon-just ays-survey-display-none">
                                                                 <div class="ays-question-img-icon-content">
                                                                     <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/<?php echo esc_attr($selected_anser_i_class); ?>.svg">
                                                                 </div>
@@ -1816,6 +1837,21 @@
                                                         <hr>
                                                     </div>
                                                     <!-- Number limitations end -->
+                                                    <!-- Admin note start -->
+                                                    <div class="ays-survey-question-admin-note <?php echo $question['options']['enable_admin_note'] ? "" : "display_none";?>">
+                                                        <div class="ays-survey-answer-box" style="margin: 20px 0px;">
+                                                            <label class="ays-survey-question-admin-note-label">
+                                                                <span><?php echo __( "Admin note", SURVEY_MAKER_NAME ); ?></span>
+                                                                <input type="text" class="ays-survey-input" autocomplete="off" tabindex="0" 
+                                                                    placeholder="<?php echo __( "Your example here", SURVEY_MAKER_NAME ); ?>" style="font-size: 14px;" 
+                                                                    name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][admin_note]" 
+                                                                    value="<?php echo $question['options']['admin_note']; ?>" min="0">
+                                                                <div class="ays-survey-input-underline"></div> 
+                                                                <div class="ays-survey-input-underline-animation"></div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Admin note end -->
                                                 </div>
                                                 <div class="ays-survey-actions-row">
                                                     <div class="ays-survey-actions-left">
@@ -1893,27 +1929,34 @@
                                                                 <button type="button" class="dropdown-item ays-survey-question-action" data-action="copy-question-id">
                                                                     <i><?php echo esc_html__( 'Question ID', "survey-maker" ) . ": "; ?></i>
                                                                     <strong class="ays-survey-shortcode-box" onClick="selectElementContents(this)" style="font-size:16px; font-style:normal;" class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" > <?php echo esc_attr($question['id']); ?></strong>
-                                                                </button>                                                                
+                                                                </button>
+                                                                <button type="button" class="dropdown-item ays-survey-question-action" data-action="<?php echo $question['options']['enable_admin_note'] ? "disable-admin-note" : "enable-admin-note"; ?>">
+                                                                    <img class="ays-survey-question-action-icon <?php echo $question['options']['enable_admin_note'] ? '' : 'display_none'; ?>" src="<?php echo SURVEY_MAKER_ADMIN_URL; ?>/images/icons/done.svg">
+                                                                    <?php echo __( 'Admin Note', SURVEY_MAKER_NAME ); ?>
+                                                                </button>                        
                                                                 <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro ays-survey-question-actions-pro-button <?php echo in_array( $survey_default_type, $logic_jump_question_types ) ? '' : 'display_none'; ?>" data-action="go-to-section-based-on-answers-enable" data-video-url="https://www.youtube.com/watch?v=BTeCGFKJmlk" data-option-title="<?php echo esc_attr__('Logic Jump',"survey-maker")?>" data-option-text="Logic Jump allows to create <strong> responsive surveys </strong> that save the survey taker's time by skipping irrelevant questions or sections. Add more logic to your surveys with a few clicks by choosing the necessary set of questions you want to follow a particular question. Note that this feature works only with <strong> “Radio” </strong> and <strong> “Yes or No” </strong> questions. ">
-                                                                    <?php echo esc_html__( 'Logic jump', "survey-maker" ); ?> (Pro) 
+                                                                    <span class="survey_pro_span_style">
+                                                                    <?php echo esc_html__( 'Logic jump', "survey-maker" ); ?> (Pro)</span>  
                                                                 </button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-user-explanation" style="font-style: italic;">
-                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'User explanation', "survey-maker" ); ?> (Pro) </a>
+                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                                        <span class="survey_pro_span_style"><?php echo esc_html__( 'User explanation', "survey-maker" ); ?> (Pro)</span>  </a>
                                                                 </button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="disable-hide-results" style="font-style: italic;">
-                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Hide results', "survey-maker" ); ?> (Pro) </a>
-                                                                </button>
-                                                                <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-admin-note">
-                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Admin note', "survey-maker" ); ?> (Pro) </a>
+                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                                        <span class="survey_pro_span_style"><?php echo esc_html__( 'Hide results', "survey-maker" ); ?> (Pro)</span>  </a>
                                                                 </button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro ays-survey-question-actions-pro-button" data-action="enable-url-parameter" data-video-url="https://www.youtube.com/watch?v=1nvOtwlmVAo" data-option-title="<?php echo esc_attr__('URL parametr',"survey-maker")?>" data-option-text="The URL parameter is a great tool <strong> to help you collect and analyze your submission results easier. </strong> It is handy when you need to share your survey on various platforms to identify where the respondents came from. You can also use this feature when you know some information about your survey takers and want to save their time and ensure the accuracy of the survey. URL Parameter is more popular with the <strong> hidden question type </strong> because you can share the surveys with specific scenarios. For instance, if you need to send your survey to the Marketing and Development team employees, you can assign URL parameters, and it will be easier to track and analyze the results separately.  ">
-                                                                    <a href="#" ><?php echo esc_html__( 'URL parametr', "survey-maker" ); ?> (Pro) </a>
+                                                                    <a href="#" >
+                                                                        <span class="survey_pro_span_style"><?php echo esc_html__( 'URL parametr', "survey-maker" ); ?> (Pro)</span>  </a>
                                                                 </button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-value-prefix">
-                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Value prefix', "survey-maker" ); ?> (Pro) </a>
+                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                                        <span class="survey_pro_span_style"><?php echo esc_html__( 'Value prefix', "survey-maker" ); ?> (Pro)</span>  </a>
                                                                 </button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-value-suffix">
-                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Value suffix', "survey-maker" ); ?> (Pro) </a>
+                                                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                                        <span class="survey_pro_span_style"><?php echo esc_html__( 'Value suffix', "survey-maker" ); ?> (Pro)</span>  </a>
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -2078,6 +2121,7 @@
             <div class="ays-question-to-clone display_none">
                 <div class="ays-survey-question-answer-conteiner ays-survey-new-question" data-name="questions_add" data-id="1">
                     <input type="hidden" class="ays-survey-question-collapsed-input" value="expanded">
+                    <input type="hidden" class="ays-survey-question-admin-note-saver" value="off">
                     <div class="ays-survey-question-wrap-collapsed display_none">
                         <div class="ays-survey-question-dlg-dragHandle">
                             <div class="ays-survey-icons ays-survey-icons-hidden">
@@ -2121,7 +2165,7 @@
                                 <div class="ays-survey-question-row">
                                     <div class="ays-survey-question-box">
                                         <div class="ays-survey-question-input-box">
-                                            <textarea type="text" class="ays-survey-remove-default-border ays-survey-question-input-textarea ays-survey-question-input ays-survey-input" placeholder="<?php echo esc_attr__( 'Question', "survey-maker" ); ?>"style="height: 24px;"></textarea>
+                                            <textarea type="text" class="ays-survey-remove-default-border ays-survey-question-input-textarea ays-survey-question-input ays-survey-input" placeholder="<?php echo esc_attr__( 'Question', "survey-maker" ); ?>"style="height: 24px;"><?php echo esc_html__( 'Default question', "survey-maker" ); ?></textarea>
                                             <input type="hidden" value="">
                                             <div class="ays-survey-input-underline"></div>
                                             <div class="ays-survey-input-underline-animation"></div>
@@ -2327,7 +2371,7 @@
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/dragndrop-vertical.svg">
                                         </div>
                                     </div>
-                                    <div class="ays-survey-answer-icon-box ays-survey-answer-icon-just">
+                                    <div class="ays-survey-answer-icon-box ays-survey-answer-icon-just ays-survey-display-none">
                                         <div class="ays-survey-icons">
                                             <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/radio-button-unchecked.svg">
                                         </div>
@@ -2502,6 +2546,19 @@
                                 <hr>
                             </div>
                             <!-- Number limitations end -->
+                            <!-- Admin note -->
+                            <div class="ays-survey-question-admin-note display_none">
+                                <div class="ays-survey-answer-box" style="margin: 20px 0px;">
+                                    <label class="ays-survey-question-admin-note-label">
+                                        <span><?php echo esc_html__( "Admin note", "survey-maker" ); ?></span>
+                                        <input type="text" class="ays-survey-input" autocomplete="off" tabindex="0" 
+                                            placeholder="<?php echo esc_attr__( "Your example here", "survey-maker" ); ?>" style="font-size: 14px;"                                            
+                                            value="" min="0">
+                                        <div class="ays-survey-input-underline"></div> 
+                                        <div class="ays-survey-input-underline-animation"></div>
+                                    </label>
+                                </div>
+                            </div>
                         </div> 
                         <div class="ays-survey-actions-row">
                             <div class="ays-survey-actions-left">
@@ -2575,27 +2632,34 @@
                                         <button type="button" class="dropdown-item ays-survey-question-action" data-action="move-to-section"><?php echo esc_html__( 'Move to section', "survey-maker" ); ?></button>
                                         <button type="button" class="dropdown-item ays-survey-question-action" data-action="max-selection-count-enable"><?php echo esc_html__( 'Enable selection count', "survey-maker" ); ?></button>
                                         <button type="button" class="dropdown-item ays-survey-question-action" data-action="word-limitation-enable"><?php echo esc_html__( 'Enable word limitation', "survey-maker" ); ?></button>
-                                        <button type="button" class="dropdown-item ays-survey-question-action" data-action="number-word-limitation-enable"><?php echo esc_html__( 'Enable limitation', "survey-maker" ); ?></button>                                        
+                                        <button type="button" class="dropdown-item ays-survey-question-action" data-action="number-word-limitation-enable"><?php echo esc_html__( 'Enable limitation', "survey-maker" ); ?></button>
+                                        <button type="button" class="dropdown-item ays-survey-question-action" data-action="enable-admin-note">
+                                            <img class="ays-survey-question-action-icon display_none" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/done.svg">
+                                            <?php echo esc_html__( 'Admin note', "survey-maker" ); ?>
+                                        </button>
                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro ays-survey-question-actions-pro-button <?php echo in_array( $survey_default_type, $logic_jump_question_types ) ? '' : 'display_none'; ?>" data-action="go-to-section-based-on-answers-enable" data-video-url="https://www.youtube.com/watch?v=BTeCGFKJmlk" data-option-title="<?php echo esc_attr__('Logic Jump',"survey-maker")?>" data-option-text="Logic Jump allows to create <strong> responsive surveys </strong> that save the survey taker's time by skipping irrelevant questions or sections. Add more logic to your surveys with a few clicks by choosing the necessary set of questions you want to follow a particular question. Note that this feature works only with <strong> “Radio” </strong> and <strong> “Yes or No” </strong> questions. ">
-                                            <?php echo esc_html__( 'Logic jump', "survey-maker" ); ?> (Pro) 
+                                            <span class="survey_pro_span_style">
+                                            <?php echo esc_html__( 'Logic jump', "survey-maker" ); ?> (Pro)</span>  
                                         </button>
                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-user-explanation" style="font-style: italic;">
-                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'User explanation', "survey-maker" ); ?> (Pro) </a>
+                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'User explanation', "survey-maker" ); ?> (Pro)</span>  </a>
                                         </button>
                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="disable-hide-results" style="font-style: italic;">
-                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Hide results', "survey-maker" ); ?> (Pro) </a>
-                                        </button>
-                                        <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-admin-note">
-                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Admin note', "survey-maker" ); ?> (Pro) </a>
-                                        </button>
+                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'Hide results', "survey-maker" ); ?> (Pro)</span>  </a>
+                                        </button>                             
                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro ays-survey-question-actions-pro-button" data-action="enable-url-parameter" data-video-url="https://www.youtube.com/watch?v=1nvOtwlmVAo" data-option-title="<?php echo esc_attr__('URL parametr',"survey-maker")?>" data-option-text="The URL parameter is a great tool <strong> to help you collect and analyze your submission results easier. </strong> It is handy when you need to share your survey on various platforms to identify where the respondents came from. You can also use this feature when you know some information about your survey takers and want to save their time and ensure the accuracy of the survey. URL Parameter is more popular with the <strong> hidden question type </strong> because you can share the surveys with specific scenarios. For instance, if you need to send your survey to the Marketing and Development team employees, you can assign URL parameters, and it will be easier to track and analyze the results separately.  ">
-                                            <a href="#" ><?php echo esc_html__( 'URL parametr', "survey-maker" ); ?> (Pro) </a>
+                                            <a href="#" >
+                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'URL parametr', "survey-maker" ); ?> (Pro)</span>  </a>
                                         </button>
                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-value-prefix">
-                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Value prefix', "survey-maker" ); ?> (Pro) </a>
+                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'Value prefix', "survey-maker" ); ?> (Pro)</span>  </a>
                                         </button>
                                         <button type="button" class="dropdown-item ays-survey-question-action ays-survey-question-actions-pro" data-action="enable-value-suffix">
-                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank"><?php echo esc_html__( 'Value suffix', "survey-maker" ); ?> (Pro) </a>
+                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                                                <span class="survey_pro_span_style"><?php echo esc_html__( 'Value suffix', "survey-maker" ); ?> (Pro)</span>  </a>
                                         </button>
                                     </div>
                                 </div>
@@ -2668,7 +2732,7 @@
                             <div class="ays-survey-section-head">
                                 <!--  Section Title Start  -->
                                 <div class="ays-survey-section-title-conteiner">
-                                    <input type="text" class="ays-survey-section-title ays-survey-input" tabindex="0" placeholder="<?php echo esc_attr__( 'Section title' , "survey-maker" ); ?>" value=""/>
+                                    <input type="text" class="ays-survey-section-title ays-survey-input" tabindex="0" placeholder="<?php echo esc_attr__( 'Section title' , "survey-maker" ); ?>" value="<?php echo esc_attr__( 'Default section' , "survey-maker" ); ?>"/>
                                     <div class="ays-survey-input-underline"></div>
                                     <div class="ays-survey-input-underline-animation"></div>
                                 </div>
@@ -2703,8 +2767,8 @@
                                             <button type="button" class="dropdown-item ays-survey-collapse-section-questions ays-survey-collapse-sec-quests"><?php echo esc_html__( 'Collapse section questions', "survey-maker" ); ?></button>
                                             <input type="checkbox" hidden class="make-questions-required-checkbox" >
                                             <button type="button" class="dropdown-item ays-survey-section-questions-required" data-flag="off"><?php echo esc_html__( 'Make questions required ', "survey-maker" ); ?> <img class="ays-survey-required-section-img" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/done.svg"></button>
-                                            <button type="button" class="dropdown-item ays-survey-delete-section display_none"><?php echo esc_html__( 'Delete section', "survey-maker" ); ?></button>
                                             <button type="button" class="dropdown-item ays-survey-duplicate-section"><?php echo esc_html__( 'Duplicate section', "survey-maker" ); ?></button>
+                                            <button type="button" class="dropdown-item ays-survey-delete-section display_none"><?php echo esc_html__( 'Delete section', "survey-maker" ); ?></button>
                                         </div>
                                     </div>
                                 </div>

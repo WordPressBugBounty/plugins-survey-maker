@@ -6,8 +6,6 @@
     box-shadow: 0px 3px 4px 0px rgb(188 198 216 / 11%);
     border-radius: 0px 0px 12px 12px;
     background-image: unset;
-    padding-bottom:10px;
-    padding-left:10px;
 }
 
 .ays-notice-banner #navigation-container {
@@ -19,6 +17,11 @@
     justify-content: space-between;
     align-items: stretch;
     align-content: stretch;
+    padding: 20px;
+    padding-right: 0;
+    padding-bottom:10px;
+    padding-left:10px;
+    background-color: #E1EEFF;
 }
 
 .ays-notice-banner .navigation-bar {
@@ -57,27 +60,25 @@
 
 
 .ays-notice-banner .navigation-bar li.take_survay a {
-    color: #F98A0C;
+    color: #EB5757;
 }
 
 .ays-notice-banner .navigation-bar li.take_survay a:hover {
-    color: #F98A0C;
+    color: #C44949;
 }
 
 
 .ays-notice-banner .navigation-bar li a {
-    /* color: #fff; */
-    color: #5561A3;
+    color: #0b328e;
     cursor: pointer;
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 500;
     line-height: 45px;
     margin: 0 0 2em;
     max-width: 160px;
     position: relative;
     text-decoration: none;
-    /* text-transform: uppercase; */
-    text-decoration: underline;
+    text-transform: capitalize;
     width: 100%;
     letter-spacing: 0;
 }
@@ -98,7 +99,7 @@
 .ays-notice-banner .navigation-bar li a:hover{
     outline: unset;
     box-shadow: unset;
-    color: #3E477D;
+    color: #2275ea;
 }
 
 .ays-notice-banner .modile-ddmenu-lg {

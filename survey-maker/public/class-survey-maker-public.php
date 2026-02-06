@@ -341,6 +341,12 @@ class Survey_Maker_Public {
                 $survey_current_time = explode( ' ', current_time( 'mysql' ) );
                 $survey_current_time_only = ($survey_current_time[1]) ? $survey_current_time[1] : '';
 
+                // Current day
+                $survey_current_day  = date_i18n( 'l', strtotime( sanitize_text_field( $_REQUEST['end_date'] ) ) );
+
+                // Current month
+                $survey_current_month  = date_i18n( 'F', strtotime( sanitize_text_field( $_REQUEST['end_date'] ) ) );
+
                 // Get survey author
                 $current_survey_user_data = get_userdata( $survey->author_id );
                 $current_survey_author = '';
@@ -361,6 +367,8 @@ class Survey_Maker_Public {
                 $survey_current_post_id = '';
                 $survey_current_post_author_email = '';
                 $survey_current_post_author_nickname = '';
+                $survey_current_post_author_first_name = '';
+                $survey_current_post_author_last_name = '';
                 $survey_current_post_title = '';
                 if(!empty($survey_additional_wp_data)){
                     if(isset($survey_additional_wp_data['survey_post_type']) && $survey_additional_wp_data['survey_post_type'] == 'post'){
@@ -369,59 +377,67 @@ class Survey_Maker_Public {
 
                     $survey_current_post_author_email = isset($survey_additional_wp_data['survey_post_author_email']) && $survey_additional_wp_data['survey_post_author_email'] != '' ? esc_attr($survey_additional_wp_data['survey_post_author_email']) : '';
                     $survey_current_post_author_nickname = isset($survey_additional_wp_data['survey_current_post_author_nickname']) && $survey_additional_wp_data['survey_current_post_author_nickname'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_nickname']) : '';
+                    $survey_current_post_author_first_name = isset($survey_additional_wp_data['survey_current_post_author_first_name']) && $survey_additional_wp_data['survey_current_post_author_first_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_first_name']) : '';
+                    $survey_current_post_author_last_name = isset($survey_additional_wp_data['survey_current_post_author_last_name']) && $survey_additional_wp_data['survey_current_post_author_last_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_last_name']) : '';
                     $survey_current_post_title = isset($survey_additional_wp_data['survey_current_post_title']) && $survey_additional_wp_data['survey_current_post_title'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_title']) : '';
                 }
 
                 $get_site_title = get_bloginfo('name');
+                $get_site_description = get_bloginfo('description');
 
                 $detectedDevice = Survey_Maker_Data::ays_survey_detected_device_chart();
                 
                 $message_data = array(
-                    'survey_title'                => stripslashes($survey->title),
-                    'survey_id'                   => stripslashes($survey->id),
-                    'post_id'                     => $survey_current_post_id,
-                    'user_name'                   => $user_name,
-                    'user_email'                  => $user_email,
-                    'user_wordpress_email'        => $user_wordpress_email,
-                    'user_id'                     => $user_id,
-                    'questions_count'             => $survey_question_count,
-                    'current_date'                => $survey_current_date,
-                    'current_time'                => $survey_current_time_only,
-                    'unique_code'                 => $result_unique_code,
-                    'sections_count'              => $survey_sections_count,
-                    'users_count'                 => $survey_passed_users_count,
-                    'users_first_name'            => $user_first_name,
-                    'users_last_name'             => $user_last_name,
-                    'users_nick_name'             => $user_nick_name,
-                    'users_display_name'          => $user_display_name,
-                    'users_ip_address'            => $user_ip_address,
-                    'user_wordpress_roles'        => $user_wordpress_roles,
-                    'creation_date'               => date_i18n( get_option( 'date_format' ), strtotime( sanitize_text_field( $survey->date_created ) ) ),
-                    'modified_date'               => $survey_modified_date,
-                    'current_survey_author'       => $current_survey_author,
-                    'current_survey_author_email' => $current_survey_author_email,
-                    'current_survey_page_link'    => $survey_current_page_link_html,
-                    'admin_email'                 => $super_admin_email,
-                    'home_page_url'               => $wp_home_page_url,
-                    'post_author_email'           => $survey_current_post_author_email,
-                    'post_author_nickname'        => $survey_current_post_author_nickname,
-                    'post_title'                  => $survey_current_post_title,
-                    'site_title'                  => $get_site_title,
+                    'survey_title'                   => stripslashes($survey->title),
+                    'survey_id'                      => stripslashes($survey->id),
+                    'post_id'                        => $survey_current_post_id,
+                    'user_name'                      => $user_name,
+                    'user_email'                     => $user_email,
+                    'user_wordpress_email'           => $user_wordpress_email,
+                    'user_id'                        => $user_id,
+                    'questions_count'                => $survey_question_count,
+                    'current_date'                   => $survey_current_date,
+                    'current_time'                   => $survey_current_time_only,
+                    'current_day'                    => $survey_current_day,
+                    'current_month'                  => $survey_current_month,
+                    'unique_code'                    => $result_unique_code,
+                    'sections_count'                 => $survey_sections_count,
+                    'users_count'                    => $survey_passed_users_count,
+                    'users_first_name'               => $user_first_name,
+                    'users_last_name'                => $user_last_name,
+                    'users_nick_name'                => $user_nick_name,
+                    'users_display_name'             => $user_display_name,
+                    'users_ip_address'               => $user_ip_address,
+                    'user_wordpress_roles'           => $user_wordpress_roles,
+                    'creation_date'                  => date_i18n( get_option( 'date_format' ), strtotime( sanitize_text_field( $survey->date_created ) ) ),
+                    'modified_date'                  => $survey_modified_date,
+                    'current_survey_author'          => $current_survey_author,
+                    'current_survey_author_email'    => $current_survey_author_email,
+                    'current_survey_page_link'       => $survey_current_page_link_html,
+                    'admin_email'                    => $super_admin_email,
+                    'home_page_url'                  => $wp_home_page_url,
+                    'post_author_email'              => $survey_current_post_author_email,
+                    'post_author_nickname'           => $survey_current_post_author_nickname,
+                    'post_author_first_name'         => $survey_current_post_author_first_name,
+                    'post_author_last_name'          => $survey_current_post_author_last_name,
+                    'post_title'                     => $survey_current_post_title,
+                    'site_title'                     => $get_site_title,
+                    'site_description'               => $get_site_description,
                 );
 
                 $send_data = array(
-                    'questions_data'              => $questions_data,
-                    'answered_questions'          => $answered_questions,
-                    'survey'                      => $survey,
-                    'questions_ids'               => $survey->question_ids,
-                    'user_id'                     => $user_id,
-                    'user_ip'                     => $user_ip,
-                    'user_name'                   => $user_name,
-                    'user_email'                  => $user_email,
-                    'start_date'                  => current_time( 'mysql' ),
-                    'end_date'                    => current_time( 'mysql' ),
-                    'unique_code'                 => $result_unique_code,
-                    'detectedDevice'              => $detectedDevice,
+                    'questions_data'                 => $questions_data,
+                    'answered_questions'             => $answered_questions,
+                    'survey'                         => $survey,
+                    'questions_ids'                  => $survey->question_ids,
+                    'user_id'                        => $user_id,
+                    'user_ip'                        => $user_ip,
+                    'user_name'                      => $user_name,
+                    'user_email'                     => $user_email,
+                    'start_date'                     => current_time( 'mysql' ),
+                    'end_date'                       => current_time( 'mysql' ),
+                    'unique_code'                    => $result_unique_code,
+                    'detectedDevice'                 => $detectedDevice,
                 );
                 $check_limitations = false;
                 if(isset($options['survey_limit_users']) && $options['survey_limit_users']){
@@ -892,19 +908,9 @@ class Survey_Maker_Public {
                 break;
             case 'ripple':
                 $survey_loader_html = "<div data-class='lds-ripple' data-role='loader' class='ays-loader'><div></div><div></div></div>";
-                break;
-            // case 'text':
-            //     if ($quiz_loader_text_value != '') {
-            //         $survey_loader_html = "
-            //         <div class='ays-loader' data-class='text' data-role='loader'>
-            //             <p class='ays-loader-content'>". $quiz_loader_text_value ."</p>
-            //         </div>";
-            //     }else{
-            //         $survey_loader_html = "<div data-class='lds-ellipsis' data-role='loader' class='ays-loader'><div></div><div></div><div></div><div></div></div>";
-            //     }
-            //     break;
+                break;            
             case 'snake':
-                $survey_loader_html = '<div class="ays-survey-loader" data-class="ays-survey-loader-snake" data-role="loader"><div></div><div></div><div></div><div></div><div></div><div></div></div>';
+                $survey_loader_html = '<div class="ays-survey-loader ays-survey-loader-snake" data-class="ays-survey-loader-snake" data-role="loader"><div></div><div></div><div></div><div></div><div></div><div></div></div>';
             break;
             case 'text':
                 $survey_loader_html = '<div class="ays-survey-loader ays-survey-loader-with-text" data-class="ays-survey-loader-text" data-role="loader">'.$survey_loader_text.'</div>';
@@ -1030,6 +1036,9 @@ class Survey_Maker_Public {
                     $opts['image_caption'] = (isset($opts['image_caption'])) ? stripslashes(esc_attr($opts['image_caption'])) : '';
                     $opts['image_caption_enable'] = (isset($opts['image_caption_enable']) && $opts['image_caption_enable'] == 'on') ? true : false;
 
+                    //Admin note
+                    $opts['enable_admin_note'] = ( isset( $opts['enable_admin_note'] ) && $opts['enable_admin_note'] == 'on' ) ? true : false;
+                    $opts['admin_note'] = isset( $opts['admin_note'] ) && $opts['admin_note'] != '' ? stripslashes( esc_attr( $opts['admin_note'] ) ) : '';
                     
                     if( $section_questions[$question_key]['type'] == 'checkbox' ){
                         $this->options[ 'survey_checkbox_options' ][$question['id']]['enable_max_selection_count'] = $opts['enable_max_selection_count'];
@@ -1242,8 +1251,11 @@ class Survey_Maker_Public {
         }
 
         $survey_current_post_id = get_the_ID();
+        $author_id = get_the_author_meta('ID');
         $survey_current_post_author_email = get_the_author_meta('email');
         $survey_current_post_author_nickname = get_the_author_meta('user_nicename');
+        $survey_current_post_author_first_name = get_the_author_meta( 'first_name', $author_id );
+        $survey_current_post_author_last_name = get_the_author_meta( 'last_name', $author_id );
         $survey_current_post_title = get_the_title();
         
         $survey_additional_wp_data = array(
@@ -1251,6 +1263,8 @@ class Survey_Maker_Public {
             'survey_post_id' => $survey_current_post_id,
             'survey_post_author_email' => $survey_current_post_author_email,
             'survey_current_post_author_nickname' => $survey_current_post_author_nickname,
+            'survey_current_post_author_first_name' => $survey_current_post_author_first_name,
+            'survey_current_post_author_last_name' => $survey_current_post_author_last_name,
             'survey_current_post_title' => $survey_current_post_title,
         );
 
@@ -1502,6 +1516,10 @@ class Survey_Maker_Public {
             $is_minimum  = isset($question['options']['min_selection_count']) && $question['options']['min_selection_count'] != "" ? "true" : "false";
         }
 
+        // Admin note
+        $enable_admin_note = $question['options']['enable_admin_note'];
+        $admin_note = $question['options']['admin_note'];
+
         // Logo Image URL
         $survey_logo_url_validate = "javascript:void(0)";
         $survey_logo_url = isset($this->options['options'][ $this->name_prefix . 'logo_url' ]) && $this->options['options'][ $this->name_prefix . 'logo_url' ] != "" ? $this->options['options'][ $this->name_prefix . 'logo_url' ] : "";
@@ -1665,6 +1683,12 @@ class Survey_Maker_Public {
                 $content[] = '</div>';
                 
             $content[] = '</div>';
+
+            if( $enable_admin_note && $admin_note != "" ){
+                $content[] = "<div class='" . $this->html_class_prefix . "admin-note-main'>
+                    <div class='" . $this->html_class_prefix . "admin-note-inner'><span class='" . $this->html_class_prefix . "admin-note-text'>" . $admin_note . "</span></div>
+                </div>";
+            }
                 
             $content[] = '<div class="' . $this->html_class_prefix . 'question-footer">';
                 if($is_minimum == 'true'){
@@ -2993,6 +3017,12 @@ class Survey_Maker_Public {
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section .' . $this->html_class_prefix . 'question .' . $this->html_class_prefix . 'question-text-error-message {
                 color: #ff0000;
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section .' . $this->html_class_prefix . 'question .' . $this->html_class_prefix . 'admin-note-inner span{
+                color: #000;
+                text-transform: none;
+                font-size: 11px;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'live-bar-main{

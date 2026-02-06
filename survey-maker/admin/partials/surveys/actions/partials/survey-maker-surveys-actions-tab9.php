@@ -21,7 +21,13 @@
             </div>
             <p class="ays-subtitle">Additional condition</p>
             <hr>
-            <div style="display: flex;justify-content: center; align-items: center;position: relative;" class="ays-survey-zindex-for-pro"><iframe width="560" height="315" src="https://www.youtube.com/embed/V4SBc9yiO68" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+            <div style="display: flex;justify-content: center; align-items: center;position: relative;" class="ays-survey-zindex-for-pro">
+                <div class="ays-survey-community-youtube-video">
+                    <div class="ays-survey-youtube-placeholder" data-video-id="V4SBc9yiO68">
+                        <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/conditional-result-video-screenshot.webp'); ?>" width="560" height="315">
+                    </div>
+                </div>
+            </div>
             <div id="ays-survey-condition-container-main">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="ays-survey-action-add-condition appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Add answer">
