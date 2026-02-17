@@ -370,6 +370,7 @@ class Survey_Maker_Public {
                 $survey_current_post_author_display_name = '';
                 $survey_current_post_author_first_name = '';
                 $survey_current_post_author_last_name = '';
+                $survey_current_post_author_website_url = '';
                 $survey_current_post_title = '';
                 if(!empty($survey_additional_wp_data)){
                     if(isset($survey_additional_wp_data['survey_post_type']) && $survey_additional_wp_data['survey_post_type'] == 'post'){
@@ -381,7 +382,12 @@ class Survey_Maker_Public {
                     $survey_current_post_author_display_name = isset($survey_additional_wp_data['survey_current_post_author_display_name']) && $survey_additional_wp_data['survey_current_post_author_display_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_display_name']) : '';
                     $survey_current_post_author_first_name = isset($survey_additional_wp_data['survey_current_post_author_first_name']) && $survey_additional_wp_data['survey_current_post_author_first_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_first_name']) : '';
                     $survey_current_post_author_last_name = isset($survey_additional_wp_data['survey_current_post_author_last_name']) && $survey_additional_wp_data['survey_current_post_author_last_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_last_name']) : '';
+                    $survey_current_post_author_website_url = isset($survey_additional_wp_data['survey_current_post_author_website_url']) && $survey_additional_wp_data['survey_current_post_author_website_url'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_website_url']) : '';
                     $survey_current_post_title = isset($survey_additional_wp_data['survey_current_post_title']) && $survey_additional_wp_data['survey_current_post_title'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_title']) : '';
+                }
+
+                if ( ! empty( $survey_current_post_author_website_url ) ) {
+                    $survey_current_post_author_website_url = '<a href="'.$survey_current_post_author_website_url.'" target="_blank">'.$survey_current_post_author_website_url.'</a>';
                 }
 
                 $get_site_title = get_bloginfo('name');
@@ -390,57 +396,58 @@ class Survey_Maker_Public {
                 $detectedDevice = Survey_Maker_Data::ays_survey_detected_device_chart();
                 
                 $message_data = array(
-                    'survey_title'                      => stripslashes($survey->title),
-                    'survey_id'                         => stripslashes($survey->id),
-                    'post_id'                           => $survey_current_post_id,
-                    'user_name'                         => $user_name,
-                    'user_email'                        => $user_email,
-                    'user_wordpress_email'              => $user_wordpress_email,
-                    'user_id'                           => $user_id,
-                    'questions_count'                   => $survey_question_count,
-                    'current_date'                      => $survey_current_date,
-                    'current_time'                      => $survey_current_time_only,
-                    'current_day'                       => $survey_current_day,
-                    'current_month'                     => $survey_current_month,
-                    'unique_code'                       => $result_unique_code,
-                    'sections_count'                    => $survey_sections_count,
-                    'users_count'                       => $survey_passed_users_count,
-                    'users_first_name'                  => $user_first_name,
-                    'users_last_name'                   => $user_last_name,
-                    'users_nick_name'                   => $user_nick_name,
-                    'users_display_name'                => $user_display_name,
-                    'users_ip_address'                  => $user_ip_address,
-                    'user_wordpress_roles'              => $user_wordpress_roles,
-                    'creation_date'                     => date_i18n( get_option( 'date_format' ), strtotime( sanitize_text_field( $survey->date_created ) ) ),
-                    'modified_date'                     => $survey_modified_date,
-                    'current_survey_author'             => $current_survey_author,
-                    'current_survey_author_email'       => $current_survey_author_email,
-                    'current_survey_page_link'          => $survey_current_page_link_html,
-                    'admin_email'                       => $super_admin_email,
-                    'home_page_url'                     => $wp_home_page_url,
-                    'post_author_email'                 => $survey_current_post_author_email,
-                    'post_author_nickname'              => $survey_current_post_author_nickname,
-                    'post_author_display_name'          => $survey_current_post_author_display_name,
-                    'post_author_first_name'            => $survey_current_post_author_first_name,
-                    'post_author_last_name'             => $survey_current_post_author_last_name,
-                    'post_title'                        => $survey_current_post_title,
-                    'site_title'                        => $get_site_title,
-                    'site_description'                  => $get_site_description,
+                    'survey_title'                          => stripslashes($survey->title),
+                    'survey_id'                             => stripslashes($survey->id),
+                    'post_id'                               => $survey_current_post_id,
+                    'user_name'                             => $user_name,
+                    'user_email'                            => $user_email,
+                    'user_wordpress_email'                  => $user_wordpress_email,
+                    'user_id'                               => $user_id,
+                    'questions_count'                       => $survey_question_count,
+                    'current_date'                          => $survey_current_date,
+                    'current_time'                          => $survey_current_time_only,
+                    'current_day'                           => $survey_current_day,
+                    'current_month'                         => $survey_current_month,
+                    'unique_code'                           => $result_unique_code,
+                    'sections_count'                        => $survey_sections_count,
+                    'users_count'                           => $survey_passed_users_count,
+                    'users_first_name'                      => $user_first_name,
+                    'users_last_name'                       => $user_last_name,
+                    'users_nick_name'                       => $user_nick_name,
+                    'users_display_name'                    => $user_display_name,
+                    'users_ip_address'                      => $user_ip_address,
+                    'user_wordpress_roles'                  => $user_wordpress_roles,
+                    'creation_date'                         => date_i18n( get_option( 'date_format' ), strtotime( sanitize_text_field( $survey->date_created ) ) ),
+                    'modified_date'                         => $survey_modified_date,
+                    'current_survey_author'                 => $current_survey_author,
+                    'current_survey_author_email'           => $current_survey_author_email,
+                    'current_survey_page_link'              => $survey_current_page_link_html,
+                    'admin_email'                           => $super_admin_email,
+                    'home_page_url'                         => $wp_home_page_url,
+                    'post_author_email'                     => $survey_current_post_author_email,
+                    'post_author_nickname'                  => $survey_current_post_author_nickname,
+                    'post_author_display_name'              => $survey_current_post_author_display_name,
+                    'post_author_first_name'                => $survey_current_post_author_first_name,
+                    'post_author_last_name'                 => $survey_current_post_author_last_name,
+                    'post_author_website_url'               => $survey_current_post_author_website_url,
+                    'post_title'                            => $survey_current_post_title,
+                    'site_title'                            => $get_site_title,
+                    'site_description'                      => $get_site_description,
                 );
 
                 $send_data = array(
-                    'questions_data'                    => $questions_data,
-                    'answered_questions'                => $answered_questions,
-                    'survey'                            => $survey,
-                    'questions_ids'                     => $survey->question_ids,
-                    'user_id'                           => $user_id,
-                    'user_ip'                           => $user_ip,
-                    'user_name'                         => $user_name,
-                    'user_email'                        => $user_email,
-                    'start_date'                        => current_time( 'mysql' ),
-                    'end_date'                          => current_time( 'mysql' ),
-                    'unique_code'                       => $result_unique_code,
-                    'detectedDevice'                    => $detectedDevice,
+                    'questions_data'                        => $questions_data,
+                    'answered_questions'                    => $answered_questions,
+                    'survey'                                => $survey,
+                    'questions_ids'                         => $survey->question_ids,
+                    'user_id'                               => $user_id,
+                    'user_ip'                               => $user_ip,
+                    'user_name'                             => $user_name,
+                    'user_email'                            => $user_email,
+                    'start_date'                            => current_time( 'mysql' ),
+                    'end_date'                              => current_time( 'mysql' ),
+                    'unique_code'                           => $result_unique_code,
+                    'detectedDevice'                        => $detectedDevice,
                 );
                 $check_limitations = false;
                 if(isset($options['survey_limit_users']) && $options['survey_limit_users']){
@@ -1260,6 +1267,7 @@ class Survey_Maker_Public {
         $survey_current_post_author_display_name = get_the_author_meta( 'display_name', $author_id );
         $survey_current_post_author_first_name = get_the_author_meta( 'first_name', $author_id );
         $survey_current_post_author_last_name = get_the_author_meta( 'last_name', $author_id );
+        $survey_current_post_author_website_url = get_the_author_meta( 'url', $author_id );
         $survey_current_post_title = get_the_title();
         
         $survey_additional_wp_data = array(
@@ -1270,6 +1278,7 @@ class Survey_Maker_Public {
             'survey_current_post_author_display_name' => $survey_current_post_author_display_name,
             'survey_current_post_author_first_name' => $survey_current_post_author_first_name,
             'survey_current_post_author_last_name' => $survey_current_post_author_last_name,
+            'survey_current_post_author_website_url' => $survey_current_post_author_website_url,
             'survey_current_post_title' => $survey_current_post_title,
         );
 
