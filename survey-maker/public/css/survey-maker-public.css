@@ -706,6 +706,7 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
    border: 0;
    cursor: pointer;
    border-radius: 0px;
+   background-image: unset;
 }
 
 .ays-survey-container .ays-survey-section .ays-survey-simple-button-container .ays-survey-button-content .ays-survey-button {
@@ -917,6 +918,7 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
 .ays-survey-container .ays-survey-section .ays-survey-question.ays-has-error .ays-survey-question-validation-error img ,
 .ays-survey-container .ays-survey-section .ays-survey-question.ays-has-error .ays-survey-votes-count-validation-error img {
    margin-right: 12px;
+   box-shadow: unset;
 }
 
 .ays-survey-container .ays-survey-section .ays-survey-question-input-textarea {

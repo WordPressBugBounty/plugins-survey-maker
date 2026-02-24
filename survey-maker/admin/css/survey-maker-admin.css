@@ -741,7 +741,7 @@ div.ays-top-menu-wrapper {
 }
 div.ays-top-menu-wrapper div.ays-top-menu {
     overflow: hidden;
-    width: 98%;
+    width: 100%;
     margin: auto;
 }
 div.ays-top-menu-wrapper div.ays-top-menu div.ays-top-tab-wrapper {
@@ -749,9 +749,9 @@ div.ays-top-menu-wrapper div.ays-top-menu div.ays-top-tab-wrapper {
     flex-wrap: nowrap;
     transform: translate(0);
     transition: .5s ease-in-out;
-    padding-right: 7px;
+    padding: 0;
     min-width: fit-content;
-    width: 100%;
+    background: revert;
 }
 div.ays-top-menu-wrapper div.ays-top-menu div.ays-top-tab-wrapper a{
     padding: 8px 25px;
@@ -759,6 +759,9 @@ div.ays-top-menu-wrapper div.ays-top-menu div.ays-top-tab-wrapper a{
     display: inline-block;
     flex-grow: 1;
     text-align: center;
+    margin-right: 0;
+    font-weight: 500;
+    color: #333 !important;
 }
 
 
@@ -896,28 +899,54 @@ blockquote span {
 .ays-settings-wrapper {
     display: flex;
 }
+
 .ays-settings-wrapper .nav-tab-wrapper {
     display: flex;
     flex-direction: column;
     min-width: 150px;
     margin-right: 15px;
     border-bottom: none;
+    padding: 0;
 }
+
 .ays-settings-wrapper .nav-tab-wrapper .nav-tab {
     display: block;
     width: 100%;
     border: 1px solid #ccc;
     margin: 0;
     float: none !important;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background: #dcdcde;
 }
+
+.ays-settings-wrapper .nav-tab-wrapper .nav-tab-active, 
+.ays-settings-wrapper .nav-tab-wrapper .nav-tab-active:focus, 
+.ays-settings-wrapper .nav-tab-wrapper .nav-tab-active:focus:active,
+.ays-settings-wrapper .nav-tab-wrapper .nav-tab-active:hover {
+    color: #000;
+    border: 1px solid #ccc;
+    background: #f0f0f1;
+    box-shadow: unset;
+}
+
+.ays-settings-wrapper .nav-tab-wrapper .nav-tab-active {
+    border-bottom: 1px solid #f0f0f1;
+    background: #f0f0f1;
+    color: #000;
+}
+
 .ays-settings-wrapper .nav-tab-wrapper .nav-tab:last-child {
     border-bottom: 1px solid #ccc;
 }
+
 .ays-settings-wrapper .ays-survey-tabs-wrapper {
     width: 100%;
     border-left: 1px solid #ccc;
     padding-left: 15px;
 }
+
 .ays-settings-wrapper .ays-survey-tabs-wrapper p.ays-subtitle {
     margin-top: 0;
 }
@@ -928,8 +957,6 @@ blockquote span {
 }
 
 .chart_div {
-    /*width: 100%;
-    height: 500px;*/
     margin: auto;
 }
 

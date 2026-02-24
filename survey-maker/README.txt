@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 5.2.0.9
+Stable tag: 5.2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.1.0 ( Feb 24, 2026 ) =
+* Improved: Some changes on the admin dashboard
+* Updated: POT file
 
 = 5.2.0.9 ( Feb 17, 2026 ) =
 * Added: Post author Website URL message variable on the general settings

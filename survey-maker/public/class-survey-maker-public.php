@@ -2742,11 +2742,11 @@ class Survey_Maker_Public {
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-header {
-                border-top-color: ' . $this->options[ $this->name_prefix . 'color' ] . ';
+                border-top-color: ' . $this->options[ $this->name_prefix . 'color' ] . ' !important;
             }
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {
-                border-left-color: ' . $this->options[ $this->name_prefix . 'color' ] . ';
+                border-left-color: ' . $this->options[ $this->name_prefix . 'color' ] . ' !important;
             }
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-header,
@@ -2898,6 +2898,11 @@ class Survey_Maker_Public {
                 background-color: ' . $this->options[ $this->name_prefix . 'buttons_bg_color' ] . ';
                 letter-spacing: ' . $this->options[ $this->name_prefix . 'buttons_text_letter_spacing' ] . 'px;
                 height: initial;
+                color: #333 !important;
+            }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons .' . $this->html_class_prefix . 'section-button-container .' . $this->html_class_prefix . 'section-button-content .' . $this->html_class_prefix . 'section-button:hover {
+                color: rgba(51,51,51,0.7) !important;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-buttons .' . $this->html_class_prefix . 'section-button-container {
