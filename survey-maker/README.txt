@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 5.2.1.2
+Stable tag: 5.2.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -331,6 +331,9 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.1.3 ( March 17, 2026 ) =
+* Added: Current Survey author nickname message variable on the general settings
 
 = 5.2.1.2 ( March 10, 2026 ) =
 * Added: Current Survey author display name message variable on the general settings
