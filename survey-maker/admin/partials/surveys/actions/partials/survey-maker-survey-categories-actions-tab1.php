@@ -14,13 +14,16 @@
         </div>
     </div> <!-- Title -->
     <hr/>
-    <div class='ays-field-dashboard'>
-        <label for='ays-description'>
-            <?php echo esc_html__('Description', "survey-maker"); ?>
-            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Provide more information about the survey category. Attach images or any other media to its description if you wish.',"survey-maker")?>">
-                <i class="ays_fa ays_fa_info_circle"></i>
-            </a>
-        </label>
+    <div class="form-group row">
+        <div class="col-sm-2">
+            <label for='ays-description'>
+                <?php echo esc_html__('Description', "survey-maker"); ?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Provide more information about the survey category. Attach images or any other media to its description if you wish.',"survey-maker")?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
+                </a>
+            </label>
+        </div>
+        <div class="col-sm-10">
         <?php
             $content = $description;
             $editor_id = 'ays-description';
@@ -31,6 +34,7 @@
             );
             wp_editor( $content, $editor_id, $settings );
         ?>
+        </div>
     </div> <!-- Description -->
     <hr/>
     <div class="form-group row">

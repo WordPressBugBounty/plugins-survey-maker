@@ -233,6 +233,8 @@ class Survey_Categories_List_Table extends WP_List_Table {
         if( isset( $data["survey_category_action"] ) && wp_verify_nonce( $data["survey_category_action"], 'survey_category_action' ) ){
 
             $name_prefix = 'ays_';
+
+            $survey_allowed_html = Survey_Maker_Data::ays_survey_custom_allowed_html();
             
             // Save type
             $save_type = (isset($data['save_type'])) ? $data['save_type'] : '';
@@ -250,7 +252,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
             // Description
             // Sanitize description to allow only safe HTML tags and remove scripts.
-            $description = isset( $data[ $name_prefix . 'description' ] ) && $data[ $name_prefix . 'description' ] != '' ? stripslashes( wp_kses_post( $data[ $name_prefix . 'description' ] ) ) : '';
+            $description = isset( $data[ $name_prefix . 'description' ] ) && $data[ $name_prefix . 'description' ] != '' ? wp_kses( $data[ $name_prefix . 'description' ], $survey_allowed_html ) : '';
 
             // Status
             $status = isset( $data[ $name_prefix . 'status' ] ) && $data[ $name_prefix . 'status' ] != '' ? stripslashes( sanitize_text_field($data[ $name_prefix . 'status' ]) ) : 'published';
@@ -356,9 +358,13 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
         $survey_category_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories";
         $survey_category_data = self::get_item_by_id( $id );
-        
+
+        $survey_allowed_html = Survey_Maker_Data::ays_survey_custom_allowed_html();
+
         $title = (isset($survey_category_data['title']) && $survey_category_data['title'] != "") ? stripslashes( sanitize_text_field( $survey_category_data['title'] ) ) : __("Copy", 'survey-maker');
-        $description =  (isset($survey_category_data['description']) && $survey_category_data['description'] != "") ? wp_kses_post( $survey_category_data['description'] ) : "";
+
+        $description =  (isset( $survey_category_data['description'] ) && $survey_category_data['description'] != "") ? wp_kses( $survey_category_data['description'], $survey_allowed_html ) : "";
+        
         $status = (isset($survey_category_data['status']) && $survey_category_data['status'] != "") ? sanitize_text_field( $survey_category_data['status'] ) : 'published';
         $trash_status = (isset($survey_category_data['trash_status']) && $survey_category_data['trash_status'] != "") ? sanitize_text_field( $survey_category_data['trash_status'] ) : '';
         $date_created  = current_time( 'mysql' );

@@ -284,6 +284,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             $name_prefix = 'ays_';
             
+            $survey_allowed_html = Survey_Maker_Data::ays_survey_custom_allowed_html();
+
             // Save type
             $save_type = (isset($_POST['save_type'])) ? sanitize_text_field( $_POST['save_type'] ) : '';
 
@@ -675,7 +677,7 @@ class Surveys_List_Table extends WP_List_Table {
                 $survey_start_page_title_pos_mobile = (isset( $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] ) : 'center';
 
                 // Start page description
-                $survey_start_page_description = (isset( $_POST[ $name_prefix . 'survey_start_page_description' ] ) && $_POST[ $name_prefix . 'survey_start_page_description' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_start_page_description' ] ) : '';
+                $survey_start_page_description = (isset( $_POST[ $name_prefix . 'survey_start_page_description' ] ) && $_POST[ $name_prefix . 'survey_start_page_description' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_start_page_description' ], $survey_allowed_html ) : '';
 
                 // Start button position
                 $survey_start_page_button_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) : 'left';
@@ -778,10 +780,10 @@ class Surveys_List_Table extends WP_List_Table {
                 $survey_show_timer_type = (isset( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) && $_POST[ $name_prefix . 'survey_show_timer_type' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) ) : 'countdown';
 
                 // Pre start message
-                $survey_schedule_pre_start_message = (isset( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) : __("The survey will be available soon!", "survey-maker");
+                $survey_schedule_pre_start_message = (isset( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ], $survey_allowed_html ) : __("The survey will be available soon!", "survey-maker");
 
                 // Expiration message
-                $survey_schedule_expiration_message = (isset( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) : __("This survey has expired!", "survey-maker");
+                $survey_schedule_expiration_message = (isset( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ], $survey_allowed_html ) : __("This survey has expired!", "survey-maker");
 
                 // Dont Show Survey
                 $survey_dont_show_survey_container = (isset( $_POST[ $name_prefix . 'survey_dont_show_survey_container' ] ) && $_POST[ $name_prefix . 'survey_dont_show_survey_container' ] == 'on') ? 'on' : 'off';
@@ -869,7 +871,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_enable_restart_button = (isset( $_POST[ $name_prefix . 'survey_enable_restart_button' ] ) && $_POST[ $name_prefix . 'survey_enable_restart_button' ] == 'on') ? 'on' : 'off';
 
             // Thank you message
-            $survey_final_result_text = (isset( $_POST[ $name_prefix . 'survey_final_result_text' ] ) && $_POST[ $name_prefix . 'survey_final_result_text' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_final_result_text' ] ) : '';
+            $survey_final_result_text = (isset( $_POST[ $name_prefix . 'survey_final_result_text' ] ) && $_POST[ $name_prefix . 'survey_final_result_text' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_final_result_text' ], $survey_allowed_html ) : '';
 
             // Thank you message
             $survey_main_url = (isset( $_POST[ $name_prefix . 'survey_main_url' ] ) && $_POST[ $name_prefix . 'survey_main_url' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_main_url' ] ) : '';
@@ -882,7 +884,7 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Social share buttons
             $survey_social_buttons   = ( isset( $_POST[ $name_prefix . 'survey_social_buttons' ] ) && $_POST[ $name_prefix . 'survey_social_buttons' ] == 'on' ) ? 'on' : 'off';
-            $survey_social_buttons_heading = ( isset( $_POST[ $name_prefix . 'survey_social_buttons_heading' ] ) && $_POST[ $name_prefix . 'survey_social_buttons_heading' ] != '' ) ? wp_kses_post($_POST[ $name_prefix . 'survey_social_buttons_heading' ]) : '';
+            $survey_social_buttons_heading = ( isset( $_POST[ $name_prefix . 'survey_social_buttons_heading' ] ) && $_POST[ $name_prefix . 'survey_social_buttons_heading' ] != '' ) ? wp_kses( $_POST[ $name_prefix . 'survey_social_buttons_heading' ], $survey_allowed_html ) : '';
             $survey_social_button_ln = ( isset( $_POST[ $name_prefix . 'survey_enable_linkedin_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_linkedin_share_button' ] == 'on' ) ? 'on' : 'off';
             $survey_social_button_fb = ( isset( $_POST[ $name_prefix . 'survey_enable_facebook_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_facebook_share_button' ] == 'on' ) ? 'on' : 'off';
             $survey_social_button_tr = ( isset( $_POST[ $name_prefix . 'survey_enable_twitter_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_twitter_share_button' ] == 'on' ) ? 'on' : 'off';
@@ -914,7 +916,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_max_pass_count = (isset( $_POST[ $name_prefix . 'survey_max_pass_count' ] ) && $_POST[ $name_prefix . 'survey_max_pass_count' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_max_pass_count' ] ) ) : 1;
 
             // Limitation Message
-            $survey_limitation_message = (isset( $_POST[ $name_prefix . 'survey_limitation_message' ] ) && $_POST[ $name_prefix . 'survey_limitation_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_limitation_message' ] ) : '';
+            $survey_limitation_message = (isset( $_POST[ $name_prefix . 'survey_limitation_message' ] ) && $_POST[ $name_prefix . 'survey_limitation_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_limitation_message' ], $survey_allowed_html ) : '';
 
             // Redirect Url
             $survey_redirect_url = (isset( $_POST[ $name_prefix . 'survey_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_redirect_url' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_redirect_url' ] ) ) : '';
@@ -926,7 +928,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_enable_logged_users = (isset( $_POST[ $name_prefix . 'survey_enable_logged_users' ] ) && $_POST[ $name_prefix . 'survey_enable_logged_users' ] == 'on') ? 'on' : 'off';
 
             // Message - Only for logged in users
-            $survey_logged_in_message = (isset( $_POST[ $name_prefix . 'survey_logged_in_message' ] ) && $_POST[ $name_prefix . 'survey_logged_in_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_logged_in_message' ] ) : '';
+            $survey_logged_in_message = (isset( $_POST[ $name_prefix . 'survey_logged_in_message' ] ) && $_POST[ $name_prefix . 'survey_logged_in_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_logged_in_message' ], $survey_allowed_html ) : '';
             
             // Show login form
             $survey_show_login_form = (isset( $_POST[ $name_prefix . 'survey_show_login_form' ] ) && $_POST[ $name_prefix . 'survey_show_login_form' ] == 'on') ? 'on' : 'off';

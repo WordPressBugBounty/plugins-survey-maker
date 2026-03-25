@@ -1026,7 +1026,10 @@ class Survey_Maker_Public {
                 $sections[$section_key]['title'] = (isset($section['title']) && $section['title'] != '') ? stripslashes( esc_html( $section['title'] ) ) : '';
 
                 if ( $this->options[ $this->name_prefix . 'allow_html_in_section_description' ] ) {
-                    $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( wp_kses( stripslashes( $section['description'] ), Survey_Maker_Data::ays_survey_allowed_html()) ) : '';
+
+                    $survey_allowed_html = Survey_Maker_Data::ays_survey_custom_allowed_html();
+
+                    $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( wp_kses( $section['description'] ), $survey_allowed_html ) : '';
                 } else {
                     $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( esc_html( $section['description'] ) ) : '';
                 }

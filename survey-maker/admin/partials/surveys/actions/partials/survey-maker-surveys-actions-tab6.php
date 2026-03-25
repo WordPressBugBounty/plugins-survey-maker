@@ -41,10 +41,10 @@
         </div>
         <div class="col-sm-9">
             <?php
-            $content = $survey_start_page_description;
-            $editor_id = 'ays_survey_start_page_description';
-            $settings = array('editor_height' => $survey_wp_editor_height, 'textarea_name' => 'ays_survey_start_page_description', 'editor_class' => 'ays-textarea', 'media_elements' => true);
-            wp_editor($content, $editor_id, $settings);
+                $content = $survey_start_page_description;
+                $editor_id = 'ays_survey_start_page_description';
+                $settings = array('editor_height' => $survey_wp_editor_height, 'textarea_name' => 'ays_survey_start_page_description', 'editor_class' => 'ays-textarea', 'media_elements' => true);
+                wp_editor($content, $editor_id, $settings);
             ?>
         </div>
     </div> <!-- Start page description -->

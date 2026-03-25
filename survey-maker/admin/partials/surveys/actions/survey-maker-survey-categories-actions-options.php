@@ -65,7 +65,7 @@
     $title = isset( $object['title'] ) && $object['title'] != '' ? stripslashes( htmlentities( $object['title'] ) ) : '';
     
     // Description
-    $description = isset( $object['description'] ) && $object['description'] != '' ? stripslashes( htmlentities( $object['description'] ) ) : '';
+    $description = isset( $object['description'] ) && $object['description'] != '' ? stripslashes( wpautop( $object['description'] ) ) : '';
     
     // Status
     $status = isset( $object['status'] ) && $object['status'] != '' ? strip_tags( stripslashes($object['status']) ) : 'published';
