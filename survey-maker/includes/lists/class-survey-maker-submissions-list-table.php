@@ -69,10 +69,10 @@ class Submissions_List_Table extends WP_List_Table {
                     }
                 ?>
             </select>
-            <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="cat-filter-apply-<?php echo esc_attr( $which ); ?> button ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?>" value="Filter">
+            <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="cat-filter-apply-<?php echo esc_attr( $which ); ?> button action ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?>" value="Filter">
         </div>
         
-        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
+        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
 
     

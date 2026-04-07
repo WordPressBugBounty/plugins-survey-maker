@@ -43,7 +43,7 @@
                             </a>
                         </label>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-9 d-flex">
                         <div class="form-check form-check-inline checkbox_ays">
                             <input type="radio" id="ays_limit_users_by_ip" class="form-check-input" name="ays_survey_limit_users_by" value="ip" <?php echo ($survey_limit_users_by == 'ip') ? 'checked' : ''; ?>/>
                             <label class="form-check-label" for="ays_limit_users_by_ip"><?php echo esc_html__('IP',"survey-maker")?></label>

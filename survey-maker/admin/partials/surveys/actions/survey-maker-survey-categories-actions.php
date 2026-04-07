@@ -39,7 +39,7 @@
                     'data-delay'=> '{"show":"1000"}'
                 );
 
-                submit_button(__('Save', "survey-maker"), 'ays-button ays-survey-loader-banner', 'ays_apply', false, $other_attributes);
+                submit_button(__('Save', "survey-maker"), 'ays-button action ays-survey-loader-banner', 'ays_apply', false, $other_attributes);
 
                 echo wp_kses_post($loader_iamge);
             ?>

@@ -96,10 +96,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
                     }
                 ?>
             </select>
-            <input type="button" id="doaction-survey-<?php echo esc_attr( $which ); ?>" class="ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button" value="<?php echo esc_html__( "Filter", "survey-maker" ); ?>">
+            <input type="button" id="doaction-survey-<?php echo esc_attr( $which ); ?>" class="ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button action" value="<?php echo esc_html__( "Filter", "survey-maker" ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
+        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
     }
 
