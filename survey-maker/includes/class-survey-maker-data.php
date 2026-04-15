@@ -2130,6 +2130,7 @@ class Survey_Maker_Data {
         $current_user_data = get_userdata( $user_id );
         $user_display_name = "";
         $user_wordpress_roles = '';
+        $user_website_url = '';
         $user_email = '';
         
         if ( ! is_null( $current_user_data ) && $current_user_data ) {
@@ -2141,12 +2142,14 @@ class Survey_Maker_Data {
                     $user_wordpress_roles = implode(",", $user_wordpress_roles);
                 }
             }
+            $user_website_url = ( isset( $current_user_data->user_url ) && ! empty( $current_user_data->user_url ) ) ? $current_user_data->user_url : "";
         }
 
-        $message_data['user_display_name']    = $user_display_name;
-        $message_data['user_wordpress_roles'] = $user_wordpress_roles;
-        $message_data['user_wordpress_email'] = $user_email;
-        $message_data['user_ip_address']      = self::get_user_ip();
+        $message_data['user_display_name']      = $user_display_name;
+        $message_data['user_wordpress_roles']   = $user_wordpress_roles;
+        $message_data['user_website_url']       = $user_website_url;
+        $message_data['user_wordpress_email']   = $user_email;
+        $message_data['user_ip_address']        = self::get_user_ip();
 		
         return $message_data;
     }
