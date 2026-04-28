@@ -16,7 +16,7 @@
  * Plugin Name:       Survey Maker
  * Plugin URI:        https://ays-pro.com/wordpress/survey-maker
  * Description:       Survey Maker plugin allows you to create unlimited surveys with unlimited sections and unlimited questions.
- * Version:           5.2.1.8
+ * Version:           5.2.1.9
  * Author:            Survey Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SURVEY_MAKER_VERSION', '5.2.1.8' );
+define( 'SURVEY_MAKER_VERSION', '5.2.1.9' );
 define( 'SURVEY_MAKER_NAME_VERSION', '1.0.0' );
 define( 'SURVEY_MAKER_NAME', 'survey-maker' );
 define( 'SURVEY_MAKER_DB_PREFIX', 'ayssurvey_' );
@@ -137,27 +137,27 @@ function survey_maker_general_admin_notice(){
                         </div>                        
                     </div>
                     <ul id="menu">                        
-                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://ays-demo.com/wordpress-survey-plugin-free-demo/" target="_blank">Demo</a></li>
-                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">Support Forum</a></li>
-                        <li class="modile-ddmenu-lg take_survay"><a class="ays-btn" href="https://ays-demo.com/survey-coupon-code-as-a-gift/" target="_blank">Grab Your Gift</a></li>
-                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">Contact Us</a></li>
+                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://ays-demo.com/wordpress-survey-plugin-free-demo/" target="_blank"><?php echo esc_html__( "Demo", 'secure-copy-content-protection' ); ?></a></li>
+                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Support Forum", 'secure-copy-content-protection' ); ?></a></li>
+                        <li class="modile-ddmenu-lg take_survay"><a class="ays-btn" href="https://ays-demo.com/survey-coupon-code-as-a-gift/" target="_blank"><?php echo esc_html__( "Get 50% discount", 'secure-copy-content-protection' ); ?></a></li>
+                        <li class="modile-ddmenu-lg"><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Contact Us", 'secure-copy-content-protection' ); ?></a></li>
                         <li class="modile-ddmenu-md">
                             <a class="toggle_ddmenu" href="javascript:void(0);"><i class="ays_fa ays_fa_ellipsis_h"></i></a>
                             <ul class="ddmenu" data-expanded="false">
-                                <li><a class="ays-btn" href="https://ays-demo.com/wordpress-survey-plugin-free-demo/" target="_blank">Demo</a></li>
-                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">Support Forum</a></li>
-                                <li class="take_survay"><a class="ays-btn" href="https://ays-demo.com/survey-coupon-code-as-a-gift/" target="_blank">Grab Your Gift</a></li>
-                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">Contact Us</a></li>
+                                <li><a class="ays-btn" href="https://ays-demo.com/wordpress-survey-plugin-free-demo/" target="_blank"><?php echo esc_html__( "Demo", 'secure-copy-content-protection' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Support Forum", 'secure-copy-content-protection' ); ?></a></li>
+                                <li class="take_survay"><a class="ays-btn" href="https://ays-demo.com/survey-coupon-code-as-a-gift/" target="_blank"><?php echo esc_html__( "Get 50% discount", 'secure-copy-content-protection' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Contact Us", 'secure-copy-content-protection' ); ?></a></li>
                             </ul>
                         </li>
                         <li class="modile-ddmenu-sm">
                             <a class="toggle_ddmenu" href="javascript:void(0);"><i class="ays_fa ays_fa_ellipsis_h"></i></a>
                             <ul class="ddmenu" data-expanded="false">
-                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/reviews/?rate=5#new-post" target="_blank">Rate Us</a></li>
-                                <li><a class="ays-btn" href="https://ays-demo.com/wordpress-survey-plugin-free-demo/" target="_blank">Demo</a></li>
-                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">Support Forum</a></li>
-                                <li class="take_survay"><a class="ays-btn" href="https://ays-demo.com/survey-coupon-code-as-a-gift/" target="_blank">Grab Your Gift</a></li>
-                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">Contact Us</a></li>
+                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/reviews/?rate=5#new-post" target="_blank"><?php echo esc_html__( "Rate Us", 'secure-copy-content-protection' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://ays-demo.com/wordpress-survey-plugin-free-demo/" target="_blank"><?php echo esc_html__( "Demo", 'secure-copy-content-protection' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Support Forum", 'secure-copy-content-protection' ); ?></a></li>
+                                <li class="take_survay"><a class="ays-btn" href="https://ays-demo.com/survey-coupon-code-as-a-gift/" target="_blank"><?php echo esc_html__( "Get 50% discount", 'secure-copy-content-protection' ); ?></a></li>
+                                <li><a class="ays-btn" href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Contact Us", 'secure-copy-content-protection' ); ?></a></li>
                             </ul>
                         </li>
                     </ul>

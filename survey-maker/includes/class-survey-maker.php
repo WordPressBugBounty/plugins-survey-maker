@@ -246,7 +246,7 @@ class Survey_Maker {
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_admin_dashboard_menu', 10 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_surveys_submenu', 90 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_survey_categories_submenu', 95 );		
-        $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_survey_front_requests_submenu', 100 );
+        // $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_survey_front_requests_submenu', 100 );
         // $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_questions_categories_submenu', 100 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_submissions_submenu', 105 );
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_export_import_submenu', 110 );
