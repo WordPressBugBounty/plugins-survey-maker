@@ -4,7 +4,8 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.1.9
+Stable tag: 5.2.2.0
+Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,21 +15,98 @@ Create free online surveys and get your visitors' feedbacks directly on your Wor
 
 ### WordPress Survey plugin
 
+**Survey Maker by AYS** is a WordPress plug-in for creating surveys, questionnaires, and survey forms on your website. The plugin enables you to create your survey through the built-in **survey builder** with various question types and publishing through a shortcode. 
+It includes features like **multi-page forms**, **conditional logic**, **survey analytics**, and **popup surveys**, so you can collect feedback, gather insights, and analyze results without external survey tools.
+
+https://www.youtube.com/watch?v=Mdpnq-qNtP0
+
 * [Survey Maker Pricing](https://ays-pro.com/wordpress/survey-maker)
 * [Survey Maker Free Demo](https://ays-demo.com/wordpress-survey-plugin-free-demo)
 * [Survey Maker Pro Demo](https://ays-demo.com/wordpress-survey-plugin-pro-demo)
 * [Survey Maker Documentation](https://ays-pro.com/wordpress-survey-maker-user-manual)
 
+= Create a survey in 3 simple steps: =
 
-https://www.youtube.com/watch?v=Mdpnq-qNtP0
+Create a survey within minutes with the help of our survey builder. 
+There is no need to know anything about coding; you can simply integrate the survey on your website with just a few clicks.
+
+1. Add questions / sections
+2. Customize settings / design
+3. Add shortcode to any post or page
+
+**Survey shortcode**
+
+**[ays_survey id='your survey id']**
+
+= Survey Builder Features =
+
+You can create surveys of any size with **unlimited questions**, **sections**, and **surveys**. 
+This means that you will be able to split your survey into **multiple pages** by simply dragging and dropping questions to different pages. So you can easily arrange questions and sections without any technical knowledge. You will be able to make the questions required, redirect visitors after form submission, and restrict survey submissions based on IP addresses, user roles, and the number of submissions.
 
 
+= Free Features =
 
-[WordPress Survey plugin](https://ays-pro.com/wordpress/survey-maker) is a **powerful**, yet **easy-to-use** WordPress plugin designed for collecting data from a particular group of people and analyze it. You just need to write a list of questions, configure the settings, save and paste the shortcode of the test into your website. Then just start receiving submissions!
-Do you want to conduct research for your research paper, gather leads for your company, extract insights for your market research, test concepts, or just get to know your audience? *Why look elsewhere?*
+**Survey Creation & Design**
+
+- Unlimited Surveys
+- Unlimited Sections
+- Unlimited Questions
+- 14 question types
+- Question Image
+- Responsive design
+- Survey style options (20+)
+- Sections with different count of questions
+
+**Survey Behavior & Control**
+
+- Randomize questions
+- Randomize answers
+- Result message
+- Redirect after submit
+- Popup Survey
+- Restriction by IP and User id
+- Only for logged in users
+
+**Responses & Results**
+
+- Individual submission
+- Submissions summary
 
 
-*Why choose us among other WordPress survey plugins?* We are specialized **ONLY in form building!** Our professional development team is doing its best to create a **must-have**, **feature-rich** questionnaire builder and **constantly improve it** so it will match your needs perfectly. Our feedback form plugin offers a great set of features for implementation. You can check other successful and powerful plugins of ours created by the same logic: Poll Maker, Quiz Maker.
+= [Pro Features](https://ays-pro.com/wordpress/survey-maker) =
+
+**Advanced Surveys & Logic**
+
+- All advanced question types (NPS, Matrix, Ranking, Slider, etc.)
+- Logic jump
+- Conditional Results
+- Conditional Mailing
+- URL parameters
+- Calculation
+- Conversational surveys
+- Multilingual Forms
+- Text To Speech
+- ChatGPT Integration
+
+**Integrations & Automation**
+
+- Email notifications & configuration
+- Mailchimp, Slack, Zapier, Google Sheets, etc.
+- WooCommerce integration
+- Payment integrations (Stripe, PayPal)
+
+**Analytics, Control & Export**
+
+- Results with charts
+- Export (CSV, PDF, etc.)
+- Submission exports
+- Schedule survey
+- Limit attempts
+- User roles & permissions
+- Password protection
+- User history
+
+Didn't find the feature you're looking for in the Survey Maker plugin? You're welcome to [suggest a new feature](https://wordpress.org/support/plugin/survey-maker/).
 
 
 **Survey Demos (Free)**
@@ -39,26 +117,22 @@ Do you want to conduct research for your research paper, gather leads for your c
 
 **Survey Demos (Pro)**
 
-* [Survey with Skip Logic (Branching)](https://ays-demo.com/survey-with-skip-logic/)
-* [Form with Conditional Results](https://ays-demo.com/survey-with-conditional-results-get-your-personal-diet-plan/)
-* [Conversational Survey (Chat)](https://ays-demo.com/conversational-survey/)
-* [Questionnaire with question types](https://ays-demo.com/survey-with-matrix/)
+* [Conditional Logic Survey (Skip Logic Form)](https://ays-demo.com/survey-with-skip-logic/)
+* [Survey with Personalized Results](https://ays-demo.com/survey-with-conditional-results-get-your-personal-diet-plan/)
+* [Conversational Survey Form (Chat Style Survey)](https://ays-demo.com/conversational-survey/)
+* [Survey with Multiple Question Types](https://ays-demo.com/survey-with-matrix/)
 * [Net Promoter Score(NPS) Survey](https://ays-demo.com/net-promoter-score-nps-survey-demo/)
-* [Contact Form](https://ays-demo.com/contact-form/)
+* [Simple Contact Form Template](https://ays-demo.com/contact-form/)
 * [Popup Survey](https://ays-demo.com/wordpress-popup-survey/)
-* [Social Media Test](https://ays-demo.com/social-media-survey/) (Modern theme)
+* [Social Media Survey Template](https://ays-demo.com/social-media-survey/) (Modern theme)
 * [Health Questionnaire](https://ays-demo.com/health-questionnaire/) (Elegant theme)
-* [Demographic Quiz](https://ays-demo.com/demographic-surveys/) (Business theme)
+* [Demographic Survey](https://ays-demo.com/demographic-surveys/) (Business theme)
 * [Password-Protected Form](https://ays-demo.com/job-satisfaction-survey/)
 
-= EASY-TO-USE | USER-FRIENDLY | RESPONSIVE DESIGN =
-Not a tech person? No problem. The plugin is **100% beginner-friendly** and no coding skills are required. You can easily create engaging and at the same time advanced forms that will fulfill all your needs. Also, this WordPress survey plugin is **mobile-friendly**, so your responders can take the quiz with all types of screens such as mobile devices or tablets. And, most importantly, our support care specialists are easily accessible and always happy to help you and answer any questions you might have! Feel free to post them on the following [FREE SUPPORT FORUM](https://wordpress.org/support/plugin/survey-maker/).
+= Design & Customization =
 
-*What could be more perfect? Start serving better your customers and consumers now!*
-After setting up the survey's settings, you just need to copy the shortcode of it and embed it into any post or page on your WordPress website:
-> <strong>Survey shortcode</strong><br>
-> <strong>[ays_survey id='your survey id']</strong>
-
+There are more than 30 options for customizing the look of your survey to fit the theme of your website. The plugin has a number of built-in templates, and you have options to modify the colors, fonts, buttons, and other layout choices to ensure that the survey fits in with your website theme.
+You can also control how questions and answers are displayed, which helps improve readability and makes the survey easier to complete.
 
 = 20+ TYPES OF SURVEY QUESTIONS =
 
@@ -71,153 +145,78 @@ The Survey Maker offers the most famous question types for creating successful q
 * Short Text 
 * Number
 * Yes or No
-* Date ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Time ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Date and Time ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Star Rating ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Ranking ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Linear Scale ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Matrix Scale ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Matrix Scale Checkbox ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Slider ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* File Upload ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Star List ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Slider List ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Hidden ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* HTML ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Phone ([Pro](https://ays-pro.com/wordpress/survey-maker))
-* Net Promoter Score ([Pro](https://ays-pro.com/wordpress/survey-maker))
+* Date (Pro)
+* Time (Pro)
+* Date and Time (Pro)
+* Star Rating (Pro)
+* Ranking (Pro)
+* Linear Scale (Pro)
+* Matrix Scale (Pro)
+* Matrix Scale Checkbox (Pro)
+* Slider (Pro)
+* File Upload (Pro)
+* Star List (Pro)
+* Slider List (Pro)
+* Hidden (Pro)
+* HTML (Pro)
+* Phone (Pro)
+* Net Promoter Score (Pro)
 * Name field 
 * Email field 
  and many more are coming!
  
-
 [Survey with different question types - Demo](https://ays-demo.com/survey-with-matrix/)
- 
-You can create either open-ended questions as well as close-ended ones with predefined responses. Once you're familiar with the type of questions our form builder offers, you'll be able to connect all touchpoints to understand precisely **what your responders want, need, or expect.** The best survey plugin for conducting simple questionnaires, customer feedback forms, customer satisfaction tests, employee feedback forms, and many more! *Simple, easy and fast!*
 
+= Survey Results & Analytics =
 
-= MULTI-PAGE TESTS, UNLIMITED SECTIONS =
-The **#1 Plugin** for creating **multi-step forms**. Organize and group the questions into separate sections within the form. Break down your form into separate pages with the help of this functionality in order to make it engaging and interesting to take. You can choose a different number of questions to be shown per page. Moreover, the form builder plugin allows you to re-arrange questions within a section by drag and dropping it. You can give a title to the section, write a brief description, and add as many questions as you want. You can create **unlimited questions**, **unlimited sections**, and **unlimited surveys** with our Survey form maker.
-JavaScript coding is implemented for changing the sections in the front-end.
+You can view all **survey submissions** directly from your WordPress dashboard. The survey plugin gives you survey results along with their stats and charts so that you don't have to analyze the surveys by looking at each and every response.
+All data is stored in one place (in your database). The [Pro version](https://ays-pro.com/wordpress/survey-maker) of the WordPress Survey plugin allows exporting of results so that you can utilize the data outside your website as well. 
 
+= Conditional Logic (Pro) =
 
-= SUBMISSIONS AND REAL-TIME REPORTING =
-Are you planning to receive LARGE Data while conducting your survey form? However, you do not have enough time to read them one by one or not all questions' answers are important to be viewed. *So it's not the volume of data that's important, but what companies or individual conductors do with the data is matters.* And here, the Survey Maker comes to be of help. Our reports, charts, and statistics will help you to analyze and interpret the data without any third-party tool.
-So, the Survey Maker plugin is the best solution for those companies who employ a **data-driven approach**.
+You can have your surveys become much more flexible when using the features of **[Logic Jump](https://ays-demo.com/survey-with-skip-logic/)** and **[Conditional Results](https://ays-demo.com/survey-with-conditional-results-get-your-personal-diet-plan/)**.
 
+**Logic Jump** allows you to dictate the following question based on the respondents' answers; this way, you can avoid unnecessary questions from popping up in your survey.
 
-= ADVANCED STYLES =
-The WordPress Survey plugin can be used for companies as well as for individual research conductors. Whether you're conducting research or collecting feedback, you can create engaging online test with our test builder plugin. It offers **6 themes** for creating interactive set of questions that keep users engaged: **Classic Light, Classic Dark, Minimal, Modern, Business, Elegant**.
-*The plugin is fully customizable*. You can build beautiful tests without having or being a designer, which will perfectly fit your website's colors and style. The possibilities are plenty: **Theme, Background color, Button text color, Question font size (px), Answer view, and dozens more!**
+**[Conditional Results](https://youtu.be/ZP2pQltS-OA)** enable you to specify different results pages, email recipients, and redirects based on AND/OR conditions, giving you the ability to customize the results for each respondent.
+The plugin also includes a **[Calculation feature](https://youtu.be/hmFdaSXV4NI)**, which allows you to create formulas based on user answers and display calculated results such as scores or estimated values.
+
+Examples:
+
+- Price / quote calculator
+- Score-based surveys
+- Result calculation forms
+- Simple cost estimation
+- Service pricing survey
 
 [PRO](https://ays-pro.com/wordpress/survey-maker) | [DEMO](https://ays-demo.com/wordpress-survey-plugin-pro-demo/) | [DOCUMENTATION](https://ays-pro.com/wordpress-survey-maker-user-manual)    
 
-= RESTRICTIONS =
-*Are you looking for trends, customer buying behaviors, or do you need to see beyond the big picture?* It is possible to do with the Survey Maker plugin. But, it is important to understand who is going to be **your target market**. One of the powerful functionality that our form builder offers is the **Only for logged-in users** option. After enabling it, you will start to precisely target the audience, and not receive unneeded submissions from those, who have not signed in on your website. But it is not yet all, that our feedback form builder offers. It also has a functionality called the **Maximum number of attempts** per user. It will help you to not receive multiple submissions from the same respondent, which can cause a deviation from the accuracy of your results. The Survey plugin suggests two methods to prevent repeat voting from the same person. Those are the **Detect users by IP** or **Detect users by WP user ID**.
+= Popup Survey =
 
-= Create smart and interactive surveys (Pro) =
+You can display your survey as a **[popup survey](https://youtu.be/iPDbs0IuHHM)** to increase visibility and collect more responses. The popup can be triggered **on page load**, **on click**, or on **exit intent**, determining when the user will get to see the popup.
+You will have the ability to show the popup only once upon its response, as well as go for **full-screen mode**.
 
-Create a form using the **jump logic (skip logic)** function and don't annoy the participants with unrelated questions. Due to this feature, the system will automatically select which question to ask based on the participants' answers.
-As far as they are mainly used as a questionnaire, create **anonymous surveys** and give the participants a chance to stay private and share their honest opinion with you.
-Survey Maker gives you the ability to make the quizzes more engaging for the users. Just activate the **chat mode** option, and the users will have the feeling of having a face-to-face chat with the device.
-All the above-mentioned options are available for the [premium version](https://ays-pro.com/wordpress/survey-maker)
+= Anonymous Survey =
 
-= NPS Surveys (Pro) =
+Create an **[anonymous survey](https://youtu.be/CuHpqkQjsUc)** and allow users to submit responses without sharing personal information. This ensures that more accurate feedback especially for **customer feedback**, **employee feedback**, and internal surveys.
 
-With our [NPS surveys](https://ays-demo.com/net-promoter-score-nps-survey-demo/), you'll receive clear and actionable feedback from your WordPress website users. It will allow you to better identify their needs and preferences and make strategic decisions regarding your business. 
-Net Promoter Score (NPS) tests categorize respondents into three groups: **Promoters, Passives, and Detractors**. It measures **customer loyalty** and the satisfaction level(brand advocates, satisfied clients, or dissatisfied clients) of your customers. Check out the [How to Create NPS(Net Promoter Score) Survey for WordPress](https://www.youtube.com/watch?v=h3QViKuqmW8) video tutorial for more detailed information. 
+= NPS Surveys (Pro) = 
 
+Use **[Net Promoter Score (NPS)](https://youtu.be/h3QViKuqmW8)** surveys for evaluating customer satisfaction and loyalty. These kinds of surveys are used to see how likely your product or service will be recommended by your clients.
+Based on the responses, users are grouped into **promoters**, **passives**, and **detractors**, giving you a clear overview of your customer satisfaction.
 
+= Email Notifications & Integrations (Pro) =
+
+Set up email notifications to send survey responses to both the user and the admin.  The email content can be customized, and you can include response data in a table format. Also, the administrator can create email summaries with results of surveys sent after predefined time intervals.
+In addition, Survey Maker integrates with popular tools such as **Mailchimp**, **Zapier**, **Google Sheets**, **Stripe**, and **PayPal**, making it easier to manage data and connect your survey with other services.
+
+= Easy-To-Use | User-Friendly | =
+
+Not a tech person? No problem. The plugin is **100% beginner-friendly** and no coding skills are required. You can easily create engaging and at the same time advanced forms that will fulfill all your needs. Also, this WordPress survey plugin is **mobile-friendly**, so your responders can take the quiz with all types of screens such as mobile devices or tablets. And, most importantly, our support care specialists are easily accessible and always happy to help you and answer any questions you might have!
+
+ 
 For more detailed information please check the [Documentation](https://ays-pro.com/wordpress-survey-maker-user-manual/).
 
-
-**Free Features**
-
-* Unlimited Surveys
-* Unlimited Sections
-* Unlimited Questions
-* 6 question types
-* Responsive design
-* Sections with different count of questions
-* Individual submission
-* Submissions summary
-* Question Image
-* Survey style options (20+)
-* Randomize questions
-* Randomize answers
-* Restriction by IP and User id
-* Only for logged in users
-* Result message
-* Redirect after submit
-* Popup Survey
-
-
-**[PRO](https://ays-pro.com/wordpress/survey-maker) Features**
-
-* Includes ALL Free version Features and
-* Linear Scale 
-* Matrix Scale
-* Matrix Scale Checkbox
-* Ranking Question Type
-* Net Promoter Score (NPS)
-* Star List
-* Slider List
-* Star Rating
-* Slider
-* Date
-* Time
-* Date and Time
-* Upload
-* Phone
-* Hidden
-* HTML
-* Send mail to user
-* Send mail to admin
-* Email configuration
-* Schedule survey
-* Mailchimp integration
-* Campaign Monitor integration
-* Slack integration
-* ActiveCampaign integration
-* Stripe Integration
-* PayPal Integration
-* Klaviyo Integration
-* MyCred Integration
-* User history shortcode
-* Make questions required
-* Permissions by user role
-* Limit attempts count
-* Results with charts
-* Export and import 
-* Submissions summary export
-* Individual submission export
-* PDF export
-* Password protected form
-* Google sheet integration
-* Zapier integration
-* SendGrid integration
-* GamiPress integration
-* MadMimi integration
-* GetResponse integration
-* ConvertKit integration
-* Access by user role
-* Conversational surveys
-* Logic jump
-* Conditional Results
-* Conditional Mailing
-* Summary emails
-* URL parameter option
-* Multilingual Forms
-* Text To Speech
-* ChatGPT Integration
-* Calculation
-* Woocommerce Integration
-* More on the way ...
-
-Didn't find the feature you're looking for in the Survey Maker plugin? You're welcome to [suggest a new feature](https://wordpress.org/support/plugin/survey-maker/).
-
-**New Fox LMS plugin:** A powerful [WordPress LMS plugin](https://wordpress.org/plugins/fox-lms/) to create, manage, and deliver online courses directly from your WordPress site.
 
 Don't forget, in case of any problems or upcoming questions feel free to contact us via the following [FREE SUPPORT FORUM](https://wordpress.org/support/plugin/survey-maker/).
 
@@ -331,6 +330,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.2.0 ( May 05, 2026 ) =
+* Added: Click to copy functionality for Surveys shortcode in list table
+* Improved: Some changes on the admin dashboard
 
 = 5.2.1.9 ( April 28, 2026 ) =
 * Improved: Some changes on the admin dashboard

@@ -465,6 +465,30 @@
             }
         });
 
+        $(document).find('.ays-survey-copy-image').on('click', function(){
+            var _this = this;
+            var input = $(_this).parent().find('input.ays-survey-shortcode-input');
+            var length = input.val().length;
+
+            input[0].focus();
+            input[0].setSelectionRange(0, length);
+            document.execCommand('copy');
+            // document.getSelection().removeAllRanges();
+
+            $(_this).attr('data-original-title', SurveyMakerAdmin.copied);
+            $(_this).attr("data-bs-original-title", SurveyMakerAdmin.copied);
+            $(_this).attr("title", SurveyMakerAdmin.copied);
+            $(_this).tooltip('show');
+        });
+
+        $(document).find('.ays-survey-copy-image').on('mouseleave', function(){
+            var _this = this;
+
+            $(_this).attr('data-original-title', SurveyMakerAdmin.clickForCopy);
+            $(_this).attr("data-bs-original-title", SurveyMakerAdmin.clickForCopy);
+            $(_this).attr("title", SurveyMakerAdmin.clickForCopy);
+        });
+
         // Submit buttons disableing with loader
         $(document).find('.ays-survey-loader-banner').on('click', function () {        
             var $this = $(this);

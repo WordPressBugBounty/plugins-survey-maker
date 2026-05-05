@@ -1359,6 +1359,43 @@ p.submit{
     width: 100%;
 }
 
+.ays-survey-shortcode-container {
+    background-color: #f4f5f7;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 1px 2px rgb(0 0 0 / 50%);
+    width: fit-content;
+}
+
+.ays-survey-copy-image {
+    width: 32px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ebecf0;
+    cursor: pointer;
+    border-right: 1px solid #dddddf;
+}
+
+.ays-survey-shortcode-container .ays-survey-shortcode-input {
+    font-size: 14px !important;
+    padding: 0 5px;
+}
+
+.ays-survey-shortcode-container input {
+    border: none!important;
+    background-color: #f4f5f7;
+}
+
+.ays-survey-shortcode-container input[type=text]:focus {
+    border: none!important;
+    box-shadow: none!important;
+    background-color: #f4f5f7!important;
+}
+
 .ays_question_answer+input:disabled+label{
     color: rgb(158 155 155 / 75%);
 }

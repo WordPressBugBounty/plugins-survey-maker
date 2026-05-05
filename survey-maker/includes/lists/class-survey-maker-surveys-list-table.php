@@ -2932,8 +2932,15 @@ class Surveys_List_Table extends WP_List_Table {
     }
 
     function column_shortcode( $item ) {
-        $shortcode = htmlentities('[ays_survey id="'.$item["id"].'"]');
-        return '<input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="'.$shortcode.'" />';
+        return sprintf('<div class="ays-survey-shortcode-container">
+                    <div class="ays-survey-copy-image" data-bs-toggle="tooltip" title="'. esc_html(__('Click to copy','survey-maker')).'">
+                            <img src="'. esc_url(SURVEY_MAKER_ADMIN_URL) . '/images/icons/copy-image.svg">
+                    </div>                                            
+                    <input type="text" class="ays-survey-shortcode-input" readonly value="'. esc_attr('[ays_survey id="%s"]').'" />
+                </div>', $item["id"]);
+
+        // $shortcode = htmlentities('[ays_survey id="'.$item["id"].'"]');
+        // return '<input type="text" onClick="this.setSelectionRange(0, this.value.length)" readonly value="'.$shortcode.'" />';
     }
 
     function column_status( $item ) {
