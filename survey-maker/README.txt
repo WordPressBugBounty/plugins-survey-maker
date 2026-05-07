@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.2.0
+Stable tag: 5.2.2.1
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -15,7 +15,7 @@ Create free online surveys and get your visitors' feedbacks directly on your Wor
 
 ### WordPress Survey plugin
 
-**Survey Maker by AYS** is a WordPress plug-in for creating surveys, questionnaires, and survey forms on your website. The plugin enables you to create your survey through the built-in **survey builder** with various question types and publishing through a shortcode. 
+**[Survey Maker by AYS](https://ays-pro.com/wordpress/survey-maker)** is a WordPress plug-in for creating surveys, questionnaires, and survey forms on your website. The plugin enables you to create your survey through the built-in **survey builder** with various question types and publishing through a shortcode. 
 It includes features like **multi-page forms**, **conditional logic**, **survey analytics**, and **popup surveys**, so you can collect feedback, gather insights, and analyze results without external survey tools.
 
 https://www.youtube.com/watch?v=Mdpnq-qNtP0
@@ -73,7 +73,7 @@ This means that you will be able to split your survey into **multiple pages** by
 - Submissions summary
 
 
-= [Pro Features](https://ays-pro.com/wordpress/survey-maker) =
+= Pro Features =
 
 **Advanced Surveys & Logic**
 
@@ -330,6 +330,13 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.2.1 ( May 07, 2026 ) =
+* Improved: Survey admin interface and button styling
+* Improved: Survey builder layout and navigation elements
+* Improved: Survey list table actions and menu organization
+* Improved: Promotional banner and Features section in the admin dashboard
+* Improved: General UI/UX refinements across the Survey plugin
 
 = 5.2.2.0 ( May 05, 2026 ) =
 * Added: Click to copy functionality for Surveys shortcode in list table

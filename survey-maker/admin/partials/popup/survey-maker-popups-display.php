@@ -69,7 +69,7 @@ if($action == 'unpublish' || $action == 'publish'){
             <div class="ays-survey-create-survey-video-box" style="margin: auto;height: 83px;">
                 <div class="ays-survey-create-survey-youtube-video">
                     <?php echo wp_kses($youtube_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()); ?>
-                    <a href="https://www.youtube.com/embed/gM6SQdOw3fA" target="_blank" title="YouTube video player" >How to create Popup Survey in Under One Minute</a>
+                    <a href="https://www.youtube.com/watch?v=gM6SQdOw3fA" target="_blank" title="YouTube video player" >How to create Popup Survey in Under One Minute</a>
                 </div>
             </div>
         <?php endif; ?>

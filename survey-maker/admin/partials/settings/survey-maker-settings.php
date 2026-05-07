@@ -1009,8 +1009,9 @@
                                 <input type="text" id="ays_survey_redirecting_after_text" name="ays_survey_redirecting_after_text" class="ays-text-input" value='<?php echo esc_attr($redirecting_after_text); ?>'>
                             </div>
                         </div>
-                        <hr>
 
+                        <?php if( 1 == 0 ): ?>
+                        <hr>
                         <div class="form-group row" style="margin:0px;">
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-small-buttons-box">
@@ -1175,7 +1176,8 @@
                                 </div>
                             </div>
                         </div>
-
+                        <?php endif; ?>
+                        
                         <hr />
                         <p class="ays-subtitle">
                             <?php echo esc_html__('Buttons texts',"survey-maker")?>

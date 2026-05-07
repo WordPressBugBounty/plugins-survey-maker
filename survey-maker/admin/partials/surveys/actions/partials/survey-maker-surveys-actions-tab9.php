@@ -1,5 +1,14 @@
 <div id="tab9" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab9') ? 'ays-survey-tab-content-active' : ''; ?>">
-<div class="form-group row" style="margin-top: 15px;">
+    <p class="ays-subtitle">Additional condition</p>
+    <hr>
+    <div style="display: flex;justify-content: center; align-items: center;position: relative;" class="ays-survey-zindex-for-pro">
+        <div class="ays-survey-community-youtube-video">
+            <div class="ays-survey-youtube-placeholder" data-video-id="V4SBc9yiO68">
+                <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/conditional-result-video-screenshot.webp'); ?>" width="560" height="315">
+            </div>
+        </div>
+    </div>
+    <div class="form-group row" style="margin-top: 15px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box">
             <div class="ays-pro-features-v2-big-buttons-box">
                 <div class="ays-pro-features-v2-video-button"></div>
@@ -18,15 +27,6 @@
                         <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
                     </div>
                 </a>
-            </div>
-            <p class="ays-subtitle">Additional condition</p>
-            <hr>
-            <div style="display: flex;justify-content: center; align-items: center;position: relative;" class="ays-survey-zindex-for-pro">
-                <div class="ays-survey-community-youtube-video">
-                    <div class="ays-survey-youtube-placeholder" data-video-id="V4SBc9yiO68">
-                        <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/conditional-result-video-screenshot.webp'); ?>" width="560" height="315">
-                    </div>
-                </div>
             </div>
             <div id="ays-survey-condition-container-main">
                 <div class="d-flex align-items-center justify-content-between">
@@ -240,6 +240,7 @@
                         </div>
                         </div>
                     </div>
+                    <?php if(false): ?>
                     <div class="ays-survey-condition-containers-added" data-condition-id="2" data-condition-name="ays_condition_add">
                         <div class="ays-survey-condition-delete-conteiner-box">
                         <div class="ays-survey-answer-icon-box">
@@ -729,6 +730,7 @@
                         </div>
                         </div>
                     </div>
+                    <?php endif; ?>
                 </div>
                 <div class="ays-survey-action-add-condition appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="Add answer">
                     <div class="ays-question-img-icon-content ays-question-img-icon-content-conditions">

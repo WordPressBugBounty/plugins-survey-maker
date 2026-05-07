@@ -544,6 +544,46 @@
         }
     }
 
+    function copyQuestionIdOnClick(el) {
+        var $this = jQuery(el);
+
+        // Find ID text
+        var text = $this.find('.ays-survey-shortcode-box').text().trim();
+
+        // Copy
+        var textField = document.createElement('textarea');
+        textField.value = text;
+
+        document.body.appendChild(textField);
+
+        textField.select();
+        textField.setSelectionRange(0, 99999);
+
+        document.execCommand('copy');
+
+        document.body.removeChild(textField);
+
+        // Tooltip
+        $this.attr("data-original-title", SurveyMakerAdmin.copied);
+        $this.attr("title", SurveyMakerAdmin.copied);
+
+        $this.tooltip("show");
+
+        setTimeout(function () {
+            $this.tooltip("hide");
+
+            $this.attr(
+                "data-original-title",
+                SurveyMakerAdmin.clickForCopy
+            );
+
+            $this.attr(
+                "title",
+                SurveyMakerAdmin.clickForCopy
+            );
+        }, 1500);
+    }
+
     function selectElementContentsCopy(element) {
         var _this = element;
         var text  = _this.attr("data-clipboard-text");

@@ -172,8 +172,8 @@
 
 #navigation-container .ays-navigation-container-logo-updrade-box .ays-navigation-container-updrade-button-box{    
     padding: 5px 18px;
-    border: 2px solid #2275ea;
-    background-color: #2275ea;
+    border: 2px solid #10a37f;
+    background-color: #10a37f;
     border-radius: 30px;
     color: white;
     font-weight: 700;
@@ -190,8 +190,8 @@
 }
 
 #navigation-container .ays-navigation-container-logo-updrade-box .ays-navigation-container-updrade-button-box:hover{    
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #10876b;
+    border-color: #10876b;
     color: white !important;
 }
 

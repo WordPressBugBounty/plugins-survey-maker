@@ -216,69 +216,6 @@
         </div>
     </div> <!-- Enable restart button -->
     <hr/>
-    <div class="form-group row" style="margin:0px;">
-        <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-            <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=ad0zX6ke7gU" data-option-title="<?php echo esc_attr__('Show results after submission',"survey-maker")?>" data-option-text="Check out a quick summary right after you finish a survey. With the help of this feature the users will be able to see the summary of their submission. Once a respondent completes a survey, this feature presents them with a summary of their answers, allowing them to review their responses.">
-                <div class="ays-pro-features-v2-video-button">
-                    <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
-                    <div class="ays-pro-features-v2-video-text">
-                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
-                    </div>
-                </div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label for="ays_survey_show_summary_after_submission">
-                        <?php echo esc_html__('Show results after submission',"survey-maker"); ?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Show the data presented in the Summary tab(Results page) after a respondent submits the survey.  It includes the total number of submissions and observation of the votes of every question displayed in charts.',"survey-maker"); ?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                </div>
-                <div class="col-sm-1">
-                    <input type="checkbox" class="ays-enable-timer1" />
-                </div>
-                <div class="col-sm-7 ays_divider_left">
-                    <div class="form-group">
-
-                        <label for="ays_survey_show_submission_summary" class="checkbox_ays form-check form-check-inline">
-                            <input type="radio" checked>
-                            <?php echo esc_html__('Summary',"survey-maker"); ?>
-                        </label>
-
-                        <label for="ays_survey_show_submission_individual" class="checkbox_ays form-check form-check-inline">
-                            <input type="radio" >
-                            <?php echo esc_html__('Individual',"survey-maker"); ?>
-                        </label>
-                        
-                    </div>
-                    <hr>
-                    <div class="form-group row ays-survey-show-current-user-results">
-                        <div class="col-sm-5">
-
-                            <label for="ays_survey_show_current_user_results">
-                                <?php echo esc_html__('Show only current user results',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Tick this option to show the users only their latest results.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-
-                        </div>
-                        <div class="col-sm-7">
-                            <input type="checkbox" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- EShow summary after submission -->
-    <hr/>
     <div class="form-group row ays_toggle_parent">
         <div class="col-sm-4">
             <label for="ays_survey_enable_exit_button">
@@ -427,6 +364,69 @@
             </div>
         </div>
     </div> <!-- Show the Social buttons -->
+    <hr/>
+    <div class="form-group row" style="margin:0px;">
+        <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
+            <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=ad0zX6ke7gU" data-option-title="<?php echo esc_attr__('Show results after submission',"survey-maker")?>" data-option-text="Check out a quick summary right after you finish a survey. With the help of this feature the users will be able to see the summary of their submission. Once a respondent completes a survey, this feature presents them with a summary of their answers, allowing them to review their responses.">
+                <div class="ays-pro-features-v2-video-button">
+                    <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
+                    <div class="ays-pro-features-v2-video-text">
+                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
+                    </div>
+                </div>
+                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
+                    <div class="ays-pro-features-v2-upgrade-text">
+                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
+                    </div>
+                </a>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <label for="ays_survey_show_summary_after_submission">
+                        <?php echo esc_html__('Show results after submission',"survey-maker"); ?>
+                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Show the data presented in the Summary tab(Results page) after a respondent submits the survey.  It includes the total number of submissions and observation of the votes of every question displayed in charts.',"survey-maker"); ?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="checkbox" class="ays-enable-timer1" />
+                </div>
+                <div class="col-sm-7 ays_divider_left">
+                    <div class="form-group">
+
+                        <label for="ays_survey_show_submission_summary" class="checkbox_ays form-check form-check-inline">
+                            <input type="radio" checked>
+                            <?php echo esc_html__('Summary',"survey-maker"); ?>
+                        </label>
+
+                        <label for="ays_survey_show_submission_individual" class="checkbox_ays form-check form-check-inline">
+                            <input type="radio" >
+                            <?php echo esc_html__('Individual',"survey-maker"); ?>
+                        </label>
+                        
+                    </div>
+                    <hr>
+                    <div class="form-group row ays-survey-show-current-user-results">
+                        <div class="col-sm-5">
+
+                            <label for="ays_survey_show_current_user_results">
+                                <?php echo esc_html__('Show only current user results',"survey-maker")?>
+                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Tick this option to show the users only their latest results.',"survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+
+                        </div>
+                        <div class="col-sm-7">
+                            <input type="checkbox" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- EShow summary after submission -->
     <hr/>
     <p class="ays-subtitle"><?php echo esc_html__('Dashboard results settings',"survey-maker")?></p>
     <hr/>

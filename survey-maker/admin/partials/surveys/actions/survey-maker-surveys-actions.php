@@ -100,7 +100,7 @@
                     <div class="ays-top-menu">
                         <div class="nav-tab-wrapper ays-top-tab-wrapper">
                             <a href="#tab1" data-tab="tab1" class="nav-tab <?php echo ($ays_tab == 'tab1') ? 'nav-tab-active' : ''; ?>">
-                                <?php echo esc_html__("General", "survey-maker");?>
+                                <?php echo esc_html__("Questions", "survey-maker");?>
                             </a>
                             <a href="#tab2" data-tab="tab2" class="nav-tab <?php echo ($ays_tab == 'tab2') ? 'nav-tab-active' : ''; ?>">
                                 <?php echo esc_html__("Styles", "survey-maker");?>
@@ -204,23 +204,23 @@
                 <div class="ays-surveys-button-second-row">
                     <div >
                     <?php
-                        if ( isset($prev_survey_id) && $prev_survey_id != "" ) {
+                        // if ( isset($prev_survey_id) && $prev_survey_id != "" ) {
 
-                            $other_attributes = array(
-                                'id' => 'ays-surveys-prev-button',
-                                'href' => sprintf( '?page=%s&action=%s&id=%d', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $prev_survey_id ) )
-                            );
-                            submit_button(__('Prev Survey', "survey-maker"), 'button ays-button ays-survey-prev-survey-button', 'ays_survey_prev_button', false, $other_attributes);
-                        }
+                        //     $other_attributes = array(
+                        //         'id' => 'ays-surveys-prev-button',
+                        //         'href' => sprintf( '?page=%s&action=%s&id=%d', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $prev_survey_id ) )
+                        //     );
+                        //     submit_button(__('Prev Survey', "survey-maker"), 'button ays-button ays-survey-prev-survey-button', 'ays_survey_prev_button', false, $other_attributes);
+                        // }
 
-                        if ( $next_survey_id != "" && !is_null( $next_survey_id ) ) {
+                        // if ( $next_survey_id != "" && !is_null( $next_survey_id ) ) {
 
-                            $other_attributes = array(
-                                'id' => 'ays-surveys-next-button',
-                                'href' => sprintf( '?page=%s&action=%s&id=%d', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $next_survey_id ) )
-                            );
-                            submit_button(__('Next Survey', "survey-maker"), 'button ays-button ays-survey-next-survey-button', 'ays_survey_next_button', false, $other_attributes);
-                        }
+                        //     $other_attributes = array(
+                        //         'id' => 'ays-surveys-next-button',
+                        //         'href' => sprintf( '?page=%s&action=%s&id=%d', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $next_survey_id ) )
+                        //     );
+                        //     submit_button(__('Next Survey', "survey-maker"), 'button ays-button ays-survey-next-survey-button', 'ays_survey_next_button', false, $other_attributes);
+                        // }
                     ?>
                     </div>
                 </div>

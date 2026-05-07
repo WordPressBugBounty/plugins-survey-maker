@@ -1556,7 +1556,9 @@ div.ays-survey-body-for-select-lenght .ays-survey-choose-for-select-lenght-star-
     border: 1px solid #dadce0;
     -webkit-border-radius: 8px !important;
     border-radius: 8px !important;
-    padding: 0px 10px !important;
+    padding: 0px 6px !important;
+    height: 36px;
+    font-size: 14px;
 }
 #ays-survey-form .ays-survey-answer-icon-box.ays-survey-section-actions-more.dropdown {
     display: block;
@@ -2045,11 +2047,19 @@ div.wrap .ays-survey-wp-heading-inline{
     overflow-x: auto;
 }
 
+.ays-survey-features-cta-button-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto 0;
+    gap: 20px;
+}
+
 .ays-survey-features-wrap .ays-survey-features-video {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    /*margin-top: 40px;*/
     gap: 5px;
 }
 
@@ -2062,9 +2072,28 @@ div.wrap .ays-survey-wp-heading-inline{
 }
 
 .ays-survey-features-wrap .ays-survey-features-video .ays-survey-features-video-text a{
-    color: black;
+    /*color: black;*/
     box-shadow: unset;
     outline: none;
+
+    display: inline-block;
+    width: auto;
+    min-width: 80px;
+    padding: 5px 0;
+    font: 500 12px / 16px Roboto, Arial, sans-serif;
+    letter-spacing: -.25px;
+    text-transform: capitalize;
+    background-color: transparent;
+    color: #888;
+    cursor: pointer;
+    margin: 0;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    text-decoration: underline;
+    text-align: center;
+    -webkit-transition: .3s;
+    transition: .3s;
+    font-size: 18px;
 }
 
 .ays-survey-features-wrap .ays-survey-features-video .ays-survey-features-video-icon img{
@@ -2172,6 +2201,99 @@ div.wrap .ays-survey-wp-heading-inline{
 
 .ays-survey-features-wrap .comparison .price-buy:hover {
     background: #6BB0DC;
+}
+
+.comparison .ays-survey-pracing-table-td-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.comparison .ays-survey-pracing-table-td-flex span {
+    font-size: 11px;
+    color: #96a3bd;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+.ays-survey-sm-content-row-sg {
+    background-color: #ecf6ff;
+    margin: 70px 0;
+}
+
+.ays-survey-sm-main-container-sg * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+.ays-survey-sm-center-box-sg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ays-survey-sm-guarantee-container-sg {
+    width: 70%;
+    margin: auto;
+    padding: 15px 0;
+}
+
+.ays-survey-sm-guarantee-container-sg img {
+    width: 200px;
+    margin-right: 30px;
+}
+
+.ays-survey-sm-guarantee-text-container-sg {
+    max-width: 555px;
+}
+
+.ays-survey-sm-guarantee-container-sg h3 {
+    font-size: 32px;
+    text-transform: uppercase;
+    color: #5F61FB;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.ays-survey-sm-guarantee-container-sg p {
+    font-size: 14px;
+    color: #6A6A6A;
+    line-height: 1.5em;
+}
+
+@media only screen and (max-width: 768px) {
+    div.ays-survey-sm-guarantee-container-sg {
+        width: 100%;
+    }
+
+    div.ays-survey-sm-guarantee-container-sg img {
+        width: 140px;
+        margin-right: 20px;
+    }
+
+    div.ays-survey-sm-guarantee-container-sg h3 {
+        font-size: 19px;
+    }
+
+    div.ays-survey-sm-guarantee-container-sg p {
+        font-size: 12px;
+    }
+
+    div.wrap.ays-survey-features-wrap-box {
+        margin: 0;
+    }
+
+    div.comparison {
+        padding: 0;
+        overflow-x: auto;
+    }
+
+    div.ays-survey-features-cta-button-wrap {
+        flex-direction: column;
+    }
 }
 
 /* Featured Plugins End */

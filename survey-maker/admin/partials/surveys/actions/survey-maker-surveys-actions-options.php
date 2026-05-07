@@ -24,7 +24,7 @@
         'survey_text_color'                                 => '#333',
         'survey_loader_color'                               => '#333',
         'survey_buttons_text_color'                         => '#333',
-        'survey_width'                                      => '',
+        'survey_width'                                      => '700',
         'survey_width_by_percentage_px'                     => 'pixels',
         'survey_mobile_max_width'                           => '',
         'survey_custom_class'                               => '',
@@ -332,6 +332,26 @@
 
     $loader_iamge = '<span class="display_none ays_survey_loader_box"><img src="'. SURVEY_MAKER_ADMIN_URL .'/images/loaders/loading.gif"></span>';
 
+    $ays_survey_allowed_html = Survey_Maker_Data::ays_survey_allowed_html();
+
+    $pro_svg_icon = '
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="16"
+        height="16"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="ays-survey-premium-icon"
+        style="margin-bottom: 2px;"
+        >
+        <path d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"></path>
+        <path d="M5 21h14"></path>
+    </svg>';
+
     $ays_super_admin_email = get_option('admin_email');
     $wp_general_settings_url = admin_url( 'options-general.php' ) ;
 
@@ -583,7 +603,7 @@
         $survey_buttons_text_color = (isset($options[ $name_prefix . 'buttons_text_color' ]) && $options[ $name_prefix . 'buttons_text_color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'buttons_text_color' ] ) ) : $survey_text_color;
 
         // Width
-        $survey_width = (isset($options[ $name_prefix . 'width' ]) && $options[ $name_prefix . 'width' ] != '') ? absint ( intval( $options[ $name_prefix . 'width' ] ) ) : '';
+        $survey_width = (isset($options[ $name_prefix . 'width' ]) && $options[ $name_prefix . 'width' ] > 0) ? absint ( intval( $options[ $name_prefix . 'width' ] ) ) : '';
 
         // Survey Width by percentage or pixels
         $survey_width_by_percentage_px = (isset($options[ $name_prefix . 'width_by_percentage_px' ]) && $options[ $name_prefix . 'width_by_percentage_px' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'width_by_percentage_px' ] ) ) : 'percentage';

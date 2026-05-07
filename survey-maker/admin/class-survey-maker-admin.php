@@ -1826,7 +1826,7 @@ class Survey_Maker_Admin {
                 $style_attr = 'style="display:none;"';
             }
 
-            $survey_cta_button_link = esc_url( 'https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=mega-bundle-sale-banner-' . SURVEY_MAKER_VERSION );
+            $survey_cta_button_link = esc_url( 'https://ays-pro.com/mega-bundle?utm_source=dashboard&utm_medium=survey-free&utm_campaign=top-20-sale-banner-' . SURVEY_MAKER_VERSION );
 
             $content[] = '<div id="ays-survey-new-mega-bundle-dicount-month-main" class="ays-survey-admin-notice notice notice-success is-dismissible ays_survey_dicount_info">';
                 $content[] = '<div id="ays-survey-dicount-month" class="ays_survey_dicount_month">';
@@ -1834,13 +1834,13 @@ class Survey_Maker_Admin {
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-text-box">';
                         $content[] = '<div>';
                             $content[] = '<div class="ays-survey-dicount-logo-box">';
-                                $content[] = '<a href="' . $survey_cta_button_link . '" target="_blank" class="ays-survey-sale-banner-link"><img src="' . SURVEY_MAKER_ADMIN_URL . '/images/mega_bundle_logo_box.png"></a>';
+                                $content[] = '<a href="' . $survey_cta_button_link . '" target="_blank" class="ays-survey-sale-banner-link"><img src="' . SURVEY_MAKER_ADMIN_URL . '/images/ays-survey-banner-announcement-icon.svg"></a>';
 
                                 $content[] = '<div>';
                                     $content[] = '<span class="ays-survey-new-mega-bundle-title">';
                                         $content[] = sprintf(
                                         /* translators: 1: opening link wrapper with <a> tag, 2: closing </a> tag */
-                                        __( '%1$s Mega Bundle %2$s ( Quiz + Survey + Poll )', 'survey-maker' ),
+                                        __( 'Upgrade to %1$s Survey Maker PRO %2$s', 'survey-maker' ),
                                         '<span style="display:inline-block; margin-right:5px;"><a href="' . esc_url( $survey_cta_button_link ) . '" target="_blank" rel="noopener noreferrer" style="color:#ffffff !important; text-decoration: underline;">',
                                         '</a></span>'
                                     );
@@ -1852,7 +1852,7 @@ class Survey_Maker_Admin {
                                 $content[] = '</div>';
 
                                 $content[] = '<div class="ays-survey-new-mega-bundle-title-icon-row" style="display: inline-block;">';
-                                    $content[] = '<img src="' . SURVEY_MAKER_ADMIN_URL . '/images/ays-survey-banner-sale-50.svg" class="ays-survey-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
+                                    $content[] = '<img src="' . SURVEY_MAKER_ADMIN_URL . '/images/ays-survey-banner-sale-20.svg" class="ays-survey-new-mega-bundle-mobile-image-display-none" style="width: 70px;">';
                                 $content[] = '</div>';
 
                             $content[] = '</div>';
@@ -1899,6 +1899,15 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
+                        $content[] = '<div class="ays-survey-dicount-banner-coupon-box" onclick="aysSurveyBundleCopyToClipboard(\'SURVEYPRO20\')" title="' . __( 'Click to copy coupon code', "survey-maker" ) . '">';
+                            $content[] = '<span class="ays-survey-dicount-banner-coupon-text">SURVEYPRO20</span>';
+                            $content[] = '<svg class="ays-survey-dicount-banner-copy-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">';
+                                $content[] = '<path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>';
+                            $content[] = '</svg>';
+                        $content[] = '</div>';
+                    $content[] = '</div>';
+
+                    $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
                         $content[] = '<a href="'. $survey_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'survey-maker' ) . '</a>';
                         $content[] = '<span class="ays-survey-dicount-one-time-text">';
                             $content[] = __( "One-time payment", 'survey-maker' );
@@ -1907,10 +1916,124 @@ class Survey_Maker_Admin {
                 $content[] = '</div>';
             $content[] = '</div>';
 
+            $content[] = '<script>';
+            $content[] = "
+                function aysSurveyBundleCopyToClipboard(text) {
+                    var textarea = document.createElement('textarea');
+                    textarea.value = text;
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    document.body.appendChild(textarea);
+                    
+                    textarea.select();
+                    textarea.setSelectionRange(0, 99999);
+                    
+                    try {
+                        document.execCommand('copy');
+                        aysSurveyBundleShowCopyNotification('" . __( 'Coupon code copied!', "survey-maker" ) . "');
+                    } catch (err) {
+                        console.error('Failed to copy text: ', err);
+                    }
+                    
+                    document.body.removeChild(textarea);
+                }
+
+                function aysSurveyBundleShowCopyNotification(message) {
+                    var existingNotification = document.querySelector('.ays-survey-dicount-banner-copy-notification');
+                    if (existingNotification) {
+                        document.body.removeChild(existingNotification);
+                    }
+                    
+                    var notification = document.createElement('div');
+                    notification.className = 'ays-survey-dicount-banner-copy-notification';
+                    notification.textContent = message;
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(function() {
+                        notification.classList.add('show');
+                    }, 10);
+                    
+                    setTimeout(function() {
+                        notification.classList.remove('show');
+                        setTimeout(function() {
+                            if (notification.parentNode) {
+                                document.body.removeChild(notification);
+                            }
+                        }, 300);
+                    }, 2000);
+                }";
+            $content[] = '</script>';
+
             // /* New Mega Bundle Banner Survey | Start */
             $content[] = '<style id="ays-survey-mega-bundle-styles-inline-css">';
             $content[] = '
-            div#ays-survey-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info button{display:flex;align-items:center}div#ays-survey-new-mega-bundle-dicount-month-main div#ays-survey-dicount-month a.ays-survey-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-survey-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info{background-image:url("'. SURVEY_MAKER_ADMIN_URL .'/images/new-mega-bundle-logo-background.svg");background-position:center right;background-repeat:no-repeat;background-size:cover;background-color:#5551ff;padding:1px 38px 1px 12px}#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month{display:flex;align-items:center;justify-content:space-between;color:#fff}#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month img{width:60px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-sale-banner-link{display:flex;justify-content:center;align-items:center;width:60px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{text-align:left;width:auto;display:flex;justify-content:space-around;align-items:flex-start}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:30%;display:flex;justify-content:center;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{width:20%;display:flex;justify-content:center;align-items:center;flex-direction:column}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-survey-dicount-logo-box{display:flex;justify-content:flex-start;align-items:center;gap:20px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-title{color:#fdfdfd;font-size:19px;font-style:normal;font-weight:600;line-height:normal}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-title-icon-row{display:inline-block}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-desc{display:inline-block;color:#fff;font-size:15px;font-style:normal;font-weight:400;line-height:normal;margin-top:10px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-color{color:#971821}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-text-decoration{text-decoration:underline}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-button,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content{display:flex;justify-content:center}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-opacity-box{width:19%}#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-survey-countdown-main-container .ays-survey-countdown-container{margin:0 auto;text-align:center}#ays-survey-countdown-main-container #ays-survey-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-survey-countdown-main-container li,#ays-survey-countdown-main-container ul{margin:0}#ays-survey-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:lowercase}#ays-survey-countdown-main-container li span{display:flex;justify-content:center;align-items:center;font-size:22px;min-height:40px;min-width:40px;border-radius:4.273px;border:.534px solid #f4f4f4;background:#9896ed;color:#fff}#ays-survey-countdown-main-container .emoji{display:none;padding:1rem}#ays-survey-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li{position:relative}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:0;right:-5px;font-size:40px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span#ays-survey-countdown-seconds:after{content:unset}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{display:flex;align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:15px;font-style:normal;line-height:normal;margin:0!important}div#ays-survey-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff;content:"\f00d";font-family:fontawesome;font-size:22px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-new-mega-bundle-guaranteeicon{width:30px;margin-right:5px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-one-time-text{color:#fff;font-size:12px;font-style:normal;font-weight:600;line-height:normal}@media all and (max-width:768px){div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice{display:none!important;background-position:bottom right;background-repeat:no-repeat;background-size:cover;border-radius:32px}div#ays-survey-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{width:100%!important;text-align:center}#ays-survey-countdown-main-container #ays-survey-countdown-headline{font-size:15px;font-weight:600}#ays-survey-countdown-main-container ul{font-weight:500}div#ays-survey-countdown-main-container li{padding:10px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-new-mega-bundle-mobile-image-display-none{display:none!important}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-new-mega-bundle-mobile-image-display-block{display:block!important;margin-top:5px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:100%!important;text-align:center;flex-direction:column;margin-top:20px;justify-content:center;align-items:center}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span:after{top:unset}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.ays-survey-features-wrap .comparison a.price-buy{padding:8px 5px;font-size:11px}}@media screen and (max-width:1350px) and (min-width:768px){div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box strong{font-size:15px}#ays-survey-countdown-main-container li{font-size:11px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:1680px) and (min-width:1551px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:29%}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:30%}}@media screen and (max-width:1410px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-coupon-row{width:150px}}@media screen and (max-width:1550px) and (min-width:1400px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:35%}}@media screen and (max-width:1400px) and (min-width:1250px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:35%}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:40%}}@media screen and (max-width:1274px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-title{font-size:15px}}@media screen and (max-width:1200px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{margin-bottom:16px}#ays-survey-countdown-main-container ul{padding-left:0}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-coupon-row{width:120px;font-size:18px}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 20px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:12px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-desc{font-size:13px}}@media screen and (max-width:1076px) and (min-width:769px){#ays-survey-countdown-main-container li{padding:10px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-coupon-row{width:100px;font-size:16px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{margin-bottom:16px}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 15px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:11px;padding:12px 0}}@media screen and (max-width:1250px) and (min-width:769px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:45%}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:35%}}';
+            div#ays-survey-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info button{display:flex;align-items:center}div#ays-survey-new-mega-bundle-dicount-month-main div#ays-survey-dicount-month a.ays-survey-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-survey-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info{background-image:url("'. SURVEY_MAKER_ADMIN_URL .'/images/new-mega-bundle-logo-background-20.svg");background-position:center right;background-repeat:no-repeat;background-size:cover;background-color:#5551ff;padding:1px 38px 1px 12px}#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month{display:flex;align-items:center;justify-content:space-between;color:#fff}#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month img{width:60px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-sale-banner-link{display:flex;justify-content:center;align-items:center;width:60px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{text-align:left;width:auto;display:flex;justify-content:space-around;align-items:flex-start}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:30%;display:flex;justify-content:center;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{width:20%;display:flex;justify-content:center;align-items:center;flex-direction:column}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-survey-dicount-logo-box{display:flex;justify-content:flex-start;align-items:center;gap:20px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-title{color:#fdfdfd;font-size:19px;font-style:normal;font-weight:600;line-height:normal}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-title-icon-row{display:inline-block}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-desc{display:inline-block;color:#fff;font-size:15px;font-style:normal;font-weight:400;line-height:normal;margin-top:10px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box strong{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-color{color:#971821}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-text-decoration{text-decoration:underline}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box{display:flex;justify-content:flex-end;align-items:center;width:30%}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-button,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content{display:flex;justify-content:center}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-opacity-box{width:19%}#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;display:flex;justify-content:center;align-items:center;opacity:0}#ays-survey-countdown-main-container .ays-survey-countdown-container{margin:0 auto;text-align:center}#ays-survey-countdown-main-container #ays-survey-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-survey-countdown-main-container li,#ays-survey-countdown-main-container ul{margin:0}#ays-survey-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:lowercase}#ays-survey-countdown-main-container li span{display:flex;justify-content:center;align-items:center;font-size:22px;min-height:40px;min-width:40px;border-radius:4.273px;border:.534px solid #f4f4f4;background:#9896ed;color:#fff}#ays-survey-countdown-main-container .emoji{display:none;padding:1rem}#ays-survey-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li{position:relative}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:0;right:-5px;font-size:40px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span#ays-survey-countdown-seconds:after{content:unset}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{display:flex;align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:15px;font-style:normal;line-height:normal;margin:0!important}div#ays-survey-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff;content:"\f00d";font-family:fontawesome;font-size:22px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-new-mega-bundle-guaranteeicon{width:30px;margin-right:5px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-one-time-text{color:#fff;font-size:12px;font-style:normal;font-weight:600;line-height:normal}@media all and (max-width:768px){div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice{display:none!important;background-position:bottom right;background-repeat:no-repeat;background-size:cover;border-radius:32px}div#ays-survey-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{width:100%!important;text-align:center}#ays-survey-countdown-main-container #ays-survey-countdown-headline{font-size:15px;font-weight:600}#ays-survey-countdown-main-container ul{font-weight:500}div#ays-survey-countdown-main-container li{padding:10px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-new-mega-bundle-mobile-image-display-none{display:none!important}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-new-mega-bundle-mobile-image-display-block{display:block!important;margin-top:5px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:100%!important;text-align:center;flex-direction:column;margin-top:20px;justify-content:center;align-items:center}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span:after{top:unset}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.ays-survey-features-wrap .comparison a.price-buy{padding:8px 5px;font-size:11px}}@media screen and (max-width:1350px) and (min-width:768px){div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box strong{font-size:15px}#ays-survey-countdown-main-container li{font-size:11px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:1680px) and (min-width:1551px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:29%}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:30%}}@media screen and (max-width:1410px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-coupon-row{width:150px}}@media screen and (max-width:1550px) and (min-width:1400px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:35%}}@media screen and (max-width:1400px) and (min-width:1250px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:35%}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:40%}}@media screen and (max-width:1274px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-title{font-size:15px}}@media screen and (max-width:1200px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{margin-bottom:16px}#ays-survey-countdown-main-container ul{padding-left:0}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-coupon-row{width:120px;font-size:18px}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 20px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:12px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box .ays-survey-new-mega-bundle-desc{font-size:13px}}@media screen and (max-width:1076px) and (min-width:769px){#ays-survey-countdown-main-container li{padding:10px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-coupon-row{width:100px;font-size:16px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{margin-bottom:16px}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{padding:12px 15px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:11px;padding:12px 0}}@media screen and (max-width:1250px) and (min-width:769px){div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:45%}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:35%}}';
+
+            $content[] = '
+            .ays-survey-dicount-banner-coupon-box {
+                border: 2px dashed rgba(255, 255, 255, 0.4);
+                padding: 8px 16px;
+                border-radius: 6px;
+                background: rgba(255, 255, 255, 0.1);
+                cursor: pointer;
+                transition: all 0.3s;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                backdrop-filter: blur(10px);
+            }
+
+            .ays-survey-dicount-banner-coupon-box:hover {
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.6);
+                transform: translateY(-1px);
+            }
+
+            .ays-survey-dicount-banner-coupon-text {
+                font-size: 16px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                color: #fff;
+                font-family: monospace;
+            }
+
+            .ays-survey-dicount-banner-copy-icon {
+                opacity: 0.8;
+                transition: opacity 0.3s;
+            }
+
+            .ays-survey-dicount-banner-coupon-box:hover .ays-survey-dicount-banner-copy-icon {
+                opacity: 1;
+            }
+
+            .ays-survey-dicount-banner-btn-arrow {
+                display: inline-block;
+                transition: transform 0.3s;
+            }
+
+            .ays-survey-dicount-banner-buy-now-btn:hover .ays-survey-dicount-banner-btn-arrow {
+                transform: translateX(4px);
+            }
+
+            /* Notification */
+            .ays-survey-dicount-banner-copy-notification {
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: rgba(0, 0, 0, 0.8);
+                color: #fff;
+                padding: 12px 24px;
+                border-radius: 8px;
+                font-size: 14px;
+                z-index: 10000;
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .ays-survey-dicount-banner-copy-notification.show {
+                opacity: 1;
+            }';
             $content[] = '</style>';
             // /* New Mega Bundle Banner Survey | End */
 

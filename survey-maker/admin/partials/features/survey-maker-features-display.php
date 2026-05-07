@@ -16,7 +16,7 @@
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
     <h3 class="wp-heading" style="text-align: center;">
-        <?php echo esc_html__( 'Limited Offer – Enjoy 20% off!' , 'survey-maker'); ?>
+        <?php echo esc_html__( 'Limited Offer' , 'survey-maker'); ?>
     </h3>
     <div class="ays-survey-features-wrap">
         <div class="comparison">
@@ -26,19 +26,19 @@
                         <th class="tl tl2"></th>
                         <th class="product" style="background:#69C7F1; border-top-left-radius: 5px; border-left:0px;">
                             <span style="display: block"><?php echo esc_html__('Personal',"survey-maker")?></span>
-                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/personal_avatar.png'; ?>" alt="Free" title="Free" width="100"/>
+                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/personal_avatar.png'; ?>" alt="Free" title="Free" width="100" height="100"/>
                         </th>
                         <th class="product" style="background:#69C7F1;">
                             <span style="display: block"><?php echo  esc_html__('Business',"survey-maker")?></span>
-                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/business_avatar.png'; ?>" alt="Business" title="Business" width="100"/>
+                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/business_avatar.png'; ?>" alt="Business" title="Business" width="100" height="100"/>
                         </th>
                         <th class="product" style="border-top-right-radius: 5px; background:#69C7F1;">
                             <span style="display: block"><?php echo esc_html__('Developer',"survey-maker")?></span>
-                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/pro_avatar.png'; ?>" alt="Developer" title="Developer" width="100"/>
+                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/pro_avatar.png'; ?>" alt="Developer" title="Developer" width="100" height="100"/>
                         </th>
                         <th class="product" style="border-top-right-radius: 5px; border-right:0px; background:#69C7F1;">
                             <span style="display: block"><?php echo esc_html__('Agency', "survey-maker")?></span>
-                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/agency_avatar.png'; ?>" alt="Agency" title="Agency" width="100"/>
+                            <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/avatars/agency_avatar.png'; ?>" alt="Agency" title="Agency" width="100" height="100"/>
                         </th>
                     </tr>
                     <tr>
@@ -50,15 +50,27 @@
                         </th>
                         <th class="price-info">
                             <div class="price-now"><span style="text-decoration: line-through; color: red;">$75</span></div>
-                            <div class="price-now"><span>$49</span></div>                            
+                            <div class="price-now"><span>$49</span></div>
+                            <div class="ays-survey-pracing-table-td-flex">
+                                <a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a>
+                                <span><?php echo esc_html__('(One-time payment)', 'survey-maker'); ?><span>
+                            </div>
                         </th>
                         <th class="price-info">
                             <div class="price-now"><span span style="text-decoration: line-through; color: red;">$250</span></div>
-                            <div class="price-now"><span>$149</span></div>                            
+                            <div class="price-now"><span>$149</span></div>
+                            <div class="ays-survey-pracing-table-td-flex">
+                                <a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a>
+                                <span><?php echo esc_html__('(One-time payment)', 'survey-maker'); ?><span>
+                            </div>
                         </th>
                         <th class="price-info">
                             <div class="price-now"><span span style="text-decoration: line-through; color: red;">$450</span></div>
-                            <div class="price-now"><span>$249</span></div>                            
+                            <div class="price-now"><span>$249</span></div>
+                            <div class="ays-survey-pracing-table-td-flex">
+                                <a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a>
+                                <span><?php echo esc_html__('(One-time payment)', 'survey-maker'); ?><span>
+                            </div>
                         </th>
                     </tr>
                 </thead>
@@ -673,16 +685,53 @@
                     </tr>
                     <tr>
                         <td></td>
-                        <td><a href="https://wordpress.org/plugins/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Download',"survey-maker")?><span class="hide-mobile"></span></a></td>
-                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
-                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
-                        <td><a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a></td>
+                        <td></td>
+                        <td>
+                            <div class="ays-survey-pracing-table-td-flex">
+                                <a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a>
+                                <span><?php echo esc_html__('(One-time payment)', 'survey-maker'); ?><span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ays-survey-pracing-table-td-flex">
+                                <a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a>
+                                <span><?php echo esc_html__('(One-time payment)', 'survey-maker'); ?><span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="ays-survey-pracing-table-td-flex">
+                                <a href="https://ays-pro.com/wordpress/survey-maker/" target="_blank" class="price-buy"><?php echo esc_html__('Buy now',"survey-maker")?><span class="hide-mobile"></span></a>
+                                <span><?php echo esc_html__('(One-time payment)', 'survey-maker'); ?><span>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <div class="ays-survey-features-video">
-                <div class="ays-survey-features-video-icon"><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></div>
-                <div class="ays-survey-features-video-text"><a href="https://www.youtube.com/watch?v=1YVNtofpI4c" target="_blank">Watch Plans Comparison Video </a></div>
+            <div class="ays-survey-features-cta-button-wrap">
+                <div class="ays-survey-features-video">
+                    <div class="ays-survey-features-video-text"><a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                        <i class="ays_fa ays_fa_file_text" style="font-size: 16px; margin-right: 5px;"></i>
+                        <?php echo esc_html__('All Features',"survey-maker"); ?></a>
+                    </div>
+                </div>
+                <div class="ays-survey-features-video">
+                    <div class="ays-survey-features-video-icon"><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></div>
+                    <div class="ays-survey-features-video-text"><a href="https://www.youtube.com/watch?v=1YVNtofpI4c" target="_blank"><?php echo esc_html__('Watch Plans Comparison Video',"survey-maker"); ?></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ays-survey-sm-content-row-sg">
+        <div class="ays-survey-sm-guarantee-container-sg ays-survey-sm-center-box-sg">
+            <img src="<?php echo esc_url( SURVEY_MAKER_ADMIN_URL ); ?>/images/money_back_logo.webp" width="200" height="167" alt="Best money-back guarantee logo">
+            <div class="ays-survey-sm-guarantee-text-container-sg">
+                <h3><?php echo esc_html__("30 day money back guarantee !!!", 'survey-maker'); ?></h3>
+                <p>
+                    <?php echo esc_html__("We're sure that you'll love our Survey Maker plugin, but, if for some reason, you're not
+                    satisfied in the first 30 days of using our product, there is a money-back guarantee and
+                    we'll issue a refund.", 'survey-maker'); ?>
+                    
+                </p>
             </div>
         </div>
     </div>

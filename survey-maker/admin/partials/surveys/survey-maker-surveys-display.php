@@ -54,9 +54,6 @@
         </div>
         
         <br class="clear">
-        <div class="ays-survey-create-survey-youtube-video-button-box-bottom" >
-            <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary page-title-action-surveys-page ays-survey-add-new-button-page-title-action ays-survey-add-new-button-new-design"> %s ' . esc_html__('Add New', "survey-maker") . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));?>
-        </div>
         <?php if($survey_max_id <= 3): ?>
             <div class="ays-survey-create-survey-video-box" style="margin: auto;">
                 <div class="ays-survey-create-survey-title">
@@ -66,9 +63,6 @@
                     <div class="ays-survey-youtube-placeholder" data-video-id="vZ2-VEd8Bq4">
                         <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/create-survey-video-screenshot.webp'); ?>" width="560" height="315">
                     </div>
-                </div>
-                <div class="ays-survey-create-survey-youtube-video-button-box-top">
-                    <?php echo sprintf( '<a href="?page=%s&action=%s" class="ays-survey-add-new-button-video ays-survey-add-new-button-new-design"> %s ' . esc_html__('Add New', "survey-maker") . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));?>
                 </div>
             </div>
         <?php else: ?>

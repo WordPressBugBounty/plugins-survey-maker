@@ -334,7 +334,7 @@ class Survey_Maker_Activator {
                     'survey_loader_color'                                   => '#333',
                     'survey_buttons_text_color'                             => '#333',
                     'survey_title_letter_spacing_mobile'                    => 0,
-                    'survey_width'                                          => '',
+                    'survey_width'                                          => '700',
                     'survey_width_by_percentage_px'                         => 'pixels',
                     'survey_mobile_max_width'                               => '',
                     'survey_custom_class'                                   => '',
