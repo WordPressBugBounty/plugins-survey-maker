@@ -1,4 +1,4 @@
-<div id="tab4" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab4') ? 'ays-survey-tab-content-active' : ''; ?>">
+<div id="tab4" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab4') ? 'ays-survey-tab-content-active' : ''; ?>">
     <p class="ays-subtitle"><?php echo esc_html__('Survey results settings',"survey-maker"); ?></p>    
     <hr style="border-width: 2px;"/>
     <div class="form-group row ays-survey-result-message-vars">

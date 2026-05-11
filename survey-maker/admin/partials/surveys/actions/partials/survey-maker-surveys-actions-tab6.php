@@ -1,4 +1,4 @@
-<div id="tab6" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab6') ? 'ays-survey-tab-content-active' : ''; ?>">
+<div id="tab6" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab6') ? 'ays-survey-tab-content-active' : ''; ?>">
     <p class="ays-subtitle"><?php echo esc_html__('Start page settings',"survey-maker")?></p>
     <p><?php echo esc_html__("Configure your survey's start page by adding the title, description and styling it the way you want. The start page will be shown to the survey takers before displaying the survey.","survey-maker")?></p>
     <hr/>

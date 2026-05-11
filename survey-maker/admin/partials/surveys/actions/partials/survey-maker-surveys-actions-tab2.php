@@ -1,4 +1,4 @@
-<div id="tab2" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab2') ? 'ays-survey-tab-content-active' : ''; ?>">
+<div id="tab2" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab2') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="d-flex justify-content-between align-items-center">
         <div>
             <p class="ays-subtitle"><?php echo esc_html__('Styles',"survey-maker"); ?></p>
@@ -37,81 +37,96 @@
             </label>
         </div>
         <div class="col-sm-10">
+            <?php
+                $survey_theme_demo_url = '#';
+                $survey_theme_upgrade_url = 'https://ays-pro.com/wordpress/survey-maker';
+                $survey_themes = array(
+                    'classic_light' => array(
+                        'label'      => __('Classic Light', "survey-maker"),
+                        'class'      => 'classic-light',
+                        'image'      => 'classic-light.webp',
+                        'is_pro'     => false,
+                        'is_checked' => $survey_theme == 'classic_light',
+                    ),
+                    'classic_dark' => array(
+                        'label'      => __('Classic Dark', "survey-maker"),
+                        'class'      => 'classic-dark',
+                        'image'      => 'classic-dark.webp',
+                        'is_pro'     => false,
+                        'is_checked' => $survey_theme == 'classic_dark',
+                    ),
+                    'modern' => array(
+                        'label'      => __('Modern', "survey-maker"),
+                        'class'      => 'modern',
+                        'image'      => 'modern.webp',
+                        'is_pro'     => false,
+                        'is_checked' => $survey_theme == 'modern',
+                    ),
+                    'minimal' => array(
+                        'label'      => __('Minimal', "survey-maker"),
+                        'class'      => 'minimal',
+                        'image'      => 'minimal.webp',
+                        'is_pro'     => false,
+                        'is_checked' => $survey_theme == 'minimal',
+                    ),
+                    'business' => array(
+                        'label'      => __('Business', "survey-maker"),
+                        'class'      => 'business',
+                        'image'      => 'business.webp',
+                        'is_pro'     => true,
+                        'is_checked' => false,
+                    ),
+                    'elegant' => array(
+                        'label'      => __('Elegant', "survey-maker"),
+                        'class'      => 'elegant',
+                        'image'      => 'elegant.webp',
+                        'is_pro'     => true,
+                        'is_checked' => false,
+                    ),
+                );
+            ?>
             <div class="ays-survey-themes-main-div-wrap">
-                <div class="ays-survey-themes-main-div">
-                    <input type="radio" id="ays-survey-classic_light" name="ays_survey_theme" value="classic_light" <?php echo ($survey_theme == 'classic_light') ? 'checked' : '' ?>>
-                    <label for="ays-survey-classic_light" class="ays-survey-theme-item">
-                        <span><?php echo esc_html__('Classic Light', "survey-maker"); ?></span>
-                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/classic-light.webp' ?>" alt="Classic Light">
-                    </label>
-                </div>
-                <div class="ays-survey-themes-main-div">
-                    <input type="radio" id="ays-survey-classic_dark" name="ays_survey_theme" value="classic_dark" <?php echo ($survey_theme == 'classic_dark') ? 'checked' : '' ?>>
-                    <label for="ays-survey-classic_dark" class="ays-survey-theme-item">
-                        <span><?php echo esc_html__('Classic Dark', "survey-maker"); ?></span>
-                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/classic-dark.webp' ?>" alt="Classic Dark">
-                    </label>
-                </div>
-                <div class="ays-survey-themes-main-div">
-                    <input type="radio" id="ays-survey-modern" name="ays_survey_theme" value="modern" <?php echo ($survey_theme == 'modern') ? 'checked' : '' ?>>
-                    <label for="ays-survey-modern" class="ays-survey-theme-item">
-                        <span><?php echo esc_html__('Modern', "survey-maker"); ?></span>
-                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/modern.webp' ?>" alt="Modern">
-                    </label>
-                </div>
-                <div class="ays-survey-themes-main-div">
-                    <input type="radio" id="ays-survey-minimal" name="ays_survey_theme" value="minimal" <?php echo ($survey_theme == 'minimal') ? 'checked' : '' ?>>
-                    <label for="ays-survey-minimal" class="ays-survey-theme-item">
-                        <span><?php echo esc_html__('Minimal', "survey-maker"); ?></span>
-                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/minimal.webp' ?>" alt="Minimal">
-                    </label>
-                </div>
-                <div class="ays-survey-themes-main-div ays-survey-themes-main-div-only-pro">
-                    <div class="form-group row" style="margin:0px;">
-                        <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small">
-                            <div class="ays-pro-features-v2-small-buttons-box">
-                                <div class="ays-pro-features-v2-video-button"></div>
-                                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                    <div class="ays-pro-features-v2-upgrade-text">
-                                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                    </div>
-                                </a>
-                            </div>
-                            <label for="ays-survey-business" class="ays-survey-theme-item">
-                                <span><?php echo esc_html__('Business', "survey-maker"); ?></span>
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/business.webp' ?>" alt="Modern">
+                <?php foreach ( $survey_themes as $survey_theme_value => $survey_theme_data ) : ?>
+                    <div class="ays-survey-themes-main-div <?php echo esc_attr($survey_theme_data['is_pro'] ? 'ays-survey-themes-main-div-only-pro' : ''); ?>">
+                        <?php if ( ! $survey_theme_data['is_pro'] ) : ?>
+                            <input type="radio" id="ays-survey-<?php echo esc_attr($survey_theme_value); ?>" name="ays_survey_theme" value="<?php echo esc_attr($survey_theme_value); ?>" <?php checked( $survey_theme_data['is_checked'] ); ?>>
+                            <label for="ays-survey-<?php echo esc_attr($survey_theme_value); ?>" class="ays-survey-theme-item ays-survey-theme-item-<?php echo esc_attr($survey_theme_data['class']); ?>">
+                        <?php else : ?>
+                            <a href="<?php echo esc_url($survey_theme_upgrade_url); ?>" target="_blank" rel="noopener" class="ays-survey-theme-item ays-survey-theme-item-<?php echo esc_attr($survey_theme_data['class']); ?>" aria-label="<?php echo esc_attr(sprintf(__('Upgrade to unlock %s theme', "survey-maker"), $survey_theme_data['label'])); ?>">
+                        <?php endif; ?>
+                                <span class="ays-survey-theme-item-header">
+                                    <span class="ays-survey-theme-item-title"><?php echo esc_html($survey_theme_data['label']); ?></span>
+                                    <?php if ( $survey_theme_data['is_pro'] ) : ?>
+                                        <span class="ays-survey-theme-lock" aria-label="<?php echo esc_attr__('PRO', "survey-maker"); ?>">
+                                            <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
+                                                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="2"></rect>
+                                            </svg>
+                                        </span>
+                                    <?php endif; ?>
+                                </span>
+                                <span class="ays-survey-theme-preview">
+                                    <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL . '/images/themes/' . $survey_theme_data['image']); ?>" alt="<?php echo esc_attr($survey_theme_data['label']); ?>">
+                                    <?php if ( $survey_theme_data['is_pro'] ) : ?>
+                                        <span class="ays-survey-theme-pro-overlay"></span>
+                                    <?php endif; ?>
+                                </span>
+                        <?php if ( ! $survey_theme_data['is_pro'] ) : ?>
                             </label>
-                        </div>
+                        <?php else : ?>
+                            </a>
+                        <?php endif; ?>
+                        <?php if ( 1 == 0 ) : ?>
+                            <a href="<?php echo esc_url($survey_theme_demo_url); ?>" class="ays-survey-theme-demo-button" aria-label="<?php echo esc_attr(sprintf(__('View %s demo', "survey-maker"), $survey_theme_data['label'])); ?>">
+                                <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
+                                    <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                    <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                                </svg>
+                                <?php echo esc_html__('View Demo', "survey-maker"); ?>
+                            </a>
+                        <?php endif; ?>
                     </div>
-                </div>
-                <div class="ays-survey-themes-main-div ays-survey-themes-main-div-only-pro">
-                    <div class="form-group row" style="margin:0px;">
-                        <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small">
-                            <div class="ays-pro-features-v2-small-buttons-box">
-                                <div>
-                                    <a href="https://ays-demo.com/health-questionnaire/" target="_blank" class="ays-pro-features-v2-view-demo-button">
-                                        <div class="ays-pro-features-v2-view-demo-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/view-demo.svg');"></div>
-                                        <div class="ays-pro-features-v2-view-demo-text">
-                                            <?php echo esc_html__("View demo" , "survey-maker"); ?>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="ays-pro-features-v2-video-button"></div>
-                                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                    <div class="ays-pro-features-v2-upgrade-text">
-                                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                    </div>
-                                </a>
-                            </div>
-                            <label for="ays-survey-elegant" class="ays-survey-theme-item">
-                                <span><?php echo esc_html__('Elegant', "survey-maker"); ?></span>
-                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL) . '/images/themes/elegant.webp' ?>" alt="Modern">
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div> <!-- Survey Theme -->

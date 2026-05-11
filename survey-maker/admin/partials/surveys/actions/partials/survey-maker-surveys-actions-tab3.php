@@ -1,4 +1,4 @@
-<div id="tab3" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab3') ? 'ays-survey-tab-content-active' : ''; ?>">
+<div id="tab3" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab3') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="ays-survey-collapsible-container" style="margin-top: 20px;">
         <div class="d-flex justify-content-end align-items-center">
             <div class="d-flex justify-content-between align-items-center" style="gap: 5px; font-size: 13px">
@@ -32,12 +32,15 @@
                         </a>
                     </label>
                 </div>
-                <div class="col-sm-8">
-                    <select id="ays-status" name="<?php echo esc_attr($html_name_prefix); ?>status">
-                        <option></option>
-                        <option <?php selected( $status, 'published' ); ?> value="published"><?php echo esc_html__( "Published", "survey-maker" ); ?></option>
-                        <option <?php selected( $status, 'draft' ); ?> value="draft"><?php echo esc_html__( "Draft", "survey-maker" ); ?></option>
-                    </select>
+                <div class="col-sm-8 d-flex">
+                    <div class="form-check form-check-inline checkbox_ays">
+                        <input type="radio" id="ays-status-published-type" class="form-check-input" name="<?php echo esc_attr($html_name_prefix); ?>status" value="published" <?php echo ($status == 'published') ? 'checked' : ''; ?>/>
+                        <label class="form-check-label" for="ays-status-published-type"><?php echo esc_html__('Published',"survey-maker"); ?></label>
+                    </div>
+                    <div class="form-check form-check-inline checkbox_ays">
+                        <input type="radio" id="ays-status-draft-type" class="form-check-input" name="<?php echo esc_attr($html_name_prefix); ?>status" value="draft" <?php echo ($status == 'draft') ? 'checked' : ''; ?>/>
+                        <label class="form-check-label" for="ays-status-draft-type"><?php echo esc_html__('Draft',"survey-maker"); ?></label>
+                    </div>
                 </div>
             </div> <!-- Survey Status -->
             <hr/>
@@ -1138,6 +1141,7 @@
             </div> 
         </div>
     </div> <!-- Allow collecting information of logged in users -->
+    <?php if( 1 == 0 ): ?>
     <hr/>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
@@ -1192,6 +1196,7 @@
             </div>
         </div>
     </div><!-- Show all sections in one page -->
+    <?php endif; ?>
     <hr>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small" >

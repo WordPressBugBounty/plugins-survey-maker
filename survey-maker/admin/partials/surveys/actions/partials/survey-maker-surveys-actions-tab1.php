@@ -1,30 +1,84 @@
 <?php echo html_entity_decode(esc_html( $survey_colors )); ?>
 <div id="tab1" class="m2 ays-survey-tab-content <?php echo ($ays_tab == 'tab1') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="form-group row">
-        <div class="col-sm-12 col-lg-11">
+        <div class="col-sm-12 col-lg-12">
             <div class="form-group row">
                 <div class="col-sm-6">
                     <p class="ays-subtitle"><?php echo esc_html__('Questions and Sections Content',"survey-maker"); ?></p>
                 </div>
                 <div class="col-sm-6">
-                    <div class="d-flex align-items-end justify-content-end w-100 h-100">
-                        <span style="font-size: 12px; font-style: italic;color: #9f9f9f;">These features are available only in PRO version.</span>
+                    <div class="form-group row" style="margin-top: 20px;">
+                        <div class="d-flex align-items-end justify-content-end w-100 h-100 flex-wrap" style="gap: 10px">
+                            <?php if(isset($survey_main_url) && $survey_main_url != ''): ?>
+                                <a data-toggle="tooltip" title="<?php echo esc_attr__("After clicking on the View button you will be redirected to the particular survey link.","survey-maker");?>" href="<?php echo $survey_main_url != '' ? esc_url($survey_main_url) : 'javascript:void(0)'; ?>" target="<?php echo $survey_main_url != '' ? '_blank' : ''; ?>" type="button" class="button button-primary">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    <span style="margin-left: 5px;"><?php echo esc_html__( 'View', "survey-maker" ); ?></span>
+                                </a>
+                            <?php endif; ?>
+                            <button type="button" class="button ays-survey-open-templates-modal"><?php echo esc_html__("Survey templates" , "survey-maker")?></button>
+                            <!-- <a data-toggle="tooltip" title="<?php echo esc_attr__('All the previously created questions from other surveys are collected in the Question Library. You can make use of them in your current survey.',"survey-maker");?>" href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5; background-color: white; color: #2271b1"><?php echo esc_html__( 'Questions library', "survey-maker" ); ?></a> -->
+
+                            <div class="ays-survey-question-actions-pro-redirect-button" data-href="https://ays-pro.com/wordpress/survey-maker" data-toggle="tooltip" title="<?php echo esc_attr__('All the previously created questions from other surveys are collected in the Question Library. You can make use of them in your current survey.',"survey-maker");?>" style="cursor: pointer;">
+                                <div class="form-group row" style="margin:0px;">
+                                    <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="padding: 0;">
+                                        <div class="ays-pro-features-v2-small-buttons-box" style="right: -10px; top: -25px;">
+                                            <div class="ays-pro-features-v2-video-button"></div>
+                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
+                                                <div class="ays-pro-features-v2-upgrade-text">
+                                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5; background-color: white; color: #2271b1"><?php echo esc_html__( 'Questions library', "survey-maker" ); ?></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="ays-survey-question-actions-pro-button" data-toggle="tooltip" title="<?php echo esc_attr__('Import questions to your survey in the .xlsx file format. The file can include questions, answers and types.',"survey-maker");?>" data-video-url="https://www.youtube.com/watch?v=l3iCnRzeUsQ" data-option-title="<?php echo esc_html__('Import Questions',"survey-maker")?>" data-option-text="If you already have the necessary questions for your survey and want <strong> to save time </strong>, use the “Import Questions” option. <strong> Import the. XLSX file </strong> with the questions, question types, and answers where needed into your survey dashboard and customize it according to your needs and desires. To better understand what formatting your. XLSX file requires <strong> download an example </strong> to avoid any confusion or difficulty." style="cursor: pointer;">
+                                <div class="form-group row" style="margin:0px;">
+                                    <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="padding: 0;">
+                                        <div class="ays-pro-features-v2-small-buttons-box" style="right: -10px; top: -25px;">
+                                            <div class="ays-pro-features-v2-video-button"></div>
+                                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                                <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
+                                                <div class="ays-pro-features-v2-upgrade-text">
+                                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a href="#" type="button" class="button button-primary" style="opacity: 0.5;background-color: white; color: #2271b1"><?php echo esc_html__("Import questions" ,  "survey-maker")?></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="d-flex align-items-end justify-content-end w-100 h-100 flex-wrap" style="gap: 10px">
-                    <?php if(isset($survey_main_url) && $survey_main_url != ''): ?>
-                        <a data-toggle="tooltip" title="<?php echo esc_attr__("After clicking on the View button you will be redirected to the particular survey link.","survey-maker");?>" href="<?php echo $survey_main_url != '' ? esc_url($survey_main_url) : 'javascript:void(0)'; ?>" target="<?php echo $survey_main_url != '' ? '_blank' : ''; ?>" type="button" class="button button-primary">
-                            <i class="fa fa-eye" aria-hidden="true"></i>
-                            <span style="margin-left: 5px;"><?php echo esc_html__( 'View', "survey-maker" ); ?></span>
-                        </a>
-                    <?php endif; ?>
-                    <button type="button" class="button ays-survey-open-templates-modal"><?php echo esc_html__("Survey templates" , "survey-maker")?></button>
-                    <a data-toggle="tooltip" title="<?php echo esc_attr__('All the previously created questions from other surveys are collected in the Question Library. You can make use of them in your current survey.',"survey-maker");?>" href="https://ays-pro.com/wordpress/survey-maker" target="_blank" type="button" class="button button-primary" style="opacity: 0.5; background-color: white; color: #2271b1"><?php echo esc_html__( 'Questions library', "survey-maker" ); ?></a>
-                    <a data-toggle="tooltip" title="<?php echo esc_attr__('Import questions to your survey in the .xlsx file format. The file can include questions, answers and types.',"survey-maker");?>" href="#" type="button" class="button button-primary ays-survey-question-actions-pro-button" data-video-url="https://www.youtube.com/watch?v=l3iCnRzeUsQ" data-option-title="<?php echo esc_html__('Import Questions',"survey-maker")?>" data-option-text="If you already have the necessary questions for your survey and want <strong> to save time </strong>, use the “Import Questions” option. <strong> Import the. XLSX file </strong> with the questions, question types, and answers where needed into your survey dashboard and customize it according to your needs and desires. To better understand what formatting your. XLSX file requires <strong> download an example </strong> to avoid any confusion or difficulty.  " style="opacity: 0.5;background-color: white; color: #2271b1"><?php echo esc_html__("Import questions" ,  "survey-maker")?></a>
+            <!-- <div class="form-group row">
+                <div class="col-sm-12">
+                    <p class="m-0 text-right">
+                        <a class="ays-survey-collapse-all" href="javascript:void(0);"><?php echo esc_html__( "Collapse All", "survey-maker" ); ?></a>
+                        <span>|</span>
+                        <a class="ays-survey-expand-all" href="javascript:void(0);"><?php echo esc_html__( "Expand All", "survey-maker" ); ?></a>
+                    </p>
                 </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="form-group row ays-survey-max-inp-vars-tabs-box display_none">
+        <div class="col-sm-12">
+            <div class="ays-survey-max-inp-vars-header-content">
+            <div class="ays-survey-max-inp-vars-header-image-content">
+                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/warning.png">
             </div>
+            <div class="ays-survey-max-inp-vars-header-text-content ays-survey-max-inp-vars-texts-content"></div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-12 col-lg-11">
             <div class="form-group row">
                 <div class="col-sm-12">
                     <p class="m-0 text-right">
@@ -36,16 +90,6 @@
             </div>
         </div>
         <div class="col-sm-1"></div>
-    </div>
-    <div class="form-group row ays-survey-max-inp-vars-tabs-box display_none">
-        <div class="col-sm-12">
-            <div class="ays-survey-max-inp-vars-header-content">
-            <div class="ays-survey-max-inp-vars-header-image-content">
-                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/warning.png">
-            </div>
-            <div class="ays-survey-max-inp-vars-header-text-content ays-survey-max-inp-vars-texts-content"></div>
-            </div>
-        </div>
     </div>
     <hr/>
     <div class="form-group row">
@@ -236,7 +280,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="ays-survey-question-img-icon-box">
-                                                        <div class="ays-survey-add-question-image appsMaterialWizButtonPapericonbuttonEl" data-type="questionImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                                        <div class="ays-survey-add-question-image appsMaterialWizButtonPapericonbuttonEl" data-type="questionImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add question image',"survey-maker"); ?>">
                                                             <div class="ays-question-img-icon-content">
                                                                 <div class="ays-question-img-icon-content-div">
                                                                     <div class="ays-survey-icons">
@@ -373,7 +417,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="ays-survey-answer-icon-box">
-                                                                <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                                                <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker"); ?>">
                                                                     <div class="ays-question-img-icon-content">
                                                                         <div class="ays-question-img-icon-content-div">
                                                                             <div class="ays-survey-icons">
@@ -433,7 +477,7 @@
                                                                 <div class="ays-survey-input-underline-animation"></div>
                                                             </div>
                                                             <div class="ays-survey-answer-icon-box">
-                                                                <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                                                <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker"); ?>">
                                                                     <div class="ays-question-img-icon-content">
                                                                         <div class="ays-question-img-icon-content-div">
                                                                             <div class="ays-survey-icons">
@@ -490,7 +534,7 @@
                                                                 <div class="ays-survey-input-underline-animation"></div>
                                                             </div>
                                                             <div class="ays-survey-answer-icon-box">
-                                                                <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                                                <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker"); ?>">
                                                                     <div class="ays-question-img-icon-content">
                                                                         <div class="ays-question-img-icon-content-div">
                                                                             <div class="ays-survey-icons">
@@ -1221,7 +1265,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="ays-survey-question-img-icon-box">
-                                                                <div class="ays-survey-add-question-image appsMaterialWizButtonPapericonbuttonEl" data-type="questionImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                                                <div class="ays-survey-add-question-image appsMaterialWizButtonPapericonbuttonEl" data-type="questionImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add question image',"survey-maker")?>">
                                                                     <div class="ays-question-img-icon-content">
                                                                         <div class="ays-question-img-icon-content-div">
                                                                             <div class="ays-survey-icons">
@@ -1369,7 +1413,7 @@
                                                                         <div class="ays-survey-input-underline-animation"></div>
                                                                     </div>
                                                                     <div class="ays-survey-answer-icon-box">
-                                                                        <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                                                        <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker"); ?>">
                                                                             <div class="ays-question-img-icon-content">
                                                                                 <div class="ays-question-img-icon-content-div">
                                                                                     <div class="ays-survey-icons">
@@ -2185,7 +2229,7 @@
                                         </div>
                                     </div>
                                     <div class="ays-survey-question-img-icon-box">
-                                        <div class="ays-survey-add-question-image appsMaterialWizButtonPapericonbuttonEl" data-type="questionImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                        <div class="ays-survey-add-question-image appsMaterialWizButtonPapericonbuttonEl" data-type="questionImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add question image',"survey-maker")?>">
                                             <div class="ays-question-img-icon-content">
                                                 <div class="ays-question-img-icon-content-div">
                                                     <div class="ays-survey-icons">
@@ -2296,7 +2340,7 @@
                                             </div>
                                         </div>
                                         <div class="ays-survey-answer-icon-box">
-                                            <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                            <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker"); ?>">
                                                 <div class="ays-question-img-icon-content">
                                                     <div class="ays-question-img-icon-content-div">
                                                         <div class="ays-survey-icons">
@@ -2949,7 +2993,7 @@
                                         <div class="ays-survey-input-underline-animation"></div>
                                     </div>
                                     <div class="ays-survey-answer-icon-box">
-                                        <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                        <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker")?>">
                                             <div class="ays-question-img-icon-content">
                                                 <div class="ays-question-img-icon-content-div">
                                                     <div class="ays-survey-icons">
@@ -3006,7 +3050,7 @@
                                         <div class="ays-survey-input-underline-animation"></div>
                                     </div>
                                     <div class="ays-survey-answer-icon-box">
-                                        <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add image',"survey-maker")?>">
+                                        <div class="ays-survey-add-answer-image appsMaterialWizButtonPapericonbuttonEl" data-type="answerImgButton" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Add option image',"survey-maker")?>">
                                             <div class="ays-question-img-icon-content">
                                                 <div class="ays-question-img-icon-content-div">
                                                     <div class="ays-survey-icons">

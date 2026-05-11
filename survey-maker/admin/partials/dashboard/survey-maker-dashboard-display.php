@@ -28,6 +28,10 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'survey-maker-questions'
                     <?php echo esc_html__("Create Survey", 'survey-maker'); ?>
                 </a>
             </div>
+            <a href="https://www.youtube.com/watch?v=f9NgzjmS-HA" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <span><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
+                <span style="margin-left: 3px; text-decoration: underline;"  class="ays_survey_small_hint_text"><?php echo esc_html__('How to Create a Survey', "survey-maker"); ?></span>
+            </a>
         </div>
     </section>
 
@@ -68,7 +72,7 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'survey-maker-questions'
                 <div class="survey-maker-video-container">
                     <div class="survey-maker-video-wrapper">
                         <div class="survey-maker-create-course-youtube-video">
-                            <div class="ays-survey-youtube-placeholder survey-maker-youtube-placeholder" data-video-id="AG08FntZeHY">
+                            <div class="ays-survey-youtube-placeholder survey-maker-youtube-placeholder" data-video-id="vHW1f7xtAJU">
                                 <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/create-survey-on-wordpress-480.webp'); ?>" width="480" height="265">
                             </div>
                         </div>

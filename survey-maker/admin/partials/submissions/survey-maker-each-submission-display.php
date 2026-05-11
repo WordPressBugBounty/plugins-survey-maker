@@ -124,14 +124,14 @@ $types_with_changeable_charts = array(
             </a>
         </div>
     </div>
-    <h1 class="wp-heading-inline" style="padding-left:15px;">
+    <h1 class="wp-heading-inline" style="padding-left:0;">
         <?php
         echo sprintf( '<a href="?page=%s" class="go_back"><span><i class="fa fa-long-arrow-left" aria-hidden="true"></i> %s</span></a>', esc_attr($this->plugin_name)."-submissions", esc_html__("Back to Submissions", "survey-maker") );
         ?>
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
     <div style="display: flex; justify-content: space-between;flex-wrap:wrap">
-        <h1 class="wp-heading-inline" style="padding-left:15px;">
+        <h1 class="wp-heading-inline" style="padding-left:0;">
             <?php               
                 $url = admin_url('admin.php');
                 $url = esc_url_raw(add_query_arg(array(
@@ -147,7 +147,15 @@ $types_with_changeable_charts = array(
             <a type="button" class="button button-primary ays-survey-question-actions-pro-button" href="#" style="opacity:0.5;"  data-video-url="https://www.youtube.com/watch?v=EKhq0Sja3tE" data-option-title="<?php echo esc_attr__('Export to XLSX',"survey-maker")?>" data-option-text="Analyzing the survey submissions is the most important part of surveys, and having the results at your disposal makes the process of analyzing much easier. <strong> Download the reports in.</strong> XLSX format and have the full results sheet at your fingertips with the <strong> answers, their percentages </strong>, and <strong> the number of survey takers. </strong>"><?php echo esc_html__('Export to XLSX', "survey-maker"); ?></a>
         </div>
     </div>
-    <div class="form-group row" style="margin:0px;">
+
+    <div class="ays-survey-add-question-filter-box">
+        <div class="ays-survey-add-question-filter" id="ays-survey-add-question-filter">
+            <img loading="lazy" src="<?php echo esc_url( SURVEY_MAKER_ADMIN_URL . '/images/icons/filter.svg' ); ?>" style="width: 20px;">
+            <span><?php echo esc_html__('Filters', 'survey-maker'); ?></span>
+        </div>
+    </div>
+
+    <div class="form-group row display_none ays-survey-add-question-filter-option-box" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small" style="background-color: rgb(53 113 196 / 7%);">
             <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=N3vJjECIShQ" data-option-title="<?php echo esc_attr__('Submission filters',"survey-maker")?>" data-option-text="Easily filter submissions on your survey based on the question answers. Get the needed data and make improvements due to the well-designed filtering system. Make use of this option and filter survey responses quickly.">
                 <div class="ays-pro-features-v2-video-button">
@@ -192,7 +200,7 @@ $types_with_changeable_charts = array(
         </div>
     </div>
     <div class="nav-tab-wrapper">
-        <a href="#statistics_of_answer" class="nav-tab <?php echo ($ays_survey_tab == 'statistics_of_answer') ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__("Summary", "survey-maker"); ?></a>
+        <a href="#statistics_of_answer" class="nav-tab <?php echo ($ays_survey_tab == 'statistics_of_answer') ? 'nav-tab-active' : ''; ?>" style="margin-left: 0;"><?php echo esc_html__("Summary", "survey-maker"); ?></a>
         <a href="#questions" class="nav-tab <?php echo ($ays_survey_tab == 'questions') ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__("Individual", "survey-maker"); ?></a>
         <a href="#poststuff" class="nav-tab <?php echo ($ays_survey_tab == 'poststuff') ? 'nav-tab-active' : ''; ?>" ><?php echo esc_html__("Submissions", "survey-maker"); ?></a>
         <a href="#statistics" class="nav-tab <?php echo ($ays_survey_tab == 'statistics') ? 'nav-tab-active' : ''; ?>"><?php echo esc_html__("Analytics", "survey-maker"); ?></a>

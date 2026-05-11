@@ -1,6 +1,9 @@
-<div id="tab9" class="ays-survey-tab-content <?php echo ($ays_tab == 'tab9') ? 'ays-survey-tab-content-active' : ''; ?>">
+<div id="tab9" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab9') ? 'ays-survey-tab-content-active' : ''; ?>">
     <p class="ays-subtitle">Additional condition</p>
     <hr>
+    <div class="ays-survey-youtube-video-help-text-wrap">
+        <span style="display:block;" class="ays_survey_small_hint_text"><?php echo esc_html__("Conditional Results lets you create personalized survey flows and show different questions, sections, or outcomes based on the user’s previous answers.", "survey-maker"); ?></span>
+    </div>
     <div style="display: flex;justify-content: center; align-items: center;position: relative;" class="ays-survey-zindex-for-pro">
         <div class="ays-survey-community-youtube-video">
             <div class="ays-survey-youtube-placeholder" data-video-id="V4SBc9yiO68">
@@ -12,7 +15,7 @@
         <div class="col-sm-12 ays-pro-features-v2-main-box">
             <div class="ays-pro-features-v2-big-buttons-box">
                 <div class="ays-pro-features-v2-video-button"></div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
                         <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
@@ -21,7 +24,7 @@
             </div>
             <div class="ays-pro-features-v2-small-buttons-box">
                 <div class="ays-pro-features-v2-video-button"></div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
                     <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                     <div class="ays-pro-features-v2-upgrade-text">
                         <?php echo esc_html__("Upgrade" , "survey-maker"); ?>

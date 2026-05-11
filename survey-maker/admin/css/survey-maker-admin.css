@@ -2619,39 +2619,144 @@ select#ays_survey_default_type + span.select2-container #select2-ays_survey_defa
  */
 
 .ays-survey-themes-main-div-wrap {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
 }
 
 .ays-survey-themes-main-div-wrap .ays-survey-themes-main-div {
-    width: 200px;
-    margin-right: 10px;
+    position: relative;
+    min-width: 0;
 }
 
-.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div label.ays-survey-theme-item {
-    text-align: center;
-    padding: 5px;
-    height: 100%;
-    object-fit: contain;
+.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div .ays-survey-theme-item {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    margin: 0;
+    border: 1px solid #d9e0ea;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    color: #111827;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div .ays-survey-theme-item:hover,
+.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div .ays-survey-theme-item:focus {
+    color: #111827;
+    text-decoration: none;
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div:hover .ays-survey-theme-item,
+.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div .ays-survey-theme-item:focus-within {
+    border-color: #c5cfdd;
+    box-shadow: 0 8px 18px rgba(15, 23, 42, 0.1);
+    transform: translateY(-2px);
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-theme-item-header {
     display: flex;
-    object-position: center center;
-    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 34px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e3e8f0;
+    background: #fbfcfe;
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-theme-item-title {
+    overflow: hidden;
+    color: #020617;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-theme-lock {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #C7C7C7;
-    border-radius: 4px;
-    cursor: pointer;
+    color: #60708a;
 }
 
-.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div label.ays-survey-theme-item:hover {
-    box-shadow: 0px 4px 8px 0px rgba(136, 136, 136, 0.3);
+.ays-survey-themes-main-div-wrap .ays-survey-theme-preview {
+    position: relative;
+    display: block;
+    padding: 14px;
 }
 
-.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div label.ays-survey-theme-item img {
+.ays-survey-themes-main-div-wrap .ays-survey-theme-preview img {
+    display: block;
     width: 100%;
-    max-width: 100%;
+    height: auto;
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-theme-pro-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(2.2px);
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-theme-demo-button {
+    position: absolute;
+    left: 50%;
+    bottom: 12px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    max-width: calc(100% - 24px);
+    padding: 7px 11px;
+    border-radius: 6px;
+    background-color: #111827;
+    color: #ffffff !important;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.18);
+    opacity: 0;
+    transform: translate(-50%, 6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    pointer-events: none;
+}
+
+/* .ays-survey-themes-main-div-wrap .ays-survey-theme-demo-button:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -12px;
+    z-index: -1;
+    width: 180px;
+    max-width: 180px;
+    height: 74px;
+    background: linear-gradient(to top, #fff 0%, rgba(255, 255, 255, 0.86) 52%, rgba(255, 255, 255, 0) 100%);
+    transform: translateX(-50%);
+} */
+
+.ays-survey-themes-main-div-wrap .ays-survey-themes-main-div:hover .ays-survey-theme-demo-button,
+.ays-survey-themes-main-div-wrap .ays-survey-theme-demo-button:focus {
+    color: #ffffff !important;
+    opacity: 1;
+    transform: translate(-50%, 0);
+    pointer-events: auto;
+}
+
+.ays-survey-themes-main-div-wrap .ays-survey-theme-demo-button:hover,
+.ays-survey-themes-main-div-wrap .ays-survey-theme-demo-button:focus {
+    background-color: #020617;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 1px #fff, 0 0 0 3px #2271b1;
 }
 
 .ays-survey-themes-main-div-wrap .ays-survey-themes-main-div input[type="radio"] {
@@ -2659,10 +2764,27 @@ select#ays_survey_default_type + span.select2-container #select2-ays_survey_defa
 }
 
 .ays-survey-themes-main-div-wrap .ays-survey-themes-main-div input[type="radio"]:checked + label.ays-survey-theme-item {
-    /*box-shadow: 0px 0px 10px #ff581f;*/
-    box-shadow: 0px 4px 10px 0px rgba(136, 136, 136, 0.5);
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2), 0 8px 18px rgba(15, 23, 42, 0.1);
 }
 
+@media (max-width: 900px) {
+    .ays-survey-themes-main-div-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    .ays-survey-themes-main-div-wrap {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 520px) {
+    .ays-survey-themes-main-div-wrap {
+        grid-template-columns: 1fr;
+    }
+}
 
 /* Community start */
 @media (min-width: 1250px) {

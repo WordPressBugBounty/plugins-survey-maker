@@ -145,7 +145,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                     $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -278,7 +278,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                     $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -412,7 +412,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                     $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -527,7 +527,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                     $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -671,7 +671,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                     $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -808,7 +808,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                     $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -1104,7 +1104,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");
@@ -1214,7 +1214,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");
@@ -1321,7 +1321,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");
@@ -1381,7 +1381,7 @@ class Survey_Maker_Integrations
                 $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                     $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                         $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                        $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                             $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                             $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                                 $content .= __("Upgrade" , "survey-maker");
@@ -1499,7 +1499,7 @@ class Survey_Maker_Integrations
                             <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
                                 <div class="ays-pro-features-v2-big-buttons-box">
                                     <div class="ays-pro-features-v2-video-button"></div>
-                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                    <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
                                             '.__("Upgrade" , "survey-maker").'
@@ -1508,7 +1508,7 @@ class Survey_Maker_Integrations
                                 </div>
                                 <div class="ays-pro-features-v2-small-buttons-box">
                                     <div class="ays-pro-features-v2-video-button"></div>
-                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                    <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                         <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                         <div class="ays-pro-features-v2-upgrade-text">
                                             '.__("Upgrade" , "survey-maker").'
@@ -1655,7 +1655,7 @@ class Survey_Maker_Integrations
                                 <div class="col-sm-12 ays-pro-features-v2-main-box">
                                     <div class="ays-pro-features-v2-big-buttons-box">
                                         <div class="ays-pro-features-v2-video-button"></div>
-                                        <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                        <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
                                                 '.__("Upgrade" , "survey-maker").'
@@ -1664,7 +1664,7 @@ class Survey_Maker_Integrations
                                     </div>
                                     <div class="ays-pro-features-v2-small-buttons-box">
                                         <div class="ays-pro-features-v2-video-button"></div>
-                                        <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                        <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
                                             <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>
                                             <div class="ays-pro-features-v2-upgrade-text">
                                                 '.__("Upgrade" , "survey-maker").'
@@ -1819,7 +1819,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");
@@ -1967,7 +1967,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");
@@ -2094,7 +2094,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");
@@ -2240,7 +2240,7 @@ class Survey_Maker_Integrations
             $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
             $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
                 $content .= '<div class="ays-pro-features-v2-video-button"></div>';
-                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">';
+                    $content .= '<a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">';
                         $content .= '<div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg);" data-img-src="'.esc_attr(SURVEY_MAKER_ADMIN_URL).'/images/icons/pro-features-icons/Locked_24x24.svg"></div>';
                         $content .= '<div class="ays-pro-features-v2-upgrade-text">';
                             $content .= __("Upgrade" , "survey-maker");

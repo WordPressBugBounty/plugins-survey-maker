@@ -300,6 +300,10 @@
     margin: 20px auto 0;
 }
 
+.ays-survey-add-edit-page-main-wrap .ays-survey-navigation-tab-content.ays-survey-tab-content {
+    width: 80%;
+}
+
 .ays-survey-dashboard-main-wrap input[type=checkbox] {
     accent-color: #005AE0;
 }
@@ -410,3 +414,23 @@
 
 /*Dashboard Redesign | End*/
 
+.ays-survey-add-question-filter-box {
+    margin-bottom: 10px;
+}
+
+.ays-survey-add-question-filter-box #ays-survey-add-question-filter {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.ays-survey-youtube-video-help-text-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto 20px;
+}

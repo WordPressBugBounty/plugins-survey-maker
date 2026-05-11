@@ -18,14 +18,12 @@ $example_export_path = SURVEY_MAKER_ADMIN_URL . '/partials/export-import/survey-
         </h1>
         <?php do_action('ays_survey_sale_banner'); ?>
 
-        <div style="display: flex;justify-content: center; align-items: center;">
-            <div class="ays-survey-youtube-placeholder" data-video-id="xLSv8h87fX4">
-                <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/export-import-video-screenshot.webp'); ?>" width="560" height="315">
-            </div>
+        <div style="margin-top: 10px; margin-bottom: 10px;">
+            <span style="display:block;" class="ays_survey_small_hint_text"><?php echo esc_html__("Easily export your surveys as JSON files and import them to another website in just a few clicks. This feature helps you transfer, back up, or reuse surveys without rebuilding them from scratch.", "survey-maker"); ?></span>
         </div>
 
         <div class="nav-tab-wrapper">
-            <a href="#tab1" class="nav-tab nav-tab-active"><?php echo esc_html__('Export',"survey-maker"); ?></a>
+            <a href="#tab1" class="nav-tab nav-tab-active" style="margin-left: 0;"><?php echo esc_html__('Export',"survey-maker"); ?></a>
             <a href="#tab2" class="nav-tab"><?php echo esc_html__('Import',"survey-maker"); ?></a>
             <a href="<?php echo esc_url($example_export_path); ?>" class="export-survey-example" download="survey-export-example.json"><?php echo esc_html__('Download example for import',"survey-maker"); ?></a>
         </div>
@@ -96,6 +94,11 @@ $example_export_path = SURVEY_MAKER_ADMIN_URL . '/partials/export-import/survey-
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div style="display: flex;justify-content: center; align-items: center; margin-top: 20px;">
+            <div class="ays-survey-youtube-placeholder" data-video-id="xLSv8h87fX4">
+                <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/export-import-video-screenshot.webp'); ?>" width="560" height="315">
             </div>
         </div>
     </div>

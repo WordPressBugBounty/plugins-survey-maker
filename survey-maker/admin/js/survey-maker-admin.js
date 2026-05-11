@@ -3675,6 +3675,15 @@
     
                 popupModal.aysModal('show_flex');
             });
+
+            $(document).on('click', '.ays-survey-question-actions-pro-redirect-button', function(e){
+                e.preventDefault();
+
+                var href = $(this).attr("data-href");
+                if (href) {
+                    window.open(href, '_blank');
+                }
+            });
             
         // Pro features end
 
@@ -3794,6 +3803,18 @@
             if($(e.target).hasClass('ays-modal')){
                 $(e.target).find(".ays-close").trigger("click");
                 $(e.target).find(".ays-close-editor-popup").trigger("click");
+            }
+        });
+
+        $(document).on("click", '#ays-survey-add-question-filter', function (e) {
+            var filterBox = $(document).find('.ays-survey-add-question-filter-option-box');
+            
+            if( filterBox.hasClass('display_none') ){
+                filterBox.show(250);
+                filterBox.removeClass('display_none');
+            } else {
+                filterBox.hide(250);
+                filterBox.addClass('display_none');
             }
         });
 

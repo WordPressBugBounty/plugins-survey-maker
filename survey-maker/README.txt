@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.2.1
+Stable tag: 5.2.2.2
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,15 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.2.2 ( May 11, 2026 ) =
+* Added: Descriptive help texts for Conditional Results and Email settings
+* Changed: Survey status controls to toggle-style switches
+* Improved: Survey builder UI and button styling
+* Improved: Redesigned the survey theme selection cards on the Styles tab
+* Improved: Survey admin page layout and navigation elements
+* Improved: Video guide placement and help content across survey settings
+* Improved: Survey filters and navigation usability
 
 = 5.2.2.1 ( May 07, 2026 ) =
 * Improved: Survey admin interface and button styling

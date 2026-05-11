@@ -926,6 +926,14 @@
                         ?>                        
                     </div>
                     <div id="tab3" class="ays-survey-tab-content <?php echo ($ays_survey_tab == 'tab3') ? 'ays-survey-tab-content-active' : ''; ?>">
+                        <div class="ays-survey-heading-box" style="margin: 0;">
+                            <div class="ays-survey-wordpress-user-manual-box">
+                                <a href="https://www.youtube.com/watch?v=ct7_edtpuAs" target="_blank" style="text-decoration: none;font-size: 13px;">
+                                    <span><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
+                                    <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('How to use the Message variables', "survey-maker"); ?></span>
+                                </a>
+                            </div>
+                        </div>
                         <p class="ays-subtitle">
                             <?php echo esc_html__('Message variables',"survey-maker")?>
                             <a class="ays_help" data-toggle="tooltip" data-html="true" title="<p><?php echo esc_attr__( 'You can copy these variables and paste them in the following options from the survey settings', "survey-maker" ); ?>:</p>
@@ -948,8 +956,6 @@
                                 <p style="text-indent:30px;margin:0;color:red;">* <?php echo esc_html__( "Reply To Name", "survey-maker" ); ?></p>
                             </div>
                         </blockquote>
-                        <hr>
-                        <div style="display: flex;justify-content: center; align-items: center;margin-bottom: 15px;"><iframe width="560" height="315" class="ays-survey-iframe-video-link" src="https://www.youtube.com/embed/ct7_edtpuAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-12">

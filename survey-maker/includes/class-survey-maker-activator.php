@@ -369,7 +369,7 @@ class Survey_Maker_Activator {
                     'survey_answer_font_size_on_mobile' => 15,
                     'survey_answer_letter_spacing' => 0,
                     'survey_answer_letter_spacing_mobile' => 0,
-                    'survey_answers_view' => 'grid',                    
+                    'survey_answers_view' => 'list',                    
                     'survey_answers_view_alignment' => 'flex-start',
                     'survey_answers_object_fit' => 'cover',
                     'survey_answers_object_fit_mobile' => 'cover',

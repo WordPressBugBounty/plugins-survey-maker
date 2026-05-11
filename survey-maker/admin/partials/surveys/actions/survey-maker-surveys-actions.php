@@ -2,7 +2,7 @@
     require_once( SURVEY_MAKER_ADMIN_PATH . "/partials/surveys/actions/survey-maker-surveys-actions-options.php" );
 ?>
 
-<div class="wrap ays-survey-dashboard-main-wrap">
+<div class="wrap ays-survey-dashboard-main-wrap ays-survey-add-edit-page-main-wrap">
     <div class="container-fluid">
         <div class="ays-survey-heading-box">
             <div class="ays-survey-wordpress-user-manual-box">

@@ -46,12 +46,15 @@
                 </a>
             </label>
         </div>
-        <div class="col-sm-10">
-            <select id="ays-status" name="<?php echo esc_attr($html_name_prefix); ?>status">
-                <option></option>
-                <option <?php selected( esc_attr($status), 'published' ); ?> value="published"><?php echo esc_html__( "Published", "survey-maker" ); ?></option>
-                <option <?php selected( esc_attr($status), 'draft' ); ?> value="draft"><?php echo esc_html__( "Draft", "survey-maker" ); ?></option>
-            </select>
+        <div class="col-sm-10 d-flex">
+            <div class="form-check form-check-inline checkbox_ays">
+                <input type="radio" id="ays-status-published-type" class="form-check-input" name="<?php echo esc_attr($html_name_prefix); ?>status" value="published" <?php echo ($status == 'published') ? 'checked' : ''; ?>/>
+                <label class="form-check-label" for="ays-status-published-type"><?php echo esc_html__('Published',"survey-maker"); ?></label>
+            </div>
+            <div class="form-check form-check-inline checkbox_ays">
+                <input type="radio" id="ays-status-draft-type" class="form-check-input" name="<?php echo esc_attr($html_name_prefix); ?>status" value="draft" <?php echo ($status == 'draft') ? 'checked' : ''; ?>/>
+                <label class="form-check-label" for="ays-status-draft-type"><?php echo esc_html__('Draft',"survey-maker"); ?></label>
+            </div>
         </div>
     </div> <!-- Status -->
 </div>
