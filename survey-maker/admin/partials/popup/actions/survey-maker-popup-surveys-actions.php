@@ -3,6 +3,14 @@
 ?>
 <div class="wrap">
     <div class="container-fluid">
+        <div class="ays-survey-heading-box">
+            <div class="ays-survey-wordpress-user-manual-box">
+                <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
+                    <i class="ays_fa ays_fa_file_text" ></i> 
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "View Documentation", "survey-maker" ); ?></span>
+                </a>
+            </div>
+        </div>
         <h1 class="wp-heading-inline">
         <?php
             echo esc_html($heading);
@@ -10,35 +18,24 @@
         </h1>
         <?php do_action('ays_survey_sale_banner'); ?>
         <form class="ays-survey-popup-surveys-form" id="ays-survey-popup-surveys-form" method="post">
-            <div class="ays-survey-heading-box">
-                <div class="ays-survey-wordpress-user-manual-box">
-                    <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
-                        <i class="ays_fa ays_fa_file_text" ></i> 
-                        <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "View Documentation", "survey-maker" ); ?></span>
-                    </a>
-
-                </div>
-            </div>
             <h2 class="wp-heading-inline">
             <?php
-                    // echo esc_html($heading);
+                wp_nonce_field("popup_survey_action", "popup_survey_action");
+                $other_attributes = array("id" => "ays-button-save");
+                submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner ays-survey-disable-left-margin", "ays_submit", false, $other_attributes);
 
-                    wp_nonce_field("popup_survey_action", "popup_survey_action");
-                    $other_attributes = array("id" => "ays-button-save");
-                    submit_button(__("Save and close", "survey-maker"), "primary ays-button ays-survey-loader-banner ays-survey-disable-left-margin", "ays_submit", false, $other_attributes);
+                $other_attributes = array(
+                    'id' => 'ays-button-apply',
+                    'title' => 'Ctrl + s',
+                    'data-toggle' => 'tooltip',
+                    'data-delay'=> '{"show":"1000"}'
+                );
 
-                    $other_attributes = array(
-                        'id' => 'ays-button-apply',
-                        'title' => 'Ctrl + s',
-                        'data-toggle' => 'tooltip',
-                        'data-delay'=> '{"show":"1000"}'
-                    );
+                submit_button(__("Save", "survey-maker"), "ays-button action ays-survey-loader-banner", "ays_apply", false, $other_attributes);
 
-                    submit_button(__("Save", "survey-maker"), "ays-button action ays-survey-loader-banner", "ays_apply", false, $other_attributes);
+                echo wp_kses($loader_iamge, Survey_Maker_Data::get_allowed_tags_for_loader());
 
-                    echo wp_kses($loader_iamge, Survey_Maker_Data::get_allowed_tags_for_loader());
-
-                ?>
+            ?>
             </h2>
             <hr/>
             <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">
@@ -631,84 +628,45 @@
                     </div>
                 </div>
                 <hr>
-                <div class="form-group row" style="margin:0px;">
-                    <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                        <div class="ays-pro-features-v2-small-buttons-box">
-                            <div class="ays-pro-features-v2-video-button"></div>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_survey_hide_popup_on_pc">
+                            <span><?php echo esc_html__("Hide popup on desktop", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on desktop.", "survey-maker"); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_survey_hide_popup_on_pc">
-                                    <span><?php echo esc_html__("Hide popup on desktop", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on desktop.", "survey-maker"); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="checkbox" id="ays_survey_hide_popup_on_pc">
-                            </div>
-                        </div>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox" name="ays_survey_hide_popup_on_pc" class="" id="ays_survey_hide_popup_on_pc" <?php echo ($hide_popup_on_pc) ? "checked" : ""  ?>>
                     </div>
                 </div>
                 <hr>
-                <div class="form-group row" style="margin:0px;">
-                    <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                        <div class="ays-pro-features-v2-small-buttons-box">
-                            <div class="ays-pro-features-v2-video-button"></div>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_survey_hide_popup_on_mobile">
+                            <span><?php echo esc_html__("Hide popup on mobile", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on mobile.", "survey-maker"); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_survey_hide_popup_on_mobile">
-                                    <span><?php echo esc_html__("Hide popup on mobile", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on mobile.", "survey-maker"); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="checkbox" class="" id="ays_survey_hide_popup_on_mobile">
-                            </div>
-                        </div>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox" name="ays_survey_hide_popup_on_mobile" class="" id="ays_survey_hide_popup_on_mobile" <?php echo ($hide_popup_on_mobile) ? "checked" : ""  ?>>
                     </div>
                 </div>
                 <hr>
-                <div class="form-group row" style="margin:0px;">
-                    <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                        <div class="ays-pro-features-v2-small-buttons-box">
-                            <div class="ays-pro-features-v2-video-button"></div>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_survey_hide_popup_on_tablet">
+                            <span><?php echo esc_html__("Hide popup on tablets", "survey-maker"); ?></span>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on tablets.", "survey-maker"); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_survey_hide_popup_on_tablet">
-                                    <span><?php echo esc_html__("Hide popup on tablets", "survey-maker"); ?></span>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("Tick this option to hide the survey popup on tablets.", "survey-maker"); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="checkbox" id="ays_survey_hide_popup_on_tablet">
-                            </div>
-                        </div>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <input type="checkbox" name="ays_survey_hide_popup_on_tablet" class="" id="ays_survey_hide_popup_on_tablet" <?php echo ($hide_popup_on_tablet) ? "checked" : ""  ?>>
                     </div>
                 </div>
                 <hr>
@@ -893,30 +851,17 @@
                     </div>
                 </div> <!-- Close popup after finish -->
                 <hr>
-                <div class="form-group row" style="margin:0px;">
-                    <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-                        <div class="ays-pro-features-v2-small-buttons-box">
-                            <div class="ays-pro-features-v2-video-button"></div>
-                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                                <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                                <div class="ays-pro-features-v2-upgrade-text">
-                                    <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                                </div>
+                <div class="form-group row">
+                    <div class="col-sm-3">
+                        <label for="ays_survey_close_popup_overlay_outside_click">
+                            <?php echo esc_html__('Close by clicking outside the box', "survey-maker"); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("If the option is enabled, the user can close the popup by clicking outside the box.", "survey-maker"); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-3">
-                                <label for="ays_survey_close_popup_overlay_outside_click">
-                                    <?php echo esc_html__('Close by clicking outside the box', "survey-maker"); ?>
-                                    <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__("If the option is enabled, the user can close the popup by clicking outside the box.", "survey-maker"); ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </label>
-                            </div>
-                            <div class="col-sm-9">
-                                <input type="checkbox" id="ays_survey_close_popup_overlay_outside_click" />
-                            </div>
-                        </div><!-- Close by clicking outside the box -->
+                        </label>
+                    </div>
+                    <div class="col-sm-9" >
+                        <input type="checkbox" class='ays_toggle_checkbox_nested' id="ays_survey_close_popup_overlay_outside_click" name="ays_survey_close_popup_overlay_outside_click" value="on" <?php echo ($close_popup_overlay_outside_click) ? 'checked' : ''; ?>/>
                     </div>
                 </div>
                 <hr>

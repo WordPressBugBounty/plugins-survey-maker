@@ -8,27 +8,30 @@
     $user_id = get_current_user_id();
 
     $options = array(
-        "width"         	 => "800",
-        "height"        	 => "450",
-        "popup_position"     => "center-center",
-        "popup_margin"       => "0",
-        "popup_trigger"      => "on_load",
-        "popup_selector"     => "",
-        "popup_enable_show_title"     => "off",
-        "popup_title_font_size"     => 25,
-        "popup_hide_title_on_mobile"     => 'off',
-        "popup_title_border_radius" => 0,
-        "popup_title_border_radius_mobile" => 0,
-        "popup_title_mobile_font_size" => 25,
-        "popup_title_bg_color"     => "#00000000",
-        "popup_title_bg_color_mobile" => "#00000000",
-        "popup_title_text_color"     => "#000000",
-        "popup_title_text_color_mobile" => "#000000",
-        "popup_title_transform"     => "none",
-        "popup_title_transform_mobile" => "none",
+        "width"         	                    => "800",
+        "height"        	                    => "450",
+        "popup_position"                        => "center-center",
+        "popup_margin"                          => "0",
+        "popup_trigger"                         => "on_load",
+        "popup_selector"                        => "",
+        "popup_enable_show_title"               => "off",
+        "popup_title_font_size"                 => 25,
+        "popup_hide_title_on_mobile"            => 'off',
+        "popup_title_border_radius"             => 0,
+        "popup_title_border_radius_mobile"      => 0,
+        "popup_title_mobile_font_size"          => 25,
+        "popup_title_bg_color"                  => "#00000000",
+        "popup_title_bg_color_mobile"           => "#00000000",
+        "popup_title_text_color"                => "#000000",
+        "popup_title_text_color_mobile"         => "#000000",
+        "popup_title_transform"                 => "none",
+        "popup_title_transform_mobile"          => "none",
         "ays_survey_popup_title_letter_spacing" => 0,
-        "popup_title_letter_spacing_on_mobile" => 0,
-        "popup_enable_close_by_esc" => "off",
+        "popup_title_letter_spacing_on_mobile"  => 0,
+        "popup_enable_close_by_esc"             => "off",
+        "hide_popup_on_pc"                      => "off",
+        "hide_popup_on_mobile"                  => "off",
+        "hide_popup_on_tablet"                  => "off",
         // "except_types"       => "",
         // "except_posts"       => "",
         // "hide_popup"         => "off",
@@ -226,6 +229,18 @@
     // Hide Popup after close
     $hide_popup_after_close = (isset($options["hide_popup_after_close"]) && $options["hide_popup_after_close"] == "on") ? esc_attr($options["hide_popup_after_close"]) : "off";
 
+    // Hide Popup on mobile
+    $options["hide_popup_on_mobile"] = isset($options[ 'hide_popup_on_mobile' ]) ? esc_attr($options[ 'hide_popup_on_mobile' ]) : 'off';
+    $hide_popup_on_mobile = (isset($options["hide_popup_on_mobile"]) && $options["hide_popup_on_mobile"] == "on") ? true : false;
+
+    // Hide Popup on PC
+    $options["hide_popup_on_pc"] = isset($options[ 'hide_popup_on_pc' ]) ? esc_attr($options[ 'hide_popup_on_pc' ]) : 'off';
+    $hide_popup_on_pc = (isset($options["hide_popup_on_pc"]) && $options["hide_popup_on_pc"] == "on") ? true : false;
+
+    // Hide Popup on tablet
+    $options["hide_popup_on_tablet"] = isset($options[ 'hide_popup_on_tablet' ]) ? esc_attr($options[ 'hide_popup_on_tablet' ]) : 'off';
+    $hide_popup_on_tablet = (isset($options["hide_popup_on_tablet"]) && $options["hide_popup_on_tablet"] == "on") ? true : false;
+
     // Survey categories IDs
     $surveys = $this->popup_surveys_obj->get_surveys();
 
@@ -236,3 +251,7 @@
 
     // Close by pressing the ESC
     $survey_popup_enable_close_by_esc = (isset($options["popup_enable_close_by_esc"]) && $options["popup_enable_close_by_esc"] == "on") ? "checked" : "";
+
+    // Close by clicking outside the box
+    $options["close_popup_overlay_outside_click"] = isset($options[ 'close_popup_overlay_outside_click' ]) ? esc_attr($options[ 'close_popup_overlay_outside_click' ]) : 'off';
+    $close_popup_overlay_outside_click = (isset($options["close_popup_overlay_outside_click"]) && $options["close_popup_overlay_outside_click"] == "on") ? true : false;

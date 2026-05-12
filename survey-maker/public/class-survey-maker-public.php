@@ -3907,6 +3907,21 @@ class Survey_Maker_Public {
             // Hide popup after close
             $hide_popup_after_close = (isset($options['hide_popup_after_close']) && $options['hide_popup_after_close'] == 'on') ?  esc_attr($options['hide_popup_after_close'])  : 'off';
 
+            // Hide popup on mobile
+            $options['hide_popup_on_mobile'] = isset( $options['hide_popup_on_mobile'] ) ? esc_attr($options['hide_popup_on_mobile']) : "off";
+            $hide_popup_on_mobile = (isset($options['hide_popup_on_mobile']) && $options['hide_popup_on_mobile'] == 'on') ? true : false;
+            
+            // Hide popup on PC
+            $options['hide_popup_on_pc'] = isset( $options['hide_popup_on_pc'] ) ? esc_attr($options['hide_popup_on_pc']) : "off";
+            $hide_popup_on_pc = (isset($options['hide_popup_on_pc']) && $options['hide_popup_on_pc'] == 'on') ?  true : false;
+           
+            // Hide popup on tablet
+            $options['hide_popup_on_tablet'] = isset( $options['hide_popup_on_tablet'] ) ? esc_attr($options['hide_popup_on_tablet']) : "off";
+            $hide_popup_on_tablet = (isset($options['hide_popup_on_tablet']) && $options['hide_popup_on_tablet'] == 'on') ?  true : false;
+
+            // Close by clicking outside the box
+            $close_popup_overlay_outside_click = (isset($options['close_popup_overlay_outside_click']) && $options['close_popup_overlay_outside_click'] == 'on') ?  esc_attr($options['close_popup_overlay_outside_click']) : 'off';
+
             // $survey_bg = (isset($survey_options['survey_background_color']) && $survey_options['survey_background_color'] != '') ? $survey_options['survey_background_color'] : '#ffffff';
             // $survey_theme = (isset($survey_options['survey_theme']) && $survey_options['survey_theme'] != '') ? $survey_options['survey_theme'] : 'classic_light';
             // $is_minimal = $survey_theme == 'minimal' ? true : false;
@@ -3981,6 +3996,23 @@ class Survey_Maker_Public {
             //         }
             //     }
             // }
+
+            if($hide_popup_on_mobile){
+                if(Survey_Maker_Data::ays_survey_pb_detect_mobile_device() === true){
+                    $show_popup = false;
+                }
+            }
+            if($hide_popup_on_pc){
+                if(Survey_Maker_Data::ays_survey_pb_detect_mobile_device() === false && Survey_Maker_Data::ays_survey_pb_detect_tablet_device() === false){
+                    $show_popup = false;
+                }
+            }
+
+            if($hide_popup_on_tablet){
+                if(Survey_Maker_Data::ays_survey_pb_detect_tablet_device() === true){
+                    $show_popup = false;
+                }
+            }
 
             switch($popup_trigger_type){
                 case 'on_click':
@@ -4188,6 +4220,7 @@ class Survey_Maker_Public {
                             'popup_close_after_finish_delay'   => $survey_popup_close_after_finish_delay,
                             'popup_selector'                   => $popup_selector,
                             'popupEnableCloseByEsc'            => $survey_popup_enable_close_by_esc,
+                            'closePopupOverlayOutsideClick'    => $close_popup_overlay_outside_click,
 
                         ) ) ) . "';";
                     $popup_survey_view .= '</script>';

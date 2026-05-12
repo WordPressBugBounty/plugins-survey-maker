@@ -294,6 +294,18 @@ class Popup_Survey_List_Table extends WP_List_Table {
             // Close by pressing the ESC
             $survey_popup_enable_close_by_esc = isset( $_POST[ $name_prefix . 'survey_popup_enable_close_by_esc' ] ) && $_POST[ $name_prefix . 'survey_popup_enable_close_by_esc' ] == 'on' ? 'on' : 'off';
             
+            // Hide Popup on mobile
+            $hide_popup_on_mobile = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] ) : 'off';
+            
+            // Hide Popup on PC
+            $hide_popup_on_pc = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] ) : 'off';
+            
+            // Hide Popup on tablet
+            $hide_popup_on_tablet = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] ) : 'off';
+
+            // Close by clicking outside the box
+            $close_popup_overlay_outside_click = isset( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) && $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) : 'off';
+
             // Options
             $options = array(
                 "popup_enable_show_title"               => $survey_popup_enable_show_title,
@@ -328,6 +340,10 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 'popup_enable_close_by_esc'             => $survey_popup_enable_close_by_esc,
                 'popup_bg_color'                        => $popup_bg_color,
                 'popup_bg_color_mobile'                 => $popup_bg_color_mobile,
+                'hide_popup_on_mobile'                  => $hide_popup_on_mobile,
+                'hide_popup_on_pc'                      => $hide_popup_on_pc,
+                'hide_popup_on_tablet'                  => $hide_popup_on_tablet,
+                'close_popup_overlay_outside_click'     => $close_popup_overlay_outside_click,
             );
             
             $message = '';

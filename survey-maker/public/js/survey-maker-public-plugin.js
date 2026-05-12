@@ -70,7 +70,6 @@
         _this.keydown();
     };
 
-    
     AysSurveyPlugin.prototype.setup = function(e) {
         var _this = this;
         _this.sectionsContainer = _this.$el.find('.' + _this.htmlClassPrefix + 'sections');
@@ -112,6 +111,7 @@
         
         _this.aysNext();
         _this.aysFinish();
+        _this.aysSurveyPreviewNoticeCopy();
 
         _this.$el.on('click', '.' + _this.htmlClassPrefix + 'start-button', function(e){
             _this.start(e);
@@ -757,6 +757,58 @@
         $this.find('input').on('blur', function () {
             $(window).off('keydown');
         });
+    }
+
+    AysSurveyPlugin.prototype.aysSurveyPreviewNoticeCopy = function(){
+        var _this = this;
+
+        $(document).off('click.aysSurveyPreviewNoticeCopy').on('click.aysSurveyPreviewNoticeCopy', '.' + _this.htmlClassPrefix + 'preview-copy-shortcode', function(e){
+            e.preventDefault();
+            _this.aysSurveyCopyPreviewShortcode( $(this) );
+        });
+    }
+
+    AysSurveyPlugin.prototype.aysSurveyCopyPreviewShortcode = function( button ){
+        var shortcode = button.attr('data-shortcode');
+        var label = button.attr('data-label');
+        var copiedLabel = button.attr('data-copied-label');
+        var labelNode = button.find('.' + this.htmlClassPrefix + 'preview-copy-shortcode-label');
+
+        if ( ! shortcode || labelNode.length === 0 ) {
+            return;
+        }
+
+        shortcode = '[' + shortcode + ']';
+
+        var setCopiedLabel = function() {
+            labelNode.text( copiedLabel );
+
+            setTimeout(function() {
+                labelNode.text( label );
+            }, 1800);
+        };
+
+        var copyWithFallback = function() {
+            var input = $('<textarea readonly></textarea>');
+            input.val( shortcode );
+            input.css({
+                position: 'absolute',
+                left: '-9999px'
+            });
+
+            $('body').append( input );
+            input[0].select();
+            document.execCommand('copy');
+            input.remove();
+            setCopiedLabel();
+        };
+
+        if ( navigator.clipboard && navigator.clipboard.writeText ) {
+            navigator.clipboard.writeText( shortcode ).then( setCopiedLabel ).catch( copyWithFallback );
+            return;
+        }
+
+        copyWithFallback();
     }
 
     AysSurveyPlugin.prototype.aysAnimateStep = function(animation, current_fs, next_fs){

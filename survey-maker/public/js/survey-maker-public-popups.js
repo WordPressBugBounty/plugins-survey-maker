@@ -33,6 +33,7 @@
         _this.popupSelectorClick( _this.$el, _this);
 
         var closeByEsc = typeof _this.dbOptions.popupEnableCloseByEsc != 'undefined' && _this.dbOptions.popupEnableCloseByEsc == 'on' ? true : false;
+        var closePopupOverlayOutsideClick = typeof _this.dbOptions.closePopupOverlayOutsideClick != 'undefined' && _this.dbOptions.closePopupOverlayOutsideClick == 'on' ? true : false;
 
         _this.$el.on('click', '.' + _this.htmlClassPrefix + 'popup-btn-close', function(e){
             _this.$el.css('display', 'none');
@@ -82,6 +83,19 @@
             $(document).on('keydown', function(event) { 
                 if (event.keyCode == 27) {                                    
                     _this.$el.find('.' + _this.htmlClassPrefix + 'popup-btn-close').trigger('click');
+                }
+            });
+        }
+
+        if(closePopupOverlayOutsideClick){
+            var return_false = 0;
+            $(document).on('click', function(e) {
+                if(return_false == 0){
+                    var target = e.target;
+                    if(!$(target).hasClass(_this.htmlClassPrefix + 'popup-survey-window') && $(target).parents('.' + _this.htmlClassPrefix + 'popup-survey-window').length == 0){
+                        _this.$el.find('.' + _this.htmlClassPrefix + 'popup-btn-close').trigger('click');
+                        return_false = 1;
+                    }
                 }
             });
         }

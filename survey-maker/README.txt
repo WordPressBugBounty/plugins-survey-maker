@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.2.2
+Stable tag: 5.2.2.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,13 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.2.3 ( May 12, 2026 ) =
+* Added: Hide popup on desktop option for Survey popup
+* Added: Notice for draft preview pages with a copy shortcode button
+* Added: Hide popup on mobile option for Survey Popup
+* Added: Close by clicking outside the box option for Survey Popup
+* Added: Hide popup on tablets option for Survey Popup
 
 = 5.2.2.2 ( May 11, 2026 ) =
 * Added: Descriptive help texts for Conditional Results and Email settings
