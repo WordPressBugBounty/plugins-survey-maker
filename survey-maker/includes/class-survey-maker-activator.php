@@ -897,7 +897,6 @@ class Survey_Maker_Activator {
     }
 
     public static function ays_survey_activator_request($cta){
-        $curl = curl_init();
 
         $api_url = "https://poll-plugin.com/survey-maker/";
 

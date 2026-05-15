@@ -5,9 +5,9 @@
     <div class="container-fluid">
         <div class="ays-survey-heading-box">
             <div class="ays-survey-wordpress-user-manual-box">
-                <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <a href="https://ays-pro.com/wordpress-survey-maker-user-manual#frag_popup_survey" target="_blank" style="text-decoration: none;font-size: 13px;">
                     <i class="ays_fa ays_fa_file_text" ></i> 
-                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "View Documentation", "survey-maker" ); ?></span>
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "How to use popup surveys", "survey-maker" ); ?></span>
                 </a>
             </div>
         </div>

@@ -352,8 +352,49 @@
         <path d="M5 21h14"></path>
     </svg>';
 
+    $tab_docs = array(
+        'tab1' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-1-general',
+            'text' => __('How to configure questions', 'survey-maker'),
+        ),
+        'tab2' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-2-styles',
+            'text' => __('How to customize styles', 'survey-maker'),
+        ),
+        'tab3' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-4-settings',
+            'text' => __('How to configure survey settings', 'survey-maker'),
+        ),
+        'tab4' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-5-results-settings',
+            'text' => __('How to customize survey results', 'survey-maker'),
+        ),
+        'tab5' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-7-limitation-users',
+            'text' => __('How to set up user limitations', 'survey-maker'),
+        ),
+        'tab6' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-3-start-page',
+            'text' => __('How to set up the start page', 'survey-maker'),
+        ),
+        'tab7' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-8-e-mail',
+            'text' => __('How to configure survey emails', 'survey-maker'),
+        ),
+        'tab8' => array(
+            'link' => 'https://ays-pro.com/instructions-for-survey-maker-plugin-integrations',
+            'text' => __('How to set up integrations', 'survey-maker'),
+        ),
+        'tab9' => array(
+            'link' => 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-6-conditional-result',
+            'text' => __('How to use conditional results', 'survey-maker'),
+        ),
+    );
+
     $ays_super_admin_email = get_option('admin_email');
-    $wp_general_settings_url = admin_url( 'options-general.php' ) ;
+    $wp_general_settings_url = admin_url( 'options-general.php' );
+
+    $survey_shortcode = (!empty($id)) ? "[ays_survey id='" . absint($id) . "']" : '';
 
     // Options
     $options = isset( $object['options'] ) && $object['options'] != '' ? $object['options'] : '';

@@ -3196,4 +3196,12 @@
             </div>
         </div>
     </div>
+    <div class="ays-survey-heading-box-custom">
+        <div class="ays-survey-wordpress-user-manual-box">
+            <a href="https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-5-results-settings" target="_blank" style="text-decoration: none;font-size: 13px;color: rgb(136, 136, 136);">
+                <i class="ays_fa ays_fa_file_text" ></i> 
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__('How to customize survey results', 'survey-maker'); ?></span>
+            </a>
+        </div>
+    </div>
 </div>

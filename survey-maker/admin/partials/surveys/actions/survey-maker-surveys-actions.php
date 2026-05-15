@@ -4,19 +4,19 @@
 
 <div class="wrap ays-survey-dashboard-main-wrap ays-survey-add-edit-page-main-wrap">
     <div class="container-fluid">
-        <div class="ays-survey-heading-box">
+        <div id="ays-survey-tab-doc-link" class="ays-survey-heading-box">
             <div class="ays-survey-wordpress-user-manual-box">
                 <a href="https://www.youtube.com/watch?v=dxYz-gNrrrY" target="_blank" style="text-decoration: none;font-size: 13px;">
                     <span><img src='<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/youtube-video-icon.svg' ></span>
                     <span style="margin-left: 3px; text-decoration: underline;"><?php echo esc_html__('60 min Video Guide', "survey-maker"); ?></span>
                 </a>
-                <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <a class="ays-survey-doc-link" href="<?php echo isset($tab_docs[$ays_tab]['link']) ? esc_url($tab_docs[$ays_tab]['link']) : 'https://quiz-plugin.com/docs/how-to-create-a-quiz/'; ?>" target="_blank" style="text-decoration: none;font-size: 13px;">
                     <i class="ays_fa ays_fa_file_text" ></i> 
-                    <span style="margin-left: 3px;text-decoration: underline;">View Documentation</span>
+                    <span style="margin-left: 3px;text-decoration: underline;"><?php echo isset($tab_docs[$ays_tab]['text']) ? esc_html($tab_docs[$ays_tab]['text']) : esc_html__('How to configure questions', 'survey-maker'); ?></span>
                 </a>
             </div>
         </div>
-        <h1 class="wp-heading-inline">
+        <h1 class="wp-heading-inline" style="margin-bottom: 10px;">
             <?php
                 echo esc_html($heading);
             ?>
@@ -27,11 +27,17 @@
             
             <div>
                 <div class="ays-survey-subtitle-main-box">
-                    <p class="ays-subtitle" style="display: flex; gap: 20px;">
+                    <p class="ays-subtitle" style="display: flex; gap: 0; align-items: center;margin: 0;">
 
                         <?php if(isset($id) && count($get_all_surveys) > 1):?>
                             <strong class="ays_survey_title_in_top"><?php echo esc_attr( stripslashes( $object['title'] ) ); ?></strong>
-                            <img class="ays-survey-open-surveys-list" src="<?php echo esc_url( SURVEY_MAKER_ADMIN_URL ) .'/images/icons/list-icon.svg'; ?>">
+                            <span class="ays-survey-open-surveys-list">
+                                <svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" overflow="visible" preserveAspectRatio="none" viewBox="0 0 24 24" width="32" height="32" style="transform: rotate(90deg);">
+                                    <g>
+                                        <path xmlns:default="http://www.w3.org/2000/svg" d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" fill="#000" vector-effect="non-scaling-stroke" />
+                                    </g>
+                                </svg>
+                            </span>
 
                         <?php endif; ?>
                         
@@ -54,7 +60,7 @@
                 <?php if($id !== null): ?>
                 <div class="row">
                     <div class="col-sm-12">
-                        <p style="font-size:14px; font-style:italic;">
+                        <p style="font-size:14px; font-style:italic;margin-bottom: 0;">
                             <?php echo esc_html__("To insert the Survey into a page, post or text widget, copy shortcode", "survey-maker"); ?>
                             <strong class="ays-survey-shortcode-box" onClick="selectElementContents(this)" style="font-size:16px; font-style:normal;" class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" ><?php echo "[ays_survey id='".esc_attr($id)."']"; ?></strong>
                             <?php echo " " . esc_html__( "and paste it at the desired place in the editor.", "survey-maker"); ?>
@@ -126,6 +132,9 @@
                             <a href="#tab8" data-tab="tab8" class="nav-tab <?php echo ($ays_tab == 'tab8') ? 'nav-tab-active' : ''; ?>">
                                 <?php echo esc_html__("Integrations", "survey-maker");?>
                             </a>
+                            <a href="#tab10" data-tab="tab10" class="nav-tab <?php echo ($ays_tab == 'tab10') ? 'nav-tab-active' : ''; ?>">
+                                <?php echo esc_html__("Publish", "survey-maker");?>
+                            </a>
                         </div>  
                     </div>
                     <div class="ays_menu_right" data-scroll="-1"><i class="ays_fa ays_fa_angle_right"></i></div>
@@ -133,7 +142,7 @@
             </div>
             
             <?php
-                for($tab_ind = 1; $tab_ind <= 9; $tab_ind++){
+                for($tab_ind = 1; $tab_ind <= 10; $tab_ind++){
                     require_once( SURVEY_MAKER_ADMIN_PATH . "/partials/surveys/actions/partials/survey-maker-surveys-actions-tab".$tab_ind.".php" );
                 }
             ?>

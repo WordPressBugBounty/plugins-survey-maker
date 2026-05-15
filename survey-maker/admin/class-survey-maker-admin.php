@@ -349,6 +349,16 @@ class Survey_Maker_Admin {
             'activated'                         => __( 'Activated', "survey-maker" ),
             'successCopyCoupon'                 => __( "Coupon code copied!", 'survey-maker' ),
             'failedCopyCoupon'                  => __( "Failed to copy coupon code", 'survey-maker' ),
+
+            'generalTabDoc'                     => esc_html__( "How to configure questions", 'survey-maker' ),
+            'stylesTabDoc'                      => esc_html__( "How to customize styles", 'survey-maker' ),
+            'settingsTabDoc'                    => esc_html__( "How to configure survey settings", 'survey-maker' ),
+            'resultsSettingsTabDoc'             => esc_html__( "How to customize survey results", 'survey-maker' ),
+            'limitationUsersTabDoc'             => esc_html__( "How to set up user limitations", 'survey-maker' ),
+            'userDataTabDoc'                    => esc_html__( "How to set up the start page", 'survey-maker' ),
+            'emailTabDoc'                       => esc_html__( "How to configure survey emails", 'survey-maker' ),
+            'integrationTabDoc'                 => esc_html__( "How to set up integrations", 'survey-maker' ),
+            'conditionsTabDoc'                  => esc_html__( "How to use conditional results", 'survey-maker' ),
         ) );
         wp_localize_script($this->plugin_name . '-ajax', 'survey_maker_ajax', array(
             'ajax_url'              => admin_url('admin-ajax.php'),
@@ -3846,7 +3856,7 @@ class Survey_Maker_Admin {
                 // CTA button handler
                 if (ctaButton) {
                   ctaButton.addEventListener('click', function() {
-                    window.open('https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=private-offer-20-off-". SURVEY_MAKER_VERSION ."', '_blank');
+                    window.open('https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=private-offer-20-off-". SURVEY_MAKER_VERSION ."#ays-pro-sm-plans-box-sg', '_blank');
                     // Optionally close banner after click
                     closeBanner(banner);
                   });

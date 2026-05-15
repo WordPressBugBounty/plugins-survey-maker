@@ -5,10 +5,10 @@
     <div class="container-fluid">
         <div class="ays-survey-heading-box">
             <div class="ays-survey-wordpress-user-manual-box">
-                <a href="https://ays-pro.com/wordpress-survey-maker-user-manual" target="_blank" style="text-decoration: none;font-size: 13px;">
-                    <i class="ays_fa ays_fa_file_text" ></i> 
-                    <span style="margin-left: 3px;text-decoration: underline;">View Documentation</span>
-                </a>
+                <a href="https://ays-pro.com/wordpress-survey-maker-user-manual#frag_survey_cat" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <i class="ays_fa ays_fa_file_text" ></i> 
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__('How to use survey categories', 'survey-maker'); ?></span>
+            </a>
             </div>
         </div>
         <h1><?php echo esc_html($heading); ?></h1>

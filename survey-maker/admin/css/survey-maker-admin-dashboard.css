@@ -300,6 +300,13 @@
     margin: 20px auto 0;
 }
 
+.ays-survey-dashboard-main-wrap .ays-survey-tab-content.ays-survey-publish-tab-content {
+    background-color: transparent;
+    padding: 20px 30px;
+    border-radius: 0;
+    margin-top: 20px;
+}
+
 .ays-survey-add-edit-page-main-wrap .ays-survey-navigation-tab-content.ays-survey-tab-content {
     width: 80%;
 }

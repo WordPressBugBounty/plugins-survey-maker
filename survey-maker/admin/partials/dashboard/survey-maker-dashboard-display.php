@@ -184,6 +184,223 @@ $new_questions_page_url = sprintf('?page=%s&action=%s', 'survey-maker-questions'
         </div>
     </section>
 
+    <section id="survey-maker-dashboard-faq" class="survey-maker-dashboard-faq-section">
+        <div class="survey-maker-dashboard-page-container">
+            <div class="survey-maker-dashboard-page-faq__header">
+                <span class="survey-maker-dashboard-page-faq__eyebrow">
+                    <?php echo esc_html__( 'FAQ', 'survey-maker' ); ?>
+                </span>
+                <h2 class="survey-maker-dashboard-page-faq__title">
+                    <?php echo esc_html__( 'Frequently Asked Questions', 'survey-maker' ); ?>
+                </h2>
+            </div>
+
+            <div class="survey-maker-dashboard-page-faq__list">
+                <details class="survey-maker-dashboard-page-faq__item">
+                    <summary class="survey-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can I customize the button texts for the surveys?', 'survey-maker' ); ?></span>
+                        <span class="survey-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="survey-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Yes. You can customize the survey button texts in the free version.', 'survey-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php echo esc_html__( 'To change them, go to Survey Maker > General Settings > Text Customizations and update the button text fields from there.', 'survey-maker' ); ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="survey-maker-dashboard-page-faq__item">
+                    <summary class="survey-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can I display survey-related information on my website pages using shortcodes?', 'survey-maker' ); ?></span>
+                        <span class="survey-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="survey-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Yes. Survey Maker includes several shortcodes that you can use to display survey-related information on your website pages.', 'survey-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for Survey Maker > General Settings > Shortcodes text, 2: closing strong tag */
+                                esc_html__( 'You can find them by going to %1$sSurvey Maker > General Settings > Shortcodes%2$s.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for most popular survey text, 2: closing strong tag, 3: opening strong tag for number of passed users text, 4: closing strong tag */
+                                esc_html__( 'For example, you can use shortcodes to show information such as the %1$smost popular survey%2$s, the %3$snumber of passed users%4$s, and other survey details.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="survey-maker-dashboard-page-faq__item">
+                    <summary class="survey-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can I use message variables to personalize my survey?', 'survey-maker' ); ?></span>
+                        <span class="survey-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="survey-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Yes. Survey Maker provides message variables that you can use in the WordPress editor to personalize your survey content.', 'survey-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for Survey Maker > General Settings > Message Variables text, 2: closing strong tag */
+                                esc_html__( 'You can find them by going to %1$sSurvey Maker > General Settings > Message Variables%2$s.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for user name text, 2: closing strong tag, 3: opening strong tag for user email text, 4: closing strong tag, 5: opening strong tag for survey title text, 6: closing strong tag, 7: opening strong tag for survey ID text, 8: closing strong tag, 9: opening strong tag for submission date text, 10: closing strong tag */
+                                esc_html__( 'There you will find many available variables, such as variables for the %1$suser name%2$s, %3$suser email%4$s, %5$ssurvey title%6$s, %7$ssurvey ID%8$s, %9$ssubmission date%10$s, and more.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="survey-maker-dashboard-page-faq__item">
+                    <summary class="survey-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'What limitations can I set for survey takers?', 'survey-maker' ); ?></span>
+                        <span class="survey-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="survey-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for Limitation Users text, 2: closing strong tag */
+                                esc_html__( 'You can set different limitations for users who take your survey from the %1$sLimitation Users%2$s tab.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for Limitation Users text, 2: closing strong tag */
+                                esc_html__( 'To find these options, go to your survey and open %1$sLimitation Users%2$s.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for maximum number of attempts per user text, 2: closing strong tag, 3: opening strong tag for logged-in users text, 4: closing strong tag, 5: opening strong tag for maximum number of survey takers text, 6: closing strong tag */
+                                esc_html__( 'For example, you can limit the %1$smaximum number of attempts per user%2$s, allow the survey only for %3$slogged-in users%4$s, or set a %5$smaximum number of survey takers%6$s.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="survey-maker-dashboard-page-faq__item">
+                    <summary class="survey-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Can the admin add a note to the survey for users to see?', 'survey-maker' ); ?></span>
+                        <span class="survey-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="survey-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'Yes. The admin can add a custom note to any survey question, and it will be visible to the survey takers.', 'survey-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening strong tag for three dots menu text, 2: closing strong tag, 3: opening strong tag for Admin Note text, 4: closing strong tag */
+                                esc_html__( 'To add it, open your survey, go to the question you want, click the %1$sthree dots menu%2$s, and enable %3$sAdmin Note%4$s. Then, write the note you want to show to users.', 'survey-maker' ),
+                                '<strong>',
+                                '</strong>',
+                                '<strong>',
+                                '</strong>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+
+                <details class="survey-maker-dashboard-page-faq__item">
+                    <summary class="survey-maker-dashboard-page-faq__question">
+                        <span><?php echo esc_html__( 'Will I lose my data after upgrading to the Pro version?', 'survey-maker' ); ?></span>
+                        <span class="survey-maker-dashboard-page-faq__icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m6 9 6 6 6-6" />
+                            </svg>
+                        </span>
+                    </summary>
+                    <div class="survey-maker-dashboard-page-faq__answer">
+                        <p>
+                            <?php echo esc_html__( 'No. Your surveys, submissions, content, and plugin settings will remain unchanged after upgrading to the Pro version.', 'survey-maker' ); ?>
+                        </p>
+                        <p>
+                            <?php
+                            echo sprintf(
+                                /* translators: 1: opening anchor tag for upgrade guide link, 2: closing anchor tag */
+                                esc_html__( 'You do not need to recreate anything you have already built with the free version. For step-by-step instructions, please check our %1$supgrade guide%2$s.', 'survey-maker' ),
+                                '<a href="' . esc_url( 'https://ays-pro.com/how-to-update-upgrade-ays-pro-plugins' ) . '" target="_blank">',
+                                '</a>'
+                            );
+                            ?>
+                        </p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
     <!-- Help Section -->
     <section id="survey-maker-help-types" class="survey-maker-help-demos-section">
         <div class="survey-maker-help-container">

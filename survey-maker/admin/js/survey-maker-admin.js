@@ -400,6 +400,46 @@
             placeholder: 'Select status'
         });
 
+        // Tab documentation links data
+        var tabDocsData = {
+            'tab1': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-1-general',
+                'text': SurveyMakerAdmin.generalTabDoc
+            },
+            'tab2': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-2-styles',
+                'text': SurveyMakerAdmin.stylesTabDoc
+            },
+            'tab3': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-4-settings',
+                'text': SurveyMakerAdmin.settingsTabDoc
+            },
+            'tab4': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-5-results-settings',
+                'text': SurveyMakerAdmin.resultsSettingsTabDoc
+            },
+            'tab5': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-7-limitation-users',
+                'text': SurveyMakerAdmin.limitationUsersTabDoc
+            },
+            'tab6': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-3-start-page',
+                'text': SurveyMakerAdmin.userDataTabDoc
+            },
+            'tab7': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-8-e-mail',
+                'text': SurveyMakerAdmin.emailTabDoc
+            },
+            'tab8': {
+                'link': 'https://ays-pro.com/instructions-for-survey-maker-plugin-integrations',
+                'text': SurveyMakerAdmin.integrationTabDoc
+            },
+            'tab9': {
+                'link': 'https://ays-pro.com/wordpress-survey-maker-user-manual#survey-maker-1-6-conditional-result',
+                'text': SurveyMakerAdmin.conditionsTabDoc
+            },
+        };
+
 
         // Tabulation
         $(document).find('.nav-tab-wrapper a.nav-tab').on('click', function (e) {
@@ -417,6 +457,19 @@
                 });
                 $(document).find("[name='ays_survey_tab']").val(active_tab);
                 $('.ays-survey-tab-content' + elemenetID).css('display', 'block');
+
+                // Update documentation link based on active tab
+                var docLinkContainer = $(document).find('#ays-survey-tab-doc-link .ays-survey-doc-link');
+                if (docLinkContainer.length > 0) {
+                    if (tabDocsData[active_tab]) {
+                        docLinkContainer.attr('href', tabDocsData[active_tab].link);
+                        docLinkContainer.find('span').text(tabDocsData[active_tab].text);
+                        docLinkContainer.show();
+                    } else {
+                        docLinkContainer.hide();
+                    }
+                }
+
                 e.preventDefault();
             }
         });
@@ -3816,6 +3869,42 @@
                 filterBox.hide(250);
                 filterBox.addClass('display_none');
             }
+        });
+
+        $(document).on('click', '.ays-survey-save-publish-link', function(e){
+            e.preventDefault();
+            var saveButton = $(document).find('#ays-button-apply-top.button, #ays-button-apply.button').first();
+
+            if (saveButton.length) {
+                saveButton.trigger('click');
+            }
+        });
+
+        $(document).on('click', '.ays-survey-copy-shortcode-btn', function(e){
+            e.preventDefault();
+            var $this = $(this);
+            var shortcode = $this.attr('data-shortcode');
+            var tooltip = $this.parents('.ays-survey-copy-wrapper').find('.ays-survey-copy-tooltip');
+
+            if (!shortcode) {
+                return;
+            }
+
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(shortcode);
+            } else {
+                var textField = document.createElement('textarea');
+                textField.value = shortcode;
+                document.body.appendChild(textField);
+                textField.select();
+                document.execCommand('copy');
+                textField.remove();
+            }
+
+            tooltip.addClass('ays-survey-show');
+            setTimeout(function(){
+                tooltip.removeClass('ays-survey-show');
+            }, 1200);
         });
 
         function showConfirmationIfDelete(e) {
