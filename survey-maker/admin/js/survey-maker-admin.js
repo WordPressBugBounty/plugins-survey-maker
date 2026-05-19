@@ -1399,23 +1399,41 @@
                     popup.aysModal('show');
                 break;
                 case 'enable-admin-note':
-                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
-                    var enableCheckbox = parentQuestion.find('.ays-survey-question-admin-note-saver');
-                    parentQuestion.find('.ays-survey-question-admin-note').removeClass('display_none');
-                    enableCheckbox.val('on');
-                    $this.find('.ays-survey-question-action-icon').removeClass('display_none');
-                    $this.attr('data-action', 'disable-admin-note');
+                    aysSurveySetAdminNoteState( $this.parents('.ays-survey-question-answer-conteiner'), true );
                 break;
                 case 'disable-admin-note':
-                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
-                    var enableCheckbox = parentQuestion.find('.ays-survey-question-admin-note-saver');                    
-                    parentQuestion.find('.ays-survey-question-admin-note').addClass('display_none');
-                    enableCheckbox.val('off');
-                    $this.find('.ays-survey-question-action-icon').addClass('display_none');
-                    $this.attr('data-action', 'enable-admin-note');
+                    aysSurveySetAdminNoteState( $this.parents('.ays-survey-question-answer-conteiner'), false );
                 break;
             }
         });
+
+        $(document).on('click', '.ays-survey-admin-note-delete', function(e){
+            e.preventDefault();
+
+            var $this = $(this);
+            var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+
+            $this.popover('hide');
+            aysSurveySetAdminNoteState( parentQuestion, false );
+        });
+
+        function aysSurveySetAdminNoteState( parentQuestion, enabled ){
+            var adminNoteAction = parentQuestion.find('.ays-survey-question-action[data-action="enable-admin-note"], .ays-survey-question-action[data-action="disable-admin-note"]');
+            var adminNoteSaver = parentQuestion.find('.ays-survey-question-admin-note-saver');
+            var adminNote = parentQuestion.find('.ays-survey-question-admin-note');
+
+            if( enabled ){
+                adminNote.removeClass('display_none');
+                adminNoteSaver.val('on');
+                adminNoteAction.find('.ays-survey-question-action-icon').removeClass('display_none');
+                adminNoteAction.attr('data-action', 'disable-admin-note');
+            }else{
+                adminNote.addClass('display_none');
+                adminNoteSaver.val('off');
+                adminNoteAction.find('.ays-survey-question-action-icon').addClass('display_none');
+                adminNoteAction.attr('data-action', 'enable-admin-note');
+            }
+        }
 
         $(document).on('show.bs.dropdown', '.ays-survey-question-more-actions', function(e){
             // var $this = $(this);
@@ -1584,6 +1602,8 @@
                 default:
                     aysSurveyQuestionType_Radio_Checkbox_Select_Html( sectionId , questionId , questionDataName, questionType, questionTypeBeforeChange, false , parent );
             }
+
+            reInitPopovers( parent );
         });
 
         setTimeout(function(){
@@ -2705,8 +2725,20 @@
         }
 
         function reInitPopovers( parentElement ){
-            parentElement.find('[data-toggle="popover"]').each(function(){
-                $(this).popover();
+            var popoverElements = parentElement.find('[data-toggle="popover"]');
+
+            if( parentElement.is('[data-toggle="popover"]') ){
+                popoverElements = popoverElements.add( parentElement );
+            }
+
+            popoverElements.each(function(){
+                var $this = $(this);
+
+                if( $this.data('bs.popover') ){
+                    $this.popover('dispose');
+                }
+
+                $this.popover();
             });
         }
         
@@ -3633,9 +3665,12 @@
                                             if(otherTypes.indexOf(questionType) == -1 && allAddedAnswers.length > 0){
                                                 newQuestion.find("div.ays-survey-answers-conteiner").html(allAddedAnswers);
                                             }
+
+                                            reInitPopovers( newQuestion );
                                         }
                                     }
                                 }
+                                reInitPopovers( parent );
                                 setTimeout(function(){
                                     $thisParent.find(".ays_survey_preloader").hide();
                                     modal.aysModal('hide');

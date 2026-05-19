@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.2.4
+Stable tag: 5.2.2.5
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,11 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.2.5 ( May 19, 2026 ) =
+* Added: Delete button for Admin note in the survey builder
+* Fixed: Option image tooltip initialization after applying survey templates
+* Improved: Admin note toggle behavior in the survey builder
 
 = 5.2.2.4 ( May 15, 2026 ) =
 * Added: New Publish page to the Surveys Edit page

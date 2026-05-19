@@ -931,6 +931,11 @@
                                                         <div class="ays-survey-input-underline-animation"></div>
                                                     </label>
                                                 </div>
+                                                <div class="ays-survey-answer-icon-box">
+                                                    <span class="ays-survey-admin-note-delete appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Hide',"survey-maker")?>">
+                                                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/close.svg">
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="ays-survey-actions-row">
@@ -1894,6 +1899,11 @@
                                                                 <div class="ays-survey-input-underline-animation"></div>
                                                             </label>
                                                         </div>
+                                                        <div class="ays-survey-answer-icon-box">
+                                                            <span class="ays-survey-admin-note-delete appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Hide',"survey-maker")?>">
+                                                                <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/close.svg">
+                                                            </span>
+                                                        </div>
                                                     </div>
                                                     <!-- Admin note end -->
                                                 </div>
@@ -2601,6 +2611,11 @@
                                         <div class="ays-survey-input-underline"></div> 
                                         <div class="ays-survey-input-underline-animation"></div>
                                     </label>
+                                </div>
+                                <div class="ays-survey-answer-icon-box">
+                                    <span class="ays-survey-admin-note-delete appsMaterialWizButtonPapericonbuttonEl" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Hide',"survey-maker")?>">
+                                        <img src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/close.svg">
+                                    </span>
                                 </div>
                             </div>
                         </div> 

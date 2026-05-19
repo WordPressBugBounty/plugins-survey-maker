@@ -2342,6 +2342,9 @@ textarea.ays-survey-question-input-textarea {
 
 .ays-survey-question-admin-note {
     padding: 0 50px;
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
 }
 
 .ays-survey-question-admin-note .ays-survey-answer-box {
@@ -2364,6 +2367,20 @@ textarea.ays-survey-question-input-textarea {
     font-size: 14px;
     font-weight: 500;
     color: #000;
+}
+
+.ays-survey-admin-note-delete {
+    color: #5f6368;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 23px;
+}
+
+.ays-survey-admin-note-delete img {
+    width: 24px;
+    height: 24px;
 }
 
 .ays-survey-question-more-actions .ays-survey-question-action[data-action*="admin-note"] {
