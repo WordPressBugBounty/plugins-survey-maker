@@ -1351,6 +1351,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Shows the logged-in user's First Name. If the user is not logged-in, the shortcode will be empty.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_user_first_name" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_user_first_name]'>
@@ -1369,6 +1370,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Shows the logged-in user's last name. If the user is not logged-in, the shortcode will be empty.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_user_last_name" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_user_last_name]'>
@@ -1387,6 +1389,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Shows the logged-in user's nickname. If the user is not logged-in, the shortcode will be empty.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_user_nickname" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_user_nick_name]'>
@@ -1405,6 +1408,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Shows the logged-in user's display name. If the user is not logged-in, the shortcode will be empty.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_user_display_name" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_user_display_name]'>
@@ -1423,6 +1427,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Shows the logged-in user's email. If the user is not logged-in, the shortcode will be empty.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_user_email" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_user_email]'>
@@ -1441,6 +1446,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Shows user's role(s) when logged-in. In case the user is not logged-in, the field will be empty.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_user_wordpress_roles" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_user_wordpress_roles]'>
@@ -1459,6 +1465,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Copy the following shortcode and paste it in posts. Insert the Survey ID to receive the number of participants of the survey.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_passed_users_count" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_passed_users_count id="Your_survey_ID"]'>
@@ -1477,6 +1484,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "You need to insert Your Survey ID in the shortcode. It will show the creation date of the particular survey.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_show_creation_date" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_creation_date id="Your_Survey_ID"]'>
@@ -1495,6 +1503,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "You need to insert Your Survey ID in the shortcode. It will show the number of the sections of the given survey.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_show_sections_count" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_sections_count id="Your_Survey_ID"]'>
@@ -1513,6 +1522,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "You need to insert Your Survey ID in the shortcode. It will show the number of the questions of the given survey.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_show_questions_count" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_questions_count id="Your_Survey_ID"]'>
@@ -1531,6 +1541,7 @@
                                                     <i class="ays_fa ays_fa_info_circle"></i>
                                                 </a>
                                             </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "Put this shortcode on a page to show the total count of survey categories.", "survey-maker" ); ?></span>
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_categories_count" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_categories_count]'>

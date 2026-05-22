@@ -19,7 +19,7 @@
                             echo wp_kses(
                                 sprintf(
                                     /* translators: 1: Opening <strong> tag, 2: Closing </strong> tag */
-                                    esc_html__( 'Embed this survey anywhere on your site with a block, widget, or %1$sshortcode%2$s', 'survey-maker' ),
+                                    esc_html__( 'Show this survey anywhere on your site with a block, widget, or %1$sshortcode%2$s', 'survey-maker' ),
                                     '<strong>',
                                     '</strong>'
                                 ),

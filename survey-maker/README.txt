@@ -331,9 +331,18 @@ post_max_size 256M
 
 == Changelog ==
 
+= 5.2.2.6 ( May 21, 2026 ) =
+* Improved: Popup Survey status filters visibility for empty list tables
+* Improved: Popup Survey page help content and video guide placement
+* Improved: Sanitization and display handling for submitted survey answers
+* Improved: Extra shortcode descriptions in the General Settings Shortcodes tab
+* Improved: User information request handling for survey autofill
+* Tested: Compatible up to WP 7.0
+
 = 5.2.2.5 ( May 19, 2026 ) =
 * Added: Delete button for Admin note in the survey builder
 * Fixed: Option image tooltip initialization after applying survey templates
+* Improved: Preview notice shortcode visibility
 * Improved: Admin note toggle behavior in the survey builder
 
 = 5.2.2.4 ( May 15, 2026 ) =

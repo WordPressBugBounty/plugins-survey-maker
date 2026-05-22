@@ -1,7 +1,6 @@
 <?php
-$survey_max_id = Survey_Maker_Admin::get_max_id('popup_surveys');
 $plus_icon_svg = "<span class=''><img src='". SURVEY_MAKER_ADMIN_URL ."/images/icons/plus-icon.svg'></span>";
-$youtube_icon_svg = "<span ><img src='". SURVEY_MAKER_ADMIN_URL ."/images/icons/youtube-video-icon.svg' ></span>";
+$youtube_icon_svg = "<span><img src='". esc_attr(SURVEY_MAKER_ADMIN_URL) ."/images/icons/youtube-video-icon.svg' ></span>";
 
 $action = isset( $_GET["action"] ) ? sanitize_key( $_GET["action"] ) : "";
 $id     = isset( $_GET["id"] ) ? absint( sanitize_key( $_GET["id"] ) ) : null;
@@ -20,9 +19,17 @@ if($action == 'unpublish' || $action == 'publish'){
 <div class="wrap">
     <div class="ays-survey-heading-box">
         <div class="ays-survey-wordpress-user-manual-box">
-            <a href="https://ays-pro.com/wordpress-survey-maker-user-manual#frag_popup_survey" target="_blank" style="text-decoration: none;font-size: 13px;">
-                <i class="ays_fa ays_fa_file_text" ></i> 
+            <a href="https://www.youtube.com/watch?v=gM6SQdOw3fA" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <?php echo wp_kses($youtube_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()); ?>
                 <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "How to use popup surveys", "survey-maker" ); ?></span>
+            </a>
+            <a href="https://ays-pro.com/blog/how-to-make-a-survey-popup-for-your-wordpress" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <i class="ays_fa ays_fa_file_text" ></i> 
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "View Documentation", "survey-maker" ); ?></span>
+            </a>
+            <a href="https://ays-demo.com/wordpress-popup-survey/" target="_blank" style="text-decoration: none;font-size: 13px;">
+                <i class="ays_fa ays_fa_external_link" ></i>
+                <span style="margin-left: 3px;text-decoration: underline;"><?php echo esc_html__( "Demo", "survey-maker" ); ?></span>
             </a>
         </div>
     </div>
@@ -31,10 +38,14 @@ if($action == 'unpublish' || $action == 'publish'){
         echo esc_html__( get_admin_page_title(), "survey-maker" );
         ?>
     </h1>
+    <div class="ays-survey-popup-survey-description ays_survey_small_hint_text ays_survey_small_hint_text_for_menu_items" style="max-width: 760px;margin: 0 0 14px;">
+        <p style="margin: 0"><?php echo esc_html__( "Create and manage popup surveys that display a selected survey in a popup window on your website.", "survey-maker" ); ?></p>
+        <p style="margin: 0;"><?php echo esc_html__( "Set the popup trigger, display rules, size, position, and behavior for each survey popup.", "survey-maker" ); ?></p>
+    </div>
     <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-maker-add-new-button-box">
         <?php 
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));
+            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design" style="display: inline-block; margin-left: 0 !important;"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));
         ?>
     </div>
     
@@ -55,22 +66,5 @@ if($action == 'unpublish' || $action == 'publish'){
             </div>
         </div>
         <br class="clear">
-        <div class="ays-survey-maker-add-new-button-box">
-            <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__('Add New', "survey-maker") . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg,Survey_Maker_Data::get_allowed_tags_for_loader()));?>
-        </div>
-        <?php if($survey_max_id <= 0): ?>
-            <div class="ays-survey-create-survey-video-box" style="margin: auto;">
-                <div class="ays-survey-youtube-placeholder" data-video-id="gM6SQdOw3fA">
-                    <img src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL .'/images/youtube/create-popup-survey-video-screenshot.webp'); ?>" width="560" height="315">
-                </div>
-            </div>
-        <?php else: ?>
-            <div class="ays-survey-create-survey-video-box" style="margin: auto;height: 83px;">
-                <div class="ays-survey-create-survey-youtube-video">
-                    <?php echo wp_kses($youtube_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()); ?>
-                    <a href="https://www.youtube.com/watch?v=gM6SQdOw3fA" target="_blank" title="YouTube video player" >How to create Popup Survey in Under One Minute</a>
-                </div>
-            </div>
-        <?php endif; ?>
     </div>
 </div>

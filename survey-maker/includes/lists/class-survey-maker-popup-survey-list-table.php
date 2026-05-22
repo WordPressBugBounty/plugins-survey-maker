@@ -41,6 +41,24 @@ class Popup_Survey_List_Table extends WP_List_Table {
         add_action( 'admin_notices', array( $this, 'popup_survey_notices' ) );
     }
 
+    /**
+     * Override of table nav to avoid breaking with bulk actions & according nonce field
+     */
+    public function display_tablenav( $which ) {
+        ?>
+        <div class="tablenav <?php echo esc_attr( $which ); ?>">
+            
+            <div class="alignleft actions">
+                <?php  $this->bulk_actions( $which ); ?>
+            </div>
+            <?php
+            $this->pagination( $which );
+            ?>
+            <br class="clear" />
+        </div>
+        <?php
+    }
+
     protected function get_views() {
         $published_count = $this->get_statused_record_count( 'published' );
         $draft_count = $this->get_statused_record_count( 'draft' );

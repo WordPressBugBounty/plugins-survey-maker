@@ -16,7 +16,7 @@
  * Plugin Name:       Survey Maker
  * Plugin URI:        https://ays-pro.com/wordpress/survey-maker
  * Description:       Survey Maker plugin allows you to create unlimited surveys with unlimited sections and unlimited questions.
- * Version:           5.2.2.5
+ * Version:           5.2.2.6
  * Author:            Survey Maker team
  * Author URI:        https://ays-pro.com/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'SURVEY_MAKER_VERSION', '5.2.2.5' );
+define( 'SURVEY_MAKER_VERSION', '5.2.2.6' );
 define( 'SURVEY_MAKER_NAME_VERSION', '1.0.0' );
 define( 'SURVEY_MAKER_NAME', 'survey-maker' );
 define( 'SURVEY_MAKER_DB_PREFIX', 'ayssurvey_' );
@@ -123,8 +123,8 @@ function survey_maker_general_admin_notice(){
             <div class="navigation-bar">
                 <div id="navigation-container">                    
                     <div class="ays-survey-logo-container-upgrade ays-navigation-container-logo-updrade-box">
-                        <div>
-                            <a class="logo-container" href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
+                        <div class="logo-container">
+                            <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank">
                                 <img class="logo" src="<?php echo esc_url(SURVEY_MAKER_ADMIN_URL) . '/images/icon-survey-128x128.png'; ?>" alt="Survey Maker" title="Survey Maker"/>
                             </a>
                         </div>

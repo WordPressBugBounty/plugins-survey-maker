@@ -824,6 +824,14 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
    width: 100%;
 }
 
+.ays-survey-container .ays-survey-section .ays-survey-question[data-type="date"] .ays-survey-answer {
+   width: 100%;
+}
+
+.ays-survey-container .ays-survey-section .ays-survey-question-box.ays-survey-question-date-box {
+   width: 100%;
+}
+
 .ays-survey-container .ays-survey-section .ays-survey-question-type-text-box {
    width: 100%;
 }

@@ -84,6 +84,7 @@ extract($args);
 											if( isset( $user_answer['otherAnswer'] ) ){
 												$other_answer = $user_answer['otherAnswer'];
 											}
+											$other_answer_html = esc_html( html_entity_decode( (string) $other_answer, ENT_QUOTES, get_bloginfo( 'charset' ) ) );
 											if( isset( $user_answer['answer'] ) ){
 												$user_answer = $user_answer['answer'];
 											}
@@ -101,8 +102,9 @@ extract($args);
 												else{
 													$user_answer = '';
 												}
+												$user_answer_html = esc_html( html_entity_decode( (string) $user_answer, ENT_QUOTES, get_bloginfo( 'charset' ) ) );
 												$question_type_content .= '<div class="ays_each_question_answer">
-                                            <p class="ays_text_answer">' . $user_answer . '</p>
+                                            <p class="ays_text_answer">' . $user_answer_html . '</p>
                                         </div>';
 											}
 

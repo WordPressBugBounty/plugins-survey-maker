@@ -252,6 +252,7 @@ class Survey_Maker_Public {
                         $user_email = '';
                     }
                 }
+                $user_email = is_scalar( $user_email ) ? sanitize_email( $user_email ) : '';
                 
                 $user_name = '';
                 if( isset( $data[ $name_prefix . 'user-name-' . $unique_id ] ) && !empty( $data[ $name_prefix . 'user-name-' . $unique_id ] ) ){
@@ -269,6 +270,7 @@ class Survey_Maker_Public {
                         $user_name = '';
                     }
                 }
+                $user_name = is_scalar( $user_name ) ? sanitize_text_field( $user_name ) : '';
 
                 $result_unique_code = strtoupper( uniqid() );
 
@@ -610,7 +612,7 @@ class Survey_Maker_Public {
             $question_answer = '';
             if( isset( $answered_questions[$qid] ) ){
                 if( isset( $answered_questions[$qid]['other'] ) ){
-                    $user_variant = $answered_questions[$qid]['other'];
+                    $user_variant = sanitize_text_field( $answered_questions[$qid]['other'] );
                     unset( $answered_questions[$qid]['other'] );
                 }
 
@@ -639,9 +641,9 @@ class Survey_Maker_Public {
                         if( !in_array( '0', $question_answer ) ){
                             $user_variant = '';
                         }
-                        $user_answer = implode(',', $question_answer);
+                        $user_answer = implode(',', array_map( 'absint', $question_answer ));
                     }else{
-                        $user_answer = $question_answer;
+                        $user_answer = absint( $question_answer );
                         if( '0' != $question_answer ){
                             $user_variant = '';
                         }
@@ -652,38 +654,44 @@ class Survey_Maker_Public {
                     $user_answer = '';
                     break;
                 case "text":
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_textarea_field( $question_answer ) : '';
+                    $answer_id = 0;
+                    break;
                 case "star":
-                    $user_answer = $question_answer;
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_text_field( $question_answer ) : '';
                     $answer_id = 0;
                     break;
                 case "short_text":
-                    $user_answer = $question_answer;
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_text_field( $question_answer ) : '';
                     $answer_id = 0;
                     break;
                 case "number":
                 case "phone":
                 case "date":
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_text_field( $question_answer ) : '';
+                    $answer_id = 0;
+                    break;
                 case "time":
-                    $user_answer = $question_answer;
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_text_field( $question_answer ) : '';
                     $answer_id = 0;
                     break;
                 case "date_time":
-                    if(is_array($question_answer) && ($question_answer['date'] != '' || $question_answer['time'] != '')){
-                        $question_answer['date'] = $question_answer['date'] != '' ? stripslashes ( sanitize_text_field( $question_answer['date'] ) ) : '-';
-                        $question_answer['time'] = $question_answer['time'] != '' ? stripslashes ( sanitize_text_field( $question_answer['time'] ) ) : '-';
-                        $user_answer = implode(" " , $question_answer);
+                    if( is_array( $question_answer ) ){
+                        $question_answer_date = isset( $question_answer['date'] ) && is_scalar( $question_answer['date'] ) && $question_answer['date'] != '' ? stripslashes( sanitize_text_field( $question_answer['date'] ) ) : '-';
+                        $question_answer_time = isset( $question_answer['time'] ) && is_scalar( $question_answer['time'] ) && $question_answer['time'] != '' ? stripslashes( sanitize_text_field( $question_answer['time'] ) ) : '-';
+                        $user_answer = $question_answer_date != '-' || $question_answer_time != '-' ? $question_answer_date . ' ' . $question_answer_time : '';
                     }
                     else{
-                        $user_answer = $question_answer;
+                        $user_answer = is_scalar( $question_answer ) ? sanitize_text_field( $question_answer ) : '';
                     }
                     $answer_id = 0;
                     break;
                 case "name":
-                    $user_answer = $question_answer;
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_text_field( $question_answer ) : '';
                     $answer_id = 0;
                     break;
                 case "email":
-                    $user_answer = $question_answer;
+                    $user_answer = is_scalar( $question_answer ) ? sanitize_email( $question_answer ) : '';
                     $answer_id = 0;
                     break;
                 default:
@@ -3113,6 +3121,10 @@ class Survey_Maker_Public {
                 '.$answers_list_direction.'
                 '.$answers_grid_min_width.'
             }
+
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'sections .' . $this->html_class_prefix . 'question[data-type="date"] .' . $this->html_class_prefix . 'answer{
+                width: 100%;
+            }
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'sections .' . $this->html_class_prefix . 'question .' . $this->html_class_prefix . 'answer.' . $this->html_class_prefix . 'other-answer-container{
                 '.$other_answer_box_width.'
@@ -3492,7 +3504,14 @@ class Survey_Maker_Public {
         $output = array();
         if(isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'survey_maker_autofill_nonce')){
             if(is_user_logged_in()) {
-                $output = wp_get_current_user();
+                $user = wp_get_current_user();
+
+                $output = array(
+                    'data' => array(
+                        'display_name' => $user->display_name,
+                        'user_email'   => $user->user_email,
+                    )
+                );
             } else {
                 $output = array();
             }

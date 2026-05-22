@@ -234,8 +234,8 @@ class Survey_Maker_Submissions_Summary
                                                     foreach( $filtered_text_answers  as $aid => $answer ):
                                                         $text_answer_count = isset($question_results[ $question['id'] ]['sum_of_same_answers'][$answer]) && $question_results[ $question['id'] ]['sum_of_same_answers'][$answer] != "" ? $question_results[ $question['id'] ]['sum_of_same_answers'][$answer] : "";
                                                         $content[] = '<div class="' . $this->html_class_prefix . 'submission-text-answer">
-                                                                        <div>'. nl2br( htmlentities($answer) ) .'</div>
-                                                                        <div>'. nl2br( $text_answer_count ) .'</div>
+                                                                        <div>'. nl2br( esc_html( $answer ) ) .'</div>
+                                                                        <div>'. esc_html( $text_answer_count ) .'</div>
                                                                     </div>';
 
                                                     endforeach;
@@ -325,7 +325,7 @@ class Survey_Maker_Submissions_Summary
                                                         foreach( $hours_array as $k_hours => $v_hours ){
                                                                 
                                                             $content[] = '<div class="ays-survey-question-time-summary-row">';
-                                                                $content[] = '<div class="ays-survey-question-time-summary-hour"><span class="ays-survey-question-time-summary-hour-all">'.$k_hours.' :</span></div>';
+                                                                $content[] = '<div class="ays-survey-question-time-summary-hour"><span class="ays-survey-question-time-summary-hour-all">'. esc_html( $k_hours . ' :' ) .'</span></div>';
                                                                     $content[] = '<div class="ays-survey-question-time-summary-hours">';
                                                                         $content[] = '<div class="ays-survey-question-time-summary-hours-row">';
                                                                                 foreach( $v_hours as $k_hour => $count ){
@@ -406,7 +406,7 @@ class Survey_Maker_Submissions_Summary
                                                                         foreach($time_array[$new_date] as $f => $r){
                                                                             if($r != '' && $r != '-'){
                                                                             
-                                                                                $content[] = '<span class="ays-survey-question-date-time-summary-hour-all">'.$r.'</span>';
+                                                                                $content[] = '<span class="ays-survey-question-date-time-summary-hour-all">'. esc_html( $r ) .'</span>';
                                                                             
                                                                             }
                                                                         }
@@ -432,8 +432,8 @@ class Survey_Maker_Submissions_Summary
                                                     foreach( $filtered_other_answers as $aid => $answer ):
                                                         $other_answer_count = isset($question_results[ $question['id'] ]['same_other_count'][$answer]) && $question_results[ $question['id'] ]['same_other_count'][$answer] != "" ? $question_results[ $question['id'] ]['same_other_count'][$answer] : "";
                                                         $content[] = '<div class="' . $this->html_class_prefix . 'submission-text-answer">
-                                                                        <div>' . stripslashes(htmlentities($answer)) . '</div>
-                                                                        <div>' . stripslashes($other_answer_count) . '</div>
+                                                                        <div>' . esc_html( stripslashes( $answer ) ) . '</div>
+                                                                        <div>' . esc_html( $other_answer_count ) . '</div>
                                                                       </div>';
                                                     endforeach;
                                                 endif;

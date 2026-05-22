@@ -440,6 +440,7 @@ $types_with_changeable_charts = array(
                                     if( isset( $user_answer['otherAnswer'] ) ){
                                         $other_answer = $user_answer['otherAnswer'] ;
                                     }
+                                    $other_answer_html = esc_html( html_entity_decode( (string) $other_answer, ENT_QUOTES, get_bloginfo( 'charset' ) ) );
                                     if( isset( $user_answer['answer'] ) ){
                                         $user_answer = $user_answer['answer'];
                                     }
@@ -451,8 +452,9 @@ $types_with_changeable_charts = array(
                                     }
 
                                     if( in_array( $question['type'], $text_types ) ){
+                                        $user_answer_html = esc_html( html_entity_decode( (string) $user_answer, ENT_QUOTES, get_bloginfo( 'charset' ) ) );
                                         $question_type_content .= '<div class="ays_each_question_answer">
-                                            <p class="ays_text_answer">' . $user_answer . '</p>
+                                            <p class="ays_text_answer">' . $user_answer_html . '</p>
                                         </div>';
                                     }
 
@@ -594,7 +596,7 @@ $types_with_changeable_charts = array(
                                                 </div>
                                             </label>
                                             <div class="ays-survey-answer-other-text">
-                                                <span style="display: inline-block;" class="ays-survey-answer-other-input ays-survey-question-input ays-survey-input" tabindex="0">' . ($other_answer) . '</span>
+                                                <span style="display: inline-block;" class="ays-survey-answer-other-input ays-survey-question-input ays-survey-input" tabindex="0">' . $other_answer_html . '</span>
                                                 <div class="ays-survey-input-underline" style="margin:0;"></div>
                                                 <div class="ays-survey-input-underline-animation" style="margin:0;background-color: '.$survey_for_charts.';"></div>
                                             </div>
@@ -754,8 +756,8 @@ $types_with_changeable_charts = array(
                                                         $text_answer_count = isset($question_results[ $question['id'] ]['sum_of_same_answers'][$answer]) && $question_results[ $question['id'] ]['sum_of_same_answers'][$answer] != "" ? $question_results[ $question['id'] ]['sum_of_same_answers'][$answer] : "";
                                                         ?>
                                                         <div class="ays-survey-submission-text-answer">
-                                                            <div class="ays-survey-submission-text-answer-each"><?php echo stripslashes(nl2br( htmlentities( $answer )) ); ?></div>
-                                                            <div><?php echo stripslashes(nl2br( $text_answer_count) ); ?></div>
+                                                            <div class="ays-survey-submission-text-answer-each"><?php echo nl2br( esc_html( stripslashes( $answer ) ) ); ?></div>
+                                                            <div><?php echo esc_html( $text_answer_count ); ?></div>
                                                         </div>
                                                         <?php
                                                     endforeach;
@@ -862,7 +864,7 @@ $types_with_changeable_charts = array(
                                                     foreach( $hours_array as $k_hours => $v_hours ){
                                                         ?>
                                                         <div class="ays-survey-question-time-summary-row">
-                                                            <div class="ays-survey-question-time-summary-hour"><span class="ays-survey-question-time-summary-hour-all"><?php echo $k_hours . " :"; ?></span></div>
+                                                            <div class="ays-survey-question-time-summary-hour"><span class="ays-survey-question-time-summary-hour-all"><?php echo esc_html( $k_hours . " :" ); ?></span></div>
                                                             <div class="ays-survey-question-time-summary-hours">
                                                                 <div class="ays-survey-question-time-summary-hours-row">
                                                                     <?php
@@ -991,8 +993,8 @@ $types_with_changeable_charts = array(
                                                         $other_answer_count = isset($question_results[ $question['id'] ]['same_other_count'][$answer]) && $question_results[ $question['id'] ]['same_other_count'][$answer] != "" ? $question_results[ $question['id'] ]['same_other_count'][$answer] : "";
                                                         ?>
                                                         <div class="ays-survey-submission-text-answer">
-                                                            <div><?php echo stripslashes(nl2br( htmlentities( $answer )) ); ?></div>
-                                                            <div><?php echo stripslashes($other_answer_count); ?></div>
+                                                            <div><?php echo nl2br( esc_html( stripslashes( $answer ) ) ); ?></div>
+                                                            <div><?php echo esc_html( $other_answer_count ); ?></div>
                                                         </div>
                                                         
                                                         <?php
