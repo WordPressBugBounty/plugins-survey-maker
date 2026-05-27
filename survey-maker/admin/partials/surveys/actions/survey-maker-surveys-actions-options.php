@@ -159,6 +159,8 @@
         'survey_progress_bar_text_transform_mobile' => 'none',
         'survey_required_questions_message' => 'This is a required question',
         'survey_change_create_author' => $user_id,
+        'enable_terms_and_conditions' => 'off',
+        'enable_terms_and_conditions_required_message' => 'off',
         // Result Settings Tab
         'survey_redirect_after_submit' => 'off',
         'survey_submit_redirect_url' => '',
@@ -1222,7 +1224,20 @@
 
         // Auto numbering questions
         $survey_auto_numbering_questions = (isset($options[ $name_prefix . 'auto_numbering_questions' ]) && $options[ $name_prefix . 'auto_numbering_questions' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'auto_numbering_questions' ] ) ) : 'none';
+        
+        // Terms and Conditions
+        $options[ $name_prefix . 'enable_terms_and_conditions' ] = isset($options[ $name_prefix . 'enable_terms_and_conditions' ]) ? $options[ $name_prefix . 'enable_terms_and_conditions' ] : 'off';
+        $enable_terms_and_conditions = (isset($options[ $name_prefix . 'enable_terms_and_conditions' ]) && $options[ $name_prefix . 'enable_terms_and_conditions' ] == 'on') ? true : false;
 
+        $terms_and_conditions = isset($options['survey_terms_and_conditions_data']) && $options['survey_terms_and_conditions_data'] != "" ? $options['survey_terms_and_conditions_data'] : array();        
+    
+        //Terms and conditions required message
+        $options[ 'enable_terms_and_conditions_required_message' ] = 
+        ( isset( $options[ 'enable_terms_and_conditions_required_message' ]) && $options[ 'enable_terms_and_conditions_required_message' ] != '') ? $options['enable_terms_and_conditions_required_message' ] : 'off';
+
+        $enable_terms_and_conditions_required_message = (
+            isset( $options['enable_terms_and_conditions_required_message' ]) && 
+            $options[ 'enable_terms_and_conditions_required_message' ] == 'on') ? true : false;
 
     // =============================================================
     // =================== Results Settings Tab  ===================

@@ -912,6 +912,14 @@ div[id*='ays-survey-container'][data-theme='modern'].ays-survey-container .ays-s
    border-color: #d93025;
 }
 
+.ays-survey-container .ays-survey-section-terms-and-conditions-content .ays-has-error{
+   border: 1px solid #d93025;
+}
+
+.ays-survey-container .ays-survey-is-checked-terms-and-conditions:checked + span{
+   border-color: black;
+}
+
 .ays-survey-container .ays-survey-section .ays-survey-question.ays-has-error .ays-survey-question-validation-error ,
 .ays-survey-container .ays-survey-section .ays-survey-question.ays-has-error .ays-survey-votes-count-validation-error {
    -webkit-box-align: center;
@@ -1811,3 +1819,65 @@ button.ays-survey-links-by-category-link-button:disabled{
 }
 
 /* Survey Preview page Notice style | End */
+
+/* Terms and conditions start */
+
+div.ays-survey-section-terms-and-conditions-content .ays-survey-section-terms-and-conditions {
+   margin-left: 0.40em;
+ }
+ 
+ div.ays-survey-section-terms-and-conditions-content .ays-survey-section-terms-and-conditions span {
+   font-size: 15px;
+   line-height: 1;
+   font-family: Roboto,Arial,sans-serif;;
+   font-weight: 400;
+   letter-spacing: .2px;
+   /* color: #333; */
+   min-width: 1px;
+ } 
+ 
+ div.ays-survey-section-terms-and-conditions-container {
+   padding: 10px;
+   border-radius: 8px;
+   width: 100%;
+   margin-bottom: 10px;
+   box-sizing: border-box;
+ } 
+ 
+div.ays-survey-section-terms-and-conditions-content .ays-survey-answer-label-terms-conditions{
+   margin: 0;
+} 
+
+div.ays-survey-section-terms-and-conditions-content .ays-survey-answer-label-content{
+   padding: 5px;
+   border-radius: 3px;
+   width: 100%;
+} 
+
+div.ays-survey-terms-and-conditions-content-box{
+   margin-bottom: 10px;
+} 
+
+.ays-survey-answer-matrix-scale-column-row-header-scrolled{
+   position: sticky;
+   left: 0;
+   background-color: #f7f7f7;
+   border: 0;
+   box-shadow: inset -3px 0 5px -5px rgb(8 8 8 / 97%) !important;
+   border-radius: 0 2px 2px 0;
+   z-index: 1;
+}
+
+div.ays-survey-category-container-flex {
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+div.ays-survey-section-terms-and-conditions-required-message-content > p.ays-survey-section-terms-and-conditions-required-message {
+   font-size: 12px;
+   padding: 0 5px;
+   color: #d93025;
+}
+
+/* Terms and conditions end */

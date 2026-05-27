@@ -5142,3 +5142,60 @@ div.masteriyo-notice {
 }
 
 /* Publish Tab design | End */
+
+/* Terms and conditions start */
+
+.ays_survey_terms_and_conditions_content {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-left-width: 5px;
+    border-left-style: solid;
+    border-right: 1px solid #B8B8B8;
+}
+
+.ays_survey_terms_conditions_edit_block:nth-of-type(even) {
+    background-color: #fff;
+}
+.ays_survey_terms_conditions_edit_block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ays_survey_terms_conditions_edit_block:first-child {
+    border-top: 1px solid #B8B8B8;
+}
+
+.ays_survey_terms_conditions_edit_block:last-child {
+    border-bottom: 1px solid #B8B8B8;
+}
+
+.ays_survey_terms_and_conditions_all_inputs_block .ays_survey_icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ays_survey_terms_and_conditions_all_inputs_block .ays_survey_icons img {
+    cursor: pointer;
+}
+
+.ays_survey_terms_conditions_edit_block .ays_survey_terms_and_conditions_textarea_div {
+    padding: 10px;
+    border-right: 1px solid #B8B8B8;
+    border-left: 1px solid #B8B8B8;
+    width: 95%;
+}
+
+.ays_survey_terms_conditions_edit_block .ays_survey_terms_and_conditions_textarea_div textarea {
+    width: 100%;
+}
+
+.ays_survey_terms_conditions_edit_block .ays_survey_terms_and_conditions_checkbox {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;
+}
+
+/* Terms and conditions end */

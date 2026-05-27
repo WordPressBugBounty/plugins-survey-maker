@@ -1137,6 +1137,7 @@
             for (var i = 0; i < requiredQuestions.length; i++) {
                 var item = requiredQuestions.eq(i);
                 var checkMinVotes = requiredQuestions.eq(i).data('isMin');
+                var checkAllTermsAndConds = item.data('allTermsCheck');
                 if( item.data('type') == 'text' || item.data('type') == 'email' || item.data('type') == 'name' || item.data('type') == 'short_text' || item.data('type') == 'number' || item.data('type') == 'phone' || item.data('type') == 'date' || item.data('type') == 'time' || item.data('type') == 'date_time'){
                     var errorMessage = '<img src="' + aysSurveyMakerAjaxPublic.warningIcon + '" alt="error">';
 
@@ -1207,6 +1208,14 @@
                             return false;
                         }
                     }
+
+                    if(typeof checkAllTermsAndConds != 'undefined' && checkAllTermsAndConds){
+                        checker = _this.checkTermsAndConds( item );
+                        if( ! checker ){
+                            return false;
+                        }
+                    }
+
                     if( item.find('input[type="'+ questionType +'"]:checked').length == 0 ){
                         errorFlag = true;
                     }
@@ -2436,6 +2445,21 @@
                 errorBox.show();
             }
             
+        }
+    }
+
+    AysSurveyPlugin.prototype.checkTermsAndConds = function( item ){
+        var _this = this;
+        var alltermsCondsCount = item.find('.' + _this.htmlClassPrefix + 'is-checked-terms-and-conditions').length;
+        var checkedTermsConsdCount = item.find('.' + _this.htmlClassPrefix + 'is-checked-terms-and-conditions:checked').length;
+        if( alltermsCondsCount != checkedTermsConsdCount ){
+            if( _this.dbOptions['enable_terms_and_conditions_required_message' ] ){
+                item.find('.'+_this.htmlClassPrefix+'section-terms-and-conditions-required-message-content').css( 'display', 'block' );
+            }
+            item.find('.' + _this.htmlClassPrefix + 'is-checked-terms-and-conditions:not(:checked)').next().addClass('ays-has-error');
+            return false;
+        }else{
+            return true;
         }
     }
     

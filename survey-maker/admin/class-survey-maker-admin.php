@@ -284,6 +284,7 @@ class Survey_Maker_Admin {
         wp_enqueue_script( $this->plugin_name . "-functions", plugin_dir_url(__FILE__) . 'js/functions.js', array( 'jquery', 'wp-color-picker' ), $this->version, true );
         wp_enqueue_script( $this->plugin_name . '-ajax', plugin_dir_url(__FILE__) . 'js/survey-maker-admin-ajax.js', array('jquery'), $this->version, true);
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/survey-maker-admin.js', array( 'jquery' ), $this->version, true );
+        wp_enqueue_script( $this->plugin_name."-terms-and-conditions", plugin_dir_url( __FILE__ ) . 'js/survey-maker-admin-terms-and-conditions.js', array( 'jquery' ), $this->version, true );
         wp_localize_script( $this->plugin_name, 'SurveyMakerAdmin', array( 
             'surveyBannerDate'    => $survey_banner_date,
         	'ajaxUrl' => admin_url( 'admin-ajax.php' ),            
@@ -335,6 +336,7 @@ class Survey_Maker_Admin {
             'icons' => array(
                 'radioButtonUnchecked'  => SURVEY_MAKER_ADMIN_URL . '/images/icons/radio-button-unchecked.svg',
                 'checkboxUnchecked'     => SURVEY_MAKER_ADMIN_URL . '/images/icons/checkbox-unchecked.svg',
+                'deleteTermsAndConds'   => SURVEY_MAKER_ADMIN_URL. '/images/icons/trash.svg',
             ),
             'nextSurveyPage'                    => __( 'Are you sure you want to go to the next survey page?', "survey-maker"),
             'prevSurveyPage'                    => __( 'Are you sure you want to go to the previous question page?', "survey-maker"),

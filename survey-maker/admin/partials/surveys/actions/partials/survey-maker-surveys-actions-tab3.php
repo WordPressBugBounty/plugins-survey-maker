@@ -483,6 +483,84 @@
                     </div><!--Survey progress text transform -->
                 </div>
             </div> <!-- Live progres bar -->
+            <hr/>    
+            <div class="form-group row ays_toggle_parent">
+                <div class="col-sm-4">
+                    <label for="ays_survey_terms_and_conditions">
+                        <?php echo esc_html__('Terms and Conditions',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__(' Write your terms and conditions here. It will be displayed in the front end in top of the finish button. Please note that you will be able to click on the finish button only when all the checkboxes are ticked.',"survey-maker")?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-1">
+                    <input type="checkbox" class="ays_toggle_checkbox" id="ays_survey_terms_and_conditions" name="ays_survey_terms_and_conditions" value="on" <?php echo ($enable_terms_and_conditions) ? 'checked' : ''; ?>/>
+                </div>
+                <div class="col-sm-7 ays_divider_left ays_toggle_target <?php echo $enable_terms_and_conditions ? '' : 'display_none_not_important'; ?> ays_survey_terms_and_conditions_all_inputs_block">
+                    <div>
+                        <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl">
+                            <img class="ays_survey_add_new_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/add-circle-outline.svg">
+                        </div>
+                        <div class="ays_survey_terms_and_conditions_content">
+                        <?php if(!empty($terms_and_conditions)):
+                            foreach($terms_and_conditions as $term_cond_id => $term_cond_value):
+                                ?>
+                                <?php if(isset($term_cond_value)):?>
+                                <?php
+                                $term_cond_message_values = isset($condition_messages_page['message']) && $condition_messages_page['message'] != "" ? stripslashes( wpautop($condition_messages_page['message'])) : "";
+                                ?>
+                                <div class = "ays_survey_terms_conditions_edit_block" data-condition-id = "<?php echo $term_cond_id; ?>">
+                                    <div class="ays_survey_terms_and_conditions_checkbox">  
+                                        <div class="ays-survey-icons">
+                                            <img src= "<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/checkbox-unchecked.svg">
+                                        </div>
+                                    </div>
+                                    <div class="ays_survey_terms_and_conditions_textarea_div">
+                                        <textarea name="ays_terms_and_condition_add[<?php echo $term_cond_id; ?>][messages]" value=""><?php echo stripslashes($term_cond_value['messages']); ?></textarea>
+                                    </div>
+                                    <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl" data-trigger="hover">
+                                        <img class="ays_survey_remove_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/trash.svg">
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <?php if(empty($terms_and_conditions)):?>
+                            <div class = "ays_survey_terms_conditions_edit_block" data-condition-id = "1">
+                                <div class="ays_survey_terms_and_conditions_checkbox">  
+                                    <div class="ays-survey-icons">
+                                        <img src= "<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/checkbox-unchecked.svg">
+                                    </div>
+                                </div>
+                                <div class="ays_survey_terms_and_conditions_textarea_div">
+                                    <textarea name="ays_terms_and_condition_add[1][messages]" value=""></textarea>
+                                </div>
+                                <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl" data-trigger="hover">
+                                    <img class="ays_survey_remove_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/trash.svg">
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        </div>
+                        <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl">
+                            <img class="ays_survey_add_new_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/add-circle-outline.svg">
+                        </div>         
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="form-check-label" for="ays_survey_terms_and_conditions_required_message">
+                                <?php echo esc_html__("Required Message Text", "survey-maker") ?>
+                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('If this option is enabled, when skipping the confirmation of terms the users will see the following text "By clicking on the checkbox, you agree to our Terms and Conditions".', "survey-maker"); ?>">
+                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                </a>
+                            </label>
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="checkbox" class="" id="ays_survey_terms_and_conditions_required_message" name="ays_survey_terms_and_conditions_required_message" value="on" <?php echo ($enable_terms_and_conditions_required_message) ? 'checked' : ''; ?>>
+                        </div>
+                    </div>
+                </div>    
+            </div> <!-- Terms and Conditions -->
             <hr/>      
             <div class="form-group row ays_toggle_parent">
                 <div class="col-sm-4">
@@ -1237,55 +1315,4 @@
             </div> 
         </div>
     </div><!-- Enable chat mode -->
-    <hr/>
-    <div class="form-group row" style="margin:0px;">
-        <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">
-            <div class="ays-pro-features-v2-small-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=grQI5KXcPz4" data-option-title="<?php echo esc_attr__('Terms and Conditions',"survey-maker")?>" data-option-text="Do you have any terms and conditions and want your survey takers to know about them? Use this feature and add <strong> as many terms and conditions as you want </strong> with a few clicks. If you want all your users to read and give their agreement with your terms and conditions, make them <strong> required </strong> and type your desired message in the <strong> “required message text” </strong> field to warn the survey takers every time they try to skip the confirmation of terms.">
-                <div class="ays-pro-features-v2-video-button">
-                    <div class="ays-pro-features-v2-video-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Video_24x24_Hover.svg"></div>
-                    <div class="ays-pro-features-v2-video-text">
-                        <?php echo esc_html__("Watch Video" , "survey-maker"); ?>
-                    </div>
-                </div>
-                <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-4">
-                    <label for="ays_survey_terms_and_conditions">
-                        <?php echo esc_html__('Terms and Conditions',"survey-maker")?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__(' Write your terms and conditions here. It will be displayed in the front end in top of the finish button. Please note that you will be able to click on the finish button only when all the checkboxes are ticked.',"survey-maker")?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                </div>
-                <div class="col-sm-1">
-                    <input type="checkbox" checked id="ays_survey_terms_and_conditions" value="on"/>
-                </div>
-                <div class="col-sm-7 ays_divider_left ays_survey_terms_and_conditions_all_inputs_block">
-                    <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl">
-                        <img class="ays_survey_add_new_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/add-circle-outline.svg">
-                    </div>
-                    <div class="ays_survey_terms_and_conditions_content">
-                        <div class = "ays_survey_terms_conditions_edit_block" data-condition-id = "1">
-                            <div class="ays_survey_terms_and_conditions_textarea_div">
-                                <textarea value="" placeholder="Terms and Conditions..."></textarea>
-                            </div>
-                            <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl" data-trigger="hover">
-                                <img class="ays_survey_remove_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/trash.svg">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl">
-                        <img class="ays_survey_add_new_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/add-circle-outline.svg">
-                    </div>         
-                </div> 
-            </div> 
-        </div>
-    </div><!-- Terms and Conditions -->
-    <hr/>
 </div>

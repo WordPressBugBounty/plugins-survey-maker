@@ -1513,11 +1513,65 @@ class Survey_Maker_Public {
 	    	$content[] = '</div>';
 
             $footer_class_with_bar = "";
+            $footer_class_with_terms = "";
+            $enable_terms_and_conditions = $this->options[ $this->name_prefix . 'enable_terms_and_conditions' ];
+            $terms_and_conditions_data = $this->options[ $this->name_prefix . 'terms_and_conditions_data' ];
             if($this->options[ $this->name_prefix . 'enable_progress_bar' ] == "on"){
                 $footer_class_with_bar = "ays-survey-footer-with-live-bar";
             }
-	    	$content[] = '<div class="' . $this->html_class_prefix . 'section-footer '.$footer_class_with_bar.'">';
 
+            $enable_terms_and_conditions_required_message = $this->options['enable_terms_and_conditions_required_message'];
+            if($enable_terms_and_conditions){
+
+                $footer_class_with_terms = "ays-survey-footer-with-terms-and-conds";
+            }
+
+	    	$content[] = '<div class="' . $this->html_class_prefix . 'section-footer '.$footer_class_with_bar.' '.$footer_class_with_terms.'">';
+                
+                if( $last ){
+                    if( $enable_terms_and_conditions ) {
+                        $content[] = '<div data-required="true" data-all-terms-check="true" data-type="checkbox" class="' . $this->html_class_prefix . 'section-terms-and-conditions-container">';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'section-terms-and-conditions-content">';
+                                $padding_for_bussines = $this->options[ $this->name_prefix . 'is_business' ] ? 'style="padding:0 10px 3px;"' : '';
+                                foreach ($terms_and_conditions_data as $tc_text => $tc_text_value) {
+                                    if( $tc_text_value['messages'] != '' ){
+                                        $content[] = '<div class="' . $this->html_class_prefix . 'terms-and-conditions-content-box" '.$padding_for_bussines.'>';
+                                            $content[] = '<label class="' . $this->html_class_prefix . 'answer-label ' . $this->html_class_prefix . 'answer-label-terms-conditions">';
+                                                    if($this->options[ $this->name_prefix . 'is_business' ]){
+                                                            $content[] = '<input type="checkbox" class="' . $this->html_class_prefix . 'is-checked-terms-and-conditions ' . $this->html_class_prefix . 'business-theme-answers">';
+                                                            $content[] = '<span class="' . $this->html_name_prefix . 'maker-checkmark ' . $this->html_name_prefix . 'maker-checkmark-checkbox" style="top:18px"></span>';
+                                                    }else{
+                                                        $content[] = '<input type="checkbox" class="' . $this->html_class_prefix . 'is-checked-terms-and-conditions">';
+                                                    }
+                                                    $content[] = '<div class="' . $this->html_class_prefix . 'answer-label-content">';
+                                                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-icon-content">';
+                                                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-icon-ink"></div>';
+                                                        $content[] = '<div class="' . $this->html_class_prefix . 'answer-icon-content-1">';
+                                                            $content[] = '<div class="' . $this->html_class_prefix . 'answer-icon-content-2">';
+                                                                $content[] = '<div class="' . $this->html_class_prefix . 'answer-icon-content-3"></div>';
+                                                            $content[] = '</div>';
+                                                        $content[] = '</div>';
+                                                    $content[] = '</div>';
+                                                    $content[] = '<div class="' . $this->html_class_prefix . 'section-terms-and-conditions">';
+                                                        $content[] = '<span class="">' . stripslashes(($tc_text_value['messages'])) . '</span>';
+                                                    $content[] = '</div>';
+                                                $content[] = '</div>';
+                                            $content[] = '</label>';     
+                                        
+                                        $content[] = '</div>';
+                                    }   
+                                }
+                            $content[] = '</div>';
+                            if($enable_terms_and_conditions_required_message){
+                                $content[] = '<div class="' . $this->html_class_prefix . 'section-terms-and-conditions-required-message-content" style="display:none;">';
+                                    $content[] = '<p class="' . $this->html_class_prefix . 'section-terms-and-conditions-required-message">';
+                                        $content[] = '<span class="">' . __('By clicking on the checkbox, you agree to our Terms and Conditions', "survey-maker") . '</span>';
+                                    $content[] = '</p>';
+                                $content[] = '</div>';
+                            }
+                        $content[] = '</div>';
+                    }
+                }
 		    	$content[] = '<div class="' . $this->html_class_prefix . 'section-buttons">';
 
                     if( ! $first ){
@@ -2801,6 +2855,7 @@ class Survey_Maker_Public {
             }
             
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-header,
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-terms-and-conditions-container,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question {
                 background-color: ' . $this->options[ $this->name_prefix . 'background_color' ] . ';
             }
@@ -2851,6 +2906,7 @@ class Survey_Maker_Public {
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'restricted-message,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-desc,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-questions-count,
+            #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-terms-and-conditions-container,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'question-title,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-title-row,
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'thank-you-page > div p {

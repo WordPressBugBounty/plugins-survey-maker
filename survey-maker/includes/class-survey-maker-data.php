@@ -57,6 +57,8 @@ class Survey_Maker_Data {
         $settings[ $name_prefix . 'theme' ] = (isset($options[ $name_prefix . 'theme' ]) && $options[ $name_prefix . 'theme' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'theme' ] ) ) : 'classic_light';
         $settings[ $name_prefix . 'is_minimal' ] = $settings[ $name_prefix . 'theme' ] == 'minimal' ? true : false;
         $settings[ $name_prefix . 'is_modern' ] = $settings[ $name_prefix . 'theme' ] == 'modern' ? true : false;
+        $settings[ $name_prefix . 'is_business' ] = false;
+        $settings[ $name_prefix . 'is_elegant' ] = false;
 
         // Survey Color
         $settings[ $name_prefix . 'color' ] = (isset($options[ $name_prefix . 'color' ]) && $options[ $name_prefix . 'color' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'color' ] ) ) : '#ff5722'; // '#673ab7'
@@ -572,6 +574,15 @@ class Survey_Maker_Data {
         
         // Auto numbering questions
         $settings[ $name_prefix . 'auto_numbering_questions' ] = (isset($options[ $name_prefix . 'auto_numbering_questions' ]) &&  $options[ $name_prefix . 'auto_numbering_questions' ] != '') ? stripslashes( $options[ $name_prefix . 'auto_numbering_questions' ] )  : 'none';
+
+        // Enable terms and conditions
+        $options[ $name_prefix . 'enable_terms_and_conditions' ] = isset($options[ $name_prefix . 'enable_terms_and_conditions' ]) ? esc_attr($options[ $name_prefix . 'enable_terms_and_conditions' ]) : 'off';
+        $settings[ $name_prefix . 'enable_terms_and_conditions' ] = (isset($options[ $name_prefix . 'enable_terms_and_conditions' ]) && $options[ $name_prefix . 'enable_terms_and_conditions' ] == 'on') ? true : false;
+        $settings[ $name_prefix . 'terms_and_conditions_data' ] = (isset($options[ $name_prefix . 'terms_and_conditions_data' ]) &&  !empty($options[ $name_prefix . 'terms_and_conditions_data' ])) ?  $options[ $name_prefix . 'terms_and_conditions_data' ]  : array();
+
+        //Terms and conditions required message
+        $options[ $name_prefix . 'enable_terms_and_conditions_required_message' ] = (isset($options[ 'enable_terms_and_conditions_required_message' ]) && $options['enable_terms_and_conditions_required_message' ] != '') ? $options['enable_terms_and_conditions_required_message' ] : 'off';
+        $settings['enable_terms_and_conditions_required_message' ] = (isset($options['enable_terms_and_conditions_required_message' ]) && $options['enable_terms_and_conditions_required_message' ] == 'on') ? true : false;
 
         // =============================================================
         // =================== Results Settings Tab  ===================

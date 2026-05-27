@@ -834,6 +834,29 @@ class Surveys_List_Table extends WP_List_Table {
                 }
             }
 
+            // Terms and Conditions
+            $enable_terms_and_conditions = (isset( $_POST[ $name_prefix . 'survey_terms_and_conditions' ] ) && $_POST[ $name_prefix . 'survey_terms_and_conditions' ] == 'on') ? 'on' : 'off';
+
+            $terms_and_conditions = array();
+            if (isset($_POST[ $name_prefix . 'terms_and_condition_add' ]) && !empty( $_POST[ $name_prefix . 'terms_and_condition_add' ] )) {
+                $survey_terms_condition_add = $_POST[ $name_prefix . 'terms_and_condition_add' ];
+                foreach($survey_terms_condition_add as $tc_add_key => &$tc_add_value){
+                    $survey_terms_condition_messages     = (isset($tc_add_value['messages']) && $tc_add_value['messages'] != "") ? $tc_add_value['messages'] : array();
+                    if(!empty($survey_terms_condition_messages)){
+                        $tc_add_value['messages'] = isset($tc_add_value['messages']) && $tc_add_value['messages'] != "" ? wp_kses_post($tc_add_value['messages']) : "";
+                    }
+
+                    if(isset($tc_add_value)){
+                        $terms_and_conditions[$tc_add_key] = $tc_add_value;
+                    }
+                }
+            }
+
+            $terms_and_conditions = !empty($terms_and_conditions) ? $terms_and_conditions : array();    
+            
+            // Terms and Conditions required message
+            $enable_terms_and_conditions_required_message = (isset( $_POST[ $name_prefix . 'survey_terms_and_conditions_required_message' ] ) && $_POST[ $name_prefix . 'survey_terms_and_conditions_required_message' ] == 'on') ? 'on' : 'off';
+
 
 
             // =============================================================
@@ -1199,6 +1222,9 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_show_sections_questions_count' => $survey_show_sections_questions_count,
                 'survey_required_questions_message' => $survey_required_questions_message,
                 'survey_change_create_author'        => $survey_change_create_author,
+                'survey_enable_terms_and_conditions' => $enable_terms_and_conditions,
+                'enable_terms_and_conditions_required_message' => $enable_terms_and_conditions_required_message,
+                'survey_terms_and_conditions_data'   => $terms_and_conditions,
                 // Result Settings Tab
                 'survey_redirect_after_submit'      => $survey_redirect_after_submit,
                 'survey_submit_redirect_url'        => $survey_submit_redirect_url,
