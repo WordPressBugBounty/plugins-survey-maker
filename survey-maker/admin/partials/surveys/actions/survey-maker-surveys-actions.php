@@ -78,6 +78,17 @@
                         'data-delay'=> '{"show":"1000"}'
                     );
                     
+                    if ( ! empty( $survey_preview_url ) ) :
+                        ?>
+                        <a href="<?php echo esc_url( $survey_preview_url ); ?>" target="_blank" rel="noopener noreferrer" class="ays-survey-top-preview-button" aria-label="<?php echo esc_attr__( 'Preview', 'survey-maker' ); ?>">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            <?php echo esc_html__( 'Preview', 'survey-maker' ); ?>
+                        </a>
+                        <?php
+                        endif;
                     submit_button(__('Save', "survey-maker"), 'primary ays-survey-primary ays-survey-loader-banner', 'ays_apply_top', false, $save_attributes);
                     $save_and_close_attributes = array('id' => 'ays-button-save-top');
                     submit_button(__('Save and close', "survey-maker"), 'ays-survey-loader-banner ays-survey-submit-button-margin-unset', 'ays_submit_top', false, $save_and_close_attributes);
@@ -453,7 +464,7 @@
                                         <a href="https://ays-pro.com/wordpress/survey-maker" class="pro-features-popup-modal-right-box-link" target="_blank"><?php echo esc_html__("Pricing", "survey-maker"); ?></a>
                                     </div>
                                     <div class="pro-features-popup-modal-right-box-footer-text">
-                                        <span class="ays_quiz_small_hint_text_for_message_variables">
+                                        <span class="ays_survey_small_hint_text_for_message_variables">
                                             <?php echo esc_html__('One-time payment', "survey-maker")?>
                                         </span>
                                     </div>

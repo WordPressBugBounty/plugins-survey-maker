@@ -3394,3 +3394,40 @@ textarea.ays-survey-question-input-textarea {
     }
 }
 
+
+.ays-survey-question-value-prefix,
+.ays-survey-question-value-suffix {
+    padding: 0 50px;
+}
+
+.ays-survey-question-value-prefix .ays-survey-answer-box,
+.ays-survey-question-value-suffix .ays-survey-answer-box {
+    position: relative;
+    width: 100%;
+}
+
+.ays-survey-question-value-prefix .ays-survey-answer-box .ays-survey-input,
+.ays-survey-question-value-suffix .ays-survey-answer-box .ays-survey-input {
+    width: 100%;
+}
+
+.ays-survey-question-value-prefix-label,
+.ays-survey-question-value-suffix-label {
+    font-size: 14px;
+    color: #5f6368;
+    position: relative;
+    width: 100%;
+}
+
+.ays-survey-question-value-prefix-label span,
+.ays-survey-question-value-suffix-label span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #000;
+}
+
+.ays-survey-question-value-prefix-suffix-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

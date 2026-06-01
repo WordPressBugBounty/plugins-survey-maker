@@ -334,6 +334,7 @@
 
     $loader_iamge = '<span class="display_none ays_survey_loader_box"><img src="'. SURVEY_MAKER_ADMIN_URL .'/images/loaders/loading.gif"></span>';
 
+
     $ays_survey_allowed_html = Survey_Maker_Data::ays_survey_allowed_html();
 
     $pro_svg_icon = '
@@ -395,7 +396,10 @@
 
     $ays_super_admin_email = get_option('admin_email');
     $wp_general_settings_url = admin_url( 'options-general.php' );
-
+    
+    $survey_custom_post_id = (isset($object['custom_post_id']) && absint($object['custom_post_id']) > 0) ? absint($object['custom_post_id']) : 0;
+    $survey_custom_post_permalink = ($survey_custom_post_id > 0) ? get_permalink($survey_custom_post_id) : '';
+    $survey_preview_url = !empty($survey_custom_post_permalink) ? add_query_arg('preview', 'true', $survey_custom_post_permalink) : '';
     $survey_shortcode = (!empty($id)) ? "[ays_survey id='" . absint($id) . "']" : '';
 
     // Options
@@ -600,6 +604,13 @@
             $opts['enable_admin_note'] = ( isset( $opts['enable_admin_note'] ) ) && $opts['enable_admin_note'] == 'on' ? true : false;
             $opts['admin_note'] = ( isset( $opts['admin_note'] ) ) && $opts['admin_note'] != '' ? stripslashes( esc_attr( $opts['admin_note'] ) ) : '';
 
+            // Calculation prefix
+            $opts['enable_value_prefix'] = (isset( $opts['enable_value_prefix'] ) && $opts['enable_value_prefix'] == 'on') ? true : false;
+            $opts['value_prefix'] = (isset( $opts['value_prefix'] ) && $opts['value_prefix'] != '') ? stripslashes( esc_attr( $opts['value_prefix'] ) ) : "";
+            
+            // Calculation suffix
+            $opts['enable_value_suffix'] = (isset( $opts['enable_value_suffix'] ) && $opts['enable_value_suffix'] == 'on') ? true : false;
+            $opts['value_suffix'] = (isset( $opts['value_suffix'] ) && $opts['value_suffix'] != '') ? stripslashes( esc_attr( $opts['value_suffix'] ) ) : "";
 
             $q_answers = Survey_Maker_Data::get_answers_by_question_id( intval( $question['id'] ) );
 

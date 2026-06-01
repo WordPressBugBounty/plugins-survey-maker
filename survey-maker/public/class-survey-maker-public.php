@@ -1098,6 +1098,11 @@ class Survey_Maker_Public {
                     $opts['enable_admin_note'] = ( isset( $opts['enable_admin_note'] ) && $opts['enable_admin_note'] == 'on' ) ? true : false;
                     $opts['admin_note'] = isset( $opts['admin_note'] ) && $opts['admin_note'] != '' ? stripslashes( esc_attr( $opts['admin_note'] ) ) : '';
                     
+                    $opts['enable_value_prefix'] = (isset($opts['enable_value_prefix']) && $opts['enable_value_prefix'] == 'on') ? true : false;
+                    $opts['value_prefix'] = isset( $opts['value_prefix'] ) && $opts['value_prefix'] != '' ? stripslashes( esc_attr( $opts['value_prefix'] ) ) : '';
+                    $opts['enable_value_suffix'] = (isset($opts['enable_value_suffix']) && $opts['enable_value_suffix'] == 'on') ? true : false;
+                    $opts['value_suffix'] = isset( $opts['value_suffix'] ) && $opts['value_suffix'] != '' ? stripslashes( esc_attr( $opts['value_suffix'] ) ) : '';
+
                     if( $section_questions[$question_key]['type'] == 'checkbox' ){
                         $this->options[ 'survey_checkbox_options' ][$question['id']]['enable_max_selection_count'] = $opts['enable_max_selection_count'];
                         $this->options[ 'survey_checkbox_options' ][$question['id']]['max_selection_count'] = $opts['max_selection_count'];
@@ -2256,6 +2261,19 @@ class Survey_Maker_Public {
         // Input types placeholders
         $survey_input_type_placeholder = isset($question['options']['placeholder']) && $question['options']['placeholder'] != "" ? $question['options']['placeholder'] : '';
 
+        $enable_value_prefix = $question['options']['enable_value_prefix'];
+		$value_prefix = $enable_value_prefix ? stripslashes(sanitize_text_field($question['options']['value_prefix'])) : '';
+		
+		$enable_value_suffix = $question['options']['enable_value_suffix'];
+		$value_suffix = $enable_value_suffix ? stripslashes(sanitize_text_field($question['options']['value_suffix'])) : '';
+
+        $answer_box_prefix_suffix_css_class = "";
+        $answer_container_prefix_suffix_css_class = "";
+        if( $value_prefix != "" || $value_suffix != "" ){
+            $answer_box_prefix_suffix_css_class = $this->html_class_prefix . 'question-box-text-types-prefix-suffix';
+        }
+        $answer_container_prefix_suffix_css_class = $this->html_class_prefix . 'answer-box-text-types-prefix-suffix';
+
         $enable_word_limit = isset($question['options']['enable_word_limitation']) && $question['options']['enable_word_limitation'] ? true : false;  
         $show_limit  = isset($question['options']['limit_counter']) && $question['options']['limit_counter'] == "on" ? true : false;  
         $limit_length  = isset($question['options']['limit_length']) && $question['options']['limit_length'] != "" ? $question['options']['limit_length'] : "";  
@@ -2285,9 +2303,13 @@ class Survey_Maker_Public {
             $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
         }
 
-        $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+        $content[] = '<div class="' . $this->html_class_prefix . 'answer '. $answer_container_prefix_suffix_css_class .'">';
 
-            $content[] = '<div class="' . $this->html_class_prefix . 'question-box">';
+            $content[] = '<div class="' . $this->html_class_prefix . 'question-box '. $answer_box_prefix_suffix_css_class .'">';
+                if( $value_prefix != "" ){
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-answer-prefix">' . $value_prefix . '</div>';
+                }
+
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
                     $content[] = '<input class="
@@ -2307,14 +2329,19 @@ class Survey_Maker_Public {
                     }
 
                 $content[] = '</div>';
-                if($limit_checker){
-                    $content[] .= '<div class="'.$this->html_class_prefix.'question-text-conteiner">';
-                        $content[] .= '<div class="'.$this->html_class_prefix.'question-text-message">';
-                            $content[] .= '<span class="'.$this->html_class_prefix.'question-text-message-span">'. $limit_length . '</span> ' . $limit_by;
-                        $content[] .= '</div>';
-                    $content[] .= '</div>';
+                if( $value_suffix != "" ){
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-answer-suffix">' . $value_suffix . '</div>';
                 }
+                
             $content[] = '</div>';
+            
+            if($limit_checker){
+                $content[] .= '<div class="'.$this->html_class_prefix.'question-text-conteiner">';
+                    $content[] .= '<div class="'.$this->html_class_prefix.'question-text-message">';
+                        $content[] .= '<span class="'.$this->html_class_prefix.'question-text-message-span">'. $limit_length . '</span> ' . $limit_by;
+                    $content[] .= '</div>';
+                $content[] .= '</div>';
+            }
 
         $content[] = '</div>';
 
@@ -2327,6 +2354,19 @@ class Survey_Maker_Public {
         $content = array();
         // Input types placeholders
         $survey_input_type_placeholder = isset($question['options']['placeholder']) && $question['options']['placeholder'] != "" ? $question['options']['placeholder'] : '';
+
+        $enable_value_prefix = $question['options']['enable_value_prefix'];
+		$value_prefix = $enable_value_prefix ? stripslashes(sanitize_text_field($question['options']['value_prefix'])) : '';
+		
+		$enable_value_suffix = $question['options']['enable_value_suffix'];
+		$value_suffix = $enable_value_suffix ? stripslashes(sanitize_text_field($question['options']['value_suffix'])) : '';
+
+        $answer_box_prefix_suffix_css_class = "";
+        $answer_container_prefix_suffix_css_class = "";
+        if( $value_prefix != "" || $value_suffix != "" ){
+            $answer_box_prefix_suffix_css_class = $this->html_class_prefix . 'question-box-text-types-prefix-suffix';
+        }
+        $answer_container_prefix_suffix_css_class = $this->html_class_prefix . 'answer-box-text-types-prefix-suffix';
 
         $enable_number_limit = isset($question['options']['enable_number_limitation']) && $question['options']['enable_number_limitation'] == "on" ? true : false;
         $enable_number_limit_message = isset($question['options']['enable_number_error_message']) && $question['options']['enable_number_error_message'] == "on" ? true : false;
@@ -2361,9 +2401,13 @@ class Survey_Maker_Public {
             $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
         }
 
-        $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+        $content[] = '<div class="' . $this->html_class_prefix . 'answer '. $answer_container_prefix_suffix_css_class .'">';
 
-            $content[] = '<div class="' . $this->html_class_prefix . 'question-box">';
+            $content[] = '<div class="' . $this->html_class_prefix . 'question-box '. $answer_box_prefix_suffix_css_class .'">';
+                if( $value_prefix != "" ){
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-answer-prefix">' . $value_prefix . '</div>';
+                }
+                
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
                     $content[] = '<input class="
@@ -2381,21 +2425,28 @@ class Survey_Maker_Public {
                     }
 
                 $content[] = '</div>';
-                if($enable_number_limit_message){
-                    $content[] = '<div class="' . $this->html_class_prefix . 'number-limit-message-box ' . $this->html_class_prefix . 'question-text-error-message" style="display: none;">';
-                        $content[] = '<span class="' . $this->html_class_prefix . 'number-limit-message-text">';
-                            $content[] = $number_limit_message;
-                        $content[] = '</span>';
-                    $content[] = '</div>';
+                
+                if( $value_suffix != "" ){
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-answer-suffix">' . $value_suffix . '</div>';
                 }
-                if($limit_checker){
-                    $content[] .= '<div class="'.$this->html_class_prefix.'question-text-conteiner">';
-                        $content[] .= '<div class="'.$this->html_class_prefix.'question-text-message">';
-                            $content[] .= '<span class="'.$this->html_class_prefix.'question-text-message-span">'. $limit_length . '</span> ' . $limit_by;
-                        $content[] .= '</div>';
-                    $content[] .= '</div>';
-                }
+                
             $content[] = '</div>';
+
+            if($enable_number_limit_message){
+                $content[] = '<div class="' . $this->html_class_prefix . 'number-limit-message-box ' . $this->html_class_prefix . 'question-text-error-message" style="display: none;">';
+                    $content[] = '<span class="' . $this->html_class_prefix . 'number-limit-message-text">';
+                        $content[] = $number_limit_message;
+                    $content[] = '</span>';
+                $content[] = '</div>';
+            }
+            if($limit_checker){
+                $content[] .= '<div class="'.$this->html_class_prefix.'question-text-conteiner">';
+                    $content[] .= '<div class="'.$this->html_class_prefix.'question-text-message">';
+                        $content[] .= '<span class="'.$this->html_class_prefix.'question-text-message-span">'. $limit_length . '</span> ' . $limit_by;
+                    $content[] .= '</div>';
+                $content[] .= '</div>';
+            }
+
         $content[] = '</div>';
 
         $content = implode( '', $content );
@@ -2408,6 +2459,19 @@ class Survey_Maker_Public {
         $content = array();
         // Input types placeholders
         $survey_input_type_placeholder = isset($question['options']['placeholder']) && $question['options']['placeholder'] != "" ? $question['options']['placeholder'] : '';
+
+        $enable_value_prefix = $question['options']['enable_value_prefix'];
+		$value_prefix = $enable_value_prefix ? stripslashes(sanitize_text_field($question['options']['value_prefix'])) : '';
+		
+		$enable_value_suffix = $question['options']['enable_value_suffix'];
+		$value_suffix = $enable_value_suffix ? stripslashes(sanitize_text_field($question['options']['value_suffix'])) : '';
+
+        $answer_box_prefix_suffix_css_class = "";
+        $answer_container_prefix_suffix_css_class = "";
+        if( $value_prefix != "" || $value_suffix != "" ){
+            $answer_box_prefix_suffix_css_class = $this->html_class_prefix . 'question-box-text-types-prefix-suffix';
+        }
+        $answer_container_prefix_suffix_css_class = $this->html_class_prefix . 'answer-box-text-types-prefix-suffix';
 
         //Input types value
         $enable_url_parameter    =  isset($question['options']['enable_url_parameter']) && $question['options']['enable_url_parameter'] == true ? true : false;
@@ -2446,9 +2510,13 @@ class Survey_Maker_Public {
             $minimal_class = $this->html_class_prefix . "minimal-theme-textarea-input";
         }
 
-        $content[] = '<div class="' . $this->html_class_prefix . 'answer">';
+        $content[] = '<div class="' . $this->html_class_prefix . 'answer '. $answer_container_prefix_suffix_css_class .'">';
 
-            $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-box-text-types-short">';
+            $content[] = '<div class="' . $this->html_class_prefix . 'question-box ' . $this->html_class_prefix . 'question-box-text-types-short '. $answer_box_prefix_suffix_css_class .'">';
+                if( $value_prefix != "" ){
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-answer-prefix">' . $value_prefix . '</div>';
+                }
+
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
                     $content[] = '<input class="' . $minimal_class . ' '.$number_limit_class.' ' . $this->html_class_prefix . 'answer-text-inputs ' . $this->html_class_prefix . 'answer-text-inputs-default" type="text" tabindex="0" step="any" style="min-height: 24px;"
@@ -2461,24 +2529,29 @@ class Survey_Maker_Public {
                             $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation"></div>';
                         }
 
-                    if($enable_number_limit_message){
-                        $content[] = '<div class="' . $this->html_class_prefix . 'number-limit-message-box ' . $this->html_class_prefix . 'question-text-error-message" style="display: none;">';
-                            $content[] = '<span class="' . $this->html_class_prefix . 'number-limit-message-text">';
-                                $content[] = $number_limit_message;
-                            $content[] = '</span>';
-                        $content[] = '</div>';
-                    }
-
-                    if($limit_checker){
-                        $content[] .= '<div class="'.$this->html_class_prefix.'question-text-conteiner">';
-                            $content[] .= '<div class="'.$this->html_class_prefix.'question-text-message">';
-                                $content[] .= '<span class="'.$this->html_class_prefix.'question-text-message-span">'. $limit_length . '</span> ' . $limit_by;
-                            $content[] .= '</div>';
-                        $content[] .= '</div>';
-                    }
-
                 $content[] = '</div>';
+
+                if( $value_suffix != "" ){
+                    $content[] = '<div class="' . $this->html_class_prefix . 'question-answer-suffix">' . $value_suffix . '</div>';
+                }
+
             $content[] = '</div>';
+            
+            if($enable_number_limit_message){
+                $content[] = '<div class="' . $this->html_class_prefix . 'number-limit-message-box ' . $this->html_class_prefix . 'question-text-error-message" style="display: none;">';
+                    $content[] = '<span class="' . $this->html_class_prefix . 'number-limit-message-text">';
+                        $content[] = $number_limit_message;
+                    $content[] = '</span>';
+                $content[] = '</div>';
+            }
+
+            if($limit_checker){
+                $content[] .= '<div class="'.$this->html_class_prefix.'question-text-conteiner">';
+                    $content[] .= '<div class="'.$this->html_class_prefix.'question-text-message">';
+                        $content[] .= '<span class="'.$this->html_class_prefix.'question-text-message-span">'. $limit_length . '</span> ' . $limit_by;
+                    $content[] .= '</div>';
+                $content[] .= '</div>';
+            }
 
         $content[] = '</div>';
 

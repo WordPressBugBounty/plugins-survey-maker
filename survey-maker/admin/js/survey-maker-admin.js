@@ -1081,7 +1081,12 @@
             newElement.find('input.ays-survey-input-star-1').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_1'));
             newElement.find('input.ays-survey-input-star-2').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_2'));
             newElement.find('select.ays-survey-choose-for-start-select-lenght').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'star_scale_length'));
-            // Star end            
+            // Star end
+
+            newElement.find('.ays-survey-question-value-prefix-saver').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'enable_value_prefix'));
+            newElement.find('.ays-survey-question-value-prefix-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'value_prefix'));
+            newElement.find('.ays-survey-question-value-suffix-saver').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'enable_value_suffix'));
+            newElement.find('.ays-survey-question-value-suffix-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'value_suffix'));
 
             // Input types placeholders
             newElement.find('.ays-survey-remove-default-border.ays-survey-question-types-input.ays-survey-question-types-input-with-placeholder').attr('name', newQuestionAttrName( sectionName, sectionId, question_length, 'options', 'placeholder'));
@@ -1404,6 +1409,38 @@
                 case 'disable-admin-note':
                     aysSurveySetAdminNoteState( $this.parents('.ays-survey-question-answer-conteiner'), false );
                 break;
+                case 'enable-value-prefix':
+                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+                    var enableCheckbox = parentQuestion.find('.ays-survey-question-value-prefix-saver');
+                    parentQuestion.find('.ays-survey-question-value-prefix').removeClass('display_none');
+                    enableCheckbox.val('on');
+                    $this.find('.ays-survey-question-action-icon').removeClass('display_none');
+                    $this.attr('data-action', 'disable-value-prefix');
+                break;
+                case 'disable-value-prefix':
+                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+                    var enableCheckbox = parentQuestion.find('.ays-survey-question-value-prefix-saver');                    
+                    parentQuestion.find('.ays-survey-question-value-prefix').addClass('display_none');
+                    enableCheckbox.val('off');
+                    $this.find('.ays-survey-question-action-icon').addClass('display_none');
+                    $this.attr('data-action', 'enable-value-prefix');
+                break;
+                case 'enable-value-suffix':
+                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+                    var enableCheckbox = parentQuestion.find('.ays-survey-question-value-suffix-saver');
+                    parentQuestion.find('.ays-survey-question-value-suffix').removeClass('display_none');
+                    enableCheckbox.val('on');
+                    $this.find('.ays-survey-question-action-icon').removeClass('display_none');
+                    $this.attr('data-action', 'disable-value-suffix');
+                break;
+                case 'disable-value-suffix':
+                    var parentQuestion = $this.parents('.ays-survey-question-answer-conteiner');
+                    var enableCheckbox = parentQuestion.find('.ays-survey-question-value-suffix-saver');                    
+                    parentQuestion.find('.ays-survey-question-value-suffix').addClass('display_none');
+                    enableCheckbox.val('off');
+                    $this.find('.ays-survey-question-action-icon').addClass('display_none');
+                    $this.attr('data-action', 'enable-value-suffix');
+                break;
             }
         });
 
@@ -1488,6 +1525,14 @@
             }else{
                 $this.find('.ays-survey-question-action[data-action^="number-word-limitation-"]').addClass('display_none');
             }
+
+            if( questionType == 'short_text' || questionType == 'number' || questionType == 'phone' ){
+                $this.find('.ays-survey-question-action[data-action$="value-prefix"]').removeClass('display_none');
+                $this.find('.ays-survey-question-action[data-action$="value-suffix"]').removeClass('display_none');
+            }else{
+                $this.find('.ays-survey-question-action[data-action$="value-prefix"]').addClass('display_none');
+                $this.find('.ays-survey-question-action[data-action$="value-suffix"]').addClass('display_none');
+            }
         });
 
         $(document).on('click', '.ays-survey-add-question-to-this-section', function(e){
@@ -1556,6 +1601,23 @@
                         });
                     }
                 }
+            }
+
+            var enablePrefixCheckbox = $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-value-prefix-saver');
+            var enableSuffixCheckbox = $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-value-suffix-saver');
+            
+            if( enablePrefixCheckbox.length > 0 ){
+                enablePrefixCheckbox.val("off");
+                $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-action[data-action$="value-prefix"]').attr('data-action', 'enable-value-prefix');
+                $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-action[data-action$="value-prefix"] .ays-survey-question-action-icon').addClass('display_none');
+                $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-value-prefix').addClass('display_none');
+            }
+
+            if( enableSuffixCheckbox.length > 0 ){
+                enableSuffixCheckbox.val("off");
+                $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-action[data-action$="value-suffix"]').attr('data-action', 'enable-value-suffix');
+                $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-action[data-action$="value-suffix"] .ays-survey-question-action-icon').addClass('display_none');
+                $this.parents('.ays-survey-question-answer-conteiner').find('.ays-survey-question-value-suffix').addClass('display_none');
             }
 
             switch( questionType ){
@@ -1904,6 +1966,11 @@
             clonedElement.find('.ays-survey-question-admin-note-saver').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'enable_admin_note'));
             clonedElement.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'admin_note'));
 
+            clonedElement.find('.ays-survey-question-value-prefix-saver').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'enable_value_prefix'));
+            clonedElement.find('.ays-survey-question-value-prefix-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'value_prefix'));
+            clonedElement.find('.ays-survey-question-value-suffix-saver').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'enable_value_suffix'));
+            clonedElement.find('.ays-survey-question-value-suffix-label input.ays-survey-input').attr('name', newQuestionAttrName( sectionName, sectionId, questionId, 'options', 'value_suffix'));
+
             answers.each(function(j){
                 var answerId = j+1; //answers.find('.ays-survey-answer-box input.ays-survey-input').length;
                 $(this).addClass('ays-survey-new-answer');
@@ -2154,6 +2221,11 @@
 
             element.find('.ays-survey-question-admin-note-saver').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'enable_admin_note'));
             element.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'admin_note'));
+
+            element.find('.ays-survey-question-value-prefix-saver').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'enable_value_prefix'));
+            element.find('.ays-survey-question-value-prefix-label input.ays-survey-input').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'value_prefix'));
+            element.find('.ays-survey-question-value-suffix-saver').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'enable_value_suffix'));
+            element.find('.ays-survey-question-value-suffix-label input.ays-survey-input').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'value_suffix'));
             
             element.find('.ays-survey-open-question-editor-flag').attr('name', newQuestionAttrName( 'ays_section_add', sectionId, questionId, 'options', 'with_editor'));
             element.find('.ays-survey-question-ordering').val(questionId);
@@ -2661,6 +2733,11 @@
 
             element.find('.ays-survey-question-admin-note-saver').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'enable_admin_note'));
             element.find('.ays-survey-question-admin-note-label input.ays-survey-input').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'admin_note'));
+
+            element.find('.ays-survey-question-value-prefix-saver').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'enable_value_prefix'));
+            element.find('.ays-survey-question-value-prefix-label input.ays-survey-input').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'value_prefix'));
+            element.find('.ays-survey-question-value-suffix-saver').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'enable_value_suffix'));
+            element.find('.ays-survey-question-value-suffix-label input.ays-survey-input').attr('name', updateQuestionAttrName( sectionName, sectionId, questionName, questionId, 'options', 'value_suffix'));
 
             answers.each(function(){
                 var answerId = $(this).attr('data-id');

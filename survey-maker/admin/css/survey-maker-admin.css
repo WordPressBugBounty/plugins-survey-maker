@@ -5199,3 +5199,39 @@ div.masteriyo-notice {
 }
 
 /* Terms and conditions end */
+
+.ays-survey-dashboard-main-wrap .ays-survey-top-preview-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 30px;
+    padding: 0 10px;
+    border: 1px solid #005AE0;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #4b5563;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 2.15384615;
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition: all 0.3s;
+}
+
+.ays-survey-dashboard-main-wrap .ays-survey-top-preview-button svg {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+}
+
+.ays-survey-dashboard-main-wrap .ays-survey-top-preview-button:active,
+.ays-survey-dashboard-main-wrap .ays-survey-top-preview-button:focus,
+.ays-survey-dashboard-main-wrap .ays-survey-top-preview-button:hover {
+    background-color: #E5EEFF;
+    color: #4b5563;
+    border-color: #005AE0;
+    box-shadow: none;
+    text-decoration: none;
+}

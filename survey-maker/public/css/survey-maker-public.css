@@ -1881,3 +1881,39 @@ div.ays-survey-section-terms-and-conditions-required-message-content > p.ays-sur
 }
 
 /* Terms and conditions end */
+
+
+div.ays-survey-container .ays-survey-answer.ays-survey-answer-box-text-types-prefix-suffix {
+   display: block;
+}
+
+@media screen and (max-width: 580px) {
+
+   /* Prefix suffix mobile */
+   div.ays-survey-container .ays-survey-question-box.ays-survey-question-box-text-types-prefix-suffix .ays-survey-question-input-box {
+      width: 60%;
+   }
+}
+
+.ays-survey-container .ays-survey-question-box.ays-survey-question-box-text-types-prefix-suffix {
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   flex-wrap: wrap;
+   max-width: 100%;
+}
+
+.ays-survey-container .ays-survey-question-box.ays-survey-question-box-text-types-prefix-suffix .ays-survey-question-answer-suffix,
+.ays-survey-container .ays-survey-question-box.ays-survey-question-box-text-types-prefix-suffix .ays-survey-question-answer-prefix {
+   padding: 10px 16px;
+   background: #F8F9FA;
+   border-bottom: 1px solid rgba(211, 211, 211, 1);
+   border-radius: 4px 4px 0 0;
+   font-size: 15px;
+}
+
+.ays-survey-container .ays-survey-question-box.ays-survey-question-box-text-types-prefix-suffix .ays-survey-question-input-box {
+   width: 230px;
+   max-width: 100%;
+   margin: 0 5px;
+}

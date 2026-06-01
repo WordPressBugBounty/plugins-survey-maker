@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.2.7
+Stable tag: 5.2.2.8
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,10 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.2.8 ( Jun 01, 2026 ) =
+* Added: Value prefix and suffix options for surveys
+* Added: Preview button to the admin dashboard
 
 = 5.2.2.7 ( May 26, 2026 ) =
 * Added: Terms and Conditions option for surveys

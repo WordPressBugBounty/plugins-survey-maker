@@ -651,6 +651,7 @@ div.ays-notice-banner {
         min-height: 72px;
     }
 
+    .ays-notice-banner .ays-survey-top-banner-title,
     .ays-notice-banner .modile-ddmenu-md {
         display: none;
     }

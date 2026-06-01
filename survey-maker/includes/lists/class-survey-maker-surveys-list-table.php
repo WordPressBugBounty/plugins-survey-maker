@@ -1452,6 +1452,14 @@ class Surveys_List_Table extends WP_List_Table {
                             $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) && $question['options']['enable_admin_note'] == 'on' ? 'on' : 'off';
                             $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? sanitize_text_field( $question['options']['admin_note'] ) : '';
 
+                            // Calculation prefix
+                            $enable_value_prefix = (isset( $question['options']['enable_value_prefix'] )) ? $question['options']['enable_value_prefix'] : 'off';
+                            $value_prefix = (isset( $question['options']['value_prefix'] ) && $question['options']['value_prefix'] != '') ? $question['options']['value_prefix'] : '';
+                            
+                            // Calculation suffix
+                            $enable_value_suffix = (isset( $question['options']['enable_value_suffix'] )) ? $question['options']['enable_value_suffix'] : 'off';
+                            $value_suffix = (isset( $question['options']['value_suffix'] ) && $question['options']['value_suffix'] != '') ? $question['options']['value_suffix'] : '';
+
                             // With editor
                             $with_editor = ( isset($question['options']['with_editor']) && $question['options']['with_editor'] == 'on' ) ? 'on' : 'off';
 
@@ -1486,6 +1494,11 @@ class Surveys_List_Table extends WP_List_Table {
 
                                 'enable_admin_note'   => $enable_admin_note,
                                 'admin_note'          => $admin_note,
+
+                                'enable_value_prefix'   => $enable_value_prefix,
+                                'value_prefix'          => $value_prefix,
+                                'enable_value_suffix'   => $enable_value_suffix,
+                                'value_suffix'          => $value_suffix,
                             );
 
                             $question_result = $wpdb->update(
@@ -1671,6 +1684,15 @@ class Surveys_List_Table extends WP_List_Table {
                             $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) ? $question['options']['enable_admin_note'] : 'off';
                             $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? $question['options']['admin_note'] : '';
 
+                            // Calculation prefix
+                            $enable_value_prefix = (isset( $question['options']['enable_value_prefix'] )) ? $question['options']['enable_value_prefix'] : 'off';
+                            $value_prefix = (isset( $question['options']['value_prefix'] ) && $question['options']['value_prefix'] != '') ? $question['options']['value_prefix'] : '';
+                            
+                            // Calculation suffix
+                            $enable_value_suffix = (isset( $question['options']['enable_value_suffix'] )) ? $question['options']['enable_value_suffix'] : 'off';
+                            $value_suffix = (isset( $question['options']['value_suffix'] ) && $question['options']['value_suffix'] != '') ? $question['options']['value_suffix'] : '';
+
+
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
@@ -1701,6 +1723,12 @@ class Surveys_List_Table extends WP_List_Table {
 
                                 'enable_admin_note'   => $enable_admin_note,
                                 'admin_note'          => $admin_note,
+
+                                'enable_value_prefix'   => $enable_value_prefix,
+                                'value_prefix'          => $value_prefix,
+                                'enable_value_suffix'   => $enable_value_suffix,
+                                'value_suffix'          => $value_suffix,
+
                             );
 
                             $question_result = $wpdb->insert(
@@ -1901,6 +1929,14 @@ class Surveys_List_Table extends WP_List_Table {
                             $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) ? $question['options']['enable_admin_note'] : 'off';
                             $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? $question['options']['admin_note'] : '';
 
+                            // Calculation prefix
+                            $enable_value_prefix = (isset( $question['options']['enable_value_prefix'] )) ? $question['options']['enable_value_prefix'] : 'off';
+                            $value_prefix = (isset( $question['options']['value_prefix'] ) && $question['options']['value_prefix'] != '') ? $question['options']['value_prefix'] : '';
+                            
+                            // Calculation suffix
+                            $enable_value_suffix = (isset( $question['options']['enable_value_suffix'] )) ? $question['options']['enable_value_suffix'] : 'off';
+                            $value_suffix = (isset( $question['options']['value_suffix'] ) && $question['options']['value_suffix'] != '') ? $question['options']['value_suffix'] : '';
+
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
@@ -1932,6 +1968,12 @@ class Surveys_List_Table extends WP_List_Table {
 
                                 'enable_admin_note'   => $enable_admin_note,
                                 'admin_note'          => $admin_note,
+
+                                'enable_value_prefix'   => $enable_value_prefix,
+                                'value_prefix'          => $value_prefix,
+                                'enable_value_suffix'   => $enable_value_suffix,
+                                'value_suffix'          => $value_suffix,
+
                             );
 
                             $question_result = $wpdb->update(
@@ -2114,6 +2156,14 @@ class Surveys_List_Table extends WP_List_Table {
                             $enable_admin_note     = (isset( $question['options']['enable_admin_note'] )) ? $question['options']['enable_admin_note'] : 'off';
                             $admin_note            = (isset( $question['options']['admin_note'] ) && $question['options']['admin_note'] != '') ? $question['options']['admin_note'] : '';
 
+                            // Calculation prefix
+                            $enable_value_prefix = (isset( $question['options']['enable_value_prefix'] )) ? $question['options']['enable_value_prefix'] : 'off';
+                            $value_prefix = (isset( $question['options']['value_prefix'] ) && $question['options']['value_prefix'] != '') ? $question['options']['value_prefix'] : '';
+                            
+                            // Calculation suffix
+                            $enable_value_suffix = (isset( $question['options']['enable_value_suffix'] )) ? $question['options']['enable_value_suffix'] : 'off';
+                            $value_suffix = (isset( $question['options']['value_suffix'] ) && $question['options']['value_suffix'] != '') ? $question['options']['value_suffix'] : '';
+
                             $question_options = array(
                                 'required' => $required,
                                 'collapsed' => $question_collapsed,
@@ -2145,6 +2195,11 @@ class Surveys_List_Table extends WP_List_Table {
                                 
                                 'enable_admin_note'   => $enable_admin_note,
                                 'admin_note'          => $admin_note,
+
+                                'enable_value_prefix'   => $enable_value_prefix,
+                                'value_prefix'          => $value_prefix,
+                                'enable_value_suffix'   => $enable_value_suffix,
+                                'value_suffix'          => $value_suffix,
                             );
 
                             $question_result = $wpdb->insert(
