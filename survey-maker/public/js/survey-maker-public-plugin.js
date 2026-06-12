@@ -117,6 +117,51 @@
             _this.start(e);
         });
 
+        _this.$el.on('click', '.' + _this.htmlClassPrefix + 'section-button.ays-check-survey-password', function(e){
+            var passwordSurvey = $(this).parents('.ays-survey-section,.ays-survey-chat-container').find("input.ays-survey-password").val();            
+            // var activPsw = _this.dbOptions.options.survey_generated_passwords.survey_active_passwords;
+            var activPsw = new Array();
+            
+            var form = $(this).parents('form');
+            if( _this.checkSurveyPassword( passwordSurvey, true ) !== false ){
+                // if(_this.dbOptions.options.survey_password_type == 'generated_password'){
+                //     if( _this.dbOptions.options.survey_enable_password && activPsw.length != 0 ){
+                //         var userData;
+                //         userData = form.serializeFormJSON()
+                //         userData.action = _this.ajaxAction;
+                //         userData.function = 'ays_survey_used_password_ajax';
+                //         userData.userGeneratedPassword = passwordSurvey;
+                //         userData.uniqueId = _this.uniqueId;
+
+                //         $.ajax({
+                //             url: window.aysSurveyMakerAjaxPublic.ajaxUrl,
+                //             method: 'post',
+                //             dataType: 'json',
+                //             data: userData,
+                //             success: function(response){
+                //                 if(response.status){
+                                   
+                //                 }
+                //             }
+                //         });
+                //     }
+                // }
+            }else{
+                return false;
+            }
+            $(this).parents('.ays-survey-section').removeClass('active-section');
+            $(this).parents('.ays-survey-section').next().addClass('active-section');
+            var chatModeMainParent = $(this).parents('.ays-survey-chat-container')
+            chatModeMainParent.find('.ays-survey-chat-content').css("display", "block");
+            chatModeMainParent.find('.ays-survey-section-password-content').css("display", "none");
+                
+            if( _this.$el.find("div.ays-survey-section[data-id]").length === 1 ){
+                $(this).parents('.ays-survey-section').next().find('.' + _this.htmlClassPrefix + 'section-button.' + _this.htmlClassPrefix + 'finish-button').removeClass( _this.htmlClassPrefix + 'display-none' );
+                $(this).parents('.ays-survey-section').next().find('.' + _this.htmlClassPrefix + 'section-button.' + _this.htmlClassPrefix + 'next-button').addClass( _this.htmlClassPrefix + 'display-none' );
+            }
+
+        });
+
         _this.$el.on('click', '.' + _this.htmlClassPrefix + 'answer-label-other input', function(){
             $(this).parents('.' + _this.htmlClassPrefix + 'answer').find('.' + _this.htmlClassPrefix + 'answer-other-input').focus();
             _this.confirmBeforeUnload = true;
@@ -2139,6 +2184,22 @@
                 } //:last-of-type
             }
         });
+    }
+
+    AysSurveyPlugin.prototype.checkSurveyPassword = function(passwordSurvey, isAlert){
+        var _this = this;
+        var activPsw = new Array();
+        
+        if( _this.dbOptions.options.survey_enable_password && _this.dbOptions.options.survey_password_survey != "" ){
+            if( _this.dbOptions.options.survey_password_survey !== passwordSurvey ){
+                if(isAlert){
+                    alert( aysSurveyLangObj.passwordIsWrong );
+                }
+                return false;
+            }
+        }        
+        
+        return true;
     }
 
     AysSurveyPlugin.prototype.checkMinVotes = function( item ){

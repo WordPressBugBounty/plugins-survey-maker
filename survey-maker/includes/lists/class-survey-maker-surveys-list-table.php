@@ -962,6 +962,14 @@ class Surveys_List_Table extends WP_List_Table {
             // Takers count
             $survey_takers_count = (isset( $_POST[ $name_prefix . 'survey_tackers_count' ] ) && $_POST[ $name_prefix . 'survey_tackers_count' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_tackers_count' ] ) ) : 1;
 
+            // Enable Password quiz
+            $enable_password = (isset( $_POST[ $name_prefix . 'survey_enable_password' ] ) && $_POST[ $name_prefix . 'survey_enable_password' ] == 'on') ? 'on' : 'off';
+
+            // Password quiz
+            $password_survey = (isset( $_POST[ $name_prefix . 'survey_password_survey' ] ) && $_POST[ $name_prefix . 'survey_password_survey' ] != '') ?  $_POST[ $name_prefix . 'survey_password_survey' ]  : '';
+
+            // Message - Password
+            $survey_password_message = (isset( $_POST[ $name_prefix . 'survey_password_message' ] ) && $_POST[ $name_prefix . 'survey_password_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_password_message' ] ) : '';
 
             // =============================================================
             // ===================    Limitation Tab     ===================
@@ -1259,6 +1267,9 @@ class Surveys_List_Table extends WP_List_Table {
                 'survey_show_login_form'            => $survey_show_login_form,
                 'survey_enable_takers_count'        => $survey_enable_takers_count,
                 'survey_takers_count'               => $survey_takers_count,
+                'survey_enable_password'            => $enable_password,
+                'survey_password_survey'            => $password_survey,
+                'survey_password_message'           => $survey_password_message,
 
                 // E-mail Tab
                 'survey_enable_mail_user'           => $survey_enable_mail_user,

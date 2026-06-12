@@ -748,6 +748,15 @@ class Survey_Maker_Data {
         //Takers Count
         $settings[ $name_prefix . 'takers_count' ] = (isset($options[ $name_prefix . 'takers_count' ]) && $options[ $name_prefix . 'takers_count' ] != '') ? absint ( intval( $options[ $name_prefix . 'takers_count' ] ) ) : 1;
 
+        // Password survey
+        $options[ $name_prefix . 'enable_password' ] = ! isset( $options[ $name_prefix . 'enable_password' ] ) ? 'off' : $options[ $name_prefix .'enable_password' ];
+        $settings[ $name_prefix . 'enable_password' ] = (isset( $options[ $name_prefix . 'enable_password' ] ) && $options[ $name_prefix . 'enable_password' ] == 'on') ? true : false;
+        $settings[ $name_prefix . 'password_survey' ] = (isset( $options[ $name_prefix . 'password_survey' ] ) && $options[ $name_prefix . 'password_survey' ] != '') ? $options[ $name_prefix .'password_survey' ] : '';
+        $settings[ $name_prefix . 'password_type' ]   = (isset( $options[ $name_prefix . 'password_type' ] )   && $options[ $name_prefix . 'password_type' ] != '') ? $options[ $name_prefix .'password_type' ] : 'general';
+        
+        // Message - Password
+        $settings[ $name_prefix . 'password_message' ] = (isset($options[ $name_prefix . 'password_message' ]) &&  $options[ $name_prefix . 'password_message' ] != '') ? stripslashes( wpautop( $options[ $name_prefix . 'password_message' ] ) ) : '';
+
         // Auto numbering
         $settings[ $name_prefix . 'auto_numbering' ] = (isset($options[ $name_prefix . 'auto_numbering' ]) &&  $options[ $name_prefix . 'auto_numbering' ] != '') ? stripslashes( $options[ $name_prefix . 'auto_numbering' ] )  : 'none';
 

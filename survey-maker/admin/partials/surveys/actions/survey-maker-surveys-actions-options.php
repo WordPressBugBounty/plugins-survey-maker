@@ -186,7 +186,9 @@
         'survey_show_login_form' => 'off',
         'survey_enable_takers_count' => 'off',
         'survey_takers_count' => 1,
-
+        'enable_password' => 'off',
+        'password_survey' => '',
+        'survey_password_message' => '',
         // E-Mail Tab
         'survey_enable_mail_user' => 'off',
         'survey_mail_message' => '',
@@ -1354,6 +1356,14 @@
 
         //Takers Count
         $survey_takers_count = (isset($options[ $name_prefix . 'takers_count' ]) && $options[ $name_prefix . 'takers_count' ] != '') ? absint ( intval( $options[ $name_prefix . 'takers_count' ] ) ) : 1;
+
+        // Password quiz
+        $options[$name_prefix . 'enable_password'] = !isset( $options[ $name_prefix . 'enable_password' ] ) ? 'off' : $options[ $name_prefix .'enable_password' ];
+        $enable_password = (isset($options[$name_prefix .'enable_password']) && $options[ $name_prefix .'enable_password' ] == 'on') ? true : false;
+        $password_survey = (isset($options[$name_prefix . 'password_survey']) && $options[ $name_prefix . 'password_survey' ] != '') ? $options[ $name_prefix .'password_survey' ] : '';
+
+        // Message - Password
+        $survey_password_message = (isset( $options[ $name_prefix . 'password_message' ] ) && $options[ $name_prefix . 'password_message' ] != '') ? stripslashes( $options[ $name_prefix . 'password_message' ] ) : '';
 
     // =============================================================
     // ===================    Limitation Tab     ===================

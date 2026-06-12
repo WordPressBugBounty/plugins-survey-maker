@@ -304,6 +304,83 @@
         </div>
     </div> <!-- Limitation count of takers -->
     <hr>
+    <div class="form-group row ays_toggle_parent">
+        <div class="col-sm-3">
+            <label for="ays_survey_enable_password">
+                <?php echo esc_html__('Password for passing survey', "survey-maker")?>
+                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set a custom password for the survey, or use auto-generated password(s).',"survey-maker")?>">
+                    <i class="ays_fa ays_fa_info_circle"></i>
+                </a>
+            </label>
+        </div>
+        <div class="col-sm-1">
+            <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_survey_enable_password"
+                   name="ays_survey_enable_password" value="on" <?php echo $enable_password ? 'checked' : ''; ?>/>
+        </div>
+        <div class="col-sm-8 ays_toggle_target ays_divider_left <?php echo  $enable_password ? '' : 'display_none_not_important'; ?>">
+            <div class="form-group">
+                <label class="checkbox_ays form-check form-check-inline" for="ays_survey_general_psw">
+                    <input type="radio" id="ays_survey_general_psw" name='ays_survey_psw_type' value='general' checked="checked">
+                    <?php echo esc_html__('General', "survey-maker") ?>
+                </label>
+                <label class="checkbox_ays form-check form-check-inline" for="ays_survey_generated_psw_radio">
+                    <div class="ays-survey-question-actions-pro-redirect-button" data-href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" data-toggle="tooltip" title="<?php echo esc_attr__('Generated Passwords',"survey-maker");?>" style="cursor: pointer;">
+                        <div class="form-group row" style="margin:0px;">
+                            <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-themes ays-pro-features-v2-main-box-small" style="padding: 0;">
+                                <div class="ays-pro-features-v2-small-buttons-box" style="right: -10px; top: -25px;">
+                                    <div class="ays-pro-features-v2-video-button"></div>
+                                    <a href="https://ays-pro.com/wordpress/survey-maker" target="_blank" class="ays-pro-features-v2-upgrade-button">
+                                        <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
+                                        <div class="ays-pro-features-v2-upgrade-text">
+                                            <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div style="opacity: 0.5; background-color: white;">
+                                    <input type="radio" id="ays_survey_generated_psw_radio" name="ays_survey_psw_type" value="generated_password">
+                                    <?php echo esc_html__( 'Generated Passwords', "survey-maker" ); ?>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <hr>
+            <div class="form-group row" id="ays_survey_psw_content">
+                <div class="col-sm-2">
+                    <label for="ays_survey_password_survey">
+                        <?php echo esc_html__('Password',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Set a password for users to pass the survey.',"survey-maker")?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-10">
+                    <input type="text" name="ays_survey_password_survey" id="ays_survey_password_survey" class="ays-enable-timer ays-text-input" value="<?php echo $password_survey; ?>">
+                </div>
+            </div>            
+            <hr>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label for="ays_survey_password_message">
+                        <?php echo esc_html__('Message',"survey-maker")?>
+                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Write the message for users who must fill in the password for taking this survey.',"survey-maker")?>">
+                            <i class="ays_fa ays_fa_info_circle"></i>
+                        </a>
+                    </label>
+                </div>
+                <div class="col-sm-10">
+                    <?php
+                        $content = $survey_password_message;
+                        $editor_id = 'ays_survey_password_message';
+                        $settings = array('editor_height' => $survey_wp_editor_height, 'textarea_name' => 'ays_survey_password_message', 'editor_class' => 'ays-textarea', 'media_elements' => false);
+                        wp_editor($content, $editor_id, $settings);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Survey Password -->
+    <hr>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box">
             <div class="ays-pro-features-v2-big-buttons-box ays-pro-pro-features-popup" data-video-url="https://www.youtube.com/watch?v=NV-avqsJWfw" data-option-title="<?php echo esc_attr__('Access only to selected user role(s)',"survey-maker")?>" data-option-text="This feature allows users to create surveys only <strong> certain WordPress users with specific roles </strong> can access. You can choose one or multiple user roles that can take the survey. If you want, you can also <strong> write a message </strong> for users who are not included in your selected list to inform them that they cannot fill in the survey.">                
@@ -457,97 +534,7 @@
                 </div>
             </div>
         </div>
-    </div><!-- Only selected users -->
-    <hr>
-    <div class="form-group row" style="margin:0px;">
-        <div class="col-sm-12 ays-pro-features-v2-main-box">
-            <div class="ays-pro-features-v2-big-buttons-box">
-                
-                <div class="ays-pro-features-v2-video-button"></div>
-                <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <div class="ays-pro-features-v2-small-buttons-box">
-                <div>
-                    <a href="https://ays-demo.com/job-satisfaction-survey/" target="_blank" class="ays-pro-features-v2-view-demo-button">
-                        <div class="ays-pro-features-v2-view-demo-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/view-demo.svg');"></div>
-                        <div class="ays-pro-features-v2-view-demo-text">
-                            <?php echo esc_html__("View demo" , "survey-maker"); ?>
-                        </div>
-                    </a>
-                </div>
-                <div class="ays-pro-features-v2-video-button"></div>
-                <a href="https://ays-pro.com/wordpress/survey-maker#ays-pro-sm-plans-box-sg" target="_blank" class="ays-pro-features-v2-upgrade-button">
-                    <div class="ays-pro-features-v2-upgrade-icon" style="background-image: url('<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg');" data-img-src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/pro-features-icons/Locked_24x24.svg"></div>
-                    <div class="ays-pro-features-v2-upgrade-text">
-                        <?php echo esc_html__("Upgrade" , "survey-maker"); ?>
-                    </div>
-                </a>
-            </div>
-            <div class="form-group row ays_toggle_parent">
-                <div class="col-sm-3">
-                    <label for="ays_survey_enable_password">
-                        <?php echo esc_html__('Password for passing survey', "survey-maker")?>
-                        <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('You can choose a password for users to pass the survey.',"survey-maker")?>">
-                            <i class="ays_fa ays_fa_info_circle"></i>
-                        </a>
-                    </label>
-                </div>
-                <div class="col-sm-1">
-                    <input type="checkbox" class="ays-enable-timer1 ays_toggle_checkbox" id="ays_survey_enable_password" checked value="on"/>
-                </div>
-                <div class="col-sm-8 ays_toggle_target ays_divider_left">
-                    <div class="form-group">
-                        <label class="checkbox_ays form-check form-check-inline" >
-                            <input type="radio" value='general' checked>
-                            <?php echo esc_html__('General', "survey-maker") ?>
-                        </label>
-                        <label class="checkbox_ays form-check form-check-inline" >
-                            <input type="radio" value="generated_password" >
-                            <?php echo esc_html__('Generated Passwords', "survey-maker") ?>
-                        </label>
-                    </div>
-                    <hr>
-                    <div class="form-group row">
-                        <div class="col-sm-2">
-                            <label for="ays_survey_password_survey">
-                                <?php echo esc_html__('Password',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the password for the users who can take the survey.',"survey-maker")?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-10">
-                            <input type="text" id="ays_survey_password_survey" class="ays-enable-timer ays-text-input">
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="form-group row">
-                        <div class="col-sm-2">
-                            <label for="ays_survey_password_message">
-                                <?php echo esc_html__('Message',"survey-maker")?>
-                                <a class="ays_help ays-survey-zindex-for-pro" data-toggle="tooltip" title="<?php echo esc_attr__('Write the message for users who must fill in the password for taking this survey.',"survey-maker")?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </label>
-                        </div>
-                        <div class="col-sm-10">
-                            <?php
-                            $content = "";
-                            $editor_id = 'ays_survey_password_message';
-                            $settings = array('editor_height' => '100', 'editor_class' => 'ays-textarea', 'media_elements' => false);
-                            wp_editor($content, $editor_id, $settings);
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- Survey Password -->
+    </div><!-- Only selected users -->    
     <hr>
     <div class="form-group row" style="margin:0px;">
         <div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">

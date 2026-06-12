@@ -1280,7 +1280,58 @@ class Survey_Maker_Public {
     	$content = array();
     	$content[] = '<div class="' . $this->html_class_prefix . 'sections">';
 
-        
+        if(isset($this->options[ $this->name_prefix .'enable_password']) && $this->options[ $this->name_prefix .'enable_password'] ){
+            $ays_survey_show_password_flag = true;
+
+            $password_type = 'general';
+            $general_psw_input = $this->options[$this->name_prefix .'password_survey'];
+            // $active_psw = $this->options['options'][ $this->name_prefix .'generated_passwords'][ $this->name_prefix .'active_passwords'];
+
+            if( $password_type == 'general' && $general_psw_input == '' ){
+                $ays_survey_show_password_flag = false;
+            }else{
+                $ays_survey_show_password_flag = true;
+            }
+
+            if($ays_survey_show_password_flag){
+                $if_generated = isset($this->options[ $this->name_prefix .'password_type']) && $this->options[ $this->name_prefix .'password_type'] == 'generated_password' ? 'name="' . $this->html_class_prefix . 'password"' : '';
+                $content[] = '<div class="' . $this->html_class_prefix . 'section">';
+    
+                    $content[] = '<div class="' . $this->html_class_prefix . 'section-content">';
+                        
+                        $content[] = '<div style="margin-bottom:10px;">';
+                            $content[] = '<div>';
+                                $content[] = $this->options[ $this->name_prefix .'password_message'];
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+                        $content[] = '<div style="margin-bottom:10px;">';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
+                                $content[] = '<input class="' . $this->html_class_prefix . 'remove-default-border ' . $this->html_class_prefix . 'password ' . $this->html_class_prefix . 'question-input ' . 
+                                                $this->html_class_prefix . 'input" type="password" autocomplete="off" tabindex="0" placeholder="Please enter password" '.$if_generated.'/>';
+                                $content[] = '<div class="' . $this->html_class_prefix . 'input-underline" style="margin:0;"></div>';
+                                $content[] = '<div class="' . $this->html_class_prefix . 'input-underline-animation" style="margin:0;"></div>';
+                            $content[] = '</div>';
+                        $content[] = '</div>';
+    
+                        $content[] = '<div class="' . $this->html_class_prefix . 'check-password-block">';
+                            
+                            $content[] = '<div class="' . $this->html_class_prefix . 'section-buttons">';
+                                $content[] = '<div class="' . $this->html_class_prefix . 'section-button-container" tabindex="0">';
+                                    $content[] = '<div class="' . $this->html_class_prefix . 'section-button-content">';
+    
+                                        $content[] = '<input type="button" class="' . $this->html_class_prefix . 'section-button ays-check-survey-password" value="Check" />';
+    
+                                    $content[] = '</div>';
+                                $content[] = '</div>';
+                            $content[] = '</div>';
+                            
+                        $content[] = '</div>';
+                    $content[] = '</div>';
+    
+                $content[] = '</div>';
+            }
+        }
+
         if( $this->options[ $this->name_prefix . 'enable_start_page'] === true ){
             $content[] = '<div class="' . $this->html_class_prefix . 'section ' . $this->html_class_prefix . 'section-start-page">';
 
