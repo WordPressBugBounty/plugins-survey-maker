@@ -104,22 +104,13 @@
                     <div class="col-sm-9 ays-survey-box-for-mv">
                         <div class="ays-survey-message-vars-box">
                             <div class="ays-survey-message-vars-icon">
-                                <div>
-                                    <i class="ays_fa ays_fa_link"></i>
-                                </div>
-                                <div>
-                                    <span><?php echo esc_html__("Message Variables" , "survey-maker"); ?></span>
-                                    <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
-                                        echo esc_attr__('Insert your preferred message variable into the editor by clicking.',"survey-maker");
-                                    ?>">
-                                        <i class="ays_fa ays_fa_info_circle"></i>
-                                    </a>
-                                </div>
+                                <span class="ays-survey-message-vars-braces" aria-hidden="true">{ }</span>
+                                <span><?php echo esc_html__("Message Variables" , "survey-maker"); ?></span>
+                                <span class="ays-survey-message-vars-chevron" aria-hidden="true"></span>
                             </div>
                             <div class="ays-survey-message-vars-data" data-tmce="ays_survey_limitation_message">
                                 <?php $var_counter = 0; foreach($survey_limitation_message_vars as $var => $var_name): $var_counter++; ?>
                                     <label class="ays-survey-message-vars-each-data-label">
-                                        <input type="radio" class="ays-survey-message-vars-each-data-checker" hidden id="ays_survey_message_var_count_<?php echo esc_attr($var_counter)?>" name="ays_survey_message_var_count">
                                         <div class="ays-survey-message-vars-each-data">
                                             <input type="hidden" class="ays-survey-message-vars-each-var" value="<?php echo esc_attr($var); ?>">
                                             <span><?php echo esc_attr($var_name); ?></span>
@@ -228,25 +219,18 @@
                 <div class="col-sm-9 ays-survey-box-for-mv">
                     <div class="ays-survey-message-vars-box">
                         <div class="ays-survey-message-vars-icon">
-                            <div>
-                                <i class="ays_fa ays_fa_link"></i>
-                            </div>
-                            <div>
-                                <span><?php echo esc_html__("Message Variables" , "survey-maker"); ?></span>
-                                <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php echo esc_attr__('Insert your preferred message variable into the editor by clicking.',"survey-maker"); ?>">
-                                    <i class="ays_fa ays_fa_info_circle"></i>
-                                </a>
-                            </div>
+                            <span class="ays-survey-message-vars-braces" aria-hidden="true">{ }</span>
+                            <span><?php echo esc_html__("Message Variables" , "survey-maker"); ?></span>
+                            <span class="ays-survey-message-vars-chevron" aria-hidden="true"></span>
                         </div>
                         <div class="ays-survey-message-vars-data" data-tmce="ays_survey_logged_in_message">
                             <?php $var_counter = 0; foreach($survey_limitation_message_vars as $var => $var_name): $var_counter++; ?>
                                 <label class="ays-survey-message-vars-each-data-label">
-                                    <input type="radio" class="ays-survey-message-vars-each-data-checker" hidden id="ays_survey_message_var_count_<?php echo esc_attr($var_counter)?>" name="ays_survey_message_var_count">
                                     <div class="ays-survey-message-vars-each-data">
                                         <input type="hidden" class="ays-survey-message-vars-each-var" value="<?php echo esc_attr($var); ?>">
                                         <span><?php echo esc_attr($var_name); ?></span>
                                     </div>
-                                </label>              
+                                </label>             
                             <?php endforeach ?>
                         </div>
                     </div>

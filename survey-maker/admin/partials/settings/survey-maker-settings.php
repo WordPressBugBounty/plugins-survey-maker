@@ -1936,7 +1936,7 @@ Follow the steps in the video to get your survey submissions from the current us
                 </div>
             </div>
             <hr/>
-            <div style="position:sticky;padding:15px 0px;bottom:0;" class="ays-survey-save-changes-settings-page-mobile">
+            <div style="position:sticky;padding:15px 0px;bottom:0;z-index:999999;" class="ays-survey-save-changes-settings-page-mobile">
                 <?php
                     wp_nonce_field('settings_action', 'settings_action');
                     // $other_attributes = array();

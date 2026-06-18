@@ -3439,7 +3439,11 @@
 
         // Select message vars surveys page
         $(document).find('.ays-survey-message-vars-icon').on('click', function(e){
-            $(this).parents(".ays-survey-message-vars-box").find(".ays-survey-message-vars-data").toggle('fast');
+            // $(this).parents(".ays-survey-message-vars-box").find(".ays-survey-message-vars-data").toggle('fast');
+            var messageVarsBox = $(this).parents(".ays-survey-message-vars-box");
+            messageVarsBox.toggleClass("ays-survey-message-vars-open");
+
+            messageVarsBox.find(".ays-survey-message-vars-data").toggle('fast');
         });
 
         $(document).find('.ays-survey-open-surveys-list').on('click', function(e){
@@ -3453,6 +3457,7 @@
             } 
             else{
                 $(document).find(".ays-survey-message-vars-box .ays-survey-message-vars-data,.ays-survey-subtitle-main-box .ays-survey-surveys-data").hide('fast');
+                $(document).find(".ays-survey-message-vars-box").removeClass("ays-survey-message-vars-open");
             }
             // 
          });
