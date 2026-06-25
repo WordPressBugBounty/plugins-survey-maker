@@ -74,6 +74,18 @@
                         }
                         ?>
                     </select>
+                    <div class="ays_survey_small_hint_text_for_message_variables" style="margin-top: 5px;">
+                        <span>
+                            <?php
+                                echo (sprintf(
+                                    /* translators: %s: opening and closing <a> HTML code  */
+                                    wp_kses_post(__('Create a new category %s here %s', 'survey-maker')),
+                                    '<a href="'. esc_url( $survey_category_page_url ) .'" target="_blank">',
+                                    '</a>'
+                                ));
+                            ?>
+                        </span>
+                    </div>
                 </div>
             </div> <!-- Survey Category -->
             <hr/>    

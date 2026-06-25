@@ -93,7 +93,7 @@ body.ays-survey-plugin-admin .button-secondary {
 }
 
 body.ays-survey-plugin-admin .button.hover, 
-body.ays-survey-plugin-admin .button:hover {
+body.ays-survey-plugin-admin .button:not(.ays_help):hover {
     background: #135e96;
     border-color: #135e96;
     color: #fff;
@@ -136,9 +136,10 @@ body.ays-survey-plugin-admin .button-secondary:hover {
 
 body.ays-survey-plugin-admin a:focus {    
     box-shadow: 0 0 0 1px #3582c4;
+    color: #043959;
 }
 
-body.ays-survey-plugin-admin .button:focus, 
+body.ays-survey-plugin-admin .button:not(.ays_help):focus, 
 body.ays-survey-plugin-admin .button-primary:focus {
     background: #135e96;
     border-color: #135e96;

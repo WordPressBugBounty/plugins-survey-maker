@@ -220,6 +220,8 @@
         'options' => json_encode($options),
     );
 
+    $survey_category_page_url  = admin_url( 'admin.php?page=survey-maker-survey-categories' );
+
     $survey_message_vars = array(
         '%%user_name%%'                                 => __('User Name', "survey-maker"),
         '%%user_email%%'                                => __('User Email', "survey-maker"),
