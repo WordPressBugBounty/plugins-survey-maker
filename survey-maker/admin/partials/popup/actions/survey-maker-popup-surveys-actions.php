@@ -92,7 +92,7 @@
                             <div class="col-sm-9 ays_divider_left">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
+                                        <label for='ays_survey_popup_title_font_size'>
                                             <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -111,7 +111,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
+                                        <label for='ays_survey_popup_title_mobile_font_size'>
                                             <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -223,7 +223,7 @@
                             <div class="col-sm-9 ays_divider_left">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
+                                        <label for='ays-survey-title-alignment'>
                                             <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -241,7 +241,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
+                                        <label for='ays-survey-title-alignment-on-mobile'>
                                             <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -271,7 +271,7 @@
                             <div class="col-sm-9 ays_divider_left">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
+                                        <label for='ays-survey-popup-title-transform'>
                                             <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of popup title for desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -290,7 +290,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
+                                        <label for='ays-survey-popup-title-transform-mobile'>
                                             <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of popup title for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -321,7 +321,7 @@
                             <div class="col-sm-9 ays_divider_left">
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_title_letter_spacing'>
+                                        <label for='ays_survey_popup_title_letter_spacing'>
                                             <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the suquestion caption in pixels desktop devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -340,7 +340,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-2">
-                                        <label for='<?php echo esc_attr($html_name_prefix); ?>ays_survey_question_caption_letter_spacing_mobile'>
+                                        <label for='ays_survey_popup_title_letter_spacing_on_mobile'>
                                             <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the question caption in pixels for mobile devices.',"survey-maker")?>">
                                                 <i class="ays_fa ays_fa_info_circle"></i>
@@ -427,7 +427,7 @@
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
-                        <label for="ays-category">
+                        <label for="ays-select-popup-survey-id">
                             <?php echo esc_html__("Select Survey", "survey-maker"); ?>
                             <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                 echo esc_html__("Choose the survey which you want to display within the popup from your already created list.","survey-maker");
@@ -518,7 +518,7 @@
                     <div class="col-sm-9">
                         <div class="row">
                             <div class="col-sm-2">
-                                <label for='<?php echo esc_attr($html_name_prefix); ?>popup_survey_width'>
+                                <label for='ays_popup_survey_height'>
                                     <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels for desktop devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
@@ -537,7 +537,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-sm-2">
-                                <label for='<?php echo esc_attr($html_name_prefix); ?>popup_survey_height_mobile'>
+                                <label for='ays_popup_survey_height_mobile'>
                                     <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                     <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels for mobile devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>

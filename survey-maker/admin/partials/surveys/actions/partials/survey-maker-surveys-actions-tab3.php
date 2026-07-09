@@ -314,7 +314,7 @@
                         <div class="col-sm-8 ays_divider_left">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_title_letter_spacing'>
+                                    <label for='ays_survey_progress_bar_text_letter_spacing'>
                                         <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the progress bar text in pixels desktop devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -333,7 +333,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_progress_bar_text_letter_spacing_mobile'>
+                                    <label for='ays_survey_progress_bar_text_letter_spacing_mobile'>
                                         <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the progress bar text in pixels for mobile devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -405,7 +405,7 @@
                         <div class="col-sm-8 ays_divider_left">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_title_letter_spacing'>
+                                    <label for='ays_survey_progress_bar_text_font_size'>
                                         <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the progress bar text in pixels desktop devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -424,7 +424,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_progress_bar_text_letter_spacing_mobile'>
+                                    <label for='ays_survey_progress_bar_text_font_size_on_mobile'>
                                         <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Define the space between the letters of the progress bar text in pixels for mobile devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -456,7 +456,7 @@
                         <div class="col-sm-8 ays_divider_left">
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_title_letter_spacing'>
+                                    <label for='ays-survey-progress-bar-text-transform'>
                                         <?php echo esc_html__('On desktop', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of progress bar text, such as converting to uppercase or lowercase for desktop devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -475,7 +475,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-4">
-                                    <label for='<?php echo esc_attr($html_name_prefix); ?>survey_progress_bar_text_letter_spacing_mobile'>
+                                    <label for='ays-survey-progress-bar-text-transform-mobile'>
                                         <?php echo esc_html__('On mobile', "survey-maker"); ?>
                                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the text transformation of progress bar text, such as converting to uppercase or lowercase for mobile devices.',"survey-maker")?>">
                                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -731,7 +731,7 @@
             <hr/>
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <label>
+                    <label for="ays_survey_show_question_numbering">
                         <?php echo esc_html__('Questions numbering',"survey-maker"); ?>
                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Assign numbering to each question in ascending sequential order. Choose your preferred type from the list.',"survey-maker"); ?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -739,7 +739,7 @@
                     </label>
                 </div>
                 <div class="col-sm-8">
-                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" name="ays_survey_show_question_numbering">
+                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" name="ays_survey_show_question_numbering" id="ays_survey_show_question_numbering">
                         <option <?php echo $survey_auto_numbering_questions == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__( "None", "survey-maker"); ?></option>
                         <option <?php echo $survey_auto_numbering_questions == "1."   ? "selected" : ""; ?>   value="1."><?php echo esc_html__( "1.", "survey-maker"); ?></option>
                         <option <?php echo $survey_auto_numbering_questions == "1)"   ? "selected" : ""; ?>   value="1)"><?php echo esc_html__( "1)", "survey-maker"); ?></option>
@@ -801,7 +801,7 @@
             <hr/>    
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <label>
+                    <label for="ays_survey_show_answers_numbering">
                         <?php echo esc_html__('Answers numbering',"survey-maker"); ?>
                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Assign numbering to each answer in ascending sequential order. Choose your preferred type from the list.',"survey-maker"); ?>">
                             <i class="ays_fa ays_fa_info_circle"></i>
@@ -809,7 +809,7 @@
                     </label>
                 </div>
                 <div class="col-sm-8">
-                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" name="ays_survey_show_answers_numbering">
+                    <select class="ays-text-input ays-text-input-short ays_survey_aysDropdown" name="ays_survey_show_answers_numbering" id="ays_survey_show_answers_numbering">
                         <option <?php echo $survey_auto_numbering == "none" ? "selected" : ""; ?> value="none"><?php echo esc_html__( "None", "survey-maker"); ?></option>
                         <option <?php echo $survey_auto_numbering == "1."   ? "selected" : ""; ?>   value="1."><?php echo esc_html__( "1.", "survey-maker"); ?></option>
                         <option <?php echo $survey_auto_numbering == "1)"   ? "selected" : ""; ?>   value="1)"><?php echo esc_html__( "1)", "survey-maker"); ?></option>
@@ -1112,7 +1112,7 @@
             <hr/>
             <div class="form-group row">
                 <div class="col-sm-4">
-                    <label>
+                    <label for="ays_survey_change_creation_date">
                         <?php echo esc_html__('Change current survey creation date',"survey-maker"); ?>
                         <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Change the survey creation date to your preferred date.',"survey-maker"); ?>">
                             <i class="ays_fa ays_fa_info_circle"></i>

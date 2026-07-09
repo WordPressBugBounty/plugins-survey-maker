@@ -4025,21 +4025,9 @@ input.ays-survey-text-input-90-width {
     box-shadow: 0 10px 24px -16px rgba(15, 23, 42, .55);
 }
 
-/*.ays-survey-surveys-data{
-    position: absolute;
-    top: 27px;
-    max-height: 350px;
-    overflow: auto scroll;
-    z-index: 9999;
-    background-color: #ffff;
-    border-radius: 5px;
-    width: 250px;
-    display: none;
-    box-shadow: 0 0px 0px 0.5px #00000087;
-}*/
-
 .ays-survey-surveys-data{
     top: 36px;
+    left: 0;
 }
 
 .ays-survey-message-vars-data::-webkit-scrollbar,.ays-survey-surveys-data::-webkit-scrollbar {
