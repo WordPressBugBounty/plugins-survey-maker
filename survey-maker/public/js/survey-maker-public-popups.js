@@ -68,6 +68,7 @@
                         data: {
                             action: _this.ajaxAction,
                             function: 'ays_survey_popup_set_cookie',
+                            _ajax_nonce: aysSurveyMakerPopupsAjaxPublic.ajaxNonce,
                             id: _this.popupId,
                         }
                     });

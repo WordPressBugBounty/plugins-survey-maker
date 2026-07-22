@@ -134,6 +134,7 @@ class Survey_Maker_Public {
             wp_localize_script( $this->plugin_name . '-plugin', 'aysSurveyMakerAjaxPublic', array(
                 'ajaxUrl' => admin_url('admin-ajax.php'),
                 'warningIcon' => SURVEY_MAKER_PUBLIC_URL . "/images/warning.svg",
+                'ajaxNonce' => wp_create_nonce( 'ays_survey_ajax_nonce' ),
                 'autofill_nonce'  => wp_create_nonce('survey_maker_autofill_nonce')
             ) );
             wp_localize_script( $this->plugin_name, 'aysSurveyLangObj', array(
@@ -160,11 +161,18 @@ class Survey_Maker_Public {
 		wp_enqueue_script( $this->plugin_name . '-popups', plugin_dir_url( __FILE__ ) . 'js/survey-maker-public-popups.js', array( 'jquery' ), $this->version, false );
         wp_localize_script( $this->plugin_name . '-popups', 'aysSurveyMakerPopupsAjaxPublic', array(
             'ajaxUrl' => admin_url('admin-ajax.php'),
+            'ajaxNonce' => wp_create_nonce( 'ays_survey_ajax_nonce' ),
         ) );
 	}
 
 	public function ays_survey_ajax(){
 		global $wpdb;
+
+        if ( 'POST' !== strtoupper( isset( $_SERVER['REQUEST_METHOD'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_METHOD'] ) ) : '' ) ) {
+            wp_send_json_error( array( 'message' => __( 'Invalid request method.', 'survey-maker' ) ), 405 );
+        }
+
+        check_ajax_referer( 'ays_survey_ajax_nonce', '_ajax_nonce' );
 
 		$results = array(
 			"status" => false
@@ -189,14 +197,12 @@ class Survey_Maker_Public {
 
             ob_end_clean();
             $ob_get_clean = ob_get_clean();
-			echo json_encode( $results );
-			wp_die();
+            wp_send_json( $results );
 		}
 
         ob_end_clean();
         $ob_get_clean = ob_get_clean();
-		echo json_encode( $results );
-		wp_die();
+		wp_send_json( $results );
 	}
 
 	public function ays_finish_survey( $data ){
@@ -224,7 +230,16 @@ class Survey_Maker_Public {
                 $answered_questions = isset( $data[ $name_prefix . 'answers-' . $unique_id ] ) && !empty( $data[ $name_prefix . 'answers-' . $unique_id ] ) ? $data[ $name_prefix . 'answers-' . $unique_id ] : array();
                 $questions_data = isset( $data[ $name_prefix . 'questions-' . $unique_id ] ) && !empty( $data[ $name_prefix . 'questions-' . $unique_id ] ) ? $data[ $name_prefix . 'questions-' . $unique_id ] : array();
 
-                $survey_additional_wp_data = isset($data[ $valid_name_prefix . 'additional_wp_data' ]) && $data[ $valid_name_prefix . 'additional_wp_data' ] != '' ? json_decode(base64_decode($data[ $valid_name_prefix . 'additional_wp_data' ]) , true) : array();
+                $survey_additional_wp_data = array();
+                if ( isset( $data[ $valid_name_prefix . 'additional_wp_data' ] ) && is_string( $data[ $valid_name_prefix . 'additional_wp_data' ] ) && '' !== $data[ $valid_name_prefix . 'additional_wp_data' ] ) {
+                    $decoded_additional_wp_data = base64_decode( wp_unslash( $data[ $valid_name_prefix . 'additional_wp_data' ] ), true );
+                    if ( false !== $decoded_additional_wp_data ) {
+                        $decoded_additional_wp_data = json_decode( $decoded_additional_wp_data, true );
+                        if ( is_array( $decoded_additional_wp_data ) ) {
+                            $survey_additional_wp_data = $decoded_additional_wp_data;
+                        }
+                    }
+                }
 
                 $survey_current_page_link = isset( $data['ays_'.$valid_name_prefix.'_current_page_link'] ) && $data['ays_'.$valid_name_prefix.'_current_page_link'] != '' ? sanitize_url( $data['ays_'.$valid_name_prefix.'_current_page_link'] ) : "";
 
@@ -405,30 +420,38 @@ class Survey_Maker_Public {
                 $survey_current_post_author_website_url = '';
                 $survey_current_post_author_roles = '';
                 $survey_current_post_title = '';
-                if(!empty($survey_additional_wp_data)){
-                    if(isset($survey_additional_wp_data['survey_post_type']) && $survey_additional_wp_data['survey_post_type'] == 'post'){
-                        $survey_current_post_id = isset($survey_additional_wp_data['survey_post_id']) && $survey_additional_wp_data['survey_post_id'] != '' ? $survey_additional_wp_data['survey_post_id'] : '';
+                if ( ! empty( $survey_additional_wp_data ) ) {
+                    $sanitize_additional_text = static function( $value ) {
+                        return is_scalar( $value ) ? esc_html( sanitize_text_field( wp_unslash( (string) $value ) ) ) : '';
+                    };
+
+                    $survey_post_type = isset( $survey_additional_wp_data['survey_post_type'] ) && is_scalar( $survey_additional_wp_data['survey_post_type'] ) ? sanitize_key( wp_unslash( (string) $survey_additional_wp_data['survey_post_type'] ) ) : '';
+                    if ( 'post' === $survey_post_type ) {
+                        $survey_current_post_id = isset( $survey_additional_wp_data['survey_post_id'] ) && is_scalar( $survey_additional_wp_data['survey_post_id'] ) ? absint( $survey_additional_wp_data['survey_post_id'] ) : '';
                     }
 
-                    $survey_current_post_author_email = isset($survey_additional_wp_data['survey_post_author_email']) && $survey_additional_wp_data['survey_post_author_email'] != '' ? esc_attr($survey_additional_wp_data['survey_post_author_email']) : '';
-                    $survey_current_post_author_nickname = isset($survey_additional_wp_data['survey_current_post_author_nickname']) && $survey_additional_wp_data['survey_current_post_author_nickname'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_nickname']) : '';
-                    $survey_current_post_author_display_name = isset($survey_additional_wp_data['survey_current_post_author_display_name']) && $survey_additional_wp_data['survey_current_post_author_display_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_display_name']) : '';
-                    $survey_current_post_author_first_name = isset($survey_additional_wp_data['survey_current_post_author_first_name']) && $survey_additional_wp_data['survey_current_post_author_first_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_first_name']) : '';
-                    $survey_current_post_author_last_name = isset($survey_additional_wp_data['survey_current_post_author_last_name']) && $survey_additional_wp_data['survey_current_post_author_last_name'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_last_name']) : '';
-                    $survey_current_post_author_website_url = isset($survey_additional_wp_data['survey_current_post_author_website_url']) && $survey_additional_wp_data['survey_current_post_author_website_url'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_author_website_url']) : '';
-                    $survey_current_post_author_roles = isset($survey_additional_wp_data['survey_current_post_author_roles']) && $survey_additional_wp_data['survey_current_post_author_roles'] != '' ? $survey_additional_wp_data['survey_current_post_author_roles'] : '';
-                    $survey_current_post_title = isset($survey_additional_wp_data['survey_current_post_title']) && $survey_additional_wp_data['survey_current_post_title'] != '' ? esc_attr($survey_additional_wp_data['survey_current_post_title']) : '';
+                    $survey_current_post_author_email = isset( $survey_additional_wp_data['survey_post_author_email'] ) && is_scalar( $survey_additional_wp_data['survey_post_author_email'] ) ? esc_html( sanitize_email( wp_unslash( (string) $survey_additional_wp_data['survey_post_author_email'] ) ) ) : '';
+                    $survey_current_post_author_nickname = isset( $survey_additional_wp_data['survey_current_post_author_nickname'] ) ? $sanitize_additional_text( $survey_additional_wp_data['survey_current_post_author_nickname'] ) : '';
+                    $survey_current_post_author_display_name = isset( $survey_additional_wp_data['survey_current_post_author_display_name'] ) ? $sanitize_additional_text( $survey_additional_wp_data['survey_current_post_author_display_name'] ) : '';
+                    $survey_current_post_author_first_name = isset( $survey_additional_wp_data['survey_current_post_author_first_name'] ) ? $sanitize_additional_text( $survey_additional_wp_data['survey_current_post_author_first_name'] ) : '';
+                    $survey_current_post_author_last_name = isset( $survey_additional_wp_data['survey_current_post_author_last_name'] ) ? $sanitize_additional_text( $survey_additional_wp_data['survey_current_post_author_last_name'] ) : '';
+                    $survey_current_post_author_website_url = isset( $survey_additional_wp_data['survey_current_post_author_website_url'] ) && is_scalar( $survey_additional_wp_data['survey_current_post_author_website_url'] ) ? esc_url_raw( wp_unslash( (string) $survey_additional_wp_data['survey_current_post_author_website_url'] ) ) : '';
+                    $survey_current_post_author_roles = isset( $survey_additional_wp_data['survey_current_post_author_roles'] ) ? $survey_additional_wp_data['survey_current_post_author_roles'] : '';
+                    $survey_current_post_title = isset( $survey_additional_wp_data['survey_current_post_title'] ) ? $sanitize_additional_text( $survey_additional_wp_data['survey_current_post_title'] ) : '';
                 }
 
                 if ( ! empty( $survey_current_post_author_website_url ) ) {
-                    $survey_current_post_author_website_url = '<a href="'.$survey_current_post_author_website_url.'" target="_blank">'.$survey_current_post_author_website_url.'</a>';
+                    $survey_current_post_author_website_url = '<a href="' . esc_url( $survey_current_post_author_website_url ) . '" target="_blank" rel="noopener noreferrer">' . esc_html( $survey_current_post_author_website_url ) . '</a>';
                 }
 
-                if ( ! empty( $survey_current_post_author_roles ) && $survey_current_post_author_roles != "" ) {
-                    if ( is_array( $survey_current_post_author_roles ) ) {
-                        $survey_current_post_author_roles = implode( ", ", $survey_current_post_author_roles );
-                    }
+                if ( is_array( $survey_current_post_author_roles ) ) {
+                    $survey_current_post_author_roles = array_filter( $survey_current_post_author_roles, 'is_scalar' );
+                    $survey_current_post_author_roles = array_map( static function( $role ) {
+                        return sanitize_text_field( wp_unslash( (string) $role ) );
+                    }, $survey_current_post_author_roles );
+                    $survey_current_post_author_roles = implode( ', ', $survey_current_post_author_roles );
                 }
+                $survey_current_post_author_roles = is_scalar( $survey_current_post_author_roles ) ? esc_html( sanitize_text_field( wp_unslash( (string) $survey_current_post_author_roles ) ) ) : '';
 
                 $get_site_title = get_bloginfo('name');
                 $get_site_description = get_bloginfo('description');

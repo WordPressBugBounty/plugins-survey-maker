@@ -99,6 +99,7 @@
                     data.function  = 'ays_survey_get_user_information';
                     data.end_date  = _this.GetFullDateTime();
                     data.unique_id = _this.uniqueId;
+                    data._ajax_nonce = aysSurveyMakerAjaxPublic.ajaxNonce;
                     data.nonce     = aysSurveyMakerAjaxPublic.autofill_nonce;
                     _this.aysAutofillData(data , _this.$el);
                 }
@@ -675,6 +676,7 @@
                 var surveyCurrentPageLink = form.find('input[name="ays_survey_curent_page_link"]').val();
                 data.action = _this.ajaxAction;
                 data.function = 'ays_finish_survey';
+                data._ajax_nonce = window.aysSurveyMakerAjaxPublic.ajaxNonce;
                 data.end_date = _this.GetFullDateTime();
                 data.unique_id = _this.uniqueId;
                 data.survey_current_page_link = surveyCurrentPageLink;
