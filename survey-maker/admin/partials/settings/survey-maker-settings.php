@@ -170,6 +170,19 @@
     $options['survey_disable_submission_menu_notification'] = isset($options['survey_disable_submission_menu_notification']) ? esc_attr( $options['survey_disable_submission_menu_notification'] ) : 'off';
     $survey_disable_submission_menu_notification = (isset($options['survey_disable_submission_menu_notification']) && esc_attr( $options['survey_disable_submission_menu_notification'] ) == "on") ? true : false;
 
+    $survey_menu_badge_style_options = array(
+        'classic' => array(
+            'background' => '#ca4a1f',
+            'label'      => __( 'Default', 'survey-maker' ),
+        ),
+        'wp_default' => array(
+            'background' => '#3858e9',
+            'label'      => __( 'WordPress default', 'survey-maker' ),
+        ),
+    );
+    $options['survey_menu_badge_style'] = isset($options['survey_menu_badge_style']) ? sanitize_key( $options['survey_menu_badge_style'] ) : 'classic';
+    $survey_menu_badge_style = array_key_exists( $options['survey_menu_badge_style'], $survey_menu_badge_style_options ) ? $options['survey_menu_badge_style'] : 'classic';
+
     // Textarea height (public)
     $survey_textarea_height = (isset($options['survey_textarea_height']) && $options['survey_textarea_height'] != '' && $options['survey_textarea_height'] != 0) ? absint( sanitize_text_field($options['survey_textarea_height']) ) : 100;
 
@@ -615,6 +628,28 @@
                                 </div>
                                 <div class="col-sm-8">
                                     <input type="checkbox" name="ays_survey_disable_submission_menu_notification" id="ays_survey_disable_submission_menu_notification" value="on" <?php echo $survey_disable_submission_menu_notification ? 'checked' : ''; ?>>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row">
+                                <div class="col-sm-4">
+                                    <label>
+                                        <?php echo esc_html__( "Menu badge style", 'survey-maker' ); ?>
+                                        <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __('Choose the style of the notification badges displayed in the WordPress admin menu.','survey-maker') ); ?>">
+                                            <i class="ays_fa ays_fa_info_circle"></i>
+                                        </a>
+                                    </label>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="ays-survey-menu-badge-style-options" style="display:flex; gap:10px; flex-wrap:wrap;">
+                                        <?php foreach ( $survey_menu_badge_style_options as $style_key => $style_data ) : ?>
+                                            <label for="ays_survey_menu_badge_style_<?php echo esc_attr( $style_key ); ?>" style="display:flex; align-items:center; gap:12px; padding:14px 20px; border:1px solid #c3c4c7; border-radius:4px; background:#f6f7f7; cursor:pointer;">
+                                                <input type="radio" name="ays_survey_menu_badge_style" id="ays_survey_menu_badge_style_<?php echo esc_attr( $style_key ); ?>" value="<?php echo esc_attr( $style_key ); ?>" <?php checked( $survey_menu_badge_style, $style_key ); ?>>
+                                                <span class="ays-survey-menu-badge" style="margin-left:0; background:<?php echo esc_attr( $style_data['background'] ); ?>;">2</span>
+                                                <span class="screen-reader-text"><?php echo esc_html( $style_data['label'] ); ?></span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
                                 </div>
                             </div>
                         </fieldset> <!-- Menu notifications -->

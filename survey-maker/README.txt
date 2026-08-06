@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 5.2.3.4
+Stable tag: 5.2.3.5
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,9 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.3.5 ( Aug 06, 2026 ) =
+* Added: Menu badge style option in the General Settings page
 
 = 5.2.3.4 ( Jul 22, 2026 ) =
 * Improved: Sanitization and response handling for survey submissions

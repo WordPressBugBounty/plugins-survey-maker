@@ -144,6 +144,41 @@ class Survey_Maker_Admin {
 
 	}
 
+    /**
+     * Register the styles for the admin menu area.
+     *
+     * @since    1.0.0
+     */
+    public function admin_menu_styles(){
+        $survey_menu_badge_background = self::get_menu_badge_background( $this->plugin_name );
+
+        $custom_additional_css = "";
+        if( $survey_menu_badge_background == '#3858e9' ){
+            $custom_additional_css = "
+            #adminmenu li.toplevel_page_survey-maker a.toplevel_page_survey-maker.wp-has-current-submenu.wp-menu-open .wp-menu-name .ays-survey-menu-badge,
+            #adminmenu li.toplevel_page_survey-maker a.toplevel_page_survey-maker:hover .wp-menu-name .ays-survey-menu-badge {
+                color: #fff;
+                background: rgb(12.15, 12.15, 12.15);
+            }";
+        }
+
+        echo "<style>
+            #adminmenu .ays-survey-menu-badge {
+                background: ". esc_attr( $survey_menu_badge_background ) .";
+            }
+
+            ". $custom_additional_css ."
+        </style>";
+    }
+
+    public static function get_menu_badge_background( $plugin_name = 'survey-maker' ){
+        $setting_actions = new Survey_Maker_Settings_Actions( $plugin_name );
+        $options = ($setting_actions->ays_get_setting('options') === false) ? array() : json_decode( stripcslashes( $setting_actions->ays_get_setting('options') ), true);
+        $survey_menu_badge_style = ( isset( $options['survey_menu_badge_style'] ) && sanitize_key( $options['survey_menu_badge_style'] ) === 'wp_default' ) ? 'wp_default' : 'classic';
+
+        return ( $survey_menu_badge_style === 'wp_default' ) ? '#3858e9' : '#ca4a1f';
+    }
+
 	/**
 	 * Register the stylesheets for the admin area.
 	 *

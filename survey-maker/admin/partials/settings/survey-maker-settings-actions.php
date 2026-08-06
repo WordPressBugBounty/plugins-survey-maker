@@ -58,6 +58,9 @@ class Survey_Maker_Settings_Actions {
             // Disable Submissions menu item notification
             $survey_disable_submission_menu_notification = ( isset( $_REQUEST[ $name_prefix . 'survey_disable_submission_menu_notification'] ) && $_REQUEST[$name_prefix . 'survey_disable_submission_menu_notification'] ) == 'on' ? 'on' : 'off';
 
+            $survey_menu_badge_styles = array( 'classic', 'wp_default' );
+            $survey_menu_badge_style = ( isset( $_REQUEST[$name_prefix . 'survey_menu_badge_style'] ) && in_array( sanitize_key( $_REQUEST[$name_prefix . 'survey_menu_badge_style'] ), $survey_menu_badge_styles, true ) ) ? sanitize_key( $_REQUEST[$name_prefix . 'survey_menu_badge_style'] ) : 'classic';
+
             // Default texts | Start
             $wrong_shortcode_text               = (isset($_REQUEST[$name_prefix . 'survey_wrong_shortcode_text']) && $_REQUEST[$name_prefix . 'survey_wrong_shortcode_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_wrong_shortcode_text'] )) : 'Wrong shortcode initialized';
             $email_validation_error_text        = (isset($_REQUEST[$name_prefix . 'survey_email_validation_error_text']) && $_REQUEST[$name_prefix . 'survey_email_validation_error_text'] != '') ? stripslashes( sanitize_text_field( $_REQUEST[$name_prefix . 'survey_email_validation_error_text'] )) : 'Must be a valid email address';
@@ -112,6 +115,7 @@ class Survey_Maker_Settings_Actions {
                 "survey_enable_animation_top"                   => $survey_enable_animation_top,
                 "survey_disable_survey_menu_notification"       => $survey_disable_survey_menu_notification,
                 "survey_disable_submission_menu_notification"   => $survey_disable_submission_menu_notification,
+                "survey_menu_badge_style"                       => $survey_menu_badge_style,
             );
 
             $fields['user_roles'] = $roles;
