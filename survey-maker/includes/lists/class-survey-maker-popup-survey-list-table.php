@@ -271,8 +271,12 @@ class Popup_Survey_List_Table extends WP_List_Table {
             
             // Width
             $survey_width = (isset( $_POST[ $name_prefix . 'popup_survey_width' ] ) && $_POST[ $name_prefix . 'popup_survey_width' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width' ] ) ) : 800;
+            // Width by percentage or pixels
+            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) && $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) : 'pixels';
             // Mobile width
             $survey_width_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) && $_POST[ $name_prefix . 'popup_survey_width_mobile' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) ) : 800;
+            // Mobile width by percentage or pixels
+            $survey_width_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) && $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) : 'pixels';
             
             // Height
             $survey_heigth = (isset( $_POST[ $name_prefix . 'popup_survey_height' ] ) && $_POST[ $name_prefix . 'popup_survey_height' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) : 450;
@@ -343,7 +347,9 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "popup_title_border_radius"             => $survey_popup_title_border_radius,
                 "popup_title_border_radius_mobile"      => $survey_popup_title_border_radius_mobile,
                 "width"         	                    => $survey_width,
+                "width_by_percentage_px"                => $survey_width_by_percentage_px,
                 "width_mobile"                          => $survey_width_mobile,
+                "width_mobile_by_percentage_px"         => $survey_width_mobile_by_percentage_px,
                 "height"        	                    => $survey_heigth,
                 "height_mobile"    	                    => $survey_heigth_mobile,
                 "popup_position"                        => $popup_position,

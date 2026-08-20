@@ -1088,7 +1088,7 @@ class Survey_Maker_Public {
 
                     $survey_allowed_html = Survey_Maker_Data::ays_survey_custom_allowed_html();
 
-                    $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( wp_kses( $section['description'] ), $survey_allowed_html ) : '';
+                    $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( wp_kses( $section['description'], $survey_allowed_html ) ) : '';
                 } else {
                     $sections[$section_key]['description'] = (isset($section['description']) && $section['description'] != '') ? nl2br( esc_html( $section['description'] ) ) : '';
                 }
@@ -4116,9 +4116,24 @@ class Survey_Maker_Public {
 
             // Width
             $popup_survey_width = (isset($options['width']) && $options['width'] != '') ? absint ( intval( $options['width'] ) ) : 800;
+            // Width by percentage or pixels
+            $popup_survey_width_by = (isset($options['width_by_percentage_px']) && $options['width_by_percentage_px'] != '') ? stripslashes ( esc_attr( $options['width_by_percentage_px'] ) ) : 'pixels';
+            
+            if( $popup_survey_width == '' || absint( $popup_survey_width ) == 0 ){
+                $popup_survey_width = '100';
+                $popup_survey_width_by = 'percentage';
+            }
+            
             // Mobile width
             $options['width_mobile'] = isset($options['width_mobile']) ? $options['width_mobile'] : $popup_survey_width;
             $popup_survey_width_mobile = (isset($options['width_mobile']) && $options['width_mobile'] != '') ? absint ( intval( $options['width_mobile'] ) ) : 800;
+            // Mobile width by percentage or pixels
+            $popup_survey_width_mobile_by = (isset($options['width_mobile_by_percentage_px']) && $options['width_mobile_by_percentage_px'] != '') ? stripslashes ( esc_attr( $options['width_mobile_by_percentage_px'] ) ) : 'pixels';
+            
+            if( $popup_survey_width_mobile == '' || absint( $popup_survey_width_mobile ) == 0 ){
+                $popup_survey_width_mobile = '100';
+                $popup_survey_width_mobile_by = 'percentage';
+            }
             
             // Height
             $popup_survey_height = (isset($options['height']) && $options['height'] != '') ? absint ( intval( $options['height'] ) ) : 450;
@@ -4391,7 +4406,7 @@ class Survey_Maker_Public {
                     $popup_survey_view .= '
                         <style>
                             .ays-survey-popup-modal-' . $popup['id'] . ' {
-                                width: ' . $popup_survey_width . 'px;
+                                width: ' . $popup_survey_width . ($popup_survey_width_by == 'percentage' ? '%' : 'px') . ';
                                 height: ' . $popup_survey_height . 'px;
                                 background-color: ' . $popup_bg_color . ';
                                 top: ' . $ays_survey_popup_conteiner_pos_top . ';
@@ -4417,7 +4432,7 @@ class Survey_Maker_Public {
 
                             @media screen and (max-width: 640px){
                                 div.ays-survey-popup-modal-' . $popup['id'] . ' {
-                                    width: ' . $popup_survey_width_mobile . 'px;
+                                    width: ' . $popup_survey_width_mobile . ($popup_survey_width_mobile_by == 'percentage' ? '%' : 'px') . ';
                                     height: ' . $popup_survey_height_mobile . 'px;
                                     background-color: ' . $popup_bg_color_mobile . ';
                                 }

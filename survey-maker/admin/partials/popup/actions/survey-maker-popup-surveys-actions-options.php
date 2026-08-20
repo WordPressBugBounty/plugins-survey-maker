@@ -9,6 +9,8 @@
 
     $options = array(
         "width"         	                    => "800",
+        "width_by_percentage_px"               => "pixels",
+        "width_mobile_by_percentage_px"        => "pixels",
         "height"        	                    => "450",
         "popup_position"                        => "center-center",
         "popup_margin"                          => "0",
@@ -159,9 +161,13 @@
 
     // Width
     $popup_survey_width = (isset($options["width"]) && $options["width"] != "") ? absint ( intval( $options["width"] ) ) : 800;
+    // Width by percentage or pixels
+    $popup_survey_width_by_percentage_px = (isset($options["width_by_percentage_px"]) && $options["width_by_percentage_px"] != "") ? stripslashes ( esc_attr( $options["width_by_percentage_px"] ) ) : 'pixels';
     // Mobile Width
     $options["width_mobile"] = isset($options["width_mobile"]) ? $options["width_mobile"] : $popup_survey_width;
     $popup_survey_width_mobile = (isset($options["width_mobile"]) && $options["width_mobile"] != "") ? absint ( intval( $options["width_mobile"] ) ) : 800;
+    // Mobile width by percentage or pixels
+    $popup_survey_width_mobile_by_percentage_px = (isset($options["width_mobile_by_percentage_px"]) && $options["width_mobile_by_percentage_px"] != "") ? stripslashes ( esc_attr( $options["width_mobile_by_percentage_px"] ) ) : 'pixels';
    
     // Height
     $popup_survey_height = (isset($options["height"]) && $options["height"] != "") ? absint ( intval( $options["height"] ) ) : 450;
