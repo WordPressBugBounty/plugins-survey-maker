@@ -160,20 +160,24 @@
     $show_all = isset( $object["show_all"] ) && $object["show_all"] != "" ? stripslashes( $object["show_all"] ) : "all";
 
     // Width
-    $popup_survey_width = (isset($options["width"]) && $options["width"] != "") ? absint ( intval( $options["width"] ) ) : 800;
+    $popup_survey_width = (isset($options["width"]) && $options["width"] != "") ? absint ( intval( $options["width"] ) ) : '';
     // Width by percentage or pixels
-    $popup_survey_width_by_percentage_px = (isset($options["width_by_percentage_px"]) && $options["width_by_percentage_px"] != "") ? stripslashes ( esc_attr( $options["width_by_percentage_px"] ) ) : 'pixels';
+    $popup_survey_width_by_percentage_px = (isset($options["width_by_percentage_px"]) && $options["width_by_percentage_px"] != "" && $popup_survey_width != '') ? stripslashes ( esc_attr( $options["width_by_percentage_px"] ) ) : 'pixels';
     // Mobile Width
     $options["width_mobile"] = isset($options["width_mobile"]) ? $options["width_mobile"] : $popup_survey_width;
-    $popup_survey_width_mobile = (isset($options["width_mobile"]) && $options["width_mobile"] != "") ? absint ( intval( $options["width_mobile"] ) ) : 800;
+    $popup_survey_width_mobile = (isset($options["width_mobile"]) && $options["width_mobile"] != "") ? absint ( intval( $options["width_mobile"] ) ) : '';
     // Mobile width by percentage or pixels
-    $popup_survey_width_mobile_by_percentage_px = (isset($options["width_mobile_by_percentage_px"]) && $options["width_mobile_by_percentage_px"] != "") ? stripslashes ( esc_attr( $options["width_mobile_by_percentage_px"] ) ) : 'pixels';
+    $popup_survey_width_mobile_by_percentage_px = (isset($options["width_mobile_by_percentage_px"]) && $options["width_mobile_by_percentage_px"] != "" && $popup_survey_width_mobile != '') ? stripslashes ( esc_attr( $options["width_mobile_by_percentage_px"] ) ) : 'pixels';
    
     // Height
-    $popup_survey_height = (isset($options["height"]) && $options["height"] != "") ? absint ( intval( $options["height"] ) ) : 450;
+    $popup_survey_height = (isset($options["height"]) && $options["height"] != "") ? absint ( intval( $options["height"] ) ) : '';
+    // Height by percentage or pixels
+    $popup_survey_height_by_percentage_px = (isset($options["height_by_percentage_px"]) && $options["height_by_percentage_px"] != "" && $popup_survey_height != '') ? stripslashes ( esc_attr( $options["height_by_percentage_px"] ) ) : 'pixels';
     // Height mobile
     $options["height_mobile"] = isset($options["height_mobile"]) ? $options["height_mobile"] : $popup_survey_height;
-    $popup_survey_height_mobile = (isset($options["height_mobile"]) && $options["height_mobile"] != "") ? absint ( intval( $options["height_mobile"] ) ) : 450;
+    $popup_survey_height_mobile = (isset($options["height_mobile"]) && $options["height_mobile"] != "") ? absint ( intval( $options["height_mobile"] ) ) : '';
+    // Mobile height by percentage or pixels
+    $popup_survey_height_mobile_by_percentage_px = (isset($options["height_mobile_by_percentage_px"]) && $options["height_mobile_by_percentage_px"] != "" && $popup_survey_height_mobile != '') ? stripslashes ( esc_attr( $options["height_mobile_by_percentage_px"] ) ) : 'pixels';
 
     // Popup Position
     $popup_position = (isset($options["popup_position"]) && $options["popup_position"] != "center-center") ? $options["popup_position"] : "center-center";

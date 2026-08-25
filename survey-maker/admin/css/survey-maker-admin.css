@@ -4840,6 +4840,10 @@ div.masteriyo-notice {
     margin-top: 20px !important;
 }
 
+.wp-list-table th{
+    font-size: 14px;
+}
+
 /* Publish Tab design | Start */
 
 .ays-survey-publish-container {

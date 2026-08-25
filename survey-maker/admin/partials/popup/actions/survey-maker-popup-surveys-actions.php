@@ -518,7 +518,7 @@
                     <div class="col-sm-3">
                         <label for="ays_popup_survey_height">
                             <?php echo esc_html__("Popup height", "survey-maker"); ?>
-                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the height of your popup in pixels.","survey-maker"); ?>">
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("Specify the height of your popup in pixels or percentage.","survey-maker"); ?>">
                                 <i class="ays_fa ays_fa_info_circle"></i>
                             </a>
                         </label>
@@ -528,7 +528,7 @@
                             <div class="col-sm-2">
                                 <label for='ays_popup_survey_height'>
                                     <?php echo esc_html__('On desktop', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels for desktop devices.',"survey-maker")?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels or percentage for desktop devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -536,9 +536,13 @@
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
                                     <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_height" name="ays_popup_survey_height" value="<?php echo esc_attr($popup_survey_height); ?>"/>
-                                </div>
+                                    <span style="display:block;" class="ays_survey_small_hint_text"><?php echo esc_html__("For 100% leave blank", "survey-maker"); ?></span>
+                                </div>                        
                                 <div class="ays_dropdown_max_width">
-                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    <select id="ays_popup_survey_height_by_percentage_px" name="ays_popup_survey_height_by_percentage_px" class="ays-text-input ays-text-input-short ays_survey_aysDropdown" style="display:inline-block; width: 60px;">
+                                        <option value="pixels" <?php echo $popup_survey_height_by_percentage_px == "pixels" ? "selected" : ""; ?>>px</option>
+                                        <option value="percentage" <?php echo $popup_survey_height_by_percentage_px == "percentage" ? "selected" : ""; ?>>%</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -547,7 +551,7 @@
                             <div class="col-sm-2">
                                 <label for='ays_popup_survey_height_mobile'>
                                     <?php echo esc_html__('On mobile', "survey-maker"); ?>
-                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels for mobile devices.',"survey-maker")?>">
+                                    <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Specify the height of your popup in pixels or percentage for mobile devices.',"survey-maker")?>">
                                         <i class="ays_fa ays_fa_info_circle"></i>
                                     </a>
                                 </label>
@@ -555,9 +559,13 @@
                             <div class="col-sm-10 ays_survey_display_flex_width">
                                 <div>
                                     <input type="number" class="ays-text-input ays-text-input-short" id="ays_popup_survey_height_mobile" name="ays_popup_survey_height_mobile" value="<?php echo esc_attr($popup_survey_height_mobile); ?>"/>
-                                </div>
+                                    <span style="display:block;" class="ays_survey_small_hint_text"><?php echo esc_html__("For 100% leave blank", "survey-maker"); ?></span>
+                                </div>                        
                                 <div class="ays_dropdown_max_width">
-                                    <input type="text" value="px" class='ays-form-hint-for-size' disabled>
+                                    <select id="ays_popup_survey_height_mobile_by_percentage_px" name="ays_popup_survey_height_mobile_by_percentage_px" class="ays-text-input ays-text-input-short ays_survey_aysDropdown" style="display:inline-block; width: 60px;">
+                                        <option value="pixels" <?php echo $popup_survey_height_mobile_by_percentage_px == "pixels" ? "selected" : ""; ?>>px</option>
+                                        <option value="percentage" <?php echo $popup_survey_height_mobile_by_percentage_px == "percentage" ? "selected" : ""; ?>>%</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

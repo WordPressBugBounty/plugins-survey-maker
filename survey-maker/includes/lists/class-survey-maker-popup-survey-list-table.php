@@ -270,18 +270,24 @@ class Popup_Survey_List_Table extends WP_List_Table {
             $show_all = isset( $_POST[$name_prefix . 'survey_show_all'] ) && $_POST[$name_prefix . 'survey_show_all']  != '' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_show_all' ] ) : 'all';
             
             // Width
-            $survey_width = (isset( $_POST[ $name_prefix . 'popup_survey_width' ] ) && $_POST[ $name_prefix . 'popup_survey_width' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width' ] ) ) : 800;
+            $survey_width = (isset( $_POST[ $name_prefix . 'popup_survey_width' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width' ] ) ) : '';
             // Width by percentage or pixels
-            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) && $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) : 'pixels';
+            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) != '' && $survey_width != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) : 'pixels';
+            
             // Mobile width
-            $survey_width_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) && $_POST[ $name_prefix . 'popup_survey_width_mobile' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) ) : 800;
+            $survey_width_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) ) : '';
             // Mobile width by percentage or pixels
-            $survey_width_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) && $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) : 'pixels';
+            $survey_width_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) != '' && $survey_width_mobile != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) : 'pixels';
             
             // Height
-            $survey_heigth = (isset( $_POST[ $name_prefix . 'popup_survey_height' ] ) && $_POST[ $name_prefix . 'popup_survey_height' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) : 450;
+            $survey_heigth = (isset( $_POST[ $name_prefix . 'popup_survey_height' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) : '';
+            // Height by percentage or pixels
+            $survey_heigth_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) != '' && $survey_heigth != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) : 'pixels';
+            
             // Height mobile
-            $survey_heigth_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) && $_POST[ $name_prefix . 'popup_survey_height_mobile' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) ) : 450;
+            $survey_heigth_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) ) : '';
+            // Mobile height by percentage or pixels
+            $survey_heigth_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) != '' && $survey_heigth_mobile != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) : 'pixels';
             
             // popup_position
             $popup_position = (isset( $_POST[$name_prefix . 'survey_popup_position'] ) && $_POST[$name_prefix . 'survey_popup_position'] != 'center-center') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_position' ] ) : 'center-center';
@@ -351,7 +357,9 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "width_mobile"                          => $survey_width_mobile,
                 "width_mobile_by_percentage_px"         => $survey_width_mobile_by_percentage_px,
                 "height"        	                    => $survey_heigth,
+                "height_by_percentage_px"              => $survey_heigth_by_percentage_px,
                 "height_mobile"    	                    => $survey_heigth_mobile,
+                "height_mobile_by_percentage_px"       => $survey_heigth_mobile_by_percentage_px,
                 "popup_position"                        => $popup_position,
                 "popup_margin"                          => $popup_margin,
                 "popup_trigger"                         => $popup_trigger,

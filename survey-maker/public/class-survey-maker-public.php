@@ -4115,31 +4115,26 @@ class Survey_Maker_Public {
             $survey_popup_title_border_radius_mobile = (isset($options["popup_title_border_radius_mobile"]) && $options["popup_title_border_radius_mobile"] != "") ? absint ( intval( $options["popup_title_border_radius_mobile"] ) ) : 0;
 
             // Width
-            $popup_survey_width = (isset($options['width']) && $options['width'] != '') ? absint ( intval( $options['width'] ) ) : 800;
+            $popup_survey_width = (isset($options['width']) && $options['width'] != '') ? absint ( intval( $options['width'] ) ) : '';
             // Width by percentage or pixels
-            $popup_survey_width_by = (isset($options['width_by_percentage_px']) && $options['width_by_percentage_px'] != '') ? stripslashes ( esc_attr( $options['width_by_percentage_px'] ) ) : 'pixels';
-            
-            if( $popup_survey_width == '' || absint( $popup_survey_width ) == 0 ){
-                $popup_survey_width = '100';
-                $popup_survey_width_by = 'percentage';
-            }
+            $popup_survey_width_by = (isset($options['width_by_percentage_px']) && $options['width_by_percentage_px'] != '' && $popup_survey_width != '') ? stripslashes ( esc_attr( $options['width_by_percentage_px'] ) ) : 'pixels';
             
             // Mobile width
             $options['width_mobile'] = isset($options['width_mobile']) ? $options['width_mobile'] : $popup_survey_width;
-            $popup_survey_width_mobile = (isset($options['width_mobile']) && $options['width_mobile'] != '') ? absint ( intval( $options['width_mobile'] ) ) : 800;
+            $popup_survey_width_mobile = (isset($options['width_mobile']) && $options['width_mobile'] != '') ? absint ( intval( $options['width_mobile'] ) ) : '';
             // Mobile width by percentage or pixels
-            $popup_survey_width_mobile_by = (isset($options['width_mobile_by_percentage_px']) && $options['width_mobile_by_percentage_px'] != '') ? stripslashes ( esc_attr( $options['width_mobile_by_percentage_px'] ) ) : 'pixels';
-            
-            if( $popup_survey_width_mobile == '' || absint( $popup_survey_width_mobile ) == 0 ){
-                $popup_survey_width_mobile = '100';
-                $popup_survey_width_mobile_by = 'percentage';
-            }
+            $popup_survey_width_mobile_by = (isset($options['width_mobile_by_percentage_px']) && $options['width_mobile_by_percentage_px'] != '' && $popup_survey_width_mobile != '') ? stripslashes ( esc_attr( $options['width_mobile_by_percentage_px'] ) ) : 'pixels';
             
             // Height
-            $popup_survey_height = (isset($options['height']) && $options['height'] != '') ? absint ( intval( $options['height'] ) ) : 450;
+            $popup_survey_height = (isset($options['height']) && $options['height'] != '') ? absint ( intval( $options['height'] ) ) : '';
+            // Height by percentage or pixels
+            $popup_survey_height_by = (isset($options['height_by_percentage_px']) && $options['height_by_percentage_px'] != '' && $popup_survey_height != '') ? stripslashes ( esc_attr( $options['height_by_percentage_px'] ) ) : 'pixels';
+            
             // Height mobile
             $options['height_mobile'] = isset($options['height_mobile']) ? $options['height_mobile'] : $popup_survey_height;
-            $popup_survey_height_mobile = (isset($options['height_mobile']) && $options['height_mobile'] != '') ? absint ( intval( $options['height_mobile'] ) ) : 450;
+            $popup_survey_height_mobile = (isset($options['height_mobile']) && $options['height_mobile'] != '') ? absint ( intval( $options['height_mobile'] ) ) : '';
+            // Mobile height by percentage or pixels
+            $popup_survey_height_mobile_by = (isset($options['height_mobile_by_percentage_px']) && $options['height_mobile_by_percentage_px'] != '' && $popup_survey_height_mobile != '') ? stripslashes ( esc_attr( $options['height_mobile_by_percentage_px'] ) ) : 'pixels';
 
             // Popup Position
             $popup_position = (isset($options['popup_position']) && $options['popup_position'] != 'center-center') ? $options['popup_position'] : 'center-center';
@@ -4403,11 +4398,14 @@ class Survey_Maker_Public {
 
                     $hide_popup_on_mobile_class = $survey_popup_hide_title_on_mobile ? 'display: none;' : ''; 
 
+                    $popup_width_css = ($popup_survey_width > 0 ? $popup_survey_width . ($popup_survey_width_by == 'percentage' ? '%' : 'px') : '100%');
+                    $popup_height_css = ($popup_survey_height > 0 ? $popup_survey_height . ($popup_survey_height_by == 'percentage' ? '%' : 'px') : '100%');
+                    
                     $popup_survey_view .= '
                         <style>
                             .ays-survey-popup-modal-' . $popup['id'] . ' {
-                                width: ' . $popup_survey_width . ($popup_survey_width_by == 'percentage' ? '%' : 'px') . ';
-                                height: ' . $popup_survey_height . 'px;
+                                width: ' . $popup_width_css . ';
+                                height: ' . $popup_height_css . ';
                                 background-color: ' . $popup_bg_color . ';
                                 top: ' . $ays_survey_popup_conteiner_pos_top . ';
                                 left: ' . $ays_survey_popup_conteiner_pos_left . ';
@@ -4432,8 +4430,8 @@ class Survey_Maker_Public {
 
                             @media screen and (max-width: 640px){
                                 div.ays-survey-popup-modal-' . $popup['id'] . ' {
-                                    width: ' . $popup_survey_width_mobile . ($popup_survey_width_mobile_by == 'percentage' ? '%' : 'px') . ';
-                                    height: ' . $popup_survey_height_mobile . 'px;
+                                    width: ' . ($popup_survey_width_mobile > 0 ? $popup_survey_width_mobile . ($popup_survey_width_mobile_by == 'percentage' ? '%' : 'px') : '100%') . ';
+                                    height: ' . ($popup_survey_height_mobile > 0 ? $popup_survey_height_mobile . ($popup_survey_height_mobile_by == 'percentage' ? '%' : 'px') : '100%') . ';
                                     background-color: ' . $popup_bg_color_mobile . ';
                                 }
                                 .ays-survey-popup-modal-' . $popup['id'] . ' .ays-survey-popup-title-content{
