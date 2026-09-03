@@ -869,6 +869,27 @@
                 <hr>
                 <div class="form-group row">
                     <div class="col-sm-3">
+                        <label for="<?php echo esc_attr($html_name_prefix); ?>survey_popup_animation">
+                            <?php echo esc_html__('Popup animation', "survey-maker"); ?>
+                            <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Choose the animation effect for popup appearance.', "survey-maker"); ?>">
+                                <i class="ays_fa ays_fa_info_circle"></i>
+                            </a>
+                        </label>
+                    </div>
+                    <div class="col-sm-9">
+                        <select id="<?php echo esc_attr($html_name_prefix); ?>survey_popup_animation" class="ays-text-input ays_survey_aysDropdown" name="<?php echo esc_attr($html_name_prefix); ?>survey_popup_animation">
+                            <option value="none" <?php echo $popup_animation == 'none' ? 'selected' : ''; ?>><?php echo esc_html__('None', "survey-maker"); ?></option>
+                            <option value="fade" <?php echo $popup_animation == 'fade' ? 'selected' : ''; ?>><?php echo esc_html__('Fade in', "survey-maker"); ?></option>
+                            <option value="slide-down" <?php echo $popup_animation == 'slide-down' ? 'selected' : ''; ?>><?php echo esc_html__('Slide down', "survey-maker"); ?></option>
+                            <option value="slide-up" <?php echo $popup_animation == 'slide-up' ? 'selected' : ''; ?>><?php echo esc_html__('Slide up', "survey-maker"); ?></option>
+                            <option value="zoom-in" <?php echo $popup_animation == 'zoom-in' ? 'selected' : ''; ?>><?php echo esc_html__('Zoom in', "survey-maker"); ?></option>
+                            <option value="bounce" <?php echo $popup_animation == 'bounce' ? 'selected' : ''; ?>><?php echo esc_html__('Bounce', "survey-maker"); ?></option>
+                        </select>
+                    </div>
+                </div> <!-- Popup animation -->
+                <hr>
+                <div class="form-group row">
+                    <div class="col-sm-3">
                         <label for="ays_survey_close_popup_overlay_outside_click">
                             <?php echo esc_html__('Close by clicking outside the box', "survey-maker"); ?>
                             <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr__("If the option is enabled, the user can close the popup by clicking outside the box.", "survey-maker"); ?>">

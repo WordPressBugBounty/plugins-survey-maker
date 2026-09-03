@@ -19,12 +19,19 @@
         var _this = this;
 
         _this.popupId = _this.$el.data('id');
-        
-        if( typeof window.aysSurveyPopupsOptions != 'undefined' ){
+
+        if( typeof window.aysSurveyPopupsOptions != 'undefined' && typeof window.aysSurveyPopupsOptions[ _this.popupId ] != 'undefined' ){
             _this.dbOptions = JSON.parse( atob( window.aysSurveyPopupsOptions[ _this.popupId ] ) );
+        } else {
+            // Set default options if not available
+            _this.dbOptions = {
+                popup_trigger: 'on_load',
+                popup_animation: 'none'
+            };
         }
-        
+
         _this.setEvents();
+
     };
 
     AysSurveyPopupsPlugin.prototype.setEvents = function(e){
@@ -172,15 +179,30 @@
     AysSurveyPopupsPlugin.prototype.popupSelectorClick = function (elem, _this) {
         var popupTriggerType = _this.dbOptions.popup_trigger;
         var popupSelector = _this.dbOptions.popup_selector;
+        var popupAnimation = typeof _this.dbOptions.popup_animation != 'undefined' ? _this.dbOptions.popup_animation : 'none';
 
         if(popupTriggerType == 'on_click'){
 
             $(document).find(popupSelector).on('click', function(){
 
+                if(popupAnimation != 'none'){
+                    _this.applyPopupAnimation(elem, popupAnimation);
+                }
                 elem.css('display','block');
-                
+
             });
         }
+    }
+
+    AysSurveyPopupsPlugin.prototype.applyPopupAnimation = function(elem, animationType) {
+        var _this = this;
+        var animationClass = 'ays-popup-animation-' + animationType;
+
+        // Remove any existing animation classes
+        elem.removeClass('ays-popup-animation-fade ays-popup-animation-slide-down ays-popup-animation-slide-up ays-popup-animation-zoom-in ays-popup-animation-bounce');
+
+        // Add the new animation class
+        elem.addClass(animationClass);
     }
 
     AysSurveyPopupsPlugin.prototype.setPopupCookie = function (name, value, daysToExpire) {

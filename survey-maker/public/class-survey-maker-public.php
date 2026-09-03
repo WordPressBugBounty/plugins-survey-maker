@@ -2999,6 +2999,7 @@ class Survey_Maker_Public {
         $content[] = '
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' {
                 width: ' . $width . ';
+                box-sizing: border-box;
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' .' . $this->html_class_prefix . 'section-header {
@@ -3828,7 +3829,7 @@ class Survey_Maker_Public {
         $content .= '
         @media screen and (max-width: 640px){
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' {
-                max-width: '. $mobile_max_width .';
+                max-width: min('. $mobile_max_width .', calc(100vw - 20px));
             }
 
             #' . $this->html_class_prefix . 'container-' . $this->unique_id_in_class . ' {
@@ -4191,6 +4192,9 @@ class Survey_Maker_Public {
             // Popup selector
             $popup_selector = (isset($options["popup_selector"]) && $options["popup_selector"] != "") ? stripslashes( esc_attr($options["popup_selector"])) : "";
 
+            // Popup animation
+            $popup_animation = (isset($options["popup_animation"]) && $options["popup_animation"] != "") ? esc_attr($options["popup_animation"]) : "none";
+
             // Close by pressing the ESC
             $survey_popup_enable_close_by_esc = (isset($options["popup_enable_close_by_esc"]) && $options["popup_enable_close_by_esc"] != '') ? $options["popup_enable_close_by_esc"] : 'off';
 
@@ -4264,11 +4268,13 @@ class Survey_Maker_Public {
                     break;
             }
 
+            $popup_animation_class = in_array($popup_animation, array('fade', 'slide-down', 'slide-up', 'zoom-in', 'bounce'), true) && $popup_trigger_type != 'on_click' ? 'ays-popup-animation-' . $popup_animation : '';
+
             if( ! isset( $_COOKIE[ 'ays_survey_popup_cookie_name_' . $popup['id'] ] ) && ! isset( $_COOKIE[ 'ays_survey_popup_hide_after_click_close_' . $popup['id'] ] ) ){
                 if ($show_popup) {
                     $shortcode2 = '[ays_survey id="'. $popup['survey_id'] .'"]';
                     // $popup_survey_view = "<div class='ays-survey-popup-survey-window ays-survey-popup-modal-".$popup['id']."' data-id='".$popup['id']."'>
-                    $popup_survey_view = "<div class='ays-survey-popup-survey-window ays-survey-popup-modal-".$popup['id']." ".$display_popup_on_load."' data-id='".$popup['id']."' data-close-popup='".$survey_enable_popup_close_after_finish."'>
+                    $popup_survey_view = "<div class='ays-survey-popup-survey-window ays-survey-popup-modal-".$popup['id']." ".$display_popup_on_load." ".$popup_animation_class."' data-id='".$popup['id']."' data-close-popup='".$survey_enable_popup_close_after_finish."'>
                         <div class='ays-survey-popup-btn-close'>
                             <img class='ays-survey-popup-btn-close-icon' src='". SURVEY_MAKER_PUBLIC_URL ."/images/cross.svg'>
                         </div>";
@@ -4405,6 +4411,7 @@ class Survey_Maker_Public {
                         <style>
                             .ays-survey-popup-modal-' . $popup['id'] . ' {
                                 width: ' . $popup_width_css . ';
+                                box-sizing: border-box;
                                 height: ' . $popup_height_css . ';
                                 background-color: ' . $popup_bg_color . ';
                                 top: ' . $ays_survey_popup_conteiner_pos_top . ';
@@ -4431,6 +4438,7 @@ class Survey_Maker_Public {
                             @media screen and (max-width: 640px){
                                 div.ays-survey-popup-modal-' . $popup['id'] . ' {
                                     width: ' . ($popup_survey_width_mobile > 0 ? $popup_survey_width_mobile . ($popup_survey_width_mobile_by == 'percentage' ? '%' : 'px') : '100%') . ';
+                                    max-width: calc(100vw - 20px);
                                     height: ' . ($popup_survey_height_mobile > 0 ? $popup_survey_height_mobile . ($popup_survey_height_mobile_by == 'percentage' ? '%' : 'px') : '100%') . ';
                                     background-color: ' . $popup_bg_color_mobile . ';
                                 }
@@ -4449,6 +4457,48 @@ class Survey_Maker_Public {
                         </style>
                     ';
 
+                    $popup_survey_view .= '<style type="text/css">';
+                    $popup_survey_view .= "
+                        @keyframes ays-popup-fade-in {
+                            from { opacity: 0; }
+                            to { opacity: 1; }
+                        }
+                        @keyframes ays-popup-slide-down {
+                            from { opacity: 0; transform: translateY(-50px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                        @keyframes ays-popup-slide-up {
+                            from { opacity: 0; transform: translateY(50px); }
+                            to { opacity: 1; transform: translateY(0); }
+                        }
+                        @keyframes ays-popup-zoom-in {
+                            from { opacity: 0; transform: scale(0.8); }
+                            to { opacity: 1; transform: scale(1); }
+                        }
+                        @keyframes ays-popup-bounce {
+                            0% { opacity: 0; transform: scale(0.3); }
+                            50% { opacity: 1; transform: scale(1.05); }
+                            70% { transform: scale(0.9); }
+                            100% { transform: scale(1); }
+                        }
+                        .ays-survey-popup-survey-window.ays-popup-animation-fade {
+                            animation: ays-popup-fade-in 0.3s ease-in-out;
+                        }
+                        .ays-survey-popup-survey-window.ays-popup-animation-slide-down {
+                            animation: ays-popup-slide-down 0.4s ease-out;
+                        }
+                        .ays-survey-popup-survey-window.ays-popup-animation-slide-up {
+                            animation: ays-popup-slide-up 0.4s ease-out;
+                        }
+                        .ays-survey-popup-survey-window.ays-popup-animation-zoom-in {
+                            animation: ays-popup-zoom-in 0.3s ease-out;
+                        }
+                        .ays-survey-popup-survey-window.ays-popup-animation-bounce {
+                            animation: ays-popup-bounce 0.5s ease-out;
+                        }
+                    ";
+                    $popup_survey_view .= '</style>';
+
                     $popup_survey_view .= '<script type="text/javascript">';
                 
                     $popup_survey_view .= "
@@ -4464,6 +4514,7 @@ class Survey_Maker_Public {
                             'popup_selector'                   => $popup_selector,
                             'popupEnableCloseByEsc'            => $survey_popup_enable_close_by_esc,
                             'closePopupOverlayOutsideClick'    => $close_popup_overlay_outside_click,
+                            'popup_animation'                  => $popup_animation,
 
                         ) ) ) . "';";
                     $popup_survey_view .= '</script>';

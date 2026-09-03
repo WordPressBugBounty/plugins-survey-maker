@@ -334,6 +334,9 @@ class Popup_Survey_List_Table extends WP_List_Table {
             // Close by clicking outside the box
             $close_popup_overlay_outside_click = isset( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) && $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) : 'off';
 
+            // Popup animation
+            $popup_animation = (isset( $_POST[ $name_prefix . 'survey_popup_animation' ] ) && $_POST[ $name_prefix . 'survey_popup_animation' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_animation' ] ) : 'none';
+
             // Options
             $options = array(
                 "popup_enable_show_title"               => $survey_popup_enable_show_title,
@@ -376,6 +379,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 'hide_popup_on_pc'                      => $hide_popup_on_pc,
                 'hide_popup_on_tablet'                  => $hide_popup_on_tablet,
                 'close_popup_overlay_outside_click'     => $close_popup_overlay_outside_click,
+                'popup_animation'                       => $popup_animation,
             );
             
             $message = '';

@@ -31,6 +31,7 @@
         "ays_survey_popup_title_letter_spacing" => 0,
         "popup_title_letter_spacing_on_mobile"  => 0,
         "popup_enable_close_by_esc"             => "off",
+        "popup_animation"                       => "none",
         "hide_popup_on_pc"                      => "off",
         "hide_popup_on_mobile"                  => "off",
         "hide_popup_on_tablet"                  => "off",
@@ -265,3 +266,6 @@
     // Close by clicking outside the box
     $options["close_popup_overlay_outside_click"] = isset($options[ 'close_popup_overlay_outside_click' ]) ? esc_attr($options[ 'close_popup_overlay_outside_click' ]) : 'off';
     $close_popup_overlay_outside_click = (isset($options["close_popup_overlay_outside_click"]) && $options["close_popup_overlay_outside_click"] == "on") ? true : false;
+
+    // Popup animation
+    $popup_animation = (isset($options["popup_animation"]) && $options["popup_animation"] != "") ? esc_attr($options["popup_animation"]) : "none";

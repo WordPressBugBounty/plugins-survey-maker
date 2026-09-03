@@ -1409,6 +1409,86 @@ button.ays-survey-links-by-category-link-button:disabled{
    background: #afb0b0;
 }
 
+/* Popup Animations */
+@keyframes ays-popup-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes ays-popup-slide-down {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ays-popup-slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ays-popup-zoom-in {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes ays-popup-bounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.ays-survey-popup-survey-window.ays-popup-animation-fade {
+    animation: ays-popup-fade-in 0.3s ease-in-out;
+}
+
+.ays-survey-popup-survey-window.ays-popup-animation-slide-down {
+    animation: ays-popup-slide-down 0.4s ease-out;
+}
+
+.ays-survey-popup-survey-window.ays-popup-animation-slide-up {
+    animation: ays-popup-slide-up 0.4s ease-out;
+}
+
+.ays-survey-popup-survey-window.ays-popup-animation-zoom-in {
+    animation: ays-popup-zoom-in 0.3s ease-out;
+}
+
+.ays-survey-popup-survey-window.ays-popup-animation-bounce {
+    animation: ays-popup-bounce 0.5s ease-out;
+}
+
 .ays-survey-container .ays-survey-sections .ays-survey-question sup{
    position: static;
    padding-left: 5px;

@@ -1677,19 +1677,19 @@ msgstr ""
 msgid "See All Plugins"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:58
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:59
 msgid "Add new popup"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:61
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:62
 msgid "Edit popup"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:190
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:191
 msgid "On load"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:191
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions-options.php:192
 msgid "On Click"
 msgstr ""
 
@@ -1699,7 +1699,7 @@ msgid "How to use popup surveys"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:25
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:932
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:953
 #: ../admin/partials/surveys/actions/survey-maker-survey-categories-actions.php:31
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:94
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:212
@@ -1707,7 +1707,7 @@ msgid "Save and close"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:34
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:941
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:962
 #: ../admin/partials/surveys/actions/survey-maker-survey-categories-actions.php:42
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:92
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:209
@@ -1721,7 +1721,7 @@ msgstr ""
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:59
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:5
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:103
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:777
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:781
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:681
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:3105
 msgid "Title"
@@ -2076,15 +2076,52 @@ msgid "Delay"
 msgstr ""
 
 #: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:873
+msgid "Popup animation"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:881
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:505
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1212
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1247
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1825
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1845
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:239
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:260
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:743
+#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:813
+msgid "None"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:882
+msgid "Fade in"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:883
+msgid "Slide down"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:884
+msgid "Slide up"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:885
+msgid "Zoom in"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:886
+msgid "Bounce"
+msgstr ""
+
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:894
 msgid "Close by clicking outside the box"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:887
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:908
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:1010
 msgid "Enable full-screen mode"
 msgstr ""
 
-#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:906
+#: ../admin/partials/popup/actions/survey-maker-popup-surveys-actions.php:927
 msgid "Close by pressing the ESC"
 msgstr ""
 
@@ -3573,7 +3610,7 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-survey-categories-actions-tab1.php:56
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:42
 #: ../includes/lists/class-survey-maker-popup-survey-list-table.php:96
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:714
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:718
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:141
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:184
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2979
@@ -3688,7 +3725,7 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:351
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:1343
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab1.php:2338
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:718
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:722
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:624
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2983
 msgid "Edit"
@@ -4114,18 +4151,6 @@ msgstr ""
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1823
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1843
 msgid "Contain"
-msgstr ""
-
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:505
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1212
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1247
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1825
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:1845
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:239
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:260
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:743
-#: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab3.php:813
-msgid "None"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/partials/survey-maker-surveys-actions-tab2.php:513
@@ -5522,7 +5547,7 @@ msgid "E-Mail"
 msgstr ""
 
 #: ../admin/partials/surveys/actions/survey-maker-surveys-actions.php:147
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:690
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:694
 msgid "Publish"
 msgstr ""
 
@@ -6335,7 +6360,7 @@ msgstr ""
 
 #: ../includes/lists/class-survey-maker-each-submission-list-table.php:425
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:71
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:786
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:790
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:473
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:685
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:3119
@@ -6382,7 +6407,7 @@ msgid "Request Date"
 msgstr ""
 
 #: ../includes/lists/class-survey-maker-front-requests-list-table.php:69
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:785
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:789
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:684
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:3118
 msgid "Status"
@@ -6406,12 +6431,12 @@ msgstr ""
 msgid "Trash"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:687
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:691
 msgid "Unpublish"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:709
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:823
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:713
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:827
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:621
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:722
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2974
@@ -6419,8 +6444,8 @@ msgstr ""
 msgid "Restore"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:710
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:824
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:714
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:828
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:629
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:723
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2975
@@ -6428,8 +6453,8 @@ msgstr ""
 msgid "Delete Permanently"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:722
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:818
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:726
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:822
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:633
 #: ../includes/lists/class-survey-maker-survey-categories-list-table.php:717
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:2991
@@ -6437,66 +6462,66 @@ msgstr ""
 msgid "Move to trash"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:781
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:785
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:3109
 msgid "Author"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:784
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:788
 #: ../includes/lists/class-survey-maker-submissions-list-table.php:466
 #: ../includes/lists/class-survey-maker-surveys-list-table.php:49
 msgid "Survey"
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1069
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1073
 msgid "Popup created."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1072
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1076
 msgid "Popup saved."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1075
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1079
 msgid "Popup duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1078
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1082
 msgid "Popup deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1081
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1085
 msgid "Popup moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1084
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1088
 msgid "Popup restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1087
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1091
 msgid "Popups are duplicated."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1090
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1094
 msgid "Popups are deleted."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1093
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1097
 msgid "Popups are moved to trash."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1096
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1100
 msgid "Popups are restored."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1099
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1103
 msgid "Popups are published."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1102
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1106
 msgid "Popups are unpublished."
 msgstr ""
 
-#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1106
+#: ../includes/lists/class-survey-maker-popup-survey-list-table.php:1110
 msgid "Error: Popup title can not be empty."
 msgstr ""
 
