@@ -573,7 +573,7 @@ class Survey_Maker_Admin {
             $this->plugin_name,
             array($this, 'display_plugin_surveys_page'), 
             SURVEY_MAKER_ADMIN_URL . '/images/icons/survey-make-menu-logo.svg',
-            '6.21'
+            '25.20'
         );
         add_action( "load-$hook_survey_maker", array( $this, 'add_tabs' ));
     }
