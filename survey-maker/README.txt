@@ -4,7 +4,7 @@ Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
 Requires at least: 4.0
 Tested up to: 7.1
-Stable tag: 5.2.3.9
+Stable tag: 5.2.4.0
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -331,6 +331,11 @@ post_max_size 256M
 
 == Changelog ==
 
+= 5.2.4.0 ( Sep 22, 2026 ) =
+* Added: Current Survey Page Title message variable on the general settings
+* Improved: Made some changes to the front-end
+* Tested: Compatible up to WordPress 7.1.1
+
 = 5.2.3.9 ( Sep 15, 2026 ) =
 * Added: Survey Category Title message variable on the general settings
 * Improved: Made some changes to the admin dashboard
@@ -347,7 +352,6 @@ post_max_size 256M
 
 = 5.2.3.6 ( Aug 19, 2026 ) =
 * Added: Percentage option for popup survey width
-
 
 = 5.2.3.5 ( Aug 06, 2026 ) =
 * Added: Menu badge style option in the General Settings page

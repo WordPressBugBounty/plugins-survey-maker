@@ -673,14 +673,15 @@
 
                 var data = form.serializeFormJSON();
                 
-                var surveyCurrentPageLink = form.find('input[name="ays_survey_curent_page_link"]').val();
+                var surveyCurrentPageLink = form.find('input[name="ays-survey-curent_page_link"]').val();
+                var surveyCurrentPageTitle = form.find('input[name="ays-survey-curent_page_title"]').val();
                 data.action = _this.ajaxAction;
                 data.function = 'ays_finish_survey';
                 data._ajax_nonce = window.aysSurveyMakerAjaxPublic.ajaxNonce;
                 data.end_date = _this.GetFullDateTime();
                 data.unique_id = _this.uniqueId;
                 data.survey_current_page_link = surveyCurrentPageLink;
-
+                data.survey_current_page_title = surveyCurrentPageTitle;
 
                 var sections = _this.$el.find('.' + _this.htmlClassPrefix + 'sections > .' + _this.htmlClassPrefix + 'section:not(:last-child)');
                 setTimeout( function(){
