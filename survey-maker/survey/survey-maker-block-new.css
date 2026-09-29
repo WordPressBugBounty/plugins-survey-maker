@@ -66,9 +66,8 @@
     background-size: 100px;
 }
 
-
 .ays-survey-wait-loading-loader{
-    display: none;
+    display: none !important;
 }
 
 @media screen and (min-width: 780px) and (max-width: 1200px){
@@ -76,7 +75,6 @@
         width: 100% !important;
     }
 }
-
 
 @media screen and (max-width: 450px){
     .ays_survey_maker_block_select_survey .ays_survey_maker_block_select {

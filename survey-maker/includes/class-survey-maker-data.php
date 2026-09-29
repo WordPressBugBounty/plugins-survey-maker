@@ -1150,59 +1150,31 @@ class Survey_Maker_Data {
     }
 
     public static function get_user_ip(){
-        $ipaddress = '';
-        if( !empty($_SERVER) && !empty($_SERVER['REMOTE_ADDR']) ){
-            $ipaddress = isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] ? sanitize_text_field($_SERVER['REMOTE_ADDR']) : 'UNKNOWN';
-        } else {
-            if (getenv('REMOTE_ADDR'))
-                $ipaddress = getenv('REMOTE_ADDR');
-            elseif (getenv('HTTP_CLIENT_IP'))
-                $ipaddress = getenv('HTTP_CLIENT_IP');
-            else if (getenv('HTTP_X_FORWARDED_FOR'))
-                $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-            else if (getenv('HTTP_X_FORWARDED'))
-                $ipaddress = getenv('HTTP_X_FORWARDED');
-            else if (getenv('HTTP_FORWARDED_FOR'))
-                $ipaddress = getenv('HTTP_FORWARDED_FOR');
-            else if (getenv('HTTP_FORWARDED'))
-                $ipaddress = getenv('HTTP_FORWARDED');
-            else
-                $ipaddress = 'UNKNOWN';
-        }
-        return $ipaddress;
-    }
+        $ipaddress = false;
 
-    // OLD
-    // public static function get_user_ip_validated(){
-    //     $ipaddress = '';
-    //     if (getenv('REMOTE_ADDR')){
-    //         $ipaddress = getenv('REMOTE_ADDR');
-    //     }
-    //     elseif (getenv('HTTP_CLIENT_IP')){
-    //         $ipaddress = getenv('HTTP_CLIENT_IP');
-    //     }
-    //     else if (getenv('HTTP_X_FORWARDED_FOR')){
-    //         $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
-    //     }
-    //     else if (getenv('HTTP_X_FORWARDED')){
-    //         $ipaddress = getenv('HTTP_X_FORWARDED');
-    //     }
-    //     else if (getenv('HTTP_FORWARDED_FOR')){
-    //         $ipaddress = getenv('HTTP_FORWARDED_FOR');
-    //     }
-    //     else if (getenv('HTTP_FORWARDED')){
-    //         $ipaddress = getenv('HTTP_FORWARDED');
-    //     }
-    //     else{
-    //         $ipaddress = 'UNKNOWN';
-    //     }
-    //     // Validate the IP address
-    //     if (filter_var($ipaddress, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6) && $ipaddress !== '0.0.0.0') {
-    //         return $ipaddress;
-    //     }
-    //     return 'UNKNOWN';
-        
-    // }
+        if (getenv('HTTP_CLIENT_IP')) {
+            $ipaddress = getenv('HTTP_CLIENT_IP');
+        } else if (getenv('HTTP_X_FORWARDED_FOR')) {
+            $ipaddress = getenv('HTTP_X_FORWARDED_FOR');
+        } else if (getenv('HTTP_X_FORWARDED')) {
+            $ipaddress = getenv('HTTP_X_FORWARDED');
+        } else if (getenv('HTTP_FORWARDED_FOR')) {
+            $ipaddress = getenv('HTTP_FORWARDED_FOR');
+        } else if (getenv('HTTP_FORWARDED')) {
+            $ipaddress = getenv('HTTP_FORWARDED');
+        }
+
+        if ( $ipaddress !== false && filter_var( $ipaddress, FILTER_VALIDATE_IP ) !== false ) {
+            return $ipaddress;
+        }
+
+        $remote_address = getenv('REMOTE_ADDR');
+        if ( $remote_address !== false && filter_var( $remote_address, FILTER_VALIDATE_IP ) !== false ) {
+            return $remote_address;
+        }
+
+        return 'UNKNOWN';
+    }    
 
     // FOR REVIEW
     public static function get_user_ip_validated(){
