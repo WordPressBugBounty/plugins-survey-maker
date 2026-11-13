@@ -33,27 +33,29 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 if( get_option('ays_survey_maker_upgrade_plugin','false') === 'false' ){
     global $wpdb;
 
-    $surveys_table                  = $wpdb->prefix . 'ayssurvey_surveys';
-    $questions_table                = $wpdb->prefix . 'ayssurvey_questions';
-    $sections_table                 = $wpdb->prefix . 'ayssurvey_sections';
-    $survey_categories_table        = $wpdb->prefix . 'ayssurvey_survey_categories';
-    $question_categories_table      = $wpdb->prefix . 'ayssurvey_question_categories';
-    $answers_table                  = $wpdb->prefix . 'ayssurvey_answers';
-    $submissions_table              = $wpdb->prefix . 'ayssurvey_submissions';
-    $submissions_questions_table    = $wpdb->prefix . 'ayssurvey_submissions_questions';
-    $settings_table                 = $wpdb->prefix . 'ayssurvey_settings';    
-    $popup_surveys_table            = $wpdb->prefix . 'ayssurvey_popup_surveys';
+    $surveys_table                  = esc_sql( $wpdb->prefix . 'ayssurvey_surveys' );
+    $questions_table                = esc_sql( $wpdb->prefix . 'ayssurvey_questions' );
+    $sections_table                 = esc_sql( $wpdb->prefix . 'ayssurvey_sections' );
+    $survey_categories_table        = esc_sql( $wpdb->prefix . 'ayssurvey_survey_categories' );
+    $question_categories_table      = esc_sql( $wpdb->prefix . 'ayssurvey_question_categories' );
+    $answers_table                  = esc_sql( $wpdb->prefix . 'ayssurvey_answers' );
+    $submissions_table              = esc_sql( $wpdb->prefix . 'ayssurvey_submissions' );
+    $submissions_questions_table    = esc_sql( $wpdb->prefix . 'ayssurvey_submissions_questions' );
+    $settings_table                 = esc_sql( $wpdb->prefix . 'ayssurvey_settings' );
+    $popup_surveys_table            = esc_sql( $wpdb->prefix . 'ayssurvey_popup_surveys' );
 
-    $wpdb->query("DROP TABLE IF EXISTS `".$surveys_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$questions_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$sections_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$survey_categories_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$question_categories_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$answers_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$submissions_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$submissions_questions_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$settings_table."`");
-    $wpdb->query("DROP TABLE IF EXISTS `".$popup_surveys_table."`");
+    // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Plugin uninstall removes its own custom tables; table names are built from $wpdb->prefix and escaped with esc_sql().
+    $wpdb->query( "DROP TABLE IF EXISTS `{$surveys_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$questions_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$sections_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$survey_categories_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$question_categories_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$answers_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$submissions_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$submissions_questions_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$settings_table}`" );
+    $wpdb->query( "DROP TABLE IF EXISTS `{$popup_surveys_table}`" );
+    // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
     delete_option( "ays_survey_db_version");
     delete_option( "ays_survey_maker_upgrade_plugin");

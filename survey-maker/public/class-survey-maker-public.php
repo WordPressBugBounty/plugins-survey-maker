@@ -177,7 +177,7 @@ class Survey_Maker_Public {
 		$results = array(
 			"status" => false
 		);
-		$function = isset($_REQUEST['function']) ? $_REQUEST['function'] : null;
+		$function = isset($_REQUEST['function']) ? sanitize_text_field( wp_unslash( $_REQUEST['function'] ) ) : null;
 		if($function !== null){
 			$data = $_REQUEST;
 			$results = array();
@@ -363,8 +363,12 @@ class Survey_Maker_Public {
                 // User wordpress email
                 $user_wordpress_email = (isset( $survey_user_information['user_wordpress_email'] ) && $survey_user_information['user_wordpress_email']  != "") ? esc_attr($survey_user_information['user_wordpress_email']) : '';
                 
+                // Submission end date (the nonce is verified in ays_survey_ajax() before this method is called)
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+                $survey_request_end_date = isset( $_REQUEST['end_date'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['end_date'] ) ) : '';
+
                 // Current date
-                $survey_current_date = date_i18n( 'M d, Y', strtotime( sanitize_text_field( $_REQUEST['end_date'] ) ) );
+                $survey_current_date = date_i18n( 'M d, Y', strtotime( $survey_request_end_date ) );
                 
                 // WP home page url
                 $home_main_url = home_url();
@@ -375,10 +379,10 @@ class Survey_Maker_Public {
                 $survey_current_time_only = ($survey_current_time[1]) ? $survey_current_time[1] : '';
 
                 // Current day
-                $survey_current_day  = date_i18n( 'l', strtotime( sanitize_text_field( $_REQUEST['end_date'] ) ) );
+                $survey_current_day  = date_i18n( 'l', strtotime( $survey_request_end_date ) );
 
                 // Current month
-                $survey_current_month  = date_i18n( 'F', strtotime( sanitize_text_field( $_REQUEST['end_date'] ) ) );
+                $survey_current_month  = date_i18n( 'F', strtotime( $survey_request_end_date ) );
 
                 // Get survey author
                 $current_survey_user_data = get_userdata( $survey->author_id );
@@ -622,6 +626,7 @@ class Survey_Maker_Public {
             'device' => $detectedDevice,
         );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $results_submissions = $wpdb->insert(
             $submissions_table,
             array(
@@ -758,6 +763,7 @@ class Survey_Maker_Public {
                     break;
             }
 
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
             $results_submissions_quests = $wpdb->insert(
                 $submissions_questions_table,
                 array(
@@ -1304,8 +1310,10 @@ class Survey_Maker_Public {
     	$content[] = '<form class="' . $this->html_class_prefix . 'form" method="post">';
     	$content[] = '<input type="hidden" name="'. $this->html_name_prefix .'id-' . $unique_id . '" value="'. $id .'">';
         // Get survey current page
-        $ays_survey_protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";         
-        $current_survey_page_link = esc_url( $ays_survey_protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] );
+        $ays_survey_protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || ( isset( $_SERVER['SERVER_PORT'] ) && $_SERVER['SERVER_PORT'] == 443 )) ? "https://" : "http://";
+        $ays_survey_http_host   = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+        $ays_survey_request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+        $current_survey_page_link = esc_url( $ays_survey_protocol . $ays_survey_http_host . $ays_survey_request_uri );
     	$content[] = '<input type="hidden" name="'. $this->html_name_prefix .'current_page_link" value="'. $current_survey_page_link .'">';
 
         $current_survey_page_title = get_the_title();
@@ -1496,7 +1504,9 @@ class Survey_Maker_Public {
                     }
 
                     if( $this->options[ $this->name_prefix . 'social_buttons' ] ){
-                        $actual_link = "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+                        $actual_link_host = isset( $_SERVER['HTTP_HOST'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_HOST'] ) ) : '';
+                        $actual_link_uri  = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
+                        $actual_link = "://" . $actual_link_host . $actual_link_uri;
                         if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === "on"){
                             $actual_link = "https" . $actual_link;
                         }else{
@@ -1724,7 +1734,7 @@ class Survey_Maker_Public {
                     }
                     if(!($this->options[ $this->name_prefix . 'hide_section_pagination_text' ])){
                         $content[] = "<div class='" . $this->html_class_prefix . "live-bar-status'>
-                                        <span class='" . $this->html_class_prefix . "live-bar-status-text'>".sprintf(__("%s %s of %s" , "survey-maker") , $this->options[ $this->name_prefix . 'progress_bar_text' ] , "<span class='" . $this->html_class_prefix . "live-bar-changeable-text'>1</span>" , $section_count)."</span>
+                                        <span class='" . $this->html_class_prefix . "live-bar-status-text'>".sprintf(/* translators: %1$s: progress bar text, %2$s: current section number, %3$s: total number of sections */ __("%1\$s %2\$s of %3\$s" , "survey-maker") , $this->options[ $this->name_prefix . 'progress_bar_text' ] , "<span class='" . $this->html_class_prefix . "live-bar-changeable-text'>1</span>" , $section_count)."</span>
                                         </div>";
                     }
                     $content[] = "</div>";
@@ -2248,7 +2258,8 @@ class Survey_Maker_Public {
         //checked Input
         $enable_url_parameter =  isset($question['options']['enable_url_parameter']) && $question['options']['enable_url_parameter'] == true ? true : false;
         $url_parameter = $enable_url_parameter && isset($question['options']['url_parameter']) && $question['options']['url_parameter'] != "" ? $question['options']['url_parameter'] : ''; 
-        $selected_input = isset($_GET[$url_parameter]) && $_GET[$url_parameter] ? $_GET[$url_parameter] : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only URL parameter used to prefill the answer, no data is modified.
+        $selected_input = $url_parameter !== '' && ! empty( $_GET[ $url_parameter ] ) ? sanitize_text_field( wp_unslash( $_GET[ $url_parameter ] ) ) : '';
 
         $star_label_1 = (isset($question['options']['star_1']) && $question['options']['star_1'] != '') ? $question['options']['star_1'] : '';
         $star_label_2 = (isset($question['options']['star_2']) && $question['options']['star_2'] != '') ? $question['options']['star_2'] : '';
@@ -2343,7 +2354,7 @@ class Survey_Maker_Public {
                                     $this->html_class_prefix . 'question-input ' . 
                                     $this->html_class_prefix . 'input
                                     ' . $this->html_class_prefix . 'answer-text-inputs" type="text" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
+                                    placeholder="'. esc_attr( $survey_input_type_placeholder ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
                     $content[] = '</textarea>';
 
@@ -2433,7 +2444,7 @@ class Survey_Maker_Public {
                                     $survey_question_limit_length_class . 
                                     $this->html_class_prefix . 'input
                                     ' . $this->html_class_prefix . 'answer-text-inputs" type="text" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
+                                    placeholder="'. esc_attr( $survey_input_type_placeholder ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
 
                     if( ! $minimal_theme ){
@@ -2530,7 +2541,7 @@ class Survey_Maker_Public {
                                     $this->html_class_prefix . 'question-input ' . 
                                     $number_limit_class  . 
                                     $this->html_class_prefix . 'input" type="number" step="any" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
+                                    placeholder="'. esc_attr( $survey_input_type_placeholder ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
                     if( ! $minimal_theme ){
                         $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
@@ -2589,7 +2600,8 @@ class Survey_Maker_Public {
         //Input types value
         $enable_url_parameter    =  isset($question['options']['enable_url_parameter']) && $question['options']['enable_url_parameter'] == true ? true : false;
         $url_parameter           = $enable_url_parameter && isset($question['options']['url_parameter']) && $question['options']['url_parameter'] != "" ? $question['options']['url_parameter'] : ''; 
-        $survey_input_type_value = isset($_GET[$url_parameter]) && $_GET[$url_parameter] ? $_GET[$url_parameter] : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only URL parameter used to prefill the answer, no data is modified.
+        $survey_input_type_value = $url_parameter !== '' && ! empty( $_GET[ $url_parameter ] ) ? sanitize_text_field( wp_unslash( $_GET[ $url_parameter ] ) ) : '';
 
         $enable_number_limit         = isset($question['options']['enable_number_limitation']) && $question['options']['enable_number_limitation'] == "on" ? true : false;
         $enable_number_limit_message = isset($question['options']['enable_number_error_message']) && $question['options']['enable_number_error_message'] == "on" ? true : false;
@@ -2633,9 +2645,9 @@ class Survey_Maker_Public {
                 $content[] = '<div class="' . $this->html_class_prefix . 'question-input-box">';
 
                     $content[] = '<input class="' . $minimal_class . ' '.$number_limit_class.' ' . $this->html_class_prefix . 'answer-text-inputs ' . $this->html_class_prefix . 'answer-text-inputs-default" type="text" tabindex="0" step="any" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
+                                    placeholder="'. esc_attr( $survey_input_type_placeholder ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]"
-                                    value="' . __( $survey_input_type_value, "survey-maker" ) . '">';
+                                    value="' . esc_attr( $survey_input_type_value ) . '">';
 
                         if( ! $minimal_theme ){
                             $content[] = '<div class="' . $this->html_class_prefix . 'input-underline"></div>';
@@ -2800,7 +2812,7 @@ class Survey_Maker_Public {
                                     $this->html_class_prefix . 'question-email-input ' . 
                                     $this->html_class_prefix . 'question-input ' . 
                                     $this->html_class_prefix . 'input" type="text" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
+                                    placeholder="'. esc_attr( $survey_input_type_placeholder ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
                     if( true ){
                         $content[] = '<input type="hidden" name="' . $this->html_name_prefix . 'user-email-' . $this->unique_id . '" value="' . $question['id'] . '" >';
@@ -2844,7 +2856,7 @@ class Survey_Maker_Public {
                                     $this->html_class_prefix . 'question-input ' . 
                                     $this->html_class_prefix . 'input
                                     ' . $this->html_class_prefix . 'answer-text-inputs" type="text" style="min-height: 24px;"
-                                    placeholder="'. __( $survey_input_type_placeholder, "survey-maker" ) .'"
+                                    placeholder="'. esc_attr( $survey_input_type_placeholder ) .'"
                                     name="' . $this->html_name_prefix . 'answers-' . $this->unique_id . '[' . $question['id'] . '][answer]" autocomplete="off">';
 
                     if( true ){
@@ -3745,7 +3757,7 @@ class Survey_Maker_Public {
 
     public function ays_survey_get_user_information() {
         $output = array();
-        if(isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'survey_maker_autofill_nonce')){
+        if(isset($_POST['nonce']) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'survey_maker_autofill_nonce')){
             if(is_user_logged_in()) {
                 $user = wp_get_current_user();
 
@@ -3772,19 +3784,22 @@ class Survey_Maker_Public {
             return [];
         }
 
-        $ids_sql = implode(',', $ids);
+        $ids = array_values( $ids );
+        $ids_placeholders = implode( ',', array_fill( 0, count( $ids ), '%d' ) );
 
-        $sql = "SELECT *
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Custom plugin table; the IN() and FIELD() lists contain only %d placeholders, the IDs are passed to $wpdb->prepare().
+        return $wpdb->get_results( $wpdb->prepare( "SELECT *
                 FROM {$wpdb->prefix}ayssurvey_survey_categories
-                WHERE id IN ($ids_sql)
-                ORDER BY FIELD(id, $ids_sql)";
-
-        return $wpdb->get_results($sql, ARRAY_A);
+                WHERE id IN ({$ids_placeholders})
+                ORDER BY FIELD(id, {$ids_placeholders})", array_merge( $ids, $ids ) ), ARRAY_A );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare
     }    
 
     public function ays_survey_popup_set_cookie(){
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- The nonce is verified in ays_survey_ajax() before this method is called.
         if( isset( $_REQUEST['id'] ) && $_REQUEST['id'] != '' ){
-            $id = sanitize_text_field( $_REQUEST['id'] );
+            $id = sanitize_text_field( wp_unslash( $_REQUEST['id'] ) );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
         }else{
             $id = null;
         }
@@ -4069,14 +4084,15 @@ class Survey_Maker_Public {
     public function ays_popup_shortcode_content( $id, $attr ){
         global $wpdb;
         $post_id = get_the_ID();
-        $popup_surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys";
-        $surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
-        $sql = "SELECT p_s.*, s.options as s_options, s.status as survey_status 
-                FROM {$popup_surveys_table} as p_s 
-                LEFT JOIN {$surveys_table} AS s 
-                    ON p_s.survey_id = s.id 
-                WHERE p_s.id = {$id}";
-        $popup = $wpdb->get_row( $sql, "ARRAY_A" );
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin tables; table names are built from $wpdb->prefix and escaped with esc_sql().
+        $popup = $wpdb->get_row( $wpdb->prepare( "SELECT p_s.*, s.options as s_options, s.status as survey_status
+                FROM {$popup_surveys_table} as p_s
+                LEFT JOIN {$surveys_table} AS s
+                    ON p_s.survey_id = s.id
+                WHERE p_s.id = %d", absint( $id ) ), "ARRAY_A" );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         
         if( empty( $popup ) ){
             return '';
@@ -4581,14 +4597,15 @@ class Survey_Maker_Public {
     public function ays_shortcodes_show_all(){
         global $wpdb;
         $post_id = get_the_ID();
-        $popup_surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys";
-        $surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
-        $sql = "SELECT p_s.*, s.options as s_options, s.status as survey_status 
-                FROM {$popup_surveys_table} as p_s 
-                LEFT JOIN {$surveys_table} AS s 
-                    ON p_s.survey_id = s.id 
-                WHERE p_s.status = 'published'";
-        $result = $wpdb->get_results( $sql, "ARRAY_A" );
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin tables; table names are built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_results( $wpdb->prepare( "SELECT p_s.*, s.options as s_options, s.status as survey_status
+                FROM {$popup_surveys_table} as p_s
+                LEFT JOIN {$surveys_table} AS s
+                    ON p_s.survey_id = s.id
+                WHERE p_s.status = %s", 'published' ), "ARRAY_A" );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         foreach($result as $key => $value){
             echo do_shortcode('[ays_survey_popup id="'. $value['id'] .'"]');

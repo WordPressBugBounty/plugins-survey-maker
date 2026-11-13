@@ -2,9 +2,9 @@
 Contributors: ays-pro
 Donate link: https://ays-pro.com/
 Tags: survey, feedback, form, questionnaire, form builder
-Requires at least: 4.0
+Requires at least: 5.0
 Tested up to: 7.1
-Stable tag: 5.2.4.2
+Stable tag: 5.2.4.4
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -330,6 +330,18 @@ max_input_time 600
 post_max_size 256M
 
 == Changelog ==
+
+= 5.2.4.4 ( Nov 12, 2026 ) =
+* Added: Survey title shortcode to the General Settings page
+* Improved: Added nonce and capability checks to the question preview request
+* Improved: Restricted admin-only AJAX actions to logged-in users
+* Updated: POT file
+* Fixed: Security issue in the question preview
+* Fixed: WordPress Plugin Check errors and warnings
+* Fixed: Code corrections on the admin dashboard and front-end
+
+= 5.2.4.3 ( Oct 23, 2026 ) =
+* Improved: Made some changes to the admin dashboard
 
 = 5.2.4.2 ( Oct 20, 2026 ) =
 * Added: Survey Category Description message variable on the general settings

@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 $example_export_path = SURVEY_MAKER_ADMIN_URL . '/partials/export-import/survey-export-example.json';
 ?>
 <div class="wrap ays_results_table">
@@ -13,7 +16,7 @@ $example_export_path = SURVEY_MAKER_ADMIN_URL . '/partials/export-import/survey-
         </div>
         <h1 class="wp-heading-inline">
             <?php
-            echo esc_html(__(get_admin_page_title(),"survey-maker"));
+            echo esc_html( get_admin_page_title() );
             ?>
         </h1>
         <?php do_action('ays_survey_sale_banner'); ?>

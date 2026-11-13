@@ -1,4 +1,9 @@
-<?php echo html_entity_decode(esc_html( $survey_colors )); ?>
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
+<?php echo $survey_colors; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static inline CSS; the only dynamic value (color) is escaped where the string is built. ?>
 <div id="tab1" class="m2 ays-survey-tab-content <?php echo ($ays_tab == 'tab1') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="form-group row">
         <div class="col-sm-12 col-lg-12">
@@ -613,7 +618,7 @@
                                                                                 $star_scale_option_selected = (5 == $s_i) ? "selected" : "";
                                                                                 $star_scale_options .= "<option value=".$s_i." ".$star_scale_option_selected.">".$s_i."</option>";
                                                                             }
-                                                                            echo $star_scale_options;
+                                                                            echo wp_kses( $star_scale_options, array( 'option' => array( 'value' => true, 'selected' => true ) ) );
                                                                         ?>
                                                                     </select>
                                                                 </div>
@@ -1202,7 +1207,7 @@
                                         ?>
                                         <div class="ays-survey-question-answer-conteiner ays-survey-old-question" data-name="questions" data-id="<?php echo esc_attr($question['id']); ?>">
                                             <input type="hidden" class="ays-survey-question-collapsed-input" name="<?php echo esc_attr($html_name_prefix); ?>sections[<?php echo esc_attr($section['id']); ?>][questions][<?php echo esc_attr($question['id']); ?>][options][collapsed]" value="<?php echo esc_attr($question['options']['collapsed']); ?>">
-                                            <input type="hidden" class="ays-survey-question-admin-note-saver" name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][enable_admin_note]" value="<?php echo $question['options']['enable_admin_note'] ? 'on' : 'off'; ?>">
+                                            <input type="hidden" class="ays-survey-question-admin-note-saver" name="<?php echo esc_attr( $html_name_prefix ); ?>sections[<?php echo esc_attr( $section['id'] ); ?>][questions][<?php echo esc_attr( $question['id'] ); ?>][options][enable_admin_note]" value="<?php echo $question['options']['enable_admin_note'] ? 'on' : 'off'; ?>">
                                             <input type="hidden" class="ays-survey-question-value-prefix-saver" name="<?php echo esc_attr($html_name_prefix); ?>sections[<?php echo esc_attr($section['id']); ?>][questions][<?php echo esc_attr($question['id']); ?>][options][enable_value_prefix]" value="<?php echo $question['options']['enable_value_prefix'] ? 'on' : 'off'; ?>">
 	                                        <input type="hidden" class="ays-survey-question-value-suffix-saver" name="<?php echo esc_attr($html_name_prefix); ?>sections[<?php echo esc_attr($section['id']); ?>][questions][<?php echo esc_attr($question['id']); ?>][options][enable_value_suffix]" value="<?php echo $question['options']['enable_value_suffix'] ? 'on' : 'off'; ?>">
                                             <div class="ays-survey-question-wrap-collapsed <?php echo $question['options']['collapsed'] == 'expanded' ? 'display_none' : ''; ?>">
@@ -1260,7 +1265,7 @@
                                                                     <div class="ays-survey-input-underline"></div>
                                                                     <div class="ays-survey-input-underline-animation"></div>
                                                                 </div>                                                                
-                                                                <div class="ays-survey-question-preview-box <?php echo $question['options']['with_editor'] ? '' : 'display_none'; ?>"><?php echo (strpos($question['question'],'<script>') !== false) ? strip_tags(Survey_Maker_Data::survey_sanitize_specific_content($question['question'])) : Survey_Maker_Data::survey_sanitize_specific_content($question['question']); ?></div>
+                                                                <div class="ays-survey-question-preview-box <?php echo $question['options']['with_editor'] ? '' : 'display_none'; ?>"><?php echo (strpos($question['question'],'<script>') !== false) ? esc_html( wp_strip_all_tags(Survey_Maker_Data::survey_sanitize_specific_content($question['question'])) ) : wp_kses( Survey_Maker_Data::survey_sanitize_specific_content($question['question']), Survey_Maker_Data::ays_survey_custom_allowed_html() ); ?></div>
                                                             </div>
                                                             <div class="ays-survey-question-img-icon-box">
                                                                 <div class="ays-survey-open-question-editor appsMaterialWizButtonPapericonbuttonEl" data-question-id="<?php echo esc_attr($question['id']); ?>" data-container="body" data-toggle="popover" data-trigger="hover" data-placement="auto" data-content="<?php echo esc_attr__('Open editor',"survey-maker")?>">
@@ -1544,7 +1549,7 @@
                                                                                         $scale_option_selected = ($star_scale_length == $s_i) ? "selected" : "";
                                                                                         $scale_options .= "<option value=".$s_i." ".$scale_option_selected.">".$s_i."</option>";
                                                                                     }
-                                                                                    echo $scale_options;
+                                                                                    echo wp_kses( $scale_options, array( 'option' => array( 'value' => true, 'selected' => true ) ) );
                                                                                 ?>
                                                                             </select>
                                                                         </div>
@@ -1895,11 +1900,11 @@
                                                     <div class="ays-survey-question-admin-note <?php echo $question['options']['enable_admin_note'] ? "" : "display_none";?>">
                                                         <div class="ays-survey-answer-box" style="margin: 20px 0px;">
                                                             <label class="ays-survey-question-admin-note-label">
-                                                                <span><?php echo __( "Admin note", SURVEY_MAKER_NAME ); ?></span>
+                                                                <span><?php echo esc_html__( "Admin note", "survey-maker" ); ?></span>
                                                                 <input type="text" class="ays-survey-input" autocomplete="off" tabindex="0" 
-                                                                    placeholder="<?php echo __( "Your example here", SURVEY_MAKER_NAME ); ?>" style="font-size: 14px;" 
-                                                                    name="<?php echo $html_name_prefix; ?>sections[<?php echo $section['id']; ?>][questions][<?php echo $question['id']; ?>][options][admin_note]" 
-                                                                    value="<?php echo $question['options']['admin_note']; ?>" min="0">
+                                                                    placeholder="<?php echo esc_attr__( "Your example here", "survey-maker" ); ?>" style="font-size: 14px;" 
+                                                                    name="<?php echo esc_attr( $html_name_prefix ); ?>sections[<?php echo esc_attr( $section['id'] ); ?>][questions][<?php echo esc_attr( $question['id'] ); ?>][options][admin_note]" 
+                                                                    value="<?php echo esc_attr( $question['options']['admin_note'] ); ?>" min="0">
                                                                 <div class="ays-survey-input-underline"></div> 
                                                                 <div class="ays-survey-input-underline-animation"></div>
                                                             </label>
@@ -2016,8 +2021,8 @@
                                                                 <button type="button" class="dropdown-item ays-survey-question-action" data-action="word-limitation-enable"><?php echo esc_html__( 'Enable word limitation', "survey-maker" ); ?></button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action" data-action="number-word-limitation-enable"><?php echo esc_html__( 'Enable limitation', "survey-maker" ); ?></button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action" data-action="<?php echo $question['options']['enable_admin_note'] ? "disable-admin-note" : "enable-admin-note"; ?>">
-                                                                    <img class="ays-survey-question-action-icon <?php echo $question['options']['enable_admin_note'] ? '' : 'display_none'; ?>" src="<?php echo SURVEY_MAKER_ADMIN_URL; ?>/images/icons/done.svg">
-                                                                    <?php echo __( 'Admin Note', SURVEY_MAKER_NAME ); ?>
+                                                                    <img class="ays-survey-question-action-icon <?php echo $question['options']['enable_admin_note'] ? '' : 'display_none'; ?>" src="<?php echo esc_url( SURVEY_MAKER_ADMIN_URL ); ?>/images/icons/done.svg">
+                                                                    <?php echo esc_html__( 'Admin Note', "survey-maker" ); ?>
                                                                 </button>
                                                                 <button type="button" class="dropdown-item ays-survey-question-action <?php echo esc_attr($question['type']) == 'calculation' || $question['type'] == 'phone' || $question['type'] == 'short_text' || $question['type'] == 'number' ? '' : 'display_none'; ?>" data-action="<?php echo $question['options']['enable_value_prefix'] ? "disable-value-prefix" : "enable-value-prefix"; ?>">
                                                                     <img class="ays-survey-question-action-icon <?php echo $question['options']['enable_value_prefix'] ? '' : 'display_none'; ?>" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/done.svg">

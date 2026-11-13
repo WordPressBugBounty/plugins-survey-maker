@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 global $ays_survey_db_version;
 $ays_survey_db_version = '1.0.4';
 
@@ -75,10 +78,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$surveys_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -104,10 +107,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$questions_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -126,10 +129,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$survey_categories_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -145,10 +148,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$sections_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -167,10 +170,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$question_categories_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -187,10 +190,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$answers_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -217,10 +220,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$submissions_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -243,10 +246,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$submissions_questions_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -262,10 +265,10 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$settings_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
@@ -286,19 +289,21 @@ class Survey_Maker_Activator {
 
             $sql_schema = "SELECT * FROM INFORMATION_SCHEMA.TABLES
                            WHERE table_schema = '".DB_NAME."' AND table_name = '".$popup_surveys_table."' ";
-            $results = $wpdb->get_results($sql_schema);
+            $results = $wpdb->get_results($sql_schema); // phpcs:ignore
 
             if(empty($results)){
-                $wpdb->query( $sql );
+                $wpdb->query( $sql ); // phpcs:ignore
             }else{
                 dbDelta( $sql );
             }
 
             update_option( 'ays_survey_db_version', $ays_survey_db_version );
             
-            $survey_categories = $wpdb->get_var( "SELECT COUNT(*) FROM " . $survey_categories_table );            
+            $survey_categories = $wpdb->get_var( "SELECT COUNT(*) FROM " . $survey_categories_table ); // phpcs:ignore
             if( intval($survey_categories) == 0 ){
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Plugin activation; the custom table name is built from $wpdb->prefix and a constant, no user input.
                 $wpdb->query("TRUNCATE TABLE `{$survey_categories_table}`");
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin activation; inserts default data into the custom plugin table.
                 $wpdb->insert( $survey_categories_table, array(
                     'title' => 'Uncategorized',
                     'description' => '',
@@ -308,9 +313,11 @@ class Survey_Maker_Activator {
                 ) );
             }
 
-            $question_categories = $wpdb->get_var( "SELECT COUNT(*) FROM " . $question_categories_table );            
+            $question_categories = $wpdb->get_var( "SELECT COUNT(*) FROM " . $question_categories_table ); // phpcs:ignore
             if( intval($question_categories) == 0 ){
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Plugin activation; the custom table name is built from $wpdb->prefix and a constant, no user input.
                 $wpdb->query("TRUNCATE TABLE `{$question_categories_table}`");
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin activation; inserts default data into the custom plugin table.
                 $wpdb->insert( $question_categories_table, array(
                     'title' => 'Uncategorized',
                     'description' => '',
@@ -320,9 +327,9 @@ class Survey_Maker_Activator {
                 ) );
             }
 
-            $survey_questions = $wpdb->get_var("SELECT COUNT(*) FROM " . $questions_table);
-            $surveys_count    = $wpdb->get_var("SELECT COUNT(*) FROM " . $surveys_table);
-            $sections_count   = $wpdb->get_var("SELECT COUNT(*) FROM " . $sections_table);
+            $survey_questions = $wpdb->get_var("SELECT COUNT(*) FROM " . $questions_table); // phpcs:ignore
+            $surveys_count    = $wpdb->get_var("SELECT COUNT(*) FROM " . $surveys_table); // phpcs:ignore
+            $sections_count   = $wpdb->get_var("SELECT COUNT(*) FROM " . $sections_table); // phpcs:ignore
             if($survey_questions == 0 && $surveys_count == 0 && $sections_count == 0){
                 $user_id = get_current_user_id();
                 $default_options = array(
@@ -814,14 +821,18 @@ class Survey_Maker_Activator {
                 );
                 foreach($survey_default as $key => $survey){
                     foreach($sections_default[$key] as $section_key => $section){
+                        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin activation; inserts default data into the custom plugin table.
                         $wpdb->insert($sections_table, $section);
                     }
                     foreach($questions_default[$key] as $section_key => $section){
+                        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin activation; inserts default data into the custom plugin table.
                         $wpdb->insert($questions_table, $section);
                     }
                     foreach($answers_default[$key] as $answer_key => $answer){
+                        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin activation; inserts default data into the custom plugin table.
                         $wpdb->insert($answers_table, $answer);
                     }
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Plugin activation; inserts default data into the custom plugin table.
                     $wpdb->insert($surveys_table, $survey);
                     
                     $inserted_id = $wpdb->insert_id;
@@ -857,8 +868,9 @@ class Survey_Maker_Activator {
                 $meta_val = json_encode(array('administrator'));
             }
             $sql = "SELECT COUNT(*) FROM `".$settings_table."` WHERE `meta_key` = '". esc_sql( $meta_key ) ."'";
-            $result = $wpdb->get_var($sql);
+            $result = $wpdb->get_var($sql); // phpcs:ignore
             if(intval($result) == 0){
+                // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value -- Plugin activation; custom plugin settings table (not the WordPress meta tables).
                 $result = $wpdb->insert(
                     $settings_table,
                     array(
@@ -869,6 +881,7 @@ class Survey_Maker_Activator {
                     ),
                     array( '%s', '%s', '%s', '%s' )
                 );
+                // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.SlowDBQuery.slow_db_query_meta_key, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
             }
         }
 

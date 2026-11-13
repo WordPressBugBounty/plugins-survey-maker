@@ -1,4 +1,8 @@
 <?php
+    if ( ! defined( 'ABSPATH' ) ) {
+        exit;
+    }
+
     require_once( SURVEY_MAKER_ADMIN_PATH . "/partials/surveys/actions/survey-maker-surveys-actions-options.php" );
 ?>
 
@@ -50,7 +54,7 @@
                                     <input type="radio" class="ays-survey-surveys-each-data-checker" hidden id="ays_survey_message_var_count_<?php echo esc_attr($var_counter)?>" name="ays_survey_message_var_count">
                                     <div class="ays-survey-surveys-each-data">
                                         <input type="hidden" class="ays-survey-surveys-each-var" value="<?php echo esc_attr($var); ?>">
-                                        <a href="?page=survey-maker&action=edit&id=<?php echo esc_attr($var_name['id']); ?>" target="_blank" class="ays-survey-go-to-surveys"><span><?php echo stripslashes(esc_attr($var_name['title'])); ?></span></a>
+                                        <a href="?page=survey-maker&action=edit&id=<?php echo esc_attr($var_name['id']); ?>" target="_blank" class="ays-survey-go-to-surveys"><span><?php echo esc_html( stripslashes( $var_name['title'] ) ); ?></span></a>
                                     </div>
                                 </label>              
                             <?php endforeach ?>
@@ -193,11 +197,8 @@
                 <?php
                     wp_nonce_field('survey_action', 'survey_action');
                     $other_attributes = array();
-                    $buttons_html = '';
-                    $buttons_html .= '<div class="ays_save_buttons_content">';
-                        $buttons_html .= '<div class="ays_save_buttons_box">';
-                        // echo $buttons_html;                        
-                        echo html_entity_decode(esc_html( $buttons_html ));
+                    echo '<div class="ays_save_buttons_content">';
+                        echo '<div class="ays_save_buttons_box">';
 
                             $save_attributes = array(
                                 'id' => 'ays-button-apply',
@@ -214,11 +215,9 @@
                           
                             submit_button(__('Cancel', "survey-maker"), 'ays-button', 'ays_survey_cancel', false, array());
                             echo wp_kses_post($loader_iamge);
-                        $buttons_html = '</div>';
-                        echo html_entity_decode(esc_html( $buttons_html ));
+                        echo '</div>';
 
-                    $buttons_html = "</div>";
-                    echo html_entity_decode(esc_html( $buttons_html ));
+                    echo '</div>';
                 ?>
                 </div>
                 <div class="ays-surveys-button-second-row">

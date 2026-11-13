@@ -1,6 +1,11 @@
 <?php
-    $action = ( isset($_GET['action']) ) ? sanitize_text_field( $_GET['action'] ) : '';
-    $id     = ( isset($_GET['survey']) ) ? sanitize_text_field( $_GET['survey'] ) : null;
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+    // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin page parameters, no data is modified.
+    $action = ( isset($_GET['action']) ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
+    $id     = ( isset($_GET['survey']) ) ? sanitize_text_field( wp_unslash( $_GET['survey'] ) ) : null;
+    // phpcs:enable WordPress.Security.NonceVerification.Recommended
     
     $survey_max_id = Survey_Maker_Admin::get_max_id('surveys');
 
@@ -23,13 +28,14 @@
     </div>
     <h1 class="wp-heading-inline">
         <?php
-        echo esc_html__( get_admin_page_title(), "survey-maker" );
+        echo esc_html( get_admin_page_title() );
         ?>
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-maker-add-new-button-box">
         <?php
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary page-title-action-surveys-page ays-survey-add-new-button-page-title-action ays-survey-add-new-button-new-design" style="margin-left: 0 !important;"> %s ' . esc_html(__('Add New', "survey-maker")) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page slug used to build the "Add New" link.
+            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary page-title-action-surveys-page ays-survey-add-new-button-page-title-action ays-survey-add-new-button-new-design" style="margin-left: 0 !important;"> %s ' . esc_html(__('Add New', "survey-maker")) . '</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));
         ?>
     </div>
     <div id="poststuff" style="padding-top: 0;">

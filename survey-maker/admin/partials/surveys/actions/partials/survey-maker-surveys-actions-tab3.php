@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab3" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab3') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="ays-survey-collapsible-container" style="margin-top: 20px;">
         <div class="d-flex justify-content-end align-items-center">
@@ -23,7 +28,7 @@
                         <?php echo esc_html__('Survey status', "survey-maker"); ?>
                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                             echo esc_html(htmlspecialchars( sprintf(
-                                __("Decide whether your survey is active or not. If you choose %sDraft%s, the survey won't be shown anywhere on your website (you don't need to remove shortcodes).", "survey-maker"),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag */ __("Decide whether your survey is active or not. If you choose %1\$sDraft%2\$s, the survey won't be shown anywhere on your website (you don't need to remove shortcodes).", "survey-maker"),
                                 '<strong>',
                                 '</strong>'
                             ) ));
@@ -50,7 +55,7 @@
                         <?php echo esc_html__('Survey categories', "survey-maker"); ?>
                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                             echo esc_html(htmlspecialchars( sprintf(
-                                __('Choose the category/categories your survey belongs to. To create a category, go to the %sCategories%s page.',"survey-maker"),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag */ __('Choose the category/categories your survey belongs to. To create a category, go to the %1$sCategories%2$s page.',"survey-maker"),
                                 '<strong>',
                                 '</strong>'
                             ) ));
@@ -70,19 +75,19 @@
                                     $selected = 'selected';
                                 }
                             }
-                            echo '<option value="' . esc_attr($category["id"]) . '" ' . esc_attr($selected) . '>' . stripslashes( esc_attr($category['title']) ) . '</option>';
+                            echo '<option value="' . esc_attr($category["id"]) . '" ' . esc_attr($selected) . '>' . esc_html( stripslashes( $category['title'] ) ) . '</option>';
                         }
                         ?>
                     </select>
                     <div class="ays_survey_small_hint_text_for_message_variables" style="margin-top: 5px;">
                         <span>
                             <?php
-                                echo (sprintf(
-                                    /* translators: %s: opening and closing <a> HTML code  */
-                                    wp_kses_post(__('Create a new category %s here %s', 'survey-maker')),
+                                echo wp_kses_post( sprintf(
+                                    /* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */
+                                    __('Create a new category %1$s here %2$s', 'survey-maker'),
                                     '<a href="'. esc_url( $survey_category_page_url ) .'" target="_blank">',
                                     '</a>'
-                                ));
+                                ) );
                             ?>
                         </span>
                     </div>
@@ -113,7 +118,7 @@
                     </label>
                 </div>
                 <div class="col-sm-8">
-                    <input type="text" class="ays-text-input" name="ays_survey_required_questions_message" id="ays_survey_required_questions_message" value="<?php echo esc_attr__($survey_required_questions_message , "survey-maker"); ?>" placeholder="<?php echo esc_attr__( 'Required question message' , "survey-maker" ); ?>">
+                    <input type="text" class="ays-text-input" name="ays_survey_required_questions_message" id="ays_survey_required_questions_message" value="<?php echo esc_attr( $survey_required_questions_message ); ?>" placeholder="<?php echo esc_attr__( 'Required question message' , "survey-maker" ); ?>">
                 </div>
             </div> <!-- Show sections questions count -->    
             <hr/>
@@ -521,14 +526,14 @@
                                 <?php
                                 $term_cond_message_values = isset($condition_messages_page['message']) && $condition_messages_page['message'] != "" ? stripslashes( wpautop($condition_messages_page['message'])) : "";
                                 ?>
-                                <div class = "ays_survey_terms_conditions_edit_block" data-condition-id = "<?php echo $term_cond_id; ?>">
+                                <div class = "ays_survey_terms_conditions_edit_block" data-condition-id = "<?php echo esc_attr( $term_cond_id ); ?>">
                                     <div class="ays_survey_terms_and_conditions_checkbox">  
                                         <div class="ays-survey-icons">
                                             <img src= "<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/checkbox-unchecked.svg">
                                         </div>
                                     </div>
                                     <div class="ays_survey_terms_and_conditions_textarea_div">
-                                        <textarea name="ays_terms_and_condition_add[<?php echo $term_cond_id; ?>][messages]" value=""><?php echo stripslashes($term_cond_value['messages']); ?></textarea>
+                                        <textarea name="ays_terms_and_condition_add[<?php echo esc_attr( $term_cond_id ); ?>][messages]" value=""><?php echo esc_textarea( stripslashes($term_cond_value['messages']) ); ?></textarea>
                                     </div>
                                     <div class="ays_survey_icons appsMaterialWizButtonPapericonbuttonEl" data-trigger="hover">
                                         <img class="ays_survey_remove_textarea" src="<?php echo esc_attr(SURVEY_MAKER_ADMIN_URL); ?>/images/icons/trash.svg">
@@ -604,7 +609,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="input-group mb-3">
-                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_active" name="ays_survey_schedule_active" value="<?php echo esc_attr($survey_schedule_active); ?>" placeholder="<?php echo current_time( 'mysql' ); ?>">
+                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_active" name="ays_survey_schedule_active" value="<?php echo esc_attr($survey_schedule_active); ?>" placeholder="<?php echo esc_attr( current_time( 'mysql' ) ); ?>">
                                 <div class="input-group-append">
                                     <label for="ays_survey_schedule_active" class="input-group-text">
                                         <span><i class="ays_fa ays_fa_calendar"></i></span>
@@ -624,7 +629,7 @@
                         </div>
                         <div class="col-sm-8">
                             <div class="input-group mb-3">
-                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_deactive" name="ays_survey_schedule_deactive" value="<?php echo esc_attr($survey_schedule_deactive); ?>" placeholder="<?php echo current_time( 'mysql' ); ?>">
+                                <input type="text" class="ays-text-input ays-text-input-short" id="ays_survey_schedule_deactive" name="ays_survey_schedule_deactive" value="<?php echo esc_attr($survey_schedule_deactive); ?>" placeholder="<?php echo esc_attr( current_time( 'mysql' ) ); ?>">
                                 <div class="input-group-append">
                                     <label for="ays_survey_schedule_deactive" class="input-group-text">
                                         <span><i class="ays_fa ays_fa_calendar"></i></span>
@@ -1142,9 +1147,9 @@
                 </div>
                 <div class="col-sm-8">
                     <select class="ays-text-input ays-text-input-short select2-container-200-width" id='ays_survey_change_create_author'name='ays_survey_change_create_author'>
-                        <option value=""><?php echo __('Select User','survey-maker')?></option>
+                        <option value=""><?php echo esc_html__('Select User','survey-maker')?></option>
                         <?php
-                            echo "<option value='" . $ays_survey_create_author_data['ID'] . "' selected>" . $ays_survey_create_author_data['display_name'] . "</option>";
+                            echo "<option value='" . esc_attr( $ays_survey_create_author_data['ID'] ) . "' selected>" . esc_html( $ays_survey_create_author_data['display_name'] ) . "</option>";
                         ?>
                     </select>                    
                 </div>

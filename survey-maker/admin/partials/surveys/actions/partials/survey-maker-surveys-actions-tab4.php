@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab4" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab4') ? 'ays-survey-tab-content-active' : ''; ?>">
     <p class="ays-subtitle"><?php echo esc_html__('Survey results settings',"survey-maker"); ?></p>    
     <hr style="border-width: 2px;"/>
@@ -7,7 +12,7 @@
                 <?php echo esc_html__('Thank you message',"survey-maker")?>
                 <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                     echo esc_html(htmlspecialchars( sprintf(
-                        __('Write down a thank you message to be displayed after survey submission. %sAdd Media%s to the message if you wish.',"survey-maker"),
+                        /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag */ __('Write down a thank you message to be displayed after survey submission. %1$sAdd Media%2$s to the message if you wish.',"survey-maker"),
                         '<strong>',
                         '</strong>'
                     ) ));

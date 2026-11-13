@@ -73,19 +73,29 @@ class Ays_Survey_Maker_Most_Popular_Shortcodes_Public{
         
         
         $most_popular_survey_count = (isset( $survey_count ) && $survey_count != "") ? absint( sanitize_text_field( $survey_count ) ) : "";
-        $limit = "";
-        
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
         if($most_popular_survey_count != "" && $most_popular_survey_count != 0){
-            $limit = "LIMIT ".$most_popular_survey_count;            
-        }
-        
-        $sql = "SELECT COUNT(*) AS `res_count`, `survey_id`
+            $results = $wpdb->get_results(
+                $wpdb->prepare(
+                    "SELECT COUNT(*) AS `res_count`, `survey_id`
+                    FROM `{$submissions_table}`
+                    GROUP BY `survey_id`
+                    ORDER BY `res_count` DESC
+                    LIMIT %d",
+                    $most_popular_survey_count
+                ),
+                'ARRAY_A'
+            );
+        } else {
+            $results = $wpdb->get_results(
+                "SELECT COUNT(*) AS `res_count`, `survey_id`
                 FROM `{$submissions_table}`
                 GROUP BY `survey_id`
-                ORDER BY `res_count`
-                DESC ".$limit;
-
-        $results = $wpdb->get_results($sql, 'ARRAY_A');
+                ORDER BY `res_count` DESC",
+                'ARRAY_A'
+            );
+        }
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $survey_ids = array();
         if ( ! is_null( $results ) && ! empty( $results ) ) {
             foreach ($results as $key => $value) {

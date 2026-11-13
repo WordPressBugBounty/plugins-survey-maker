@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ob_start();
 class Popup_Survey_List_Table extends WP_List_Table {
     
@@ -68,8 +72,10 @@ class Popup_Survey_List_Table extends WP_List_Table {
         $selected_published = "";
         $selected_draft = "";
         $selected_trashed = "";
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['fstatus'] ) ){
-            switch( sanitize_text_field( $_GET['fstatus'] ) ){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            switch( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) ){
                 case "published":
                     $selected_published = " style='font-weight:bold;' ";
                     break;
@@ -87,16 +93,20 @@ class Popup_Survey_List_Table extends WP_List_Table {
             $selected_all = " style='font-weight:bold;' ";
         }
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>" . __( "All", "survey-maker" ) . " (".$all_count.")</a>",
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            "all" => "<a ".$selected_all." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."'>" . __( "All", "survey-maker" ) . " (".$all_count.")</a>",
         );
         if( intval( $published_count ) > 0 ){
-            $status_links["published"] = "<a ".$selected_published." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=published'>" . __( "Published", "survey-maker" ) . " (".$published_count.")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["published"] = "<a ".$selected_published." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=published'>" . __( "Published", "survey-maker" ) . " (".$published_count.")</a>";
         }
         if( intval( $draft_count ) > 0 ){
-            $status_links["draft"] = "<a ".$selected_draft." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=draft'>" . __( "Draft", "survey-maker" ) . " (".$draft_count.")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["draft"] = "<a ".$selected_draft." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=draft'>" . __( "Draft", "survey-maker" ) . " (".$draft_count.")</a>";
         }
         if( intval( $trashed_count ) > 0 ){
-            $status_links["trashed"] = "<a ".$selected_trashed." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=trashed'>" . __( "Trash", "survey-maker" ) . " (".$trashed_count.")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["trashed"] = "<a ".$selected_trashed." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=trashed'>" . __( "Trash", "survey-maker" ) . " (".$trashed_count.")</a>";
         }
         return $status_links;
     }
@@ -114,14 +124,16 @@ class Popup_Survey_List_Table extends WP_List_Table {
 
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys";
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
 
         $where = array();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != ''){
-            $where[] = ' status = "' . esc_sql( sanitize_text_field( $_GET['fstatus'] ) ) . '" ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $where[] = $wpdb->prepare( ' status = %s ', sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
         }else{
-            $where[] = ' status != "trashed" ';
+            $where[] = " status != 'trashed' ";
         }
 
         // if( $search != '' ){
@@ -130,41 +142,50 @@ class Popup_Survey_List_Table extends WP_List_Table {
 
         // if( ! Survey_Maker_Data::survey_maker_capabilities_for_editing() ){
             $current_user = get_current_user_id();
-            $where[] = " author_id = ".$current_user." ";
+            $where[] = $wpdb->prepare( ' author_id = %d ', $current_user );
         // }
 
-        if ( ! empty( $where ) ){
-            $sql .= ' WHERE ' . implode( ' AND ', $where );
-        }
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
 
+        $order_by = 'id DESC';
+        $default_order_by = 'id DESC';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( ! empty( $_REQUEST['orderby'] ) ) {
-            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( $_REQUEST['orderby'] ) != '' ) ? sanitize_text_field( $_REQUEST['orderby'] ) : 'id';
-            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( $_REQUEST['order'] ) == 'asc' ) ? ' ASC' : ' DESC';
-
-            $sql_orderby = sanitize_sql_orderby( $order_by );
-
-            if ( $sql_orderby ) {
-                $sql .= ' ORDER BY ' . $sql_orderby;
-            } else {
-                $sql .= ' ORDER BY ordering DESC';
-            }
-        }else{
-            $sql .= ' ORDER BY id DESC';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) != '' ) ? sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) : 'id';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) ) == 'asc' ) ? ' ASC' : ' DESC';
+            $default_order_by = 'ordering DESC';
         }
 
-        $sql .= " LIMIT $per_page";
-        $sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+        $sql_orderby = sanitize_sql_orderby( $order_by );
+        if ( ! $sql_orderby ) {
+            $sql_orderby = sanitize_sql_orderby( $default_order_by );
+        }
 
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        $per_page = absint( $per_page );
+        $offset   = max( 0, ( absint( $page_number ) - 1 ) * $per_page );
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare(), ORDER BY is validated with sanitize_sql_orderby().
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM {$popup_surveys_table} {$where_sql} ORDER BY {$sql_orderby} LIMIT %d OFFSET %d",
+                $per_page,
+                $offset
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
         return $result;
     }
 
     public static function get_item_by_id( $id ) {
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys WHERE id=" . esc_sql( intval( $id ) );
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
 
-        $result = $wpdb->get_row( $sql, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$popup_surveys_table} WHERE id = %d", intval( $id ) ), 'ARRAY_A' );
 
 
 
@@ -174,9 +195,10 @@ class Popup_Survey_List_Table extends WP_List_Table {
     public function get_surveys(){
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE status='published' ORDER BY id DESC";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $result = $wpdb->get_results($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_results( "SELECT * FROM {$surveys_table} WHERE status='published' ORDER BY id DESC", 'ARRAY_A' );
 
         return $result;
     }
@@ -185,71 +207,71 @@ class Popup_Survey_List_Table extends WP_List_Table {
         global $wpdb;
         $table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys";
 
-        if( isset( $_POST["popup_survey_action"] ) && wp_verify_nonce( $_POST["popup_survey_action"], 'popup_survey_action' ) ){
+        if( isset( $_POST["popup_survey_action"] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST["popup_survey_action"] ) ), 'popup_survey_action' ) ){
 
             $name_prefix = 'ays_';
-            
+
             // Save type
-            $save_type = (isset($_POST['save_type'])) ? $_POST['save_type'] : '';
+            $save_type = (isset($_POST['save_type'])) ? sanitize_text_field( wp_unslash( $_POST['save_type'] ) ) : '';
 
             // Id of item
             $id = isset( $_POST['id'] ) ? absint( intval( $_POST['id'] ) ) : 0;
 
             // Title
-            $title = isset( $_POST[ $name_prefix . 'title' ] ) && $_POST[ $name_prefix . 'title' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'title' ] ) ) : 'Survey popup';
+            $title = isset( $_POST[ $name_prefix . 'title' ] ) && $_POST[ $name_prefix . 'title' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'title' ] ) ) : 'Survey popup';
             
             // Show popup title
             $survey_popup_enable_show_title = isset( $_POST[ $name_prefix . 'survey_popup_enable_show_title' ] ) && $_POST[ $name_prefix . 'survey_popup_enable_show_title' ] == 'on' ? 'on' : 'off';
             
             // Popup title font size
-            $survey_popup_title_font_size = isset( $_POST[ $name_prefix . 'survey_popup_title_font_size' ] ) && $_POST[ $name_prefix . 'survey_popup_title_font_size' ] != '' ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_font_size' ] ) ) : 25;
+            $survey_popup_title_font_size = isset( $_POST[ $name_prefix . 'survey_popup_title_font_size' ] ) && $_POST[ $name_prefix . 'survey_popup_title_font_size' ] != '' ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_font_size' ] ) ) ) : 25;
             
             // Popup title font size on mobile
-            $survey_popup_title_mobile_font_size = isset( $_POST[ $name_prefix . 'survey_popup_title_mobile_font_size' ] ) && $_POST[ $name_prefix . 'survey_popup_title_mobile_font_size' ] != '' ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_mobile_font_size' ] ) ) : 25;
+            $survey_popup_title_mobile_font_size = isset( $_POST[ $name_prefix . 'survey_popup_title_mobile_font_size' ] ) && $_POST[ $name_prefix . 'survey_popup_title_mobile_font_size' ] != '' ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_mobile_font_size' ] ) ) ) : 25;
 
             // Popup title bg color
-            $survey_popup_title_bg_color = (isset( $_POST[$name_prefix . 'survey_popup_title_bg_color'] ) &&  $_POST[$name_prefix . 'survey_popup_title_bg_color'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_bg_color' ] ) : '#00000000';
+            $survey_popup_title_bg_color = (isset( $_POST[$name_prefix . 'survey_popup_title_bg_color'] ) &&  $_POST[$name_prefix . 'survey_popup_title_bg_color'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_bg_color' ] ) ) : '#00000000';
             // Popup title bg color mobile
-            $survey_popup_title_bg_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_bg_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_bg_color_mobile'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_bg_color_mobile' ] ) : '#00000000';
+            $survey_popup_title_bg_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_bg_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_bg_color_mobile'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_bg_color_mobile' ] ) ) : '#00000000';
 
             // Popup title text color
-            $survey_popup_title_text_color = (isset( $_POST[$name_prefix . 'survey_popup_title_text_color'] ) &&  $_POST[$name_prefix . 'survey_popup_title_text_color'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_text_color' ] ) : '#ffffff';
+            $survey_popup_title_text_color = (isset( $_POST[$name_prefix . 'survey_popup_title_text_color'] ) &&  $_POST[$name_prefix . 'survey_popup_title_text_color'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_text_color' ] ) ) : '#ffffff';
             // Popup title text color mobile
-            $survey_popup_title_text_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_text_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_text_color_mobile'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_text_color_mobile' ] ) : '#ffffff';
+            $survey_popup_title_text_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_text_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_text_color_mobile'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_text_color_mobile' ] ) ) : '#ffffff';
 
             // Popup title alignment
-            $survey_popup_title_alignment = (isset( $_POST[$name_prefix . 'survey_popup_title_alignment'] ) &&  $_POST[$name_prefix . 'survey_popup_title_alignment'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_alignment' ] ) : 'left';
+            $survey_popup_title_alignment = (isset( $_POST[$name_prefix . 'survey_popup_title_alignment'] ) &&  $_POST[$name_prefix . 'survey_popup_title_alignment'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_alignment' ] ) ) : 'left';
 
             // Popup title alignment
-            $survey_popup_title_alignment_on_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_alignment_on_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_alignment_on_mobile'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_alignment_on_mobile' ] ) : 'left';
+            $survey_popup_title_alignment_on_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_alignment_on_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_alignment_on_mobile'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_alignment_on_mobile' ] ) ) : 'left';
 
             // Popup title transform
-            $survey_popup_title_transform = (isset( $_POST[$name_prefix . 'survey_popup_title_transform'] ) &&  $_POST[$name_prefix . 'survey_popup_title_transform'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_transform' ] ) : 'none';
+            $survey_popup_title_transform = (isset( $_POST[$name_prefix . 'survey_popup_title_transform'] ) &&  $_POST[$name_prefix . 'survey_popup_title_transform'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_transform' ] ) ) : 'none';
             // Popup title transform
-            $survey_popup_title_transform_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_transform_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_transform_mobile'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_transform_mobile' ] ) : 'none';
+            $survey_popup_title_transform_mobile = (isset( $_POST[$name_prefix . 'survey_popup_title_transform_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_title_transform_mobile'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_transform_mobile' ] ) ) : 'none';
            
             // Popup title letter spacing
-            $survey_popup_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] ))) : '0';
+            $survey_popup_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing' ] ) ))) : '0';
            
             // Popup title letter spacing on mobile
-            $survey_popup_title_letter_spacing_on_mobile = (isset( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] != '' && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] ))) : '0';
+            $survey_popup_title_letter_spacing_on_mobile = (isset( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] != '' && $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_letter_spacing_on_mobile' ] ) ))) : '0';
 
             // Hide popup title on mobile
             $survey_popup_hide_title_on_mobile = (isset( $_POST[$name_prefix . 'survey_popup_hide_title_on_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_hide_title_on_mobile'] == 'on') ? 'on' : 'off';
                         
             // Title border radius
-            $survey_popup_title_border_radius = isset( $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] ) && $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] != '' ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] ) ) : 0;
+            $survey_popup_title_border_radius = isset( $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] ) && $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] != '' ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_border_radius' ] ) ) ) : 0;
             // Title border radius mobile
-            $survey_popup_title_border_radius_mobile = isset( $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] != '' ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] ) ) : 0;
+            $survey_popup_title_border_radius_mobile = isset( $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] != '' ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_title_border_radius_mobile' ] ) ) ) : 0;
 
             if($title == ''){
                 $url = esc_url_raw( remove_query_arg( false ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
             // Author ID
             $user_id = get_current_user_id();
-            $author_id = isset( $_POST[ $name_prefix . 'author_id' ] ) && $_POST[ $name_prefix . 'author_id' ] != '' ? intval( sanitize_text_field( $_POST[ $name_prefix . 'author_id' ] ) ) : $user_id;
+            $author_id = isset( $_POST[ $name_prefix . 'author_id' ] ) && $_POST[ $name_prefix . 'author_id' ] != '' ? intval( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'author_id' ] ) ) ) : $user_id;
 
             // Status
             $status = isset( $_POST[ $name_prefix . 'status' ] ) && $_POST[ $name_prefix . 'status' ] == 'on' ? 'published' : 'unpublished';
@@ -258,63 +280,63 @@ class Popup_Survey_List_Table extends WP_List_Table {
             $trash_status = '';
             
             // Date created
-            $date_created = isset( $_POST[ $name_prefix . 'date_created' ] ) && Survey_Maker_Admin::validateDate( $_POST[ $name_prefix . 'date_created' ] ) ? sanitize_text_field( $_POST[ $name_prefix . 'date_created' ] ) : current_time( 'mysql' );
+            $date_created = isset( $_POST[ $name_prefix . 'date_created' ] ) && Survey_Maker_Admin::validateDate( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'date_created' ] ) ) ) ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'date_created' ] ) ) : current_time( 'mysql' );
             
             // Date modified
-            $date_modified = isset( $_POST[ $name_prefix . 'date_modified' ] ) && Survey_Maker_Admin::validateDate( $_POST[ $name_prefix . 'date_modified' ] ) ? sanitize_text_field( $_POST[ $name_prefix . 'date_modified' ] ) : current_time( 'mysql' );
+            $date_modified = isset( $_POST[ $name_prefix . 'date_modified' ] ) && Survey_Maker_Admin::validateDate( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'date_modified' ] ) ) ) ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'date_modified' ] ) ) : current_time( 'mysql' );
 
             // Survey_id
-            $survey_id = isset( $_POST[ $name_prefix . 'survey_id' ] ) && $_POST[ $name_prefix . 'survey_id' ] != '' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_id' ] ) : '';
+            $survey_id = isset( $_POST[ $name_prefix . 'survey_id' ] ) && $_POST[ $name_prefix . 'survey_id' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_id' ] ) ) : '';
             
             // Show All
-            $show_all = isset( $_POST[$name_prefix . 'survey_show_all'] ) && $_POST[$name_prefix . 'survey_show_all']  != '' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_show_all' ] ) : 'all';
+            $show_all = isset( $_POST[$name_prefix . 'survey_show_all'] ) && $_POST[$name_prefix . 'survey_show_all']  != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_show_all' ] ) ) : 'all';
             
             // Width
-            $survey_width = (isset( $_POST[ $name_prefix . 'popup_survey_width' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width' ] ) ) : '';
+            $survey_width = (isset( $_POST[ $name_prefix . 'popup_survey_width' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width' ] ) ) ) != '') ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width' ] ) ) ) : '';
             // Width by percentage or pixels
-            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) != '' && $survey_width != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) : 'pixels';
+            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) ) ) != '' && $survey_width != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width_by_percentage_px' ] ) ) : 'pixels';
             
             // Mobile width
-            $survey_width_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) ) : '';
+            $survey_width_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) ) ) != '') ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width_mobile' ] ) ) ) : '';
             // Mobile width by percentage or pixels
-            $survey_width_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) != '' && $survey_width_mobile != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) : 'pixels';
+            $survey_width_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) ) ) != '' && $survey_width_mobile != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_width_mobile_by_percentage_px' ] ) ) : 'pixels';
             
             // Height
-            $survey_heigth = (isset( $_POST[ $name_prefix . 'popup_survey_height' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) : '';
+            $survey_heigth = (isset( $_POST[ $name_prefix . 'popup_survey_height' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) ) != '') ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height' ] ) ) ) : '';
             // Height by percentage or pixels
-            $survey_heigth_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) != '' && $survey_heigth != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) : 'pixels';
+            $survey_heigth_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) ) ) != '' && $survey_heigth != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height_by_percentage_px' ] ) ) : 'pixels';
             
             // Height mobile
-            $survey_heigth_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) ) : '';
+            $survey_heigth_mobile = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) ) ) != '') ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height_mobile' ] ) ) ) : '';
             // Mobile height by percentage or pixels
-            $survey_heigth_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) && trim( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) != '' && $survey_heigth_mobile != '') ? sanitize_text_field( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) : 'pixels';
+            $survey_heigth_mobile_by_percentage_px = (isset( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) && trim( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) ) ) != '' && $survey_heigth_mobile != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'popup_survey_height_mobile_by_percentage_px' ] ) ) : 'pixels';
             
             // popup_position
-            $popup_position = (isset( $_POST[$name_prefix . 'survey_popup_position'] ) && $_POST[$name_prefix . 'survey_popup_position'] != 'center-center') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_position' ] ) : 'center-center';
+            $popup_position = (isset( $_POST[$name_prefix . 'survey_popup_position'] ) && $_POST[$name_prefix . 'survey_popup_position'] != 'center-center') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_position' ] ) ) : 'center-center';
             
             // popup_margin
-            $popup_margin = (isset( $_POST[$name_prefix . 'survey_popup_margin'] ) &&  $_POST[$name_prefix . 'survey_popup_margin'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_margin' ] ) : '';
+            $popup_margin = (isset( $_POST[$name_prefix . 'survey_popup_margin'] ) &&  $_POST[$name_prefix . 'survey_popup_margin'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_margin' ] ) ) : '';
 
             // //Popup trigger
-            $popup_trigger = (isset( $_POST[$name_prefix . 'survey_popup_trigger'] ) &&  $_POST[$name_prefix . 'survey_popup_trigger'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_trigger' ] ) : 'on_load';
+            $popup_trigger = (isset( $_POST[$name_prefix . 'survey_popup_trigger'] ) &&  $_POST[$name_prefix . 'survey_popup_trigger'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_trigger' ] ) ) : 'on_load';
 
             // Popup close after finish
             $survey_enable_popup_close_after_finish = isset( $_POST[ $name_prefix . 'survey_enable_popup_close_after_finish' ] ) && $_POST[ $name_prefix . 'survey_enable_popup_close_after_finish' ] == 'on' ? 'on' : 'off';
-            $survey_popup_close_after_finish_delay = (isset($_POST[ $name_prefix . 'survey_popup_close_after_finish_delay' ]) && $_POST[ $name_prefix . 'survey_popup_close_after_finish_delay' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_close_after_finish_delay' ] ) ) : '';
+            $survey_popup_close_after_finish_delay = (isset($_POST[ $name_prefix . 'survey_popup_close_after_finish_delay' ]) && $_POST[ $name_prefix . 'survey_popup_close_after_finish_delay' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_close_after_finish_delay' ] ) ) ) : '';
 
             //Popup selector
-            $popup_selector = (isset( $_POST[$name_prefix . 'survey_popup_selector'] ) &&  $_POST[$name_prefix . 'survey_popup_selector'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_selector' ] ) : '';            
+            $popup_selector = (isset( $_POST[$name_prefix . 'survey_popup_selector'] ) &&  $_POST[$name_prefix . 'survey_popup_selector'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_selector' ] ) ) : '';            
             
             // // Popup background color
-            $popup_bg_color = (isset( $_POST[$name_prefix . 'survey_popup_bg_color'] ) &&  $_POST[$name_prefix . 'survey_popup_bg_color'] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_bg_color' ] ) : '#ffffff';
+            $popup_bg_color = (isset( $_POST[$name_prefix . 'survey_popup_bg_color'] ) &&  $_POST[$name_prefix . 'survey_popup_bg_color'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_bg_color' ] ) ) : '#ffffff';
 
             // Popup background color | Mobile
-            $popup_bg_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_bg_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_bg_color_mobile'] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_bg_color_mobile' ] ) ) : '#ffffff';
+            $popup_bg_color_mobile = (isset( $_POST[$name_prefix . 'survey_popup_bg_color_mobile'] ) &&  $_POST[$name_prefix . 'survey_popup_bg_color_mobile'] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_bg_color_mobile' ] ) ) : '#ffffff';
 
-            $hide_popup = isset( $_POST[ $name_prefix . 'survey_hide_popup' ] ) && $_POST[ $name_prefix . 'survey_hide_popup' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup' ] ) : 'off';
+            $hide_popup = isset( $_POST[ $name_prefix . 'survey_hide_popup' ] ) && $_POST[ $name_prefix . 'survey_hide_popup' ] == 'on' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_hide_popup' ] ) ) : 'off';
             
             // Hide Popup after close
-            $hide_popup_after_close = isset( $_POST[ $name_prefix . 'survey_hide_popup_after_close' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_after_close' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_after_close' ] ) : 'off';
+            $hide_popup_after_close = isset( $_POST[ $name_prefix . 'survey_hide_popup_after_close' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_after_close' ] == 'on' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_hide_popup_after_close' ] ) ) : 'off';
 
             // Popup full screen mode
             $survey_popup_full_screen = isset( $_POST[ $name_prefix . 'survey_enable_popup_full_screen_mode' ] ) && $_POST[ $name_prefix . 'survey_enable_popup_full_screen_mode' ] == 'on' ? 'on' : 'off';
@@ -323,19 +345,19 @@ class Popup_Survey_List_Table extends WP_List_Table {
             $survey_popup_enable_close_by_esc = isset( $_POST[ $name_prefix . 'survey_popup_enable_close_by_esc' ] ) && $_POST[ $name_prefix . 'survey_popup_enable_close_by_esc' ] == 'on' ? 'on' : 'off';
             
             // Hide Popup on mobile
-            $hide_popup_on_mobile = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] ) : 'off';
+            $hide_popup_on_mobile = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] == 'on' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_hide_popup_on_mobile' ] ) ) : 'off';
             
             // Hide Popup on PC
-            $hide_popup_on_pc = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] ) : 'off';
+            $hide_popup_on_pc = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] == 'on' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_hide_popup_on_pc' ] ) ) : 'off';
             
             // Hide Popup on tablet
-            $hide_popup_on_tablet = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] ) : 'off';
+            $hide_popup_on_tablet = isset( $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] ) && $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] == 'on' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_hide_popup_on_tablet' ] ) ) : 'off';
 
             // Close by clicking outside the box
-            $close_popup_overlay_outside_click = isset( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) && $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] == 'on' ? sanitize_text_field( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) : 'off';
+            $close_popup_overlay_outside_click = isset( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) && $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] == 'on' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_close_popup_overlay_outside_click' ] ) ) : 'off';
 
             // Popup animation
-            $popup_animation = (isset( $_POST[ $name_prefix . 'survey_popup_animation' ] ) && $_POST[ $name_prefix . 'survey_popup_animation' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_popup_animation' ] ) : 'none';
+            $popup_animation = (isset( $_POST[ $name_prefix . 'survey_popup_animation' ] ) && $_POST[ $name_prefix . 'survey_popup_animation' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_popup_animation' ] ) ) : 'none';
 
             // Options
             $options = array(
@@ -384,6 +406,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
             
             $message = '';
             if( $id == 0 ){
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                 $result = $wpdb->insert(
                     $table,
                     array(
@@ -413,6 +436,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 $inserted_id = $wpdb->insert_id;
                 $message = 'created';
             }else{
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                 $result = $wpdb->update(
                     $table,
                     array(
@@ -458,20 +482,20 @@ class Popup_Survey_List_Table extends WP_List_Table {
                             "status" => $message
                         ) ) );
                     }
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }elseif($save_type == 'save_new'){
                     $url = remove_query_arg( array('id') );
                     $url = esc_url_raw( add_query_arg( array(
                         "action" => "add",
                         "status" => $message
                     ), $url ) );
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }else{
                     $url = remove_query_arg( array('action', 'id') );
                     $url = esc_url_raw( add_query_arg( array(
                         "status" => $message
                     ), $url ) );
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }
             }
         }
@@ -485,6 +509,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
     public static function delete_items( $id ) {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->delete(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys",
             array( 'id' => $id ),
@@ -502,6 +527,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
         global $wpdb;
         $db_item = self::get_item_by_id( $id );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys",
             array( 
@@ -524,6 +550,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
         global $wpdb;
         $db_item = self::get_item_by_id( $id );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys",
             array( 
@@ -544,53 +571,54 @@ class Popup_Survey_List_Table extends WP_List_Table {
     public static function record_count() {
         global $wpdb;
         $filter = array();
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys";
-        
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_REQUEST['fstatus'] ) ){
-            $fstatus = sanitize_text_field( $_REQUEST['fstatus'] );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $fstatus = sanitize_text_field( wp_unslash( $_REQUEST['fstatus'] ) );
             if($fstatus !== null){
-                $filter[] = " status = '". esc_sql( $fstatus ) ."' ";
+                $filter[] = $wpdb->prepare( ' status = %s ', $fstatus );
             }
         }else{
             $filter[] = " status != 'trashed' ";
         }
-        
+
         // if( ! Survey_Maker_Data::survey_maker_capabilities_for_editing() ){
             $current_user = get_current_user_id();
-            $filter[] = " author_id = ".$current_user." ";
+            $filter[] = $wpdb->prepare( ' author_id = %d ', $current_user );
         // }
-        
-        if(count($filter) !== 0){
-            $sql .= " WHERE ".implode(" AND ", $filter);
-        }
 
-        return $wpdb->get_var( $sql );
+        $where_sql = ' WHERE ' . implode( ' AND ', $filter );
+
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$popup_surveys_table} {$where_sql}" );
     }
 
     public static function all_record_count() {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys WHERE status != 'trashed'";
-        
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
+
         // if( ! Survey_Maker_Data::survey_maker_capabilities_for_editing() ){
             $current_user = get_current_user_id();
-            $sql .= " AND author_id = ".$current_user." ";
         // }
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$popup_surveys_table} WHERE status != 'trashed' AND author_id = %d", $current_user ) );
     }
 
     public static function get_statused_record_count( $status ) {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys WHERE status='" . esc_sql( $status ) . "'";
+        $popup_surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "popup_surveys" );
 
         // if( ! Survey_Maker_Data::survey_maker_capabilities_for_editing() ){
             $current_user = get_current_user_id();
-            $sql .= " AND author_id = ".$current_user." ";
         // }
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$popup_surveys_table} WHERE status = %s AND author_id = %d", $status, $current_user ) );
     }
 
     public function publish_unpublish_popup_survey( $id, $action ) {
@@ -609,6 +637,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
             $message = 'published';
         }
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $pb_result = $wpdb->update(
             $table,
             array(
@@ -620,7 +649,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
         );
 
         $url = esc_url_raw( remove_query_arg(array("action", "id", "_wpnonce")) ) . "&status=" . $message . "&type=success";
-        wp_redirect( $url );
+        wp_safe_redirect( $url );
     }
 
 
@@ -646,7 +675,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 return $item[ $column_name ];
                 break;
             default:
-                return print_r( $item, true ); //Show the whole array for troubleshooting purposes
+                return ''; // Every registered column has its own handler above.
         }
     }
 
@@ -688,10 +717,12 @@ class Popup_Survey_List_Table extends WP_List_Table {
 
         if (isset($item['status']) && $item['status'] == 'published') {
             $publish_button = 'unpublish';
-            $publish_button_val = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s">'. __('Unpublish', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'unpublish', absint( $item['id'] ), $unpublish_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $publish_button_val = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s">'. __('Unpublish', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'unpublish', absint( $item['id'] ), $unpublish_nonce );
         }else{
             $publish_button = 'publish';
-            $publish_button_val = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s">'. __('Publish', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'publish', absint( $item['id'] ), $publish_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $publish_button_val = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s">'. __('Publish', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'publish', absint( $item['id'] ), $publish_nonce );
         }
 
         $survey_title = stripcslashes( $item['title'] );
@@ -701,29 +732,38 @@ class Popup_Survey_List_Table extends WP_List_Table {
         $restitle = Survey_Maker_Admin::ays_restriction_string( "word", $survey_title, $this->title_length );
         
         $fstatus = '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-            $fstatus = '&fstatus=' . sanitize_text_field( $_GET['fstatus'] );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $fstatus = '&fstatus=' . sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
         }
 
-        $title = sprintf( '<a href="?page=%s&action=%s&id=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, stripcslashes($item['title']));
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $title = sprintf( '<a href="?page=%s&action=%s&id=%d" title="%s">%s</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ), $q, stripcslashes($item['title']));
 
         $actions = array();
         if($item['status'] == 'trashed'){
             $title = sprintf( '<strong><a>%s</a></strong>', $restitle );
-            $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Restore', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'restore', absint( $item['id'] ), $delete_nonce );
-            $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Restore', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'restore', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'delete', absint( $item['id'] ), $delete_nonce );
         }else{
             $draft_text = '';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
             if( $item['status'] == 'draft' && !( isset( $_GET['fstatus'] ) && $_GET['fstatus'] == 'draft' )){
                 $draft_text = ' — ' . '<span class="post-state">' . __( "Draft", "survey-maker" ) . '</span>';
             }
-            $title = sprintf( '<strong><a href="?page=%s&action=%s&id=%d" title="%s">%s</a>%s</strong>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, $restitle, $draft_text );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $title = sprintf( '<strong><a href="?page=%s&action=%s&id=%d" title="%s">%s</a>%s</strong>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ), $q, $restitle, $draft_text );
             
-            $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&id=%d">'. __('Edit', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&id=%d">'. __('Edit', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ) );
 
             $actions[$publish_button] = $publish_button_val;
-            // $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ), $delete_nonce );
-            $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'trash', absint( $item['id'] ), $delete_nonce );
+            // $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'duplicate', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'trash', absint( $item['id'] ), $delete_nonce );
         }
 
         return $title . $this->row_actions( $actions );
@@ -731,9 +771,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
 
     function column_survey_id( $item ) {
         global $wpdb;
-        $sql = "SELECT * FROM {$wpdb->prefix}ayssurvey_surveys WHERE id=" . absint( intval( $item["survey_id"] ) );
-
-        $survey = $wpdb->get_row( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $survey = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}ayssurvey_surveys WHERE id = %d", absint( intval( $item["survey_id"] ) ) ) );
 
         if($survey !== null){
             return $survey->title;
@@ -746,8 +785,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
     function column_status( $item ) {
         global $wpdb;
         $status = ucfirst( $item['status'] );
-        $date = date( 'Y/m/d', strtotime( $item['date_modified'] ) );
-        $title_date = date( 'l jS \of F Y h:i:s A', strtotime( $item['date_modified'] ) );
+        $date = gmdate( 'Y/m/d', strtotime( $item['date_modified'] ) );
+        $title_date = gmdate( 'l jS \of F Y h:i:s A', strtotime( $item['date_modified'] ) );
         $html = "<p style='font-size:14px;margin:0;'>" . $status . "</p>";
         $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . $title_date . "'>" . $date . "</p>";
         return $html;
@@ -789,6 +828,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
         $columns['status'] = __( 'Status', "survey-maker" );
         $columns['id'] = __( 'ID', "survey-maker" );
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){
             return array();
         }
@@ -822,7 +862,8 @@ class Popup_Survey_List_Table extends WP_List_Table {
             'bulk-trash' => __( 'Move to trash', "survey-maker" ),
         );
 
-        if(isset($_GET['fstatus']) && sanitize_text_field( $_GET['fstatus'] ) == 'trashed'){
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if(isset($_GET['fstatus']) && sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) == 'trashed'){
             $actions = array(
                 'bulk-restore' => __( 'Restore', "survey-maker" ),
                 'bulk-delete' => __( 'Delete Permanently', "survey-maker" ),
@@ -860,13 +901,13 @@ class Popup_Survey_List_Table extends WP_List_Table {
         if ( 'delete' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-popup-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::delete_items( absint( $_GET['id'] ) );
+                self::delete_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -875,11 +916,11 @@ class Popup_Survey_List_Table extends WP_List_Table {
                     "status" => 'deleted'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -888,13 +929,13 @@ class Popup_Survey_List_Table extends WP_List_Table {
         if ( 'trash' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-trash-popup-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::trash_items( absint( $_GET['id'] ) );
+                self::trash_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -903,11 +944,11 @@ class Popup_Survey_List_Table extends WP_List_Table {
                     "status" => 'trashed'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -916,13 +957,13 @@ class Popup_Survey_List_Table extends WP_List_Table {
         if ( 'restore' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-popup-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::restore_items( absint( $_GET['id'] ) );
+                self::restore_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -931,11 +972,11 @@ class Popup_Survey_List_Table extends WP_List_Table {
                     "status" => 'restored'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -944,13 +985,13 @@ class Popup_Survey_List_Table extends WP_List_Table {
         if ( 'duplicate' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-trash-popup-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::duplicate_items( absint( $_GET['id'] ) );
+                self::duplicate_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -959,11 +1000,11 @@ class Popup_Survey_List_Table extends WP_List_Table {
                     "status" => 'duplicated'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -971,7 +1012,7 @@ class Popup_Survey_List_Table extends WP_List_Table {
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' ) ) {
 
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
@@ -984,17 +1025,17 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "status" => 'all-deleted'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-trash' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-trash' ) ) {
 
-            $trash_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $trash_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $trash_ids as $id ) {
@@ -1007,17 +1048,17 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "status" => 'all-trashed'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-restore' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-restore' ) ) {
 
-            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $restore_ids as $id ) {
@@ -1030,17 +1071,17 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "status" => 'all-restored'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-duplicate' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-duplicate' ) ) {
 
-            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $restore_ids as $id ) {
@@ -1053,16 +1094,17 @@ class Popup_Survey_List_Table extends WP_List_Table {
                 "status" => 'all-duplicated'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
     }
 
     public function popup_survey_notices(){
-        $status = (isset($_REQUEST['status'])) ? sanitize_text_field( $_REQUEST['status'] ) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $status = (isset($_REQUEST['status'])) ? sanitize_text_field( wp_unslash( $_REQUEST['status'] ) ) : '';
 
         if ( empty( $status ) )
             return;

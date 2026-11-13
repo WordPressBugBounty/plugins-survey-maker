@@ -1,11 +1,16 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
     $actions = $this->settings_obj;
 
+    // phpcs:disable WordPress.Security.NonceVerification.Recommended -- store_data() verifies the "settings_action" nonce before saving; the tab parameter is read-only.
     if( isset( $_REQUEST['ays_submit'] ) ){
         $actions->store_data();
     }
     if(isset($_GET['ays_survey_tab'])){
-        $ays_survey_tab = sanitize_text_field( $_GET['ays_survey_tab'] );
+        $ays_survey_tab = sanitize_text_field( wp_unslash( $_GET['ays_survey_tab'] ) );
+    // phpcs:enable WordPress.Security.NonceVerification.Recommended
     }else{
         $ays_survey_tab = 'tab1';
     }
@@ -314,8 +319,10 @@
         <form method="post" id="ays-survey-settings-form">
             <input type="hidden" name="ays_survey_tab" value="<?php echo esc_attr($ays_survey_tab); ?>">
             <?php
+                // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only status flag used to show the admin notice.
                 if( isset( $_REQUEST['status'] ) ){
-                    $actions->survey_settings_notices( sanitize_text_field( $_REQUEST['status'] ) );
+                    $actions->survey_settings_notices( sanitize_text_field( wp_unslash( $_REQUEST['status'] ) ) );
+                // phpcs:enable WordPress.Security.NonceVerification.Recommended
                 }
             ?>
             <hr/>
@@ -998,7 +1005,7 @@
                         <hr>
                         <div class="form-group row">
                             <div class="col-sm-12">
-                                <?php echo $actions->message_variables_section($message_variables); ?>
+                                <?php echo $actions->message_variables_section($message_variables); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- All dynamic values are escaped inside message_variables_section(). ?>
                             </div>
                         </div>
                     </div>
@@ -1215,7 +1222,7 @@
                                     <div class="col-sm-9">
                                         <input type="text" class="ays-text-input">
                                         <blockquote class="ays_warning" style="margin-top: 8px">
-                                            <p style="margin:0;"><?php echo esc_html__( "Note: The text must include the %s sign (that is the name of the survey the user passed) in it. Otherwise, the default text will be displayed.", "survey-maker" ); ?></p>
+                                            <p style="margin:0;"><?php /* translators: %s: literal placeholder shown to the user (not replaced) */ echo esc_html__( "Note: The text must include the %s sign (that is the name of the survey the user passed) in it. Otherwise, the default text will be displayed.", "survey-maker" ); ?></p>
                                         </blockquote>
                                     </div>
                                 </div>
@@ -1508,6 +1515,25 @@
                                         </div>
                                         <div class="col-sm-8">
                                             <input type="text" id="ays_survey_passed_users_count" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_passed_users_count id="Your_survey_ID"]'>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-group row" style="padding:0px;margin:0;">
+                                <div class="col-sm-12" style="padding:20px;">
+                                    <div class="form-group row">
+                                        <div class="col-sm-4">
+                                            <label for="ays_survey_show_title">
+                                                <?php echo esc_html__( "Show survey title", "survey-maker" ); ?>
+                                                <a class="ays_help" data-toggle="tooltip" title="<?php echo esc_attr( __("You need to insert Your Survey ID in the shortcode. It will show the title of the particular survey. If there is no survey available/found with that particular Survey ID, the shortcode will be empty.","survey-maker") ); ?>">
+                                                    <i class="ays_fa ays_fa_info_circle"></i>
+                                                </a>
+                                            </label>
+                                            <span class="ays_survey_small_hint_text"><?php echo esc_html__( "You need to insert Your Survey ID in the shortcode. It will show the title of the particular survey.", "survey-maker" ); ?></span>
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <input type="text" id="ays_survey_show_title" class="ays-text-input" onclick="this.setSelectionRange(0, this.value.length)" readonly="" value='[ays_survey_title id="Your_Survey_ID"]'>
                                         </div>
                                     </div>
                                 </div>

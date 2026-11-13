@@ -62,7 +62,7 @@ class Survey_Maker_i18n {
                 load_textdomain( $plugin, path_join( $domain_path, $mofile ) );
             }
         } else {
-            load_plugin_textdomain(
+            load_plugin_textdomain( // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- The plugin ships its own translations in the /languages folder.
 				'survey-maker',
 				false,
 				dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'

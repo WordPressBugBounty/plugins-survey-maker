@@ -1,7 +1,12 @@
 <?php
-    $action = isset( $_GET["action"] ) ? sanitize_text_field( $_GET["action"] ) : "";
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+    // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin page parameters, no data is modified.
+    $action = isset( $_GET["action"] ) ? sanitize_text_field( wp_unslash( $_GET["action"] ) ) : "";
 
-    $id = (isset($_GET["id"])) ? absint( sanitize_text_field( $_GET["id"] ) ) : null;
+    $id = (isset($_GET["id"])) ? absint( sanitize_text_field( wp_unslash( $_GET["id"] ) ) ) : null;
+    // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
     $html_name_prefix = "ays_";
 
@@ -65,6 +70,7 @@
     }
 
 
+    // phpcs:disable WordPress.Security.NonceVerification.Missing -- The "popup_survey_action" nonce is verified inside add_or_edit_item() before anything is saved.
     if (isset($_POST["ays_submit"]) || isset($_POST["ays_submit_top"])) {
         $_POST["id"] = $id;
         $this->popup_surveys_obj->add_or_edit_item();
@@ -81,6 +87,7 @@
         $_POST["save_type"] = "save_new";
         $this->popup_surveys_obj->add_or_edit_item();
     }
+    // phpcs:enable WordPress.Security.NonceVerification.Missing
 
 
     // Options

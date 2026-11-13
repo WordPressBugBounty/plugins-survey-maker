@@ -1,11 +1,16 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- The nonce is verified below before any data is modified.
 $action = ( isset($_GET['action']) ) ? sanitize_key( $_GET['action'] ) : '';
 $id     = ( isset($_GET['id']) ) ? absint( sanitize_key( $_GET['id'] ) ) : null;
+// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 if( $action == 'duplicate' && !is_null($id) ){
     // Verify nonce to protect against CSRF
-    $nonce = isset($_GET['_wpnonce']) ? sanitize_text_field( $_GET['_wpnonce'] ) : '';
+    $nonce = isset($_GET['_wpnonce']) ? sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ) : '';
 
     if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-duplicate-survey-category' ) ) {
         die( 'Go get a life script kiddies' );
@@ -28,12 +33,12 @@ $plus_icon_svg = "<span class=''><img src='". SURVEY_MAKER_ADMIN_URL ."/images/i
     </div>
     <h1 class="wp-heading-inline">
         <?php
-        echo esc_html__(get_admin_page_title(), "survey-maker" );
+        echo esc_html( get_admin_page_title() );
         ?>
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-maker-add-new-button-box">
-        <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader())); ?>
+        <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader())); ?>
     </div>
 
     <div id="poststuff" style="padding-top: 0;">
@@ -56,7 +61,7 @@ $plus_icon_svg = "<span class=''><img src='". SURVEY_MAKER_ADMIN_URL ."/images/i
         </div>
         <br class="clear">
         <div class="ays-survey-maker-add-new-button-box">
-            <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader())); ?>
+            <?php echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader())); ?>
         </div>
     </div>
 </div>

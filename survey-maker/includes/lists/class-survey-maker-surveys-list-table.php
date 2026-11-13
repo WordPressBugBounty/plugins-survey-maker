@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ob_start();
 class Surveys_List_Table extends WP_List_Table {
 
@@ -83,23 +87,26 @@ class Surveys_List_Table extends WP_List_Table {
      */
     public function extra_tablenav( $which ) {
         global $wpdb;
-        $titles_sql = "SELECT s.title, s.id
-                       FROM " .$wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories AS s
-                       WHERE s.status = 'published'";
-        $cat_titles = $wpdb->get_results($titles_sql);
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
+        $surveys_table           = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $users_sql = "SELECT `author_id`
-                FROM " .$wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys
-                GROUP BY author_id";
-        $users = $wpdb->get_results($users_sql,"ARRAY_A");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $cat_titles = $wpdb->get_results( "SELECT s.title, s.id FROM {$survey_categories_table} AS s WHERE s.status = 'published'" );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $users = $wpdb->get_results( "SELECT `author_id` FROM {$surveys_table} GROUP BY author_id", "ARRAY_A" );
         $cat_id = null;
         
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['filterby'] )){
-            $cat_id = absint( esc_attr( $_GET['filterby'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = absint( esc_attr( sanitize_text_field( wp_unslash( $_GET['filterby'] ) ) ) );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['filterbyuser'] )){            
-            $author_id = absint( esc_attr( $_GET['filterbyuser'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $author_id = absint( esc_attr( sanitize_text_field( wp_unslash( $_GET['filterbyuser'] ) ) ) );
         }
 
         $categories_select = array();
@@ -143,7 +150,7 @@ class Surveys_List_Table extends WP_List_Table {
             <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="user-filter-apply-<?php echo esc_attr( $which ); ?> button action ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?>" value="Filter">
         </div>
         
-        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( ( $_REQUEST['page'] ) ); ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
+        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page slug. ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
     }
     
@@ -156,8 +163,10 @@ class Surveys_List_Table extends WP_List_Table {
         $selected_published = "";
         $selected_draft = "";
         $selected_trashed = "";
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['fstatus'] ) ){
-            switch( sanitize_text_field( $_GET['fstatus'] ) ){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            switch( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) ){
                 case "published":
                     $selected_published = " style='font-weight:bold;' ";
                     break;
@@ -175,16 +184,20 @@ class Surveys_List_Table extends WP_List_Table {
             $selected_all = " style='font-weight:bold;' ";
         }
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".esc_attr( $_REQUEST['page'] )."'>" . __( "All", "survey-maker" ) . " (".$all_count.")</a>",
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            "all" => "<a ".$selected_all." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."'>" . __( "All", "survey-maker" ) . " (".$all_count.")</a>",
         );
         if( intval( $published_count ) > 0 ){
-            $status_links["published"] = "<a ".$selected_published." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=published'>" . __( "Published", "survey-maker" ) . " (".$published_count.")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["published"] = "<a ".$selected_published." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=published'>" . __( "Published", "survey-maker" ) . " (".$published_count.")</a>";
         }
         if( intval( $draft_count ) > 0 ){
-            $status_links["draft"] = "<a ".$selected_draft." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=draft'>" . __( "Draft", "survey-maker" ) . " (".$draft_count.")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["draft"] = "<a ".$selected_draft." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=draft'>" . __( "Draft", "survey-maker" ) . " (".$draft_count.")</a>";
         }
         if( intval( $trashed_count ) > 0 ){
-            $status_links["trashed"] = "<a ".$selected_trashed." href='?page=".esc_attr( $_REQUEST['page'] )."&fstatus=trashed'>" . __( "Trash", "survey-maker" ) . " (".$trashed_count.")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["trashed"] = "<a ".$selected_trashed." href='?page=".esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=trashed'>" . __( "Trash", "survey-maker" ) . " (".$trashed_count.")</a>";
         }
         return $status_links;
     }
@@ -201,54 +214,65 @@ class Surveys_List_Table extends WP_List_Table {
 
         global $wpdb;
         
-        $sql = "SELECT * FROM ". $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
-        
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+
         $where = array();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != ''){
-            $where[] = ' status = "' . esc_sql( esc_attr( $_GET['fstatus'] ) ) . '" ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $where[] = $wpdb->prepare( ' status = %s ', esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) ) );
         }else{
-            $where[] = ' status != "trashed" ';
+            $where[] = " status != 'trashed' ";
         }
 
         if( $search != '' ){
             $where[] = $search;
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(! empty( $_REQUEST['filterby'] ) && intval( $_REQUEST['filterby'] ) > 0){
-            $cat_id = intval( esc_attr( $_REQUEST['filterby'] ) );
-            $where[] = ' FIND_IN_SET( "'.$cat_id.'", `category_ids` ) ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['filterby'] ) ) ) );
+            $where[] = $wpdb->prepare( ' FIND_IN_SET( %s, `category_ids` ) ', (string) $cat_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(! empty( $_REQUEST['filterbyuser'] ) && intval( $_REQUEST['filterbyuser'] ) > 0){
-            $user_id = intval( esc_attr( $_REQUEST['filterbyuser'] ) );
-            $where[] = ' author_id ='.$user_id;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $user_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['filterbyuser'] ) ) ) );
+            $where[] = $wpdb->prepare( ' author_id = %d ', $user_id );
         }
 
-        if ( ! empty( $where ) ){
-            $sql .= ' WHERE ' . implode( ' AND ', $where );
-        }
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
 
+        $order_by = 'ordering DESC';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( ! empty( $_REQUEST['orderby'] ) ) {
-            $order_by  = ( isset( $_REQUEST['orderby'] ) && esc_attr( $_REQUEST['orderby'] ) != '' ) ? esc_attr( $_REQUEST['orderby'] ) : 'id';
-            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( $_REQUEST['order'] ) == 'asc' ) ? ' ASC' : ' DESC';
-
-            $sql_orderby = sanitize_sql_orderby( $order_by );
-
-            if ( $sql_orderby ) {
-                $sql .= ' ORDER BY ' . $sql_orderby;
-            } else {
-                $sql .= ' ORDER BY ordering DESC';
-            }
-        }else{
-            $sql .= ' ORDER BY ordering DESC';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by  = ( isset( $_REQUEST['orderby'] ) && esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) ) != '' ) ? esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) ) : 'id';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) ) == 'asc' ) ? ' ASC' : ' DESC';
         }
 
-        $sql .= " LIMIT $per_page";
-        $sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+        $sql_orderby = sanitize_sql_orderby( $order_by );
+        if ( ! $sql_orderby ) {
+            $sql_orderby = 'ordering DESC';
+        }
 
+        $per_page = absint( $per_page );
+        $offset   = max( 0, ( absint( $page_number ) - 1 ) * $per_page );
 
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare(), ORDER BY is validated with sanitize_sql_orderby().
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM {$surveys_table} {$where_sql} ORDER BY {$sql_orderby} LIMIT %d OFFSET %d",
+                $per_page,
+                $offset
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return $result;
     }
@@ -256,9 +280,10 @@ class Surveys_List_Table extends WP_List_Table {
     public function get_categories(){
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories WHERE status='published' ORDER BY title ASC";
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
-        $result = $wpdb->get_results($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_results( "SELECT * FROM {$survey_categories_table} WHERE status='published' ORDER BY title ASC", 'ARRAY_A' );
 
         return $result;
     }
@@ -266,9 +291,10 @@ class Surveys_List_Table extends WP_List_Table {
     public static function get_item_by_id( $id ){
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id=" . absint( $id );
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $result = $wpdb->get_row($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$surveys_table} WHERE id = %d", absint( $id ) ), 'ARRAY_A' );
 
         return $result;
     }
@@ -280,17 +306,17 @@ class Surveys_List_Table extends WP_List_Table {
         $questions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
         $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
 
-        if( isset( $_POST["survey_action"] ) && wp_verify_nonce( sanitize_text_field( $_POST["survey_action"] ), 'survey_action' ) ){
+        if( isset( $_POST["survey_action"] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST["survey_action"] ) ), 'survey_action' ) ){
 
             $name_prefix = 'ays_';
             
             $survey_allowed_html = Survey_Maker_Data::ays_survey_custom_allowed_html();
 
             // Save type
-            $save_type = (isset($_POST['save_type'])) ? sanitize_text_field( $_POST['save_type'] ) : '';
+            $save_type = (isset($_POST['save_type'])) ? sanitize_text_field( wp_unslash( $_POST['save_type'] ) ) : '';
 
             // Id of item
-            $id = isset( $_POST['id'] ) ? absint( sanitize_text_field( $_POST['id'] ) ) : 0;
+            $id = isset( $_POST['id'] ) ? absint( sanitize_text_field( wp_unslash( $_POST['id'] ) ) ) : 0;
 
             // Ordering
             $max_id = $this->get_max_id();
@@ -298,50 +324,50 @@ class Surveys_List_Table extends WP_List_Table {
             
             // Author ID
             $user_id = get_current_user_id();
-            $author_id = isset( $_POST[ $name_prefix . 'author_id' ] ) && $_POST[ $name_prefix . 'author_id' ] != '' ? intval( sanitize_text_field( $_POST[ $name_prefix . 'author_id' ] ) ) : $user_id;
+            $author_id = isset( $_POST[ $name_prefix . 'author_id' ] ) && $_POST[ $name_prefix . 'author_id' ] != '' ? intval( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'author_id' ] ) ) ) : $user_id;
 
             // Title
-            $title = isset( $_POST[ $name_prefix . 'title' ] ) && $_POST[ $name_prefix . 'title' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'title' ] ) ) : '';
+            $title = isset( $_POST[ $name_prefix . 'title' ] ) && $_POST[ $name_prefix . 'title' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'title' ] ) ) : '';
 
             if($title == ''){
                 $url = esc_url_raw( remove_query_arg( false ) );
                 $url = esc_url_raw( add_query_arg( array(
                     'status' => 'empty-title'
                 ), $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
             // Description
-            $description = ''; //isset( $_POST[ $name_prefix . 'description' ] ) && $_POST[ $name_prefix . 'description' ] != '' ? stripslashes( wp_kses_post( $_POST[ $name_prefix . 'description' ] ) ) : '';
+            $description = ''; //isset( $_POST[ $name_prefix . 'description' ] ) && $_POST[ $name_prefix . 'description' ] != '' ? wp_kses_post( wp_unslash( $_POST[ $name_prefix . 'description' ] ) ) : '';
 
             // Status
-            $status = isset( $_POST[ $name_prefix . 'status' ] ) && $_POST[ $name_prefix . 'status' ] != '' ? sanitize_text_field( $_POST[ $name_prefix . 'status' ] ) : 'published';
+            $status = isset( $_POST[ $name_prefix . 'status' ] ) && $_POST[ $name_prefix . 'status' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'status' ] ) ) : 'published';
 
             // Trash status
             $trash_status = '';
             
             // Date created
-            $date_created = isset( $_POST[ $name_prefix . 'survey_change_creation_date' ] ) && Survey_Maker_Admin::validateDate( $_POST[ $name_prefix . 'survey_change_creation_date' ] ) ? sanitize_text_field( $_POST[ $name_prefix . 'survey_change_creation_date' ] ) : current_time( 'mysql' );
+            $date_created = isset( $_POST[ $name_prefix . 'survey_change_creation_date' ] ) && Survey_Maker_Admin::validateDate( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_change_creation_date' ] ) ) ) ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_change_creation_date' ] ) ) : current_time( 'mysql' );
             
             // Date modified
-            $date_modified = isset( $_POST[ $name_prefix . 'date_modified' ] ) && Survey_Maker_Admin::validateDate( $_POST[ $name_prefix . 'date_modified' ] ) ? sanitize_text_field( $_POST[ $name_prefix . 'date_modified' ] ) : current_time( 'mysql' );
+            $date_modified = isset( $_POST[ $name_prefix . 'date_modified' ] ) && Survey_Maker_Admin::validateDate( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'date_modified' ] ) ) ) ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'date_modified' ] ) ) : current_time( 'mysql' );
 
             // Survey categories IDs
-            $category_ids = isset( $_POST[ $name_prefix . 'category_ids' ] ) && $_POST[ $name_prefix . 'category_ids' ] != '' ? array_map( 'sanitize_text_field', $_POST[ $name_prefix . 'category_ids' ] ) : array();
+            $category_ids = isset( $_POST[ $name_prefix . 'category_ids' ] ) && $_POST[ $name_prefix . 'category_ids' ] != '' ? array_map( 'sanitize_text_field', wp_unslash( $_POST[ $name_prefix . 'category_ids' ] ) ) : array();
             $category_ids = empty( $category_ids ) ? '' : implode( ',', $category_ids );
 
             // Survey questions IDs
-            $question_ids = isset( $_POST[ $name_prefix . 'question_ids' ] ) && $_POST[ $name_prefix . 'question_ids' ] != '' ? array_map( 'sanitize_text_field', $_POST[ $name_prefix . 'question_ids' ] ) : array();
+            $question_ids = isset( $_POST[ $name_prefix . 'question_ids' ] ) && $_POST[ $name_prefix . 'question_ids' ] != '' ? array_map( 'sanitize_text_field', wp_unslash( $_POST[ $name_prefix . 'question_ids' ] ) ) : array();
             // $question_ids = empty( $question_ids ) ? '' : implode( ',', $question_ids );
 
             // Survey image
-            $image = isset( $_POST[ $name_prefix . 'image' ] ) && $_POST[ $name_prefix . 'image' ] != '' ? sanitize_text_field( $_POST[ $name_prefix . 'image' ] ) : '';
+            $image = isset( $_POST[ $name_prefix . 'image' ] ) && $_POST[ $name_prefix . 'image' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'image' ] ) ) : '';
 
             // Post ID
-            $post_id = isset( $_POST[ $name_prefix . 'post_id' ] ) && ! empty( $_POST[ $name_prefix . 'post_id' ] ) ? intval( sanitize_text_field( $_POST[ $name_prefix . 'post_id' ] ) ) : 0;
+            $post_id = isset( $_POST[ $name_prefix . 'post_id' ] ) && ! empty( $_POST[ $name_prefix . 'post_id' ] ) ? intval( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'post_id' ] ) ) ) : 0;
 
             // Section ids
-            $section_ids = (isset( $_POST[ $name_prefix . 'sections_ids' ] ) && $_POST[ $name_prefix . 'sections_ids' ] != '') ? array_map( 'sanitize_text_field', $_POST[ $name_prefix . 'sections_ids' ] ) : array();
+            $section_ids = (isset( $_POST[ $name_prefix . 'sections_ids' ] ) && $_POST[ $name_prefix . 'sections_ids' ] != '') ? array_map( 'sanitize_text_field', wp_unslash( $_POST[ $name_prefix . 'sections_ids' ] ) ) : array();
 
 
             // =======================  //  ======================= // ======================= // ======================= // ======================= //
@@ -352,100 +378,100 @@ class Surveys_List_Table extends WP_List_Table {
 
 
             // Survey Theme
-            $survey_theme = (isset( $_POST[ $name_prefix . 'survey_theme' ] ) && $_POST[ $name_prefix . 'survey_theme' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_theme' ] ) ) : 'classic_light';
+            $survey_theme = (isset( $_POST[ $name_prefix . 'survey_theme' ] ) && $_POST[ $name_prefix . 'survey_theme' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_theme' ] ) ) : 'classic_light';
 
             // Survey Color
-            $survey_color = (isset( $_POST[ $name_prefix . 'survey_color' ] ) && $_POST[ $name_prefix . 'survey_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_color' ] ) ) : '#ff5722';
+            $survey_color = (isset( $_POST[ $name_prefix . 'survey_color' ] ) && $_POST[ $name_prefix . 'survey_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_color' ] ) ) : '#ff5722';
 
             // Background color
-            $survey_background_color = (isset( $_POST[ $name_prefix . 'survey_background_color' ] ) && $_POST[ $name_prefix . 'survey_background_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_background_color' ] ) ) : '#fff';
+            $survey_background_color = (isset( $_POST[ $name_prefix . 'survey_background_color' ] ) && $_POST[ $name_prefix . 'survey_background_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_background_color' ] ) ) : '#fff';
 
             // Text Color
-            $survey_text_color = (isset( $_POST[ $name_prefix . 'survey_text_color' ] ) && $_POST[ $name_prefix . 'survey_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_text_color' ] ) ) : '#333';
+            $survey_text_color = (isset( $_POST[ $name_prefix . 'survey_text_color' ] ) && $_POST[ $name_prefix . 'survey_text_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_text_color' ] ) ) : '#333';
 
             // Loader Color
-            $survey_loader_color = (isset( $_POST[ $name_prefix . 'survey_loader_color' ] ) && $_POST[ $name_prefix . 'survey_loader_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_loader_color' ] ) ) : $survey_text_color;
+            $survey_loader_color = (isset( $_POST[ $name_prefix . 'survey_loader_color' ] ) && $_POST[ $name_prefix . 'survey_loader_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_loader_color' ] ) ) : $survey_text_color;
 
             // Buttons text Color
-            $survey_buttons_text_color = (isset( $_POST[ $name_prefix . 'survey_buttons_text_color' ] ) && $_POST[ $name_prefix . 'survey_buttons_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_text_color' ] ) ) : '#333';
+            $survey_buttons_text_color = (isset( $_POST[ $name_prefix . 'survey_buttons_text_color' ] ) && $_POST[ $name_prefix . 'survey_buttons_text_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_text_color' ] ) ) : '#333';
 
             // Width
             $survey_width = (isset( $_POST[ $name_prefix . 'survey_width' ] ) && $_POST[ $name_prefix . 'survey_width' ] != '') ? absint( intval( $_POST[ $name_prefix . 'survey_width' ] ) ) : '';
 
             // Survey Width by percentage or pixels
-            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'survey_width_by_percentage_px' ] ) && $_POST[ $name_prefix . 'survey_width_by_percentage_px' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_width_by_percentage_px' ] ) ) : 'pixels';
+            $survey_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'survey_width_by_percentage_px' ] ) && $_POST[ $name_prefix . 'survey_width_by_percentage_px' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_width_by_percentage_px' ] ) ) : 'pixels';
 
             // Mobile width
             $survey_mobile_width = (isset( $_POST[ $name_prefix . 'survey_mobile_width' ] ) && $_POST[ $name_prefix . 'survey_mobile_width' ] != '') ? absint( intval( $_POST[ $name_prefix . 'survey_mobile_width' ] ) ) : '';
 
             // Survey mobile width by percentage or pixels
-            $survey_mobile_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'survey_mobile_width_by_percentage_px' ] ) && $_POST[ $name_prefix . 'survey_mobile_width_by_percentage_px' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_mobile_width_by_percentage_px' ] ) ) : 'pixels';
+            $survey_mobile_width_by_percentage_px = (isset( $_POST[ $name_prefix . 'survey_mobile_width_by_percentage_px' ] ) && $_POST[ $name_prefix . 'survey_mobile_width_by_percentage_px' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_mobile_width_by_percentage_px' ] ) ) : 'pixels';
 
             // Survey container Max-Width
             $survey_mobile_max_width = (isset( $_POST[ $name_prefix . 'mobile_max_width' ] ) && $_POST[ $name_prefix . 'mobile_max_width' ] != '') ? absint( intval( $_POST[ $name_prefix . 'mobile_max_width' ] ) ) : '';
 
             // Custom class for survey container
-            $survey_custom_class = (isset( $_POST[ $name_prefix . 'survey_custom_class' ] ) && $_POST[ $name_prefix . 'survey_custom_class' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_custom_class' ] ) ) : ''; 
+            $survey_custom_class = (isset( $_POST[ $name_prefix . 'survey_custom_class' ] ) && $_POST[ $name_prefix . 'survey_custom_class' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_custom_class' ] ) ) : ''; 
 
             // Custom CSS
-            $survey_custom_css = (isset( $_POST[ $name_prefix . 'survey_custom_css' ] ) && $_POST[ $name_prefix . 'survey_custom_css' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_custom_css' ] ) ) : '';
+            $survey_custom_css = (isset( $_POST[ $name_prefix . 'survey_custom_css' ] ) && $_POST[ $name_prefix . 'survey_custom_css' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_custom_css' ] ) ) : '';
 
             // Survey logo
-            $survey_logo = (isset( $_POST[ $name_prefix . 'survey_logo' ]) && $_POST[ $name_prefix . 'survey_logo' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_logo' ] ) ) : '';
+            $survey_logo = (isset( $_POST[ $name_prefix . 'survey_logo' ]) && $_POST[ $name_prefix . 'survey_logo' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_logo' ] ) ) ) : '';
 
             // Survey Logo url
-            $survey_logo_image_url = (isset( $_POST[ $name_prefix . 'survey_logo_image_url' ] ) && $_POST[ $name_prefix . 'survey_logo_image_url' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_image_url' ] ) : '';
+            $survey_logo_image_url = (isset( $_POST[ $name_prefix . 'survey_logo_image_url' ] ) && $_POST[ $name_prefix . 'survey_logo_image_url' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_logo_image_url' ] ) ) : '';
             $survey_logo_image_url_check = (isset( $_POST[ $name_prefix . 'survey_logo_enable_image_url' ] ) && $_POST[ $name_prefix . 'survey_logo_enable_image_url' ] == 'on') ? 'on' : 'off';
 
             // Survey Logo position
-            $survey_logo_image_position = (isset( $_POST[ $name_prefix . 'survey_logo_pos' ] ) && $_POST[ $name_prefix . 'survey_logo_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_pos' ] ) : 'right';
+            $survey_logo_image_position = (isset( $_POST[ $name_prefix . 'survey_logo_pos' ] ) && $_POST[ $name_prefix . 'survey_logo_pos' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_logo_pos' ] ) ) : 'right';
             // Survey Logo position mobile
-            $survey_logo_image_position_mobile = (isset( $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] ) : 'right';
+            $survey_logo_image_position_mobile = (isset( $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_logo_pos_mobile' ] ) ) : 'right';
 
             // Survey Logo title
-            $survey_logo_title = (isset( $_POST[ $name_prefix . 'survey_logo_title' ] ) && $_POST[ $name_prefix . 'survey_logo_title' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_logo_title' ] ) : '';
+            $survey_logo_title = (isset( $_POST[ $name_prefix . 'survey_logo_title' ] ) && $_POST[ $name_prefix . 'survey_logo_title' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_logo_title' ] ) ) : '';
 
             // Survey cover photo
-            $survey_cover_photo = (isset( $_POST[ $name_prefix . 'survey_cover_photo' ]) && $_POST[ $name_prefix . 'survey_cover_photo' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_cover_photo' ] ) ) : '';
+            $survey_cover_photo = (isset( $_POST[ $name_prefix . 'survey_cover_photo' ]) && $_POST[ $name_prefix . 'survey_cover_photo' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_cover_photo' ] ) ) ) : '';
 
             // Survey cover photo height
-            $survey_cover_photo_height = (isset( $_POST[ $name_prefix . 'survey_cover_image_height' ]) && $_POST[ $name_prefix . 'survey_cover_image_height' ] != '') ? absint(intval(( sanitize_text_field( $_POST[ $name_prefix . 'survey_cover_image_height' ])))) : 150;
+            $survey_cover_photo_height = (isset( $_POST[ $name_prefix . 'survey_cover_image_height' ]) && $_POST[ $name_prefix . 'survey_cover_image_height' ] != '') ? absint(intval(( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_cover_image_height' ] ) )))) : 150;
 
             // Survey cover photo mobile height
-            $survey_cover_photo_mobile_height = (isset( $_POST[ $name_prefix . 'survey_cover_photo_mobile_height' ]) && $_POST[ $name_prefix . 'survey_cover_photo_mobile_height' ] != '') ? absint(intval(( sanitize_text_field( $_POST[ $name_prefix . 'survey_cover_photo_mobile_height' ])))) : 150;
+            $survey_cover_photo_mobile_height = (isset( $_POST[ $name_prefix . 'survey_cover_photo_mobile_height' ]) && $_POST[ $name_prefix . 'survey_cover_photo_mobile_height' ] != '') ? absint(intval(( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_cover_photo_mobile_height' ] ) )))) : 150;
 
             // Survey cover photo position
-            $survey_cover_photo_position = (isset( $_POST[ $name_prefix . 'survey_cover_image_pos' ]) && $_POST[ $name_prefix . 'survey_cover_image_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_cover_image_pos' ]) : "center_center";
+            $survey_cover_photo_position = (isset( $_POST[ $name_prefix . 'survey_cover_image_pos' ]) && $_POST[ $name_prefix . 'survey_cover_image_pos' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_cover_image_pos' ] ) ) : "center_center";
 
             // Survey cover photo object fit
-            $survey_cover_photo_object_fit = (isset( $_POST[ $name_prefix . 'survey_cover_image_object_fit' ]) && $_POST[ $name_prefix . 'survey_cover_image_object_fit' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_cover_image_object_fit' ]) : "cover";
+            $survey_cover_photo_object_fit = (isset( $_POST[ $name_prefix . 'survey_cover_image_object_fit' ]) && $_POST[ $name_prefix . 'survey_cover_image_object_fit' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_cover_image_object_fit' ] ) ) : "cover";
 
             // Survey cover only first section
             $survey_cover_only_first_section = (isset( $_POST[ $name_prefix . 'survey_cover_only_first_section' ] ) && $_POST[ $name_prefix . 'survey_cover_only_first_section' ] == 'on') ? 'on' : 'off';
 
             // Survey title alignment
-            $survey_title_alignment = (isset( $_POST[ $name_prefix . 'survey_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_title_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_title_alignment' ] ) : 'left';
+            $survey_title_alignment = (isset( $_POST[ $name_prefix . 'survey_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_title_alignment' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_alignment' ] ) ) : 'left';
 
             // Survey title alignment
-            $survey_title_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_title_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_title_alignment_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_title_alignment_mobile' ] ) : 'left';
+            $survey_title_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_title_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_title_alignment_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_alignment_mobile' ] ) ) : 'left';
 
             // Survey title font size
-            $survey_title_font_size = (isset( $_POST[ $name_prefix . 'survey_title_font_size' ] ) && $_POST[ $name_prefix . 'survey_title_font_size' ] != '' && $_POST[ $name_prefix . 'survey_title_font_size' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_title_font_size' ] ))) : '30';
+            $survey_title_font_size = (isset( $_POST[ $name_prefix . 'survey_title_font_size' ] ) && $_POST[ $name_prefix . 'survey_title_font_size' ] != '' && $_POST[ $name_prefix . 'survey_title_font_size' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_font_size' ] ) ))) : '30';
 
             // Survey title font size mobile
-            $survey_title_font_size_for_mobile = (isset( $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] ) && $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] != '' && $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] ))) : '30';
+            $survey_title_font_size_for_mobile = (isset( $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] ) && $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] != '' && $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_font_size_for_mobile' ] ) ))) : '30';
 
             // Survey title letter spacing
-            $survey_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_title_letter_spacing' ] ))) : '0';
+            $survey_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_letter_spacing' ] ) ))) : '0';
 
             // Survey title letter spacing mobile
-            $survey_title_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] ))) : '0';
+            $survey_title_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_letter_spacing_mobile' ] ) ))) : '0';
 
             // Survey title box shadow
             $survey_title_box_shadow_enable = (isset( $_POST[ $name_prefix . 'survey_title_box_shadow_enable' ] ) && $_POST[ $name_prefix . 'survey_title_box_shadow_enable' ] == 'on' ) ? 'on' : 'off';
 
             // Survey title box shadow color
-            $survey_title_box_shadow_color = (isset( $_POST[ $name_prefix . 'survey_title_box_shadow_color' ] ) && $_POST[ $name_prefix . 'survey_title_box_shadow_color' ] != '' ) ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_title_box_shadow_color' ] ) ) : '#333';
+            $survey_title_box_shadow_color = (isset( $_POST[ $name_prefix . 'survey_title_box_shadow_color' ] ) && $_POST[ $name_prefix . 'survey_title_box_shadow_color' ] != '' ) ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_title_box_shadow_color' ] ) ) : '#333';
 
             // === Survey title box shadow offsets start ===
                 // Survey title box shadow offset x
@@ -462,20 +488,20 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_section_title_font_size_mobile = (isset( $_POST[ $name_prefix . 'survey_section_title_font_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_title_font_size_mobile' ] != '') ? absint(intval( $_POST[ $name_prefix . 'survey_section_title_font_size_mobile' ] )) : 32;
 
             // Survey section title alignment
-            $survey_section_title_alignment = (isset( $_POST[ $name_prefix . 'survey_section_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_section_title_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_alignment' ] ) : 'left';
+            $survey_section_title_alignment = (isset( $_POST[ $name_prefix . 'survey_section_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_section_title_alignment' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_title_alignment' ] ) ) : 'left';
             // Survey section title alignment mobile
-            $survey_section_title_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] ) : 'left';
+            $survey_section_title_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_title_alignment_mobile' ] ) ) : 'left';
 
             // Survey title letter spacing
-            $survey_section_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] ))) : '0';
+            $survey_section_title_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_title_letter_spacing' ] ) ))) : '0';
 
             // Survey title letter spacing mobile
-            $survey_section_title_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] ))) : '0';
+            $survey_section_title_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_title_letter_spacing_mobile' ] ) ))) : '0';
 
             // Survey section description alignment
-            $survey_section_description_alignment = (isset( $_POST[ $name_prefix . 'survey_section_description_alignment' ] ) && $_POST[ $name_prefix . 'survey_section_description_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_section_description_alignment' ] ) : 'left';
+            $survey_section_description_alignment = (isset( $_POST[ $name_prefix . 'survey_section_description_alignment' ] ) && $_POST[ $name_prefix . 'survey_section_description_alignment' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_description_alignment' ] ) ) : 'left';
             // Survey section description alignment mobile
-            $survey_section_description_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_section_description_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_description_alignment_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_section_description_alignment_mobile' ] ) : 'left';
+            $survey_section_description_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_section_description_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_description_alignment_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_description_alignment_mobile' ] ) ) : 'left';
 
             // Survey section description font size
             $survey_section_description_font_size = (isset( $_POST[ $name_prefix . 'survey_section_description_font_size' ] ) && $_POST[ $name_prefix . 'survey_section_description_font_size' ] != '') ? absint(intval( $_POST[ $name_prefix . 'survey_section_description_font_size' ] )) : '14';
@@ -484,76 +510,76 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_section_description_font_size_mobile = (isset( $_POST[ $name_prefix . 'survey_section_description_font_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_description_font_size_mobile' ] != '') ? absint(intval( $_POST[ $name_prefix . 'survey_section_description_font_size_mobile' ] )) : '14';
 
             // Survey title letter spacing
-            $survey_section_description_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] ))) : '0';
+            $survey_section_description_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_description_letter_spacing' ] ) ))) : '0';
 
             // SSurvey section description letter spacing mobile
-            $survey_section_description_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] ))) : '0';
+            $survey_section_description_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_section_description_letter_spacing_mobile' ] ) ))) : '0';
 
             // =========== Questions Styles Start ===========
 
             // Question font size
-            $survey_question_font_size = (isset( $_POST[ $name_prefix . 'survey_question_font_size' ] ) && $_POST[ $name_prefix . 'survey_question_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_font_size' ] ) ) : 16;
+            $survey_question_font_size = (isset( $_POST[ $name_prefix . 'survey_question_font_size' ] ) && $_POST[ $name_prefix . 'survey_question_font_size' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_font_size' ] ) ) ) : 16;
 
             // Question font size mobile
-            $survey_question_font_size_mobile = (isset( $_POST[ $name_prefix . 'survey_question_font_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_font_size_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_font_size_mobile' ] ) ) : 16;
+            $survey_question_font_size_mobile = (isset( $_POST[ $name_prefix . 'survey_question_font_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_font_size_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_font_size_mobile' ] ) ) ) : 16;
 
             // Question title alignment 
-            $survey_question_title_alignment = (isset( $_POST[ $name_prefix . 'survey_question_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_question_title_alignment' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_title_alignment' ] ) ) : 'left';
+            $survey_question_title_alignment = (isset( $_POST[ $name_prefix . 'survey_question_title_alignment' ] ) && $_POST[ $name_prefix . 'survey_question_title_alignment' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_title_alignment' ] ) ) ) : 'left';
 
             // Question Image Width
-            $survey_question_image_width = (isset( $_POST[ $name_prefix . 'survey_question_image_width' ] ) && $_POST[ $name_prefix . 'survey_question_image_width' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_width' ] ) ) : '';
+            $survey_question_image_width = (isset( $_POST[ $name_prefix . 'survey_question_image_width' ] ) && $_POST[ $name_prefix . 'survey_question_image_width' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_image_width' ] ) ) ) : '';
             // Question Image Width mobile
-            $survey_question_image_width_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_width_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_width_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_width_mobile' ] ) ) : '';
+            $survey_question_image_width_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_width_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_width_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_image_width_mobile' ] ) ) ) : '';
 
             // Question Image Height
-            $survey_question_image_height = (isset( $_POST[ $name_prefix . 'survey_question_image_height' ] ) && $_POST[ $name_prefix . 'survey_question_image_height' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_height' ] ) ) : '';
+            $survey_question_image_height = (isset( $_POST[ $name_prefix . 'survey_question_image_height' ] ) && $_POST[ $name_prefix . 'survey_question_image_height' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_image_height' ] ) ) ) : '';
             // Question Image Height mobile
-            $survey_question_image_height_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_height_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_height_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_height_mobile' ] ) ) : '';
+            $survey_question_image_height_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_height_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_height_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_image_height_mobile' ] ) ) ) : '';
 
             // Question Image sizing
-            $survey_question_image_sizing = (isset( $_POST[ $name_prefix . 'survey_question_image_sizing' ] ) && $_POST[ $name_prefix . 'survey_question_image_sizing' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_sizing' ] ) ) : 'cover';
+            $survey_question_image_sizing = (isset( $_POST[ $name_prefix . 'survey_question_image_sizing' ] ) && $_POST[ $name_prefix . 'survey_question_image_sizing' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_image_sizing' ] ) ) ) : 'cover';
             // Question Image sizing mobile
-            $survey_question_image_sizing_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] ) ) : 'cover';
+            $survey_question_image_sizing_mobile = (isset( $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_image_sizing_mobile' ] ) ) ) : 'cover';
             
             // Question padding
-            $survey_question_padding = (isset( $_POST[ $name_prefix . 'survey_question_padding' ] ) && $_POST[ $name_prefix . 'survey_question_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_padding' ] ) ) : 24;
+            $survey_question_padding = (isset( $_POST[ $name_prefix . 'survey_question_padding' ] ) && $_POST[ $name_prefix . 'survey_question_padding' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_padding' ] ) ) ) : 24;
             
             // Question padding mobile
-            $survey_question_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_padding_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) ) : 24;
+            $survey_question_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_padding_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_padding_mobile' ] ) ) ) : 24;
             
             // Question border radius
-            $survey_question_border_radius = (isset( $_POST[ $name_prefix . 'survey_question_border_radius' ] ) && $_POST[ $name_prefix . 'survey_question_border_radius' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_border_radius' ] ) ) : 8;
+            $survey_question_border_radius = (isset( $_POST[ $name_prefix . 'survey_question_border_radius' ] ) && $_POST[ $name_prefix . 'survey_question_border_radius' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_border_radius' ] ) ) ) : 8;
             
             // Question border radius mobile
-            $survey_question_border_radius_mobile = (isset( $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] ) ) : 8;
+            $survey_question_border_radius_mobile = (isset( $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_border_radius_mobile' ] ) ) ) : 8;
             
             // Question caption text color
-            $survey_question_caption_text_color = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) ) : $survey_text_color;
+            $survey_question_caption_text_color = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_text_color' ] ) ) : $survey_text_color;
             // Question caption text color mobile
-            $survey_question_caption_text_color_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] ) ) : $survey_text_color;
+            $survey_question_caption_text_color_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_text_color_mobile' ] ) ) : $survey_text_color;
             
             // Question caption text alignment
-            $survey_question_caption_text_alignment = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] ) : 'center';
+            $survey_question_caption_text_alignment = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_text_alignment' ] ) ) : 'center';
             
             // Question caption text alignment on mobile
-            $survey_question_caption_text_alignment_on_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_alignment_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_alignment_on_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_alignment_on_mobile' ] ) : 'center';
+            $survey_question_caption_text_alignment_on_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_alignment_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_alignment_on_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_text_alignment_on_mobile' ] ) ) : 'center';
                         
             // Question font size
-            $survey_question_caption_font_size = (isset( $_POST[ $name_prefix . 'survey_question_caption_font_size' ] ) && $_POST[ $name_prefix . 'survey_question_caption_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_font_size' ] ) ) : 16;
+            $survey_question_caption_font_size = (isset( $_POST[ $name_prefix . 'survey_question_caption_font_size' ] ) && $_POST[ $name_prefix . 'survey_question_caption_font_size' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_font_size' ] ) ) ) : 16;
                         
             // Question font size on mobile
-            $survey_question_caption_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_font_size_on_mobile' ] ) ) : 16;
+            $survey_question_caption_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_font_size_on_mobile' ] ) ) ) : 16;
                         
             // Question caption text transform
-            $survey_question_caption_text_transform = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] ) : 'none';
+            $survey_question_caption_text_transform = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_text_transform' ] ) ) : 'none';
             // Question caption text transform mobile
-            $survey_question_caption_text_transform_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] ) : 'none';
+            $survey_question_caption_text_transform_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_text_transform_mobile' ] ) ) : 'none';
 
             // Question caption letter spacing
-            $survey_question_caption_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] ))) : '0';
+            $survey_question_caption_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing' ] ) ))) : '0';
 
             // Question caption letter spacing mobile
-            $survey_question_caption_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] ))) : '0';
+            $survey_question_caption_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_question_caption_letter_spacing_mobile' ] ) ))) : '0';
 
             // Question caption hide on mobile
             $survey_question_caption_hide_on_mobile = (isset( $_POST[ $name_prefix . 'survey_question_caption_hide_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_question_caption_hide_on_mobile' ] != '' && $_POST[ $name_prefix . 'survey_question_caption_hide_on_mobile' ] == 'on' ) ? 'on' : 'off';
@@ -565,44 +591,44 @@ class Surveys_List_Table extends WP_List_Table {
             // =========== Answers Styles Start ===========
 
             // Answer font size
-            $survey_answer_font_size = (isset( $_POST[ $name_prefix . 'survey_answer_font_size' ] ) && $_POST[ $name_prefix . 'survey_answer_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answer_font_size' ] ) ) : 15;
+            $survey_answer_font_size = (isset( $_POST[ $name_prefix . 'survey_answer_font_size' ] ) && $_POST[ $name_prefix . 'survey_answer_font_size' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answer_font_size' ] ) ) ) : 15;
 
             // Answer font size mobile
-            $survey_answer_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_answer_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_answer_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answer_font_size_on_mobile' ] ) ) : 15;
+            $survey_answer_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_answer_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_answer_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answer_font_size_on_mobile' ] ) ) ) : 15;
             
             // Answer letter spacing
-            $survey_answer_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] ))) : '0';
+            $survey_answer_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answer_letter_spacing' ] ) ))) : '0';
             
             // Answer letter spacing mobile
-            $survey_answer_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] ))) : '0';
+            $survey_answer_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answer_letter_spacing_mobile' ] ) ))) : '0';
 
             // Answer view
-            $survey_answers_view = (isset( $_POST[ $name_prefix . 'survey_answers_view' ] ) && $_POST[ $name_prefix . 'survey_answers_view' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_view' ] ) ) : 'list';
+            $survey_answers_view = (isset( $_POST[ $name_prefix . 'survey_answers_view' ] ) && $_POST[ $name_prefix . 'survey_answers_view' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_view' ] ) ) ) : 'list';
 
             // Answer view alignment
-            $survey_answers_view_alignment = (isset( $_POST[ $name_prefix . 'survey_answers_view_alignment' ] ) && $_POST[ $name_prefix . 'survey_answers_view_alignment' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_view_alignment' ] ) ) : 'space-around';
+            $survey_answers_view_alignment = (isset( $_POST[ $name_prefix . 'survey_answers_view_alignment' ] ) && $_POST[ $name_prefix . 'survey_answers_view_alignment' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_view_alignment' ] ) ) ) : 'space-around';
 
             // Answer object-fit
-            $survey_answers_object_fit = (isset( $_POST[ $name_prefix . 'survey_answers_object_fit' ] ) && $_POST[ $name_prefix . 'survey_answers_object_fit' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_object_fit' ] ) ) : 'cover';
+            $survey_answers_object_fit = (isset( $_POST[ $name_prefix . 'survey_answers_object_fit' ] ) && $_POST[ $name_prefix . 'survey_answers_object_fit' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_object_fit' ] ) ) ) : 'cover';
             // Answer object-fit mobile
-            $survey_answers_object_fit_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] ) ) : 'cover';
+            $survey_answers_object_fit_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_object_fit_mobile' ] ) ) ) : 'cover';
 
             // Answer padding
-            $survey_answers_padding = (isset( $_POST[ $name_prefix . 'survey_answers_padding' ] ) && $_POST[ $name_prefix . 'survey_answers_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_padding' ] ) ) : 8;
+            $survey_answers_padding = (isset( $_POST[ $name_prefix . 'survey_answers_padding' ] ) && $_POST[ $name_prefix . 'survey_answers_padding' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_padding' ] ) ) ) : 8;
 
             // Answer padding mobile
-            $survey_answers_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] ) ) : 8;
+            $survey_answers_padding_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_padding_mobile' ] ) ) ) : 8;
 
             // Answer Gap
-            $survey_answers_gap = (isset( $_POST[ $name_prefix . 'survey_answers_gap' ] ) && $_POST[ $name_prefix . 'survey_answers_gap' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_gap' ] ) ) : 0;
+            $survey_answers_gap = (isset( $_POST[ $name_prefix . 'survey_answers_gap' ] ) && $_POST[ $name_prefix . 'survey_answers_gap' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_gap' ] ) ) ) : 0;
 
             // Answer Gap mobile
-            $survey_answers_gap_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] ) ) : 0;
+            $survey_answers_gap_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_gap_mobile' ] ) ) ) : 0;
 
             // Answer image size
-            $survey_answers_image_size = (isset( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size' ] != 0) ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) ) : 195;
+            $survey_answers_image_size = (isset( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size' ] != 0) ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_image_size' ] ) ) ) : 195;
             // Answer image size mobile
-            $survey_answers_image_size_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] != 0) ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] ) ) : 195;
+            $survey_answers_image_size_mobile = (isset( $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] ) && $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] != '' && $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] != 0) ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_answers_image_size_mobile' ] ) ) ) : 195;
 
             // =========== Answers Styles End   ===========
 
@@ -611,43 +637,43 @@ class Surveys_List_Table extends WP_List_Table {
             // =========== Buttons Styles Start ===========
 
             // Buttons background color
-            $survey_buttons_bg_color = (isset( $_POST[ $name_prefix . 'survey_button_bg_color' ] ) && $_POST[ $name_prefix . 'survey_button_bg_color' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_button_bg_color' ] ) : '#fff';
+            $survey_buttons_bg_color = (isset( $_POST[ $name_prefix . 'survey_button_bg_color' ] ) && $_POST[ $name_prefix . 'survey_button_bg_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_button_bg_color' ] ) ) : '#fff';
 
             // Buttons size
-            $survey_buttons_size = (isset( $_POST[ $name_prefix . 'survey_buttons_size' ] ) && $_POST[ $name_prefix . 'survey_buttons_size' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_size' ] ) ) : 'medium';
+            $survey_buttons_size = (isset( $_POST[ $name_prefix . 'survey_buttons_size' ] ) && $_POST[ $name_prefix . 'survey_buttons_size' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_size' ] ) ) ) : 'medium';
 
             // Buttons font size
-            $survey_buttons_font_size = (isset( $_POST[ $name_prefix . 'survey_buttons_font_size' ] ) && $_POST[ $name_prefix . 'survey_buttons_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_font_size' ] ) ) : 14;
+            $survey_buttons_font_size = (isset( $_POST[ $name_prefix . 'survey_buttons_font_size' ] ) && $_POST[ $name_prefix . 'survey_buttons_font_size' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_font_size' ] ) ) ) : 14;
 
             // Buttons mobile font size
-            $survey_buttons_mobile_font_size = (isset( $_POST[ $name_prefix . 'survey_buttons_mobile_font_size' ] ) && $_POST[ $name_prefix . 'survey_buttons_mobile_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_mobile_font_size' ] ) ) : 14;
+            $survey_buttons_mobile_font_size = (isset( $_POST[ $name_prefix . 'survey_buttons_mobile_font_size' ] ) && $_POST[ $name_prefix . 'survey_buttons_mobile_font_size' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_mobile_font_size' ] ) ) ) : 14;
 
             // Buttons Left / Right padding
-            $survey_buttons_left_right_padding = (isset( $_POST[ $name_prefix . 'survey_buttons_left_right_padding' ] ) && $_POST[ $name_prefix . 'survey_buttons_left_right_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_left_right_padding' ] ) ) : 24;
+            $survey_buttons_left_right_padding = (isset( $_POST[ $name_prefix . 'survey_buttons_left_right_padding' ] ) && $_POST[ $name_prefix . 'survey_buttons_left_right_padding' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_left_right_padding' ] ) ) ) : 24;
 
             // Buttons Top / Bottom padding
-            $survey_buttons_top_bottom_padding = (isset( $_POST[ $name_prefix . 'survey_buttons_top_bottom_padding' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_bottom_padding' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_top_bottom_padding' ] ) ) : 0;
+            $survey_buttons_top_bottom_padding = (isset( $_POST[ $name_prefix . 'survey_buttons_top_bottom_padding' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_bottom_padding' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_top_bottom_padding' ] ) ) ) : 0;
 
             // Buttons border radius
-            $survey_buttons_border_radius = (isset( $_POST[ $name_prefix . 'survey_buttons_border_radius' ] ) && $_POST[ $name_prefix . 'survey_buttons_border_radius' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_border_radius' ] ) ) : 4;
+            $survey_buttons_border_radius = (isset( $_POST[ $name_prefix . 'survey_buttons_border_radius' ] ) && $_POST[ $name_prefix . 'survey_buttons_border_radius' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_border_radius' ] ) ) ) : 4;
             // Buttons border radius mobile
-            $survey_buttons_border_radius_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] ) ) : 4;
+            $survey_buttons_border_radius_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_border_radius_mobile' ] ) ) ) : 4;
 
             // Buttons alignment
-            $survey_buttons_alignment = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) : 'left';
+            $survey_buttons_alignment = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_alignment' ] ) ) : 'left';
             // Buttons alignment mobile
-            $survey_buttons_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] ) : 'left';
+            $survey_buttons_alignment_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_alignment_mobile' ] ) ) : 'left';
 
             // Buttons top distance
-            $survey_buttons_top_distance = (isset( $_POST[ $name_prefix . 'survey_buttons_top_distance' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_distance' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_top_distance' ] ) ) : 10;
+            $survey_buttons_top_distance = (isset( $_POST[ $name_prefix . 'survey_buttons_top_distance' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_distance' ] != '') ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_top_distance' ] ) ) ) : 10;
             // Buttons top distance mobile
-            $survey_buttons_top_distance_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_top_distance_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_distance_mobile' ] != '') ? absint( sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_top_distance_mobile' ] ) ) : 10;
+            $survey_buttons_top_distance_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_top_distance_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_top_distance_mobile' ] != '') ? absint( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_top_distance_mobile' ] ) ) ) : 10;
             
             // Buttons text letter spacing
-            $survey_buttons_text_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] ))) : '0';
+            $survey_buttons_text_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing' ] ) ))) : '0';
             
             // Buttons text letter spacing mobile
-            $survey_buttons_text_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] ))) : '0';
+            $survey_buttons_text_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_buttons_text_letter_spacing_mobile' ] ) ))) : '0';
 
             // ===========  Buttons Styles End  ===========
 
@@ -669,29 +695,29 @@ class Surveys_List_Table extends WP_List_Table {
                 $survey_enable_start_page = (isset( $_POST[ $name_prefix . 'survey_enable_start_page' ] ) && $_POST[ $name_prefix . 'survey_enable_start_page' ] == 'on') ? 'on' : 'off';
 
                 // Start page Title
-                $survey_start_page_title = isset( $_POST[ $name_prefix . 'survey_start_page_title' ] ) && $_POST[ $name_prefix . 'survey_start_page_title' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title' ] ) ) : '';
+                $survey_start_page_title = isset( $_POST[ $name_prefix . 'survey_start_page_title' ] ) && $_POST[ $name_prefix . 'survey_start_page_title' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_title' ] ) ) : '';
 
                 // Start page Title position
-                $survey_start_page_title_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_title_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_title_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title_pos' ] ) : 'center';
+                $survey_start_page_title_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_title_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_title_pos' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_title_pos' ] ) ) : 'center';
                 // Start page Title position mobile
-                $survey_start_page_title_pos_mobile = (isset( $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] ) : 'center';
+                $survey_start_page_title_pos_mobile = (isset( $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_title_pos_mobile' ] ) ) : 'center';
 
                 // Start page description
-                $survey_start_page_description = (isset( $_POST[ $name_prefix . 'survey_start_page_description' ] ) && $_POST[ $name_prefix . 'survey_start_page_description' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_start_page_description' ], $survey_allowed_html ) : '';
+                $survey_start_page_description = (isset( $_POST[ $name_prefix . 'survey_start_page_description' ] ) && $_POST[ $name_prefix . 'survey_start_page_description' ] != '') ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_description' ] ), $survey_allowed_html ) : '';
 
                 // Start button position
-                $survey_start_page_button_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) : 'left';
+                $survey_start_page_button_pos = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_button_pos' ] ) ) : 'left';
                 // Start button position mobile
-                $survey_start_page_button_pos_mobile = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] ) : 'left';
+                $survey_start_page_button_pos_mobile = (isset( $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] ) && $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_button_pos_mobile' ] ) ) : 'left';
 
                 // Start page Background color
-                $survey_start_page_background_color = (isset( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_background_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) ) : '#fff';
+                $survey_start_page_background_color = (isset( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_background_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_background_color' ] ) ) : '#fff';
 
                 // Start page Text Color
-                $survey_start_page_text_color = (isset( $_POST[ $name_prefix . 'survey_start_page_text_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_text_color' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_start_page_text_color' ] ) ) : '#333';
+                $survey_start_page_text_color = (isset( $_POST[ $name_prefix . 'survey_start_page_text_color' ] ) && $_POST[ $name_prefix . 'survey_start_page_text_color' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_text_color' ] ) ) : '#333';
 
                 // Start page Custom class
-                $survey_start_page_custom_class = (isset( $_POST[ $name_prefix . 'survey_start_page_custom_class' ] ) && $_POST[ $name_prefix . 'survey_start_page_custom_class' ] != '') ? stripslashes( esc_attr( $_POST[ $name_prefix . 'survey_start_page_custom_class' ] ) ) : '';
+                $survey_start_page_custom_class = (isset( $_POST[ $name_prefix . 'survey_start_page_custom_class' ] ) && $_POST[ $name_prefix . 'survey_start_page_custom_class' ] != '') ? esc_attr( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_page_custom_class' ] ) ) ) : '';
             
 
             // =============================================================
@@ -729,28 +755,28 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Enable Survey Start loader
             $survey_enable_survey_start_loader = (isset( $_POST[ $name_prefix . 'survey_enable_survey_start_loader' ] ) && $_POST[ $name_prefix . 'survey_enable_survey_start_loader' ] == 'on') ? 'on' : 'off';
-            $survey_before_start_loader = (isset( $_POST[ $name_prefix . 'survey_before_start_loader' ] ) && $_POST[ $name_prefix . 'survey_before_start_loader' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_before_start_loader' ] ) ) : 'default';
+            $survey_before_start_loader = (isset( $_POST[ $name_prefix . 'survey_before_start_loader' ] ) && $_POST[ $name_prefix . 'survey_before_start_loader' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_before_start_loader' ] ) ) ) : 'default';
 
             // Allow HTML in answers
             $survey_allow_html_in_answers = (isset( $_POST[ $name_prefix . 'survey_allow_html_in_answers' ] ) && $_POST[ $name_prefix . 'survey_allow_html_in_answers' ] == 'on') ? 'on' : 'off';
 
             // ---- Buttons settings Start  ---- //
                 // Finish button text
-                $survey_finish_button_each_text = (isset($_POST[ $name_prefix . 'survey_finish_button_each_text' ]) && $_POST[ $name_prefix . 'survey_finish_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_finish_button_each_text' ]) ) : 'Finish';
+                $survey_finish_button_each_text = (isset($_POST[ $name_prefix . 'survey_finish_button_each_text' ]) && $_POST[ $name_prefix . 'survey_finish_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_finish_button_each_text' ] ) ) : 'Finish';
                 // Next button text
-                $survey_next_button_each_text = (isset($_POST[ $name_prefix . 'survey_next_button_each_text' ]) && $_POST[ $name_prefix . 'survey_next_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_next_button_each_text' ]) ) : 'Next';
+                $survey_next_button_each_text = (isset($_POST[ $name_prefix . 'survey_next_button_each_text' ]) && $_POST[ $name_prefix . 'survey_next_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_next_button_each_text' ] ) ) : 'Next';
                 // Previous button text
-                $survey_previous_button_each_text = (isset($_POST[ $name_prefix . 'survey_previous_button_each_text' ]) && $_POST[ $name_prefix . 'survey_previous_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_previous_button_each_text' ]) ) : 'Prev';
+                $survey_previous_button_each_text = (isset($_POST[ $name_prefix . 'survey_previous_button_each_text' ]) && $_POST[ $name_prefix . 'survey_previous_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_previous_button_each_text' ] ) ) : 'Prev';
                 // Restart button text
-                $survey_restart_button_each_text = (isset($_POST[ $name_prefix . 'survey_restart_button_each_text' ]) && $_POST[ $name_prefix . 'survey_restart_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_restart_button_each_text' ]) ) : 'Restart';
+                $survey_restart_button_each_text = (isset($_POST[ $name_prefix . 'survey_restart_button_each_text' ]) && $_POST[ $name_prefix . 'survey_restart_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_restart_button_each_text' ] ) ) : 'Restart';
                 // Exit button text
-                $survey_exit_button_each_text = (isset($_POST[ $name_prefix . 'survey_exit_button_each_text' ]) && $_POST[ $name_prefix . 'survey_exit_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_exit_button_each_text' ]) ) : 'Exit';
+                $survey_exit_button_each_text = (isset($_POST[ $name_prefix . 'survey_exit_button_each_text' ]) && $_POST[ $name_prefix . 'survey_exit_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_exit_button_each_text' ] ) ) : 'Exit';
                 // Clear selection button text
-                $survey_clear_selection_button_each_text = (isset($_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ]) && $_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ]) ) : 'Clear selection';
+                $survey_clear_selection_button_each_text = (isset($_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ]) && $_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_clear_selection_button_each_text' ] ) ) : 'Clear selection';
                 // Start button text
-                $survey_start_button_each_text = (isset($_POST[ $name_prefix . 'survey_start_button_each_text' ]) && $_POST[ $name_prefix . 'survey_start_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_start_button_each_text' ]) ) : 'Start';
+                $survey_start_button_each_text = (isset($_POST[ $name_prefix . 'survey_start_button_each_text' ]) && $_POST[ $name_prefix . 'survey_start_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_start_button_each_text' ] ) ) : 'Start';
                 // Login button text
-                $survey_login_button_each_text = (isset($_POST[ $name_prefix . 'survey_login_button_each_text' ]) && $_POST[ $name_prefix . 'survey_login_button_each_text' ] != '') ? stripslashes( sanitize_text_field($_POST[ $name_prefix . 'survey_login_button_each_text' ]) ) : 'Log in';
+                $survey_login_button_each_text = (isset($_POST[ $name_prefix . 'survey_login_button_each_text' ]) && $_POST[ $name_prefix . 'survey_login_button_each_text' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_login_button_each_text' ] ) ) : 'Log in';
             // ---- Buttons settings End  ---- //
 
             // Allow HTML in section description
@@ -768,22 +794,22 @@ class Surveys_List_Table extends WP_List_Table {
                 $survey_enable_schedule = (isset( $_POST[ $name_prefix . 'survey_enable_schedule' ] ) && $_POST[ $name_prefix . 'survey_enable_schedule' ] == 'on') ? 'on' : 'off';
 
                 // Start date
-                $survey_schedule_active = (isset( $_POST[ $name_prefix . 'survey_schedule_active' ] ) && $_POST[ $name_prefix . 'survey_schedule_active' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_schedule_active' ] ) ) : '';
+                $survey_schedule_active = (isset( $_POST[ $name_prefix . 'survey_schedule_active' ] ) && $_POST[ $name_prefix . 'survey_schedule_active' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_schedule_active' ] ) ) ) : '';
 
                 // End date
-                $survey_schedule_deactive = (isset( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) && $_POST[ $name_prefix . 'survey_schedule_deactive' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) ) : '';
+                $survey_schedule_deactive = (isset( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) && $_POST[ $name_prefix . 'survey_schedule_deactive' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_schedule_deactive' ] ) ) ) : '';
 
                 // Show timer
                 $survey_schedule_show_timer = (isset( $_POST[ $name_prefix . 'survey_schedule_show_timer' ] ) && $_POST[ $name_prefix . 'survey_schedule_show_timer' ] == 'on') ? 'on' : 'off';
 
                 // Show countdown / start date
-                $survey_show_timer_type = (isset( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) && $_POST[ $name_prefix . 'survey_show_timer_type' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) ) : 'countdown';
+                $survey_show_timer_type = (isset( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) && $_POST[ $name_prefix . 'survey_show_timer_type' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_show_timer_type' ] ) ) ) : 'countdown';
 
                 // Pre start message
-                $survey_schedule_pre_start_message = (isset( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ], $survey_allowed_html ) : __("The survey will be available soon!", "survey-maker");
+                $survey_schedule_pre_start_message = (isset( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] != '') ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_schedule_pre_start_message' ] ), $survey_allowed_html ) : __("The survey will be available soon!", "survey-maker");
 
                 // Expiration message
-                $survey_schedule_expiration_message = (isset( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ], $survey_allowed_html ) : __("This survey has expired!", "survey-maker");
+                $survey_schedule_expiration_message = (isset( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ) && $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] != '') ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_schedule_expiration_message' ] ), $survey_allowed_html ) : __("This survey has expired!", "survey-maker");
 
                 // Dont Show Survey
                 $survey_dont_show_survey_container = (isset( $_POST[ $name_prefix . 'survey_dont_show_survey_container' ] ) && $_POST[ $name_prefix . 'survey_dont_show_survey_container' ] == 'on') ? 'on' : 'off';
@@ -792,31 +818,31 @@ class Surveys_List_Table extends WP_List_Table {
 
             // Survey full screen mode
             $survey_full_screen = isset( $_POST[ $name_prefix . 'survey_enable_full_screen_mode' ] ) && $_POST[ $name_prefix . 'survey_enable_full_screen_mode' ] == 'on' ? 'on' : 'off';
-            $survey_full_screen_button_color = isset( $_POST[ $name_prefix . 'survey_full_screen_button_color' ] ) && $_POST[ $name_prefix . 'survey_full_screen_button_color' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_full_screen_button_color' ] ) ) : '#333';
+            $survey_full_screen_button_color = isset( $_POST[ $name_prefix . 'survey_full_screen_button_color' ] ) && $_POST[ $name_prefix . 'survey_full_screen_button_color' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_full_screen_button_color' ] ) ) : '#333';
 
             // Survey progress bar
             $survey_enable_progress_bar = isset( $_POST[ $name_prefix . 'survey_enable_progres_bar' ] ) && $_POST[ $name_prefix . 'survey_enable_progres_bar' ] == 'on' ? 'on' : 'off';
             $survey_hide_section_pagination_text = isset( $_POST[ $name_prefix . 'survey_hide_section_pagination_text' ] ) && $_POST[ $name_prefix . 'survey_hide_section_pagination_text' ] == 'on' ? 'on' : 'off';
-            $survey_pagination_positioning = isset( $_POST[ $name_prefix . 'survey_pagination_positioning' ] ) && $_POST[ $name_prefix . 'survey_pagination_positioning' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_pagination_positioning' ]) : 'none';
-            $survey_pagination_positioning_mobile = isset( $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] ) && $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ]) : 'none';
+            $survey_pagination_positioning = isset( $_POST[ $name_prefix . 'survey_pagination_positioning' ] ) && $_POST[ $name_prefix . 'survey_pagination_positioning' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_pagination_positioning' ] ) ) : 'none';
+            $survey_pagination_positioning_mobile = isset( $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] ) && $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_pagination_positioning_mobile' ] ) ) : 'none';
             $survey_hide_section_bar = isset( $_POST[ $name_prefix . 'survey_hide_section_bar' ] ) && $_POST[ $name_prefix . 'survey_hide_section_bar' ] == 'on' ? 'on' : 'off';
-            $survey_progress_bar_text = isset( $_POST[ $name_prefix . 'survey_progress_bar_text' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_progress_bar_text' ]) : 'Page';
-            $survey_progress_bar_text_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] ))) : '0';
-            $survey_progress_bar_text_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] ))) : '0';
-            $survey_pagination_text_color = isset( $_POST[ $name_prefix . 'survey_pagination_text_color' ] ) && $_POST[ $name_prefix . 'survey_pagination_text_color' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_pagination_text_color' ] ) ) : '#333';
-            $survey_pagination_text_color_mobile = isset( $_POST[ $name_prefix . 'survey_pagination_text_color_mobile' ] ) && $_POST[ $name_prefix . 'survey_pagination_text_color_mobile' ] != '' ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_pagination_text_color_mobile' ] ) ) : '#333';
-            $survey_progress_bar_text_font_size = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] ) ) : 15;
-            $survey_progress_bar_text_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] ) ) : $survey_progress_bar_text_font_size;
-            $survey_progress_bar_text_transform = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] )  : 'none';
-            $survey_progress_bar_text_transform_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] )  : 'none';
+            $survey_progress_bar_text = isset( $_POST[ $name_prefix . 'survey_progress_bar_text' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text' ] ) ) : 'Page';
+            $survey_progress_bar_text_letter_spacing = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] != '' && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing' ] ) ))) : '0';
+            $survey_progress_bar_text_letter_spacing_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] != '' && $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] != '0' ) ? absint(intval(sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text_letter_spacing_mobile' ] ) ))) : '0';
+            $survey_pagination_text_color = isset( $_POST[ $name_prefix . 'survey_pagination_text_color' ] ) && $_POST[ $name_prefix . 'survey_pagination_text_color' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_pagination_text_color' ] ) ) : '#333';
+            $survey_pagination_text_color_mobile = isset( $_POST[ $name_prefix . 'survey_pagination_text_color_mobile' ] ) && $_POST[ $name_prefix . 'survey_pagination_text_color_mobile' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_pagination_text_color_mobile' ] ) ) : '#333';
+            $survey_progress_bar_text_font_size = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size' ] ) ) ) : 15;
+            $survey_progress_bar_text_font_size_on_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text_font_size_on_mobile' ] ) ) ) : $survey_progress_bar_text_font_size;
+            $survey_progress_bar_text_transform = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text_transform' ] ) )  : 'none';
+            $survey_progress_bar_text_transform_mobile = (isset( $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] ) && $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_progress_bar_text_transform_mobile' ] ) )  : 'none';
             // Survey show sections questions count
             $survey_show_sections_questions_count = isset( $_POST[ $name_prefix . 'survey_show_questions_count' ] ) && $_POST[ $name_prefix . 'survey_show_questions_count' ] == 'on' ? 'on' : 'off';
 
             // Survey required questions message
-            $survey_required_questions_message = isset( $_POST[ $name_prefix . 'survey_required_questions_message' ] ) && $_POST[ $name_prefix . 'survey_required_questions_message' ] != '' ? sanitize_text_field($_POST[ $name_prefix . 'survey_required_questions_message' ]) : '';
+            $survey_required_questions_message = isset( $_POST[ $name_prefix . 'survey_required_questions_message' ] ) && $_POST[ $name_prefix . 'survey_required_questions_message' ] != '' ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_required_questions_message' ] ) ) : '';
 
             // Change the author of the current quiz
-            $survey_change_create_author = ( isset($_POST[$name_prefix . 'survey_change_create_author' ]) && $_POST[$name_prefix . 'survey_change_create_author'] != "" ) ? absint( sanitize_text_field( $_POST[$name_prefix . 'survey_change_create_author'] ) ) : '';
+            $survey_change_create_author = ( isset($_POST[$name_prefix . 'survey_change_create_author' ]) && $_POST[$name_prefix . 'survey_change_create_author'] != "" ) ? absint( sanitize_text_field( wp_unslash( $_POST[$name_prefix . 'survey_change_create_author'] ) ) ) : '';
 
             if ( $survey_change_create_author != "" && $survey_change_create_author > 0 ) {
                 $user = get_userdata($survey_change_create_author);
@@ -839,7 +865,8 @@ class Surveys_List_Table extends WP_List_Table {
 
             $terms_and_conditions = array();
             if (isset($_POST[ $name_prefix . 'terms_and_condition_add' ]) && !empty( $_POST[ $name_prefix . 'terms_and_condition_add' ] )) {
-                $survey_terms_condition_add = $_POST[ $name_prefix . 'terms_and_condition_add' ];
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- The "messages" value of every item is sanitized with wp_kses_post() below.
+                $survey_terms_condition_add = wp_unslash( $_POST[ $name_prefix . 'terms_and_condition_add' ] );
                 foreach($survey_terms_condition_add as $tc_add_key => &$tc_add_value){
                     $survey_terms_condition_messages     = (isset($tc_add_value['messages']) && $tc_add_value['messages'] != "") ? $tc_add_value['messages'] : array();
                     if(!empty($survey_terms_condition_messages)){
@@ -876,10 +903,10 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_redirect_after_submit = (isset( $_POST[ $name_prefix . 'survey_redirect_after_submit' ] ) && $_POST[ $name_prefix . 'survey_redirect_after_submit' ] == 'on') ? 'on' : 'off';
 
             // Redirect URL
-            $survey_submit_redirect_url = (isset( $_POST[ $name_prefix . 'survey_submit_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_submit_redirect_url' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_submit_redirect_url' ] ) ) : '';
+            $survey_submit_redirect_url = (isset( $_POST[ $name_prefix . 'survey_submit_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_submit_redirect_url' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_submit_redirect_url' ] ) ) ) : '';
 
             // Redirect delay (sec)
-            $survey_submit_redirect_delay = (isset( $_POST[ $name_prefix . 'survey_submit_redirect_delay' ] ) && $_POST[ $name_prefix . 'survey_submit_redirect_delay' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_submit_redirect_delay' ] ) ) : '';
+            $survey_submit_redirect_delay = (isset( $_POST[ $name_prefix . 'survey_submit_redirect_delay' ] ) && $_POST[ $name_prefix . 'survey_submit_redirect_delay' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_submit_redirect_delay' ] ) ) ) : '';
 
             // Redirect in new tab
             $survey_submit_redirect_new_tab = (isset( $_POST[ $name_prefix . 'survey_submit_redirect_new_tab' ] ) && $_POST[ $name_prefix . 'survey_submit_redirect_new_tab' ] == 'on') ? 'on' : 'off';
@@ -888,33 +915,33 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_enable_exit_button = (isset( $_POST[ $name_prefix . 'survey_enable_exit_button' ] ) && $_POST[ $name_prefix . 'survey_enable_exit_button' ] == 'on') ? 'on' : 'off';
 
             // Redirect URL
-            $survey_exit_redirect_url = (isset( $_POST[ $name_prefix . 'survey_exit_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_exit_redirect_url' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_exit_redirect_url' ] ) ) : '';
+            $survey_exit_redirect_url = (isset( $_POST[ $name_prefix . 'survey_exit_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_exit_redirect_url' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_exit_redirect_url' ] ) ) ) : '';
 
             // Enable restart button
             $survey_enable_restart_button = (isset( $_POST[ $name_prefix . 'survey_enable_restart_button' ] ) && $_POST[ $name_prefix . 'survey_enable_restart_button' ] == 'on') ? 'on' : 'off';
 
             // Thank you message
-            $survey_final_result_text = (isset( $_POST[ $name_prefix . 'survey_final_result_text' ] ) && $_POST[ $name_prefix . 'survey_final_result_text' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_final_result_text' ], $survey_allowed_html ) : '';
+            $survey_final_result_text = (isset( $_POST[ $name_prefix . 'survey_final_result_text' ] ) && $_POST[ $name_prefix . 'survey_final_result_text' ] != '') ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_final_result_text' ] ), $survey_allowed_html ) : '';
 
             // Thank you message
-            $survey_main_url = (isset( $_POST[ $name_prefix . 'survey_main_url' ] ) && $_POST[ $name_prefix . 'survey_main_url' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_main_url' ] ) : '';
+            $survey_main_url = (isset( $_POST[ $name_prefix . 'survey_main_url' ] ) && $_POST[ $name_prefix . 'survey_main_url' ] != '') ? wp_kses_post( wp_unslash( $_POST[ $name_prefix . 'survey_main_url' ] ) ) : '';
 
             // Show questions as html
             $survey_show_questions_as_html = (isset( $_POST[ $name_prefix . 'survey_show_questions_as_html' ] ) && $_POST[ $name_prefix . 'survey_show_questions_as_html' ] == 'on') ? 'on' : 'off';
 
             // Select survey loader
-            $survey_loader = (isset( $_POST[ $name_prefix . 'survey_loader' ] ) && $_POST[ $name_prefix . 'survey_loader' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_loader' ] ) ) : 'default';
+            $survey_loader = (isset( $_POST[ $name_prefix . 'survey_loader' ] ) && $_POST[ $name_prefix . 'survey_loader' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_loader' ] ) ) ) : 'default';
 
             // Social share buttons
             $survey_social_buttons   = ( isset( $_POST[ $name_prefix . 'survey_social_buttons' ] ) && $_POST[ $name_prefix . 'survey_social_buttons' ] == 'on' ) ? 'on' : 'off';
-            $survey_social_buttons_heading = ( isset( $_POST[ $name_prefix . 'survey_social_buttons_heading' ] ) && $_POST[ $name_prefix . 'survey_social_buttons_heading' ] != '' ) ? wp_kses( $_POST[ $name_prefix . 'survey_social_buttons_heading' ], $survey_allowed_html ) : '';
+            $survey_social_buttons_heading = ( isset( $_POST[ $name_prefix . 'survey_social_buttons_heading' ] ) && $_POST[ $name_prefix . 'survey_social_buttons_heading' ] != '' ) ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_social_buttons_heading' ] ), $survey_allowed_html ) : '';
             $survey_social_button_ln = ( isset( $_POST[ $name_prefix . 'survey_enable_linkedin_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_linkedin_share_button' ] == 'on' ) ? 'on' : 'off';
             $survey_social_button_fb = ( isset( $_POST[ $name_prefix . 'survey_enable_facebook_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_facebook_share_button' ] == 'on' ) ? 'on' : 'off';
             $survey_social_button_tr = ( isset( $_POST[ $name_prefix . 'survey_enable_twitter_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_twitter_share_button' ] == 'on' ) ? 'on' : 'off';
             $survey_social_button_vk = ( isset( $_POST[ $name_prefix . 'survey_enable_vkontakte_share_button' ] ) && $_POST[ $name_prefix . 'survey_enable_vkontakte_share_button' ] == 'on' ) ? 'on' : 'off';
 
             // Auto numbering questions
-            $survey_auto_numbering_questions = (isset( $_POST[ $name_prefix . 'survey_show_question_numbering' ] ) && $_POST[ $name_prefix . 'survey_show_question_numbering' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_show_question_numbering' ] ) : 'none';
+            $survey_auto_numbering_questions = (isset( $_POST[ $name_prefix . 'survey_show_question_numbering' ] ) && $_POST[ $name_prefix . 'survey_show_question_numbering' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_show_question_numbering' ] ) ) : 'none';
             
             // =============================================================
             // =================== Results Settings Tab  ===================
@@ -932,26 +959,26 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_limit_users = (isset( $_POST[ $name_prefix . 'survey_limit_users' ] ) && $_POST[ $name_prefix . 'survey_limit_users' ] == 'on') ? 'on' : 'off';
 
             // Detects users by IP / ID
-            $survey_limit_users_by = (isset( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) && $_POST[ $name_prefix . 'survey_limit_users_by' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) ) : 'ip';
-            $survey_limit_users_by = (isset( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) && $_POST[ $name_prefix . 'survey_limit_users_by' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) ) : 'ip';
+            $survey_limit_users_by = (isset( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) && $_POST[ $name_prefix . 'survey_limit_users_by' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) ) ) : 'ip';
+            $survey_limit_users_by = (isset( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) && $_POST[ $name_prefix . 'survey_limit_users_by' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_limit_users_by' ] ) ) ) : 'ip';
 
             // Attempts count
-            $survey_max_pass_count = (isset( $_POST[ $name_prefix . 'survey_max_pass_count' ] ) && $_POST[ $name_prefix . 'survey_max_pass_count' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_max_pass_count' ] ) ) : 1;
+            $survey_max_pass_count = (isset( $_POST[ $name_prefix . 'survey_max_pass_count' ] ) && $_POST[ $name_prefix . 'survey_max_pass_count' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_max_pass_count' ] ) ) ) : 1;
 
             // Limitation Message
-            $survey_limitation_message = (isset( $_POST[ $name_prefix . 'survey_limitation_message' ] ) && $_POST[ $name_prefix . 'survey_limitation_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_limitation_message' ], $survey_allowed_html ) : '';
+            $survey_limitation_message = (isset( $_POST[ $name_prefix . 'survey_limitation_message' ] ) && $_POST[ $name_prefix . 'survey_limitation_message' ] != '') ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_limitation_message' ] ), $survey_allowed_html ) : '';
 
             // Redirect Url
-            $survey_redirect_url = (isset( $_POST[ $name_prefix . 'survey_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_redirect_url' ] != '') ? stripslashes( sanitize_text_field( $_POST[ $name_prefix . 'survey_redirect_url' ] ) ) : '';
+            $survey_redirect_url = (isset( $_POST[ $name_prefix . 'survey_redirect_url' ] ) && $_POST[ $name_prefix . 'survey_redirect_url' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_redirect_url' ] ) ) : '';
 
             // Redirect delay
-            $survey_redirect_delay = (isset( $_POST[ $name_prefix . 'survey_redirection_delay' ] ) && $_POST[ $name_prefix . 'survey_redirection_delay' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_redirection_delay' ] ) ) : 0;
+            $survey_redirect_delay = (isset( $_POST[ $name_prefix . 'survey_redirection_delay' ] ) && $_POST[ $name_prefix . 'survey_redirection_delay' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_redirection_delay' ] ) ) ) : 0;
 
             // Only for logged in users
             $survey_enable_logged_users = (isset( $_POST[ $name_prefix . 'survey_enable_logged_users' ] ) && $_POST[ $name_prefix . 'survey_enable_logged_users' ] == 'on') ? 'on' : 'off';
 
             // Message - Only for logged in users
-            $survey_logged_in_message = (isset( $_POST[ $name_prefix . 'survey_logged_in_message' ] ) && $_POST[ $name_prefix . 'survey_logged_in_message' ] != '') ? wp_kses( $_POST[ $name_prefix . 'survey_logged_in_message' ], $survey_allowed_html ) : '';
+            $survey_logged_in_message = (isset( $_POST[ $name_prefix . 'survey_logged_in_message' ] ) && $_POST[ $name_prefix . 'survey_logged_in_message' ] != '') ? wp_kses( wp_unslash( $_POST[ $name_prefix . 'survey_logged_in_message' ] ), $survey_allowed_html ) : '';
             
             // Show login form
             $survey_show_login_form = (isset( $_POST[ $name_prefix . 'survey_show_login_form' ] ) && $_POST[ $name_prefix . 'survey_show_login_form' ] == 'on') ? 'on' : 'off';
@@ -960,16 +987,17 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_enable_takers_count = (isset( $_POST[ $name_prefix . 'survey_enable_tackers_count' ] ) && $_POST[ $name_prefix . 'survey_enable_tackers_count' ] == 'on') ? 'on' : 'off';
 
             // Takers count
-            $survey_takers_count = (isset( $_POST[ $name_prefix . 'survey_tackers_count' ] ) && $_POST[ $name_prefix . 'survey_tackers_count' ] != '') ? absint ( sanitize_text_field( $_POST[ $name_prefix . 'survey_tackers_count' ] ) ) : 1;
+            $survey_takers_count = (isset( $_POST[ $name_prefix . 'survey_tackers_count' ] ) && $_POST[ $name_prefix . 'survey_tackers_count' ] != '') ? absint ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_tackers_count' ] ) ) ) : 1;
 
             // Enable Password quiz
             $enable_password = (isset( $_POST[ $name_prefix . 'survey_enable_password' ] ) && $_POST[ $name_prefix . 'survey_enable_password' ] == 'on') ? 'on' : 'off';
 
             // Password quiz
-            $password_survey = (isset( $_POST[ $name_prefix . 'survey_password_survey' ] ) && $_POST[ $name_prefix . 'survey_password_survey' ] != '') ?  $_POST[ $name_prefix . 'survey_password_survey' ]  : '';
+            // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- The survey password is stored exactly as entered because it is compared with the visitor's input; it is escaped with esc_attr() on output.
+            $password_survey = (isset( $_POST[ $name_prefix . 'survey_password_survey' ] ) && $_POST[ $name_prefix . 'survey_password_survey' ] != '') ?  wp_unslash( $_POST[ $name_prefix . 'survey_password_survey' ] )  : '';
 
             // Message - Password
-            $survey_password_message = (isset( $_POST[ $name_prefix . 'survey_password_message' ] ) && $_POST[ $name_prefix . 'survey_password_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_password_message' ] ) : '';
+            $survey_password_message = (isset( $_POST[ $name_prefix . 'survey_password_message' ] ) && $_POST[ $name_prefix . 'survey_password_message' ] != '') ? wp_kses_post( wp_unslash( $_POST[ $name_prefix . 'survey_password_message' ] ) ) : '';
 
             // =============================================================
             // ===================    Limitation Tab     ===================
@@ -986,7 +1014,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_enable_mail_user = (isset( $_POST[ $name_prefix . 'survey_enable_mail_user' ] ) && $_POST[ $name_prefix . 'survey_enable_mail_user' ] == 'on') ? 'on' : 'off';
 
             // Email message
-            $survey_mail_message = (isset( $_POST[ $name_prefix . 'survey_mail_message' ] ) && $_POST[ $name_prefix . 'survey_mail_message' ] != '') ? wp_kses_post( $_POST[ $name_prefix . 'survey_mail_message' ] ) : '';
+            $survey_mail_message = (isset( $_POST[ $name_prefix . 'survey_mail_message' ] ) && $_POST[ $name_prefix . 'survey_mail_message' ] != '') ? wp_kses_post( wp_unslash( $_POST[ $name_prefix . 'survey_mail_message' ] ) ) : '';
 
             // Send email to admin
             $survey_enable_mail_admin = (isset( $_POST[ $name_prefix . 'survey_enable_mail_admin' ] ) && $_POST[ $name_prefix . 'survey_enable_mail_admin' ] == 'on') ? 'on' : 'off';
@@ -999,7 +1027,7 @@ class Surveys_List_Table extends WP_List_Table {
             $survey_additional_emails = "";
             if( isset( $_POST[ $name_prefix . 'survey_additional_emails' ] ) ) {
                 if(!empty( $_POST[ $name_prefix . 'survey_additional_emails' ] )) {
-                    $additional_emails_arr = explode(",", $_POST[ $name_prefix . 'survey_additional_emails' ] );
+                    $additional_emails_arr = explode( ",", sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_additional_emails' ] ) ) );
                     foreach($additional_emails_arr as $email) {
                         $email = stripslashes(trim($email));
                         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -1011,25 +1039,25 @@ class Surveys_List_Table extends WP_List_Table {
             }
 
             // Email message
-            $survey_mail_message_admin = (isset( $_POST[ $name_prefix . 'survey_mail_message_admin' ] ) && $_POST[ $name_prefix . 'survey_mail_message_admin' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_mail_message_admin' ] ) : '';
+            $survey_mail_message_admin = (isset( $_POST[ $name_prefix . 'survey_mail_message_admin' ] ) && $_POST[ $name_prefix . 'survey_mail_message_admin' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_mail_message_admin' ] ) ) : '';
 
 
             //---- Email configuration Start  ---- //
 
             // From email
-            $survey_email_configuration_from_email = (isset( $_POST[ $name_prefix . 'survey_email_configuration_from_email' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_from_email' ] != '') ? stripslashes ( sanitize_email( $_POST[ $name_prefix . 'survey_email_configuration_from_email' ] ) ) : '';
+            $survey_email_configuration_from_email = (isset( $_POST[ $name_prefix . 'survey_email_configuration_from_email' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_from_email' ] != '') ? sanitize_email( wp_unslash( $_POST[ $name_prefix . 'survey_email_configuration_from_email' ] ) ) : '';
 
             // From name
-            $survey_email_configuration_from_name = (isset( $_POST[ $name_prefix . 'survey_email_configuration_from_name' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_from_name' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_email_configuration_from_name' ] ) ) : '';
+            $survey_email_configuration_from_name = (isset( $_POST[ $name_prefix . 'survey_email_configuration_from_name' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_from_name' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_email_configuration_from_name' ] ) ) ) : '';
 
             // Subject
-            $survey_email_configuration_from_subject = (isset( $_POST[ $name_prefix . 'survey_email_configuration_from_subject' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_from_subject' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_email_configuration_from_subject' ] ) ) : '';
+            $survey_email_configuration_from_subject = (isset( $_POST[ $name_prefix . 'survey_email_configuration_from_subject' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_from_subject' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_email_configuration_from_subject' ] ) ) ) : '';
 
             // Reply to email
-            $survey_email_configuration_replyto_email = (isset( $_POST[ $name_prefix . 'survey_email_configuration_replyto_email' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_replyto_email' ] != '') ? stripslashes ( sanitize_email( $_POST[ $name_prefix . 'survey_email_configuration_replyto_email' ] ) ) : '';
+            $survey_email_configuration_replyto_email = (isset( $_POST[ $name_prefix . 'survey_email_configuration_replyto_email' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_replyto_email' ] != '') ? sanitize_email( wp_unslash( $_POST[ $name_prefix . 'survey_email_configuration_replyto_email' ] ) ) : '';
 
             // Reply to name
-            $survey_email_configuration_replyto_name = (isset( $_POST[ $name_prefix . 'survey_email_configuration_replyto_name' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_replyto_name' ] != '') ? stripslashes ( sanitize_text_field( $_POST[ $name_prefix . 'survey_email_configuration_replyto_name' ] ) ) : '';
+            $survey_email_configuration_replyto_name = (isset( $_POST[ $name_prefix . 'survey_email_configuration_replyto_name' ] ) && $_POST[ $name_prefix . 'survey_email_configuration_replyto_name' ] != '') ? stripslashes ( sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_email_configuration_replyto_name' ] ) ) ) : '';
 
             //---- Email configuration End ---- //
 
@@ -1041,16 +1069,16 @@ class Surveys_List_Table extends WP_List_Table {
             // ========================    END    ==========================
 
             // Auto numbering
-            $survey_auto_numbering = (isset( $_POST[ $name_prefix . 'survey_show_answers_numbering' ] ) && $_POST[ $name_prefix . 'survey_show_answers_numbering' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_show_answers_numbering' ] ) : 'none';
+            $survey_auto_numbering = (isset( $_POST[ $name_prefix . 'survey_show_answers_numbering' ] ) && $_POST[ $name_prefix . 'survey_show_answers_numbering' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_show_answers_numbering' ] ) ) : 'none';
 
             // Loader text
-            $survey_loader_text = (isset( $_POST[ $name_prefix . 'survey_loader_text_value' ] ) && $_POST[ $name_prefix . 'survey_loader_text_value' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_loader_text_value' ] ) : '';
+            $survey_loader_text = (isset( $_POST[ $name_prefix . 'survey_loader_text_value' ] ) && $_POST[ $name_prefix . 'survey_loader_text_value' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_loader_text_value' ] ) ) : '';
             // Loader Gif
-            $survey_loader_gif       = (isset( $_POST[ $name_prefix . 'survey_loader_custom_gif' ] ) && $_POST[ $name_prefix . 'survey_loader_custom_gif' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_loader_custom_gif' ] ) : '';
+            $survey_loader_gif       = (isset( $_POST[ $name_prefix . 'survey_loader_custom_gif' ] ) && $_POST[ $name_prefix . 'survey_loader_custom_gif' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_loader_custom_gif' ] ) ) : '';
             if ($survey_loader_gif != '' && exif_imagetype( $survey_loader_gif ) != IMAGETYPE_GIF) {
                 $survey_loader_gif = '';
             }
-            $survey_loader_gif_width = (isset( $_POST[ $name_prefix . 'survey_loader_custom_gif_width' ] ) && $_POST[ $name_prefix . 'survey_loader_custom_gif_width' ] != '') ? sanitize_text_field( $_POST[ $name_prefix . 'survey_loader_custom_gif_width' ] ) : '100';
+            $survey_loader_gif_width = (isset( $_POST[ $name_prefix . 'survey_loader_custom_gif_width' ] ) && $_POST[ $name_prefix . 'survey_loader_custom_gif_width' ] != '') ? sanitize_text_field( wp_unslash( $_POST[ $name_prefix . 'survey_loader_custom_gif_width' ] ) ) : '100';
             if($survey_loader_gif_width <= "0"){
                 $survey_loader_gif_width = "100";
             }
@@ -1301,12 +1329,13 @@ class Surveys_List_Table extends WP_List_Table {
 
 
             if (isset($_POST[ $name_prefix . 'sections_delete' ]) && ! empty( $_POST[ $name_prefix . 'sections_delete' ] )) {
-                $sections_delete = array_map( 'sanitize_text_field', $_POST[ $name_prefix . 'sections_delete' ] );
+                $sections_delete = array_map( 'sanitize_text_field', wp_unslash( $_POST[ $name_prefix . 'sections_delete' ] ) );
                 foreach( $sections_delete as $key => $del_id ) {
                     if( in_array( $del_id, $section_ids ) ){
                         $del_index = array_search( $del_id, $section_ids );
                         unset($section_ids[$del_index]);
                     }
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                     $wpdb->delete(
                         $sections_table,
                         array( 'id' => intval( $del_id ) ),
@@ -1316,12 +1345,13 @@ class Surveys_List_Table extends WP_List_Table {
             }
 
             if (isset($_POST[ $name_prefix . 'questions_delete' ]) && ! empty( $_POST[ $name_prefix . 'questions_delete' ] )) {
-                $questions_delete = array_map( 'sanitize_text_field', $_POST[ $name_prefix . 'questions_delete' ] );
+                $questions_delete = array_map( 'sanitize_text_field', wp_unslash( $_POST[ $name_prefix . 'questions_delete' ] ) );
                 foreach ( $questions_delete as $key => $del_id ) {
                     if( in_array( $del_id, $question_ids ) ){
                         $del_index = array_search( $del_id, $question_ids );
                         unset($question_ids[$del_index]);
                     }
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                     $wpdb->delete(
                         $questions_table,
                         array( 'id' => intval( $del_id ) ),
@@ -1331,8 +1361,9 @@ class Surveys_List_Table extends WP_List_Table {
             }
 
             if (isset($_POST[ $name_prefix . 'answers_delete' ]) && ! empty( $_POST[ $name_prefix . 'answers_delete' ] )) {
-                $answers_delete = array_map( 'sanitize_text_field', $_POST[ $name_prefix . 'answers_delete' ] );
+                $answers_delete = array_map( 'sanitize_text_field', wp_unslash( $_POST[ $name_prefix . 'answers_delete' ] ) );
                 foreach ( $answers_delete as $key => $del_id ) {
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                     $wpdb->delete(
                         $answers_table,
                         array( 'id' => intval( $del_id ) ),
@@ -1353,8 +1384,10 @@ class Surveys_List_Table extends WP_List_Table {
                 );
 
                 //$section_add = Survey_Maker_Data::recursive_sanitize_text_field( $_POST[ $name_prefix . 'section_add' ], $textareas );
+                // phpcs:disable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Every value of the nested array is sanitized with sanitize_text_field() by survey_recursive_sanitize_data(); values are unslashed with stripslashes() field by field below.
                 array_walk_recursive($_POST[ $name_prefix . 'section_add' ] , [$this, 'survey_recursive_sanitize_data']);
                 foreach ( $_POST[ $name_prefix . 'section_add' ] as $key => $section) {
+                // phpcs:enable WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 
                     //Section Title
                     $section_title = ( isset($section['title']) && $section['title'] != '' ) ? stripslashes( $section['title'] ) : '';
@@ -1373,6 +1406,7 @@ class Surveys_List_Table extends WP_List_Table {
                         'collapsed' => $section_collapsed
                     );
 
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                     $result = $wpdb->insert(
                         $sections_table,
                         array(
@@ -1512,6 +1546,7 @@ class Surveys_List_Table extends WP_List_Table {
                                 'value_suffix'          => $value_suffix,
                             );
 
+                            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                             $question_result = $wpdb->update(
                                 $questions_table,
                                 array(
@@ -1562,6 +1597,7 @@ class Surveys_List_Table extends WP_List_Table {
                                         $answer_image = $answer['image'];
                                     }
                                     $placeholder = '';
+                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                                     $answer_result = $wpdb->update(
                                         $answers_table,
                                         array(
@@ -1596,6 +1632,7 @@ class Surveys_List_Table extends WP_List_Table {
                                         $answer_image = $answer['image'];
                                     }
                                     $placeholder = '';
+                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                                     $answer_result = $wpdb->insert(
                                         $answers_table,
                                         array(
@@ -1742,6 +1779,7 @@ class Surveys_List_Table extends WP_List_Table {
 
                             );
 
+                            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                             $question_result = $wpdb->insert(
                                 $questions_table,
                                 array(
@@ -1792,6 +1830,7 @@ class Surveys_List_Table extends WP_List_Table {
                                         $answer_image = $answer['image'];
                                     }
                                     $placeholder = '';
+                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                                     $answer_result = $wpdb->insert(
                                         $answers_table,
                                         array(
@@ -1832,6 +1871,7 @@ class Surveys_List_Table extends WP_List_Table {
                 );
 
                 //$section_update = Survey_Maker_Data::recursive_sanitize_text_field( $_POST[ $name_prefix . 'sections' ], $textareas );
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Nested survey structure (sections > questions > answers); the values are processed field by field below and stored with $wpdb->update() / $wpdb->insert().
                 $section_update = $_POST[ $name_prefix . 'sections' ];
 
                 foreach ( $section_update as $section_id => $section) {
@@ -1848,6 +1888,7 @@ class Surveys_List_Table extends WP_List_Table {
                         'collapsed' => $section_collapsed
                     );
 
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                     $result = $wpdb->update(
                         $sections_table,
                         array(
@@ -1987,6 +2028,7 @@ class Surveys_List_Table extends WP_List_Table {
 
                             );
 
+                            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                             $question_result = $wpdb->update(
                                 $questions_table,
                                 array(
@@ -2038,6 +2080,7 @@ class Surveys_List_Table extends WP_List_Table {
                                         $answer_image = $answer['image'];
                                     }
                                     $placeholder = '';
+                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                                     $answer_result = $wpdb->update(
                                         $answers_table,
                                         array(
@@ -2072,6 +2115,7 @@ class Surveys_List_Table extends WP_List_Table {
                                         $answer_image = $answer['image'];
                                     }
                                     $placeholder = '';
+                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                                     $answer_result = $wpdb->insert(
                                         $answers_table,
                                         array(
@@ -2213,6 +2257,7 @@ class Surveys_List_Table extends WP_List_Table {
                                 'value_suffix'          => $value_suffix,
                             );
 
+                            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                             $question_result = $wpdb->insert(
                                 $questions_table,
                                 array(
@@ -2264,6 +2309,7 @@ class Surveys_List_Table extends WP_List_Table {
                                         $answer_image = $answer['image'];
                                     }
                                     $placeholder = '';
+                                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                                     $answer_result = $wpdb->insert(
                                         $answers_table,
                                         array(
@@ -2303,6 +2349,7 @@ class Surveys_List_Table extends WP_List_Table {
                 $questions_count = count( $question_ids_new );
                 $section_ids = empty( $section_ids_array ) ? '' : implode( ',', $section_ids_array );
                 $question_ids = empty( $question_ids_new ) ? '' : implode( ',', $question_ids_new );
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                 $result = $wpdb->insert(
                     $table,
                     array(
@@ -2379,6 +2426,7 @@ class Surveys_List_Table extends WP_List_Table {
                 $question_ids = empty( $question_ids ) ? '' : implode( ',', $question_ids );
 
 
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                 $result = $wpdb->update(
                     $table,
                     array(
@@ -2421,7 +2469,7 @@ class Surveys_List_Table extends WP_List_Table {
                 $message = 'updated';
             }
 
-            $ays_survey_tab = isset($_POST['ays_survey_tab']) ? sanitize_text_field( $_POST['ays_survey_tab'] ) : 'tab1';
+            $ays_survey_tab = isset($_POST['ays_survey_tab']) ? sanitize_text_field( wp_unslash( $_POST['ays_survey_tab'] ) ) : 'tab1';
 
             if($message == 'created'){
                 setcookie('ays_survey_created_new', $inserted_id, time() + 3600, '/');
@@ -2451,21 +2499,21 @@ class Surveys_List_Table extends WP_List_Table {
                             "status" => $message
                         ) ) );
                     }
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }elseif($save_type == 'save_new'){
                     $url = remove_query_arg( array('id') );
                     $url = esc_url_raw( add_query_arg( array(
                         "action" => "add",
                         "status" => $message
                     ), $url ) );
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }else{
                     $url = remove_query_arg( array('action', 'id') );
                     $url = esc_url_raw( add_query_arg( array(
                         "tab"    => $ays_survey_tab,
                         "status" => $message
                     ), $url ) );
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }
             }
 
@@ -2474,11 +2522,10 @@ class Surveys_List_Table extends WP_List_Table {
 
     private function get_max_id() {
         global $wpdb;
-        $table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
+        $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql = "SELECT MAX(id) FROM {$table}";
-
-        $result = $wpdb->get_var($sql);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_var( "SELECT MAX(id) FROM {$table}" );
 
         return $result;
     }
@@ -2495,12 +2542,12 @@ class Surveys_List_Table extends WP_List_Table {
         // Delete related data from custom plugin tables first
         // ------------------------------------------------------------------
 
-        $questions_table              = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions";
-        $sections_table               = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections";
-        $submissions_table            = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-        $submissions_questions_table  = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
-        $answers_table                = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers";
-        $surveys_table                = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
+        $questions_table              = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
+        $sections_table               = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections" );
+        $submissions_table            = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        $submissions_questions_table  = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
+        $answers_table                = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
+        $surveys_table                = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
         // Fetch survey row to obtain related section/question IDs
         $survey_row = self::get_item_by_id( $id );
@@ -2512,12 +2559,16 @@ class Surveys_List_Table extends WP_List_Table {
         }
 
         if ( ! empty( $question_ids ) ) {
+            $question_ids_sql = esc_sql( implode( ',', wp_parse_id_list( $question_ids ) ) );
             // Remove answer options for those questions
-            $wpdb->query( "DELETE FROM {$answers_table} WHERE question_id IN (" . implode( ',', $question_ids ) . ")" );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+            $wpdb->query( "DELETE FROM {$answers_table} WHERE question_id IN ({$question_ids_sql})" );
             // Remove questions themselves
-            $wpdb->query( "DELETE FROM {$questions_table} WHERE id IN (" . implode( ',', $question_ids ) . ")" );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+            $wpdb->query( "DELETE FROM {$questions_table} WHERE id IN ({$question_ids_sql})" );
             // Remove any answers users have submitted for those questions
-            $wpdb->query( "DELETE FROM {$submissions_questions_table} WHERE question_id IN (" . implode( ',', $question_ids ) . ")" );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+            $wpdb->query( "DELETE FROM {$submissions_questions_table} WHERE question_id IN ({$question_ids_sql})" );
         }
 
         // Delete sections belonging to the survey
@@ -2527,10 +2578,13 @@ class Surveys_List_Table extends WP_List_Table {
         }
 
         if ( ! empty( $section_ids ) ) {
-            $wpdb->query( "DELETE FROM {$sections_table} WHERE id IN (" . implode( ',', $section_ids ) . ")" );
+            $section_ids_sql = esc_sql( implode( ',', wp_parse_id_list( $section_ids ) ) );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+            $wpdb->query( "DELETE FROM {$sections_table} WHERE id IN ({$section_ids_sql})" );
         }
 
         // Remove submissions linked to this survey
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->delete(
             $submissions_table,
             array( 'survey_id' => absint( $id ) ),
@@ -2538,6 +2592,7 @@ class Surveys_List_Table extends WP_List_Table {
         );
 
         // Finally, delete the survey record itself
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->delete(
             $surveys_table,
             array( 'id' => absint( $id ) ),
@@ -2566,6 +2621,7 @@ class Surveys_List_Table extends WP_List_Table {
         global $wpdb;
         $db_item = self::get_item_by_id( $id );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions",
             array( 'status' => 'trashed' ),
@@ -2574,6 +2630,7 @@ class Surveys_List_Table extends WP_List_Table {
             array( '%d' )
         );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys",
             array( 
@@ -2596,6 +2653,7 @@ class Surveys_List_Table extends WP_List_Table {
         global $wpdb;
         $db_item = self::get_item_by_id( $id );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions",
             array( 'status' => 'published' ),
@@ -2604,6 +2662,7 @@ class Surveys_List_Table extends WP_List_Table {
             array( '%d' )
         );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys",
             array( 
@@ -2647,6 +2706,7 @@ class Surveys_List_Table extends WP_List_Table {
             $new_section_options   = isset($section_value['options']) && $section_value['options'] != "" ? sanitize_text_field($section_value['options']) : "";
 
             
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
             $sresult = $wpdb->insert(
                 $sections_table,
                 array(
@@ -2683,6 +2743,7 @@ class Surveys_List_Table extends WP_List_Table {
             $new_question_ordering     = isset($question_value->ordering) && $question_value->ordering != "" ? intval(sanitize_text_field($question_value->ordering)) : "";
             $new_question_options      = isset($question_value->options) && $question_value->options != "" ? sanitize_text_field($question_value->options) : "";
             
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
             $question_result = $wpdb->insert(
                 $questions_table,
                 array(
@@ -2725,6 +2786,7 @@ class Surveys_List_Table extends WP_List_Table {
                     $new_answer_image = isset($answer_value->image) && $answer_value->image != "" ? sanitize_text_field($answer_value->image) : "";
                     $new_answer_ordering = isset($answer_value->ordering) && $answer_value->ordering != "" ? sanitize_text_field($answer_value->ordering) : "";
                     $new_answer_placeholder = isset($answer_value->placeholder) && $answer_value->placeholder != "" ? sanitize_text_field($answer_value->placeholder) : "";
+                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                     $answer_result = $wpdb->insert(
                         $answers_table,
                         array(
@@ -2753,6 +2815,7 @@ class Surveys_List_Table extends WP_List_Table {
         
         $options = json_decode($object['options'], true);
         
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $result = $wpdb->insert(
             $survey_table,
             array(
@@ -2812,84 +2875,111 @@ class Surveys_List_Table extends WP_List_Table {
     public static function record_count() {
         global $wpdb;
         $filter = array();
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
-        
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['filterby'] ) && intval($_GET['filterby']) > 0){
-            $cat_id = intval( esc_attr( $_GET['filterby'] ) );
-            $filter[] = ' FIND_IN_SET('.$cat_id.',category_ids) ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_GET['filterby'] ) ) ) );
+            $filter[] = $wpdb->prepare( ' FIND_IN_SET( %s, category_ids ) ', (string) $cat_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(! empty( $_REQUEST['filterbyuser'] ) && intval( $_REQUEST['filterbyuser'] ) > 0){
-            $user_id = intval( esc_attr( $_REQUEST['filterbyuser'] ) );
-            $filter[] = ' author_id ='.$user_id;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $user_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['filterbyuser'] ) ) ) );
+            $filter[] = $wpdb->prepare( ' author_id = %d ', $user_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_REQUEST['fstatus'] ) ){
-            $fstatus = esc_attr( $_REQUEST['fstatus'] );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $fstatus = esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['fstatus'] ) ) );
             if($fstatus !== null){
-                $filter[] = " status = '". esc_sql( $fstatus ) ."' ";
+                $filter[] = $wpdb->prepare( ' status = %s ', $fstatus );
             }
         }else{
             $filter[] = " status != 'trashed' ";
         }
-        
-        if(count($filter) !== 0){
-            $sql .= " WHERE ".implode(" AND ", $filter);
-        }
 
-        return $wpdb->get_var( $sql );
+        $where_sql = ' WHERE ' . implode( ' AND ', $filter );
+
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$surveys_table} {$where_sql}" );
     }
-    
+
     public static function all_record_count() {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE status != 'trashed'";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
+        $where = array();
+        $where[] = " status != 'trashed' ";
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['filterby'] ) && intval($_GET['filterby']) > 0){
-            $cat_id = intval( esc_attr( $_GET['filterby'] ) );
-            $sql .= ' AND '.$cat_id.' IN (category_ids) ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_GET['filterby'] ) ) ) );
+            $where[] = $wpdb->prepare( ' %d IN (category_ids) ', $cat_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(! empty( $_REQUEST['filterbyuser'] ) && intval( $_REQUEST['filterbyuser'] ) > 0){
-            $user_id = intval( esc_attr( $_REQUEST['filterbyuser'] ) );
-            $sql .= ' AND author_id ='.$user_id;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $user_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['filterbyuser'] ) ) ) );
+            $where[] = $wpdb->prepare( ' author_id = %d ', $user_id );
         }
 
-        return $wpdb->get_var( $sql );
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
+
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$surveys_table} {$where_sql}" );
     }
 
     public static function published_questions_record_count() {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions WHERE status = 'published'";
+        $questions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$questions_table} WHERE status = 'published'" );
     }
 
     public static function get_statused_record_count( $status ) {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE status='" . esc_sql( $status ) . "'";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
+        $where = array();
+        $where[] = $wpdb->prepare( ' status = %s ', $status );
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['filterby'] ) && intval($_GET['filterby']) > 0){
-            $cat_id = intval( esc_attr( $_GET['filterby'] ) );
-            $sql .= ' AND '.$cat_id.' IN (category_ids) ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_GET['filterby'] ) ) ) );
+            $where[] = $wpdb->prepare( ' %d IN (category_ids) ', $cat_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(! empty( $_REQUEST['filterbyuser'] ) && intval( $_REQUEST['filterbyuser'] ) > 0){
-            $user_id = intval( esc_attr( $_REQUEST['filterbyuser'] ) );
-            $sql .= ' AND author_id ='.$user_id;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $user_id = intval( esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['filterbyuser'] ) ) ) );
+            $where[] = $wpdb->prepare( ' author_id = %d ', $user_id );
         }
 
-        return $wpdb->get_var( $sql );
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$surveys_table} {$where_sql}" );
     }
 
     public static function get_passed_users_count( $id ) {
         global $wpdb;
         $id = absint($id);
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions WHERE survey_id=".$id;
+        $submissions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$submissions_table} WHERE survey_id = %d", $id ) );
     }
 
 
@@ -2922,7 +3012,7 @@ class Surveys_List_Table extends WP_List_Table {
                 return $item[ $column_name ];
                 break;
             default:
-                return print_r( $item, true ); //Show the whole array for troubleshooting purposes
+                return ''; // Every registered column has its own handler above.
         }
     }
 
@@ -2962,33 +3052,44 @@ class Surveys_List_Table extends WP_List_Table {
         $restitle = Survey_Maker_Admin::ays_restriction_string( "word", $survey_title, $this->title_length );
         
         $fstatus = '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-            $fstatus = '&fstatus=' . esc_attr( $_GET['fstatus'] );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $fstatus = '&fstatus=' . esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
         }
 
-        $title = sprintf( '<a href="?page=%s&action=%s&id=%d" title="%s">%s</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, $survey_title);
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $title = sprintf( '<a href="?page=%s&action=%s&id=%d" title="%s">%s</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ), $q, $survey_title);
 
         $actions = array();
         if($item['status'] == 'trashed'){
             $title = sprintf( '<a><strong>%s</strong></a>', $restitle );
-            $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Restore', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'restore', absint( $item['id'] ), $delete_nonce );
-            $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, esc_attr( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Restore', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'restore', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'delete', absint( $item['id'] ), $delete_nonce );
         }else{
             $draft_text = '';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
             if( $item['status'] == 'draft' && !( isset( $_GET['fstatus'] ) && $_GET['fstatus'] == 'draft' )){
                 $draft_text = ' — ' . '<span class="post-state">' . __( "Draft", "survey-maker" ) . '</span>';
             }
-            $title = sprintf( '<strong><a href="?page=%s&action=%s&id=%d" title="%s">%s</a>%s</strong>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $q, $restitle, $draft_text );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $title = sprintf( '<strong><a href="?page=%s&action=%s&id=%d" title="%s">%s</a>%s</strong>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ), $q, $restitle, $draft_text );
 
-            $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&id=%d">'. __('Edit', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&id=%d">'. __('Edit', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ) );
 
-            $actions['submissions'] = sprintf( '<a href="?page=%s&survey=%d">'. __('View submissions', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ) . '-each-submission', absint( $item['id'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['submissions'] = sprintf( '<a href="?page=%s&survey=%d">'. __('View submissions', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ) . '-each-submission', absint( $item['id'] ) );
             if($custom_post_id > 0){
                 $actions['custom_posts'] = sprintf( '<a href="%s" target="_blank">'. __('Preview', "survey-maker") .'</a>', esc_url( add_query_arg( 'preview', 'true', get_permalink($item['custom_post_id']) ) ));
             }
-            // $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ), $delete_nonce );
-            $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ), $delete_nonce );
-            $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', esc_attr( $_REQUEST['page'] ), 'trash', absint( $item['id'] ), $delete_nonce );
+            // $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'duplicate', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'duplicate', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'trash', absint( $item['id'] ), $delete_nonce );
         }
 
         return $title . $this->row_actions( $actions );
@@ -3002,9 +3103,14 @@ class Surveys_List_Table extends WP_List_Table {
         // $category_ids = $category_ids == '' ? array() : explode( ',', $category_ids );
         
         if( ! empty( $category_ids ) ){
-            $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories WHERE id IN (" . esc_sql( $category_ids ) . ")";
+            $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
+            $category_ids_sql = esc_sql( implode( ',', wp_parse_id_list( $category_ids ) ) );
+            if( $category_ids_sql === '' ){
+                return '-';
+            }
 
-            $results = $wpdb->get_results($sql, 'ARRAY_A');
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+            $results = $wpdb->get_results( "SELECT * FROM {$survey_categories_table} WHERE id IN ({$category_ids_sql})", 'ARRAY_A' );
             $category_location = array();
             foreach ($results as $key => $value) {
                 $category_location[] = sprintf( '<a href="?page=%s&action=%s&id=%d" target="_blank">%s</a>', 'survey-maker-survey-categories', 'edit', $value['id'], $value['title']);
@@ -3038,8 +3144,8 @@ class Surveys_List_Table extends WP_List_Table {
     function column_status( $item ) {
         global $wpdb;
         $status = ucfirst( esc_attr($item['status']) );
-        $date = date( 'Y/m/d', strtotime( esc_attr($item['date_modified']) ) );
-        $title_date = date( 'l jS \of F Y h:i:s A', strtotime( esc_attr($item['date_modified']) ) );
+        $date = gmdate( 'Y/m/d', strtotime( esc_attr($item['date_modified']) ) );
+        $title_date = gmdate( 'l jS \of F Y h:i:s A', strtotime( esc_attr($item['date_modified']) ) );
         $html = "<p style='font-size:14px;margin:0;'>" . esc_html($status) . "</p>";
         $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . esc_attr($title_date) . "'>" . esc_attr($date) . "</p>";
         return $html;
@@ -3069,7 +3175,8 @@ class Surveys_List_Table extends WP_List_Table {
     function column_submissions_count( $item ) {
         $id = $item['id'];
         $passed_count = $this->get_passed_users_count( $id );
-        $passed_count = sprintf( '<a href="?page=%s&survey=%d">'. $passed_count .'</a>', esc_attr( $_REQUEST['page'] ) . '-each-submission', absint( $item['id'] ) );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $passed_count = sprintf( '<a href="?page=%s&survey=%d">'. $passed_count .'</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ) . '-each-submission', absint( $item['id'] ) );
         $text = "<p style='font-size:14px;'>".$passed_count."</p>";
         return $text;
     }
@@ -3118,6 +3225,7 @@ class Surveys_List_Table extends WP_List_Table {
         $columns['status'] = __( 'Status', "survey-maker" );
         $columns['id'] = __( 'ID', "survey-maker" );
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){
             return array();
         }
@@ -3165,7 +3273,8 @@ class Surveys_List_Table extends WP_List_Table {
             'bulk-trash' => __( 'Move to trash', "survey-maker" ),
         );
 
-        if(isset($_GET['fstatus']) && esc_attr( $_GET['fstatus'] ) == 'trashed'){
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if(isset($_GET['fstatus']) && esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) ) == 'trashed'){
             $actions = array(
                 'bulk-restore' => __( 'Restore', "survey-maker" ),
                 'bulk-delete' => __( 'Delete Permanently', "survey-maker" ),
@@ -3197,9 +3306,10 @@ class Surveys_List_Table extends WP_List_Table {
             'total_pages' => ceil( $total_items / $per_page )
         ) );
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? esc_attr( $_REQUEST['s'] ) : false;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $search = ( isset( $_REQUEST['s'] ) ) ? esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) ) : false;
 
-        $do_search = ( $search ) ? sprintf( " title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) ) : '';
+        $do_search = ( $search ) ? $wpdb->prepare( ' title LIKE %s ', '%' . $wpdb->esc_like( $search ) . '%' ) : '';
 
         $this->items = self::get_items( $per_page, $current_page, $do_search );
     }
@@ -3210,13 +3320,13 @@ class Surveys_List_Table extends WP_List_Table {
         if ( 'delete' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::delete_items( absint( esc_attr($_GET['id']) ) );
+                self::delete_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -3225,11 +3335,11 @@ class Surveys_List_Table extends WP_List_Table {
                     "status" => 'deleted'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -3238,13 +3348,13 @@ class Surveys_List_Table extends WP_List_Table {
         if ( 'trash' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-trash-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::trash_items( absint( esc_attr($_GET['id']) ) );
+                self::trash_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -3253,11 +3363,11 @@ class Surveys_List_Table extends WP_List_Table {
                     "status" => 'trashed'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -3266,13 +3376,13 @@ class Surveys_List_Table extends WP_List_Table {
         if ( 'restore' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::restore_items( absint( esc_attr($_GET['id']) ) );
+                self::restore_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -3281,11 +3391,11 @@ class Surveys_List_Table extends WP_List_Table {
                     "status" => 'restored'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -3294,13 +3404,13 @@ class Surveys_List_Table extends WP_List_Table {
         if ( 'duplicate' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = esc_attr( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-trash-survey' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                $this->duplicate_items( absint( esc_attr($_GET['id']) ) );
+                $this->duplicate_items( isset( $_GET['id'] ) ? absint( $_GET['id'] ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -3309,11 +3419,11 @@ class Surveys_List_Table extends WP_List_Table {
                     "status" => 'duplicated'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -3321,7 +3431,7 @@ class Surveys_List_Table extends WP_List_Table {
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' ) ) {
 
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
@@ -3334,17 +3444,17 @@ class Surveys_List_Table extends WP_List_Table {
                 "status" => 'all-deleted'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-trash' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-trash' ) ) {
 
-            $trash_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $trash_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $trash_ids as $id ) {
@@ -3357,17 +3467,17 @@ class Surveys_List_Table extends WP_List_Table {
                 "status" => 'all-trashed'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-restore' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-restore' ) ) {
 
-            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $restore_ids as $id ) {
@@ -3380,17 +3490,17 @@ class Surveys_List_Table extends WP_List_Table {
                 "status" => 'all-restored'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-duplicate' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-duplicate' ) ) {
 
-            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $restore_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $restore_ids as $id ) {
@@ -3403,16 +3513,17 @@ class Surveys_List_Table extends WP_List_Table {
                 "status" => 'all-duplicated'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = esc_attr( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = esc_attr( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
     }
 
     public function survey_notices(){
-        $status = (isset($_REQUEST['status'])) ? esc_attr( $_REQUEST['status'] ) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $status = (isset($_REQUEST['status'])) ? esc_attr( sanitize_text_field( wp_unslash( $_REQUEST['status'] ) ) ) : '';
 
         if ( empty( $status ) )
             return;

@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab10" class="ays-survey-publish-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab10') ? 'ays-survey-tab-content-active' : ''; ?>">    
     <div class="form-group row" style="justify-content: center">
         <div class="col-sm-12 ays-survey-options-tab-content-max-width">

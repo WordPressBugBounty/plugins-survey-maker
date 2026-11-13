@@ -167,7 +167,7 @@ class Survey_Maker_Admin {
                 background: ". esc_attr( $survey_menu_badge_background ) .";
             }
 
-            ". $custom_additional_css ."
+            ". esc_html( $custom_additional_css ) ."
         </style>";
     }
 
@@ -224,7 +224,8 @@ class Survey_Maker_Admin {
 		wp_enqueue_style( $this->plugin_name . "-admin-dashboard", plugin_dir_url( __FILE__ ) . 'css/survey-maker-admin-dashboard.css', array(), time(), 'all' );
 		wp_enqueue_style( $this->plugin_name . "-pro-features", plugin_dir_url( __FILE__ ) . 'css/survey-maker-pro-features.css', array(), time(), 'all' );
         wp_enqueue_style( $this->plugin_name . "-loaders", plugin_dir_url(__FILE__) . 'css/loaders.css', array(), $this->version, 'all');
-        if( isset( $_GET['page'] ) && sanitize_key($_GET['page']) == $this->plugin_name . '-admin-dashboard' ){        
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
+        if( isset( $_GET['page'] ) && sanitize_key( wp_unslash( $_GET['page'] ) ) == $this->plugin_name . '-admin-dashboard' ){
             wp_enqueue_style( $this->plugin_name . "-dashboard", plugin_dir_url( __FILE__ ) . 'css/survey-maker-dashboard.css', array(), $this->version, 'all' );
         }
 
@@ -378,6 +379,7 @@ class Survey_Maker_Admin {
             'addQuestionImageCaption'           => __( 'Add a caption', "survey-maker"),
             'closeQuestionImageCaption'         => __( 'Close caption', "survey-maker"),
             'deleteElementFromListTable'        => __( 'Are you sure you want to delete?', "survey-maker"),
+            /* translators: %t: current number of inputs, %f: max_input_vars limit (both are replaced in JavaScript) */
             'maxInputVarsWarningMessage'        => __( 'Note: The survey has reached the limit of %t inputs out of a maximum of %f. To save changes, please contact your hosting provider to increase the max_input_vars limit.', "survey-maker"),
             'rating'                            => __( 'Rating', "survey-maker"),
             'stars_count'                       => __( 'Stars count', "survey-maker"),
@@ -399,6 +401,7 @@ class Survey_Maker_Admin {
         ) );
         wp_localize_script($this->plugin_name . '-ajax', 'survey_maker_ajax', array(
             'ajax_url'              => admin_url('admin-ajax.php'),
+            'livePreviewNonce'      => wp_create_nonce( 'survey-maker-ajax-live-preview-nonce' ),
             "emptyEmailError"       => __( 'Email field is empty', "survey-maker"),
             'selectUser'            => __( 'Select user', 'survey-maker'),
             'searching'             => __( "Searching...", 'survey-maker' ),
@@ -415,7 +418,8 @@ class Survey_Maker_Admin {
         global $pagenow;
 
         if ( $pagenow === 'admin.php' ) {
-            $page = isset( $_GET['page'] ) ? sanitize_key( $_GET['page'] ) : '';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
+            $page = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
             
             if ( strpos( $page, $this->plugin_name ) === 0 ) {
                 $classes .= ' ays-survey-plugin-admin';
@@ -551,15 +555,15 @@ class Survey_Maker_Admin {
         } else {
             global $wpdb;
             // $sql = "SELECT COUNT(*) FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions WHERE `read` = 0 OR `read` = 2 ";
-            $sql = $wpdb->prepare("
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $unread_results_count = intval( $wpdb->get_var( $wpdb->prepare("
                 SELECT COUNT(*)
                 FROM " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "submissions AS s
                 INNER JOIN " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "surveys AS surv
                 ON s.survey_id = surv.id
                 WHERE (s.read = 0 OR s.read = 2)
                 AND surv.status != %s
-            ", 'trashed');
-            $unread_results_count = intval( $wpdb->get_var( $sql ) );
+            ", 'trashed') ) );
             $menu_item = ($unread_results_count == 0) ? 'Survey Maker' : 'Survey Maker' . '<span class="ays-survey-menu-badge ays-survey-results-bage">' . $unread_results_count . '</span>';
         }
         
@@ -635,15 +639,15 @@ class Survey_Maker_Admin {
             $menu_item    = __('Submissions', "survey-maker");
         } else {
             // $sql = "SELECT COUNT(*) FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions WHERE `read` = 0 OR `read` = 2 ";
-            $sql = $wpdb->prepare("
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $unread_results_count = intval( $wpdb->get_var( $wpdb->prepare("
                 SELECT COUNT(*)
                 FROM " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "submissions AS subs
                 INNER JOIN " . esc_sql($wpdb->prefix . SURVEY_MAKER_DB_PREFIX) . "surveys AS survs
                 ON subs.survey_id = survs.id
                 WHERE (subs.read = 0 OR subs.read = 2)
                 AND survs.status != %s
-            ", 'trashed');
-            $unread_results_count = intval( $wpdb->get_var( $sql ) );
+            ", 'trashed') ) );
 
             $results_text = __('Submissions', "survey-maker");
             $menu_item = ( $unread_results_count == 0 ) ? $results_text : $results_text . '<span class="ays-survey-menu-badge ays-survey-results-bage">' . $unread_results_count . '</span>';
@@ -870,7 +874,8 @@ class Survey_Maker_Admin {
     }
 
     public function display_plugin_surveys_page(){
-        $action = (isset($_GET['action'])) ? sanitize_text_field($_GET['action']) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
+        $action = (isset($_GET['action'])) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
         switch ($action) {
             case 'add':
                 include_once('partials/surveys/actions/survey-maker-surveys-actions.php');
@@ -884,7 +889,8 @@ class Survey_Maker_Admin {
     }
 
     public function display_plugin_survey_categories_page(){
-        $action = (isset($_GET['action'])) ? sanitize_text_field($_GET['action']) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
+        $action = (isset($_GET['action'])) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
 
         switch ($action) {
             case 'add':
@@ -900,7 +906,8 @@ class Survey_Maker_Admin {
 
     
     public function display_plugin_popup_surveys_page(){
-        $action = (isset($_GET['action'])) ? sanitize_text_field($_GET['action']) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
+        $action = (isset($_GET['action'])) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
 
         switch ($action) {
             case 'add':
@@ -967,6 +974,7 @@ class Survey_Maker_Admin {
             'option' => 'surveys_per_page'
         );
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
         if( ! ( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ) ){
             add_screen_option($option, $args);
         }
@@ -983,6 +991,7 @@ class Survey_Maker_Admin {
             'option' => 'survey_categories_per_page'
         );
         
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
         if( ! ( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ) ){
             add_screen_option($option, $args);
         }
@@ -999,6 +1008,7 @@ class Survey_Maker_Admin {
             'option'  => 'popup_survey_per_page'
         );
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
         if( ! ( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ) ){
             add_screen_option( $option, $args );
         }
@@ -1063,7 +1073,7 @@ class Survey_Maker_Admin {
     public function deactivate_plugin_option(){
 
         // Run a security check.
-        check_ajax_referer( 'survey-maker-ajax-deactivate-plugin-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
+        check_ajax_referer( 'survey-maker-ajax-deactivate-plugin-nonce', '_ajax_nonce' );
 
         // Check for permissions.
         if ( ! current_user_can( 'manage_options' ) ) {
@@ -1076,7 +1086,7 @@ class Survey_Maker_Admin {
         }
 
         if( is_user_logged_in() ) {
-            $request_value = sanitize_text_field($_REQUEST['upgrade_plugin']);
+            $request_value = isset( $_REQUEST['upgrade_plugin'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['upgrade_plugin'] ) ) : '';
             $upgrade_option = get_option( 'ays_survey_maker_upgrade_plugin', '' );
             if($upgrade_option === ''){
                 add_option( 'ays_survey_maker_upgrade_plugin', $request_value );
@@ -1101,8 +1111,10 @@ class Survey_Maker_Admin {
     }
 
     public function survey_maker_admin_footer($a){
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
         if(isset($_REQUEST['page'])){
-            if(false !== strpos( sanitize_text_field( $_REQUEST['page'] ), $this->plugin_name)){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
+            if(false !== strpos( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ), $this->plugin_name)){
                 ?>
                 <div class="ays-survey-footer-support-box">
                     <span class="ays-survey-footer-link-row"><a href="https://wordpress.org/support/plugin/survey-maker/" target="_blank"><?php echo esc_html__( "Support", "survey-maker"); ?></a></span>
@@ -1159,18 +1171,18 @@ class Survey_Maker_Admin {
 
     public static function get_max_id( $table ) {
         global $wpdb;
-        $db_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . $table;
+        $db_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . $table );
 
-        $sql = "SELECT MAX(id) FROM {$db_table}";
-
-        $result = intval( $wpdb->get_var( $sql ) );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), no user input.
+        $result = intval( $wpdb->get_var( "SELECT MAX(id) FROM {$db_table}" ) );
 
         return $result;
     }
 
     public function get_all_surveys(){
         global $wpdb;
-        $surveys_table = $wpdb->prefix . "ayssurvey_surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . "ayssurvey_surveys" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), no user input.
         $surveys = $wpdb->get_results("SELECT * FROM {$surveys_table}");
         return $surveys;
     }
@@ -1187,9 +1199,8 @@ class Survey_Maker_Admin {
     public function get_question_answers( $question_id ) {
         global $wpdb;
 
-        $sql = "SELECT * FROM {$wpdb->prefix}ayssurvey_answers WHERE question_id=" . absint( $question_id );
-
-        $results = $wpdb->get_results( $sql, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}ayssurvey_answers WHERE question_id = %d", absint( $question_id ) ), 'ARRAY_A' );
         foreach ($results as $key => &$result) {
             unset($result['id']);
             unset($result['question_id']);
@@ -1208,15 +1219,15 @@ class Survey_Maker_Admin {
             );
         }
 
-        $submitions_questiions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
-        $answer_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers";
-        $question_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions";
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-        $survey_section_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections";
-        $surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
+        $submitions_questiions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
+        $answer_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
+        $question_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        $survey_section_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections" );
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $survey_options_sql = "SELECT options FROM {$surveys_table} WHERE id =". absint( $survey_id );
-        $survey_options = $wpdb->get_var( $survey_options_sql );
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin tables; table names are built from $wpdb->prefix and escaped with esc_sql(), all values are passed through $wpdb->prepare().
+        $survey_options = $wpdb->get_var( $wpdb->prepare( "SELECT options FROM {$surveys_table} WHERE id = %d", absint( $survey_id ) ) );
 
         $survey_options = isset( $survey_options ) && $survey_options != '' ? json_decode( $survey_options, true ) : array();
 
@@ -1224,8 +1235,7 @@ class Survey_Maker_Admin {
         $survey_options[ 'survey_allow_html_in_answers' ] = isset($survey_options[ 'survey_allow_html_in_answers' ]) ? $survey_options[ 'survey_allow_html_in_answers' ] : 'off';
         $allow_html_in_answers = (isset($survey_options[ 'survey_allow_html_in_answers' ]) && $survey_options[ 'survey_allow_html_in_answers' ] == 'on') ? true : false;
 
-        $question_ids = "SELECT question_ids FROM {$surveys_table} WHERE id =". absint( $survey_id );
-        $question_ids_results = $wpdb->get_var( $question_ids );
+        $question_ids_results = $wpdb->get_var( $wpdb->prepare( "SELECT question_ids FROM {$surveys_table} WHERE id = %d", absint( $survey_id ) ) );
         $ays_question_id = ($question_ids_results != '') ? $question_ids_results : null;
 
         if($ays_question_id == null){
@@ -1236,34 +1246,24 @@ class Survey_Maker_Admin {
         }
 
         $questions_ids_arr = explode(',',$ays_question_id);
-        $answer_id = "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
+
+        $answer_id_result = $wpdb->get_results( $wpdb->prepare( "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
                     FROM {$answer_table} AS a
-                    LEFT JOIN {$submitions_questiions_table} AS s_q 
+                    LEFT JOIN {$submitions_questiions_table} AS s_q
                     ON a.id = s_q.answer_id
-                    WHERE s_q.survey_id=".absint( $survey_id ) ."
-                    GROUP BY a.id";
+                    WHERE s_q.survey_id = %d
+                    GROUP BY a.id", absint( $survey_id ) ), 'ARRAY_A' );
 
-        $answer_id_result = $wpdb->get_results($answer_id,'ARRAY_A');
-
-        $for_checkbox = "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
+        $for_checkbox_result = $wpdb->get_results( $wpdb->prepare( "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
                     FROM {$answer_table} AS a
-                    LEFT JOIN {$submitions_questiions_table} AS s_q 
+                    LEFT JOIN {$submitions_questiions_table} AS s_q
                     ON a.id = s_q.answer_id OR FIND_IN_SET( a.id, s_q.user_answer )
                     WHERE s_q.type = 'checkbox'
-                    AND s_q.survey_id=".absint( $survey_id ) ."
-                    GROUP BY a.id";
+                    AND s_q.survey_id = %d
+                    GROUP BY a.id", absint( $survey_id ) ), 'ARRAY_A' );
 
-        $for_checkbox_result = $wpdb->get_results($for_checkbox,'ARRAY_A');
-
-        $for_text_type = "SELECT a.id, a.answer, COUNT(s_q.id) AS answer_count
-                    FROM {$answer_table} AS a
-                    LEFT JOIN {$submitions_questiions_table} AS s_q 
-                    ON a.id = s_q.answer_id OR FIND_IN_SET( a.id, s_q.user_answer )
-                    WHERE s_q.type IN ('name', 'email', 'text', 'short_text', 'number')
-                    AND s_q.survey_id=".absint( $survey_id ) ."
-                    GROUP BY a.id";
-
-        $for_text_type_result = $wpdb->get_results($for_checkbox,'ARRAY_A');
+        // Same query as the checkbox one (kept as before).
+        $for_text_type_result = $for_checkbox_result;
         $answer_count = array();
         $question_type = '';
         foreach ($answer_id_result as $key => $answer_count_by_id) {
@@ -1283,26 +1283,39 @@ class Survey_Maker_Admin {
 
         $question_by_ids = Survey_Maker_Data::get_question_by_ids( $questions_ids_arr );
 
-        $select_answer_q_type = "SELECT type, user_answer, id, question_id
-            FROM {$submitions_questiions_table}
-            WHERE user_answer != '' 
-                AND type != 'checkbox' 
-                AND survey_id=". absint( $survey_id );
-
-        $submission_answer_other = "SELECT question_id, user_variant
-            FROM {$submitions_questiions_table}
-            WHERE user_variant != ''
-                AND survey_id=". absint( $survey_id );
-
-        if( $submission_ids !== null ){
-            if( is_array( $submission_ids ) ){
-                $select_answer_q_type .= " AND submission_id IN (" . esc_sql( implode( ',', $submission_ids ) ) . ") ";
-                $submission_answer_other .= " AND submission_id IN (" . esc_sql( implode( ',', $submission_ids ) ) . ") ";
+        if( $submission_ids !== null && is_array( $submission_ids ) ){
+            $submission_ids_arr = array_map( 'absint', array_values( $submission_ids ) );
+            if( empty( $submission_ids_arr ) ){
+                $submission_ids_arr = array( 0 );
             }
+            $submission_ids_placeholders = implode( ',', array_fill( 0, count( $submission_ids_arr ), '%d' ) );
+            $query_args = array_merge( array( absint( $survey_id ) ), $submission_ids_arr );
+
+            $result_answers_q_type = $wpdb->get_results( $wpdb->prepare( "SELECT type, user_answer, id, question_id
+                FROM {$submitions_questiions_table}
+                WHERE user_answer != ''
+                    AND type != 'checkbox'
+                    AND survey_id = %d
+                    AND submission_id IN ({$submission_ids_placeholders})", $query_args ), 'ARRAY_A' );
+
+            $result_answers_other = $wpdb->get_results( $wpdb->prepare( "SELECT question_id, user_variant
+                FROM {$submitions_questiions_table}
+                WHERE user_variant != ''
+                    AND survey_id = %d
+                    AND submission_id IN ({$submission_ids_placeholders})", $query_args ), 'ARRAY_A' );
+        } else {
+            $result_answers_q_type = $wpdb->get_results( $wpdb->prepare( "SELECT type, user_answer, id, question_id
+                FROM {$submitions_questiions_table}
+                WHERE user_answer != ''
+                    AND type != 'checkbox'
+                    AND survey_id = %d", absint( $survey_id ) ), 'ARRAY_A' );
+
+            $result_answers_other = $wpdb->get_results( $wpdb->prepare( "SELECT question_id, user_variant
+                FROM {$submitions_questiions_table}
+                WHERE user_variant != ''
+                    AND survey_id = %d", absint( $survey_id ) ), 'ARRAY_A' );
         }
-            
-        $result_answers_q_type = $wpdb->get_results($select_answer_q_type,'ARRAY_A');
-        $result_answers_other = $wpdb->get_results($submission_answer_other,'ARRAY_A');
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $text_answer = array();
         foreach($result_answers_q_type as $key => $result_answer_q_type){
             $text_answer[$result_answer_q_type['type']][$result_answer_q_type['question_id']][] = $result_answer_q_type['user_answer'];
@@ -1416,12 +1429,12 @@ class Survey_Maker_Admin {
             return array();
         }
 
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
 
         //submission of each result
-        $submission = "SELECT * FROM {$submitions_table} WHERE survey_id=". absint( $survey_id ) ." ORDER BY id DESC LIMIT 1 ";
-        $last_submission = $wpdb->get_row( $submission, 'ARRAY_A' );
-        
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $last_submission = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$submitions_table} WHERE survey_id = %d ORDER BY id DESC LIMIT 1", absint( $survey_id ) ), 'ARRAY_A' );
+
         if( $last_submission == null ){
             return array();
         }
@@ -1438,8 +1451,8 @@ class Survey_Maker_Admin {
             );
         }
 
-        $submitions_questiions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submitions_questiions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
 
         $ays_individual_questions_for_one_submission = array();
         $question_answer_id = array();
@@ -1453,13 +1466,12 @@ class Survey_Maker_Admin {
 
         $checkbox_ids = '';
         
-        $individual_questions = "SELECT * FROM {$submitions_questiions_table} WHERE submission_id=" . absint( $submission_id );
-        $individual_questions_results = $wpdb->get_results($individual_questions,'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $individual_questions_results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$submitions_questiions_table} WHERE submission_id = %d", absint( $submission_id ) ), 'ARRAY_A' );
 
         // Get user info
-        $which_needed = "id,user_ip,user_id,user_name,user_email,submission_date,options";
-        $individual_users = "SELECT ".$which_needed." FROM ".$submitions_table." WHERE id=" . absint( $submission_id );
-        $individual_users_results = $wpdb->get_row($individual_users,'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $individual_users_results = $wpdb->get_row( $wpdb->prepare( "SELECT id,user_ip,user_id,user_name,user_email,submission_date,options FROM {$submitions_table} WHERE id = %d", absint( $submission_id ) ), 'ARRAY_A' );
         $user_id = isset($individual_users_results['user_id']) && $individual_users_results['user_id'] != "" ? $individual_users_results['user_id'] : 0;
         $user_real_name = __("Guest" , "survey-maker"); 
         $user_real_email = ""; 
@@ -1509,7 +1521,7 @@ class Survey_Maker_Admin {
                     $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = stripslashes(htmlentities($individual_questions_result['user_answer']));
 
                     if( $individual_questions_result['user_answer'] != '' ){
-                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = date( 'd . m . Y', strtotime(nl2br(htmlentities($individual_questions_result['user_answer']))) );
+                        $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = gmdate( 'd . m . Y', strtotime(nl2br(htmlentities($individual_questions_result['user_answer']))) );
                     }else{
                         $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
                     }
@@ -1525,7 +1537,7 @@ class Survey_Maker_Admin {
                     if( $individual_questions_result['user_answer'] != '' ){
                         $user_date_time_answer = explode(" ", $individual_questions_result['user_answer'] );
                         if((isset($user_date_time_answer[0]) && $user_date_time_answer[0] != '-') && (isset($user_date_time_answer[1]) && $user_date_time_answer[1] != '-')){                            
-                            $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = date( 'd . m . Y', strtotime(nl2br(htmlentities($user_date_time_answer[0]))) ) . " " . implode(" : ", explode( ":", $user_date_time_answer[1] ));
+                            $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = gmdate( 'd . m . Y', strtotime(nl2br(htmlentities($user_date_time_answer[0]))) ) . " " . implode(" : ", explode( ":", $user_date_time_answer[1] ));
                         }
                     }else{
                         $question_answer_id[ $individual_questions_result['question_id'] ]['answer'] = '';
@@ -1553,21 +1565,23 @@ class Survey_Maker_Admin {
     
     public function get_submission_count_and_ids(){
         global $wpdb;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page parameter, cast to integer.
         $survey_id = isset($_GET['survey']) ? intval($_GET['survey']) : null;
 
         if($survey_id === null){
             return false;
         }
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-       
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+
         //submission of each result
-        $submission_ids = "SELECT id,
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $submission_ids_result = $wpdb->get_results( $wpdb->prepare( "SELECT id,
                             (SELECT COUNT(id) FROM {$submitions_table} i 
                             WHERE i.survey_id=j.survey_id) AS count_submission 
                             FROM {$submitions_table} j 
-                            WHERE survey_id=". absint( $survey_id ) ."
-                            ORDER BY id";
-        $submission_ids_result = $wpdb->get_results($submission_ids,'ARRAY_A');
+                            WHERE survey_id = %d
+                            ORDER BY id", absint( $survey_id ) ), 'ARRAY_A' );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $submission_count = '';
         $submissions_id_arr = array();
         foreach ($submission_ids_result as $key => $submission_id_result) {
@@ -1587,17 +1601,17 @@ class Survey_Maker_Admin {
 
     public function ays_survey_submission_report(){
         global $wpdb;
-        if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'ays_survey_submission_report' &&  wp_verify_nonce( $_REQUEST['nonce'], 'ajax-nonce' )) {
+        if (isset($_REQUEST['action']) && $_REQUEST['action'] == 'ays_survey_submission_report' && isset( $_REQUEST['nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_REQUEST['nonce'] ) ), 'ajax-nonce' ) && current_user_can( $this->survey_maker_capabilities() )) {
 
-            $survey_id = (isset($_REQUEST['surveyId']) && $_REQUEST['surveyId'] != "") ? intval(sanitize_text_field($_REQUEST['surveyId'])) : null;
+            $survey_id = (isset($_REQUEST['surveyId']) && $_REQUEST['surveyId'] != "") ? intval( sanitize_text_field( wp_unslash( $_REQUEST['surveyId'] ) ) ) : null;
             if($survey_id === null){
                 return false;
             }
-            
-            $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id =" . absint( $survey_id );
-            $survey = $wpdb->get_row( $sql, 'ARRAY_A' );
 
-            $submission_id = (isset($_REQUEST['submissionId']) && $_REQUEST['submissionId'] != '') ? absint( sanitize_text_field( $_REQUEST['submissionId'] ) ) : null;
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $survey = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys WHERE id = %d", absint( $survey_id ) ), 'ARRAY_A' );
+
+            $submission_id = (isset($_REQUEST['submissionId']) && $_REQUEST['submissionId'] != '') ? absint( sanitize_text_field( wp_unslash( $_REQUEST['submissionId'] ) ) ) : null;
             if($submission_id == null){
                 return false;
             }
@@ -1676,17 +1690,18 @@ class Survey_Maker_Admin {
     // Get Submissions count ( Checkbox )
     public function ays_survey_get_submission_count($id, $type, $survey_id){
         global $wpdb;
-        $submitions_table   = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-        $submitions_q_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
+        $submitions_table   = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        $submitions_q_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
         $results = array();
         if($type == 'checkbox'){
-            $sql = "SELECT COUNT(submission_id) AS sub_count
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_row( $wpdb->prepare( "SELECT COUNT(submission_id) AS sub_count
                     FROM {$submitions_q_table}
-                    WHERE question_id = ". absint( $id )."
+                    WHERE question_id = %d
                     AND user_answer != ''
-                    AND type='". esc_sql( $type ) ."'
-                    AND survey_id=". absint( $survey_id );
-            $results = $wpdb->get_row($sql,'ARRAY_A');
+                    AND type = %s
+                    AND survey_id = %d", absint( $id ), $type, absint( $survey_id ) ), 'ARRAY_A' );
+            // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         }
         $submission_count = isset($results['sub_count']) && $results['sub_count'] != "" && $results['sub_count'] > 0 ? $results['sub_count'] : 0;
         return $submission_count;
@@ -1737,7 +1752,7 @@ class Survey_Maker_Admin {
 
         // ONLY FOR Black Friday
         if(isset($_POST['ays_survey_sale_btn']) && 
-        (isset( $_POST[$this->plugin_name . '-sale-banner'] ) && wp_verify_nonce( $_POST[$this->plugin_name . '-sale-banner'], $this->plugin_name . '-sale-banner' )) &&
+        (isset( $_POST[$this->plugin_name . '-sale-banner'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[$this->plugin_name . '-sale-banner'] ) ), $this->plugin_name . '-sale-banner' )) &&
         current_user_can( 'manage_options' )){
 
             update_option('ays_survey_sale_btn', 1);
@@ -1760,18 +1775,113 @@ class Survey_Maker_Admin {
     
         $ays_survey_maker_flag = intval(get_option('ays_survey_sale_btn'));
         if( $ays_survey_maker_flag == 0 ){
-            if (isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false) {
+            if (isset($_GET['page']) && strpos( sanitize_text_field( wp_unslash( $_GET['page'] ) ), SURVEY_MAKER_NAME) !== false) {
                 // if(Survey_Maker_Admin::get_max_id('surveys') > 1){
                     // $this->ays_survey_new_halloween_bundle_message_2025($ays_survey_maker_flag);
                     // $this->ays_survey_black_friday_message($ays_survey_maker_flag);
                     // $this->ays_survey_christmas_banner_message_2025($ays_survey_maker_flag);
-                        $this->ays_survey_back_to_school_banner_2026($ays_survey_maker_flag);
+                    // $this->ays_survey_back_to_school_banner_2026($ays_survey_maker_flag);
                     // $this->ays_survey_footer_sale_banner_2026($ays_survey_maker_flag);
+                    // $this->ays_survey_halloween_sale_banner_2026($ays_survey_maker_flag);
 
                 // }
             }
         }
         
+    }
+
+    // Halloween Sale top banner
+    public function ays_survey_halloween_sale_banner_2026($ishmar){
+        if($ishmar == 0 ){
+            $content = array();
+            $survey_cta_button_link = esc_url('https://ays-pro.com/wordpress/survey-maker?utm_source=dashboard&utm_medium=survey-free&utm_campaign=halloween-sale-banner-' . SURVEY_MAKER_VERSION);
+            $content[] = '<div id="ays-survey-halloween-sale-banner-2026" class="ays-survey-halloween-sale-banner-2026 ays-survey-admin-notice notice notice-success is-dismissible ays_survey_dicount_info" aria-label="'. esc_attr__('Halloween Sale', 'survey-maker') .'">';
+                for ($spark_index = 1; $spark_index <= 12; $spark_index++) {
+                    $content[] = '<span class="ays-survey-halloween-sale-spark ays-survey-halloween-sale-spark-'. intval($spark_index) .'" aria-hidden="true"></span>';
+                }
+                $content[] = '<div class="ays-survey-halloween-sale-content">';
+                    $content[] = '<img class="ays-survey-halloween-sale-art" src="'. esc_url(SURVEY_MAKER_ADMIN_URL . '/images/halloween-banner-background-image.webp') .'" alt="" width="555" height="196">';
+                    $content[] = '<div class="ays-survey-halloween-sale-text">';
+                        $content[] = '<p class="ays-survey-halloween-sale-headline"><a href="'. esc_url($survey_cta_button_link) .'" class="ays-survey-halloween-sale-headline-link" target="_blank" rel="noopener noreferrer">'. esc_html__('Halloween Sale', 'survey-maker') .'</a> <span class="ays-survey-halloween-sale-dash" aria-hidden="true">—</span> <strong>'. esc_html__('30% OFF', 'survey-maker') .'</strong></p>';
+                        $content[] = '<p class="ays-survey-halloween-sale-subtitle">'. esc_html__('Unlock more with Pro.', 'survey-maker') .'</p>';
+                    $content[] = '</div>';
+                    $content[] = '<div class="ays-survey-halloween-sale-actions">';
+                        $content[] = '<div class="ays-survey-halloween-sale-coupon-group">';
+                            $content[] = '<button type="button" class="ays-survey-halloween-sale-coupon" data-coupon="HALLOWEEN30" aria-label="'. esc_attr__('Copy coupon code HALLOWEEN30', 'survey-maker') .'"><span class="ays-survey-halloween-sale-coupon-code">HALLOWEEN30</span><svg class="ays-survey-halloween-sale-copy-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></button>';
+                            $content[] = '<span class="ays-survey-halloween-sale-coupon-label">'. esc_html__('Use code', 'survey-maker') .'</span>';
+                        $content[] = '</div>';
+                        $content[] = '<a href="'. esc_url($survey_cta_button_link) .'" class="ays-survey-halloween-sale-cta" target="_blank" rel="noopener noreferrer">'. esc_html__('Upgrade Now', 'survey-maker') .'</a>';
+                    $content[] = '</div>';
+                $content[] = '</div>';
+                $content[] = '<div class="ays-survey-halloween-sale-dismiss"><form action="" method="POST"><div id="ays-survey-dismiss-buttons-content">';
+                    if( current_user_can( 'manage_options' ) ){
+                        $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn">'. esc_html__('Dismiss ad', 'survey-maker') .'</button>';
+                        $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner', SURVEY_MAKER_NAME . '-sale-banner', true, false );
+                    }
+                $content[] = '</div></form></div>';
+            $content[] = '</div>';
+            $content[] = '<style id="ays-survey-halloween-sale-banner-2026-inline-css">';
+            $content[] = '#ays-survey-halloween-sale-banner-2026{box-sizing:border-box;position:relative;isolation:isolate;width:calc(100% - 20px);max-width:none;height:114px;margin:20px 20px 16px 0;padding:0 38px 0 20px;overflow:hidden;border:1px solid rgba(211,99,197,0.55);border-left-width:1px;border-radius:12px;background:radial-gradient(120px 90px at 140px 50%,rgba(196,57,177,0.45),transparent 70%),radial-gradient(420px 160px at 55% 120%,rgba(173,32,151,0.55),transparent 70%),radial-gradient(300px 140px at 100% -20%,rgba(150,43,181,0.6),transparent 70%),linear-gradient(100deg,#682779 0%,#2b073f 38%,#39084f 70%,#682779 100%);box-shadow:inset 0 1px rgba(255,255,255,0.12),inset 0 -10px 24px rgba(28,2,44,0.5);color:#fff5d9;font-family:Georgia,"Times New Roman",serif}.ays-survey-halloween-sale-content{position:relative;z-index:2;display:flex;width:100%;height:112px;align-items:center;gap:28px}.ays-survey-halloween-sale-art{position:relative;z-index:1;width:280px;height:auto;flex:0 0 auto;filter:drop-shadow(0 4px 8px rgba(25,2,38,0.6))}.ays-survey-halloween-sale-text{position:relative;z-index:1;display:flex;min-width:0;flex:1 1 auto;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center}.ays-survey-halloween-sale-text p{margin:0}.ays-survey-halloween-sale-headline{color:#fff5d9!important;font-family:cursive,Georgia,"Times New Roman",serif;font-size:34px!important;font-weight:700;line-height:36px;letter-spacing:1px;text-shadow:0 2px rgba(25,2,38,0.65);white-space:nowrap}.ays-survey-halloween-sale-dash{color:#d9a6d7}.ays-survey-halloween-sale-headline strong{color:#f8bb35!important;font-size:42px!important;text-shadow:0 2px #85431a,0 0 18px rgba(248,187,53,0.35)}.ays-survey-halloween-sale-subtitle{margin:0!important;color:#efdced!important;font-size:17px!important;line-height:20px;white-space:nowrap}.ays-survey-halloween-sale-actions{position:relative;z-index:1;display:flex;flex:0 0 auto;align-items:center;gap:16px}.ays-survey-halloween-sale-coupon-label{margin-right:-6px;color:#ead4e9;font-size:12px;line-height:14px;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap}.ays-survey-halloween-sale-coupon{box-sizing:border-box;display:inline-flex;height:44px;align-items:center;gap:10px;padding:0 16px 0 18px;border:1px solid rgba(248,187,53,0.6);border-radius:12px;background:linear-gradient(#5a1c70,#300a46);color:#f8bb35;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,0.18),inset 0 -2px rgba(25,2,38,0.6),0 3px #260635,0 8px 16px rgba(18,1,29,0.45);transition:transform 120ms,box-shadow 120ms,border-color 150ms}.ays-survey-halloween-sale-coupon:hover,.ays-survey-halloween-sale-coupon:focus{border-color:rgba(248,187,53,0.9);background:linear-gradient(#64217b,#380c50);color:#f8bb35}.ays-survey-halloween-sale-coupon:active{transform:translateY(2px);box-shadow:inset 0 1px rgba(255,255,255,0.12),0 1px #260635,0 4px 8px rgba(18,1,29,0.4)}.ays-survey-halloween-sale-coupon-code{color:#f8bb35;font-family:monospace;font-size:16px;font-weight:700;letter-spacing:1.2px;text-shadow:0 1px #250632}.ays-survey-halloween-sale-copy-icon{width:16px;height:16px;flex:0 0 auto;opacity:0.85}.ays-survey-halloween-sale-cta{display:inline-flex;height:46px;align-items:center;justify-content:center;padding:0 26px;border:1px solid #c16a1f;border-radius:12px;background:linear-gradient(180deg,#ffe080 0%,#f8bb35 40%,#ef8b20 100%);box-shadow:inset 0 1px rgba(255,255,255,0.55),inset 0 -2px rgba(167,73,15,0.7),0 4px #a95312,0 10px 20px rgba(18,1,29,0.55);color:#3b170e!important;font-family:Georgia,"Times New Roman",serif;font-size:16px;font-weight:700;text-decoration:none!important;white-space:nowrap;transition:transform 120ms,box-shadow 120ms,filter 150ms}.ays-survey-halloween-sale-cta:hover,.ays-survey-halloween-sale-cta:focus{color:#3b170e!important;filter:brightness(1.05)}.ays-survey-halloween-sale-cta:active{transform:translateY(3px);box-shadow:inset 0 1px rgba(255,255,255,0.4),inset 0 -1px rgba(167,73,15,0.7),0 1px #a95312,0 4px 10px rgba(18,1,29,0.5)}.ays-survey-halloween-sale-coupon:focus-visible,.ays-survey-halloween-sale-cta:focus-visible{outline:3px solid #fff5d9;outline-offset:3px}#ays-survey-halloween-sale-banner-2026 .notice-dismiss{top:1px;right:1px;color:#fff5d9}#ays-survey-halloween-sale-banner-2026 .notice-dismiss:before{font-size:18px}.ays-survey-halloween-sale-dismiss{position:absolute;right:39px;bottom:0;z-index:3}.ays-survey-halloween-sale-dismiss form{margin:0}.ays-survey-halloween-sale-dismiss #ays-survey-dismiss-buttons-content .ays-button{height:22px!important;min-height:0!important;margin:0!important;padding:0!important;border:0!important;background:transparent!important;color:rgba(255,255,255,0.65)!important;font-size:10px!important;line-height:22px!important;text-decoration:underline;box-shadow:none!important}.ays-survey-halloween-sale-spark{position:absolute;z-index:0;width:8px;height:8px;background:#fff5d9;clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);opacity:0.55;pointer-events:none}.ays-survey-halloween-sale-spark-1{top:10px;left:8px;width:12px;height:12px;opacity:0.85}.ays-survey-halloween-sale-spark-2{bottom:14px;left:12px;width:7px;height:7px}.ays-survey-halloween-sale-spark-3{top:7px;left:19%;width:6px;height:6px;opacity:0.45}.ays-survey-halloween-sale-spark-4{bottom:7px;left:27%;width:9px;height:9px;opacity:0.65}.ays-survey-halloween-sale-spark-5{top:9px;left:36%;width:7px;height:7px}.ays-survey-halloween-sale-spark-6{bottom:10px;left:44%;width:5px;height:5px;opacity:0.4}.ays-survey-halloween-sale-spark-7{top:10px;left:52%;width:6px;height:6px;opacity:0.35}.ays-survey-halloween-sale-spark-8{bottom:8px;left:60%;width:5px;height:5px;opacity:0.3}.ays-survey-halloween-sale-spark-9{top:9px;left:68%;width:7px;height:7px;opacity:0.4}.ays-survey-halloween-sale-spark-10{top:9px;right:8px;width:9px;height:9px;opacity:0.8}.ays-survey-halloween-sale-spark-11{right:14px;bottom:9px;width:6px;height:6px}.ays-survey-halloween-sale-spark-12{bottom:12px;left:76%;width:4px;height:4px;opacity:0.35}.ays-survey-halloween-sale-copy-notification{position:fixed;top:50%;left:50%;z-index:10000;padding:12px 24px;border-radius:8px;background:rgba(0,0,0,0.82);color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:14px;opacity:0;transform:translate(-50%,-50%);transition:opacity 250ms}.ays-survey-halloween-sale-copy-notification.ays-survey-halloween-sale-show{opacity:1}@media screen and (max-width:1400px){.ays-survey-halloween-sale-content{gap:18px}.ays-survey-halloween-sale-art{width:240px}.ays-survey-halloween-sale-headline{font-size:29px!important;line-height:32px}.ays-survey-halloween-sale-headline strong{font-size:36px!important}.ays-survey-halloween-sale-actions{gap:10px}.ays-survey-halloween-sale-cta{padding:0 18px}}@media screen and (max-width:1200px){#ays-survey-halloween-sale-banner-2026{padding-left:14px}.ays-survey-halloween-sale-content{gap:12px}.ays-survey-halloween-sale-art{width:205px}.ays-survey-halloween-sale-headline{font-size:25px!important;line-height:28px}.ays-survey-halloween-sale-headline strong{font-size:31px!important}.ays-survey-halloween-sale-subtitle,.ays-survey-halloween-sale-coupon-label{display:none}.ays-survey-halloween-sale-actions{gap:8px}.ays-survey-halloween-sale-coupon{padding:0 12px}.ays-survey-halloween-sale-coupon-code{font-size:14px}.ays-survey-halloween-sale-cta{padding:0 14px;font-size:14px}}@media screen and (max-width:960px){.ays-survey-halloween-sale-art{width:170px}.ays-survey-halloween-sale-headline{font-size:21px!important;line-height:24px}.ays-survey-halloween-sale-headline strong{font-size:26px!important}.ays-survey-halloween-sale-coupon{height:40px;padding:0 9px;gap:6px}.ays-survey-halloween-sale-cta{height:42px;padding:0 11px;font-size:13px}}@media screen and (max-width:768px){#ays-survey-halloween-sale-banner-2026{display:none!important}}';
+            $content[] = '#ays-survey-halloween-sale-banner-2026{width:100%}.ays-survey-halloween-sale-headline-link{color:inherit!important;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:inherit;text-shadow:inherit;text-decoration:none!important}.ays-survey-halloween-sale-headline-link:hover{text-decoration:underline!important}.ays-survey-halloween-sale-coupon-group{position:relative;display:flex;flex:0 0 auto;align-items:center}.ays-survey-halloween-sale-coupon-group .ays-survey-halloween-sale-coupon-label{position:absolute;top:47px;left:50%;display:block;margin:0;font-size:9px;line-height:10px;letter-spacing:1px;white-space:nowrap;transform:translateX(-50%)}.ays-survey-halloween-sale-cta,.ays-survey-halloween-sale-cta:active{box-shadow:inset 0 1px rgba(255,255,255,0.55),inset 0 -2px rgba(167,73,15,0.7)}.ays-survey-halloween-sale-cta:hover,.ays-survey-halloween-sale-cta:focus,.ays-survey-halloween-sale-cta:active{border-radius:12px!important}#ays-survey-halloween-sale-banner-2026 .notice-dismiss:before{color:#fff5d9!important}@media screen and (max-width:900px){.ays-survey-halloween-sale-art{display:none}}';
+            $content[] = '</style>';
+            $content[] = '<script>
+                (function() {
+                    "use strict";
+                    function initHalloweenSaleBanner() {
+                        var banner = document.getElementById("ays-survey-halloween-sale-banner-2026");
+                        if (!banner) {
+                            return;
+                        }
+                        var couponButton = banner.querySelector(".ays-survey-halloween-sale-coupon");
+                        if (!couponButton) {
+                            return;
+                        }
+                        couponButton.addEventListener("click", function() {
+                            var couponCode = couponButton.getAttribute("data-coupon");
+                            var textarea = document.createElement("textarea");
+                            textarea.value = couponCode;
+                            textarea.style.position = "fixed";
+                            textarea.style.opacity = "0";
+                            document.body.appendChild(textarea);
+                            textarea.focus();
+                            textarea.select();
+                            try {
+                                document.execCommand("copy");
+                                showCopyNotification();
+                            } catch (error) {
+                                // Keep the banner usable when clipboard access is unavailable.
+                            }
+                            document.body.removeChild(textarea);
+                        });
+                    }
+                    function showCopyNotification() {
+                        var notification = document.createElement("div");
+                        notification.className = "ays-survey-halloween-sale-copy-notification";
+                        notification.setAttribute("role", "status");
+                        notification.setAttribute("aria-live", "polite");
+                        notification.textContent = "'. esc_js(__('Coupon code copied', 'survey-maker')) .'";
+                        document.body.appendChild(notification);
+                        setTimeout(function() {
+                            notification.classList.add("ays-survey-halloween-sale-show");
+                        }, 10);
+                        setTimeout(function() {
+                            notification.classList.remove("ays-survey-halloween-sale-show");
+                            setTimeout(function() {
+                                if (notification.parentNode) {
+                                    notification.parentNode.removeChild(notification);
+                                }
+                            }, 250);
+                        }, 2000);
+                    }
+                    if (document.readyState === "loading") {
+                        document.addEventListener("DOMContentLoaded", initHalloweenSaleBanner);
+                    } else {
+                        initHalloweenSaleBanner();
+                    }
+                })();
+            </script>';
+            echo implode('', $content); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
+        }
     }
 
     // New Mega Bundle
@@ -1788,13 +1898,13 @@ class Survey_Maker_Admin {
                         $content[] = '<div>';
 
                             $content[] = '<span class="ays-survey-new-mega-bundle-2025-title">';
-                                $content[] = __( "<span><a href='". $survey_cta_button_link ."' target='_blank' style='color:#ffffff; text-decoration: underline;'>Mega Bundle</a></span> (Quiz + Survey + Poll)", 'survey-maker' );
+                                $content[] = "<span><a href='" . esc_url( $survey_cta_button_link ) . "' target='_blank' style='color:#ffffff; text-decoration: underline;'>" . esc_html__( "Mega Bundle", 'survey-maker' ) . "</a></span> " . esc_html__( "(Quiz + Survey + Poll)", 'survey-maker' );
                             $content[] = '</span>';
 
                             $content[] = '</br>';
 
                             $content[] = '<span class="ays-survey-new-mega-bundle-2025-desc">';
-                                $content[] = __( "30 Day Money Back Guarantee", 'survey-maker' );
+                                $content[] = esc_html__( "30 Day Money Back Guarantee", 'survey-maker' );
                             $content[] = '</span>';
                         $content[] = '</div>';
 
@@ -1807,7 +1917,7 @@ class Survey_Maker_Admin {
                             $content[] = '<form action="" method="POST">';
                                 $content[] = '<div id="ays-survey-dismiss-buttons-content">';
                                 if( current_user_can( 'manage_options' ) ){
-                                    $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'survey-maker' ) .'</button>';
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. esc_html__( "Dismiss ad", 'survey-maker' ) .'</button>';
                                     $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner' ,  SURVEY_MAKER_NAME . '-sale-banner' );
                                 }
                                 $content[] = '</div>';
@@ -1825,10 +1935,10 @@ class Survey_Maker_Admin {
                                 $content[] = '<div id="ays-survey-countdown">';
 
                                     $content[] = '<ul>';
-                                        $content[] = '<li><span id="ays-survey-countdown-days"></span>'. __( "Days", 'survey-maker' ) .'</li>';
-                                        $content[] = '<li><span id="ays-survey-countdown-hours"></span>'. __( "Hours", 'survey-maker' ) .'</li>';
-                                        $content[] = '<li><span id="ays-survey-countdown-minutes"></span>'. __( "Minutes", 'survey-maker' ) .'</li>';
-                                        $content[] = '<li><span id="ays-survey-countdown-seconds"></span>'. __( "Seconds", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-days"></span>'. esc_html__( "Days", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-hours"></span>'. esc_html__( "Hours", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-minutes"></span>'. esc_html__( "Minutes", 'survey-maker' ) .'</li>';
+                                        $content[] = '<li><span id="ays-survey-countdown-seconds"></span>'. esc_html__( "Seconds", 'survey-maker' ) .'</li>';
                                     $content[] = '</ul>';
                                 $content[] = '</div>';
 
@@ -1845,9 +1955,9 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<a href="'. $survey_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'survey-maker' ) . '</a>';
+                        $content[] = '<a href="'. $survey_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . esc_html__( 'Buy Now', 'survey-maker' ) . '</a>';
                         $content[] = '<span class="ays-survey-dicount-one-time-text">';
-                            $content[] = __( "One-time payment", 'survey-maker' );
+                            $content[] = esc_html__( "One-time payment", 'survey-maker' );
                         $content[] = '</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -1864,7 +1974,7 @@ class Survey_Maker_Admin {
             $content = array();
 
             $date = time() + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS);
-            $now_date = date('M d, Y H:i:s', $date);
+            $now_date = gmdate('M d, Y H:i:s', $date);
 
             $survey_banner_date = strtotime( self::ays_survey_update_banner_time() );
 
@@ -1889,14 +1999,14 @@ class Survey_Maker_Admin {
                                     $content[] = '<span class="ays-survey-new-mega-bundle-title">';
                                         $content[] = sprintf(
                                         /* translators: 1: opening link wrapper with <a> tag, 2: closing </a> tag */
-                                        __( 'Upgrade to %1$s Survey Maker PRO %2$s', 'survey-maker' ),
+                                        esc_html__( 'Upgrade to %1$s Survey Maker PRO %2$s', 'survey-maker' ),
                                         '<span style="display:inline-block; margin-right:5px;"><a href="' . esc_url( $survey_cta_button_link ) . '" target="_blank" rel="noopener noreferrer" style="color:#ffffff !important; text-decoration: underline;">',
                                         '</a></span>'
                                     );
                                     $content[] = '</span>';
                                     $content[] = '</br>';
                                     $content[] = '<span class="ays-survey-new-mega-bundle-desc">';
-                                        $content[] = __( "30 Day Money Back Guarantee", 'survey-maker' );
+                                        $content[] = esc_html__( "30 Day Money Back Guarantee", 'survey-maker' );
                                     $content[] = '</span>';
                                 $content[] = '</div>';
 
@@ -1913,7 +2023,7 @@ class Survey_Maker_Admin {
                             $content[] = '<form action="" method="POST">';
                                 $content[] = '<div id="ays-survey-dismiss-buttons-content">';
                                 if( current_user_can( 'manage_options' ) ){
-                                    $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. __( "Dismiss ad", 'survey-maker' ) .'</button>';
+                                    $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="height: 32px; margin-left: 0;padding-left: 0">'. esc_html__( "Dismiss ad", 'survey-maker' ) .'</button>';
                                     $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner' ,  SURVEY_MAKER_NAME . '-sale-banner' );
                                 }
                                 $content[] = '</div>';
@@ -1948,7 +2058,7 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<div class="ays-survey-dicount-banner-coupon-box" onclick="aysSurveyBundleCopyToClipboard(\'SURVEYPRO20\')" title="' . __( 'Click to copy coupon code', "survey-maker" ) . '">';
+                        $content[] = '<div class="ays-survey-dicount-banner-coupon-box" onclick="aysSurveyBundleCopyToClipboard(\'SURVEYPRO20\')" title="' . esc_attr__( 'Click to copy coupon code', "survey-maker" ) . '">';
                             $content[] = '<span class="ays-survey-dicount-banner-coupon-text">SURVEYPRO20</span>';
                             $content[] = '<svg class="ays-survey-dicount-banner-copy-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">';
                                 $content[] = '<path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>';
@@ -1957,9 +2067,9 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<a href="'. $survey_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now', 'survey-maker' ) . '</a>';
+                        $content[] = '<a href="'. $survey_cta_button_link .'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . esc_html__( 'Buy Now', 'survey-maker' ) . '</a>';
                         $content[] = '<span class="ays-survey-dicount-one-time-text">';
-                            $content[] = __( "One-time payment", 'survey-maker' );
+                            $content[] = esc_html__( "One-time payment", 'survey-maker' );
                         $content[] = '</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -1979,7 +2089,7 @@ class Survey_Maker_Admin {
                     
                     try {
                         document.execCommand('copy');
-                        aysSurveyBundleShowCopyNotification('" . __( 'Coupon code copied!', "survey-maker" ) . "');
+                        aysSurveyBundleShowCopyNotification('" . esc_js( __( 'Coupon code copied!', "survey-maker" ) ) . "');
                     } catch (err) {
                         console.error('Failed to copy text: ', err);
                     }
@@ -2087,7 +2197,7 @@ class Survey_Maker_Admin {
             // /* New Mega Bundle Banner Survey | End */
 
             $content = implode( '', $content );
-            echo ($content);        
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
 
@@ -2154,21 +2264,21 @@ class Survey_Maker_Admin {
                             $content[] = '<div class="ays-survey-christmas-banner-special-label">';
                                 $content[] = '<div class="ays-survey-christmas-banner-special-label-name">';
                                     $content[] = '<a href="'. $ays_survey_cta_button_link .'" class="ays-survey-christmas-banner-special-label-name-link" target="_blank">';
-                                        $content[] = __( 'Survey Maker', "survey-maker" );
+                                        $content[] = esc_html__( 'Survey Maker', "survey-maker" );
                                     $content[] = '</a>';
                                 $content[] = '</div>';
 
-                                $content[] = '<div>✦ ' . __( 'CHRISTMAS SPECIAL', "survey-maker" ) . ' ✦</div>';
+                                $content[] = '<div>✦ ' . esc_html__( 'CHRISTMAS SPECIAL', "survey-maker" ) . ' ✦</div>';
                             $content[] = '</div>';
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-survey-christmas-banner-center">';
                             $content[] = '<div class="ays-survey-christmas-banner-discount-text">25% OFF</div>';
-                            $content[] = '<div class="ays-survey-christmas-banner-limited-offer">' . __( 'Limited time offer', "survey-maker" ) . '</div>';
+                            $content[] = '<div class="ays-survey-christmas-banner-limited-offer">' . esc_html__( 'Limited time offer', "survey-maker" ) . '</div>';
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-survey-christmas-banner-right">';
-                            $content[] = '<div class="ays-survey-christmas-banner-coupon-box" onclick="aysSurveyChristmasCopyToClipboard(\'XMAS25\')" title="' . __( 'Click to copy', "survey-maker" ) . '">';
+                            $content[] = '<div class="ays-survey-christmas-banner-coupon-box" onclick="aysSurveyChristmasCopyToClipboard(\'XMAS25\')" title="' . esc_attr__( 'Click to copy', "survey-maker" ) . '">';
                                 $content[] = '<span class="ays-survey-christmas-banner-coupon-text">XMAS25</span>';
                                 $content[] = '<svg class="ays-survey-christmas-banner-copy-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">';
                                     $content[] = '<path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>';
@@ -2176,7 +2286,7 @@ class Survey_Maker_Admin {
                             $content[] = '</div>';
 
                             $content[] = '<a href="'. $ays_survey_cta_button_link .'" class="ays-survey-christmas-banner-buy-now-btn" target="_blank">';
-                                $content[] = __( 'Buy Now', "survey-maker" );
+                                $content[] = esc_html__( 'Buy Now', "survey-maker" );
                             $content[] = '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
@@ -2186,7 +2296,7 @@ class Survey_Maker_Admin {
                 if( current_user_can( 'manage_options' ) ){
                 $content[] = '<div id="ays-survey-dismiss-buttons-content">';
                     $content[] = '<form action="" method="POST" style="position: absolute; bottom: 0; right: 0; color: #fff;">';
-                            $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="color: darkgrey; font-size: 11px; padding: 0 .75rem;">'. __( "Dismiss ad", 'survey-maker' ) .'</button>';
+                            $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="color: darkgrey; font-size: 11px; padding: 0 .75rem;">'. esc_html__( "Dismiss ad", 'survey-maker' ) .'</button>';
                             $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner' ,  SURVEY_MAKER_NAME . '-sale-banner' );
                     $content[] = '</form>';
                 $content[] = '</div>';
@@ -2208,7 +2318,7 @@ class Survey_Maker_Admin {
                     
                     try {
                         document.execCommand('copy');
-                        aysSurveyChristmasShowCopyNotification('" . __( 'Coupon code copied!', "survey-maker" ) . "');
+                        aysSurveyChristmasShowCopyNotification('" . esc_js( __( 'Coupon code copied!', "survey-maker" ) ) . "');
                     } catch (err) {
                         console.error('Failed to copy text: ', err);
                     }
@@ -2573,7 +2683,7 @@ class Survey_Maker_Admin {
 
             $content = implode( '', $content );
 
-            echo $content;
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
 
@@ -2589,7 +2699,7 @@ class Survey_Maker_Admin {
                     $content[] = '<div class="ays-survey-dicount-black-friday-box">';
                         $content[] = '<div class="ays-survey-dicount-black-friday-wrap-box ays-survey-dicount-black-friday-wrap-box-80" style="width: 70%;">';
                             $content[] = '<div class="">';
-                                $content[] = '<div class="ays-survey-dicount-black-friday-title-row" >' . __( 'Coupon Code', "survey-maker" ) .' ' . '</div>';
+                                $content[] = '<div class="ays-survey-dicount-black-friday-title-row" >' . esc_html__( 'Coupon Code', "survey-maker" ) .' ' . '</div>';
                                 $content[] = '<div class="ays-survey-dicount-black-friday-title-row">';
 
                                 $content[] = '
@@ -2615,10 +2725,10 @@ class Survey_Maker_Admin {
                                 $content[] = '<div class="ays-survey-countdown-container">';
                                     $content[] = '<div id="ays-survey-countdown" style="display: block;">';
                                         $content[] = '<ul>';
-                                            $content[] = '<li><span id="ays-survey-countdown-days"></span>' . __( 'Days', "survey-maker" ) . '</li>';
-                                            $content[] = '<li><span id="ays-survey-countdown-hours"></span>' . __( 'Hours', "survey-maker" ) . '</li>';
-                                            $content[] = '<li><span id="ays-survey-countdown-minutes"></span>' . __( 'Minutes', "survey-maker" ) . '</li>';
-                                            $content[] = '<li><span id="ays-survey-countdown-seconds"></span>' . __( 'Seconds', "survey-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-days"></span>' . esc_html__( 'Days', "survey-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-hours"></span>' . esc_html__( 'Hours', "survey-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-minutes"></span>' . esc_html__( 'Minutes', "survey-maker" ) . '</li>';
+                                            $content[] = '<li><span id="ays-survey-countdown-seconds"></span>' . esc_html__( 'Seconds', "survey-maker" ) . '</li>';
                                         $content[] = '</ul>';
                                     $content[] = '</div>';
                                     $content[] = '<div id="ays-survey-countdown-content" class="emoji" style="display: none;">';
@@ -2632,7 +2742,7 @@ class Survey_Maker_Admin {
                         $content[] = '</div>';
 
                         $content[] = '<div class="ays-survey-dicount-black-friday-wrap-box" style="width: 25%;">';
-                            $content[] = '<a href="'. $ays_survey_cta_button_link .'" class="ays-survey-dicount-black-friday-button-buy-now" target="_blank">' . __( 'Get Your Deal', "survey-maker" ) . '</a>';
+                            $content[] = '<a href="'. $ays_survey_cta_button_link .'" class="ays-survey-dicount-black-friday-button-buy-now" target="_blank">' . esc_html__( 'Get Your Deal', "survey-maker" ) . '</a>';
                         $content[] = '</div>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -2713,7 +2823,7 @@ class Survey_Maker_Admin {
 
             $content = implode( '', $content );
 
-            echo $content;
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
 
@@ -2723,7 +2833,7 @@ class Survey_Maker_Admin {
             $content = array();
 
             $date = time() + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS);
-            $now_date = date('M d, Y H:i:s', $date);
+            $now_date = gmdate('M d, Y H:i:s', $date);
 
             $start_date = strtotime('2025-09-08 00:00:01');
             $end_date = strtotime('2025-11-07 23:59:59');
@@ -2752,22 +2862,22 @@ class Survey_Maker_Admin {
                             $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-timer">';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-item">';
                                     $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-value" id="ays-survey-halloween-banner-2025-days">00</div>';
-                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . __('days', 'survey-maker') . '</div>';
+                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . esc_html__('days', 'survey-maker') . '</div>';
                                 $content[] = '</div>';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-separator">:</div>';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-item">';
                                     $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-value" id="ays-survey-halloween-banner-2025-hours">00</div>';
-                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . __('hours', 'survey-maker') . '</div>';
+                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . esc_html__('hours', 'survey-maker') . '</div>';
                                 $content[] = '</div>';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-separator">:</div>';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-item">';
                                     $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-value" id="ays-survey-halloween-banner-2025-minutes">00</div>';
-                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . __('minutes', 'survey-maker') . '</div>';
+                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . esc_html__('minutes', 'survey-maker') . '</div>';
                                 $content[] = '</div>';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-separator">:</div>';
                                 $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-item">';
                                     $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-value" id="ays-survey-halloween-banner-2025-seconds">00</div>';
-                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . __('seconds', 'survey-maker') . '</div>';
+                                    $content[] = '<div class="ays-survey-halloween-banner-2025-countdown-label">' . esc_html__('seconds', 'survey-maker') . '</div>';
                                 $content[] = '</div>';
                             $content[] = '</div>';
                         $content[] = '</div>';
@@ -2808,7 +2918,7 @@ class Survey_Maker_Admin {
                             if( current_user_can( 'manage_options' ) ){
                                 $content[] = '<div id="ays-survey-dismiss-buttons-content">';
                                     $content[] = '<form action="" method="POST" style="position: absolute; bottom: -5px; right: 0; color: #fff;">';
-                                            $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="color: darkgrey; font-size: 11px;">'. __( "Dismiss ad", 'survey-maker' ) .'</button>';
+                                            $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="color: darkgrey; font-size: 11px;">'. esc_html__( "Dismiss ad", 'survey-maker' ) .'</button>';
                                             $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner' ,  SURVEY_MAKER_NAME . '-sale-banner' );
                                     $content[] = '</form>';
                                 $content[] = '</div>';
@@ -3277,7 +3387,7 @@ class Survey_Maker_Admin {
                     }
 
                     (function() {
-                        var endDate = new Date('". date('Y-m-d H:i:s', $end_date) ."').getTime();
+                        var endDate = new Date('". gmdate('Y-m-d H:i:s', $end_date) ."').getTime();
                     
                         function updateCountdown() {
                             var now = new Date().getTime();
@@ -3310,7 +3420,7 @@ class Survey_Maker_Admin {
             $content[] = '</script>';
 
             $content = implode( '', $content );
-            echo ($content);
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
     
@@ -3320,7 +3430,7 @@ class Survey_Maker_Admin {
             $content = array();
 
             $date = time() + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS);
-            $now_date = date('M d, Y H:i:s', $date);
+            $now_date = gmdate('M d, Y H:i:s', $date);
 
             $start_date = strtotime('2025-09-21');
             $end_date = strtotime('2025-10-21');
@@ -3359,14 +3469,15 @@ class Survey_Maker_Admin {
                                             </svg>';
                         $content[] = '</div>';
                         $content[] = '<div class="ays-survey-progress-banner-text">';
-                            $content[] = '<h2 class="ays-survey-progress-banner-title">' . sprintf( __('Get the Pro Version of %s Survey Maker%s – 20%% OFF', 'survey-maker'), '<a href="'. $ays_survey_cta_button_link .'" target="_blank">', '</a>' ) . '</h2>';
-                            $content[] = '<p class="ays-survey-progress-banner-subtitle">' . __('Unlock advanced features + 30 day Money Back Guarantee', 'survey-maker') . '</p>';
+                            /* translators: 1: opening <a> tag, 2: closing </a> tag */
+                            $content[] = '<h2 class="ays-survey-progress-banner-title">' . sprintf( esc_html__('Get the Pro Version of %1$s Survey Maker%2$s – 20%% OFF', 'survey-maker'), '<a href="'. $ays_survey_cta_button_link .'" target="_blank">', '</a>' ) . '</h2>';
+                            $content[] = '<p class="ays-survey-progress-banner-subtitle">' . esc_html__('Unlock advanced features + 30 day Money Back Guarantee', 'survey-maker') . '</p>';
                         $content[] = '</div>';
                     $content[] = '</div>';
                     
                     $content[] = '<div class="ays-survey-progress-banner-center">';
                         $content[] = '<div class="ays-survey-progress-banner-coupon">';
-                            $content[] = '<div class="ays-survey-progress-banner-coupon-box" onclick="surveyCopyToClipboard(\'FREE2PRO20\')" title="' . __('Click to copy', 'survey-maker') . '">';
+                            $content[] = '<div class="ays-survey-progress-banner-coupon-box" onclick="surveyCopyToClipboard(\'FREE2PRO20\')" title="' . esc_attr__('Click to copy', 'survey-maker') . '">';
                                 $content[] = '<span class="ays-survey-progress-banner-coupon-text">FREE2PRO20</span>';
                                 $content[] = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="ays-survey-progress-banner-copy-icon">';
                                     $content[] = '<path d="M13.5 2.5H6.5C5.67 2.5 5 3.17 5 4V10C5 10.83 5.67 11.5 6.5 11.5H13.5C14.33 11.5 15 10.83 15 10V4C15 3.17 14.33 2.5 13.5 2.5ZM13.5 10H6.5V4H13.5V10ZM2.5 6.5V12.5C2.5 13.33 3.17 14 4 14H10V12.5H4V6.5H2.5Z" fill="white"/>';
@@ -3375,7 +3486,7 @@ class Survey_Maker_Admin {
                         $content[] = '</div>';
                         
                         $content[] = '<div class="ays-survey-progress-banner-progress">';
-                            $content[] = '<p class="ays-survey-progress-banner-progress-text">' . __('Only', 'survey-maker') . ' <span id="remaining-licenses">' . $remaining_licenses . '</span> ' . __('of 50 discounted licenses left', 'survey-maker') . '</p>';
+                            $content[] = '<p class="ays-survey-progress-banner-progress-text">' . esc_html__('Only', 'survey-maker') . ' <span id="remaining-licenses">' . $remaining_licenses . '</span> ' . esc_html__('of 50 discounted licenses left', 'survey-maker') . '</p>';
                             $content[] = '<div class="ays-survey-progress-banner-progress-bar">';
                                 $content[] = '<div class="ays-survey-progress-banner-progress-fill" id="progress-fill" style="width: ' . $progress_percentage . '%;"></div>';
                             $content[] = '</div>';
@@ -3387,7 +3498,7 @@ class Survey_Maker_Admin {
                         $content[] = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">';
                             $content[] = '<path d="M14.6392 6.956C14.5743 6.78222 14.4081 6.66667 14.2223 6.66667H8.85565L11.9512 0.648C12.0485 0.458667 11.9983 0.227111 11.8308 0.0955556C11.7499 0.0315556 11.6525 0 11.5556 0C11.4521 0 11.3485 0.0364444 11.2654 0.108L8.00009 2.928L1.48765 8.55244C1.3472 8.67378 1.29653 8.86978 1.36142 9.04356C1.42631 9.21733 1.59209 9.33333 1.77787 9.33333H7.14454L4.04898 15.352C3.95165 15.5413 4.00187 15.7729 4.16942 15.9044C4.25031 15.9684 4.34765 16 4.44453 16C4.54809 16 4.65165 15.9636 4.73476 15.892L8.00009 13.072L14.5125 7.44756C14.6534 7.32622 14.7036 7.13022 14.6392 6.956Z" fill="white"/>';
                         $content[] = '</svg>';
-                         $content[] = ' ' . __('Upgrade Now', 'survey-maker');
+                         $content[] = ' ' . esc_html__('Upgrade Now', 'survey-maker');
                         $content[] = '</a>';
                     $content[] = '</div>';
                 $content[] = '</div>';
@@ -3395,7 +3506,7 @@ class Survey_Maker_Admin {
                 if( current_user_can( 'manage_options' ) ){
                 $content[] = '<div id="ays-survey-dismiss-buttons-content">';
                     $content[] = '<form action="" method="POST" style="position: absolute; bottom: 0; right: 0; color: #fff;">';
-                            $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="color: darkgrey; font-size: 11px;">'. __( "Dismiss ad", 'survey-maker' ) .'</button>';
+                            $content[] = '<button class="btn btn-link ays-button" name="ays_survey_sale_btn" style="color: darkgrey; font-size: 11px;">'. esc_html__( "Dismiss ad", 'survey-maker' ) .'</button>';
                             $content[] = wp_nonce_field( SURVEY_MAKER_NAME . '-sale-banner' ,  SURVEY_MAKER_NAME . '-sale-banner' );
                     $content[] = '</form>';
                 $content[] = '</div>';
@@ -3661,7 +3772,7 @@ class Survey_Maker_Admin {
             $content[] = '</style>';
 
             $content = implode( '', $content );
-            echo ($content);
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
         
@@ -3738,13 +3849,13 @@ class Survey_Maker_Admin {
                     $content[] = '</div>';
 
                     $content[] = '<div class="ays-survey-dicount-wrap-box ays-survey-dicount-wrap-button-box">';
-                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=survey-maker-free&utm_medium=dashboard&utm_campaign=survey-mega-bundle-'.SURVEY_MAKER_VERSION.'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . __( 'Buy Now !', "survey-maker" ) . '</a>';
+                        $content[] = '<a href="https://ays-pro.com/mega-bundle?utm_source=survey-maker-free&utm_medium=dashboard&utm_campaign=survey-mega-bundle-'.SURVEY_MAKER_VERSION.'" class="button button-primary ays-button" id="ays-button-top-buy-now" target="_blank">' . esc_html__( 'Buy Now !', "survey-maker" ) . '</a>';
                         $content[] = '<span >One-time payment</span>';
                     $content[] = '</div>';
                 $content[] = '</div>';
             $content[] = '</div>';
 
-            $new_mega_bundle_logo_background = SURVEY_MAKER_ADMIN_URL . '/images/new-mega-bundle-logo-background.svg';
+            $new_mega_bundle_logo_background = esc_url( SURVEY_MAKER_ADMIN_URL . '/images/new-mega-bundle-logo-background.svg' );
         
             $content[] = '<style id="ays-survey-new-mega-bundle-styles-inline-css">';
                 $content[] = '#ays-survey-maker-countdown-main-container li span,#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now,#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content,#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-sale-banner-link,#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month,div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info button{display:flex;display:flex;display:flex;display:flex}div#ays-survey-new-mega-bundle-dicount-month-main{border:0;background:#fff;border-radius:20px;box-shadow:unset;position:relative;z-index:1;min-height:80px}div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info button{align-items:center}div#ays-survey-new-mega-bundle-dicount-month-main div#ays-survey-dicount-month a.ays-survey-sale-banner-link:focus{outline:0;box-shadow:0}div#ays-survey-new-mega-bundle-dicount-month-main .btn-link{color:#007bff;background-color:transparent;display:inline-block;font-weight:400;text-align:center;white-space:nowrap;vertical-align:middle;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border:1px solid transparent;padding:.375rem .75rem;font-size:1rem;line-height:1.5;border-radius:.25rem}div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info{background-image:url("'.$new_mega_bundle_logo_background.'");background-position:center;background-repeat:no-repeat;background-size:cover;background-color:#5551ff}#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month{align-items:center;justify-content:space-between;color:#fff}#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month img{width:80px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-sale-banner-link{justify-content:center;align-items:center;width:200px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box{font-size:14px;padding:12px;text-align:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{text-align:left;width:400px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:40%;justify-content:flex-start;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{justify-content:center;align-items:center;flex-direction:column}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box span{font-size:10px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-survey-dicount-wrap-text-box-texts{font-size:17px;font-weight:700;letter-spacing:.8px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-color{color:#971821}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-text-decoration{text-decoration:underline}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box{justify-content:flex-end;align-items:center;width:30%}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-button,#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{align-items:center;font-weight:500}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{background:#971821;border-color:#fff;display:flex;justify-content:center;align-items:center;padding:5px 15px;font-size:16px;border-radius:5px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button:hover{background:#7d161d;border-color:#971821}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content{justify-content:center}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content .ays-button{margin:0!important;font-size:13px;color:#fff}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-opacity-box{width:19%}#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{padding:40px 15px;justify-content:center;align-items:center;opacity:0}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li{position:relative}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span:after{content:":";color:#fff;position:absolute;top:10px;right:-5px;font-size:40px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span#ays-survey-countdown-seconds:after{content:unset}#ays-survey-new-mega-bundle-dicount-month-main #ays-button-top-buy-now{align-items:center;border-radius:6.409px;background:#f66123;padding:12px 32px;color:#fff;font-size:12.818px;font-style:normal;font-weight:800;line-height:normal}#ays-survey-maker-countdown-main-container li,#ays-survey-maker-countdown-main-container ul,#ays-survey-new-mega-bundle-dicount-month-main .button.ays-button{margin:0}div#ays-survey-new-mega-bundle-dicount-month-main button.notice-dismiss:before{color:#fff}@media all and (max-width:1024px){#ays-survey-new-mega-bundle-dicount-month-main{display:none!important}}@media all and (max-width:768px){div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice{display:none!important;background-position:center;background-repeat:no-repeat;background-size:cover}div#ays-survey-new-mega-bundle-dicount-month-main{padding-right:0}div#ays-survey-new-mega-bundle-dicount-month-main .ays_survey_dicount_month{display:flex;align-items:center;justify-content:space-between;align-content:center;flex-wrap:wrap;flex-direction:column;padding:10px 0}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box,div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-text-box{width:100%;text-align:center}#ays-survey-maker-countdown-main-container #ays-survey-countdown-headline{font-size:15px;font-weight:600}#ays-survey-maker-countdown-main-container ul{font-weight:500}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-countdown-box{width:100%;display:flex;justify-content:center;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-button{margin:0 auto!important}#ays-survey-new-mega-bundle-dicount-month-main #ays-survey-dismiss-buttons-content .ays-button{padding-left:unset!important}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-buy-now-button-box{justify-content:center}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-buy-now-button{font-size:14px;padding:5px 10px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-buy-now-opacity-button{display:none}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dismiss-buttons-container-for-form{position:static!important}.comparison .product img{width:70px}.comparison a.price-buy{padding:5px 10px;font-size:11px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-survey-dicount-wrap-text-box-texts{height:64px}#ays-survey-maker-countdown-main-container .ays-survey-maker-countdown-container #ays-survey-countdown>ul{display:flex;justify-content:center;align-items:center}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box li span:after{top:unset}#ays-survey-maker-countdown-main-container li{font-size:12px;padding:12px}#ays-survey-maker-countdown-main-container li span{font-size:26px;min-height:50px;min-width:50px}#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box.ays-survey-dicount-wrap-button-box{width:100%}}@media screen and (max-width:1305px) and (min-width:768px){div#ays-survey-new-mega-bundle-dicount-month-main.ays_survey_dicount_info.notice{background-position:bottom right;background-repeat:no-repeat;background-size:cover}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-survey-dicount-wrap-text-box-texts{font-size:15px}#ays-survey-maker-countdown-main-container li{font-size:11px}div#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-opacity-box{display:none}}@media screen and (max-width:436px){#ays-survey-new-mega-bundle-dicount-month-main .ays-survey-dicount-wrap-box .ays-survey-dicount-wrap-text-box-texts{height:110px;margin-bottom:25px}}#ays-survey-maker-countdown-main-container .ays-survey-maker-countdown-container{color:#fff;margin:0 auto;text-align:center}#ays-survey-maker-countdown-main-container li span{justify-content:center;align-items:center;background:#9896ed;justify-content:center;align-items:center;font-size:23px;height:56px;width:53px;border-radius:8px;border:.534px solid #f4f4f4;color:#fff}#ays-survey-maker-countdown-main-container #ays-survey-countdown-headline{letter-spacing:.125rem;text-transform:uppercase;font-size:18px;font-weight:400;margin:0;padding:9px 0 4px;line-height:1.3}#ays-survey-maker-countdown-main-container li{display:inline-block;font-size:14px;list-style-type:none;padding:14px;text-transform:capitalize;text-align:center;margin:auto}#ays-survey-maker-countdown-main-container .emoji{display:none;padding:1rem}#ays-survey-maker-countdown-main-container .emoji span{font-size:30px;padding:0 .5rem} .ays-survey-dicount-wrap-text-box-texts{font-size:17px;letter-spacing:.8px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-wrap:wrap}.ays-survey-sale-baner-mega-bundle-sale-text{font-size:23px;padding-left:5px;text-shadow:2px 1.3px 0 #f66123;-webkit-text-stroke-width:1px;-webkit-text-stroke-color:#4944FF;-moz-text-stroke-width:1px;-moz-text-stroke-color:#4944FF}';
@@ -3752,7 +3863,7 @@ class Survey_Maker_Admin {
 
 
             $content = implode( '', $content );
-            echo html_entity_decode(esc_html( $content ));
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }        
     }
 
@@ -4160,7 +4271,7 @@ class Survey_Maker_Admin {
             $content[] = '</script>';
 
             $content = implode( '', $content );
-            echo ($content);
+            echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static banner markup; dynamic values are escaped above.
         }
     }
 
@@ -4567,7 +4678,15 @@ class Survey_Maker_Admin {
     public function ays_survey_add_survey_template() {
         global $wpdb;
 
-        $template_file_name = (isset($_REQUEST['template_file_name']) && $_REQUEST['template_file_name'] != "") ? sanitize_text_field($_REQUEST['template_file_name'] ) : null;
+        // Check for permissions.
+        if ( ! current_user_can( $this->survey_maker_capabilities() ) ) {
+            wp_send_json( array(
+                'status' => false,
+            ), 403 );
+        }
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request (returns a bundled template file from a fixed whitelist), restricted by the capability check above.
+        $template_file_name = (isset($_REQUEST['template_file_name']) && $_REQUEST['template_file_name'] != "") ? sanitize_text_field( wp_unslash( $_REQUEST['template_file_name'] ) ) : null;
         
         switch($template_file_name){
             case 'customer-feedback-form':
@@ -4658,23 +4777,35 @@ class Survey_Maker_Admin {
 
     public function ays_survey_maker_live_preview_content(){
 
-        $content = isset($_REQUEST['content']) && $_REQUEST['content'] != '' ? wp_kses_post( $_REQUEST['content'] ) : null;
-        if($content === null){
-            ob_end_clean();
-            $ob_get_clean = ob_get_clean();
-            echo json_encode(array(
+        // Run a security check.
+        check_ajax_referer( 'survey-maker-ajax-live-preview-nonce', '_ajax_nonce' );
+
+        // Check for permissions.
+        if ( ! current_user_can( $this->survey_maker_capabilities() ) ) {
+            wp_send_json( array(
                 'status' => false,
-            ));
+            ), 403 );
         }
+
+        if ( ob_get_level() > 0 ) {
+            ob_end_clean();
+        }
+
+        $content = isset( $_POST['content'] ) && $_POST['content'] != '' ? wp_kses_post( wp_unslash( $_POST['content'] ) ) : '';
+        if ( $content === '' ) {
+            wp_send_json( array(
+                'status' => false,
+            ) );
+        }
+
         // $content = Survey_Maker_Data::ays_autoembed( $content );
-        $content = stripslashes( wpautop( $content ) );
-        ob_end_clean();
-        $ob_get_clean = ob_get_clean();
-        echo json_encode(array(
-            'status' => true,
+        $content = wpautop( $content );
+
+        // wp_send_json() sends an application/json Content-Type header, so the response is never rendered as HTML.
+        wp_send_json( array(
+            'status'  => true,
             'content' => $content,
-        ));
-        wp_die();
+        ) );
     }
     
 	public function add_tabs() {
@@ -4704,7 +4835,7 @@ class Survey_Maker_Admin {
 
         
         $content =  '<h2>' . __( 'Survey Maker Information', "survey-maker") . '</h2>'
-                   .'<p>' .sprintf(__( '%s',  "survey-maker" ), $content_text).'</p>';
+                   .'<p>' . $content_text . '</p>';
 
         $help_tab_content = array(
             'id'      => 'survey_maker_help_tab',
@@ -4722,9 +4853,6 @@ class Survey_Maker_Admin {
 
         $surveys_table = esc_sql( $wpdb->prefix . "ayssurvey_surveys" );
 
-        $where = array();
-        $where_condition = "";
-
         $id     = (isset( $id ) && $id != "" && absint($id) != 0) ? absint( sanitize_text_field( $id ) ) : null;
         $type   = (isset( $type ) && $type != "") ? sanitize_text_field( $type ) : "next";
 
@@ -4734,20 +4862,15 @@ class Survey_Maker_Admin {
 
         switch ( $type ) {
             case 'prev':
-                $where[] = ' `id` < ' . $id . ' ORDER BY `id` DESC ';
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+                $results = $wpdb->get_row( $wpdb->prepare( "SELECT `id` FROM {$surveys_table} WHERE `id` < %d ORDER BY `id` DESC LIMIT 1", $id ), 'ARRAY_A' );
             break;
             case 'next':
             default:
-                $where[] = ' `id` > ' . $id;
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+                $results = $wpdb->get_row( $wpdb->prepare( "SELECT `id` FROM {$surveys_table} WHERE `id` > %d LIMIT 1", $id ), 'ARRAY_A' );
                 break;
         }
-
-        if( ! empty($where) ){
-            $where_condition = " WHERE " . implode( " AND ", $where );
-        }
-
-        $sql = "SELECT `id` FROM {$surveys_table} ". $where_condition ." LIMIT 1;";
-        $results = $wpdb->get_row( $sql, 'ARRAY_A' );
 
         return $results;
 
@@ -4757,7 +4880,7 @@ class Survey_Maker_Admin {
 
         $date = time() + ( 3 * 24 * 60 * 60 ) + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS);
         // $date = time() + ( 60 ) + (int) ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS); // for testing | 1 min
-        $next_3_days = date('M d, Y H:i:s', $date);
+        $next_3_days = gmdate('M d, Y H:i:s', $date);
 
         $ays_survey_banner_time = get_option('ays_survey_banner_time');
 
@@ -4787,7 +4910,7 @@ class Survey_Maker_Admin {
     public function ays_survey_show_results(){
 
         // Run a security check.
-        check_ajax_referer( 'survey-maker-ajax-results-nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
+        check_ajax_referer( 'survey-maker-ajax-results-nonce', '_ajax_nonce' );
         
         global $wpdb;
         if( !is_user_logged_in() ) {
@@ -4825,9 +4948,9 @@ class Survey_Maker_Admin {
             $filters['filter_submission_ids'] = $submission_ids_arr;
             
             
-            $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id =" . absint( $survey_id );
-            $survey_name = $wpdb->get_row( $sql, 'ARRAY_A' );
-            
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $survey_name = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys WHERE id = %d", absint( $survey_id ) ), 'ARRAY_A' );
+
             $survey_options = isset( $survey_name['options'] ) && $survey_name['options'] != '' ? json_decode( $survey_name['options'], true ) : array();
             
             $survey_for_charts = isset( $survey_options['survey_color'] ) && $survey_options['survey_color'] != '' ? esc_attr($survey_options['survey_color']) : "rgb(255, 87, 34)";
@@ -4849,7 +4972,7 @@ class Survey_Maker_Admin {
             $user_id = get_current_user_id();
 
             $author_id = isset( $survey_name['author_id'] ) && $survey_name['author_id'] != "" ? intval( $survey_name['author_id'] ) : 0;
-            $survey_title = isset( $survey_name['title'] ) && $survey_name['title'] != "" ? esc_html__( $survey_name['title'], "survey-maker" ) : "";
+            $survey_title = isset( $survey_name['title'] ) && $survey_name['title'] != "" ? esc_html( $survey_name['title'] ) : "";
             
             $owner = false;
             if( $user_id == $author_id ){
@@ -4858,12 +4981,12 @@ class Survey_Maker_Admin {
             
             if( !$owner ){
                 $url = esc_url_raw( remove_query_arg( array( 'page', 'survey' ) ) ) . "?page=survey-maker-submissions";
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
-           
+
             $gen_options = ($this->settings_obj->ays_get_setting('options') === false) ? array() : json_decode($this->settings_obj->ays_get_setting('options'), true);
 
-            $submission_id = (isset($_REQUEST['submission_id']) && $_REQUEST['submission_id'] != '') ? absint( sanitize_text_field( $_REQUEST['submission_id'] ) ) : null;
+            $submission_id = (isset($_REQUEST['submission_id']) && $_REQUEST['submission_id'] != '') ? absint( sanitize_text_field( wp_unslash( $_REQUEST['submission_id'] ) ) ) : null;
             if($submission_id == null){
 
                 return array(
@@ -4944,7 +5067,8 @@ class Survey_Maker_Admin {
             
             Survey_Maker_Data::get_template_part( 'partials/submissions/partials/survey-maker-each-submission-individual', '', get_defined_vars() );
             
-            $wpdb->get_var("UPDATE " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions SET `read`= 1 WHERE `id`= $submission_id");
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $wpdb->get_var( $wpdb->prepare( "UPDATE " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "submissions SET `read`= 1 WHERE `id`= %d", absint( $submission_id ) ) );
 
             $html = ob_get_clean();
 
@@ -4968,8 +5092,10 @@ class Survey_Maker_Admin {
         );
 
         if( current_user_can( 'manage_options' ) ){
-            $search = isset($_REQUEST['search']) && $_REQUEST['search'] != '' ? sanitize_text_field( $_REQUEST['search'] ) : null;
-            $checked = isset($_REQUEST['val']) && $_REQUEST['val'] !='' ? sanitize_text_field( $_REQUEST['val'] ) : null;
+            // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only user search for the author select box, restricted to manage_options.
+            $search = isset($_REQUEST['search']) && $_REQUEST['search'] != '' ? sanitize_text_field( wp_unslash( $_REQUEST['search'] ) ) : null;
+            $checked = isset($_REQUEST['val']) && $_REQUEST['val'] !='' ? sanitize_text_field( wp_unslash( $_REQUEST['val'] ) ) : null;
+            // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
             $args = 'search=';
             if($search !== null){
@@ -5090,12 +5216,12 @@ class Survey_Maker_Admin {
             wp_die(json_encode(array('success' => false, 'message' => 'Insufficient permissions')));
         }
 
-        if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ajax-nonce' ) ) {
             wp_die(json_encode(array('success' => false, 'message' => 'Security check failed')));
         }
 
-        $plugin_slug = sanitize_text_field($_POST['plugin_slug']);
-        
+        $plugin_slug = isset( $_POST['plugin_slug'] ) ? sanitize_text_field( wp_unslash( $_POST['plugin_slug'] ) ) : '';
+
         if (!function_exists('plugins_api')) {
             require_once ABSPATH . 'wp-admin/includes/plugin-install.php';
         }
@@ -5106,7 +5232,7 @@ class Survey_Maker_Admin {
         $api = plugins_api('plugin_information', array('slug' => $plugin_slug));
         
         if (is_wp_error($api)) {
-            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Plugin not found'))));
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Plugin not found', 'survey-maker'))));
         }
 
         $upgrader = new Plugin_Upgrader(new WP_Ajax_Upgrader_Skin());
@@ -5134,7 +5260,7 @@ class Survey_Maker_Admin {
             }
 
             if ( empty( $plugin_file ) ) {
-                wp_die( json_encode( array( 'success' => false, 'message' => esc_html__('Plugin main file not found')) ) );
+                wp_die( json_encode( array( 'success' => false, 'message' => esc_html__('Plugin main file not found', 'survey-maker')) ) );
             }
 
             // Ensure activate_plugin() is available
@@ -5148,10 +5274,10 @@ class Survey_Maker_Admin {
                 wp_die( json_encode( array( 'success' => false, 'message' => $activate->get_error_message() ) ) );
             }
 
-            wp_die( json_encode( array( 'success' => true, 'message' => esc_html__('Plugin installed and activated successfully')) ) );
+            wp_die( json_encode( array( 'success' => true, 'message' => esc_html__('Plugin installed and activated successfully', 'survey-maker')) ) );
         
         } else {
-            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Installation failed'))));
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Installation failed', 'survey-maker'))));
         }
     }
 
@@ -5160,14 +5286,14 @@ class Survey_Maker_Admin {
      */
     public function ays_survey_activate_plugin() {
         if (!current_user_can('activate_plugins')) {
-            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Insufficient permissions'))));
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Insufficient permissions', 'survey-maker'))));
         }
 
-        if (!wp_verify_nonce($_POST['nonce'], 'ajax-nonce')) {
-            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Security check failed'))));
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'ajax-nonce' ) ) {
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Security check failed', 'survey-maker'))));
         }
 
-        $plugin_slug = sanitize_text_field($_POST['plugin_slug']);
+        $plugin_slug = isset( $_POST['plugin_slug'] ) ? sanitize_text_field( wp_unslash( $_POST['plugin_slug'] ) ) : '';
         
         if (!function_exists('get_plugins')) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -5184,7 +5310,7 @@ class Survey_Maker_Admin {
         }
 
         if (empty($plugin_file)) {
-            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Plugin not found'))));
+            wp_die(json_encode(array('success' => false, 'message' => esc_html__('Plugin not found', 'survey-maker'))));
         }
 
         $result = activate_plugin($plugin_file);
@@ -5192,7 +5318,7 @@ class Survey_Maker_Admin {
         if (is_wp_error($result)) {
             wp_die(json_encode(array('success' => false, 'message' => $result->get_error_message())));
         } else {
-            wp_die(json_encode(array('success' => true, 'message' => esc_html__('Plugin activated successfully'))));
+            wp_die(json_encode(array('success' => true, 'message' => esc_html__('Plugin activated successfully', 'survey-maker'))));
         }
     }
 
@@ -5299,8 +5425,10 @@ class Survey_Maker_Admin {
     }
 
     public function ays_survey_black_friady_popup_box(){
-        if(!empty($_REQUEST['page']) && sanitize_text_field( $_REQUEST['page'] ) != $this->plugin_name . "-admin-dashboard"){
-            if(false !== strpos( sanitize_text_field( $_REQUEST['page'] ), $this->plugin_name)){
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
+        if(!empty($_REQUEST['page']) && sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) != $this->plugin_name . "-admin-dashboard"){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
+            if(false !== strpos( sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ), $this->plugin_name)){
 
                 $flag = true;
 

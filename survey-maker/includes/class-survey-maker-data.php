@@ -481,10 +481,10 @@ class Survey_Maker_Data {
                 $deactivateTimeVal = (isset($options[ $name_prefix . 'schedule_deactive' ]) && $options[ $name_prefix . 'schedule_deactive' ] != '') ? stripslashes ( sanitize_text_field( $options[ $name_prefix . 'schedule_deactive' ] ) ) : current_time( 'mysql' );
 
                 $activateTime = strtotime($activateTimeVal);
-                $settings[ $name_prefix . 'schedule_active' ] = date('Y-m-d H:i:s', $activateTime);
+                $settings[ $name_prefix . 'schedule_active' ] = gmdate('Y-m-d H:i:s', $activateTime);
 
                 $deactivateTime = strtotime($deactivateTimeVal);
-                $settings[ $name_prefix . 'schedule_deactive' ] = date('Y-m-d H:i:s', $deactivateTime);
+                $settings[ $name_prefix . 'schedule_deactive' ] = gmdate('Y-m-d H:i:s', $deactivateTime);
             } else {
                 $settings[ $name_prefix . 'schedule_active' ] = current_time( 'mysql' );
                 $settings[ $name_prefix . 'schedule_deactive' ] = current_time( 'mysql' );
@@ -770,87 +770,87 @@ class Survey_Maker_Data {
 
     public static function get_surveys($ordering = ''){
         global $wpdb;
-        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql = "SELECT id,title
-                FROM {$surveys_table} WHERE `status` = 'published'";
+        $ordering = strtoupper( trim( (string) $ordering ) );
 
-
-        if($ordering != ''){
-            $sql .= ' ORDER BY id '.$ordering;
+        if( $ordering === 'ASC' ){
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $surveys = $wpdb->get_results( "SELECT id,title FROM {$surveys_table} WHERE `status` = 'published' ORDER BY id ASC", "ARRAY_A" );
+        } elseif( $ordering === 'DESC' ){
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $surveys = $wpdb->get_results( "SELECT id,title FROM {$surveys_table} WHERE `status` = 'published' ORDER BY id DESC", "ARRAY_A" );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $surveys = $wpdb->get_results( "SELECT id,title FROM {$surveys_table} WHERE `status` = 'published'", "ARRAY_A" );
         }
-
-        $surveys = $wpdb->get_results( $sql , "ARRAY_A" );
 
         return $surveys;
     }
     
     public static function get_survey_current_column( $survey_id , $column, $status = 'published'){
         global $wpdb;
-        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql = "SELECT ".sanitize_text_field($column)."
-                FROM {$surveys_table} WHERE `id`= ".sanitize_text_field($survey_id)." AND `status` = '".sanitize_text_field($status)."' ";
-        $current_column = $wpdb->get_var( $sql );
+        // Column name can't be passed as a placeholder, so allow only valid column name characters.
+        if( ! is_string( $column ) || ! preg_match( '/^[a-zA-Z0-9_]+$/', $column ) ){
+            return null;
+        }
+        $column = esc_sql( $column );
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), the column name is validated against /^[a-zA-Z0-9_]+$/ above.
+        $current_column = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT `{$column}` FROM {$surveys_table} WHERE `id` = %d AND `status` = %s",
+                absint( $survey_id ),
+                sanitize_text_field( $status )
+            )
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         return $current_column;
     }
 
     public static function get_survey_by_id( $id ){
         global $wpdb;
-        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql = "SELECT *
-                FROM {$surveys_table}
-                WHERE id=" . esc_sql( absint( $id ) );
-
-        $survey = $wpdb->get_row( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $survey = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$surveys_table} WHERE id = %d", absint( $id ) ) );
 
         return $survey;
     }
 
     public static function get_survey_category_by_id( $id ){
         global $wpdb;
-        $survey_cat_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "survey_categories";
+        $survey_cat_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
-        $sql = "SELECT *
-                FROM {$survey_cat_table}
-                WHERE id=" . esc_sql( absint( $id ) );
-
-        $category = $wpdb->get_row( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $category = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$survey_cat_table} WHERE id = %d", absint( $id ) ) );
 
         return $category;
     }
 
     public static function get_question_category_by_id( $id ){
         global $wpdb;
-        $question_cat_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "question_categories";
+        $question_cat_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "question_categories" );
 
-        $sql = "SELECT *
-                FROM {$question_cat_table}
-                WHERE id=" . esc_sql( absint( $id ) );
-
-        $category = $wpdb->get_row( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $category = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$question_cat_table} WHERE id = %d", absint( $id ) ) );
 
         return $category;
     }
 
     public static function get_question_by_id( $id ){
         global $wpdb;
-        $questions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "questions";
-        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "answers";
+        $questions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
+        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
 
-        $sql = "SELECT *
-                FROM {$questions_table}
-                WHERE id=" . esc_sql( absint( $id ) );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $question = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$questions_table} WHERE id = %d", absint( $id ) ) );
 
-        $question = $wpdb->get_row( $sql );
-
-        $sql = "SELECT *
-                FROM {$answers_table}
-                WHERE question_id=" . esc_sql( absint( $id ) );
-
-        $answers = $wpdb->get_results( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $answers = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$answers_table} WHERE question_id = %d", absint( $id ) ) );
 
         $question->answers = $answers;
 
@@ -859,26 +859,22 @@ class Survey_Maker_Data {
 
     public static function get_question_by_ids( $ids ){
         global $wpdb;
-        $questions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "questions";
-        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "answers";
+        $questions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
+        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
 
-        $qids = esc_sql( implode( ',', $ids ) );
+        $qids = wp_parse_id_list( $ids );
+        if( empty( $qids ) ){
+            $qids = array( 0 );
+        }
+        $qids_placeholders = implode( ',', array_fill( 0, count( $qids ), '%d' ) );
 
-        $sql = "SELECT *
-                FROM {$questions_table}
-                WHERE id IN (" . esc_sql( $qids ) . ")
-                ORDER BY ordering";
-
-        $questions = $wpdb->get_results( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), the IN() list contains only %d placeholders.
+        $questions = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$questions_table} WHERE id IN ({$qids_placeholders}) ORDER BY ordering", $qids ) );
 
         foreach ( $questions as $key => &$question ) {
 
-            $sql = "SELECT *
-                    FROM {$answers_table}
-                    WHERE question_id=" . esc_sql( absint( $question->id ) ) ."
-                    ORDER BY ordering";
-
-            $answers = $wpdb->get_results( $sql );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $answers = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$answers_table} WHERE question_id = %d ORDER BY ordering", absint( $question->id ) ) );
 
             $question->answers = $answers;
 
@@ -889,43 +885,30 @@ class Survey_Maker_Data {
 
     public static function get_section_by_id($id){
         global $wpdb;
-        $sections_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "sections";
+        $sections_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections" );
 
-        $sid = esc_sql( absint( $id ) );
-
-        $sql = "SELECT *
-                FROM {$sections_table}
-                WHERE id={$sid}
-                ORDER BY ordering";
-
-        $section = $wpdb->get_row( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $section = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$sections_table} WHERE id = %d ORDER BY ordering", absint( $id ) ) );
 
         return $section;
     }
 
     public static function get_answer_by_id($id){
         global $wpdb;
-        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "answers";
+        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
 
-        $sql = "SELECT *
-                FROM {$answers_table}
-                WHERE id=" . esc_sql( absint( $id ) );
-
-        $answer = $wpdb->get_row( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $answer = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$answers_table} WHERE id = %d", absint( $id ) ) );
 
         return $answer;
     }
 
     public static function get_answers_by_question_id($id){
         global $wpdb;
-        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "answers";
+        $answers_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
 
-        $sql = "SELECT *
-                FROM {$answers_table}
-                WHERE question_id=" . esc_sql( absint( $id ) ) . "
-                ORDER BY ordering";
-
-        $answers = $wpdb->get_results( $sql, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $answers = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$answers_table} WHERE question_id = %d ORDER BY ordering", absint( $id ) ), 'ARRAY_A' );
 
         if(! empty($answers) ){
             return $answers;
@@ -936,13 +919,10 @@ class Survey_Maker_Data {
 
     public static function get_survey_questions_count($id){
         global $wpdb;
-        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql = "SELECT `questions_count`
-                FROM {$surveys_table}
-                WHERE id=" . esc_sql( absint( $id ) );
-
-        $questions_str = $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $questions_str = $wpdb->get_var( $wpdb->prepare( "SELECT `questions_count` FROM {$surveys_table} WHERE id = %d", absint( $id ) ) );
         $count = intval( $questions_str );
 
         return $count;
@@ -950,13 +930,10 @@ class Survey_Maker_Data {
 
     public static function get_survey_sections_count($id){
         global $wpdb;
-        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql = "SELECT `sections_count`
-                FROM {$surveys_table}
-                WHERE id=" . esc_sql( absint( $id ) );
-
-        $sections_str = $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $sections_str = $wpdb->get_var( $wpdb->prepare( "SELECT `sections_count` FROM {$surveys_table} WHERE id = %d", absint( $id ) ) );
         $count = intval( $sections_str );
 
         return $count;
@@ -967,10 +944,15 @@ class Survey_Maker_Data {
         if (empty($ids)) {
             return array();
         }
-        $table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections";
+        $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections" );
 
-        $sql = "SELECT * FROM {$table} WHERE `id` IN (" . esc_sql( $ids ) .") ORDER BY `ordering`;";
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        $section_ids = implode( ',', wp_parse_id_list( $ids ) );
+        if( $section_ids === '' ){
+            return array();
+        }
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+        $result = $wpdb->get_results( "SELECT * FROM {$table} WHERE `id` IN ({$section_ids}) ORDER BY `ordering`", 'ARRAY_A' );
 
         if(! empty($result) ){
             return $result;
@@ -984,10 +966,15 @@ class Survey_Maker_Data {
         if (empty($question_ids) || empty($section_id)) {
             return array();
         }
-        $table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions";
+        $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
 
-        $sql = "SELECT * FROM {$table} WHERE `section_id` = ". absint( $section_id ) ." AND `id` IN (" . esc_sql( $question_ids ) .") ORDER BY ordering;";
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        $q_ids = implode( ',', wp_parse_id_list( $question_ids ) );
+        if( $q_ids === '' ){
+            return array();
+        }
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+        $result = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$table} WHERE `section_id` = %d AND `id` IN ({$q_ids}) ORDER BY ordering", absint( $section_id ) ), 'ARRAY_A' );
 
         if(! empty($result) ){
             return $result;
@@ -1001,10 +988,10 @@ class Survey_Maker_Data {
         if (empty($question_id)) {
             return false;
         }
-        $table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers";
+        $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
 
-        $sql = "SELECT * FROM {$table} WHERE `question_id` = ". absint( $question_id );
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$table} WHERE `question_id` = %d", absint( $question_id ) ), 'ARRAY_A' );
 
         return $result;
     }
@@ -1029,10 +1016,11 @@ class Survey_Maker_Data {
 
     public static function question_type_is($question_id){
         global $wpdb;
-        $questions_table = $wpdb->prefix . "aysquiz_questions";
+        $questions_table = esc_sql( $wpdb->prefix . "aysquiz_questions" );
         $question_id = absint(intval($question_id));
         $custom_types = array("custom");
-        $question_type = $wpdb->get_var("SELECT type FROM {$questions_table} WHERE id=". absint( $question_id ) .";");
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $question_type = $wpdb->get_var( $wpdb->prepare( "SELECT type FROM {$questions_table} WHERE id = %d", $question_id ) );
         if($question_type == ''){
             $question_type = 'radio';
         }
@@ -1130,22 +1118,16 @@ class Survey_Maker_Data {
         global $wpdb;
         $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
         $user_ip = self::get_user_ip();
-        $sql = "SELECT COUNT(*)
-                FROM `{$table}`
-                WHERE `user_ip` = '". esc_sql( $user_ip ) ."'
-                  AND `survey_id` = ". absint( $id );
-        $result = intval($wpdb->get_var($sql));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = intval( $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM `{$table}` WHERE `user_ip` = %s AND `survey_id` = %d", $user_ip, absint( $id ) ) ) );
         return $result;
     }
 
     public static function get_limit_user_by_id($survey_id, $user_id){
         global $wpdb;
         $table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
-        $sql = "SELECT COUNT(*)
-                FROM `{$table}`
-                WHERE `user_id` = ". absint( $user_id ) ."
-                  AND `survey_id` = ". absint( $survey_id );
-        $result = intval($wpdb->get_var($sql));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = intval( $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM `{$table}` WHERE `user_id` = %d AND `survey_id` = %d", absint( $user_id ), absint( $survey_id ) ) ) );
         return $result;
     }
 
@@ -1180,7 +1162,7 @@ class Survey_Maker_Data {
     public static function get_user_ip_validated(){
         
         if( !empty($_SERVER) && !empty($_SERVER['REMOTE_ADDR']) ){
-            $ipaddress = isset($_SERVER['REMOTE_ADDR']) && $_SERVER['REMOTE_ADDR'] ? sanitize_text_field($_SERVER['REMOTE_ADDR']) : 'UNKNOWN';
+            $ipaddress = ! empty( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : 'UNKNOWN';
 
             if(!empty($ipaddress) && $ipaddress != 'UNKNOWN' ){
                 return $ipaddress;
@@ -1200,10 +1182,10 @@ class Survey_Maker_Data {
             if (!empty($_SERVER[$header])) {
                 // In case of multiple IPs in HTTP_X_FORWARDED_FOR, take the last one
                 if ($header === 'HTTP_X_FORWARDED_FOR') {
-                    $ips = explode(',', $_SERVER[$header]);
+                    $ips = explode(',', sanitize_text_field( wp_unslash( $_SERVER[$header] ) ) );
                     $ip = trim(end($ips));
                 } else {
-                    $ip = $_SERVER[$header];
+                    $ip = sanitize_text_field( wp_unslash( $_SERVER[$header] ) );
                 }
     
                 // Validate the IP address
@@ -1233,13 +1215,21 @@ class Survey_Maker_Data {
         if($q_ids == ''){
             return array();
         }
-        $sql = "SELECT DISTINCT c.id, c.title
+        $q_ids_sql = implode( ',', wp_parse_id_list( $q_ids ) );
+        if( $q_ids_sql === '' ){
+            return array();
+        }
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin tables; the ID list is sanitized with wp_parse_id_list().
+        $result = $wpdb->get_results(
+            "SELECT DISTINCT c.id, c.title
                 FROM {$wpdb->prefix}aysquiz_categories c
                 JOIN {$wpdb->prefix}aysquiz_questions q
                 ON c.id = q.category_id
-                WHERE q.id IN (". esc_sql( $q_ids ) .")";
-
-        $result = $wpdb->get_results($sql, 'ARRAY_A');
+                WHERE q.id IN ({$q_ids_sql})",
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $cats = array();
 
         foreach($result as $res){
@@ -1317,9 +1307,9 @@ class Survey_Maker_Data {
 
     public static function get_survey_takers_count( $id ){
         global $wpdb;
-        $submission_table = $wpdb->prefix . "ayssurvey_submissions";
-        $sql = "SELECT COUNT(id) AS count FROM {$submission_table} WHERE survey_id=". absint( $id ) ;
-        $result = absint( $wpdb->get_var( $sql ) );
+        $submission_table = esc_sql( $wpdb->prefix . "ayssurvey_submissions" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = absint( $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) AS count FROM {$submission_table} WHERE survey_id = %d", absint( $id ) ) ) );
         
         return $result;
     }
@@ -1329,9 +1319,9 @@ class Survey_Maker_Data {
 
         $name_prefix = 'survey_';
 
-        $settings_table = $wpdb->prefix . "ayssurvey_settings";
-        $sql = "SELECT meta_value FROM " . $settings_table . " WHERE meta_key = '". esc_sql( $meta_key ) ."'";
-        $result = $wpdb->get_var($sql);
+        $settings_table = esc_sql( $wpdb->prefix . "ayssurvey_settings" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_var( $wpdb->prepare( "SELECT meta_value FROM {$settings_table} WHERE meta_key = %s", $meta_key ) );
 
         $options = ($result == "") ? array() : json_decode($result, true);
 
@@ -1373,9 +1363,9 @@ class Survey_Maker_Data {
     public static function ays_set_default_texts( $plugin_name, $settings = array() ) {
         global $wpdb;
 
-        $settings_table = $wpdb->prefix . "ayssurvey_settings";
-        $sql = "SELECT meta_value FROM " . $settings_table . " WHERE meta_key = 'default_texts'";
-        $result = $wpdb->get_var($sql);
+        $settings_table = esc_sql( $wpdb->prefix . "ayssurvey_settings" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_var( "SELECT meta_value FROM {$settings_table} WHERE meta_key = 'default_texts'" );
         $settings_static_texts = ($result == "") ? array() : json_decode($result, true);
 
         $wrong_shortcode_text        = (isset($settings_static_texts['wrong_shortcode_text']) && $settings_static_texts['wrong_shortcode_text'] != '') ? stripslashes(esc_attr($settings_static_texts['wrong_shortcode_text'])) : 'Wrong shortcode initialized';
@@ -1412,9 +1402,9 @@ class Survey_Maker_Data {
         
         $name_prefix = 'survey_';
 
-        $settings_table = $wpdb->prefix . "ayssurvey_settings";
-        $sql = "SELECT meta_value FROM ".$settings_table." WHERE meta_key = 'buttons_texts'";
-        $result = $wpdb->get_var($sql);
+        $settings_table = esc_sql( $wpdb->prefix . "ayssurvey_settings" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_var( "SELECT meta_value FROM {$settings_table} WHERE meta_key = 'buttons_texts'" );
         $settings_buttons_texts = ($result == "") ? array() : json_decode($result, true);
 
         $settings_buttons_texts['next_button'] = (isset($settings_buttons_texts['next_button']) && $settings_buttons_texts['next_button'] != '') ? esc_attr($settings_buttons_texts['next_button']) : 'Next';
@@ -1544,15 +1534,15 @@ class Survey_Maker_Data {
             );
         }
 
-        $answer_table         = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers";
-        $question_table       = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions";
-        $submitions_table     = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-        $survey_section_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections";
-        $surveys_table        = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
-        $submitions_questiions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
+        $answer_table         = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "answers" );
+        $question_table       = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "questions" );
+        $submitions_table     = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        $survey_section_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "sections" );
+        $surveys_table        = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+        $submitions_questiions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
 
-        $question_ids = "SELECT question_ids FROM {$surveys_table} WHERE id =". absint( $survey_id );
-        $question_ids_results = $wpdb->get_var( $question_ids );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $question_ids_results = $wpdb->get_var( $wpdb->prepare( "SELECT question_ids FROM {$surveys_table} WHERE id = %d", absint( $survey_id ) ) );
         $ays_question_id = ($question_ids_results != '') ? $question_ids_results : null;
 
         if($ays_question_id == null){
@@ -1563,24 +1553,34 @@ class Survey_Maker_Data {
         }
 
         $questions_ids_arr = explode(',',$ays_question_id);
-        $answer_id = "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin tables; table names are built from $wpdb->prefix and escaped with esc_sql(), all values are passed through $wpdb->prepare().
+        $answer_id_result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
                     FROM {$answer_table} AS a
-                    LEFT JOIN {$submitions_questiions_table} AS s_q 
+                    LEFT JOIN {$submitions_questiions_table} AS s_q
                     ON a.id = s_q.answer_id
-                    WHERE s_q.survey_id=". absint( $survey_id ) ."
-                    GROUP BY a.id";
+                    WHERE s_q.survey_id = %d
+                    GROUP BY a.id",
+                absint( $survey_id )
+            ),
+            'ARRAY_A'
+        );
 
-        $answer_id_result = $wpdb->get_results($answer_id,'ARRAY_A');
-
-        $for_checkbox = "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
+        $for_checkbox_result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT a.id, a.answer, COUNT(s_q.answer_id) AS answer_count
                     FROM {$answer_table} AS a
-                    LEFT JOIN {$submitions_questiions_table} AS s_q 
+                    LEFT JOIN {$submitions_questiions_table} AS s_q
                     ON a.id = s_q.answer_id OR FIND_IN_SET( a.id, s_q.user_answer )
                     WHERE s_q.type = 'checkbox'
-                    AND s_q.survey_id=". absint( $survey_id ) ."
-                    GROUP BY a.id";
-
-        $for_checkbox_result = $wpdb->get_results($for_checkbox,'ARRAY_A');
+                    AND s_q.survey_id = %d
+                    GROUP BY a.id",
+                absint( $survey_id )
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
         $answer_count = array();
         $question_type = '';
@@ -1596,26 +1596,44 @@ class Survey_Maker_Data {
 
         $question_by_ids = Survey_Maker_Data::get_question_by_ids( $questions_ids_arr );
 
-        $select_answer_q_type = "SELECT type, user_answer, id, question_id
-            FROM {$submitions_questiions_table}
-            WHERE user_answer != '' 
-                AND type != 'checkbox' 
-                AND survey_id=". absint( $survey_id );
-
-        $submission_answer_other = "SELECT question_id, answer_id, user_variant
-            FROM {$submitions_questiions_table}
-            WHERE user_variant != ''
-                AND survey_id=". absint( $survey_id );
-
+        // Optional submission IDs filter: only "%d" placeholders are added to the query, the IDs are passed to $wpdb->prepare().
+        $submission_ids_where = '';
+        $query_args = array( absint( $survey_id ) );
         if( $submission_ids !== null ){
             if( is_array( $submission_ids ) ){
-                $select_answer_q_type .= " AND submission_id IN (" . esc_sql( implode( ',', $submission_ids ) ) . ") ";
-                $submission_answer_other .= " AND submission_id IN (" . esc_sql( implode( ',', $submission_ids ) ) . ") ";
+                $submission_ids_list = wp_parse_id_list( $submission_ids );
+                if( empty( $submission_ids_list ) ){
+                    $submission_ids_list = array( 0 );
+                }
+                $submission_ids_placeholders = implode( ',', array_fill( 0, count( $submission_ids_list ), '%d' ) );
+                $submission_ids_where = " AND submission_id IN ({$submission_ids_placeholders}) ";
+                $query_args = array_merge( $query_args, $submission_ids_list );
             }
         }
-            
-        $result_answers_q_type = $wpdb->get_results($select_answer_q_type,'ARRAY_A');
-        $result_answers_other = $wpdb->get_results($submission_answer_other,'ARRAY_A');
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql(), $submission_ids_where is either empty or an IN() list of %d placeholders whose values are passed to $wpdb->prepare().
+        $result_answers_q_type = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT type, user_answer, id, question_id
+                    FROM {$submitions_questiions_table}
+                    WHERE user_answer != ''
+                        AND type != 'checkbox'
+                        AND survey_id = %d {$submission_ids_where}",
+                $query_args
+            ),
+            'ARRAY_A'
+        );
+        $result_answers_other = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT question_id, answer_id, user_variant
+                    FROM {$submitions_questiions_table}
+                    WHERE user_variant != ''
+                        AND survey_id = %d {$submission_ids_where}",
+                $query_args
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
         $text_answer = array();
         foreach($result_answers_q_type as $key => $result_answer_q_type){
             $text_answer[$result_answer_q_type['type']][$result_answer_q_type['question_id']][] = $result_answer_q_type['user_answer'];
@@ -1735,11 +1753,11 @@ class Survey_Maker_Data {
             return array();
         }
 
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
 
         //submission of each result
-        $submission = "SELECT * FROM {$submitions_table} WHERE survey_id=". absint( $survey_id ) ." ORDER BY id DESC LIMIT 1 ";
-        $last_submission = $wpdb->get_row( $submission, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $last_submission = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$submitions_table} WHERE survey_id = %d ORDER BY id DESC LIMIT 1", absint( $survey_id ) ), 'ARRAY_A' );
         
         if( $last_submission == null ){
             return array();
@@ -1757,7 +1775,7 @@ class Survey_Maker_Data {
             );
         }
 
-        $submitions_questiions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
+        $submitions_questiions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
 
         $ays_individual_questions_for_one_submission = array();
         $question_answer_id = array();
@@ -1771,8 +1789,8 @@ class Survey_Maker_Data {
 
         $checkbox_ids = '';
         
-        $individual_questions = "SELECT * FROM {$submitions_questiions_table} WHERE submission_id=" . absint( $submission_id );
-        $individual_questions_results = $wpdb->get_results($individual_questions,'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $individual_questions_results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$submitions_questiions_table} WHERE submission_id = %d", absint( $submission_id ) ), 'ARRAY_A' );
 
         // Survey questions IDs
         $question_ids = isset( $survey['question_ids'] ) && $survey['question_ids'] != '' ? $survey['question_ids'] : '';
@@ -1805,7 +1823,7 @@ class Survey_Maker_Data {
                 $question_answer_id[ $individual_questions_result['question_id'] ] = $individual_questions_result['user_answer'];
                 if( $individual_questions_result['type'] == 'date' ){
                     if( $individual_questions_result['user_answer'] != '' ){
-                        $question_answer_id[ $individual_questions_result['question_id'] ] = date( 'd . m . Y', strtotime( $individual_questions_result['user_answer'] ) );
+                        $question_answer_id[ $individual_questions_result['question_id'] ] = gmdate( 'd . m . Y', strtotime( $individual_questions_result['user_answer'] ) );
                     }else{
                         $question_answer_id[ $individual_questions_result['question_id'] ] = '';
                     }
@@ -1849,16 +1867,23 @@ class Survey_Maker_Data {
         if($survey_id === null){
             return false;
         }
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-       
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+
         //submission of each result
-        $submission_ids = "SELECT id,
-                            (SELECT COUNT(id) FROM {$submitions_table} i 
-                            WHERE i.survey_id=j.survey_id) AS count_submission 
-                            FROM {$submitions_table} j 
-                            WHERE survey_id=". absint( $survey_id ) ."
-                            ORDER BY id";
-        $submission_ids_result = $wpdb->get_results($submission_ids,'ARRAY_A');
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $submission_ids_result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT id,
+                    (SELECT COUNT(id) FROM {$submitions_table} i
+                    WHERE i.survey_id=j.survey_id) AS count_submission
+                    FROM {$submitions_table} j
+                    WHERE survey_id = %d
+                    ORDER BY id",
+                absint( $survey_id )
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         $submission_count = '';
         $submissions_id_arr = array();
         foreach ($submission_ids_result as $key => $submission_id_result) {
@@ -1879,21 +1904,17 @@ class Survey_Maker_Data {
 
     public static function ays_survey_get_submission_count($id , $type , $survey_id){
         global $wpdb;
-        $submitions_table   = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
-        $submitions_q_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions";
+        $submitions_table   = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        $submitions_q_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions" );
         $results = array();
-        
-        $sql = "SELECT submission_id AS sub_count
-                FROM {$submitions_q_table}
-                WHERE question_id = ". absint( $id ) ."
-                AND survey_id = ". absint( $survey_id ) ."";
 
         if( $type == 'checkbox' ){
-            $sql .= " AND user_answer != '' ";
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT submission_id AS sub_count FROM {$submitions_q_table} WHERE question_id = %d AND survey_id = %d AND user_answer != '' GROUP BY submission_id", absint( $id ), absint( $survey_id ) ), 'ARRAY_A' );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT submission_id AS sub_count FROM {$submitions_q_table} WHERE question_id = %d AND survey_id = %d GROUP BY submission_id", absint( $id ), absint( $survey_id ) ), 'ARRAY_A' );
         }
-
-        $sql .= " GROUP BY submission_id ";
-        $results = $wpdb->get_results( $sql, 'ARRAY_A' );
 
         $submission_count = count( $results );
         return $submission_count;
@@ -1911,8 +1932,9 @@ class Survey_Maker_Data {
 
     public static function ays_survey_detected_device_chart() {
         $device = 'desktop';
-        $isMobile = preg_match("/(iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile)/i", $_SERVER["HTTP_USER_AGENT"]);
-        $isTablet = preg_match("/(ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle)/i", $_SERVER["HTTP_USER_AGENT"]);
+        $user_agent = isset( $_SERVER["HTTP_USER_AGENT"] ) ? sanitize_text_field( wp_unslash( $_SERVER["HTTP_USER_AGENT"] ) ) : '';
+        $isMobile = preg_match("/(iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile)/i", $user_agent);
+        $isTablet = preg_match("/(ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle)/i", $user_agent);
 
         if($isMobile){
             $device = 'mobile';
@@ -1926,15 +1948,13 @@ class Survey_Maker_Data {
     
     public static function ays_survey_get_passed_users_count( $survey_id ) {
         global $wpdb;
-        $submissions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submissions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
         // Get passed users
-        $sql = "SELECT COUNT(id) AS users_count FROM ".$submissions_table." 
-                WHERE survey_id = ".$survey_id." AND user_id != 0
-                GROUP BY user_id";
-        $result = $wpdb->get_results($sql);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_results( $wpdb->prepare( "SELECT COUNT(id) AS users_count FROM {$submissions_table} WHERE survey_id = %d AND user_id != 0 GROUP BY user_id", absint( $survey_id ) ) );
         // Get passed guests count
-        $sql2 = "SELECT COUNT(id) FROM ".$submissions_table." WHERE `user_id` = 0 AND `survey_id` = ".$survey_id;
-        $result2 = $wpdb->get_var($sql2);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result2 = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) FROM {$submissions_table} WHERE `user_id` = 0 AND `survey_id` = %d", absint( $survey_id ) ) );
         $all_count = intval(count($result)) + intval($result2);
         return $all_count;
     }
@@ -2021,24 +2041,17 @@ class Survey_Maker_Data {
         if($survey_id === null){
             return false;
         }
-        $submitions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submitions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
 
-        $filters_where_condition = "";
-        if (isset($filters['is_filter']) && $filters['is_filter']) {
-            $filters_where_condition = self::get_filters_where_condition($filters);
-        }
-       
+        // Note: The submission filters are not available in the free version
+        // (the filters where condition method doesn't exist here), so the $filters argument is ignored.
+
         //submission of each result
-        $submission_ids = "SELECT id
-                           FROM {$submitions_table} j 
-                           WHERE survey_id=". absint( $survey_id ) . $filters_where_condition . "
-                           ORDER BY id";
-        $submission_ids_result = $wpdb->get_results($submission_ids,'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $submission_ids_result = $wpdb->get_results( $wpdb->prepare( "SELECT id FROM {$submitions_table} j WHERE survey_id = %d ORDER BY id", absint( $survey_id ) ), 'ARRAY_A' );
 
-	    $submission_count_sql = "SELECT COUNT(id) AS count_submission
-								 FROM {$submitions_table} 
-                            	 WHERE survey_id=". absint( $survey_id ) . $filters_where_condition ." ";
-	    $submission_count_result = $wpdb->get_var($submission_count_sql);
+	    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+	    $submission_count_result = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(id) AS count_submission FROM {$submitions_table} WHERE survey_id = %d", absint( $survey_id ) ) );
         $submission_count = '';
         $submissions_id_arr = array();
 
@@ -2149,16 +2162,14 @@ class Survey_Maker_Data {
     public static function get_survey_results_count_by_id($id){
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) AS res_count
-                FROM {$wpdb->prefix}ayssurvey_submissions
-                WHERE survey_id=". $id ." ";
-
-        $quiz = $wpdb->get_row($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $quiz = $wpdb->get_row( $wpdb->prepare( "SELECT COUNT(*) AS res_count FROM {$wpdb->prefix}ayssurvey_submissions WHERE survey_id = %d", absint( $id ) ), 'ARRAY_A' );
 
         return $quiz;
     }
 
     public static function ays_survey_is_elementor(){
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only check of the current request context, no data is modified.
         if( isset( $_GET['action'] ) && $_GET['action'] == 'elementor' ){
             $is_elementor = true;
         }elseif( isset( $_REQUEST['elementor-preview'] ) && $_REQUEST['elementor-preview'] != '' ){
@@ -2170,12 +2181,14 @@ class Survey_Maker_Data {
         if ( ! $is_elementor ) {
             $is_elementor = ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'elementor_ajax' ) ? true : false;
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         return $is_elementor;
     }
 
     public static function ays_survey_is_editor(){
         $is_editor = false;
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only check of the current request context, no data is modified.
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){
             if ( isset( $_GET['post'] ) && absint( $_GET['post'] ) > 0 ) {
                 $is_editor = true;
@@ -2185,6 +2198,7 @@ class Survey_Maker_Data {
                 $is_editor = true;
             }
         }
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         return $is_editor;
     }
@@ -2201,7 +2215,8 @@ class Survey_Maker_Data {
 
             $image_url = preg_replace($re, $subst, $image_url, 1);
 
-            $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Looks up an attachment ID by its GUID, there is no WordPress API function for this lookup.
+            $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid = %s;", $image_url ));
             if ( !is_null( $attachment ) && !empty( $attachment ) ) {
 
                 $image_id = (isset( $attachment[0] ) && $attachment[0] != "") ? absint(  $attachment[0] ) : "";
@@ -2231,11 +2246,8 @@ class Survey_Maker_Data {
     public static function get_user_by_ip($id){
         global $wpdb;
         $user_ip = self::get_user_ip();
-        $sql = "SELECT COUNT(*)
-                FROM `{$wpdb->prefix}ayssurvey_submissions`
-                WHERE `user_ip` = '$user_ip'
-                  AND `survey_id` = $id";
-        $result = $wpdb->get_var($sql);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $result = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM `{$wpdb->prefix}ayssurvey_submissions` WHERE `user_ip` = %s AND `survey_id` = %d", $user_ip, absint( $id ) ) );
         return $result;
     }
 
@@ -2243,14 +2255,14 @@ class Survey_Maker_Data {
         global $wpdb;
 
         $id = ( isset( $id ) && $id != '' ) ? absint( intval( $id ) ) : null;
-        $surveys_table    = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys";
-        $categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "survey_categories";
+        $surveys_table    = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+        $categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
         $results = '';
 
         if($id != null){
-            $sql = "SELECT *, s.`title`, s.`id`, s.`options` FROM `{$surveys_table}` AS s LEFT JOIN `{$categories_table}` AS c ON FIND_IN_SET(c.`id`, s. `category_ids` ) AND c.`status` = 'published' AND s.`status` = 'published'  WHERE c.`id` = " . esc_sql( $id );
-            $results = $wpdb->get_results( $sql, 'ARRAY_A');
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT *, s.`title`, s.`id`, s.`options` FROM `{$surveys_table}` AS s LEFT JOIN `{$categories_table}` AS c ON FIND_IN_SET(c.`id`, s. `category_ids` ) AND c.`status` = 'published' AND s.`status` = 'published'  WHERE c.`id` = %d", $id ), 'ARRAY_A');
         }
         
         return $results;
@@ -2264,10 +2276,11 @@ class Survey_Maker_Data {
     }
 
     public static function survey_no_items_list_tables() {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only status flag, only used to clean up the list table URL.
         if( isset( $_GET['status'] ) && ($_GET['status'] == 'deleted' || $_GET['status'] == 'restored')){
             $url = remove_query_arg( array('fstatus', 'status', '_wpnonce') );
             $url = esc_url_raw( $url );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
         else{
             echo esc_html__( 'There are no surveys yet.', "survey-maker" );
@@ -2450,7 +2463,7 @@ class Survey_Maker_Data {
     }
 
     public static function ays_survey_pb_detect_mobile_device(){
-        $useragent = $_SERVER['HTTP_USER_AGENT'];
+        $useragent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
         $flag      = false;
         if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))){
             $flag = true;
@@ -2460,7 +2473,8 @@ class Survey_Maker_Data {
 
     public static function ays_survey_pb_detect_tablet_device(){
         $flag = false;
-        if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($_SERVER['HTTP_USER_AGENT']))) {
+        $useragent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
+        if (preg_match('/(tablet|ipad|playbook)|(android(?!.*(mobi|opera mini)))/i', strtolower($useragent))) {
             $flag = true;
         }
         return $flag;
@@ -2471,6 +2485,53 @@ class Survey_Maker_Data {
             'span' => array('class' => array()),
             'img'  => array('src'   => array(), 'alt' => array()),
         );
+    }
+
+    /**
+     * Allowed HTML for the read-only answers markup on the admin submissions pages
+     * (post HTML + disabled form controls that show the user's choices).
+     */
+    public static function get_allowed_tags_for_submission_answers() {
+        $allowed = wp_kses_allowed_html( 'post' );
+
+        $extra = array(
+            'select' => array(
+                'class'    => true,
+                'id'       => true,
+                'name'     => true,
+                'disabled' => true,
+            ),
+            'option' => array(
+                'value'    => true,
+                'selected' => true,
+                'disabled' => true,
+            ),
+            'input'  => array(
+                'type'     => true,
+                'name'     => true,
+                'value'    => true,
+                'class'    => true,
+                'id'       => true,
+                'checked'  => true,
+                'disabled' => true,
+                'readonly' => true,
+                'data-id'  => true,
+            ),
+            'label'  => array(
+                'class' => true,
+                'style' => true,
+                'for'   => true,
+            ),
+            'span'   => array(
+                'tabindex' => true,
+            ),
+        );
+
+        foreach ( $extra as $tag => $attributes ) {
+            $allowed[ $tag ] = isset( $allowed[ $tag ] ) && is_array( $allowed[ $tag ] ) ? array_merge( $allowed[ $tag ], $attributes ) : $attributes;
+        }
+
+        return $allowed;
     }
 
     public static function ays_survey_allowed_html() {

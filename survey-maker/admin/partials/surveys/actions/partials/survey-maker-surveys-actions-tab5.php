@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab5" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab5') ? 'ays-survey-tab-content-active' : ''; ?>">
     <p class="ays-subtitle"><?php echo esc_html__('Limitation of Users',"survey-maker"); ?></p>
     <hr style="border-width: 2px;"/>
@@ -24,10 +29,10 @@
                             <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                 echo esc_html(htmlspecialchars( sprintf(__('Choose the method of user detection:',"survey-maker") . '
                                     <ul class="ays_help_ul">
-                                        <li>' .__('%s By IP %s - Detect the users by their IP addresses and limit them. This will work both for guests and registered users. Note: in general, IP is not a static variable, it is constantly changing when the users change their location/ WIFI/ Internet provider.',"survey-maker") . '</li>
-                                        <li>' .__('%s By User ID %s - Detect the users by their WP User IDs and limit them. This will work only for registered users. It\'s recommended to use this method to get more reliable results.',"survey-maker") . '</li>
-                                        <li>' .__('%s By Cookie %s - Detect the users by their browser cookies and limit them.  It will work both for guests and registered users.',"survey-maker") . '</li>
-                                        <li>' .__('%s By Cookie and IP %s - Detect the users both by their browser cookies and IP addresses and limit them. It will work both for guests and registered users.',"survey-maker") .'</li>
+                                        <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s By IP %2$s - Detect the users by their IP addresses and limit them. This will work both for guests and registered users. Note: in general, IP is not a static variable, it is constantly changing when the users change their location/ WIFI/ Internet provider.',"survey-maker") . '</li>
+                                        <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s By User ID %2$s - Detect the users by their WP User IDs and limit them. This will work only for registered users. It\'s recommended to use this method to get more reliable results.',"survey-maker") . '</li>
+                                        <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s By Cookie %2$s - Detect the users by their browser cookies and limit them.  It will work both for guests and registered users.',"survey-maker") . '</li>
+                                        <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s By Cookie and IP %2$s - Detect the users both by their browser cookies and IP addresses and limit them. It will work both for guests and registered users.',"survey-maker") .'</li>
                                     </ul>',
                                     '<em>',
                                     '</em>',
@@ -340,7 +345,7 @@
                     </label>
                 </div>
                 <div class="col-sm-10">
-                    <input type="text" name="ays_survey_password_survey" id="ays_survey_password_survey" class="ays-enable-timer ays-text-input" value="<?php echo $password_survey; ?>">
+                    <input type="text" name="ays_survey_password_survey" id="ays_survey_password_survey" class="ays-enable-timer ays-text-input" value="<?php echo esc_attr( $password_survey ); ?>">
                 </div>
             </div>            
             <hr>

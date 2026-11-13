@@ -1,4 +1,8 @@
 <?php
+    if ( ! defined( 'ABSPATH' ) ) {
+        exit;
+    }
+
     /**
      * Enqueue front end and editor JavaScript
      */
@@ -68,14 +72,15 @@
         $block_namespace = 'survey-maker/' . $block_name;
         
         $current_user = get_current_user_id();
-        $sql = "SELECT * FROM ". $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE status != 'trashed' ";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-            if( ! current_user_can( 'manage_options' ) ){
-                $sql .= " AND author_id = ". absint( $current_user ) ." ";
-            }
-
-        $sql .= "ORDER BY id DESC";
-        $results = $wpdb->get_results($sql, "ARRAY_A");
+        if( ! current_user_can( 'manage_options' ) ){
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$surveys_table} WHERE status != 'trashed' AND author_id = %d ORDER BY id DESC", absint( $current_user ) ), "ARRAY_A" );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( "SELECT * FROM {$surveys_table} WHERE status != 'trashed' ORDER BY id DESC", "ARRAY_A" );
+        }
         
         register_block_type(
             $block_namespace, 

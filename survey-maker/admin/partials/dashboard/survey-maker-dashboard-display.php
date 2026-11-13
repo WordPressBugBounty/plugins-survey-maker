@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 $course_page_url = sprintf('?page=%s', 'survey-maker');
 $lessons_page_url = admin_url( 'edit.php?post_type=flessons' );

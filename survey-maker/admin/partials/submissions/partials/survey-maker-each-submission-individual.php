@@ -1,5 +1,35 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 extract($args);
+
+// Allowed HTML for the generated (read-only) answers markup of each question.
+$ays_survey_individual_allowed_html = Survey_Maker_Data::ays_survey_allowed_html();
+$ays_survey_individual_allowed_html['input'] = array_merge(
+    isset( $ays_survey_individual_allowed_html['input'] ) ? $ays_survey_individual_allowed_html['input'] : array(),
+    array(
+        'checked'      => true,
+        'disabled'     => true,
+        'min'          => true,
+        'max'          => true,
+        'autocomplete' => true,
+        'tabindex'     => true,
+    )
+);
+$ays_survey_individual_allowed_html['select'] = array_merge(
+    isset( $ays_survey_individual_allowed_html['select'] ) ? $ays_survey_individual_allowed_html['select'] : array(),
+    array(
+        'disabled' => true,
+    )
+);
+$ays_survey_individual_allowed_html['option'] = array_merge(
+    isset( $ays_survey_individual_allowed_html['option'] ) ? $ays_survey_individual_allowed_html['option'] : array(),
+    array(
+        'selected' => true,
+    )
+);
 ?>
 <div class="">
     <div class="wrap">
@@ -11,7 +41,7 @@ extract($args);
                             <span><?php echo esc_html__("User Information" , "survey-maker"); ?></span>
                         </div>
                         <div class="ays_survey_each_sub_user_info_header_button">
-                            <button type="button" class="button ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" data-clipboard-text="<?php echo $survey_data_formated_for_clipboard; ?>"><?php echo esc_html__("Copy user info to clipboard" , "survey-maker"); ?></button>
+                            <button type="button" class="button ays_help" data-toggle="tooltip" title="<?php echo esc_attr__('Click for copy',"survey-maker");?>" data-clipboard-text="<?php echo esc_attr($survey_data_formated_for_clipboard); ?>"><?php echo esc_html__("Copy user info to clipboard" , "survey-maker"); ?></button>
                         </div>
                     </div>
                     <div class="ays_survey_each_sub_user_info_body ays_survey_copyable_box">
@@ -61,14 +91,14 @@ extract($args);
 								?>
                                 <div class="ays-survey-submission-section">
                                     <div class="ays_survey_name" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
-                                        <h3><?php echo stripslashes( $section['title'] ); ?></h3>
-                                        <p><?php echo ($survey_allow_html_in_section_description) ? strip_tags(htmlspecialchars_decode($section['description'] )) : nl2br( $section['description'] ) ?></p>
+                                        <h3><?php echo wp_kses_post( stripslashes( $section['title'] ) ); ?></h3>
+                                        <p><?php echo ($survey_allow_html_in_section_description) ? esc_html( wp_strip_all_tags( htmlspecialchars_decode( $section['description'] ) ) ) : wp_kses_post( nl2br( $section['description'] ) ); ?></p>
                                     </div>
 									<?php
 									foreach ( $section['questions'] as $q_key => $question ) {
 										?>
                                         <div class="ays_questions_answers" data-id="<?php echo esc_attr($question['id']); ?>"  data-type="<?php echo esc_attr($question['type']); ?>" style="border-left-color: <?php echo esc_attr($survey_for_charts); ?>;">
-                                            <div style="font-size: 23px;"><?php echo stripslashes( nl2br( $question['question'] ) ); ?></div>
+                                            <div style="font-size: 23px;"><?php echo wp_kses( stripslashes( nl2br( $question['question'] ) ), Survey_Maker_Data::ays_survey_custom_allowed_html() ); ?></div>
 											<?php
 											$question_type_content = '';
 											$user_answer = isset( $ays_survey_individual_questions['questions'][ $question['id'] ] ) ? $ays_survey_individual_questions['questions'][ $question['id'] ] : '';
@@ -343,7 +373,7 @@ extract($args);
 												$question_type_content .= '</select></div>';
 											}
 
-											echo $question_type_content;
+											echo wp_kses( $question_type_content, $ays_survey_individual_allowed_html );
 											?>
                                         </div>
 										<?php

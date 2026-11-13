@@ -81,9 +81,9 @@ class Survey_Maker_Integrations
             if(isset($integrations_content['title'])){
                 $content .= '<legend>';
                 if(isset($integrations_content['icon'])){
-                    $content .= '<img class="ays_integration_logo" src="'. $integrations_content['icon'] .'" alt="">';
+                    $content .= '<img class="ays_integration_logo" src="'. esc_url( $integrations_content['icon'] ) .'" alt="">';
                 }
-                $content .= '<h5>'. $integrations_content['title'] .'</h5></legend>';
+                $content .= '<h5>'. esc_html( $integrations_content['title'] ) .'</h5></legend>';
             }
             $content .= $integrations_content['content'];
 
@@ -93,7 +93,7 @@ class Survey_Maker_Integrations
         }
 
         $integrations = implode('<hr/>', $integrations);        
-        echo html_entity_decode(esc_html( $integrations ));
+        echo $integrations; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Settings markup built by the integration callbacks; dynamic values are escaped where the markup is built.
     }
 
     // Integrations settings page action hook
@@ -108,9 +108,9 @@ class Survey_Maker_Integrations
             if(isset($integrations_content['title'])){
                 $content .= '<legend>';
                 if(isset($integrations_content['icon'])){
-                    $content .= '<img class="ays_integration_logo" src="'. $integrations_content['icon'] .'" alt="">';
+                    $content .= '<img class="ays_integration_logo" src="'. esc_url( $integrations_content['icon'] ) .'" alt="">';
                 }
-                $content .= '<h5>'. $integrations_content['title'] .'</h5></legend>';
+                $content .= '<h5>'. esc_html( $integrations_content['title'] ) .'</h5></legend>';
             }
             if(isset($integrations_content['content'])){
                 $content .= $integrations_content['content'];
@@ -122,7 +122,7 @@ class Survey_Maker_Integrations
         }
 
         $integrations = implode('<hr/>', $integrations);        
-        echo html_entity_decode(esc_html( $integrations ));
+        echo $integrations; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Settings markup built by the integration callbacks; dynamic values are escaped where the markup is built.
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////
@@ -223,7 +223,7 @@ class Survey_Maker_Integrations
                                 class="ays-text-input"
                                 id="ays_mailchimp_username"
                                 name="ays_mailchimp_username"
-                                value="'. $mailchimp_username .'"
+                                value="'. esc_attr( $mailchimp_username ) .'"
                             />
                         </div>
                     </div>
@@ -237,7 +237,7 @@ class Survey_Maker_Integrations
                                 class="ays-text-input"
                                 id="ays_mailchimp_api_key"
                                 name="ays_mailchimp_api_key"
-                                value="'. $mailchimp_api_key .'"
+                                value="'. esc_attr( $mailchimp_api_key ) .'"
                             />
                         </div>
                     </div>
@@ -354,7 +354,7 @@ class Survey_Maker_Integrations
                             class="ays-text-input" 
                             id="ays_monitor_client" 
                             name="ays_monitor_client"
-                            value="'. $monitor_client .'"
+                            value="'. esc_attr( $monitor_client ) .'"
                         />
                     </div>
                 </div>
@@ -368,7 +368,7 @@ class Survey_Maker_Integrations
                             class="ays-text-input" 
                             id="ays_monitor_api_key" 
                             name="ays_monitor_api_key"
-                            value="'. $monitor_api_key .'"
+                            value="'. esc_attr( $monitor_api_key ) .'"
                         />
                     </div>
                 </div>
@@ -482,7 +482,7 @@ class Survey_Maker_Integrations
                             class="ays-text-input"
                             id="ays_zapier_hook" 
                             name="ays_zapier_hook"
-                            value="'. $zapier_hook .'"
+                            value="'. esc_attr( $zapier_hook ) .'"
                         />
                     </div>
                 </div>
@@ -614,7 +614,7 @@ class Survey_Maker_Integrations
                                     class="ays-text-input" 
                                     id="ays_active_camp_url" 
                                     name="ays_active_camp_url"
-                                    value="'. $active_camp_url .'"
+                                    value="'. esc_attr( $active_camp_url ) .'"
                                 />
                             </div>
                         </div>
@@ -628,7 +628,7 @@ class Survey_Maker_Integrations
                                     class="ays-text-input" 
                                     id="ays_active_camp_api_key" 
                                     name="ays_active_camp_api_key"
-                                    value="'. $active_camp_api_key .'"
+                                    value="'. esc_attr( $active_camp_api_key ) .'"
                                 />
                             </div>
                         </div>
@@ -1569,7 +1569,7 @@ class Survey_Maker_Integrations
 
             $icon  = SURVEY_MAKER_ADMIN_URL . '/images/integrations/paypal_logo.png';
             $title = __( 'PayPal', "survey-maker" );
-            $blockquote_content = sprintf( __( "You can get your Client ID from %s", "survey-maker" ), "<a href='https://developer.paypal.com/developer/applications' target='_blank'> Developer Paypal.</a>");
+            $blockquote_content = sprintf( /* translators: %s: link to the PayPal developer dashboard */ __( "You can get your Client ID from %s", "survey-maker" ), "<a href='https://developer.paypal.com/developer/applications' target='_blank'> Developer Paypal.</a>");
             $content = '<div class="form-group row" style="margin:0px;">';
                 $content .= '<div class="col-sm-12 ays-pro-features-v2-main-box ays-pro-features-v2-main-box-small">';
                 $content .= '<div class="ays-pro-features-v2-small-buttons-box">';
@@ -1910,7 +1910,7 @@ class Survey_Maker_Integrations
                                                 <input type="text" class="ays-text-input" >
                                                 <span class="ays_survey_small_hint_text">
                                                     <span>' . sprintf(
-                                                        __( "e.g. en, de - Language used by reCAPTCHA. To get the code for your language click %s here %s", "survey-maker" ),
+                                                        /* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */ __( "e.g. en, de - Language used by reCAPTCHA. To get the code for your language click %1\$s here %2\$s", "survey-maker" ),
                                                         '<a href="https://developers.google.com/recaptcha/docs/language" target="_blank">',
                                                         "</a>"
                                                     ) . '</span>
@@ -1930,7 +1930,7 @@ class Survey_Maker_Integrations
                                         </div>
                                         ';
                                         $content .= '<blockquote>';
-                                        $content .= sprintf( __( "You need to set up reCAPTCHA in your Google account to generate the required keys and get them by %s Google's reCAPTCHA admin console %s.", "survey-maker" ), "<a href='https://www.google.com/recaptcha/admin/create' target='_blank'>", "</a>");
+                                        $content .= sprintf( /* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */ __( "You need to set up reCAPTCHA in your Google account to generate the required keys and get them by %1\$s Google's reCAPTCHA admin console %2\$s.", "survey-maker" ), "<a href='https://www.google.com/recaptcha/admin/create' target='_blank'>", "</a>");
                                         $content .= '</blockquote>';
                                         $content .= '
                                     </div>

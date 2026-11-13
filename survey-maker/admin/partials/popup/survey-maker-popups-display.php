@@ -1,13 +1,18 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 $plus_icon_svg = "<span class=''><img src='". SURVEY_MAKER_ADMIN_URL ."/images/icons/plus-icon.svg'></span>";
 $youtube_icon_svg = "<span><img src='". esc_attr(SURVEY_MAKER_ADMIN_URL) ."/images/icons/youtube-video-icon.svg' ></span>";
 
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- The nonce is verified below before any data is modified.
 $action = isset( $_GET["action"] ) ? sanitize_key( $_GET["action"] ) : "";
 $id     = isset( $_GET["id"] ) ? absint( sanitize_key( $_GET["id"] ) ) : null;
 
 if($action == 'unpublish' || $action == 'publish'){
     // In our file that handles the request, verify the nonce.
-    $nonce = esc_attr( $_REQUEST["_wpnonce"] );
+    $nonce = isset( $_REQUEST["_wpnonce"] ) ? sanitize_text_field( wp_unslash( $_REQUEST["_wpnonce"] ) ) : '';
+    // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
     if ( ! wp_verify_nonce( $nonce, $this->plugin_name . "-" . $action . "-popup-survey" ) ) {
         die( "Go get a life script kiddies" );
@@ -35,7 +40,7 @@ if($action == 'unpublish' || $action == 'publish'){
     </div>
     <h1 class="wp-heading-inline">
         <?php
-        echo esc_html__( get_admin_page_title(), "survey-maker" );
+        echo esc_html( get_admin_page_title() );
         ?>
     </h1>
     <div class="ays-survey-popup-survey-description ays_survey_small_hint_text ays_survey_small_hint_text_for_menu_items" style="max-width: 760px;margin: 0 0 14px;">
@@ -45,7 +50,7 @@ if($action == 'unpublish' || $action == 'publish'){
     <?php do_action('ays_survey_sale_banner'); ?>
     <div class="ays-survey-maker-add-new-button-box">
         <?php 
-            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design" style="display: inline-block; margin-left: 0 !important;"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( $_REQUEST['page'] ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));
+            echo sprintf( '<a href="?page=%s&action=%s" class="page-title-action button-primary ays-survey-add-new-button-new-design" style="display: inline-block; margin-left: 0 !important;"> %s ' . esc_html__( 'Add New', "survey-maker" ) . '</a>', esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'add', wp_kses($plus_icon_svg, Survey_Maker_Data::get_allowed_tags_for_loader()));
         ?>
     </div>
     

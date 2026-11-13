@@ -23,6 +23,7 @@ class Ays_Survey_Maker_Extra_Shortcodes_Public {
             "user_email" ,
             "user_wordpress_roles" ,
             "passed_users_count" ,
+            "title" ,
             "creation_date" ,
             "sections_count" ,
             "questions_count" ,
@@ -223,6 +224,55 @@ class Ays_Survey_Maker_Extra_Shortcodes_Public {
 
     /*
     ==========================================
+        Show Survey title | Start
+    ==========================================
+    */
+    public function ays_generate_title_method( $attr ){
+
+        $id = (isset($attr['id']) && $attr['id'] != '') ? absint( sanitize_text_field($attr['id']) ) : null;
+        $this->default_texts = Survey_Maker_Data::ays_set_default_texts( $this->plugin_name, array() );
+
+        if (is_null($id) || $id == 0 ) {
+            $show_survey_title_html = "<p class='wrong_shortcode_text' style='color:red;'>" . $this->default_texts['wrongShortcode'] . "</p>";
+            return str_replace(array("\r\n", "\n", "\r"), "\n", $show_survey_title_html);
+        }
+
+        $unique_id = uniqid();
+        $this->unique_id = $unique_id;
+        $this->unique_id_in_class = $id . "-" . $unique_id;
+
+
+        $show_survey_title_html = $this->ays_survey_title_html( $id );
+        return str_replace(array("\r\n", "\n", "\r"), "\n", $show_survey_title_html);
+    }
+    
+    public function ays_survey_title_html( $id ){
+
+        $results = $this->get_curent_survey_title($id);
+
+        $content_html = array();
+
+        if($results === null){
+            $content_html = "<p style='text-align: center;font-style:italic;'>" . __( "There are no results yet.", "survey-maker" ) . "</p>";
+            return $content_html;
+        }
+
+        $content_html[] = "<span class='". $this->html_name_prefix ."title-box' id='". $this->html_name_prefix ."title-box-". $this->unique_id_in_class ."' data-id='". $this->unique_id ."'>";
+            $content_html[] = $results;
+        $content_html[] = "</span>";
+
+        $content_html = implode( '' , $content_html);
+
+        return $content_html;
+    }
+    /*
+    ==========================================
+        Show Survey title | End
+    ==========================================
+    */
+
+    /*
+    ==========================================
         Survey show creation date | Start
     ==========================================
     */
@@ -401,9 +451,28 @@ class Ays_Survey_Maker_Extra_Shortcodes_Public {
 
         $id = absint( $id );
 
-        $sql = "SELECT DATE(`date_created`) FROM `{$surveys_table}` WHERE `id` = {$id}";
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $results = $wpdb->get_var( $wpdb->prepare( "SELECT DATE(`date_created`) FROM `{$surveys_table}` WHERE `id` = %d", $id ) );
+        if ( is_null( $results ) || $results == "" ) {
+            $results = null;
+        }
 
-        $results = $wpdb->get_var($sql);
+        return sanitize_text_field( $results );
+    }
+
+    public function get_curent_survey_title( $id ){
+        global $wpdb;
+
+        $surveys_table = esc_sql( $wpdb->prefix . "ayssurvey_surveys" );
+
+        if (is_null($id) || $id == 0 ) {
+            return null;
+        }
+
+        $id = absint( $id );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $results = $wpdb->get_var( $wpdb->prepare( "SELECT title FROM `{$surveys_table}` WHERE `id` = %d", $id ) );
         if ( is_null( $results ) || $results == "" ) {
             $results = null;
         }
@@ -478,9 +547,8 @@ class Ays_Survey_Maker_Extra_Shortcodes_Public {
         global $wpdb;
         $surveys_category_table = esc_sql( $wpdb->prefix . "ayssurvey_survey_categories" );
 
-        $sql = "SELECT count(*) as res_count FROM {$surveys_category_table}";
-
-        $res = $wpdb->get_var($sql);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $res = $wpdb->get_var( "SELECT count(*) as res_count FROM {$surveys_category_table}" );
 
         return $res;
     }

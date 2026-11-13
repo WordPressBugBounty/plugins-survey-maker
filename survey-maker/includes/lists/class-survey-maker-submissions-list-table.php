@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ob_start();
 class Submissions_List_Table extends WP_List_Table {
     private $plugin_name;
@@ -39,14 +43,15 @@ class Submissions_List_Table extends WP_List_Table {
     public function extra_tablenav( $which ){
         global $wpdb;
         
-        $titles_sql = "SELECT s.title, s.id
-                       FROM " .$wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories AS s
-                       WHERE s.status = 'published'";
-        $cat_titles = $wpdb->get_results($titles_sql);
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $cat_titles = $wpdb->get_results( "SELECT s.title, s.id FROM {$survey_categories_table} AS s WHERE s.status = 'published'" );
 
         $cat_id = null;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['filterby'] )){
-            $cat_id = absint( sanitize_text_field( $_GET['filterby'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = absint( sanitize_text_field( wp_unslash( $_GET['filterby'] ) ) );
         }
         $categories_select = array();
         foreach($cat_titles as $key => $cat_title){
@@ -72,7 +77,7 @@ class Submissions_List_Table extends WP_List_Table {
             <input type="button" id="doaction-<?php echo esc_attr( $which ); ?>" class="cat-filter-apply-<?php echo esc_attr( $which ); ?> button action ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?>" value="Filter">
         </div>
         
-        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
+        <a style="margin: 0px 8px 0 0;" href="?page=<?php echo esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page slug. ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
 
     
@@ -89,29 +94,38 @@ class Submissions_List_Table extends WP_List_Table {
     public static function get_items( $per_page = 50, $page_number = 1 ) {
 
         global $wpdb;
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        $sql .= self::get_where_condition();
+        $where_sql = self::get_where_condition();
+
+        $order_by = 'id DESC';
         
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( ! empty( $_REQUEST['orderby'] ) ) {
-            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( $_REQUEST['orderby'] ) != '' ) ? sanitize_text_field( $_REQUEST['orderby'] ) : 'id';
-            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( $_REQUEST['order'] ) == 'asc' ) ? ' ASC' : ' DESC';
-
-            $sql_orderby = sanitize_sql_orderby( $order_by );
-
-            if ( $sql_orderby ) {
-                $sql .= ' ORDER BY ' . $sql_orderby;
-            } else {
-                $sql .= ' ORDER BY id DESC';
-            }
-        }else{
-            $sql .= ' ORDER BY id DESC';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) != '' ) ? sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) : 'id';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) ) == 'asc' ) ? ' ASC' : ' DESC';
         }
 
-        $sql .= " LIMIT $per_page";
-        $sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+        $sql_orderby = sanitize_sql_orderby( $order_by );
+        if ( ! $sql_orderby ) {
+            $sql_orderby = 'id DESC';
+        }
 
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        $per_page = absint( $per_page );
+        $offset   = max( 0, ( absint( $page_number ) - 1 ) * $per_page );
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is built with $wpdb->prepare() in get_where_condition(), ORDER BY is validated with sanitize_sql_orderby().
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM {$surveys_table} {$where_sql} ORDER BY {$sql_orderby} LIMIT %d OFFSET %d",
+                $per_page,
+                $offset
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
         return $result;
     }
 
@@ -142,28 +156,37 @@ class Submissions_List_Table extends WP_List_Table {
             // }
         // }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(! empty( $_REQUEST['filterby'] ) && intval( $_REQUEST['filterby'] ) > 0){
-            $cat_id = intval( sanitize_text_field( $_REQUEST['filterby'] ) );
-            $where[] = ' FIND_IN_SET( "'.$cat_id.'", `category_ids` ) ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = intval( sanitize_text_field( wp_unslash( $_REQUEST['filterby'] ) ) );
+            $where[] = $wpdb->prepare( ' FIND_IN_SET( %s, `category_ids` ) ', (string) $cat_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_REQUEST['wpuser'] ) ){
-            $user_id = absint( sanitize_text_field( $_REQUEST['wpuser'] ) );
-            $where[] = ' `user_id` = '.$user_id.' ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $user_id = absint( sanitize_text_field( wp_unslash( $_REQUEST['wpuser'] ) ) );
+            $where[] = $wpdb->prepare( ' `user_id` = %d ', $user_id );
         }
         
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_REQUEST['survey'] ) ){
-            $quiz_id = absint( sanitize_text_field( $_REQUEST['survey'] ) );
-            $where[] = ' `survey_id` = '.$quiz_id.' ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $quiz_id = absint( sanitize_text_field( wp_unslash( $_REQUEST['survey'] ) ) );
+            $where[] = $wpdb->prepare( ' `survey_id` = %d ', $quiz_id );
         }
         
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_REQUEST['s'] ) && $_REQUEST['s'] != "" ){
-            $each_survey = sanitize_text_field( $_REQUEST['s'] );
-            $do_search = ( $each_survey ) ? sprintf( " title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $each_survey ) ) ) : '';
-            $where[] = $do_search;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $each_survey = sanitize_text_field( wp_unslash( $_REQUEST['s'] ) );
+            if( $each_survey ){
+                $where[] = $wpdb->prepare( ' title LIKE %s ', '%' . $wpdb->esc_like( $each_survey ) . '%' );
+            }
         }
         
-        $where[] = ' `status` != "trashed" ';
+        $where[] = " `status` != 'trashed' ";
         
         if( ! empty($where) ){
             $sql = " WHERE " . implode( " AND ", $where );
@@ -174,9 +197,10 @@ class Submissions_List_Table extends WP_List_Table {
     public static function get_report_by_quiz_id( $quiz_id ){
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories WHERE quiz_id=" . absint( $quiz_id );
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
-        $result = $wpdb->get_row($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$survey_categories_table} WHERE quiz_id = %d", absint( $quiz_id ) ), 'ARRAY_A' );
 
         return $result;
     }
@@ -184,9 +208,8 @@ class Submissions_List_Table extends WP_List_Table {
     public function get_report_by_id( $id ){
         global $wpdb;
 
-        $sql = "SELECT * FROM {$wpdb->prefix}aysquiz_reports WHERE id=" . absint( $id );
-
-        $result = $wpdb->get_row($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$wpdb->prefix}aysquiz_reports WHERE id = %d", absint( $id ) ), 'ARRAY_A' );
 
         return $result;
     }
@@ -194,9 +217,8 @@ class Submissions_List_Table extends WP_List_Table {
     public function get_reports_titles(){
         global $wpdb;
 
-        $sql = "SELECT id, title FROM {$wpdb->prefix}aysquiz_quizes";
-
-        $result = $wpdb->get_results($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $result = $wpdb->get_results( "SELECT id, title FROM {$wpdb->prefix}aysquiz_quizes", 'ARRAY_A' );
 
         return $result;
     }
@@ -204,22 +226,21 @@ class Submissions_List_Table extends WP_List_Table {
     public static function get_results_dates($quiz_id){
         global $wpdb;
 
-        $sql = "SELECT MIN(DATE(`end_date`)) AS `min_date`, MAX(DATE(`end_date`)) AS `max_date`
-                FROM {$wpdb->prefix}aysquiz_reports
-                WHERE YEAR(DATE(`end_date`)) > 2000 ";
         if($quiz_id !== 0){
-            $sql .= " AND quiz_id = ". absint( $quiz_id ) ." ";
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $result = $wpdb->get_row( $wpdb->prepare( "SELECT MIN(DATE(`end_date`)) AS `min_date`, MAX(DATE(`end_date`)) AS `max_date` FROM {$wpdb->prefix}aysquiz_reports WHERE YEAR(DATE(`end_date`)) > 2000 AND quiz_id = %d", absint( $quiz_id ) ), 'ARRAY_A' );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+            $result = $wpdb->get_row( "SELECT MIN(DATE(`end_date`)) AS `min_date`, MAX(DATE(`end_date`)) AS `max_date` FROM {$wpdb->prefix}aysquiz_reports WHERE YEAR(DATE(`end_date`)) > 2000", 'ARRAY_A' );
         }
-
-        $result = $wpdb->get_row($sql, 'ARRAY_A');
 
         return $result;
     }
     
     public function ays_see_all_results(){
         global $wpdb;
-        $sql = "UPDATE {$wpdb->prefix}aysquiz_reports SET `read`=1";
-        $wpdb->get_results($sql, 'ARRAY_A');
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $wpdb->query( "UPDATE {$wpdb->prefix}aysquiz_reports SET `read`=1" );
     }
 
     /**
@@ -230,12 +251,14 @@ class Submissions_List_Table extends WP_List_Table {
     public static function delete_items( $id ) {
         global $wpdb;
         
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->delete(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions",
             array( 'survey_id' => $id ),
             array( '%d' )
         );
         
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->delete(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions_questions",
             array( 'survey_id' => $id ),
@@ -251,39 +274,47 @@ class Submissions_List_Table extends WP_List_Table {
     public static function record_count() {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys WHERE status != 'trashed'";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
 
-        if( isset( $_GET['filterby'] ) && intval(sanitize_text_field($_GET['filterby'])) > 0){
-            $cat_id = intval( sanitize_text_field( $_GET['filterby'] ) );
-            $sql .= '&& FIND_IN_SET('.$cat_id.',category_ids) ';
+        $where = array();
+        $where[] = " status != 'trashed' ";
+
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if( isset( $_GET['filterby'] ) && intval(sanitize_text_field( wp_unslash( $_GET['filterby'] ) )) > 0){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $cat_id = intval( sanitize_text_field( wp_unslash( $_GET['filterby'] ) ) );
+            $where[] = $wpdb->prepare( ' FIND_IN_SET( %s, category_ids ) ', (string) $cat_id );
         }
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_REQUEST['s'] ) && $_REQUEST['s'] != "" ){
-            $each_survey = sanitize_text_field( $_REQUEST['s'] );
-            $do_search = ( $each_survey ) ? sprintf( " title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $each_survey ) ) ) : '';
-            $sql .= 'AND '.$do_search;
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $each_survey = sanitize_text_field( wp_unslash( $_REQUEST['s'] ) );
+            if( $each_survey ){
+                $where[] = $wpdb->prepare( ' title LIKE %s ', '%' . $wpdb->esc_like( $each_survey ) . '%' );
+            }
         }
 
-        return $wpdb->get_var( $sql );
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
+
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$surveys_table} {$where_sql}" );
     }    
     
     public static function unread_records_count( $id ) {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*)
-                FROM ".$wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions " . " 
-                WHERE ( `read` = 0 OR `read` = 2 ) AND survey_id=".absint( $id );
-        // $sql = "SELECT COUNT(*) FROM {$wpdb->prefix}aysquiz_reports WHERE `read` = 0;";
+        $submissions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        return $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$submissions_table} WHERE ( `read` = 0 OR `read` = 2 ) AND survey_id = %d", absint( $id ) ) );
     }
     
     public static function record_complete_filter_count() {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM (SELECT DISTINCT `quiz_id` FROM {$wpdb->prefix}aysquiz_reports ) AS quiz_ids";
-
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        return $wpdb->get_var( "SELECT COUNT(*) FROM (SELECT DISTINCT `quiz_id` FROM {$wpdb->prefix}aysquiz_reports ) AS quiz_ids" );
     }
 
     /** Text displayed when no customer data is available */
@@ -312,7 +343,7 @@ class Submissions_List_Table extends WP_List_Table {
                 return $item[ $column_name ];
                 break;
             default:
-                return print_r( $item, true ); //Show the whole array for troubleshooting purposes
+                return ''; // Every registered column has its own handler above.
         }
     }
 
@@ -358,7 +389,8 @@ class Submissions_List_Table extends WP_List_Table {
 
         $actions = array(
             'view_details' => sprintf( '<a href="?page=%s&survey=%d">%s</a>', $this->plugin_name."-each-submission", absint( $item['id'] ), __('View details', "survey-maker")),
-            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&item=%s&_wpnonce=%s" title="%s">Delete</a>', $restitle."'s submissions", sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce, __( 'Delete all submissions of this survey', "survey-maker" ) )
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            'delete' => sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&item=%s&_wpnonce=%s" title="%s">Delete</a>', $restitle."'s submissions", ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'delete', absint( $item['id'] ), $delete_nonce, __( 'Delete all submissions of this survey', "survey-maker" ) )
         );
 
         return $title . $this->row_actions( $actions );
@@ -367,8 +399,8 @@ class Submissions_List_Table extends WP_List_Table {
     function column_quiz_rate( $item ) {
         global $wpdb;
 
-        $sql = "SELECT AVG(`score`) AS avg_score FROM {$wpdb->prefix}aysquiz_rates WHERE quiz_id=". absint( $item['id'] );
-        $result = $wpdb->get_var($sql);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $result = $wpdb->get_var( $wpdb->prepare( "SELECT AVG(`score`) AS avg_score FROM {$wpdb->prefix}aysquiz_rates WHERE quiz_id = %d", absint( $item['id'] ) ) );
         
         if($result == null){
             return;
@@ -382,8 +414,8 @@ class Submissions_List_Table extends WP_List_Table {
     function column_score($item){
         global $wpdb;
 
-        $sql = "SELECT AVG(`score`) AS avg_score FROM {$wpdb->prefix}aysquiz_reports WHERE quiz_id=". absint( $item['id'] );
-        $result = $wpdb->get_var($sql);
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+        $result = $wpdb->get_var( $wpdb->prepare( "SELECT AVG(`score`) AS avg_score FROM {$wpdb->prefix}aysquiz_reports WHERE quiz_id = %d", absint( $item['id'] ) ) );
         
         if($result == null){
             return;
@@ -396,20 +428,18 @@ class Submissions_List_Table extends WP_List_Table {
     function column_user_count($item) {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*)
-                FROM ".$wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" . " 
-                WHERE survey_id=". absint( $item['id'] );
-        $result = $wpdb->get_var($sql);
+        $submissions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$submissions_table} WHERE survey_id = %d", absint( $item['id'] ) ) );
 
         return $result;
     }
 
     function column_unreads($item) {
         global $wpdb;
-        $sql = "SELECT COUNT(*)
-                FROM ".$wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions " . " 
-                WHERE ( `read` = 0 OR `read` = 2 ) AND survey_id=". absint( $item['id'] );
-        $q = intval( $wpdb->get_var( $sql ) );
+        $submissions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $q = intval( $wpdb->get_var( $wpdb->prepare( "SELECT COUNT(*) FROM {$submissions_table} WHERE ( `read` = 0 OR `read` = 2 ) AND survey_id = %d", absint( $item['id'] ) ) ) );
         if($q != 0){
             $q = "<p style='font-size:16px;font-weight:900;color:blue'>$q</p>
             <input type='hidden' class='ays_quiz_results_unreads' value='0'>";
@@ -419,13 +449,11 @@ class Submissions_List_Table extends WP_List_Table {
     function column_last_sub_date($item) {
         global $wpdb;
         $survey_id = isset($item['id']) && $item['id'] != "" ? $item['id'] : false;
-        $submissions_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions";
+        $submissions_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions" );
         $res = '';
         if($survey_id){
-            $sql = "SELECT submission_date
-                    FROM ".$submissions_table."
-                    WHERE survey_id=". absint( $survey_id ) ." ORDER BY id DESC LIMIT 1";
-            $res = $wpdb->get_var( $sql );
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $res = $wpdb->get_var( $wpdb->prepare( "SELECT submission_date FROM {$submissions_table} WHERE survey_id = %d ORDER BY id DESC LIMIT 1", absint( $survey_id ) ) );
         }
         return $res;
     }
@@ -437,9 +465,14 @@ class Submissions_List_Table extends WP_List_Table {
         $category_ids = isset( $item['category_ids'] ) && $item['category_ids'] != '' ? $item['category_ids'] : '';
         
         if( ! empty( $category_ids ) ){
-            $sql = "SELECT id,title FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories WHERE id IN (" . esc_sql( $category_ids ) . ")";
+            $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
+            $category_ids_sql = esc_sql( implode( ',', wp_parse_id_list( $category_ids ) ) );
+            if( $category_ids_sql === '' ){
+                return '-';
+            }
 
-            $results = $wpdb->get_results($sql, 'ARRAY_A');
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), the ID list is sanitized with wp_parse_id_list().
+            $results = $wpdb->get_results( "SELECT id,title FROM {$survey_categories_table} WHERE id IN ({$category_ids_sql})", 'ARRAY_A' );
             $category_location = array();
             foreach ($results as $key => $value) {
                 $category_location[] = sprintf( '<a href="?page=%s&action=%s&id=%d" target="_blank">%s</a>', 'survey-maker-survey-categories', 'edit', $value['id'], $value['title']);
@@ -536,18 +569,18 @@ class Submissions_List_Table extends WP_List_Table {
         if ( 'delete' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = sanitize_text_field( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-result' ) ) {
                 die( 'Go get a life script kiddies' );
             } else {
-                self::delete_items( absint( sanitize_text_field($_GET['item']) ) );
+                self::delete_items( ( isset( $_GET['item'] ) ? absint( sanitize_text_field( wp_unslash( $_GET['item'] ) ) ) : 0 ) );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
 
                 $url = esc_url_raw( remove_query_arg(array('action', 'survey', '_wpnonce') ) ) . '&status=' . $message;
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -558,7 +591,7 @@ class Submissions_List_Table extends WP_List_Table {
             || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' )
         ) {
 
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
@@ -569,13 +602,13 @@ class Submissions_List_Table extends WP_List_Table {
             // add_query_arg() return the current url
 
             $url = esc_url_raw( remove_query_arg(array('action', 'survey', '_wpnonce') ) ) . '&status=' . $message;
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the mark-as-read bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'mark-as-read' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'mark-as-read' ) ) {
 
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
                 self::mark_as_read_reports( $id );
@@ -591,13 +624,13 @@ class Submissions_List_Table extends WP_List_Table {
                 'status' => $message,
                 'ays_survey_tab' => 'poststuff',
             ), $url );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the mark-as-unread bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'mark-as-unread' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'mark-as-unread' ) ) {
 
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
@@ -615,13 +648,14 @@ class Submissions_List_Table extends WP_List_Table {
                 'ays_survey_tab' => 'poststuff',
             ), $url );
 
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
     }
     
     
     public function results_notices(){
-        $status = (isset($_REQUEST['status'])) ? sanitize_text_field( $_REQUEST['status'] ) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $status = (isset($_REQUEST['status'])) ? sanitize_text_field( wp_unslash( $_REQUEST['status'] ) ) : '';
 
         if ( empty( $status ) )
             return;
@@ -650,6 +684,7 @@ class Submissions_List_Table extends WP_List_Table {
      */
     public static function mark_as_read_reports( $id ) {
         global $wpdb;
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $x = $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions",
             array('read' => 1),
@@ -667,6 +702,7 @@ class Submissions_List_Table extends WP_List_Table {
      */
     public static function mark_as_unread_reports( $id ) {
         global $wpdb;
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "submissions",
             array('read' => 2),

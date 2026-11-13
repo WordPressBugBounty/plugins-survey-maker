@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab2" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab2') ? 'ays-survey-tab-content-active' : ''; ?>">
     <div class="d-flex justify-content-between align-items-center">
         <div>
@@ -21,9 +26,9 @@
                 <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php 
                         echo esc_html(htmlspecialchars( sprintf(
                             __('Choose the theme for your survey between these two nice themes.',"survey-maker") . '<ul class="ays_help_ul"><li>' .
-                            __('%sClassic Light:%s Light background, dark text.',"survey-maker") . '</li><li>' .
-                            __('%sClassic Dark:%s Dark background, light text.',"survey-maker") . '</li></ul>'. 
-                            __('%sMinimal:%s Transparent background, dark text.',"survey-maker") . '</li></ul>',
+                            /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sClassic Light:%2$s Light background, dark text.',"survey-maker") . '</li><li>' .
+                            /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sClassic Dark:%2$s Dark background, light text.',"survey-maker") . '</li></ul>'. 
+                            /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sMinimal:%2$s Transparent background, dark text.',"survey-maker") . '</li></ul>',
                             '<em>',
                             '</em>',
                             '<em>',
@@ -92,7 +97,7 @@
                             <input type="radio" id="ays-survey-<?php echo esc_attr($survey_theme_value); ?>" name="ays_survey_theme" value="<?php echo esc_attr($survey_theme_value); ?>" <?php checked( $survey_theme_data['is_checked'] ); ?>>
                             <label for="ays-survey-<?php echo esc_attr($survey_theme_value); ?>" class="ays-survey-theme-item ays-survey-theme-item-<?php echo esc_attr($survey_theme_data['class']); ?>">
                         <?php else : ?>
-                            <a href="<?php echo esc_url($survey_theme_upgrade_url); ?>" target="_blank" rel="noopener" class="ays-survey-theme-item ays-survey-theme-item-<?php echo esc_attr($survey_theme_data['class']); ?>" aria-label="<?php echo esc_attr(sprintf(__('Upgrade to unlock %s theme', "survey-maker"), $survey_theme_data['label'])); ?>">
+                            <a href="<?php echo esc_url($survey_theme_upgrade_url); ?>" target="_blank" rel="noopener" class="ays-survey-theme-item ays-survey-theme-item-<?php echo esc_attr($survey_theme_data['class']); ?>" aria-label="<?php echo esc_attr(sprintf(/* translators: %s: theme name */ __('Upgrade to unlock %s theme', "survey-maker"), $survey_theme_data['label'])); ?>">
                         <?php endif; ?>
                                 <span class="ays-survey-theme-item-header">
                                     <span class="ays-survey-theme-item-title"><?php echo esc_html($survey_theme_data['label']); ?></span>
@@ -117,7 +122,7 @@
                             </a>
                         <?php endif; ?>
                         <?php if ( 1 == 0 ) : ?>
-                            <a href="<?php echo esc_url($survey_theme_demo_url); ?>" class="ays-survey-theme-demo-button" aria-label="<?php echo esc_attr(sprintf(__('View %s demo', "survey-maker"), $survey_theme_data['label'])); ?>">
+                            <a href="<?php echo esc_url($survey_theme_demo_url); ?>" class="ays-survey-theme-demo-button" aria-label="<?php echo esc_attr(sprintf(/* translators: %s: theme name */ __('View %s demo', "survey-maker"), $survey_theme_data['label'])); ?>">
                                 <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" focusable="false">
                                     <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
                                     <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"></circle>
@@ -1187,10 +1192,10 @@
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                             echo esc_html(htmlspecialchars( sprintf(
                                                 __('Configure the scales of the question images.',"survey-maker") . '<ul class="ays_help_ul"><li>' .
-                                                __('%sCover:%s Resize the image so that it fills the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
-                                                __('%sContain:%s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
-                                                __('%sNone:%s The image is not resized at all.',"survey-maker") . '</li><li>' .
-                                                __('%sUnset:%s The variable does not exist.',"survey-maker") . '</li></ul>',
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sCover:%2$s Resize the image so that it fills the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sContain:%2$s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sNone:%2$s The image is not resized at all.',"survey-maker") . '</li><li>' .
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sUnset:%2$s The variable does not exist.',"survey-maker") . '</li></ul>',
                                                 '<em>',
                                                 '</em>',
                                                 '<em>',
@@ -1222,10 +1227,10 @@
                                         <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                             echo esc_html(htmlspecialchars( sprintf(
                                                 __('Configure the scales of the question images for mobile devices.',"survey-maker") . '<ul class="ays_help_ul"><li>' .
-                                                __('%sCover:%s Resize the image so that it fills the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
-                                                __('%sContain:%s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
-                                                __('%sNone:%s The image is not resized at all.',"survey-maker") . '</li><li>' .
-                                                __('%sUnset:%s The variable does not exist.',"survey-maker") . '</li></ul>',
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sCover:%2$s Resize the image so that it fills the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sContain:%2$s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sNone:%2$s The image is not resized at all.',"survey-maker") . '</li><li>' .
+                                                /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sUnset:%2$s The variable does not exist.',"survey-maker") . '</li></ul>',
                                                 '<em>',
                                                 '</em>',
                                                 '<em>',
@@ -1743,11 +1748,11 @@
                                 <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                     echo esc_html(htmlspecialchars( sprintf(__('Specify the alignment of the answers',"survey-maker") . '
                                         <ul class="ays_help_ul">
-                                            <li>' .__('%s Space around %s - Displays the answers with space before, between, and after the lines (Only for grid view).',"survey-maker") . '</li>
-                                            <li>' .__('%s Space between %s - Displays the answers with space between the lines (Only for grid view).',"survey-maker") . '</li>
-                                            <li>' .__('%s Left %s - Displays the answers at the beginning of the container.',"survey-maker") . '</li>
-                                            <li>' .__('%s Right %s - Displays the answers at the end of the container.',"survey-maker") . '</li>
-                                            <li>' .__('%s Center %s - Displays the answers at the center of the container.',"survey-maker") .'</li>
+                                            <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s Space around %2$s - Displays the answers with space before, between, and after the lines (Only for grid view).',"survey-maker") . '</li>
+                                            <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s Space between %2$s - Displays the answers with space between the lines (Only for grid view).',"survey-maker") . '</li>
+                                            <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s Left %2$s - Displays the answers at the beginning of the container.',"survey-maker") . '</li>
+                                            <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s Right %2$s - Displays the answers at the end of the container.',"survey-maker") . '</li>
+                                            <li>' ./* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$s Center %2$s - Displays the answers at the center of the container.',"survey-maker") .'</li>
                                         </ul>',
                                         '<em>',
                                         '</em>',
@@ -1785,11 +1790,11 @@
                                 <a class="ays_help" data-toggle="tooltip" data-html="true" title="<?php
                                     echo esc_html(htmlspecialchars( sprintf(
                                         __('Define the size of the images added to the answers. Choose from the following properties:',"survey-maker") . '<ul class="ays_help_ul"><li>' .
-                                        __('%sCover:%s Resize the image to cover the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
-                                        __('%sFill:%s Resize the image to cover the whole container. The image may be stretched to fit.',"survey-maker") . '</li><li>' .
-                                        __('%sContain:%s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
-                                        __('%sUnset:%s Rescale the image to be smaller than contain or none.',"survey-maker") . '</li><li>' .
-                                        __('%sNone:%s The image is not resized.',"survey-maker") . '</li></ul>',
+                                        /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sCover:%2$s Resize the image to cover the whole container. The image may be trimmed to fit.',"survey-maker") . '</li><li>' .
+                                        /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sFill:%2$s Resize the image to cover the whole container. The image may be stretched to fit.',"survey-maker") . '</li><li>' .
+                                        /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sContain:%2$s Resize the image to be displayed fully.',"survey-maker") . '</li><li>' .
+                                        /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sUnset:%2$s Rescale the image to be smaller than contain or none.',"survey-maker") . '</li><li>' .
+                                        /* translators: %1$s: opening <em> tag, %2$s: closing </em> tag */ __('%1$sNone:%2$s The image is not resized.',"survey-maker") . '</li></ul>',
                                         '<em>',
                                         '</em>',
                                         '<em>',

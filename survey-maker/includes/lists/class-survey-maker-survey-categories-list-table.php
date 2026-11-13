@@ -1,4 +1,8 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 ob_start();
 class Survey_Categories_List_Table extends WP_List_Table {
     
@@ -76,8 +80,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
         $description_key = null;
 
-        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( $_GET['filterbyDescription'] ) != ""){
-            $description_key = sanitize_text_field( $_GET['filterbyDescription'] );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) ) != ""){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $description_key = sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) );
         }
 
         ?>
@@ -99,7 +105,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
             <input type="button" id="doaction-survey-<?php echo esc_attr( $which ); ?>" class="ays-survey-question-tab-all-filter-button-<?php echo esc_attr( $which ); ?> button action" value="<?php echo esc_html__( "Filter", "survey-maker" ); ?>">
         </div>
 
-        <a style="" href="?page=<?php echo esc_attr( sanitize_text_field( $_REQUEST['page'] ) ); ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
+        <a style="" href="?page=<?php echo esc_attr( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page slug. ?>" class="button action"><?php echo esc_html__( "Clear filters", "survey-maker" ); ?></a>
         <?php
     }
 
@@ -113,8 +119,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
         $selected_published = "";
         $selected_draft = "";
         $selected_trashed = "";
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['fstatus'] ) ){
-            switch( sanitize_text_field( $_GET['fstatus'] ) ){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            switch( sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) ){
                 case "published":
                     $selected_published = " style='font-weight:bold;' ";
                     break;
@@ -132,16 +140,20 @@ class Survey_Categories_List_Table extends WP_List_Table {
             $selected_all = " style='font-weight:bold;' ";
         }
         $status_links = array(
-            "all" => "<a ".$selected_all." href='?page=".sanitize_text_field( $_REQUEST['page'] )."'>" . __( "All", "survey-maker" ) . " (".esc_attr($all_count).")</a>",
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            "all" => "<a ".$selected_all." href='?page=".( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."'>" . __( "All", "survey-maker" ) . " (".esc_attr($all_count).")</a>",
         );
         if( intval( $published_count ) > 0 ){
-            $status_links["published"] = "<a ".$selected_published." href='?page=".sanitize_text_field( $_REQUEST['page'] )."&fstatus=published'>" . __( "Published", "survey-maker" ) . " (".esc_attr($published_count).")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["published"] = "<a ".$selected_published." href='?page=".( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=published'>" . __( "Published", "survey-maker" ) . " (".esc_attr($published_count).")</a>";
         }
         if( intval( $draft_count ) > 0 ){
-            $status_links["draft"] = "<a ".$selected_draft." href='?page=".sanitize_text_field( $_REQUEST['page'] )."&fstatus=draft'>" . __( "Draft", "survey-maker" ) . " (".esc_attr($draft_count).")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["draft"] = "<a ".$selected_draft." href='?page=".( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=draft'>" . __( "Draft", "survey-maker" ) . " (".esc_attr($draft_count).")</a>";
         }
         if( intval( $trashed_count ) > 0 ){
-            $status_links["trashed"] = "<a ".$selected_trashed." href='?page=".sanitize_text_field( $_REQUEST['page'] )."&fstatus=trashed'>" . __( "Trash", "survey-maker" ) . " (".esc_attr($trashed_count).")</a>";
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $status_links["trashed"] = "<a ".$selected_trashed." href='?page=".( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' )."&fstatus=trashed'>" . __( "Trash", "survey-maker" ) . " (".esc_attr($trashed_count).")</a>";
         }
         return $status_links;
     }
@@ -159,18 +171,22 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories";
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
         $where = array();
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != ''){
-            $where[] = ' status = "' . esc_sql( sanitize_text_field( $_GET['fstatus'] ) ) . '" ';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $where[] = $wpdb->prepare( ' status = %s ', sanitize_text_field( wp_unslash( $_GET['fstatus'] ) ) );
         }else{
-            $where[] = ' status != "trashed" ';
+            $where[] = " status != 'trashed' ";
         }
 
-        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( $_GET['filterbyDescription'] ) != ""){
-            $description_key = sanitize_text_field( $_GET['filterbyDescription'] );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) ) != ""){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $description_key = sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) );
             
             switch ( $description_key ) {
                 case 'with':
@@ -187,30 +203,35 @@ class Survey_Categories_List_Table extends WP_List_Table {
             $where[] = $search;
         }
 
-        if ( ! empty( $where ) ){
-            $sql .= ' WHERE ' . implode( ' AND ', $where );
-        }
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
 
+        $order_by = 'id DESC';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if ( ! empty( $_REQUEST['orderby'] ) ) {
-            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( $_REQUEST['orderby'] ) != '' ) ? sanitize_text_field( $_REQUEST['orderby'] ) : 'id';
-            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( $_REQUEST['order'] ) == 'asc' ) ? ' ASC' : ' DESC';
-
-            $sql_orderby = sanitize_sql_orderby( $order_by );
-
-            if ( $sql_orderby ) {
-                $sql .= ' ORDER BY ' . $sql_orderby;
-            } else {
-                $sql .= ' ORDER BY id DESC';
-            }
-        }else{
-            $sql .= ' ORDER BY id DESC';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by  = ( isset( $_REQUEST['orderby'] ) && sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) != '' ) ? sanitize_text_field( wp_unslash( $_REQUEST['orderby'] ) ) : 'id';
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $order_by .= ( ! empty( $_REQUEST['order'] ) && strtolower( sanitize_text_field( wp_unslash( $_REQUEST['order'] ) ) ) == 'asc' ) ? ' ASC' : ' DESC';
         }
 
-        $sql .= " LIMIT $per_page";
-        $sql .= ' OFFSET ' . ( $page_number - 1 ) * $per_page;
+        $sql_orderby = sanitize_sql_orderby( $order_by );
+        if ( ! $sql_orderby ) {
+            $sql_orderby = 'id DESC';
+        }
 
+        $per_page = absint( $per_page );
+        $offset   = max( 0, ( absint( $page_number ) - 1 ) * $per_page );
 
-        $result = $wpdb->get_results( $sql, 'ARRAY_A' );
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare(), ORDER BY is validated with sanitize_sql_orderby().
+        $result = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT * FROM {$survey_categories_table} {$where_sql} ORDER BY {$sql_orderby} LIMIT %d OFFSET %d",
+                $per_page,
+                $offset
+            ),
+            'ARRAY_A'
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter
 
         return $result;
     }
@@ -218,9 +239,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
     public static function get_item_by_id( $id ) {
         global $wpdb;
 
-        $sql = "SELECT * FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories WHERE id=" . esc_sql( absint( $id ) );
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
-        $result = $wpdb->get_row( $sql, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$survey_categories_table} WHERE id = %d", absint( $id ) ), 'ARRAY_A' );
 
         return $result;
     }
@@ -247,7 +269,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
             if($title == ''){
                 $url = esc_url_raw( remove_query_arg( false ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
             // Description
@@ -270,6 +292,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
             $message = '';
             if( $id == 0 ){
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                 $result = $wpdb->insert(
                     $table,
                     array(
@@ -293,6 +316,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
                 $inserted_id = $wpdb->insert_id;
                 $message = 'created';
             }else{
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
                 $result = $wpdb->update(
                     $table,
                     array(
@@ -330,20 +354,20 @@ class Survey_Categories_List_Table extends WP_List_Table {
                             "status" => $message
                         ) ) );
                     }
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }elseif($save_type == 'save_new'){
                     $url = remove_query_arg( array('id') );
                     $url = esc_url_raw( add_query_arg( array(
                         "action" => "add",
                         "status" => $message
                     ), $url ) );
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }else{
                     $url = remove_query_arg( array('action', 'id') );
                     $url = esc_url_raw( add_query_arg( array(
                         "status" => $message
                     ), $url ) );
-                    wp_redirect( $url );
+                    wp_safe_redirect( $url );
                 }
             }
         }
@@ -370,6 +394,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
         $date_created  = current_time( 'mysql' );
         $date_modified = $date_created;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $result = $wpdb->insert(
             $survey_category_table,
             array(
@@ -393,7 +418,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
         if( $result >= 0 ){
             $message = "duplicated";
             $url = esc_url_raw( remove_query_arg(array('action', 'id', '_wpnonce')  ) ) . '&status=' . $message;
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
     }
 
@@ -404,6 +429,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
      */
     public static function delete_items( $id ) {
         global $wpdb;
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->delete(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories",
             array( 'id' => $id ),
@@ -419,6 +445,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
     public static function trash_items( $id ) {
         global $wpdb;
         $db_item = self::get_item_by_id( $id );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories",
             array( 
@@ -440,6 +467,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
         global $wpdb;
         $db_item = self::get_item_by_id( $id );
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
         $wpdb->update(
             $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories",
             array( 
@@ -460,12 +488,14 @@ class Survey_Categories_List_Table extends WP_List_Table {
      */
     public static function record_count($do_search) {
         global $wpdb;
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories ";
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
         $where = array();
         $where[] = "status != 'trashed'";
 
-        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( $_GET['filterbyDescription'] ) != ""){
-            $description_key = sanitize_text_field( $_GET['filterbyDescription'] );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) ) != ""){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $description_key = sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) );
             
             switch ( $description_key ) {
                 case 'with':
@@ -482,21 +512,23 @@ class Survey_Categories_List_Table extends WP_List_Table {
             $where[] = $do_search;
         }
 
-        if ( ! empty( $where ) ){
-            $sql .= ' WHERE ' . implode( ' AND ', $where );
-        }
-        return $wpdb->get_var( $sql );
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
+
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$survey_categories_table} {$where_sql}" );
     }
 
     public static function all_record_count() {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories ";
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
         $where = array();
         $where[] = "status != 'trashed'";
 
-        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( $_GET['filterbyDescription'] ) != ""){
-            $description_key = sanitize_text_field( $_GET['filterbyDescription'] );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) ) != ""){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $description_key = sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) );
             
             switch ( $description_key ) {
                 case 'with':
@@ -509,23 +541,24 @@ class Survey_Categories_List_Table extends WP_List_Table {
             }
         }
 
-        if ( ! empty( $where ) ){
-            $sql .= ' WHERE ' . implode( ' AND ', $where );
-        }
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$survey_categories_table} {$where_sql}" );
     }
 
     public static function get_statused_record_count( $status ) {
         global $wpdb;
 
-        $sql = "SELECT COUNT(*) FROM " . $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories ";
+        $survey_categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
         $where = array();
-        $where[] = "status='" . esc_sql( $status ) . "'";
+        $where[] = $wpdb->prepare( 'status = %s', $status );
 
-        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( $_GET['filterbyDescription'] ) != ""){
-            $description_key = sanitize_text_field( $_GET['filterbyDescription'] );
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        if( isset( $_GET['filterbyDescription'] ) && sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) ) != ""){
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $description_key = sanitize_text_field( wp_unslash( $_GET['filterbyDescription'] ) );
             
             switch ( $description_key ) {
                 case 'with':
@@ -538,11 +571,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
             }
         }
 
-        if ( ! empty( $where ) ){
-            $sql .= ' WHERE ' . implode( ' AND ', $where );
-        }
+        $where_sql = ' WHERE ' . implode( ' AND ', $where );
 
-        return $wpdb->get_var( $sql );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is escaped with esc_sql(), every WHERE part is a static string or built with $wpdb->prepare().
+        return $wpdb->get_var( "SELECT COUNT(*) FROM {$survey_categories_table} {$where_sql}" );
     }
     
 
@@ -570,7 +602,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
                 return $item[ $column_name ];
                 break;
             default:
-                return print_r( $item, true ); //Show the whole array for troubleshooting purposes
+                return ''; // Every registered column has its own handler above.
         }
     }
 
@@ -612,25 +644,33 @@ class Survey_Categories_List_Table extends WP_List_Table {
         $restitle = Survey_Maker_Admin::ays_restriction_string( "word", stripcslashes( $survey_cat_title ), $this->title_length);
         
         $fstatus = '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-            $fstatus = '&fstatus=' . sanitize_text_field( $_GET['fstatus'] );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $fstatus = '&fstatus=' . sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
         }
         $actions = array();
         if($item['status'] == 'trashed'){
             $title = sprintf( '<a><strong>%s</strong></a>', $restitle );
-            $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Restore', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'restore', absint( $item['id'] ), $delete_nonce );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['restore'] = sprintf( '<a href="?page=%s&action=%s&id=%d&_wpnonce=%s'.$fstatus.'">'. __('Restore', "survey-maker") .'</a>', ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'restore', absint( $item['id'] ), $delete_nonce );
         }else{
-            $title = sprintf( '<a href="?page=%s&action=%s&id=%d"><strong>%s</strong></a>', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $item['id'] ), $restitle );
-            $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&id=%d">'. __('Edit', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'edit', absint( $item['id'] ) );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $title = sprintf( '<a href="?page=%s&action=%s&id=%d"><strong>%s</strong></a>', ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ), $restitle );
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+            $actions['edit'] = sprintf( '<a href="?page=%s&action=%s&id=%d">'. __('Edit', "survey-maker") .'</a>', ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'edit', absint( $item['id'] ) );
         }
         
         if(intval($item['id']) !== 1){
             if($item['status'] == 'trashed'){
-                $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, sanitize_text_field( $_REQUEST['page'] ), 'delete', absint( $item['id'] ), $delete_nonce );
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+                $actions['delete'] = sprintf( '<a class="ays_confirm_del" data-message="%s" href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Delete Permanently', "survey-maker") .'</a>', $restitle, ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'delete', absint( $item['id'] ), $delete_nonce );
             }else{
                 $dup_nonce = wp_create_nonce( $this->plugin_name . '-duplicate-survey-category' );
-                $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'duplicate', absint( $item['id'] ), $dup_nonce );
-                $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', sanitize_text_field( $_REQUEST['page'] ), 'trash', absint( $item['id'] ), $delete_nonce );
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+                $actions['duplicate'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Duplicate', "survey-maker") .'</a>', ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'duplicate', absint( $item['id'] ), $dup_nonce );
+                // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+                $actions['trash'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s'.$fstatus.'">'. __('Move to trash', "survey-maker") .'</a>', ( isset( $_REQUEST['page'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['page'] ) ) : '' ), 'trash', absint( $item['id'] ), $delete_nonce );
             }
         }
 
@@ -639,15 +679,21 @@ class Survey_Categories_List_Table extends WP_List_Table {
 
     function column_items_count( $item ) {
         global $wpdb;
-        $surveys_table    = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys";
-        $categories_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories";
+        $surveys_table    = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "surveys" );
+        $categories_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . "survey_categories" );
 
-        $sql = "SELECT COUNT(*)
-                FROM " . $categories_table . " c
-                JOIN " . $surveys_table . " s
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin tables; table names are built from $wpdb->prefix and escaped with esc_sql().
+        $result = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT COUNT(*)
+                FROM {$categories_table} c
+                JOIN {$surveys_table} s
                     ON FIND_IN_SET(c.id, s.category_ids ) AND c.status = 'published' AND s.status = 'published'
-                WHERE c.id = " . esc_sql( absint( $item['id'] ) );
-        $result = $wpdb->get_var($sql);
+                WHERE c.id = %d",
+                absint( $item['id'] )
+            )
+        );
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
         
         if ( isset($result) && $result > 0 ) {
             $result = sprintf( '<a href="?page=%s&filterby=%d" target="_blank">%s</a>', 'survey-maker', $item['id'], $result );
@@ -659,8 +705,8 @@ class Survey_Categories_List_Table extends WP_List_Table {
     function column_status( $item ) {
         global $wpdb;
         $status = ucfirst( esc_attr($item['status']) );
-        $date = date( 'Y/m/d', strtotime( esc_attr($item['date_modified']) ) );
-        $title_date = date( 'l jS \of F Y h:i:s A', strtotime( $item['date_modified'] ) );
+        $date = gmdate( 'Y/m/d', strtotime( esc_attr($item['date_modified']) ) );
+        $title_date = gmdate( 'l jS \of F Y h:i:s A', strtotime( $item['date_modified'] ) );
         $html = "<p style='font-size:14px;margin:0;'>" . esc_html($status) . "</p>";
         $html .= "<p style=';font-size:14px;margin:0;text-decoration: dotted underline;' title='" . esc_attr($title_date) . "'>" . esc_attr($date) . "</p>";
         return $html;
@@ -685,6 +731,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
             'id'            => __( 'ID', "survey-maker" ),
         );
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if( isset( $_GET['action'] ) && ( $_GET['action'] == 'add' || $_GET['action'] == 'edit' ) ){
             return array();
         }
@@ -717,6 +764,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
             'bulk-trash' => __( 'Move to trash', "survey-maker" ),
         );
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
         if(isset($_GET['fstatus']) && $_GET['fstatus'] == 'trashed'){
             $actions = array(
                 'bulk-restore' => __( 'Restore', "survey-maker" ),
@@ -734,9 +782,10 @@ class Survey_Categories_List_Table extends WP_List_Table {
         global $wpdb;
         $this->_column_headers = $this->get_column_info();
 
-        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( $_REQUEST['s'] ) : false;
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $search = ( isset( $_REQUEST['s'] ) ) ? sanitize_text_field( wp_unslash( $_REQUEST['s'] ) ) : false;
 
-        $do_search = ( $search ) ? sprintf( " title LIKE '%%%s%%' ", esc_sql( $wpdb->esc_like( $search ) ) ) : '';
+        $do_search = ( $search ) ? $wpdb->prepare( ' title LIKE %s ', '%' . $wpdb->esc_like( $search ) . '%' ) : '';
 
         /** Process bulk action */
         $this->process_bulk_action();
@@ -761,13 +810,13 @@ class Survey_Categories_List_Table extends WP_List_Table {
         if ( 'delete' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = sanitize_text_field( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-survey-category' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::delete_items( absint( sanitize_text_field($_GET['id']) ) );
+                self::delete_items( isset( $_GET['id'] ) ? absint( sanitize_text_field( wp_unslash( $_GET['id'] ) ) ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -776,11 +825,11 @@ class Survey_Categories_List_Table extends WP_List_Table {
                     "status" => 'deleted'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -789,13 +838,13 @@ class Survey_Categories_List_Table extends WP_List_Table {
         if ( 'trash' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = sanitize_text_field( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-trash-survey-category' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::trash_items( absint( sanitize_text_field($_GET['id']) ) );
+                self::trash_items( isset( $_GET['id'] ) ? absint( sanitize_text_field( wp_unslash( $_GET['id'] ) ) ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -804,11 +853,11 @@ class Survey_Categories_List_Table extends WP_List_Table {
                     "status" => 'trashed'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -817,13 +866,13 @@ class Survey_Categories_List_Table extends WP_List_Table {
         if ( 'restore' === $this->current_action() ) {
 
             // In our file that handles the request, verify the nonce.
-            $nonce = sanitize_text_field( $_REQUEST['_wpnonce'] );
+            $nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
 
             if ( ! wp_verify_nonce( $nonce, $this->plugin_name . '-delete-survey-category' ) ) {
                 die( 'Go get a life script kiddies' );
             }
             else {
-                self::restore_items( absint( sanitize_text_field($_GET['id']) ) );
+                self::restore_items( isset( $_GET['id'] ) ? absint( sanitize_text_field( wp_unslash( $_GET['id'] ) ) ) : 0 );
 
                 // esc_url_raw() is used to prevent converting ampersand in url to "#038;"
                 // add_query_arg() return the current url
@@ -832,11 +881,11 @@ class Survey_Categories_List_Table extends WP_List_Table {
                     "status" => 'restored'
                 );
                 if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                    $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                    $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
                 }
                 $url = remove_query_arg( array('action', 'id', '_wpnonce') );
                 $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-                wp_redirect( $url );
+                wp_safe_redirect( $url );
             }
 
         }
@@ -844,7 +893,7 @@ class Survey_Categories_List_Table extends WP_List_Table {
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-delete' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-delete' ) ) {
 
-            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? esc_sql( $_POST['bulk-delete'] ) : array();
+            $delete_ids = ( isset( $_POST['bulk-delete'] ) && ! empty( $_POST['bulk-delete'] ) ) ? array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) ) : array();
 
             // loop over the array of record IDs and delete them
             foreach ( $delete_ids as $id ) {
@@ -857,17 +906,17 @@ class Survey_Categories_List_Table extends WP_List_Table {
                 "status" => 'deleted'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-trash' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-trash' ) ) {
 
-            $trash_ids = esc_sql( $_POST['bulk-delete'] );
+            $trash_ids = array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) );
 
             // loop over the array of record IDs and delete them
             foreach ( $trash_ids as $id ) {
@@ -880,17 +929,17 @@ class Survey_Categories_List_Table extends WP_List_Table {
                 "status" => 'trashed'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
 
         // If the delete bulk action is triggered
         if ( ( isset( $_POST['action'] ) && $_POST['action'] == 'bulk-restore' ) || ( isset( $_POST['action2'] ) && $_POST['action2'] == 'bulk-restore' ) ) {
 
-            $restore_ids = esc_sql( $_POST['bulk-delete'] );
+            $restore_ids = array_map( 'absint', (array) wp_unslash( $_POST['bulk-delete'] ) );
 
             // loop over the array of record IDs and delete them
             foreach ( $restore_ids as $id ) {
@@ -903,18 +952,19 @@ class Survey_Categories_List_Table extends WP_List_Table {
                 "status" => 'restored'
             );
             if( isset( $_GET['fstatus'] ) && $_GET['fstatus'] != '' ){
-                $add_query_args['fstatus'] = sanitize_text_field( $_GET['fstatus'] );
+                $add_query_args['fstatus'] = sanitize_text_field( wp_unslash( $_GET['fstatus'] ) );
             }
             $url = remove_query_arg( array('action', 'id', '_wpnonce') );
             $url = esc_url_raw( add_query_arg( $add_query_args, $url ) );
-            wp_redirect( $url );
+            wp_safe_redirect( $url );
         }
     }
 
 
 
     public function survey_category_notices(){
-        $status = (isset($_REQUEST['status'])) ? sanitize_text_field( $_REQUEST['status'] ) : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only request parameter, no data is modified.
+        $status = (isset($_REQUEST['status'])) ? sanitize_text_field( wp_unslash( $_REQUEST['status'] ) ) : '';
 
         if ( empty( $status ) )
             return;

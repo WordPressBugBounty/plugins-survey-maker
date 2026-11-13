@@ -71,6 +71,7 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
 
     protected function render( $instance = array() ) {
 
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only check of the current page-builder request, no data is modified.
         if ( ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'elementor' ) || ( isset( $_REQUEST['action'] ) && $_REQUEST['action'] == 'elementor_ajax' ) ) {
             echo '<style>
                     .ays-survey-container .ays-survey-section:first-of-type {
@@ -89,9 +90,11 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
         }
 
         $settings = $this->get_settings_for_display();
-        $h_html = "<h2 style='text-align: {$settings['survey_title_alignment']}'>{$settings['survey_title']}</h2>";
+        $survey_title_alignment = isset( $settings['survey_title_alignment'] ) && in_array( $settings['survey_title_alignment'], array( 'left', 'right', 'center' ), true ) ? $settings['survey_title_alignment'] : 'left';
         $survey_selector = $settings['survey_selector'];
-        echo ( isset( $settings['survey_title'] ) && ! empty( $settings['survey_title'] ) ) ? html_entity_decode(esc_html( $h_html )) : "";
+        if ( isset( $settings['survey_title'] ) && ! empty( $settings['survey_title'] ) ) {
+            echo '<h2 style="text-align: ' . esc_attr( $survey_title_alignment ) . '">' . esc_html( $settings['survey_title'] ) . '</h2>';
+        }
         echo do_shortcode("[ays_survey id=".esc_attr($survey_selector)."]");
 
     }
@@ -99,13 +102,14 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
     public function get_active_surveys(){
         global $wpdb;
         $current_user = get_current_user_id();
-        $surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . 'surveys';
-        $sql = "SELECT id,title FROM {$surveys_table} WHERE status='published'";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . 'surveys' );
         if( ! current_user_can( 'manage_options' ) ){
-            $sql .= " AND author_id = ". absint( $current_user ) ." ";
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( $wpdb->prepare( "SELECT id,title FROM {$surveys_table} WHERE status='published' AND author_id = %d ORDER BY id DESC", absint( $current_user ) ), ARRAY_A );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $results = $wpdb->get_results( "SELECT id,title FROM {$surveys_table} WHERE status='published' ORDER BY id DESC", ARRAY_A );
         }
-        $sql .= " ORDER BY id DESC";
-        $results = $wpdb->get_results( $sql, ARRAY_A );
         $options = array();
         foreach ( $results as $result ){
             $options[$result['id']] = $result['title'];
@@ -116,13 +120,14 @@ class Widget_Survey_Maker_Elementor extends Widget_Base {
     public function get_default_survey(){
         global $wpdb;
         $current_user = get_current_user_id();
-        $surveys_table = $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . 'surveys';
-        $sql = "SELECT id FROM {$surveys_table} WHERE status='published'";
+        $surveys_table = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . 'surveys' );
         if( ! current_user_can( 'manage_options' ) ){
-            $sql .= " AND author_id = ". absint( $current_user ) ." ";
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $id = $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$surveys_table} WHERE status='published' AND author_id = %d LIMIT 1", absint( $current_user ) ) );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $id = $wpdb->get_var( "SELECT id FROM {$surveys_table} WHERE status='published' LIMIT 1" );
         }
-        $sql .= " LIMIT 1;";
-        $id = $wpdb->get_var( $sql );
 
         return intval($id);
     }

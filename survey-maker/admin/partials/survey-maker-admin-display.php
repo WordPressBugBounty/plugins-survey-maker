@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 
 /**
  * Provide a admin area view for the plugin
@@ -22,7 +25,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
     </div> -->
     <div class="ays-survey-heart-beat-main-heading ays-survey-heart-beat-main-heading-container">
         <h1 class="ays-survey-maker-wrapper ays_heart_beat">
-            <?php echo esc_html(__(get_admin_page_title(),"survey-maker")); ?> <i class="ays_fa ays_fa_heart_o animated"></i>
+            <?php echo esc_html( get_admin_page_title() ); ?> <i class="ays_fa ays_fa_heart_o animated"></i>
         </h1>
     </div>
     <?php do_action('ays_survey_sale_banner'); ?>
@@ -115,11 +118,11 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                     <p>
                         <?php 
                             echo wp_kses_post(sprintf(
-                                __( "%s You can! %s With the help of the plugin, you can create unlimited online surveys with multi sections. Quick, easy, and reliable for creating surveys interesting and engaging to take. %s A drastic increase in conversion rate is guaranteed %s", "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag, %3$s: opening <em> tag, %4$s: closing </em> tag */ __( "%1\$s You can! %2\$s With the help of the plugin, you can create unlimited online surveys with multi sections. Quick, easy, and reliable for creating surveys interesting and engaging to take. %3\$s A drastic increase in conversion rate is guaranteed %4\$s", "survey-maker" ),
                                 '<strong>',
                                 '</strong>',
                                 '<em>',
-                                '</em>',
+                                '</em>'
                             ));
                         ?>
                     </p>
@@ -136,7 +139,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                     <p>
                         <?php 
                             echo wp_kses_post(sprintf( 
-                                __( "To achieve that, you need to divide your survey into separate sections and write one question per section. If you want to drive more traffic and use it as a %s lead generator %s , then the plugin is %s perfect for your needs. %s It %s doesn't require any coding to build your surveys, %s yet it is %s easy to customize %s .", "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag, %3$s: opening <strong> tag, %4$s: closing </strong> tag, %5$s: opening <strong> tag, %6$s: closing </strong> tag, %7$s: opening <strong> tag, %8$s: closing </strong> tag */ __( "To achieve that, you need to divide your survey into separate sections and write one question per section. If you want to drive more traffic and use it as a %1\$s lead generator %2\$s , then the plugin is %3\$s perfect for your needs. %4\$s It %5\$s doesn't require any coding to build your surveys, %6\$s yet it is %7\$s easy to customize %8\$s .", "survey-maker" ),
                                 '<strong>',
                                 '</strong>',
                                 '<strong>',
@@ -161,11 +164,11 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                     <p>
                         <?php 
                             echo wp_kses_post(sprintf( 
-                                __( " %s Nope, you will not! %s All the data(surveys, settings, and submissions) of the plugin will remain unchanged even after switching to the Pro version. You don't need to redo what you have already created with the free version. %s For further detailed instructions, please check out the upgrade guide of the plugin. %s" , "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag, %3$s: opening <em> tag, %4$s: closing </em> tag */ __( " %1\$s Nope, you will not! %2\$s All the data(surveys, settings, and submissions) of the plugin will remain unchanged even after switching to the Pro version. You don't need to redo what you have already created with the free version. %3\$s For further detailed instructions, please check out the upgrade guide of the plugin. %4\$s" , "survey-maker" ),
                                 '<strong>',
                                 '</strong>',
                                 '<em>',
-                                '</em>',
+                                '</em>'
                             ));
                         ?>
                     </p>
@@ -182,7 +185,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                     <p>
                         <?php 
                             echo wp_kses_post(sprintf( 
-                                __( "To do that, please go to the %sSubmissions%s page of the plugin. There you will find plenty of analysis tools. Want to %sanalyze data from a survey%s? The plugin is %sjust what you needed%s. Collect user feedback and interpret them via reports, charts, and statistics.", "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag, %3$s: opening <strong> tag, %4$s: closing </strong> tag, %5$s: opening <strong> tag, %6$s: closing </strong> tag */ __( "To do that, please go to the %1\$sSubmissions%2\$s page of the plugin. There you will find plenty of analysis tools. Want to %3\$sanalyze data from a survey%4\$s? The plugin is %5\$sjust what you needed%6\$s. Collect user feedback and interpret them via reports, charts, and statistics.", "survey-maker" ),
                                 '<strong>',
                                 '</strong>',
                                 '<strong>',
@@ -205,7 +208,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                     <p>
                         <?php 
                             echo wp_kses_post(sprintf( 
-                                __( "Looking for an %samazing and flexible plugin%s? You are in a right place! We have done our best to make the time of our customers more manageable. You can import and export your already created surveys from one website to another via JSON format. %sGreat plugin, right?%s", "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag, %3$s: opening <em> tag, %4$s: closing </em> tag */ __( "Looking for an %1\$samazing and flexible plugin%2\$s? You are in a right place! We have done our best to make the time of our customers more manageable. You can import and export your already created surveys from one website to another via JSON format. %3\$sGreat plugin, right?%4\$s", "survey-maker" ),
                                 '<strong>',
                                 '</strong>',
                                 '<em>',
@@ -228,7 +231,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                             echo esc_html__( "We happily support our community. Our Support Care specialists are always ready to help you to use the product more efficiently." , "survey-maker" );
                             echo " ";
                             echo wp_kses_post(sprintf( 
-                                __( "Though the plugin is %seasy to set up and use%s and has a %ssimple interface%s, please feel free to reach out to us anytime when you have any concerns.", "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag, %3$s: opening <strong> tag, %4$s: closing </strong> tag */ __( "Though the plugin is %1\$seasy to set up and use%2\$s and has a %3\$ssimple interface%4\$s, please feel free to reach out to us anytime when you have any concerns.", "survey-maker" ),
                                 '<strong>',
                                 '</strong>',
                                 '<strong>',
@@ -238,7 +241,7 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                             echo esc_html__( "The team may respond to your questions within 24 hours." , "survey-maker" );
                             echo " ";
                             echo wp_kses_post(sprintf( 
-                                __( "For questions concerning the Free plugin please post it on the %sWordPress Support Forum%s, otherwise(pre-sale question/pro support), please contact us via %sthis form%s. %sExcellent service is guaranteed!%s", "survey-maker" ),
+                                /* translators: %1$s: opening <a> tag, %2$s: closing </a> tag, %3$s: opening <a> tag, %4$s: closing </a> tag, %5$s: opening <em> tag, %6$s: closing </em> tag */ __( "For questions concerning the Free plugin please post it on the %1\$sWordPress Support Forum%2\$s, otherwise(pre-sale question/pro support), please contact us via %3\$sthis form%4\$s. %5\$sExcellent service is guaranteed!%6\$s", "survey-maker" ),
                                 '<a href="https://wordpress.org/support/plugin/survey-maker/" target="_blank">',
                                 '</a>',
                                 '<a href="https://ays-pro.com/contact" target="_blank">',
@@ -261,8 +264,8 @@ $add_new_url = sprintf('?page=%s&action=%s', 'survey-maker', 'add');
                     <p>
                         <?php
                             echo wp_kses_post(sprintf( 
-                                __( "You must know that our plugin has no limits
-                                Survey Maker offers %sunlimited%s number of sections, questions and answers. However, if you came across to such problem, it is connected with your server. To solve that problem you must access to your cPanel, find your PHP values and enhance the number, and in case you are unable to do that yourself then contact your Hosting provider, so that they do the mentioned for you.", "survey-maker" ),
+                                /* translators: %1$s: opening <strong> tag, %2$s: closing </strong> tag */ __( "You must know that our plugin has no limits
+                                Survey Maker offers %1\$sunlimited%2\$s number of sections, questions and answers. However, if you came across to such problem, it is connected with your server. To solve that problem you must access to your cPanel, find your PHP values and enhance the number, and in case you are unable to do that yourself then contact your Hosting provider, so that they do the mentioned for you.", "survey-maker" ),
                                 '<strong>',
                                 '</strong>'
                             ));   

@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab8" class="ays-survey-navigation-tab-content ays-survey-tab-content <?php echo ($ays_tab == 'tab8') ? 'ays-survey-tab-content-active' : ''; ?>">
     <p class="ays-subtitle"><?php echo esc_html__('Integrations settings',"survey-maker")?></p>
     <div>

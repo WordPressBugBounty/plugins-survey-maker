@@ -1,7 +1,13 @@
 <?php
-    $action = isset( $_GET['action'] ) ? sanitize_text_field( $_GET['action'] ) : '';
+    if ( ! defined( 'ABSPATH' ) ) {
+        exit;
+    }
 
-    $id = (isset($_GET['id'])) ? absint( sanitize_text_field( $_GET['id'] ) ) : null;
+    // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin page parameters, no data is modified.
+    $action = isset( $_GET['action'] ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
+
+    $id = (isset($_GET['id'])) ? absint( sanitize_text_field( wp_unslash( $_GET['id'] ) ) ) : null;
+    // phpcs:enable WordPress.Security.NonceVerification.Recommended
     
     $general_settings = $this->settings_obj;
 
@@ -39,6 +45,7 @@
             break;
     }
 
+    // phpcs:disable WordPress.Security.NonceVerification.Missing -- The "survey_category_action" nonce is verified inside add_or_edit_item() before anything is saved.
     if (isset($_POST['ays_submit']) || isset($_POST['ays_submit_top'])) {
         $_POST["id"] = $id;
         $this->surveys_categories_obj->add_or_edit_item( $_POST );
@@ -55,6 +62,7 @@
         $_POST['save_type'] = 'save_new';
         $this->surveys_categories_obj->add_or_edit_item( $_POST );
     }
+    // phpcs:enable WordPress.Security.NonceVerification.Missing
 
 
     // Options
@@ -68,7 +76,7 @@
     $description = isset( $object['description'] ) && $object['description'] != '' ? stripslashes( wpautop( $object['description'] ) ) : '';
     
     // Status
-    $status = isset( $object['status'] ) && $object['status'] != '' ? strip_tags( stripslashes($object['status']) ) : 'published';
+    $status = isset( $object['status'] ) && $object['status'] != '' ? wp_strip_all_tags( stripslashes($object['status']) ) : 'published';
 
     // Date created
     $date_created = isset( $object['date_created'] ) && Survey_Maker_Admin::validateDate( $object['date_created'] ) ? $object['date_created'] : current_time( 'mysql' );

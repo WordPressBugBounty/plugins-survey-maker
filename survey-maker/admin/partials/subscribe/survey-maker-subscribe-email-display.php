@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div class="wrap">
     <div id="ays-survey-subscribe-email-page-main">
         <div class="ays-survey-subscribe-email-page-info-header">

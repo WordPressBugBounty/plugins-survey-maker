@@ -104,7 +104,7 @@ class Survey_Maker_Feedback {
 			'plugin_or_theme_conflict' => array(
 				'title' => esc_html__( "Conflicts with other plugins or themes", 'survey-maker' ),
 				'input_placeholder' => '',
-				'alert' => sprintf( __("Contact our %s support team %s to find and fix the issue.", 'survey-maker'),
+				'alert' => sprintf( /* translators: %1$s: opening <a> tag, %2$s: closing </a> tag */ __("Contact our %1\$s support team %2\$s to find and fix the issue.", 'survey-maker'),
                                     "<a href='https://ays-pro.com/contact' target='_blank'>",
                                     "</a>"
                                 ),
@@ -195,7 +195,7 @@ class Survey_Maker_Feedback {
 		}
 
 		// Run a security check.
-        check_ajax_referer( 'ays_survey_deactivate_feedback_nonce', sanitize_key( $_REQUEST['_ajax_nonce'] ) );
+        check_ajax_referer( 'ays_survey_deactivate_feedback_nonce', '_ajax_nonce' );
 
 		if ( ! current_user_can( 'activate_plugins' ) ) {
 			wp_send_json_error( 'Permission denied' );
@@ -205,10 +205,10 @@ class Survey_Maker_Feedback {
 			wp_send_json_error( 'Action error' );
 		}
 
-		$reason_key = !empty($_REQUEST['ays_survey_reason_key']) ? sanitize_text_field($_REQUEST['ays_survey_reason_key']) : "";
-		$sub_reason_key = !empty($_REQUEST['ays_survey_sub_reason_key']) ? sanitize_text_field($_REQUEST['ays_survey_sub_reason_key']) : "";
-		$reason_text = !empty($_REQUEST["ays_survey_reason_{$reason_key}"]) ? sanitize_text_field($_REQUEST["ays_survey_reason_{$reason_key}"]) : "";
-		$type = !empty($_REQUEST["type"]) ? sanitize_text_field($_REQUEST["type"]) : "";
+		$reason_key = !empty($_REQUEST['ays_survey_reason_key']) ? sanitize_text_field( wp_unslash( $_REQUEST['ays_survey_reason_key'] ) ) : "";
+		$sub_reason_key = !empty($_REQUEST['ays_survey_sub_reason_key']) ? sanitize_text_field( wp_unslash( $_REQUEST['ays_survey_sub_reason_key'] ) ) : "";
+		$reason_text = !empty($_REQUEST["ays_survey_reason_{$reason_key}"]) ? sanitize_text_field( wp_unslash( $_REQUEST["ays_survey_reason_{$reason_key}"] ) ) : "";
+		$type = !empty($_REQUEST["type"]) ? sanitize_text_field( wp_unslash( $_REQUEST["type"] ) ) : "";
 
 		self::send_feedback( $reason_key, $sub_reason_key, $reason_text, $type );
 

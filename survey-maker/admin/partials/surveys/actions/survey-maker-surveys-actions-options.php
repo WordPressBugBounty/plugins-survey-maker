@@ -1,12 +1,18 @@
 <?php
-    $ays_tab = 'tab1';
-    if(isset($_GET['tab'])){
-        $ays_tab = sanitize_text_field( $_GET['tab'] );
+    if ( ! defined( 'ABSPATH' ) ) {
+        exit;
     }
 
-    $action = (isset($_GET['action'])) ? sanitize_text_field( $_GET['action'] ) : '';
+    // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin page parameters, no data is modified.
+    $ays_tab = 'tab1';
+    if(isset($_GET['tab'])){
+        $ays_tab = sanitize_text_field( wp_unslash( $_GET['tab'] ) );
+    }
 
-    $id = (isset($_GET['id'])) ? absint( sanitize_text_field( $_GET['id'] ) ) : null;
+    $action = (isset($_GET['action'])) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
+
+    $id = (isset($_GET['id'])) ? absint( sanitize_text_field( wp_unslash( $_GET['id'] ) ) ) : null;
+    // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
     $html_name_prefix = 'ays_';
     $name_prefix = 'survey_';
@@ -312,6 +318,7 @@
             break;
     }
 
+    // phpcs:disable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended -- The "survey_action" nonce is verified inside add_or_edit_item() before anything is saved; the cancel button only redirects back to the list.
     if (isset($_POST['ays_submit']) || isset($_POST['ays_submit_top'])) {
         $_POST["id"] = $id;
         $this->surveys_obj->add_or_edit_item( $_POST );
@@ -339,8 +346,9 @@
     if (isset($_POST['ays_survey_cancel'])) {
         unset($_GET['page']);
         $url = remove_query_arg( array_keys($_GET) );
-        wp_redirect( $url );
+        wp_safe_redirect( $url );
     }
+    // phpcs:enable WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
 
     $loader_iamge = '<span class="display_none ays_survey_loader_box"><img src="'. SURVEY_MAKER_ADMIN_URL .'/images/loaders/loading.gif"></span>';
 
@@ -990,7 +998,7 @@
     // =============================================================
     // ======================    Styles Tab    =====================
     // ========================     END     ========================
-        $survey_color_hex = Survey_Maker_Data::rgb2hex( $survey_color );
+        $survey_color_hex = esc_attr( Survey_Maker_Data::rgb2hex( $survey_color ) );
 
         $survey_colors = "<style id='ays-survey-custom-css-additional'>
             #ays-survey-form .ays-survey-section-head-wrap .ays-survey-section-head {
@@ -1154,9 +1162,9 @@
                 $deactivateTimeVal = (isset($options[ $name_prefix . 'schedule_deactive' ]) && $options[ $name_prefix . 'schedule_deactive' ] != '') ? stripslashes ( esc_attr( $options[ $name_prefix . 'schedule_deactive' ] ) ) : current_time( 'mysql' );
 
                 $activateTime             = strtotime($activateTimeVal);
-                $survey_schedule_active   = date('Y-m-d H:i:s', $activateTime);
+                $survey_schedule_active   = gmdate('Y-m-d H:i:s', $activateTime);
                 $deactivateTime           = strtotime($deactivateTimeVal);
-                $survey_schedule_deactive = date('Y-m-d H:i:s', $deactivateTime);
+                $survey_schedule_deactive = gmdate('Y-m-d H:i:s', $deactivateTime);
             } else {
                 $survey_schedule_active   = current_time( 'mysql' );
                 $survey_schedule_deactive = current_time( 'mysql' );
@@ -1217,12 +1225,12 @@
         $survey_change_create_author = (isset($options[ $name_prefix . 'change_create_author' ]) && $options[ $name_prefix . 'change_create_author' ] != '') ? absint( esc_attr( $options[$name_prefix . 'change_create_author' ] ) ) : intval($object['author_id' ]);
 
         if( $survey_change_create_author  && $survey_change_create_author > 0 ){
-            global $wpdb;
-            $users_table = esc_sql( $wpdb->base_prefix . 'users' );
+            $ays_survey_create_author_user = get_userdata( $survey_change_create_author );
 
-            $sql_users = "SELECT ID,display_name FROM {$users_table} WHERE ID = {$survey_change_create_author}";
-
-            $ays_survey_create_author_data = $wpdb->get_row($sql_users, "ARRAY_A");
+            $ays_survey_create_author_data = $ays_survey_create_author_user ? array(
+                "ID"           => $ays_survey_create_author_user->ID,
+                "display_name" => $ays_survey_create_author_user->display_name,
+            ) : null;
 
             if( is_null( $ays_survey_create_author_data ) || empty($ays_survey_create_author_data) ){
                 $survey_change_create_author = $user_id;

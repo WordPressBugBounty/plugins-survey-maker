@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 /**
  * Created by PhpStorm.
  * User: biggie18
@@ -12,7 +15,7 @@
 
 <div class="wrap">
     <h1 class="wp-heading-inline">
-        <?php echo esc_html__(get_admin_page_title(), "survey-maker"); ?>
+        <?php echo esc_html( get_admin_page_title() ); ?>
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
     <h3 class="wp-heading" style="text-align: center;">

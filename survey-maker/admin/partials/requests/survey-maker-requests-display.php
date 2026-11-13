@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div class="wrap">
     <div class="ays-survey-heading-box">
         <div class="ays-survey-wordpress-user-manual-box">
@@ -9,7 +14,7 @@
         </div>
     </div>
     <h1 class="wp-heading-inline">
-        <?php echo esc_html__( get_admin_page_title(), "survey-maker" ); ?>
+        <?php echo esc_html( get_admin_page_title() ); ?>
     </h1>
     <?php do_action('ays_survey_sale_banner'); ?>
     <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">

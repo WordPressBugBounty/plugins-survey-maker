@@ -93,6 +93,7 @@
         var data = {};
         data.action = action;
         data.content = questionContent;
+        data._ajax_nonce = survey_maker_ajax.livePreviewNonce;
         $.ajax({
             url: ajaxurl,
             method: 'post',

@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <!-- This file should primarily consist of HTML with a little bit of PHP. -->
 <?php
 // Get plugin data for dynamic buttons
@@ -16,7 +21,8 @@ $plugin_mappings = array(
 );
 
 // Function to get plugin button HTML
-function get_plugin_button_html($plugin_slug, $admin_obj) {
+if ( ! function_exists( 'ays_survey_get_plugin_button_html' ) ) {
+function ays_survey_get_plugin_button_html($plugin_slug, $admin_obj) {
     if (!function_exists('get_plugins')) {
         require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
@@ -37,13 +43,23 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
     }
     
     if ($is_active) {
-        return '<button class="ays-survey-card__btn-info ays-survey-plugin-btn disabled" disabled>' . __('Activated', 'survey-maker') . '</button>';
+        return '<button class="ays-survey-card__btn-info ays-survey-plugin-btn disabled" disabled>' . esc_html__('Activated', 'survey-maker') . '</button>';
     } elseif ($is_installed) {
-        return '<button class="ays-survey-card__btn-info ays-survey-plugin-btn" data-action="activate" data-plugin="' . esc_attr($plugin_slug) . '">' . __('Activate', 'survey-maker') . '</button>';
+        return '<button class="ays-survey-card__btn-info ays-survey-plugin-btn" data-action="activate" data-plugin="' . esc_attr($plugin_slug) . '">' . esc_html__('Activate', 'survey-maker') . '</button>';
     } else {
-        return '<button class="ays-survey-card__btn-info ays-survey-plugin-btn" data-action="install" data-plugin="' . esc_attr($plugin_slug) . '">' . __('Install Plugin', 'survey-maker') . '</button>';
+        return '<button class="ays-survey-card__btn-info ays-survey-plugin-btn" data-action="install" data-plugin="' . esc_attr($plugin_slug) . '">' . esc_html__('Install Plugin', 'survey-maker') . '</button>';
     }
 }
+}
+
+$ays_survey_plugin_btn_allowed_html = array(
+    'button' => array(
+        'class'       => true,
+        'disabled'    => true,
+        'data-action' => true,
+        'data-plugin' => true,
+    ),
+);
 ?>
 
 <div class="wrap">
@@ -65,7 +81,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('fox-lms', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('fox-lms', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://foxlms.com/pricing/?utm_source=dashboard&utm_medium=survey-free&utm_campaign=fox-lms-our-products-page" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -84,7 +100,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('quiz-maker', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('quiz-maker', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/quiz-maker/" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -103,7 +119,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('poll-maker', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('poll-maker', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/poll-maker/" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -122,7 +138,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('ays-popup-box', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('ays-popup-box', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/popup-box/" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -141,7 +157,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('gallery-photo-gallery', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('gallery-photo-gallery', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/photo-gallery/" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -160,7 +176,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('secure-copy-content-protection', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('secure-copy-content-protection', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/secure-copy-content-protection/" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -179,7 +195,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('ays-facebook-popup-likebox', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('ays-facebook-popup-likebox', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/facebook-popup-likebox/" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>
@@ -195,7 +211,7 @@ function get_plugin_button_html($plugin_slug, $admin_obj) {
                 </div>
             </div>
             <div class="ays-survey-card__footer">
-                <?php echo get_plugin_button_html('chart-builder', $this); ?>
+                <?php echo wp_kses( ays_survey_get_plugin_button_html('chart-builder', $this), $ays_survey_plugin_btn_allowed_html ); ?>
                 <a target="_blank" href="https://ays-pro.com/wordpress/chart-builder" class="ays-survey-card__btn-primary"><?php echo esc_html__('Buy Now', "survey-maker"); ?></a>
             </div>
         </div>

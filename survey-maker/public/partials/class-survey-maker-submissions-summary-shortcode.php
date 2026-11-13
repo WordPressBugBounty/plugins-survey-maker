@@ -70,8 +70,8 @@ class Survey_Maker_Submissions_Summary
 
         $results = array();
 
-        $sql = "SELECT * FROM " . $surveys_table . " WHERE id =" . absint( $survey_id );
-        $survey_name = $wpdb->get_row( $sql, 'ARRAY_A' );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+        $survey_name = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$surveys_table} WHERE id = %d", absint( $survey_id ) ), 'ARRAY_A' );
 
         if ( empty( $survey_name ) || is_null( $survey_name ) ) {
             return null;
@@ -202,7 +202,7 @@ class Survey_Maker_Submissions_Summary
 
             $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-question-container" style="padding: 20px;">';
                 $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-question-container-header">';
-                    $content[] = sprintf( __( 'In total %s submission', "survey-maker" ), intval( $submission_count_and_ids['submission_count'] ) );
+                    $content[] = sprintf( /* translators: %s: number of submissions */ __( 'In total %s submission', "survey-maker" ), intval( $submission_count_and_ids['submission_count'] ) );
                 $content[] = '</div>';
             $content[] = '</div>';
             
@@ -212,7 +212,7 @@ class Survey_Maker_Submissions_Summary
 
                         $content[] = '<div class="ays_survey_name ' . $this->html_class_prefix . 'submission-summary-section-header">';
                             $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-section-header-title">' . $section['title'] . '</div>';
-                            $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-section-header-description">' . ($survey_allow_html_in_section_description) ? strip_tags(htmlspecialchars_decode($section['description'] )) : nl2br( $section['description'] ) . '</div>';
+                            $content[] = '<div class="' . $this->html_class_prefix . 'submission-summary-section-header-description">' . ($survey_allow_html_in_section_description) ? wp_strip_all_tags(htmlspecialchars_decode($section['description'] )) : nl2br( $section['description'] ) . '</div>';
                         $content[] = '</div>';
 
                         foreach ( $section['questions'] as $q_key => $question ):

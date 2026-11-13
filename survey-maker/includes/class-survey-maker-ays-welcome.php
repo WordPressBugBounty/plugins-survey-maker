@@ -66,7 +66,8 @@ class Survey_Maker_Ays_Welcome {
      */
     public function redirect() {
 
-        $current_page = isset( $_GET['page'] ) ? $_GET['page'] : '';
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page check, no data is modified.
+        $current_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
 
         // Check if we are already on the welcome page.
         // if ( $current_page === self::SLUG ) {
@@ -81,24 +82,27 @@ class Survey_Maker_Ays_Welcome {
             wp_safe_redirect( admin_url( 'admin.php?page=survey-maker' ) );
         }
 
-        if(isset($_POST['survey_maker_agree_terms']) && $_POST['survey_maker_agree_terms'] === 'agree'){
-            $this->ays_survey_request( 'agree' );
-            update_option('survey_maker_agree_terms', 'true');
-            update_option('survey_maker_show_agree_terms', 'hide');
-            wp_safe_redirect( admin_url( 'admin.php?page=survey-maker' ) );
-        }
+        if ( isset( $_POST['survey_maker_welcome_terms_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['survey_maker_welcome_terms_nonce'] ) ), 'survey_maker_welcome_terms' ) ) {
 
-        if(isset($_POST['survey_maker_cancel_terms']) && $_POST['survey_maker_cancel_terms'] === 'cancel'){
-            $this->ays_survey_request( 'cancel' );
-            update_option('survey_maker_agree_terms', 'false');
-            update_option('survey_maker_show_agree_terms', 'hide');
-            wp_safe_redirect( admin_url( 'admin.php?page=survey-maker' ) );
+            if(isset($_POST['survey_maker_agree_terms']) && $_POST['survey_maker_agree_terms'] === 'agree'){
+                $this->ays_survey_request( 'agree' );
+                update_option('survey_maker_agree_terms', 'true');
+                update_option('survey_maker_show_agree_terms', 'hide');
+                wp_safe_redirect( admin_url( 'admin.php?page=survey-maker' ) );
+            }
+
+            if(isset($_POST['survey_maker_cancel_terms']) && $_POST['survey_maker_cancel_terms'] === 'cancel'){
+                $this->ays_survey_request( 'cancel' );
+                update_option('survey_maker_agree_terms', 'false');
+                update_option('survey_maker_show_agree_terms', 'hide');
+                wp_safe_redirect( admin_url( 'admin.php?page=survey-maker' ) );
+            }
         }
 
         if($current_page === self::SLUG){
             return;
         }
-        if ( isset($_GET['page']) && strpos($_GET['page'], SURVEY_MAKER_NAME) !== false && !$terms_activation && $first_activation) {
+        if ( $current_page !== '' && strpos( $current_page, SURVEY_MAKER_NAME ) !== false && !$terms_activation && $first_activation) {
             wp_safe_redirect( admin_url( 'index.php?page=' . self::SLUG ) );
             exit;
         }
@@ -114,7 +118,7 @@ class Survey_Maker_Ays_Welcome {
         wp_enqueue_style(
             'survey-maker-welcome-css', 
             esc_url(SURVEY_MAKER_ADMIN_URL) . '/css/survey-maker-welcome.css',
-            array(), false, 'all');
+            array(), SURVEY_MAKER_VERSION, 'all');
     }
 
     /**
@@ -147,6 +151,7 @@ class Survey_Maker_Ays_Welcome {
                 }
             </style>
             <form method="POST">
+                <?php wp_nonce_field( 'survey_maker_welcome_terms', 'survey_maker_welcome_terms_nonce' ); ?>
                 <div id="survey-maker-welcome">        
                     <div class="survey-maker-welcome-container">        
                         <div class="survey-maker-welcome-intro">        
@@ -185,7 +190,6 @@ class Survey_Maker_Ays_Welcome {
     }
 
     public function ays_survey_request($cta){
-        $curl = curl_init();
 
         $api_url = "https://poll-plugin.com/survey-maker/";
 

@@ -38,7 +38,7 @@ class Survey_Requests_List_Table extends WP_List_Table{
                 return $item[ $column_name ];
                 break;
             default:
-                return print_r( $item, true );
+                return ''; // Every registered column has its own handler above.
         }
     }
     

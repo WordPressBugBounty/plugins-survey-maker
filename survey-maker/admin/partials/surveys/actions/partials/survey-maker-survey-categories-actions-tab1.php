@@ -1,3 +1,8 @@
+<?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+?>
 <div id="tab1" class="ays-survey-tab-content ays-survey-tab-content-active">
     <div class="form-group row">
         <div class="col-sm-2">

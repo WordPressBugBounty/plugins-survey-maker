@@ -160,12 +160,14 @@
             global $wpdb;
 
             $table     = esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX . 'surveys' );
-            $survey_id = $wpdb->get_var(// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+            // phpcs:disable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin table; the table name is built from $wpdb->prefix and escaped with esc_sql().
+            $survey_id = $wpdb->get_var(
                 $wpdb->prepare(
                     "SELECT id FROM {$table} WHERE custom_post_id = %d",
                     $custom_post_id
                 )
             );
+            // phpcs:enable WordPress.DB.DirectDatabaseQuery, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
             if ( $survey_id > 0 ) {
                 return "ays_survey id='" . absint( $survey_id ) . "'";

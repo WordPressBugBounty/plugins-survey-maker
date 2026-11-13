@@ -1,12 +1,16 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
 global $wpdb;
-$survey_id = isset($_GET['survey']) ? intval( sanitize_text_field( $_GET['survey'] ) ) : null;
+// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only admin page parameters (survey id, active tab, search flag), no data is modified.
+$survey_id = isset($_GET['survey']) ? intval( sanitize_text_field( wp_unslash( $_GET['survey'] ) ) ) : null;
 if($survey_id === null){
-    wp_redirect( admin_url('admin.php') . '?page=' . $this->plugin_name . '-submissions' );
+    wp_safe_redirect( admin_url('admin.php') . '?page=' . $this->plugin_name . '-submissions' );
 }
 
 if(isset($_GET['ays_survey_tab'])){
-    $ays_survey_tab = sanitize_text_field( $_GET['ays_survey_tab'] );
+    $ays_survey_tab = sanitize_text_field( wp_unslash( $_GET['ays_survey_tab'] ) );
 }else{
     $ays_survey_tab = 'statistics_of_answer';
 }
@@ -14,14 +18,15 @@ if(isset($_GET['ays_survey_tab'])){
 if(isset($_REQUEST['s'])){
     $ays_survey_tab = 'poststuff';
 }
+// phpcs:enable WordPress.Security.NonceVerification.Recommended
 
 $survey_results_plugin_nonce = wp_create_nonce( 'survey-maker-ajax-results-nonce' );
 
-$sql = $wpdb->prepare(
-    "SELECT * FROM {$wpdb->prefix}" . SURVEY_MAKER_DB_PREFIX . "surveys WHERE id = %d",
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Custom plugin table.
+$survey_name = $wpdb->get_row( $wpdb->prepare(
+    "SELECT * FROM " . esc_sql( $wpdb->prefix . SURVEY_MAKER_DB_PREFIX ) . "surveys WHERE id = %d",
     absint($survey_id)
-);
-$survey_name = $wpdb->get_row($sql, "ARRAY_A");
+), "ARRAY_A" );
 
 $survey_options = isset( $survey_name['options'] ) && $survey_name['options'] != '' ? json_decode( $survey_name['options'], true ) : array();
 
@@ -139,7 +144,7 @@ $types_with_changeable_charts = array(
                     "action" => "edit",
                     "id"     => $survey_id
                 ) , $url));
-                echo "<span>". esc_html__("Reports for", "survey-maker") . "</span>" ." <a href='".esc_url($url)."' target='_blank' class='ays-survey-to-curnet-survey'>\"" .    esc_html__($survey_name['title'], "survey-maker") . "\""."</a>";
+                echo "<span>". esc_html__("Reports for", "survey-maker") . "</span>" ." <a href='".esc_url($url)."' target='_blank' class='ays-survey-to-curnet-survey'>\"" .    esc_html( $survey_name['title'] ) . "\""."</a>";
             ?>
         </h1>
         <div class="ays-survey-question-action-butons" style="padding: 10px; display: inline-block;">
@@ -419,7 +424,7 @@ $types_with_changeable_charts = array(
                                 <?php if($section['title'] != "" || $section['description'] != ""):?>
                                 <div class="ays_survey_name" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
                                     <h3><?php echo esc_attr($section['title']); ?></h3>
-                                    <p><?php echo ($survey_allow_html_in_section_description) ? strip_tags(htmlspecialchars_decode($section['description'] )) : nl2br( $section['description'] ) ?></p>
+                                    <p><?php echo ($survey_allow_html_in_section_description) ? esc_html( wp_strip_all_tags( htmlspecialchars_decode( $section['description'] ) ) ) : wp_kses_post( nl2br( $section['description'] ) ); ?></p>
                                 </div>
                                 <?php endif; ?>
                                 <?php
@@ -427,11 +432,11 @@ $types_with_changeable_charts = array(
                                     ?>
                                     <div class="ays_questions_answers" data-id="<?php echo esc_attr($question['id']); ?>" data-type="<?php echo esc_attr($question['type']); ?>" style="border-left-color: <?php echo esc_attr($survey_for_charts); ?>;">
                                     <?php if(!$survey_show_questions_as_html): ?>
-                                        <div class="ays-survey-individual-question-title"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities($question['question']) ) ); ?></div>
+                                        <div class="ays-survey-individual-question-title"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities($question['question']) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Question text is encoded with htmlentities() before embeds/shortcodes are rendered. ?></div>
                                     <?php else: 
                                         $question_title_text = Survey_Maker_Data::ays_autoembed( Survey_Maker_Data::survey_sanitize_specific_content($question['question']) );
                                     ?>
-                                        <div class="ays-survey-individual-question-title"><?php echo $question_title_text; ?></div>
+                                        <div class="ays-survey-individual-question-title"><?php echo $question_title_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Question content entered by the admin; script/event-handler markup is neutralized by survey_sanitize_specific_content(), then embeds/shortcodes are rendered like post content. ?></div>
                                     <?php endif?>                                    
                                     <?php
                                     $question_type_content = '';
@@ -503,7 +508,7 @@ $types_with_changeable_charts = array(
                                         $color = '#777';                                       
 
                                         $answer_content = $allow_html_in_answers ? $answer['answer'] : htmlentities( $answer['answer'] );
-                                        $answer_content = ($allow_html_in_answers && strpos($answer_content,'<script>') !== false) ? strip_tags($answer_content) : ( $answer_content );
+                                        $answer_content = ($allow_html_in_answers && strpos($answer_content,'<script>') !== false) ? wp_strip_all_tags($answer_content) : ( $answer_content );
 
                                         switch( $question['type'] ){
                                             case 'radio':
@@ -606,7 +611,7 @@ $types_with_changeable_charts = array(
                                     if( $question['type'] == 'select' && $key == count( $question['answers'] ) - 1 ){
                                         $question_type_content .= '</select></div>';
                                     }
-                                    echo $question_type_content;
+                                    echo wp_kses( $question_type_content, Survey_Maker_Data::get_allowed_tags_for_submission_answers() );
                                     ?>
                                 </div>
                                 <?php
@@ -680,7 +685,7 @@ $types_with_changeable_charts = array(
         <div class="wrap">
             <div class="ays-survey-submission-summary-question-container ays-survey-submission-summary-header-container" style="padding: 20px;">
                 <div class="ays-survey-submission-summary-question-container-title">
-                    <h2 style="margin: 0;"><?php echo esc_html__(sprintf( 'In total %s submission', intval( esc_attr($submission_count_and_ids['submission_count']) ) ), "survey-maker"); ?></h2>
+                    <h2 style="margin: 0;"><?php /* translators: %s: number of submissions */ echo esc_html( sprintf( __( 'In total %s submission', "survey-maker" ), intval( $submission_count_and_ids['submission_count'] ) ) ); ?></h2>
                 </div>
                 <div class="ays-survey-submission-summary-question-container-buttons">
                     <a type="button" class="button button-primary" target="_blank" href="https://ays-pro.com/wordpress/survey-maker" style="opacity:0.5;"><?php echo esc_html__( 'Print', "survey-maker"); ?></a>
@@ -694,7 +699,7 @@ $types_with_changeable_charts = array(
                         <?php if($section['title'] != "" || $section['description'] != ""):?>
                         <div class="ays_survey_name ays-survey-submission-summary-section-header" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
                             <h3><?php echo esc_attr($section['title']); ?></h3>
-                            <p><?php echo ($survey_allow_html_in_section_description) ? strip_tags(htmlspecialchars_decode($section['description'] )) : nl2br( $section['description'] ) ?></p>
+                            <p><?php echo ($survey_allow_html_in_section_description) ? esc_html( wp_strip_all_tags( htmlspecialchars_decode( $section['description'] ) ) ) : wp_kses_post( nl2br( $section['description'] ) ); ?></p>
                         </div>
                         <?php else:?>
                         <div class="ays_survey_name ays-survey-submission-summary-section-header" style="border-top-color: <?php echo esc_attr($survey_for_charts); ?>;">
@@ -708,11 +713,11 @@ $types_with_changeable_charts = array(
                                 <div class="ays-survey-submission-summary-question-header">
                                     <div class="ays-survey-submission-summary-question-header-content">
                                         <?php if(!$survey_show_questions_as_html): ?>
-                                            <div style="padding: 9px 0 4px 0;"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities( $question_results[ $question['id'] ]['question'] ) ) ); ?></div>
+                                            <div style="padding: 9px 0 4px 0;"><?php echo Survey_Maker_Data::ays_autoembed( nl2br( htmlentities( $question_results[ $question['id'] ]['question'] ) ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Question text is encoded with htmlentities() before embeds/shortcodes are rendered. ?></div>
                                         <?php else: 
                                             $question_title_text = Survey_Maker_Data::ays_autoembed( Survey_Maker_Data::survey_sanitize_specific_content($question['question']) );                                                                                     
                                         ?>                                            
-                                        <div style="padding: 9px 0 4px 0;"><?php echo $question_title_text; ?></div>
+                                        <div style="padding: 9px 0 4px 0;"><?php echo $question_title_text; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Question content entered by the admin; script/event-handler markup is neutralized by survey_sanitize_specific_content(), then embeds/shortcodes are rendered like post content. ?></div>
                                         <?php endif?>
                                         <p style="text-align:center;"><?php echo esc_attr($question_results[ $question['id'] ]['sum_of_answers_count']); echo esc_html__(' submissions',"survey-maker"); ?></p>
                                     </div>
@@ -805,7 +810,7 @@ $types_with_changeable_charts = array(
                                                         foreach( $months as $month => $days ){
                                                             ?>
                                                             <div class="ays-survey-question-date-summary-row">
-                                                                <div class="ays-survey-question-date-summary-year-month"><?php echo date_i18n( 'F Y', strtotime( $year ."-". $month ) ); ?></div>
+                                                                <div class="ays-survey-question-date-summary-year-month"><?php echo esc_html( date_i18n( 'F Y', strtotime( $year ."-". $month ) ) ); ?></div>
                                                                 <div class="ays-survey-question-date-summary-days">
                                                                     <div class="ays-survey-question-date-summary-days-row">
                                                                         <?php

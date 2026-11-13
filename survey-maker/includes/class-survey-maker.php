@@ -262,26 +262,20 @@ class Survey_Maker {
         $this->loader->add_action( 'admin_menu', $plugin_admin, 'add_plugin_popup_surveys_submenu', 100 );
 		
 		$this->loader->add_action( 'wp_ajax_ays_survey_submission_report', $plugin_admin, 'ays_survey_submission_report' );
-		$this->loader->add_action( 'wp_ajax_nopriv_ays_survey_submission_report', $plugin_admin, 'ays_survey_submission_report' );
 
         // Deactivate plugin AJAx action
         $this->loader->add_action( 'wp_ajax_deactivate_plugin_option_sm', $plugin_admin, 'deactivate_plugin_option' );
-        $this->loader->add_action( 'wp_ajax_nopriv_deactivate_plugin_option_sm', $plugin_admin, 'deactivate_plugin_option' );
 
 		// Live preview
 		$this->loader->add_action( 'wp_ajax_ays_survey_maker_live_preview_content', $plugin_admin, 'ays_survey_maker_live_preview_content' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_maker_live_preview_content', $plugin_admin, 'ays_survey_maker_live_preview_content' );
 
 		// Live preview
 		$this->loader->add_action( 'wp_ajax_ays_survey_show_results', $plugin_admin, 'ays_survey_show_results' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_show_results', $plugin_admin, 'ays_survey_show_results' );
 
 		// Live preview
 		$this->loader->add_action( 'wp_ajax_ays_survey_add_survey_template', $plugin_admin, 'ays_survey_add_survey_template' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_add_survey_template', $plugin_admin, 'ays_survey_add_survey_template' );
 
         $this->loader->add_action( 'wp_ajax_ays_survey_author_user_search', $plugin_admin, 'ays_survey_author_user_search' );
-        $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_author_user_search', $plugin_admin, 'ays_survey_author_user_search' );
 	
 		// Install and activate plugin AJAX actions
 	    $this->loader->add_action('wp_ajax_ays_survey_install_plugin', $plugin_admin, 'ays_survey_install_plugin');
@@ -289,7 +283,6 @@ class Survey_Maker {
 
 		// Grab your gift
 		// $this->loader->add_action( 'wp_ajax_ays_survey_subscribe_email', $plugin_admin, 'ays_survey_subscribe_email' );
-        // $this->loader->add_action( 'wp_ajax_nopriv_ays_survey_subscribe_email', $plugin_admin, 'ays_survey_subscribe_email' );
 
         // Add Settings link to the plugin
         $plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_name . '.php' );

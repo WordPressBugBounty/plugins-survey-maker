@@ -1,4 +1,7 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
     require_once( SURVEY_MAKER_ADMIN_PATH . "/partials/popup/actions/survey-maker-popup-surveys-actions-options.php" );
 ?>
 <div class="wrap">
